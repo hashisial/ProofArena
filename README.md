@@ -1,2 +1,2 @@
 # ProofArena
-proofarena is a marketplace for all the cklients and 
+proofarena is a marketplace for all the clients and service providers 
