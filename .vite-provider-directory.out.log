@@ -1,0 +1,75 @@
+
+> mern-client@0.1.0 dev
+> vite --host 127.0.0.1
+
+
+  [32m[1mVITE[22m v7.3.2[39m  [2mready in [0m[1m1269[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5173[22m/[39m
+[2m9:22:54 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Providers.jsx, /src/styles.css[22m
+[2m9:25:45 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Providers.jsx, /src/styles.css[22m
+[2m9:31:25 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/AuthProvider.jsx, /src/pages/Providers.jsx, /src/components/Header.jsx, /src/components/Footer.jsx, /src/styles.css[22m
+[2m9:31:42 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/AuthProvider.jsx, /src/pages/Providers.jsx, /src/styles.css[22m
+[2m9:32:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:32:52 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:33:06 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/styles.css[22m
+[2m9:33:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/AuthProvider.jsx, /src/pages/Providers.jsx, /src/styles.css[22m
+[2m9:34:03 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:34:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:35:00 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:35:20 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Providers.jsx, /src/styles.css[22m
+[2m9:36:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:36:53 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:38:25 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:38:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/styles.css[22m
+[2m9:40:33 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Marketplace.jsx, /src/styles.css[22m
+[2m9:52:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/AuthProvider.jsx, /src/pages/Providers.jsx, /src/pages/Marketplace.jsx, /src/styles.css[22m
+[2m9:53:03 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:53:25 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:53:42 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/MarketplaceServiceCard.jsx[22m
+[2m9:53:50 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Providers.jsx, /src/styles.css[22m
+[2m9:53:58 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Marketplace.jsx, /src/styles.css[22m
+[2m9:54:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Marketplace.jsx, /src/styles.css[22m
+[2m9:54:56 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Marketplace.jsx, /src/styles.css[22m
+[2m9:55:09 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Marketplace.jsx, /src/styles.css[22m
+[2m9:56:06 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:56:16 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:56:39 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m9:56:55 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m10:00:23 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Marketplace.jsx, /src/styles.css[22m
+[2m10:00:59 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Marketplace.jsx, /src/styles.css[22m
+[2m10:01:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Marketplace.jsx, /src/styles.css[22m
+[2m10:01:49 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Marketplace.jsx, /src/styles.css[22m
+[2m2:31:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/AuthProvider.jsx, /src/pages/Providers.jsx, /src/pages/Marketplace.jsx, /src/pages/Auth.jsx, /src/pages/Admin.jsx, /src/components/AdminGate.jsx, /src/styles.css[22m
+[2m2:36:44 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m2:37:16 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m2:39:32 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m2:41:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m2:42:24 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m2:44:26 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/styles.css[22m
+[2m2:45:24 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m3:00:07 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/AuthProvider.jsx, /src/pages/Providers.jsx, /src/pages/Marketplace.jsx, /src/pages/Auth.jsx, /src/pages/Admin.jsx, /src/components/AdminGate.jsx, /src/sections/ServicesPreview.jsx, /src/sections/MarketplacePreview.jsx, /src/sections/PortfolioPreview.jsx, /src/sections/PlacedArticles.jsx, /src/sections/ReviewsSection.jsx, /src/components/ContactForm.jsx, /src/styles.css[22m
+[2m3:02:12 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m3:03:07 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m3:09:54 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m7:10:24 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/AuthProvider.jsx, /src/pages/Providers.jsx, /src/pages/Marketplace.jsx, /src/pages/Auth.jsx, /src/pages/Admin.jsx, /src/components/AdminGate.jsx, /src/sections/ServicesPreview.jsx, /src/sections/MarketplacePreview.jsx, /src/sections/PortfolioPreview.jsx, /src/sections/PlacedArticles.jsx, /src/sections/ReviewsSection.jsx, /src/pages/Dashboard.jsx, /src/components/ContactForm.jsx, /src/components/SaaSLayout.jsx, /src/pages/Settings.jsx, /src/pages/Connections.jsx, /src/pages/Network.jsx, /src/pages/Profile.jsx, /src/pages/Messages.jsx, /src/pages/ProviderServices.jsx, /src/pages/Payments.jsx, /src/pages/Projects.jsx, /src/pages/PublicProfile.jsx, /src/styles.css[22m
+[2m7:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m7:10:57 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/SaaSLayout.jsx[22m
+[2m7:11:24 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/SaaSLayout.jsx[22m
+[2m7:11:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/AuthProvider.jsx, /src/pages/Providers.jsx, /src/pages/Marketplace.jsx, /src/pages/Auth.jsx, /src/pages/Admin.jsx, /src/components/AdminGate.jsx, /src/sections/ServicesPreview.jsx, /src/sections/MarketplacePreview.jsx, /src/sections/PortfolioPreview.jsx, /src/sections/PlacedArticles.jsx, /src/sections/ReviewsSection.jsx, /src/pages/Dashboard.jsx, /src/components/ContactForm.jsx, /src/components/SaaSLayout.jsx, /src/pages/Settings.jsx, /src/pages/Connections.jsx, /src/pages/Network.jsx, /src/pages/Profile.jsx, /src/pages/Messages.jsx, /src/pages/ProviderServices.jsx, /src/pages/Payments.jsx, /src/pages/Projects.jsx, /src/pages/PublicProfile.jsx, /src/styles.css[22m
+[2m7:11:49 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/AuthProvider.jsx, /src/pages/Providers.jsx, /src/pages/Marketplace.jsx, /src/pages/Auth.jsx, /src/pages/Admin.jsx, /src/components/AdminGate.jsx, /src/sections/ServicesPreview.jsx, /src/sections/MarketplacePreview.jsx, /src/sections/PortfolioPreview.jsx, /src/sections/PlacedArticles.jsx, /src/sections/ReviewsSection.jsx, /src/pages/Dashboard.jsx, /src/components/ContactForm.jsx, /src/components/SaaSLayout.jsx, /src/pages/Settings.jsx, /src/pages/Connections.jsx, /src/pages/Network.jsx, /src/pages/Profile.jsx, /src/pages/Messages.jsx, /src/pages/ProviderServices.jsx, /src/pages/Payments.jsx, /src/pages/Projects.jsx, /src/pages/PublicProfile.jsx, /src/styles.css[22m
+[2m7:12:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/AuthProvider.jsx, /src/pages/Providers.jsx, /src/pages/Marketplace.jsx, /src/pages/Auth.jsx, /src/pages/Admin.jsx, /src/components/AdminGate.jsx, /src/sections/ServicesPreview.jsx, /src/sections/MarketplacePreview.jsx, /src/sections/PortfolioPreview.jsx, /src/sections/PlacedArticles.jsx, /src/sections/ReviewsSection.jsx, /src/pages/Dashboard.jsx, /src/components/ContactForm.jsx, /src/components/SaaSLayout.jsx, /src/pages/Settings.jsx, /src/pages/Connections.jsx, /src/pages/Network.jsx, /src/pages/Profile.jsx, /src/pages/Messages.jsx, /src/pages/ProviderServices.jsx, /src/pages/Payments.jsx, /src/pages/Projects.jsx, /src/pages/PublicProfile.jsx, /src/styles.css[22m
+[2m7:12:27 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Messages.jsx, /src/styles.css[22m
+[2m7:12:40 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Messages.jsx, /src/styles.css[22m
+[2m7:12:55 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Messages.jsx, /src/styles.css[22m
+[2m7:13:49 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m7:14:11 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m7:14:27 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/AuthProvider.jsx, /src/pages/Providers.jsx, /src/pages/Marketplace.jsx, /src/pages/Auth.jsx, /src/pages/Admin.jsx, /src/components/AdminGate.jsx, /src/sections/ServicesPreview.jsx, /src/sections/MarketplacePreview.jsx, /src/sections/PortfolioPreview.jsx, /src/sections/PlacedArticles.jsx, /src/sections/ReviewsSection.jsx, /src/pages/Dashboard.jsx, /src/components/ContactForm.jsx, /src/components/SaaSLayout.jsx, /src/pages/Settings.jsx, /src/pages/Connections.jsx, /src/pages/Network.jsx, /src/pages/Profile.jsx, /src/pages/Messages.jsx, /src/pages/ProviderServices.jsx, /src/pages/Payments.jsx, /src/pages/Projects.jsx, /src/pages/PublicProfile.jsx, /src/styles.css[22m
+[2m7:14:49 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Messages.jsx, /src/styles.css[22m
+[2m7:15:04 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Messages.jsx, /src/styles.css[22m
+[2m7:15:17 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Messages.jsx, /src/styles.css[22m
+[2m7:15:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/pages/Connections.jsx[22m
+[2m7:16:07 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Messages.jsx, /src/styles.css[22m
+[2m7:16:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/components/AuthProvider.jsx, /src/pages/Providers.jsx, /src/pages/Marketplace.jsx, /src/pages/Auth.jsx, /src/pages/Admin.jsx, /src/components/AdminGate.jsx, /src/sections/ServicesPreview.jsx, /src/sections/MarketplacePreview.jsx, /src/sections/PortfolioPreview.jsx, /src/sections/PlacedArticles.jsx, /src/sections/ReviewsSection.jsx, /src/pages/Dashboard.jsx, /src/components/ContactForm.jsx, /src/components/SaaSLayout.jsx, /src/pages/Settings.jsx, /src/pages/Connections.jsx, /src/pages/Network.jsx, /src/pages/Profile.jsx, /src/pages/Messages.jsx, /src/pages/ProviderServices.jsx, /src/pages/Payments.jsx, /src/pages/Projects.jsx, /src/pages/PublicProfile.jsx, /src/styles.css[22m
+[2m7:16:52 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m7:18:39 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Messages.jsx, /src/styles.css[22m

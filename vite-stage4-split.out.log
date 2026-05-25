@@ -1,0 +1,285 @@
+
+> mern-client@0.1.0 dev
+> vite --host 127.0.0.1 --port 5173
+
+
+  [32m[1mVITE[22m v7.3.2[39m  [2mready in [0m[1m1206[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5173[22m/[39m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/common/BackButton.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/common/ModulePlaceholder.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/navigation/AdminSidebar.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/AboutSection.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/providers/ProviderCard.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/settings/ProfilePrivacyPanel.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/common/PageHeader.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/common/PageQuickActions.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/navigation/AdminSidebar.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/navigation/AdminTopbar.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/navigation/DashboardSidebar.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/navigation/DashboardTopbar.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/AboutSection.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ActivitySection.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/AddSectionModal.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/CoverPhotoModal.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/EditSkillsModal.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/EducationSection.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/EnhanceProfilePanel.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ExperienceSection.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/OpenToModal.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ProfileActions.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ProfileAnalytics.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ProfileHeader.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ProfilePhotoModal.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ProfileSection.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ProfileVisibilityCard.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ProviderProofScoreCard.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/PublicProfileSidebar.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ServicesSection.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/SkillsSection.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/VerificationRequestModal.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/VerificationStatusCard.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/VerifiedOutcomesSection.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/providers/ProviderCard.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/providers/ProviderFilters.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/providers/ProviderResultsGrid.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/routes/AppRoutes.jsx, /src/App.jsx, /src/pages/Connections.jsx, /src/pages/Projects.jsx, /src/pages/Notifications.jsx, /src/pages/Marketplace.jsx, /src/pages/Messages.jsx, /src/pages/Saved.jsx, /src/pages/Network.jsx, /src/pages/ProviderServices.jsx, /src/pages/Payments.jsx, /src/pages/ProviderPublicProfile.jsx, /src/pages/ServiceDetail.jsx, /src/pages/Blogs.jsx, /src/sections/PlacedArticles.jsx, /src/pages/Scraper.jsx, /src/pages/Settings.jsx, /src/pages/LeadManagement.jsx, /src/pages/Account.jsx, /src/components/ContactForm.jsx, /src/features/auth/AuthProvider.jsx, /src/pages/Profile.jsx, /src/pages/PublicProfile.jsx, /src/components/MarketplaceServiceCard.jsx, /src/pages/ForgotPassword.jsx, /src/pages/Forbidden.jsx, /src/pages/RouteShells.jsx, /src/pages/Login.jsx, /src/pages/NotFound.jsx, /src/pages/Providers.jsx, /src/routes/RoleRoute.jsx, /src/pages/ServerError.jsx, /src/routes/ProtectedRoute.jsx, /src/pages/Register.jsx, /src/pages/VerifyEmail.jsx, /src/layouts/AuthLayout.jsx, /src/pages/ResetPassword.jsx, /src/sections/home/LeaderboardShowcase.jsx, /src/sections/home/HomeSearchDiscovery.jsx, /src/sections/home/FeaturedChallengesSection.jsx, /src/sections/home/FeaturedProvidersSection.jsx, /src/sections/home/HomeFinalCTA.jsx, /src/sections/home/ClientProviderSplitSection.jsx, /src/sections/home/OutcomeCategoriesSection.jsx, /src/sections/home/MarketplaceHeroSection.jsx, /src/sections/home/ProofLedgerShowcase.jsx, /src/components/common/PageQuickActions.jsx, /src/components/providers/ProviderResultsGrid.jsx, /src/components/profile/ProfileVisibilityCard.jsx, /src/components/navigation/DashboardSidebar.jsx, /src/components/navigation/AdminTopbar.jsx, /src/components/navigation/DashboardTopbar.jsx, /src/components/navigation/AdminSidebar.jsx, /src/components/profile/VerifiedOutcomesSection.jsx, /src/components/profile/PublicProfileSidebar.jsx, /src/components/common/BackButton.jsx, /src/components/Header.jsx, /src/components/Footer.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/settings/ProfilePrivacyPanel.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Badge.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Card.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Checkbox.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/EmptyState.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/ErrorState.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/FormField.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Input.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Modal.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ui/PageLoader.jsx, /src/styles.css[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Select.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Skeleton.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Spinner.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Textarea.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/Button.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ContactForm.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ErrorState.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/Footer.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/Header.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/LoadingSpinner.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/LoadingState.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/MarketplaceServiceCard.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/PageFallback.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/SectionHeading.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/StatusBanner.jsx[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ToastProvider.jsx, /src/styles.css[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.jsx, /src/styles.css[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Admin.jsx, /src/styles.css[22m
+[2m1:32:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/ClientProviderSplitSection.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/ContactSection.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AuthLayout.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/DashboardLayout.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/PublicLayout.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Admin.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Blogs.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Connections.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Contact.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Dashboard.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ForgotPassword.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Home.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/LeadManagement.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Marketplace.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Messages.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Network.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Notifications.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Payments.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Portfolio.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Profile.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Projects.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/pages/ProviderPublicProfile.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Providers.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ProviderServices.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/pages/PublicProfile.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Register.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ResetPassword.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Saved.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Scraper.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/pages/ServiceDetail.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Services.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Settings.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/VerifyEmail.jsx, /src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/FeaturedChallengesSection.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/FeaturedProvidersSection.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/HomeFinalCTA.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/HomeHowItWorksSection.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/HomeSearchDiscovery.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/LeaderboardShowcase.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/MarketplaceHeroSection.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/OutcomeCategoriesSection.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/ProofLedgerShowcase.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/SectionHeader.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/TrustEvidenceSection.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/ContactSection.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/PlacedArticles.jsx[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m1:32:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/common/ModulePlaceholder.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/navigation/AdminTopbar.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/navigation/DashboardTopbar.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/EnhanceProfilePanel.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ExperienceSection.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ProfileHeader.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ProfileVisibilityCard.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/PublicProfileSidebar.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ServicesSection.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/SkillsSection.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/providers/ProviderCard.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/settings/ProfilePrivacyPanel.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/VerificationStatusCard.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/ErrorState.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/Header.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Admin.jsx, /src/styles.css[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Spinner.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Dashboard.jsx, /src/styles.css[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Providers.jsx, /src/styles.css[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/ClientProviderSplitSection.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/FeaturedChallengesSection.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/HomeSearchDiscovery.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/LeaderboardShowcase.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/MarketplaceHeroSection.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/OutcomeCategoriesSection.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/ProofLedgerShowcase.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/SectionHeader.jsx[22m
+[2m1:32:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m1:33:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/routes/AppRoutes.jsx, /src/App.jsx, /src/pages/Connections.jsx, /src/pages/Projects.jsx, /src/pages/Notifications.jsx, /src/pages/Marketplace.jsx, /src/pages/Messages.jsx, /src/pages/Saved.jsx, /src/pages/Network.jsx, /src/pages/ProviderServices.jsx, /src/pages/Payments.jsx, /src/pages/ProviderPublicProfile.jsx, /src/pages/ServiceDetail.jsx, /src/pages/Blogs.jsx, /src/sections/PlacedArticles.jsx, /src/pages/Scraper.jsx, /src/pages/Settings.jsx, /src/pages/LeadManagement.jsx, /src/pages/Account.jsx, /src/components/ContactForm.jsx, /src/features/auth/AuthProvider.jsx, /src/pages/Profile.jsx, /src/pages/PublicProfile.jsx, /src/components/MarketplaceServiceCard.jsx, /src/pages/ForgotPassword.jsx, /src/pages/Forbidden.jsx, /src/pages/RouteShells.jsx, /src/pages/Login.jsx, /src/pages/NotFound.jsx, /src/pages/Providers.jsx, /src/routes/RoleRoute.jsx, /src/pages/ServerError.jsx, /src/routes/ProtectedRoute.jsx, /src/pages/Register.jsx, /src/pages/VerifyEmail.jsx, /src/layouts/AuthLayout.jsx, /src/pages/ResetPassword.jsx, /src/sections/home/LeaderboardShowcase.jsx, /src/sections/home/HomeSearchDiscovery.jsx, /src/sections/home/FeaturedChallengesSection.jsx, /src/sections/home/FeaturedProvidersSection.jsx, /src/sections/home/HomeFinalCTA.jsx, /src/sections/home/ClientProviderSplitSection.jsx, /src/sections/home/OutcomeCategoriesSection.jsx, /src/sections/home/MarketplaceHeroSection.jsx, /src/sections/home/ProofLedgerShowcase.jsx, /src/components/common/PageQuickActions.jsx, /src/components/providers/ProviderResultsGrid.jsx, /src/components/profile/ProfileVisibilityCard.jsx, /src/components/navigation/DashboardSidebar.jsx, /src/components/navigation/AdminTopbar.jsx, /src/components/navigation/DashboardTopbar.jsx, /src/components/navigation/AdminSidebar.jsx, /src/components/profile/VerifiedOutcomesSection.jsx, /src/components/profile/PublicProfileSidebar.jsx, /src/components/common/BackButton.jsx, /src/components/Header.jsx, /src/components/Footer.jsx[22m
+[2m1:34:16 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/Button.jsx[22m
+[2m1:34:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Badge.jsx[22m
+[2m1:34:34 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Spinner.jsx[22m
+[2m1:34:42 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m1:34:48 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/PublicLayout.jsx, /src/styles.css[22m
+[2m1:34:53 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AuthLayout.jsx, /src/styles.css[22m
+[2m1:34:57 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/DashboardLayout.jsx, /src/styles.css[22m
+[2m1:35:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/LeadManagement.jsx, /src/styles.css[22m
+[2m1:35:06 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Scraper.jsx, /src/styles.css[22m
+[2m1:35:45 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/ProviderProofScoreCard.jsx[22m
+[2m1:35:45 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/MarketplaceServiceCard.jsx[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ForgotPassword.jsx, /src/styles.css[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/LeadManagement.jsx, /src/styles.css[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Login.jsx, /src/styles.css[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/pages/ProviderPublicProfile.jsx[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Register.jsx, /src/styles.css[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ResetPassword.jsx, /src/styles.css[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Saved.jsx, /src/styles.css[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Scraper.jsx, /src/styles.css[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/pages/ServiceDetail.jsx[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Settings.jsx, /src/styles.css[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/VerifyEmail.jsx, /src/styles.css[22m
+[2m1:35:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m1:35:52 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.jsx, /src/styles.css[22m
+[2m1:36:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/profile/CoverPhotoModal.jsx[22m
+[2m1:36:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m1:51:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/HomeHowItWorksSection.jsx[22m
+[2m1:52:49 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/HomeHowItWorksSection.jsx[22m
+[2m1:55:12 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/ProofLedgerShowcase.jsx[22m
+[2m1:56:32 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/ProofLedgerShowcase.jsx[22m
+[2m2:00:44 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/LeaderboardShowcase.jsx[22m
+[2m2:02:03 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/LeaderboardShowcase.jsx[22m
+[2m2:40:25 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/FeaturedChallengesSection.jsx[22m
+[2m2:41:32 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/FeaturedChallengesSection.jsx[22m
+[2m2:42:26 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/FeaturedChallengesSection.jsx[22m
+[2m2:50:24 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/FeaturedProvidersSection.jsx[22m
+[2m2:51:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/FeaturedProvidersSection.jsx[22m
+[2m2:52:05 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/FeaturedProvidersSection.jsx[22m
+[2m2:54:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/TrustEvidenceSection.jsx[22m
+[2m2:55:52 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/TrustEvidenceSection.jsx[22m
+[2m2:58:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/HomeFinalCTA.jsx[22m
+[2m2:59:04 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/HomeFinalCTA.jsx[22m
+[2m2:59:50 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/HomeFinalCTA.jsx[22m
+[2m3:02:49 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/home/HomeHowItWorksSection.jsx[22m
+[2m3:17:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/RouteShells.jsx, /src/styles.css[22m
+[2m3:17:06 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/pages/RouteShells.jsx[22m Could not Fast Refresh (new export)
+[2m3:17:06 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/routes/AppRoutes.jsx[22m
+[2m3:17:11 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/routes/AppRoutes.jsx, /src/styles.css[22m
+[2m3:17:18 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/NotFound.jsx, /src/styles.css[22m
+[2m3:17:45 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/common/PublicPlaceholderPage.jsx[22m
+[2m3:18:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/common/PublicPlaceholderPage.jsx[22m
+[2m3:22:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/features/auth/AuthProvider.jsx, /src/styles.css[22m
+[2m4:28:20 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/routes/AppRoutes.jsx, /src/styles.css[22m
+[2m4:28:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/routes/AppRoutes.jsx, /src/App.jsx, /src/pages/Connections.jsx, /src/pages/Projects.jsx, /src/pages/Notifications.jsx, /src/pages/Marketplace.jsx, /src/pages/Messages.jsx, /src/pages/Saved.jsx, /src/pages/Network.jsx, /src/pages/ProviderServices.jsx, /src/pages/Payments.jsx, /src/pages/ProviderPublicProfile.jsx, /src/pages/ServiceDetail.jsx, /src/pages/Blogs.jsx, /src/sections/PlacedArticles.jsx, /src/pages/Scraper.jsx, /src/pages/Settings.jsx, /src/pages/LeadManagement.jsx, /src/pages/Account.jsx, /src/components/ContactForm.jsx, /src/features/auth/AuthProvider.jsx, /src/pages/Profile.jsx, /src/pages/PublicProfile.jsx, /src/components/MarketplaceServiceCard.jsx, /src/pages/ForgotPassword.jsx, /src/pages/Forbidden.jsx, /src/pages/RouteShells.jsx, /src/pages/Login.jsx, /src/pages/NotFound.jsx, /src/pages/Providers.jsx, /src/routes/RoleRoute.jsx, /src/pages/ServerError.jsx, /src/routes/ProtectedRoute.jsx, /src/pages/Register.jsx, /src/pages/VerifyEmail.jsx, /src/layouts/AuthLayout.jsx, /src/pages/ResetPassword.jsx, /src/sections/home/HomeSearchDiscovery.jsx, /src/sections/home/ClientProviderSplitSection.jsx, /src/sections/home/OutcomeCategoriesSection.jsx, /src/sections/home/MarketplaceHeroSection.jsx, /src/components/common/PageQuickActions.jsx, /src/components/providers/ProviderResultsGrid.jsx, /src/components/profile/ProfileVisibilityCard.jsx, /src/components/navigation/DashboardSidebar.jsx, /src/components/navigation/AdminTopbar.jsx, /src/components/navigation/DashboardTopbar.jsx, /src/components/navigation/AdminSidebar.jsx, /src/components/profile/VerifiedOutcomesSection.jsx, /src/components/profile/PublicProfileSidebar.jsx, /src/components/common/BackButton.jsx, /src/components/Header.jsx, /src/components/Footer.jsx, /src/sections/home/HomeHowItWorksSection.jsx, /src/sections/home/ProofLedgerShowcase.jsx, /src/sections/home/LeaderboardShowcase.jsx, /src/sections/home/FeaturedChallengesSection.jsx, /src/sections/home/FeaturedProvidersSection.jsx, /src/sections/home/TrustEvidenceSection.jsx, /src/sections/home/HomeFinalCTA.jsx[22m
+[2m4:28:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/sections/PlacedArticles.jsx[22m
+[2m4:28:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Portfolio.jsx, /src/styles.css[22m
+[2m4:33:49 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/Header.jsx[22m
+[2m4:34:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/Footer.jsx[22m
+[2m4:34:35 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/PublicLayout.jsx, /src/styles.css[22m
+[2m4:34:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/Footer.jsx[22m
+[2m4:35:55 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/Header.jsx[22m
+[2m4:50:05 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/Footer.jsx[22m
+[2m4:50:05 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/EmptyState.jsx[22m
+[2m4:50:05 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/ErrorState.jsx[22m
+[2m4:50:05 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ui/PageLoader.jsx, /src/styles.css[22m
+[2m4:50:05 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css, /src/components/ui/Modal.jsx[22m
+[2m5:56:22 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m5:56:22 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m5:56:22 pm[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+[2m5:56:23 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m5:56:37 pm[22m [36m[1m[vite][22m[39m server restarted.
+[2m5:59:45 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/routes/AppRoutes.jsx, /src/styles.css[22m
+[2m6:04:20 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m6:21:18 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m6:21:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Button.jsx, /src/styles.css[22m
+[2m6:21:35 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/MarketplaceHeroSection.jsx, /src/styles.css[22m
+[2m6:21:44 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/HomeSearchDiscovery.jsx, /src/styles.css[22m
+[2m6:21:50 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/OutcomeCategoriesSection.jsx, /src/styles.css[22m
+[2m6:21:56 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/ClientProviderSplitSection.jsx, /src/styles.css[22m
+[2m6:22:04 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/HomeHowItWorksSection.jsx, /src/styles.css[22m
+[2m6:22:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/ProofLedgerShowcase.jsx, /src/styles.css[22m
+[2m6:22:22 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/LeaderboardShowcase.jsx, /src/styles.css[22m
+[2m6:22:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/FeaturedChallengesSection.jsx, /src/styles.css[22m
+[2m6:22:38 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/FeaturedProvidersSection.jsx, /src/styles.css[22m
+[2m6:22:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/TrustEvidenceSection.jsx, /src/styles.css[22m
+[2m6:22:57 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/HomeFinalCTA.jsx, /src/styles.css[22m
+[2m8:21:39 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/providers/ProviderFilters.jsx, /src/styles.css[22m
+[2m8:21:45 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/providers/ProviderCard.jsx, /src/styles.css[22m
+[2m8:21:51 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/profile/ExperienceSection.jsx, /src/styles.css[22m
+[2m8:21:56 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/profile/EducationSection.jsx, /src/styles.css[22m
+[2m8:22:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/profile/ServicesSection.jsx, /src/styles.css[22m
+[2m8:22:07 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/profile/PublicProfileSidebar.jsx, /src/styles.css[22m
+[2m8:22:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/profile/ProviderProofScoreCard.jsx, /src/styles.css[22m
+[2m8:22:22 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/profile/ProfileAnalytics.jsx, /src/styles.css[22m
+[2m8:22:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/profile/ProfileHeader.jsx, /src/styles.css[22m
+[2m8:22:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/profile/CoverPhotoModal.jsx, /src/styles.css[22m
+[2m8:31:27 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/routes/AppRoutes.jsx, /src/App.jsx, /src/pages/Notifications.jsx, /src/pages/Payments.jsx, /src/pages/Saved.jsx, /src/pages/Network.jsx, /src/pages/Projects.jsx, /src/pages/Messages.jsx, /src/pages/Connections.jsx, /src/pages/ProviderServices.jsx, /src/pages/Marketplace.jsx, /src/pages/Account.jsx, /src/pages/LeadManagement.jsx, /src/pages/Settings.jsx, /src/pages/Scraper.jsx, /src/pages/ProviderPublicProfile.jsx, /src/pages/ServiceDetail.jsx, /src/features/auth/AuthProvider.jsx, /src/components/MarketplaceServiceCard.jsx, /src/pages/Profile.jsx, /src/pages/PublicProfile.jsx, /src/pages/Forbidden.jsx, /src/pages/ForgotPassword.jsx, /src/pages/ResetPassword.jsx, /src/pages/Providers.jsx, /src/layouts/AuthLayout.jsx, /src/routes/RoleRoute.jsx, /src/pages/Portfolio.jsx, /src/pages/RouteShells.jsx, /src/pages/NotFound.jsx, /src/pages/Login.jsx, /src/routes/ProtectedRoute.jsx, /src/pages/Register.jsx, /src/pages/ServerError.jsx, /src/pages/VerifyEmail.jsx, /src/components/navigation/AdminSidebar.jsx, /src/components/navigation/AdminTopbar.jsx, /src/sections/home/FeaturedChallengesSection.jsx, /src/sections/home/OutcomeCategoriesSection.jsx, /src/sections/home/TrustEvidenceSection.jsx, /src/sections/home/FeaturedProvidersSection.jsx, /src/components/providers/ProviderResultsGrid.jsx, /src/sections/home/HomeHowItWorksSection.jsx, /src/components/navigation/DashboardSidebar.jsx, /src/components/common/PageQuickActions.jsx, /src/sections/home/HomeFinalCTA.jsx, /src/sections/home/ProofLedgerShowcase.jsx, /src/sections/home/ClientProviderSplitSection.jsx, /src/components/navigation/DashboardTopbar.jsx, /src/sections/home/MarketplaceHeroSection.jsx, /src/sections/home/LeaderboardShowcase.jsx, /src/sections/home/HomeSearchDiscovery.jsx, /src/components/profile/VerifiedOutcomesSection.jsx, /src/components/profile/ProfileVisibilityCard.jsx, /src/components/common/BackButton.jsx, /src/components/profile/PublicProfileSidebar.jsx, /src/components/Footer.jsx, /src/components/Header.jsx, /src/styles.css[22m
+[2m8:31:27 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Header.jsx, /src/styles.css[22m
+[2m8:31:27 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Footer.jsx, /src/styles.css[22m
+[2m8:33:12 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/MarketplaceHeroSection.jsx, /src/styles.css[22m
+[2m8:33:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/HomeSearchDiscovery.jsx, /src/styles.css[22m
+[2m8:33:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/OutcomeCategoriesSection.jsx, /src/styles.css[22m
+[2m8:33:26 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/ClientProviderSplitSection.jsx, /src/styles.css[22m
+[2m8:34:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/HomeHowItWorksSection.jsx, /src/styles.css[22m
+[2m8:34:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/ProofLedgerShowcase.jsx, /src/styles.css[22m
+[2m8:34:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/LeaderboardShowcase.jsx, /src/styles.css[22m
+[2m8:34:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/FeaturedChallengesSection.jsx, /src/styles.css[22m
+[2m8:34:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/FeaturedProvidersSection.jsx, /src/styles.css[22m
+[2m8:34:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/TrustEvidenceSection.jsx, /src/styles.css[22m
+[2m8:34:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/HomeFinalCTA.jsx, /src/styles.css[22m
+[2m8:35:00 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/MarketplaceHeroSection.jsx, /src/styles.css[22m
+[2m8:40:56 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/Home.jsx, /src/styles.css[22m
+[2m8:41:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/TrustEvidenceSection.jsx, /src/styles.css[22m
+[2m8:41:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/ClientProviderSplitSection.jsx, /src/styles.css[22m
+[2m8:41:55 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/ProofLedgerShowcase.jsx, /src/styles.css[22m
+[2m8:42:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/LeaderboardShowcase.jsx, /src/styles.css[22m
+[2m8:42:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/FeaturedProvidersSection.jsx, /src/styles.css[22m
+[2m8:42:26 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/FeaturedChallengesSection.jsx, /src/styles.css[22m
+[2m8:43:48 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/sections/home/MarketplaceHeroSection.jsx, /src/styles.css[22m
+[2m8:48:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/RouteShells.jsx, /src/styles.css[22m
+[2m8:48:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/routes/AppRoutes.jsx, /src/styles.css[22m
+[2m8:48:49 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/NotFound.jsx, /src/styles.css[22m
+[2m8:49:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/RouteShells.jsx, /src/styles.css[22m
+[2m9:11:56 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ProviderPublicProfile.jsx, /src/styles.css[22m
+[2m9:12:04 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/ServiceDetail.jsx, /src/styles.css[22m
+[2m9:14:35 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m9:25:04 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/routes/AppRoutes.jsx, /src/App.jsx, /src/pages/Notifications.jsx, /src/pages/Payments.jsx, /src/pages/Saved.jsx, /src/pages/Network.jsx, /src/pages/Projects.jsx, /src/pages/Messages.jsx, /src/pages/Connections.jsx, /src/pages/ProviderServices.jsx, /src/pages/Marketplace.jsx, /src/pages/Account.jsx, /src/pages/LeadManagement.jsx, /src/pages/Settings.jsx, /src/pages/Scraper.jsx, /src/pages/ProviderPublicProfile.jsx, /src/pages/ServiceDetail.jsx, /src/features/auth/AuthProvider.jsx, /src/components/MarketplaceServiceCard.jsx, /src/pages/Profile.jsx, /src/pages/PublicProfile.jsx, /src/pages/Forbidden.jsx, /src/pages/ForgotPassword.jsx, /src/pages/ResetPassword.jsx, /src/pages/Providers.jsx, /src/layouts/AuthLayout.jsx, /src/routes/RoleRoute.jsx, /src/pages/Portfolio.jsx, /src/pages/RouteShells.jsx, /src/pages/NotFound.jsx, /src/pages/Login.jsx, /src/routes/ProtectedRoute.jsx, /src/pages/Register.jsx, /src/pages/ServerError.jsx, /src/pages/VerifyEmail.jsx, /src/components/navigation/AdminSidebar.jsx, /src/components/navigation/AdminTopbar.jsx, /src/sections/home/FeaturedChallengesSection.jsx, /src/sections/home/OutcomeCategoriesSection.jsx, /src/sections/home/TrustEvidenceSection.jsx, /src/sections/home/FeaturedProvidersSection.jsx, /src/components/providers/ProviderResultsGrid.jsx, /src/sections/home/HomeHowItWorksSection.jsx, /src/components/navigation/DashboardSidebar.jsx, /src/components/common/PageQuickActions.jsx, /src/sections/home/HomeFinalCTA.jsx, /src/sections/home/ProofLedgerShowcase.jsx, /src/sections/home/ClientProviderSplitSection.jsx, /src/components/navigation/DashboardTopbar.jsx, /src/sections/home/MarketplaceHeroSection.jsx, /src/sections/home/LeaderboardShowcase.jsx, /src/sections/home/HomeSearchDiscovery.jsx, /src/components/profile/VerifiedOutcomesSection.jsx, /src/components/profile/ProfileVisibilityCard.jsx, /src/components/common/BackButton.jsx, /src/components/profile/PublicProfileSidebar.jsx, /src/components/Footer.jsx, /src/components/Header.jsx, /src/sections/home/MarketplaceDifferenceSection.jsx, /src/styles.css[22m

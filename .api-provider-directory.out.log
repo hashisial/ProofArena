@@ -1,0 +1,1162 @@
+
+> mern-server@0.1.0 dev
+> nodemon src/server.js
+
+[33m[nodemon] 3.1.14[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:19:11.274Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:19:11.277Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:19:11.278Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:19:11.281Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[0mGET /api/marketplace/providers?limit=1 [32m200[0m 420.855 ms - 182[0m
+[0mPOST /api/auth/refresh [33m401[0m 5.073 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.901 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 121.578 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 157.948 ms - 40[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.424 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.692 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 121.646 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 122.603 ms - 40[0m
+[0mGET /api/marketplace/providers?sort=rating_desc [32m200[0m 172.347 ms - 183[0m
+[0mGET /api/marketplace/providers?sort=rating_desc [32m200[0m 132.025 ms - 183[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.923 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.747 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 144.654 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 142.723 ms - 40[0m
+[0mGET /api/marketplace/providers?sort=rating_desc [32m200[0m 116.481 ms - 183[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.398 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.714 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 135.665 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 140.501 ms - 40[0m
+[0mGET /api/marketplace/providers?sort=rating_desc [32m200[0m 121.587 ms - 183[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.161 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.878 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 176.715 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 175.155 ms - 40[0m
+[0mGET /api/marketplace/providers?sort=rating_desc [32m200[0m 146.310 ms - 183[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.844 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.244 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 115.501 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 117.421 ms - 40[0m
+[0mGET /api/marketplace/providers?sort=rating_desc [32m200[0m 119.017 ms - 183[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.647 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.691 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 180.888 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 197.512 ms - 40[0m
+[0mGET /api/marketplace/providers?sort=rating_desc [36m304[0m 118.251 ms - -[0m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:29:24.261Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:29:24.263Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:29:24.264Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:29:24.264Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:30:07.670Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:30:07.672Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:30:07.673Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:30:07.674Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:30:20.520Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:30:20.524Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:30:20.525Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:30:20.526Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:30:32.388Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:30:32.390Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:30:32.391Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:30:32.392Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:31:05.544Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:31:05.546Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:31:05.546Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:31:05.547Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:31:13.783Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:31:13.788Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:31:13.789Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:31:13.790Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[0mPOST /api/auth/refresh [33m401[0m 9.961 ms - 55[0m
+[0mGET /api/marketplace/providers?sort=rating_desc [36m304[0m 179.846 ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 5.768 ms - 55[0m
+[0mGET /api/marketplace/providers?sort=rating_desc [36m304[0m 240.016 ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 4.180 ms - 55[0m
+[0mGET /api/marketplace/providers?sort=rating_desc [36m304[0m 120.204 ms - -[0m
+[0mGET /api/marketplace/providers?sort=rating_desc [36m304[0m 121.835 ms - -[0m
+[0mGET /api/marketplace/categories [32m200[0m 341.704 ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 4.872 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.327 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 230.886 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 202.926 ms - 40[0m
+[0mGET /api/marketplace/providers?sort=rating_desc [36m304[0m 119.588 ms - -[0m
+[0mGET /api/marketplace/categories [32m200[0m 254.686 ms - -[0m
+[0mGET /api/marketplace/categories/lead-generation [32m200[0m 274.059 ms - 331[0m
+[0mGET /api/marketplace/categories [32m200[0m 1194.706 ms - 3131[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.163 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.513 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 235.614 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 232.554 ms - 40[0m
+[0mGET /api/marketplace/services?category=lead-generation&limit=12&page=1&sort=featured [32m200[0m 216.291 ms - 261[0m
+[0mGET /api/marketplace/providers?category=lead-generation&limit=5&sort=rating_desc [32m200[0m 145.948 ms - 199[0m
+[0mGET /api/marketplace/categories [32m200[0m 271.883 ms - -[0m
+[0mGET /api/marketplace/categories/lead-generation [32m200[0m 1066.150 ms - 331[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.691 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.659 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 121.453 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 121.221 ms - 40[0m
+[0mGET /api/marketplace/providers?category=lead-generation&limit=5&sort=rating_desc [32m200[0m 232.420 ms - 199[0m
+[0mGET /api/marketplace/categories [32m200[0m 265.366 ms - -[0m
+[0mGET /api/marketplace/services?category=lead-generation&limit=12&page=1&sort=featured [32m200[0m 1064.627 ms - 261[0m
+[0mGET /api/marketplace/categories/lead-generation [32m200[0m 1138.316 ms - 331[0m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:49:08.422Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:49:08.424Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:49:08.424Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:49:08.425Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:49:15.978Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:49:15.980Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:49:15.980Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:49:15.981Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:49:22.224Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:49:22.225Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:49:22.226Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:49:22.226Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:49:27.233Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:49:27.235Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:49:27.236Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:49:27.237Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:49:34.667Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:49:34.668Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:49:34.668Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:49:34.669Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:49:43.151Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:49:43.152Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:49:43.153Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:49:43.153Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:49:50.145Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:49:50.146Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:49:50.147Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:49:50.147Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:49:55.202Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:49:55.204Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:49:55.205Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:49:55.206Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:50:04.273Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:50:04.274Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:50:04.275Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:50:04.276Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:50:16.221Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:50:16.222Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:50:16.223Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:50:16.224Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:50:26.381Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:50:26.382Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:50:26.382Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:50:26.383Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:50:38.460Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:50:38.461Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:50:38.462Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:50:38.463Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:50:57.841Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:50:57.843Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:50:57.843Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:50:57.844Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:51:15.788Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:51:15.789Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:51:15.789Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:51:15.790Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:51:22.614Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:51:22.615Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:51:22.615Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:51:22.616Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:51:28.625Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:51:28.626Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:51:28.626Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:51:28.627Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:51:38.241Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:51:38.242Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:51:38.243Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:51:38.243Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:51:43.803Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:51:43.804Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:51:43.805Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:51:43.806Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:52:01.466Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:52:01.468Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:52:01.468Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:52:01.469Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:52:08.158Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:52:08.159Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:52:08.160Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:52:08.160Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:52:16.485Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:52:16.487Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:52:16.488Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:52:16.488Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[0mPOST /api/auth/refresh [33m401[0m 5.699 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 5.268 ms - 55[0m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:52:23.431Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:52:23.432Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:52:23.433Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:52:23.433Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[0mPOST /api/auth/refresh [33m401[0m 67.523 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 4.002 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 178.981 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 120.568 ms - 40[0m
+[0mGET /api/marketplace/services?category=lead-generation&limit=12&page=1&sort=featured [32m200[0m 138.081 ms - 261[0m
+[0mGET /api/marketplace/providers?category=lead-generation&limit=5&sort=rating_desc [32m200[0m 159.180 ms - 199[0m
+[0mGET /api/marketplace/categories/lead-generation [32m200[0m 295.591 ms - 331[0m
+[0mGET /api/marketplace/categories [32m200[0m 1033.848 ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.488 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.829 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 119.509 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 116.729 ms - 40[0m
+[0mGET /api/marketplace/services?limit=12&page=1&sort=featured [36m304[0m 128.243 ms - -[0m
+[0mGET /api/marketplace/providers?limit=5&sort=rating_desc [36m304[0m 134.283 ms - -[0m
+[0mGET /api/marketplace/categories [32m200[0m 283.296 ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.090 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.223 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 123.891 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 161.207 ms - 40[0m
+[0mGET /api/marketplace/providers?category=app-development&limit=5&sort=rating_desc [32m200[0m 217.485 ms - 199[0m
+[0mGET /api/marketplace/services?category=app-development&limit=12&page=1&sort=featured [32m200[0m 229.437 ms - 261[0m
+[0mGET /api/marketplace/categories [32m200[0m 267.114 ms - -[0m
+[0mGET /api/marketplace/categories/app-development [32m200[0m 1058.494 ms - 322[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.711 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.647 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 117.544 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 117.331 ms - 40[0m
+[0mGET /api/marketplace/providers?category=lead-generation&limit=5&sort=rating_desc [36m304[0m 184.978 ms - -[0m
+[0mGET /api/marketplace/categories [32m200[0m 266.037 ms - -[0m
+[0mGET /api/marketplace/services?category=lead-generation&limit=12&page=1&sort=featured [36m304[0m 888.189 ms - -[0m
+[0mGET /api/marketplace/categories/lead-generation [32m200[0m 1044.042 ms - 331[0m
+[0mGET /api/marketplace/services?category=lead-generation&limit=12&page=1&sort=featured [36m304[0m 115.436 ms - -[0m
+[0mGET /api/marketplace/providers?category=lead-generation&limit=5&sort=rating_desc [36m304[0m 118.038 ms - -[0m
+[0mGET /api/marketplace/services?category=lead-generation&limit=12&page=1&sort=featured [36m304[0m 119.617 ms - -[0m
+[0mGET /api/marketplace/providers?category=lead-generation&limit=5&sort=rating_desc [36m304[0m 124.597 ms - -[0m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:57:16.413Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:57:16.414Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:57:16.415Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:57:16.416Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[0mGET /api/reviews [32m200[0m 130.130 ms - 36[0m
+[0mPOST /api/analytics/events [32m201[0m 190.893 ms - 40[0m
+[0mGET /api/marketplace/categories [32m200[0m 298.356 ms - 3131[0m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-10T16:58:21.613Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-10T16:58:21.614Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-10T16:58:21.615Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-10T16:58:21.615Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[0mPOST /api/auth/refresh [33m401[0m 17.146 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.824 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 184.367 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 117.068 ms - 40[0m
+[0mGET /api/marketplace/services?category=lead-generation&limit=12&page=1&sort=featured [36m304[0m 236.795 ms - -[0m
+[0mGET /api/marketplace/providers?category=lead-generation&limit=5&sort=rating_desc [36m304[0m 238.143 ms - -[0m
+[0mGET /api/marketplace/categories [32m200[0m 324.991 ms - -[0m
+[0mGET /api/marketplace/categories/lead-generation [32m200[0m 1008.815 ms - 331[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.854 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.629 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 118.168 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 117.913 ms - 40[0m
+[0mGET /api/marketplace/services?limit=12&page=1&sort=featured [36m304[0m 127.531 ms - -[0m
+[0mGET /api/marketplace/providers?limit=5&sort=rating_desc [36m304[0m 123.847 ms - -[0m
+[0mGET /api/marketplace/categories [32m200[0m 317.367 ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 30.406 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.637 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 120.694 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 119.012 ms - 40[0m
+[0mPOST /api/auth/refresh [33m401[0m 73.316 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.470 ms - 55[0m
+[0mPOST /api/analytics/visits [0m-[0m - ms - -[0m
+[0mPOST /api/analytics/visits [0m-[0m - ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 4.645 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.637 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 251.021 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 249.316 ms - 40[0m
+[0mPOST /api/auth/refresh [33m401[0m 5.463 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 4.748 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 125.283 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 122.828 ms - 40[0m
+[0mGET /api/marketplace/services?category=lead-generation&limit=12&page=1&sort=featured [32m200[0m 280.933 ms - 261[0m
+[0mGET /api/marketplace/providers?category=lead-generation&limit=5&sort=rating_desc [32m200[0m 295.965 ms - 199[0m
+[0mGET /api/marketplace/categories [32m200[0m 344.383 ms - -[0m
+[0mGET /api/marketplace/services?category=lead-generation&limit=12&page=1&sort=featured [32m200[0m 221.968 ms - 261[0m
+[0mGET /api/marketplace/providers?category=lead-generation&limit=5&sort=rating_desc [32m200[0m 225.105 ms - 199[0m
+[0mGET /api/marketplace/categories [32m200[0m 262.459 ms - -[0m
+[0mGET /api/marketplace/categories/lead-generation [32m200[0m 1349.252 ms - 331[0m
+[0mGET /api/marketplace/categories/lead-generation [32m200[0m 1078.232 ms - 331[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.411 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.092 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 127.359 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 125.241 ms - 40[0m
+[0mPOST /api/auth/login [32m200[0m 398.397 ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 11.104 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.237 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 116.883 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 115.218 ms - 40[0m
+[0mGET /api/analytics/summary [32m200[0m 246.195 ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 5.084 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.709 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 138.769 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 137.543 ms - 40[0m
+[0mGET /api/marketplace/categories [32m200[0m 259.524 ms - -[0m
+[0mGET /api/marketplace/categories/lead-generation [32m200[0m 255.630 ms - 331[0m
+[0mGET /api/marketplace/services?category=lead-generation&limit=12&page=1&sort=featured [32m200[0m 849.771 ms - 261[0m
+[0mGET /api/marketplace/providers?category=lead-generation&limit=5&sort=rating_desc [32m200[0m 872.682 ms - 199[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.344 ms - 55[0m
+[0mPOST /api/auth/refresh [33m429[0m 1.936 ms - 100[0m
+[0mPOST /api/analytics/visits [32m201[0m 116.390 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 118.799 ms - 40[0m
+[0mGET /api/marketplace/providers?category=lead-generation&limit=5&sort=rating_desc [32m200[0m 131.933 ms - 199[0m
+[0mGET /api/marketplace/services?category=lead-generation&limit=12&page=1&sort=featured [32m200[0m 142.759 ms - 261[0m
+[0mGET /api/marketplace/categories [32m200[0m 254.697 ms - -[0m
+[0mGET /api/marketplace/categories/lead-generation [32m200[0m 260.024 ms - 331[0m
+[0mPOST /api/auth/refresh [33m429[0m 2.231 ms - 100[0m
+[0mPOST /api/auth/refresh [33m429[0m 1.393 ms - 100[0m
+[0mPOST /api/analytics/visits [32m201[0m 117.615 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 113.824 ms - 40[0m
+[0mGET /api/marketplace/services?category=lead-generation&limit=12&page=1&sort=featured [32m200[0m 125.900 ms - 261[0m
+[0mGET /api/marketplace/providers?category=lead-generation&limit=5&sort=rating_desc [32m200[0m 129.560 ms - 199[0m
+[0mGET /api/marketplace/categories [32m200[0m 248.580 ms - -[0m
+[0mGET /api/marketplace/categories/lead-generation [32m200[0m 260.123 ms - 331[0m
+[0mGET /api/marketplace/services?category=lead-generation [32m200[0m 118.166 ms - 261[0m
+[0mGET /api/reviews/service/000000000000000000000000 [32m200[0m 124.810 ms - 36[0m
+[0mGET /api/reviews/provider/000000000000000000000000 [32m200[0m 124.013 ms - 36[0m
+[0mPOST /api/auth/refresh [33m429[0m 2.560 ms - 100[0m
+[0mPOST /api/auth/refresh [33m429[0m 1.695 ms - 100[0m
+[0mPOST /api/analytics/visits [32m201[0m 118.282 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 118.176 ms - 40[0m
+[0mGET /api/analytics/summary [32m200[0m 239.666 ms - -[0m
+[0mGET /api/admin/marketplace/transactions [36m304[0m 255.739 ms - -[0m
+[0mGET /api/admin/reviews [32m200[0m 462.892 ms - -[0m
+[0mPATCH /api/admin/reviews/69ff717b8e981cc4915f4c20 [32m200[0m 614.757 ms - -[0m
+[0mGET /api/admin/reviews [32m200[0m 254.909 ms - -[0m
+[0mPATCH /api/admin/reviews/69ff717b8e981cc4915f4c20 [32m200[0m 479.313 ms - -[0m
+[0mGET /api/admin/reviews [32m200[0m 249.445 ms - -[0m
+[0mPATCH /api/admin/reviews/69ff717b8e981cc4915f4c20 [32m200[0m 483.864 ms - -[0m
+[0mGET /api/admin/reviews [32m200[0m 251.649 ms - -[0m
+[0mPATCH /api/admin/reviews/69ff717b8e981cc4915f4c20 [32m200[0m 500.728 ms - -[0m
+[0mGET /api/admin/reviews [32m200[0m 246.488 ms - -[0m
+[0mPATCH /api/admin/reviews/69ff717b8e981cc4915f4c20 [32m200[0m 243.331 ms - -[0m
+[0mGET /api/admin/reviews [32m200[0m 277.897 ms - -[0m
+[0mPATCH /api/admin/reviews/69ff717b8e981cc4915f4c20 [32m200[0m 586.561 ms - -[0m
+[0mGET /api/admin/reviews [32m200[0m 259.718 ms - -[0m
+[0mDELETE /api/admin/reviews/69ff717b8e981cc4915f4c20 [32m200[0m 252.638 ms - -[0m
+[0mGET /api/admin/reviews [32m200[0m 312.208 ms - 36[0m
+[0mPOST /api/auth/refresh [33m429[0m 5.354 ms - 100[0m
+[0mPOST /api/auth/refresh [33m429[0m 1.447 ms - 100[0m
+[0mPOST /api/analytics/visits [32m201[0m 122.198 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 121.032 ms - 40[0m
+[0mGET /api/analytics/summary [32m200[0m 273.719 ms - -[0m
+[0mGET /api/admin/reviews [36m304[0m 243.817 ms - -[0m
+[0mGET /api/admin/users [32m200[0m 818.666 ms - -[0m
+[0mPATCH /api/admin/users/69ff5fc899fe73616dfc8ee3/password [32m200[0m 785.485 ms - 236[0m
+[0mPOST /api/auth/refresh [33m429[0m 2.913 ms - 100[0m
+[0mPOST /api/auth/refresh [33m429[0m 2.316 ms - 100[0m
+[0mPOST /api/analytics/visits [32m201[0m 122.713 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 135.957 ms - 40[0m
+[0mPOST /api/auth/refresh [33m429[0m 3.850 ms - 100[0m
+[0mPOST /api/auth/refresh [33m429[0m 1.829 ms - 100[0m
+[0mPOST /api/analytics/visits [32m201[0m 123.915 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 120.682 ms - 40[0m
+[0mPOST /api/auth/login [33m429[0m 1.825 ms - 100[0m
+[0mPOST /api/auth/login [33m429[0m 3.509 ms - 100[0m
+[0mPOST /api/auth/refresh [33m429[0m 3.036 ms - 100[0m
+[0mPOST /api/auth/refresh [33m429[0m 1.615 ms - 100[0m
+[0mPOST /api/analytics/visits [32m201[0m 121.743 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 127.441 ms - 40[0m
+[0mPOST /api/auth/login [33m429[0m 1.616 ms - 100[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.806 ms - 55[0m
+[0mPOST /api/analytics/visits [31m503[0m 1.241 ms - 64[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.542 ms - 55[0m
+[0mPOST /api/analytics/visits [31m503[0m 1.357 ms - 64[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.204 ms - 55[0m
+[0mPOST /api/analytics/visits [31m503[0m 1.909 ms - 64[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.759 ms - 55[0m
+[0mPOST /api/analytics/visits [31m503[0m 1.981 ms - 64[0m
+[0mPOST /api/auth/login [0m-[0m - ms - -[0m
+[0mPOST /api/auth/login [0m-[0m - ms - -[0m
+[0mPOST /api/auth/login [0m-[0m - ms - -[0m
+[0mPOST /api/auth/login [31m503[0m 7.207 ms - 64[0m
+[0mPOST /api/auth/login [31m503[0m 4.066 ms - 64[0m
+[0mPOST /api/auth/login [31m503[0m 1.898 ms - 64[0m
+[0mPOST /api/auth/login [31m503[0m 7.925 ms - 64[0m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:20:09.001Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:20:09.006Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:20:09.007Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:20:09.007Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:20:57.577Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:20:57.578Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:20:57.579Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:20:57.580Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:21:31.882Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:21:31.883Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:21:31.884Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:21:31.884Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:22:15.714Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:22:15.715Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:22:15.715Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:22:15.716Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:23:12.125Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:23:12.127Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:23:12.128Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:23:12.129Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:23:44.773Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:23:44.774Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:23:44.774Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:23:44.775Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:24:47.392Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:24:47.393Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:24:47.394Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:24:47.395Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:26:49.605Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:26:49.607Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:26:49.608Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:26:49.608Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:27:17.594Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:27:17.596Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:27:17.597Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:27:17.597Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:27:38.694Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:27:38.696Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:27:38.696Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:27:38.697Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:28:35.535Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:28:35.536Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:28:35.536Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:28:35.537Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:28:58.496Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:28:58.498Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:28:58.499Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:28:58.499Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:29:27.367Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:29:27.368Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:29:27.369Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:29:27.369Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:29:52.110Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:29:52.112Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:29:52.112Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:29:52.113Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[0mPOST /api/auth/refresh [33m401[0m 6.592 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.715 ms - 55[0m
+[0mPOST /api/analytics/visits [0m-[0m - ms - -[0m
+[0mPOST /api/analytics/visits [0m-[0m - ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 6.382 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 4.024 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 6.548 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 271.810 ms - 40[0m
+[0mGET /api/marketplace/services?limit=4&sort=featured [32m200[0m 525.380 ms - 243[0m
+[0mGET /api/services [36m304[0m 1670.298 ms - -[0m
+[0mPOST /api/analytics/visits [0m-[0m - ms - -[0m
+[0mGET /api/marketplace/providers?limit=3&sort=rating_desc [32m200[0m 4342.320 ms - 182[0m
+[0mGET /api/marketplace/categories [0m-[0m - ms - -[0m
+[0mGET /api/portfolio [36m304[0m 417.200 ms - -[0m
+[0mGET /api/blogs?placement=home [36m304[0m 1774.710 ms - -[0m
+[0mGET /api/reviews [36m304[0m 2028.595 ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.527 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.605 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 1487.250 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 1483.417 ms - 40[0m
+[0mGET /api/marketplace/services?limit=12&page=1&sort=featured [36m304[0m 1857.152 ms - -[0m
+[0mGET /api/marketplace/providers?limit=5&sort=rating_desc [36m304[0m 1863.906 ms - -[0m
+[0mGET /api/marketplace/categories [32m200[0m 5946.518 ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.498 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.655 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 1076.161 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 1073.717 ms - 40[0m
+[0mGET /api/services [36m304[0m 456.886 ms - -[0m
+[0mGET /api/marketplace/services?limit=4&sort=featured [36m304[0m 1872.829 ms - -[0m
+[0mGET /api/marketplace/providers?limit=3&sort=rating_desc [36m304[0m 1876.790 ms - -[0m
+[0mGET /api/portfolio [36m304[0m 1874.524 ms - -[0m
+[0mGET /api/marketplace/categories [0m-[0m - ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.965 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.682 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 312.239 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 307.154 ms - 40[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.051 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.585 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 1272.708 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 1725.479 ms - 40[0m
+[0mPOST /api/auth/login [0m-[0m - ms - -[0m
+[0mPOST /api/auth/login [32m200[0m 4943.164 ms - -[0m
+[0mGET /api/auth/me [0m-[0m - ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 1241.373 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 1241.894 ms - 40[0m
+[0mGET /api/auth/me [32m200[0m 3290.745 ms - 610[0m
+[0mGET /api/auth/me [0m-[0m - ms - -[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.061 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.066 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.676 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 396.314 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 395.477 ms - 40[0m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:46:15.620Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:46:15.621Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:46:15.622Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:46:15.623Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[0mGET /api/connections [33m401[0m 4.403 ms - 62[0m
+[0mGET /api [32m200[0m 1.472 ms - 822[0m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:57:00.534Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:57:00.535Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:57:00.536Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:57:00.536Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:58:01.233Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:58:01.234Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:58:01.235Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:58:01.235Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:58:50.733Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:58:50.735Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:58:50.735Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:58:50.736Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T09:59:37.923Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T09:59:37.924Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T09:59:37.925Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T09:59:37.926Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[0mPOST /api/auth/refresh [33m401[0m 6.161 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 4.191 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.841 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 189.926 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 166.235 ms - 40[0m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T10:05:41.226Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T10:05:41.228Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T10:05:41.228Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T10:05:41.229Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[0mGET /api/connections/search?q=test [33m401[0m 5.838 ms - 62[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.119 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.636 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 227.842 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 220.033 ms - 40[0m
+[0mPOST /api/auth/refresh [33m401[0m 4.980 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.207 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 339.698 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 357.074 ms - 40[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.021 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.623 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 198.508 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 198.016 ms - 40[0m
+[0mPOST /api/auth/login [32m200[0m 1060.983 ms - -[0m
+[0mGET /api/auth/me [0m-[0m - ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 338.491 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 325.868 ms - 40[0m
+[0mGET /api/auth/me [32m200[0m 581.647 ms - 610[0m
+[0mGET /api/auth/me [36m304[0m 461.557 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 683.974 ms - -[0m
+[0mGET /api/billing/subscription [0m-[0m - ms - -[0m
+[0mGET /api/account/dashboard [0m-[0m - ms - -[0m
+[0mGET /api/account/reviews [0m-[0m - ms - -[0m
+[0mGET /api/auth/me [36m304[0m 1227.008 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 1103.600 ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 2633.885 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 2681.682 ms - 40[0m
+[0mGET /api/connections [32m200[0m 1553.439 ms - 36[0m
+[0mGET /api/notifications/unread-count [36m304[0m 2720.695 ms - -[0m
+[0mGET /api/connections/search? [32m200[0m 5575.459 ms - -[0m
+[0mGET /api/billing/subscription [0m-[0m - ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 4933.856 ms - -[0m
+[0mPOST /api/connections [32m201[0m 2629.237 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 922.049 ms - -[0m
+[0mGET /api/connections/search? [32m200[0m 1219.637 ms - -[0m
+[0mGET /api/connections [32m200[0m 1238.813 ms - -[0m
+[0mGET /api/connections [36m304[0m 3447.650 ms - -[0m
+[0mGET /api/connections/search? [36m304[0m 3465.155 ms - -[0m
+[0mGET /api/connections/search? [0m-[0m - ms - -[0m
+[0mPOST /api/connections [32m201[0m 4511.274 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 932.568 ms - -[0m
+[0mGET /api/connections/search? [32m200[0m 1231.746 ms - -[0m
+[0mGET /api/connections/search? [36m304[0m 679.112 ms - -[0m
+[0mGET /api/connections/search? [36m304[0m 691.066 ms - -[0m
+[0mGET /api/connections [32m200[0m 2944.422 ms - -[0m
+[0mGET /api/connections [36m304[0m 764.184 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 830.961 ms - -[0m
+[0mPOST /api/connections [32m201[0m 1981.095 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 1586.729 ms - -[0m
+[0mGET /api/connections [32m200[0m 1740.622 ms - -[0m
+[0mGET /api/connections/search? [32m200[0m 1991.647 ms - -[0m
+[0mGET /api/connections [32m200[0m 819.998 ms - -[0m
+[0mPOST /api/connections [32m201[0m 1539.608 ms - -[0m
+[0mGET /api/connections/search? [32m200[0m 691.481 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 653.043 ms - -[0m
+[0mGET /api/connections [32m200[0m 1360.129 ms - -[0m
+[0mGET /api/connections/search? [36m304[0m 1374.447 ms - -[0m
+[0mGET /api/connections [36m304[0m 871.836 ms - -[0m
+[0mGET /api/connections/search? [36m304[0m 999.500 ms - -[0m
+[0mPOST /api/connections [32m201[0m 2246.264 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 334.651 ms - -[0m
+[0mGET /api/connections [32m200[0m 540.917 ms - -[0m
+[0mGET /api/connections/search? [32m200[0m 1284.150 ms - -[0m
+[0mGET /api/connections [36m304[0m 629.065 ms - -[0m
+[0mGET /api/connections/search? [36m304[0m 508.746 ms - -[0m
+[0mGET /api/connections/search? [36m304[0m 1125.688 ms - -[0m
+[0mGET /api/connections/search? [36m304[0m 531.492 ms - -[0m
+[0mGET /api/connections/search? [36m304[0m 632.106 ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 408.997 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 404.416 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 606.345 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 455.300 ms - -[0m
+[0mGET /api/network/feed [32m200[0m 389.836 ms - 36[0m
+[0mGET /api/notifications/unread-count [36m304[0m 654.538 ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 4572.052 ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 150.961 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 256.242 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 561.296 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 253.827 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 320.584 ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 4757.866 ms - -[0m
+[0mGET /api/account/profile [31m500[0m 5832.433 ms - 80[0m
+[0mGET /api/account/profile [31m500[0m 5504.127 ms - 80[0m
+[0mGET /api/notifications/unread-count [33m401[0m 3.379 ms - 54[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.024 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 7.520 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 8.302 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 1239.056 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 1333.622 ms - 40[0m
+[0mPOST /api/auth/refresh [33m401[0m 4.218 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.683 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 227.982 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 222.857 ms - 40[0m
+[0mPOST /api/auth/login [32m200[0m 1469.154 ms - -[0m
+[0mGET /api/auth/me [0m-[0m - ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 120.628 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 124.952 ms - 40[0m
+[0mGET /api/auth/me [32m200[0m 1033.917 ms - 610[0m
+[0mGET /api/auth/me [36m304[0m 234.474 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 1126.428 ms - -[0m
+[0mGET /api/account/dashboard [0m-[0m - ms - -[0m
+[0mGET /api/account/reviews [0m-[0m - ms - -[0m
+[0mGET /api/billing/subscription [0m-[0m - ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 128.214 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 119.544 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 265.804 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 239.041 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 249.482 ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 2945.520 ms - -[0m
+[0mGET /api/account/profile [31m500[0m 5005.861 ms - 80[0m
+[0mGET /api/account/profile [31m500[0m 4827.760 ms - 80[0m
+[0mPOST /api/analytics/visits [32m201[0m 123.163 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 120.027 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 233.634 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 283.668 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 239.819 ms - -[0m
+[0mGET /api/messages/conversations [36m304[0m 397.258 ms - -[0m
+[0mPOST /api/messages/presence [32m200[0m 120.551 ms - 88[0m
+[0mGET /api/messages/conversations/69ff4d9bf16f381ed427798c/messages [36m304[0m 356.212 ms - -[0m
+[0mPATCH /api/messages/conversations/69ff4d9bf16f381ed427798c/read [32m200[0m 453.973 ms - 216[0m
+[0mGET /api/billing/subscription [32m200[0m 3151.106 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 279.075 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 409.059 ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 146.393 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 133.978 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 253.878 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 345.822 ms - -[0m
+[0mGET /api/marketplace/services?limit=12&page=1&sort=featured [36m304[0m 139.580 ms - -[0m
+[0mGET /api/marketplace/providers?limit=5&sort=rating_desc [36m304[0m 134.707 ms - -[0m
+[0mGET /api/marketplace/categories [32m200[0m 283.727 ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 183.368 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 180.755 ms - 40[0m
+[0mGET /api/notifications/unread-count [36m304[0m 252.085 ms - -[0m
+[0mGET /api/messages/conversations [36m304[0m 382.835 ms - -[0m
+[0mPOST /api/messages/presence [32m200[0m 123.696 ms - 88[0m
+[0mGET /api/messages/conversations/69ff4d9bf16f381ed427798c/messages [36m304[0m 374.727 ms - -[0m
+[0mPATCH /api/messages/conversations/69ff4d9bf16f381ed427798c/read [32m200[0m 538.682 ms - 216[0m
+[0mGET /api/billing/subscription [32m200[0m 2808.139 ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 130.941 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 131.783 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 264.526 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 408.383 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 245.020 ms - -[0m
+[0mGET /api/marketplace/categories [32m200[0m 268.867 ms - -[0m
+[0mGET /api/account/services [32m200[0m 2830.614 ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 3577.511 ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 127.560 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 124.949 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 263.349 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 386.859 ms - -[0m
+[0mGET /api/marketplace/transactions [32m200[0m 247.307 ms - 36[0m
+[0mGET /api/notifications/unread-count [36m304[0m 274.439 ms - -[0m
+[0mGET /api/marketplace/connect/account [32m200[0m 258.361 ms - 84[0m
+[0mGET /api/billing/subscription [32m200[0m 3381.059 ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 128.752 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 140.345 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 255.573 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 345.522 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 317.657 ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 2579.822 ms - -[0m
+[0mGET /api/account/projects [36m304[0m 3191.294 ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 131.456 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 138.193 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 246.926 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 422.567 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 265.732 ms - -[0m
+[0mGET /api/billing/plans [32m200[0m 1189.813 ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 3091.526 ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 127.413 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 118.620 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 239.957 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 385.861 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 263.160 ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 2477.307 ms - -[0m
+[0mGET /api/account/reviews [32m200[0m 2730.842 ms - 36[0m
+[0mGET /api/account/dashboard [0m-[0m - ms - -[0m
+[0mPOST /api/auth/logout [32m200[0m 4.120 ms - 61[0m
+[0mPOST /api/auth/refresh [33m401[0m 4.723 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.729 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.266 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 205.766 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 203.159 ms - 40[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.114 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.509 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 123.735 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 125.108 ms - 40[0m
+[0mPOST /api/auth/register [33m409[0m 149.057 ms - 71[0m
+[0mPOST /api/auth/register [32m201[0m 4174.307 ms - -[0m
+[0mGET /api/auth/me [32m200[0m 299.933 ms - 459[0m
+[0mPOST /api/analytics/visits [32m201[0m 127.753 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 120.166 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 260.919 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 284.857 ms - -[0m
+[0mGET /api/saved [32m200[0m 261.645 ms - 36[0m
+[0mGET /api/notifications/unread-count [36m304[0m 334.300 ms - -[0m
+[0mGET /api/account/reviews [36m304[0m 4018.656 ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 4629.378 ms - -[0m
+[0mGET /api/account/dashboard [0m-[0m - ms - -[0m
+[0mGET /api/account/dashboard [0m-[0m - ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 128.590 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 129.834 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 241.187 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 298.481 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 254.321 ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 2505.305 ms - -[0m
+[0mGET /api/account/profile [32m200[0m 3638.932 ms - 923[0m
+[0mGET /api/account/activity-feed [32m200[0m 2874.569 ms - 36[0m
+[0mGET /api/notifications/unread-count [36m304[0m 319.315 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 265.651 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 725.285 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 387.769 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 355.341 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 261.554 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 344.963 ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 142.897 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 143.987 ms - 40[0m
+[0mGET /api/auth/me [32m200[0m 238.172 ms - 481[0m
+[0mGET /api/auth/me [36m304[0m 256.711 ms - -[0m
+[0mGET /api/profile/s-2 [32m200[0m 526.365 ms - 722[0m
+[0mPOST /api/analytics/visits [32m201[0m 270.731 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 269.005 ms - 40[0m
+[0mGET /api/notifications/unread-count [36m304[0m 258.034 ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 2485.360 ms - -[0m
+[0mGET /api/account/profile [36m304[0m 3363.376 ms - -[0m
+[0mGET /api/account/activity-feed [36m304[0m 3811.974 ms - -[0m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T14:04:23.943Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T14:04:23.945Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T14:04:23.946Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T14:04:23.947Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T14:04:46.444Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T14:04:46.447Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T14:04:46.449Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T14:04:46.450Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-02.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T14:04:58.685Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T14:04:58.687Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T14:04:58.688Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T14:04:58.689Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T14:05:07.477Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T14:05:07.479Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T14:05:07.480Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T14:05:07.480Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T14:05:17.295Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T14:05:17.298Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T14:05:17.299Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T14:05:17.299Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-01.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T14:05:26.924Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T14:05:26.926Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T14:05:26.927Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T14:05:26.928Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node src/server.js`[39m
+MongoDB connected: ac-x1wbi2q-shard-00-00.iemb3c4.mongodb.net
+{"level":"info","timestamp":"2026-05-11T14:18:36.431Z","message":"Queue processor registered","driver":"memory","queueName":"email-campaign"}
+{"level":"info","timestamp":"2026-05-11T14:18:36.433Z","message":"Queue processor registered","driver":"memory","queueName":"lead-scrape"}
+{"level":"info","timestamp":"2026-05-11T14:18:36.434Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-email"}
+{"level":"info","timestamp":"2026-05-11T14:18:36.435Z","message":"Queue processor registered","driver":"memory","queueName":"outreach-automation"}
+Server running on port 5000 (development)
+[0mGET /api/notifications/unread-count [33m401[0m 20.925 ms - 54[0m
+[0mPOST /api/auth/refresh [33m401[0m 38.390 ms - 55[0m
+[0mGET /api/auth/me [33m401[0m 5.621 ms - 54[0m
+[0mGET /api/auth/me [33m401[0m 3.495 ms - 54[0m
+[0mPOST /api/auth/refresh [33m401[0m 4.806 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.503 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 193.347 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 129.833 ms - 40[0m
+[0mPOST /api/auth/refresh [33m401[0m 5.079 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 9.768 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.308 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 127.649 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 123.500 ms - 40[0m
+[0mPOST /api/auth/refresh [33m401[0m 4.263 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.469 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 188.860 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 188.200 ms - 40[0m
+[0mPOST /api/auth/refresh [33m401[0m 5.684 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 1.812 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 197.531 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 185.407 ms - 40[0m
+[0mPOST /api/auth/login [32m200[0m 1254.110 ms - -[0m
+[0mGET /api/auth/me [32m200[0m 234.273 ms - 503[0m
+[0mPOST /api/analytics/visits [32m201[0m 136.445 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 146.874 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 238.256 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 265.264 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 300.674 ms - -[0m
+[0mGET /api/notifications [32m200[0m 361.880 ms - 36[0m
+[0mGET /api/saved [36m304[0m 376.404 ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 2719.746 ms - -[0m
+[0mGET /api/account/reviews [36m304[0m 3241.550 ms - -[0m
+[0mGET /api/account/dashboard [0m-[0m - ms - -[0m
+[0mPOST /api/analytics/visits [32m201[0m 125.498 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 133.675 ms - 40[0m
+[0mGET /api/auth/me [36m304[0m 253.366 ms - -[0m
+[0mGET /api/auth/me [36m304[0m 240.994 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 267.723 ms - -[0m
+[0mGET /api/notifications [36m304[0m 267.744 ms - -[0m
+[0mGET /api/billing/subscription [32m200[0m 2625.119 ms - -[0m
+[0mGET /api/account/profile [36m304[0m 3676.989 ms - -[0m
+[0mGET /api/account/activity-feed [36m304[0m 3628.093 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 399.762 ms - -[0m
+[0mPOST /api/profile/upload-cover [32m201[0m 1672.179 ms - -[0m
+[0mGET /api/account/activity-feed [32m200[0m 3481.370 ms - 213[0m
+[0mGET /api/notifications/unread-count [36m304[0m 271.569 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 448.129 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 345.459 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 246.154 ms - -[0m
+[0mPOST /api/profile/upload-avatar [32m201[0m 1502.771 ms - -[0m
+[0mGET /api/account/activity-feed [32m200[0m 3735.574 ms - 395[0m
+[0mGET /api/notifications/unread-count [36m304[0m 272.534 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 370.451 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 343.646 ms - -[0m
+[0mGET /api/notifications/unread-count [36m304[0m 289.605 ms - -[0m
+[0mGET /api/notifications/unread-count [33m401[0m 12.921 ms - 54[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.306 ms - 55[0m
+[0mGET /api/notifications/unread-count [33m401[0m 6.509 ms - 62[0m
+[0mPOST /api/auth/refresh [33m401[0m 5.603 ms - 55[0m
+[0mGET /api/notifications/unread-count [33m401[0m 5.025 ms - 62[0m
+[0mPOST /api/auth/refresh [33m401[0m 2.393 ms - 55[0m
+[0mGET /api/notifications/unread-count [33m401[0m 4.919 ms - 62[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.834 ms - 55[0m
+[0mGET /api/notifications/unread-count [33m401[0m 3.731 ms - 62[0m
+[0mPOST /api/auth/refresh [33m401[0m 5.124 ms - 55[0m
+[0mGET /api/notifications/unread-count [33m401[0m 7.276 ms - 62[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.714 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 7.358 ms - 55[0m
+[0mPOST /api/auth/refresh [33m401[0m 3.865 ms - 55[0m
+[0mPOST /api/analytics/visits [32m201[0m 168.814 ms - 40[0m
+[0mPOST /api/analytics/visits [32m201[0m 190.621 ms - 40[0m

@@ -1,0 +1,2634 @@
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+⨯ ./sections/services.tsx:5:1
+Export services doesn't exist in target module
+  [90m3 |[0m [36mimport[0m { [33mSectionHeading[0m } [36mfrom[0m [32m"@/components/section-heading"[0m;
+  [90m4 |[0m [36mimport[0m { [33mIconCard[0m } [36mfrom[0m [32m"@/components/ui/icon-card"[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { services } [36mfrom[0m [32m"@/lib/content"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mimport[0m { [33mPanelsTopLeft[0m, [33mTarget[0m, [33mWorkflow[0m, [36mtype[0m [33mLucideIcon[0m } [36mfrom[0m [32m"lucide-react"[0m;
+  [90m7 |[0m
+  [90m8 |[0m [36mconst[0m serviceIcons: [33mRecord[0m<string, [33mLucideIcon[0m> = {
+
+The export services was not found in module [project]/lib/content.ts [app-rsc] (ecmascript).
+Did you mean to import serviceGroups?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./sections/services.tsx
+    ./app/page.tsx
+
+
+⨯ ./sections/services.tsx:5:1
+Export services doesn't exist in target module
+  [90m3 |[0m [36mimport[0m { [33mSectionHeading[0m } [36mfrom[0m [32m"@/components/section-heading"[0m;
+  [90m4 |[0m [36mimport[0m { [33mIconCard[0m } [36mfrom[0m [32m"@/components/ui/icon-card"[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { services } [36mfrom[0m [32m"@/lib/content"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mimport[0m { [33mPanelsTopLeft[0m, [33mTarget[0m, [33mWorkflow[0m, [36mtype[0m [33mLucideIcon[0m } [36mfrom[0m [32m"lucide-react"[0m;
+  [90m7 |[0m
+  [90m8 |[0m [36mconst[0m serviceIcons: [33mRecord[0m<string, [33mLucideIcon[0m> = {
+
+The export services was not found in module [project]/lib/content.ts [app-rsc] (ecmascript).
+Did you mean to import serviceGroups?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./sections/services.tsx
+    ./app/page.tsx
+
+
+⨯ ./sections/services.tsx:5:1
+Export services doesn't exist in target module
+  [90m3 |[0m [36mimport[0m { [33mSectionHeading[0m } [36mfrom[0m [32m"@/components/section-heading"[0m;
+  [90m4 |[0m [36mimport[0m { [33mIconCard[0m } [36mfrom[0m [32m"@/components/ui/icon-card"[0m;
+[31m[1m>[0m [90m5 |[0m [36mimport[0m { services } [36mfrom[0m [32m"@/lib/content"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mimport[0m { [33mPanelsTopLeft[0m, [33mTarget[0m, [33mWorkflow[0m, [36mtype[0m [33mLucideIcon[0m } [36mfrom[0m [32m"lucide-react"[0m;
+  [90m7 |[0m
+  [90m8 |[0m [36mconst[0m serviceIcons: [33mRecord[0m<string, [33mLucideIcon[0m> = {
+
+The export services was not found in module [project]/lib/content.ts [app-rsc] (ecmascript).
+Did you mean to import serviceGroups?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./sections/services.tsx
+    ./app/page.tsx
+
+
+[browser] Uncaught Error: ./sections/services.tsx:5:1
+Export services doesn't exist in target module
+  3 | import { SectionHeading } from "@/components/section-heading";
+  4 | import { IconCard } from "@/components/ui/icon-card";
+> 5 | import { services } from "@/lib/content";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { PanelsTopLeft, Target, Workflow, type LucideIcon } from "lucide-react";
+  7 |
+  8 | const serviceIcons: Record<string, LucideIcon> = {
+
+The export services was not found in module [project]/lib/content.ts [app-rsc] (ecmascript).
+Did you mean to import serviceGroups?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./sections/services.tsx
+    ./app/page.tsx
+
+
+    at <unknown> (Error: ./sections/services.tsx:5:1)
+    at <unknown> (Error: (./sections/services.tsx:5:1)
+Each child in a list should have a unique "key" prop. See https://react.dev/link/warning-keys for more information.
+Each child in a list should have a unique "key" prop. See https://react.dev/link/warning-keys for more information.
+Each child in a list should have a unique "key" prop. See https://react.dev/link/warning-keys for more information.
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <Suspense name="/" fallback={<Fragment>}>
+      <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>
+        <HTTPAccessFallbackErrorBoundary pathname="/" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>
+          <RedirectBoundary>
+            <RedirectErrorBoundary router={{...}}>
+              <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+                <SegmentViewNode type="page" pagePath="page.tsx">
+                  <SegmentTrieNode>
+                  <Home>
+                    <SiteHeader>
+                    <main className="premium-sh...">
+                      <section>
+                      <section>
+                      <section>
+                      <section>
+                      <section>
+                      <FeaturedWork>
+                        <Section>
+                          <section className="py-section..." id="work">
+                            <Container>
+                              <div className="mx-auto w-...">
+                                <div>
+                                <div className="mt-12 grid...">
+                                  <article
+                                    className="case-study-card relative min-h-[22rem] overflow-hidden rounded-card bor..."
+-                                   data-hover-target="case"
+                                  >
+                                  ...
+                      ...
+                    ...
+                ...
+              ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:7065:32)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+⚠ Fast Refresh had to perform a full reload when ./components/animations/hero-motion.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <Home>
+      <SiteHeader>
+      <main className="premium-sh...">
+        <section>
+        <section>
+        <section>
+        <section>
+        <section>
+        <section>
+        <section>
+        <section>
+        <CTA>
+          <Section>
+            <section className="py-24 sm:p..." id="contact">
+              ...
+                <MotionConfig reducedMotion="user">
+                  <motion.div className={undefined} initial="hidden" variants={{hidden:{...}, ...}} ...>
+                    <div className={undefined} style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
+                      <form id="quote-form" action="mailto:hel..." className="glass-pane..." encType="text/plain" ...>
+                        <div>
+                        <div className="mt-6 grid ...">
+                          <label className="grid gap-2...">
+                            <input
+                              className="min-h-12 w-full rounded-button border border-white/10 bg-background/55 px-4 t..."
+                              name="name"
+                              placeholder="Your name"
+                              type="text"
+-                             style={{caret-color:"transparent"}}
+                            >
+                          <label className="grid gap-2...">
+                            <input
+                              className="min-h-12 w-full rounded-button border border-white/10 bg-background/55 px-4 t..."
+                              name="email"
+                              placeholder="you@company.com"
+                              type="email"
+-                             style={{caret-color:"transparent"}}
+                            >
+                          <label>
+                          <label className="grid gap-2...">
+                            <textarea
+                              className="min-h-12 w-full rounded-button border border-white/10 bg-background/55 px-4 t..."
+                              name="message"
+                              placeholder="Tell us about your goals, current bottlenecks, or timeline."
+-                             style={{caret-color:"transparent"}}
+                            >
+                        ...
+      ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:7065:32)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <Home>
+      <SiteHeader>
+      <main className="premium-sh...">
+        <section>
+        <section>
+        <section>
+        <section>
+        <section>
+        <section>
+        <section>
+        <section>
+        <CTA>
+          <Section>
+            <section className="py-24 sm:p..." id="contact">
+              ...
+                <MotionConfig reducedMotion="user">
+                  <motion.div className={undefined} initial="hidden" variants={{hidden:{...}, ...}} ...>
+                    <div className={undefined} style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
+                      <form id="quote-form" action="mailto:hel..." className="glass-pane..." encType="text/plain" ...>
+                        <div>
+                        <div className="mt-6 grid ...">
+                          <label>
+                          <label className="grid gap-2...">
+                            <input
+                              className="min-h-12 w-full rounded-button border border-white/10 bg-background/55 px-4 t..."
+                              name="email"
+                              placeholder="you@company.com"
+                              type="email"
+-                             style={{caret-color:"transparent"}}
+                            >
+                          <label>
+                          <label className="grid gap-2...">
+                            <textarea
+                              className="min-h-12 w-full rounded-button border border-white/10 bg-background/55 px-4 t..."
+                              name="message"
+                              placeholder="Tell us about your goals, current bottlenecks, or timeline."
+-                             style={{caret-color:"transparent"}}
+                            >
+                        ...
+      ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:7065:32)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] You have Reduced Motion enabled on your device. Animations may not appear as expected.. For more information and steps for solving, visit https://motion.dev/troubleshooting/reduced-motion-disabled (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+[browser] You have Reduced Motion enabled on your device. Animations may not appear as expected.. For more information and steps for solving, visit https://motion.dev/troubleshooting/reduced-motion-disabled (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+[browser] You have Reduced Motion enabled on your device. Animations may not appear as expected.. For more information and steps for solving, visit https://motion.dev/troubleshooting/reduced-motion-disabled (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2431:13)
+[browser] Uncaught Error: Internal Next.js error: Router action dispatched before initialization.
+    at dispatchAppRouterAction (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:916:37)
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:11800:61)
+    at startTransition (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:1279:31)
+    at Object.hmrRefresh (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:11799:40)
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13967:64)
+    at startTransition (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:1279:31)
+    at processMessage (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13966:44)
+    at WebSocket.handleMessage (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13335:52)
+[browser] Uncaught Error: Internal Next.js error: Router action dispatched before initialization.
+    at dispatchAppRouterAction (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:916:37)
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:11800:61)
+    at startTransition (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:1279:31)
+    at Object.hmrRefresh (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:11799:40)
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13967:64)
+    at startTransition (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:1279:31)
+    at processMessage (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13966:44)
+    at WebSocket.handleMessage (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_client_0fhqo1d._.js:13335:52)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  [90m2 |[0m [36mexport[0m { [33mCTA[0m } [36mfrom[0m [32m"./cta"[0m;
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+[31m[1m>[0m [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[browser] Uncaught Error: ./sections/index.ts:4:1
+Module not found: Can't resolve './hero'
+  2 | export { CTA } from "./cta";
+  3 | export { FeaturedWork } from "./featured-work";
+> 4 | export { Hero } from "./hero";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | export { Process } from "./process";
+  6 | export { Services } from "./services";
+  7 | export { Testimonials } from "./testimonials";
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./sections/index.ts:4:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./sections/index.ts:4:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+[31m[1m>[0m [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m9 |[0m
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[browser] Uncaught Error: ./sections/index.ts:8:1
+Module not found: Can't resolve './trusted-by'
+  6 | export { Services } from "./services";
+  7 | export { Testimonials } from "./testimonials";
+> 8 | export { TrustedBy } from "./trusted-by";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  9 |
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./sections/index.ts:8:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./sections/index.ts:8:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  [90m3 |[0m [36mexport[0m { [33mFeaturedWork[0m } [36mfrom[0m [32m"./featured-work"[0m;
+  [90m4 |[0m [36mexport[0m { [33mHero[0m } [36mfrom[0m [32m"./hero"[0m;
+[31m[1m>[0m [90m5 |[0m [36mexport[0m { [33mProcess[0m } [36mfrom[0m [32m"./process"[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m6 |[0m [36mexport[0m { [33mServices[0m } [36mfrom[0m [32m"./services"[0m;
+  [90m7 |[0m [36mexport[0m { [33mTestimonials[0m } [36mfrom[0m [32m"./testimonials"[0m;
+  [90m8 |[0m [36mexport[0m { [33mTrustedBy[0m } [36mfrom[0m [32m"./trusted-by"[0m;
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[browser] Uncaught Error: ./sections/index.ts:5:1
+Module not found: Can't resolve './process'
+  3 | export { FeaturedWork } from "./featured-work";
+  4 | export { Hero } from "./hero";
+> 5 | export { Process } from "./process";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | export { Services } from "./services";
+  7 | export { Testimonials } from "./testimonials";
+  8 | export { TrustedBy } from "./trusted-by";
+
+
+
+Import trace:
+  Server Component:
+    ./sections/index.ts
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./sections/index.ts:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./sections/index.ts:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/services" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/services" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/portfolio" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/services" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/portfolio" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <LoadingBoundaryProvider loading={[...]}>
+                      <SegmentViewNode type="layout" pagePath="layout.tsx">
+                        <SegmentTrieNode>
+                        <link>
+                        <script>
+                        <script>
+                        <RootLayout>
+                          <html lang="en" className="geist_a715...">
+                            <body
+                              className="flex min-h-full flex-col bg-background text-foreground font-sans antialiased"
+-                             cz-shortcut-listen="true"
+                            >
+                  ...
+ 
+    at <unknown> (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3438:13)
+    at completeWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64) (file://C:/Users/hasee/OneDrive/Desktop/personal portfolio/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3439:25)
