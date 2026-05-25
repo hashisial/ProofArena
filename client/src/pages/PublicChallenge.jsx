@@ -1,0 +1,104 @@
+import { Link, useLocation, useParams } from "react-router-dom";
+import { UserRound } from "lucide-react";
+import { ChallengePreview } from "../components/challenges/ChallengePreview.jsx";
+import { Badge } from "../components/ui/Badge.jsx";
+import { Button } from "../components/ui/Button.jsx";
+import { Card } from "../components/ui/Card.jsx";
+import { PageLoader } from "../components/ui/PageLoader.jsx";
+import { Container } from "../components/Container.jsx";
+import { ROUTES, USER_ROLES } from "../constants/index.js";
+import { useAuth } from "../features/auth/useAuth.js";
+import { usePublicChallenge } from "../features/challenges/useChallenges.js";
+import { getChallengeApiErrorMessage } from "../features/challenges/challengeUtils.js";
+
+export function PublicChallenge() {
+  const { slug, username } = useParams();
+  const location = useLocation();
+  const { isAuthenticated, role, user } = useAuth();
+  const challengeQuery = usePublicChallenge(username, slug);
+  const challenge = challengeQuery.data;
+  const client = challenge?.client ?? {};
+  const currentRole = role || user?.role;
+
+  if (challengeQuery.isLoading) {
+    return <PageLoader description="Loading outcome challenge details." title="Loading challenge" />;
+  }
+
+  if (challengeQuery.isError || !challenge) {
+    return (
+      <section className="bg-[#FEFCE8] py-12">
+        <Container>
+          <Card className="mx-auto max-w-3xl" padding="lg" variant="bordered">
+            <Badge variant="secondary">Challenge unavailable</Badge>
+            <h1 className="mt-3 text-3xl font-black text-[#1C1917]">Challenge could not be loaded</h1>
+            <p className="mt-2 text-sm leading-6 text-[#78716C]">
+              {getChallengeApiErrorMessage(challengeQuery.error, "This challenge may be private, archived, or not ready for public viewing.")}
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <Button as={Link} to={ROUTES.CHALLENGES}>Explore Challenges</Button>
+              <Button as={Link} to={ROUTES.HOME} variant="secondary">Go Home</Button>
+            </div>
+          </Card>
+        </Container>
+      </section>
+    );
+  }
+
+  const isAcceptingPlans = ["open", "reviewing_plans"].includes(challenge.status ?? "open");
+  const applyPath = `${ROUTES.NEW_EXECUTION_PLAN}?challengeId=${encodeURIComponent(challenge.id)}&username=${encodeURIComponent(username)}&slug=${encodeURIComponent(slug)}`;
+  const applyCta = !isAcceptingPlans ? (
+    <Button disabled type="button">This challenge is not accepting execution plans</Button>
+  ) : !isAuthenticated ? (
+    <Button as={Link} state={{ from: location }} to={ROUTES.LOGIN}>Submit Execution Plan</Button>
+  ) : currentRole === USER_ROLES.PROVIDER ? (
+    <Button as={Link} to={applyPath}>Submit Execution Plan</Button>
+  ) : (
+    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 text-sm font-semibold leading-6 text-[#57534E]">
+      Providers submit execution plans for this challenge.
+    </div>
+  );
+
+  return (
+    <section className="bg-[#FEFCE8] py-8 text-[#1C1917] sm:py-12">
+      <Container>
+        <div className="mx-auto grid max-w-6xl gap-6">
+          <Card className="rounded-3xl" padding="lg" variant="elevated">
+            <Badge variant="primary">Outcome challenge</Badge>
+            <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight tracking-normal text-[#1C1917] sm:text-5xl">
+              {challenge.title}
+            </h1>
+            <p className="mt-4 max-w-3xl text-base leading-7 text-[#57534E]">{challenge.shortSummary}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#3F6212] text-white">
+                <UserRound aria-hidden="true" className="h-5 w-5" />
+              </div>
+              <div className="min-w-0">
+                <p className="font-black text-[#1C1917]">{client.fullName || "ProofArena client"}</p>
+                <p className="text-sm font-semibold text-[#78716C]">{client.headline || "Outcome-focused client"}</p>
+              </div>
+              {client.username ? (
+                <Button as={Link} className="ml-auto w-full sm:w-auto" to={`/profile/${client.username}`} variant="secondary">
+                  View client profile
+                </Button>
+              ) : null}
+            </div>
+          </Card>
+
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start">
+            <ChallengePreview challenge={challenge} />
+            <Card padding="lg" variant="default">
+              <h2 className="text-2xl font-black text-[#1C1917]">Ready to submit a plan?</h2>
+              <p className="mt-2 text-sm leading-6 text-[#78716C]">
+                Submit a structured plan with approach, milestones, proof, risk handling, timeline, and price.
+              </p>
+              <div className="mt-6 grid gap-3">
+                {applyCta}
+                <Button as={Link} to={ROUTES.PROVIDERS} variant="outline">Explore Providers</Button>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
