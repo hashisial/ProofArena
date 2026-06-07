@@ -10,7 +10,11 @@ import {
   CLIENT_CHALLENGE_STATUS_VALUES,
   CLIENT_CHALLENGE_VISIBILITY_VALUES,
   CHALLENGE_STATUS,
+  PROOF_SIMPLICITY,
+  PROOF_SIMPLICITY_VALUES,
   PROOF_TYPE_VALUES,
+  STARTER_CHALLENGE_LEVEL,
+  STARTER_CHALLENGE_LEVEL_VALUES,
 } from "../constants/index.js";
 import { baseSchemaOptions } from "./base.model.js";
 
@@ -380,6 +384,44 @@ const aiMetadataSchema = new mongoose.Schema(
   { _id: false },
 );
 
+const starterChallengeSchema = new mongoose.Schema(
+  {
+    enabled: {
+      default: false,
+      type: Boolean,
+    },
+    estimatedHours: {
+      max: 80,
+      min: 1,
+      type: Number,
+    },
+    level: {
+      default: STARTER_CHALLENGE_LEVEL.STANDARD,
+      enum: STARTER_CHALLENGE_LEVEL_VALUES,
+      type: String,
+    },
+    newProviderFriendly: {
+      default: false,
+      type: Boolean,
+    },
+    proofSimplicity: {
+      default: PROOF_SIMPLICITY.MODERATE,
+      enum: PROOF_SIMPLICITY_VALUES,
+      type: String,
+    },
+    providerLimit: {
+      max: 50,
+      min: 1,
+      type: Number,
+    },
+    recommendedForFirstClient: {
+      default: false,
+      type: Boolean,
+    },
+  },
+  { _id: false },
+);
+
 const challengeSchema = new mongoose.Schema(
   {
     aiMetadata: {
@@ -501,6 +543,10 @@ const challengeSchema = new mongoose.Schema(
       default: () => ({}),
       type: statsSchema,
     },
+    starterChallenge: {
+      default: () => ({}),
+      type: starterChallengeSchema,
+    },
     status: {
       default: CHALLENGE_STATUS.DRAFT,
       enum: CLIENT_CHALLENGE_STATUS_VALUES,
@@ -573,6 +619,14 @@ const challengeSchema = new mongoose.Schema(
 challengeSchema.index({ clientId: 1, slug: 1 }, { unique: true });
 challengeSchema.index({ category: 1, status: 1, visibility: 1, publishedAt: -1 });
 challengeSchema.index({ "moderation.status": 1, status: 1, visibility: 1 });
+challengeSchema.index({
+  "starterChallenge.enabled": 1,
+  "starterChallenge.newProviderFriendly": 1,
+  "starterChallenge.recommendedForFirstClient": 1,
+  status: 1,
+  visibility: 1,
+  publishedAt: -1,
+});
 challengeSchema.index({ createdAt: -1 });
 challengeSchema.index({ publishedAt: -1 });
 challengeSchema.index(

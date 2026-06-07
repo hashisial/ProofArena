@@ -1,4 +1,9 @@
 import mongoose from "mongoose";
+import {
+  OUTCOME_OFFER_STATUS,
+  OUTCOME_OFFER_VISIBILITY,
+} from "../constants/index.js";
+import { OutcomeOffer } from "../models/OutcomeOffer.model.js";
 import { User } from "../models/User.js";
 import { Portfolio } from "../models/Portfolio.js";
 import { ProviderProfile } from "../models/ProviderProfile.js";
@@ -749,6 +754,7 @@ function serializeProviderProfile(providerProfile) {
     categories: providerProfile.categories ?? [],
     completedOutcomes: proofSummary.completedOutcomes,
     completedProjects: providerProfile.completedProjects ?? 0,
+    createdAt: providerProfile.createdAt ?? null,
     experienceLevel: providerProfile.experienceLevel ?? "intermediate",
     fixedStartingPrice: providerProfile.fixedStartingPrice ?? 0,
     headline: providerProfile.headline || providerProfile.title || "",
@@ -764,6 +770,7 @@ function serializeProviderProfile(providerProfile) {
     ),
     professionalSummary: providerProfile.professionalSummary ?? "",
     proofScore: proofSummary.proofScore,
+    proofMetricsAvailable: true,
     proofSummary,
     rating: providerProfile.rating ?? 0,
     ratingAverage: proofSummary.ratingAverage,
@@ -776,6 +783,75 @@ function serializeProviderProfile(providerProfile) {
     userId: providerProfile.userId?.toString?.() ?? providerProfile.userId,
     verifiedAt: providerProfile.verifiedAt ?? null,
     verificationStatus: providerProfile.verificationStatus ?? "none",
+  };
+}
+
+function publicPriceRange(priceRange = {}) {
+  if (!priceRange || priceRange.type === "hidden") {
+    return { type: "hidden" };
+  }
+
+  return {
+    currency: priceRange.currency ?? "USD",
+    customLabel: priceRange.customLabel ?? "",
+    max: priceRange.max ?? null,
+    min: priceRange.min ?? null,
+    type: priceRange.type ?? "hidden",
+  };
+}
+
+function serializePublicOutcomeOfferPreview(offer = {}) {
+  return {
+    availability: offer.availability?.status ?? "",
+    category: offer.category ?? "",
+    deliveryTimeline: offer.deliveryTimeline ?? null,
+    id: offer._id?.toString?.() ?? offer.id ?? "",
+    priceRange: publicPriceRange(offer.priceRange ?? {}),
+    proofIncludedCount: offer.proofIncluded?.length ?? 0,
+    qualityScore: offer.qualityScore?.score ?? 0,
+    shortSummary: offer.shortSummary ?? "",
+    skills: (offer.skills ?? []).slice(0, 6),
+    slug: offer.slug ?? "",
+    targetOutcome: offer.targetOutcome?.outcomeStatement ?? "",
+    title: offer.title ?? "",
+    tools: (offer.tools ?? []).slice(0, 6),
+  };
+}
+
+async function getPublicOutcomeOfferPreviews(userId, { enabled = true } = {}) {
+  if (!enabled || !userId) {
+    return {
+      count: 0,
+      offers: [],
+      top: null,
+    };
+  }
+
+  const query = {
+    providerId: userId,
+    status: OUTCOME_OFFER_STATUS.PUBLISHED,
+    visibility: OUTCOME_OFFER_VISIBILITY.PUBLIC,
+    $or: [
+      { "moderation.status": "approved" },
+      { "moderation.status": { $exists: false } },
+    ],
+  };
+  const [offers, count] = await Promise.all([
+    OutcomeOffer.find(query)
+      .select(
+        "availability category deliveryTimeline priceRange proofIncluded qualityScore shortSummary skills slug targetOutcome title tools",
+      )
+      .sort({ "qualityScore.score": -1, createdAt: -1 })
+      .limit(6)
+      .lean(),
+    OutcomeOffer.countDocuments(query),
+  ]);
+  const serializedOffers = offers.map(serializePublicOutcomeOfferPreview);
+
+  return {
+    count,
+    offers: serializedOffers,
+    top: serializedOffers[0] ?? null,
   };
 }
 
@@ -921,6 +997,7 @@ function applyPublicPrivacyFilters({
 
   if (!privacySettings.showProofScore && providerProfile) {
     providerProfile.proofScore = 0;
+    providerProfile.proofMetricsAvailable = false;
     providerProfile.proofSummary = {
       approvalRate: 0,
       completedOutcomes: 0,
@@ -1117,11 +1194,18 @@ async function buildProfileResponse({
     normalizeRole(user.role) === "provider"
       ? await ensureProviderProfile(user, profile)
       : null;
-  const [portfolioItems, serviceItems] = await Promise.all([
+  const privacySettings = normalizePrivacySettings(profile.privacySettings);
+  const canShowPublicOutcomeOffers =
+    Boolean(providerProfile) &&
+    (includePrivateSettings || privacySettings.showServices !== false);
+  const [portfolioItems, serviceItems, publicOutcomeOffers] = await Promise.all([
     getPortfolioPreviews(user._id, providerProfile),
     providerProfile
       ? getServicePreviews(user._id, { includePrivate: includePrivateSettings })
       : [],
+    getPublicOutcomeOfferPreviews(user._id, {
+      enabled: canShowPublicOutcomeOffers,
+    }),
   ]);
 
   const serializedProfile = serializeProfile(profile, settings, {
@@ -1157,6 +1241,8 @@ async function buildProfileResponse({
     portfolioItems,
     profile: serializedProfile,
     providerProfile: serializedProviderProfile,
+    publicOutcomeOfferCount: publicOutcomeOffers.count,
+    publicOutcomeOffers,
     settings: includePrivateSettings
       ? serializeSettings(settings)
       : {

@@ -12,7 +12,12 @@ import {
   getAdminBlogs,
   getAdminConnectionsOverview,
   getAdminConversationMetadata,
+  getAdminChallengeModerationList,
+  getAdminOutcomeOfferModerationList,
   getAdminPlans,
+  getAdminOverviewDashboard,
+  getAdminProofAssetModerationList,
+  getAdminProviderModerationList,
   getAdminMarketplaceCategories,
   getAdminMarketplaceProviders,
   getAdminMarketplaceServices,
@@ -22,13 +27,18 @@ import {
   getAdminUsers,
   getSaasOverview,
   patchAdminPlan,
+  patchAdminChallengeModeration,
   patchAdminBlog,
   patchAdminMarketplaceCategory,
   patchAdminMarketplaceProvider,
   patchAdminMarketplaceService,
+  patchAdminOutcomeOfferModeration,
+  patchAdminProofAssetModeration,
+  patchAdminProviderModeration,
   patchAdminReview,
   patchAdminSupportConversation,
   patchAdminUser,
+  patchAdminUserStatus,
   patchAdminUserProfile,
   patchAdminUserSettings,
   patchOwnAdminPassword,
@@ -42,10 +52,81 @@ import {
   resetAdminUserPassword,
 } from "../controllers/adminController.js";
 import { protectAdmin, requireAdminPermission } from "../middleware/adminMiddleware.js";
+import { validateBody, validateParams, validateQuery } from "../middleware/validate.middleware.js";
+import {
+  adminChallengeIdParamSchema,
+  adminListQuerySchema,
+  adminModerationSchema,
+  adminOfferIdParamSchema,
+  adminProofAssetIdParamSchema,
+  adminProviderIdParamSchema,
+  adminUserIdParamSchema,
+  adminUserStatusSchema,
+} from "../validators/admin.validator.js";
 
 const router = Router();
 
 router.use(protectAdmin);
+router.get("/overview", requireAdminPermission("analytics"), getAdminOverviewDashboard);
+router.get(
+  "/providers",
+  requireAdminPermission("users"),
+  validateQuery(adminListQuerySchema),
+  getAdminProviderModerationList,
+);
+router.get(
+  "/challenges",
+  requireAdminPermission("content"),
+  validateQuery(adminListQuerySchema),
+  getAdminChallengeModerationList,
+);
+router.get(
+  "/outcome-offers",
+  requireAdminPermission("content"),
+  validateQuery(adminListQuerySchema),
+  getAdminOutcomeOfferModerationList,
+);
+router.get(
+  "/proof-assets",
+  requireAdminPermission("content"),
+  validateQuery(adminListQuerySchema),
+  getAdminProofAssetModerationList,
+);
+router.patch(
+  "/users/:userId/status",
+  requireAdminPermission("users"),
+  validateParams(adminUserIdParamSchema),
+  validateBody(adminUserStatusSchema),
+  patchAdminUserStatus,
+);
+router.patch(
+  "/providers/:providerId/moderation",
+  requireAdminPermission("users"),
+  validateParams(adminProviderIdParamSchema),
+  validateBody(adminModerationSchema),
+  patchAdminProviderModeration,
+);
+router.patch(
+  "/challenges/:challengeId/moderation",
+  requireAdminPermission("content"),
+  validateParams(adminChallengeIdParamSchema),
+  validateBody(adminModerationSchema),
+  patchAdminChallengeModeration,
+);
+router.patch(
+  "/outcome-offers/:offerId/moderation",
+  requireAdminPermission("content"),
+  validateParams(adminOfferIdParamSchema),
+  validateBody(adminModerationSchema),
+  patchAdminOutcomeOfferModeration,
+);
+router.patch(
+  "/proof-assets/:assetId/moderation",
+  requireAdminPermission("content"),
+  validateParams(adminProofAssetIdParamSchema),
+  validateBody(adminModerationSchema),
+  patchAdminProofAssetModeration,
+);
 router.get("/conversations", requireAdminPermission("support"), getAdminConversationMetadata);
 router.get("/reported-messages", requireAdminPermission("support"), getAdminReportedMessages);
 router.get("/connections/overview", requireAdminPermission("users"), getAdminConnectionsOverview);
@@ -107,7 +188,7 @@ router.post(
 );
 router
   .route("/users")
-  .get(requireAdminPermission("users"), getAdminUsers)
+  .get(requireAdminPermission("users"), validateQuery(adminListQuerySchema), getAdminUsers)
   .post(requireAdminPermission("settings"), postAdminUser);
 router
   .route("/users/:id")

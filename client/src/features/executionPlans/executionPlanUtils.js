@@ -2,13 +2,23 @@ import { API_BASE_URL } from "../../services/apiClient.js";
 
 export const EXECUTION_PLAN_STATUS_LABELS = Object.freeze({
   accepted: "Accepted",
+  archived: "Archived",
   draft: "Draft",
-  expired: "Expired",
+  expired: "Archived",
   rejected: "Rejected",
   shortlisted: "Shortlisted",
   submitted: "Submitted",
-  withdrawn: "Withdrawn",
+  viewed: "Viewed",
+  withdrawn: "Archived",
 });
+
+export function isArchivedExecutionPlanStatus(status) {
+  return ["archived", "expired", "withdrawn"].includes(status);
+}
+
+export function getExecutionPlanStatusLabel(status) {
+  return EXECUTION_PLAN_STATUS_LABELS[status] ?? status ?? "Not available";
+}
 
 export const PLAN_TIMELINE_OPTIONS = Object.freeze([
   { label: "Fixed days", value: "fixed_days" },
@@ -473,11 +483,15 @@ export function canEditExecutionPlan(status) {
 }
 
 export function canWithdrawExecutionPlan(status) {
-  return ["draft", "submitted", "shortlisted", "rejected"].includes(status);
+  return ["draft", "rejected", "shortlisted", "submitted", "viewed"].includes(status);
 }
 
 export function canDecideExecutionPlan(status) {
-  return ["submitted", "shortlisted"].includes(status);
+  return ["shortlisted", "submitted", "viewed"].includes(status);
+}
+
+export function canShortlistExecutionPlan(status) {
+  return ["submitted", "viewed"].includes(status);
 }
 
 export function validateExecutionPlanForm(form, { challengeId } = {}) {

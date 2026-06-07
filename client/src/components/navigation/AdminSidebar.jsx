@@ -1,10 +1,12 @@
 import {
   AlertTriangle,
+  BadgeCheck,
   BarChart3,
   CheckCircle2,
   FileCheck2,
   Flag,
   LayoutDashboard,
+  PackageCheck,
   Settings,
   ShieldCheck,
   Target,
@@ -19,9 +21,11 @@ import { cn } from "../../utils/cn.js";
 
 const iconMap = {
   AlertTriangle,
+  BadgeCheck,
   BarChart3,
   FileCheck2,
   LayoutDashboard,
+  PackageCheck,
   Settings,
   ShieldCheck,
   Target,

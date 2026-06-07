@@ -145,14 +145,18 @@ export const profileService = Object.freeze({
   },
   async getPublicProfile(username) {
     return normalizeProfileData(
-      await api.get(API_ENDPOINTS.PROFILE_PUBLIC_BY_USERNAME(username)),
+      await api.get(API_ENDPOINTS.PROFILE_PUBLIC_BY_USERNAME(username), {
+        skipUserAuth: true,
+      }),
     );
   },
   async getMyProfileAnalytics() {
     return api.get(API_ENDPOINTS.PROFILE_ANALYTICS);
   },
   async getPublicProfileActivity(username) {
-    return api.get(API_ENDPOINTS.PROFILE_PUBLIC_ACTIVITY(username));
+    return api.get(API_ENDPOINTS.PROFILE_PUBLIC_ACTIVITY(username), {
+      skipUserAuth: true,
+    });
   },
   async getVerificationStatus() {
     return api.get(API_ENDPOINTS.PROFILE_VERIFICATION);

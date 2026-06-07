@@ -11,7 +11,6 @@ import { useParams } from "react-router-dom";
 import { ModulePlaceholder } from "../components/common/ModulePlaceholder.jsx";
 import { PublicPlaceholderPage } from "../components/common/PublicPlaceholderPage.jsx";
 import { ROUTES } from "../constants/index.js";
-import { ProviderPublicProfile } from "./ProviderPublicProfile.jsx";
 import { PublicProfile } from "./PublicProfile.jsx";
 import { Marketplace } from "./Marketplace.jsx";
 import { ServiceDetail } from "./ServiceDetail.jsx";
@@ -278,7 +277,7 @@ export function PublicProfileRoute() {
 
 export function ProviderProfileRoute() {
   const { username } = useParams();
-  return <ProviderPublicProfile username={username} />;
+  return <PublicProfile username={username} />;
 }
 
 export function ServiceDetailRoute() {

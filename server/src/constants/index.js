@@ -126,11 +126,13 @@ export const ENTRY_STATUS = Object.freeze({
 
 export const EXECUTION_PLAN_STATUS = Object.freeze({
   ACCEPTED: "accepted",
+  ARCHIVED: "archived",
   DRAFT: "draft",
   EXPIRED: "expired",
   REJECTED: "rejected",
   SHORTLISTED: "shortlisted",
   SUBMITTED: "submitted",
+  VIEWED: "viewed",
   WITHDRAWN: "withdrawn",
 });
 
@@ -231,6 +233,128 @@ export const PROOF_TYPES = Object.freeze({
   VIDEO: "video",
   VIDEO_WALKTHROUGH: "video_walkthrough",
   WORK_LOG: "work_log",
+});
+
+export const PROOF_ASSET_TYPE = Object.freeze({
+  ANALYTICS_REPORT: "analytics_report",
+  CASE_STUDY: "case_study",
+  CERTIFICATE: "certificate",
+  CRM_EXPORT: "crm_export",
+  DOCUMENT: "document",
+  GITHUB_LINK: "github_link",
+  LIVE_URL: "live_url",
+  OTHER: "other",
+  PDF_REPORT: "pdf_report",
+  PORTFOLIO_SAMPLE: "portfolio_sample",
+  SCREENSHOT: "screenshot",
+  VIDEO_WALKTHROUGH: "video_walkthrough",
+  WORK_LOG: "work_log",
+});
+
+export const PROOF_SOURCE_TYPE = Object.freeze({
+  FILE: "file",
+  LINK: "link",
+  TEXT: "text",
+});
+
+export const PROOF_ASSET_VISIBILITY = Object.freeze({
+  PRIVATE: "private",
+  PUBLIC: "public",
+  UNLISTED: "unlisted",
+});
+
+export const PROOF_VERIFICATION_STATUS = Object.freeze({
+  FLAGGED: "flagged",
+  PENDING_REVIEW: "pending_review",
+  REJECTED: "rejected",
+  UNVERIFIED: "unverified",
+  VERIFIED: "verified",
+});
+
+export const AI_EXTRACTION_STATUS = Object.freeze({
+  COMPLETED: "completed",
+  FAILED: "failed",
+  NOT_STARTED: "not_started",
+  PENDING: "pending",
+});
+
+export const OPPORTUNITY_STAGE = Object.freeze({
+  APPLIED: "applied",
+  ARCHIVED: "archived",
+  COMPLETED: "completed",
+  INVITED: "invited",
+  LOST: "lost",
+  MATCHED: "matched",
+  NEGOTIATING: "negotiating",
+  SHORTLISTED: "shortlisted",
+  WON: "won",
+});
+
+export const OPPORTUNITY_SOURCE = Object.freeze({
+  ACCEPTED_PLAN: "accepted_plan",
+  CLIENT_INVITE: "client_invite",
+  EXECUTION_PLAN: "execution_plan",
+  MANUAL: "manual",
+  MATCHED_CHALLENGE: "matched_challenge",
+  SAVED_MATCH: "saved_match",
+  SHORTLISTED_PLAN: "shortlisted_plan",
+});
+
+export const OPPORTUNITY_PRIORITY = Object.freeze({
+  HIGH: "high",
+  LOW: "low",
+  NORMAL: "normal",
+  URGENT: "urgent",
+});
+
+export const LOST_REASON = Object.freeze({
+  CHALLENGE_CANCELLED: "challenge_cancelled",
+  CLIENT_CHOSE_OTHER: "client_chose_other",
+  CLIENT_UNRESPONSIVE: "client_unresponsive",
+  MISSING_PROOF: "missing_proof",
+  OTHER: "other",
+  PRICE_TOO_HIGH: "price_too_high",
+  PROVIDER_WITHDREW: "provider_withdrew",
+  TIMELINE_NOT_FIT: "timeline_not_fit",
+  WEAK_PLAN: "weak_plan",
+});
+
+export const STARTER_CHALLENGE_LEVEL = Object.freeze({
+  BEGINNER: "beginner",
+  EASY: "easy",
+  STANDARD: "standard",
+});
+
+export const PROOF_SIMPLICITY = Object.freeze({
+  ADVANCED: "advanced",
+  MODERATE: "moderate",
+  SIMPLE: "simple",
+});
+
+export const PROVIDER_BADGE_KEY = Object.freeze({
+  FAST_STARTER: "fast_starter",
+  FIRST_CHALLENGE_WON: "first_challenge_won",
+  FIRST_EXECUTION_PLAN_SUBMITTED: "first_execution_plan_submitted",
+  FIRST_OFFER_CREATED: "first_offer_created",
+  FIRST_PROOF_ASSET_ADDED: "first_proof_asset_added",
+  FIRST_SHORTLIST: "first_shortlist",
+  FIRST_VERIFIED_OUTCOME: "first_verified_outcome",
+  PROFILE_READY: "profile_ready",
+});
+
+export const SAVED_PROVIDER_SOURCE = Object.freeze({
+  COMPARISON: "comparison",
+  MANUAL: "manual",
+  PROVIDER_DISCOVERY: "provider_discovery",
+  PUBLIC_PROFILE: "public_profile",
+  RECOMMENDED_PROVIDER: "recommended_provider",
+});
+
+export const SAVED_PROVIDER_STATUS = Object.freeze({
+  DISMISSED: "dismissed",
+  INVITED_LATER: "invited_later",
+  SAVED: "saved",
+  SHORTLISTED: "shortlisted",
 });
 
 export const OUTCOME_OFFER_STATUS = Object.freeze({
@@ -379,6 +503,20 @@ export const MATCH_DIRECTION_VALUES = Object.freeze(Object.values(MATCH_DIRECTIO
 export const MILESTONE_STATUS_VALUES = Object.freeze(Object.values(MILESTONE_STATUS));
 export const PROOF_STATUS_VALUES = Object.freeze(Object.values(PROOF_STATUS));
 export const PROOF_TYPE_VALUES = Object.freeze(Object.values(PROOF_TYPES));
+export const PROOF_ASSET_TYPE_VALUES = Object.freeze(Object.values(PROOF_ASSET_TYPE));
+export const PROOF_SOURCE_TYPE_VALUES = Object.freeze(Object.values(PROOF_SOURCE_TYPE));
+export const PROOF_ASSET_VISIBILITY_VALUES = Object.freeze(Object.values(PROOF_ASSET_VISIBILITY));
+export const PROOF_VERIFICATION_STATUS_VALUES = Object.freeze(Object.values(PROOF_VERIFICATION_STATUS));
+export const AI_EXTRACTION_STATUS_VALUES = Object.freeze(Object.values(AI_EXTRACTION_STATUS));
+export const OPPORTUNITY_STAGE_VALUES = Object.freeze(Object.values(OPPORTUNITY_STAGE));
+export const OPPORTUNITY_SOURCE_VALUES = Object.freeze(Object.values(OPPORTUNITY_SOURCE));
+export const OPPORTUNITY_PRIORITY_VALUES = Object.freeze(Object.values(OPPORTUNITY_PRIORITY));
+export const LOST_REASON_VALUES = Object.freeze(Object.values(LOST_REASON));
+export const STARTER_CHALLENGE_LEVEL_VALUES = Object.freeze(Object.values(STARTER_CHALLENGE_LEVEL));
+export const PROOF_SIMPLICITY_VALUES = Object.freeze(Object.values(PROOF_SIMPLICITY));
+export const PROVIDER_BADGE_KEY_VALUES = Object.freeze(Object.values(PROVIDER_BADGE_KEY));
+export const SAVED_PROVIDER_SOURCE_VALUES = Object.freeze(Object.values(SAVED_PROVIDER_SOURCE));
+export const SAVED_PROVIDER_STATUS_VALUES = Object.freeze(Object.values(SAVED_PROVIDER_STATUS));
 export const OUTCOME_OFFER_STATUS_VALUES = Object.freeze(Object.values(OUTCOME_OFFER_STATUS));
 export const OUTCOME_OFFER_VISIBILITY_VALUES = Object.freeze(Object.values(OUTCOME_OFFER_VISIBILITY));
 export const OFFER_AVAILABILITY_STATUS_VALUES = Object.freeze(Object.values(OFFER_AVAILABILITY_STATUS));

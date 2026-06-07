@@ -6,7 +6,6 @@ import {
 import {
   createAdminUser,
   deleteUserRecord,
-  findUsers,
   resetUserPassword,
   updateAdminUser,
   updateOwnAdminPassword,
@@ -62,6 +61,89 @@ import { Message } from "../models/Message.js";
 import { emitConversationEvent, emitUserEvent } from "../services/socketService.js";
 import { sendSuccess } from "../utils/apiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
+import {
+  getAdminOverview,
+  listAdminChallenges,
+  listAdminOutcomeOffers,
+  listAdminProofAssets,
+  listAdminProviders,
+  listAdminUsers,
+  moderateAdminChallenge,
+  moderateAdminOutcomeOffer,
+  moderateAdminProofAsset,
+  moderateAdminProvider,
+  updateAdminUserStatus,
+} from "../services/admin.service.js";
+
+export const getAdminOverviewDashboard = asyncHandler(async (_request, response) => {
+  const overview = await getAdminOverview();
+  sendSuccess(response, overview, 200, "Admin overview fetched successfully");
+});
+
+export const getAdminProviderModerationList = asyncHandler(async (request, response) => {
+  const providers = await listAdminProviders(request.query ?? {});
+  sendSuccess(response, providers, 200, "Admin providers fetched successfully");
+});
+
+export const getAdminChallengeModerationList = asyncHandler(async (request, response) => {
+  const challenges = await listAdminChallenges(request.query ?? {});
+  sendSuccess(response, challenges, 200, "Admin challenges fetched successfully");
+});
+
+export const getAdminOutcomeOfferModerationList = asyncHandler(async (request, response) => {
+  const offers = await listAdminOutcomeOffers(request.query ?? {});
+  sendSuccess(response, offers, 200, "Admin outcome offers fetched successfully");
+});
+
+export const getAdminProofAssetModerationList = asyncHandler(async (request, response) => {
+  const proofAssets = await listAdminProofAssets(request.query ?? {});
+  sendSuccess(response, proofAssets, 200, "Admin proof assets fetched successfully");
+});
+
+export const patchAdminUserStatus = asyncHandler(async (request, response) => {
+  const user = await updateAdminUserStatus(
+    request.admin?.id,
+    request.params.userId,
+    request.body.status,
+  );
+  sendSuccess(response, user, 200, "User status updated successfully");
+});
+
+export const patchAdminProviderModeration = asyncHandler(async (request, response) => {
+  const provider = await moderateAdminProvider(
+    request.admin?.id,
+    request.params.providerId,
+    request.body,
+  );
+  sendSuccess(response, provider, 200, "Provider moderation updated successfully");
+});
+
+export const patchAdminChallengeModeration = asyncHandler(async (request, response) => {
+  const challenge = await moderateAdminChallenge(
+    request.admin?.id,
+    request.params.challengeId,
+    request.body,
+  );
+  sendSuccess(response, challenge, 200, "Challenge moderation updated successfully");
+});
+
+export const patchAdminOutcomeOfferModeration = asyncHandler(async (request, response) => {
+  const offer = await moderateAdminOutcomeOffer(
+    request.admin?.id,
+    request.params.offerId,
+    request.body,
+  );
+  sendSuccess(response, offer, 200, "Outcome offer moderation updated successfully");
+});
+
+export const patchAdminProofAssetModeration = asyncHandler(async (request, response) => {
+  const proofAsset = await moderateAdminProofAsset(
+    request.admin?.id,
+    request.params.assetId,
+    request.body,
+  );
+  sendSuccess(response, proofAsset, 200, "Proof asset moderation updated successfully");
+});
 
 export const getSaasOverview = asyncHandler(async (_request, response) => {
   const overview = await getAdminSaasOverview();
@@ -125,9 +207,9 @@ export const patchAdminPlan = asyncHandler(async (request, response) => {
   sendSuccess(response, plan);
 });
 
-export const getAdminUsers = asyncHandler(async (_request, response) => {
-  const users = await findUsers();
-  sendSuccess(response, { items: users });
+export const getAdminUsers = asyncHandler(async (request, response) => {
+  const users = await listAdminUsers(request.query ?? {});
+  sendSuccess(response, users, 200, "Admin users fetched successfully");
 });
 
 export const postAdminUser = asyncHandler(async (request, response) => {

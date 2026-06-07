@@ -513,16 +513,6 @@ export async function getMarketplaceCategoryBySlug(slug) {
   }
 }
 
-export async function getProviderPublicProfile(username) {
-  return apiGet(`/providers/${encodeURIComponent(username)}`, {
-    skipUserAuth: true,
-  });
-}
-
-export async function connectWithProvider(username) {
-  return apiPost(`/providers/${encodeURIComponent(username)}/connect`, {});
-}
-
 export async function submitProviderVerification(documents) {
   const formData = new FormData();
 

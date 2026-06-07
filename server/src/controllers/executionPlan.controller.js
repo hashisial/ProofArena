@@ -59,7 +59,7 @@ export const updateExecutionPlan = asyncHandler(async (request, response) => {
 
 export const withdrawExecutionPlan = asyncHandler(async (request, response) => {
   const plan = await withdrawExecutionPlanService(request.user.id, request.params.planId);
-  return successResponse(response, 200, "Execution plan withdrawn successfully", plan);
+  return successResponse(response, 200, "Execution plan archived successfully", plan);
 });
 
 export const shortlistExecutionPlan = asyncHandler(async (request, response) => {

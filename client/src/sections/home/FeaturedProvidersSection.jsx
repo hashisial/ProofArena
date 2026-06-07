@@ -216,10 +216,13 @@ function FeaturedProviderCard({ index, provider, reduceMotion }) {
           ))}
         </div>
 
-        <div className="mt-auto pt-5">
+        <div className="mt-auto grid gap-2 pt-5">
           <Button as="a" className="w-full" href={ROUTES.PROVIDERS} variant="secondary">
-            View Profile
+            View providers
             <ArrowRight aria-hidden="true" className="ml-2 inline h-4 w-4" />
+          </Button>
+          <Button as="a" className="w-full" href={ROUTES.PROVIDER_COMPARE} variant="outline">
+            Compare providers
           </Button>
         </div>
       </Card>
@@ -260,7 +263,7 @@ export function FeaturedProvidersSection() {
             {...getMotionProps(reduceMotion, 0.08)}
           >
             <Button as="a" className="w-full sm:w-auto" href={ROUTES.PROVIDERS}>
-              Explore Providers
+              View all providers
               <ArrowRight aria-hidden="true" className="ml-2 inline h-4 w-4" />
             </Button>
             <Button as="a" className="w-full sm:w-auto" href={ROUTES.REGISTER} variant="secondary">

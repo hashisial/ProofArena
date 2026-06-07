@@ -2,6 +2,7 @@ export * from "./cn.js";
 export * from "./copyToClipboard.js";
 export * from "./formatCurrency.js";
 export * from "./formatDate.js";
+export * from "./formatFileSize.js";
 export * from "./formatNumber.js";
 export * from "./getInitials.js";
 export * from "./slugify.js";

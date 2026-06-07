@@ -20,7 +20,9 @@ const appRoutes = new Set([
 
 export function Layout({ children }) {
   const path = useRoutePath();
-  const isAppRoute = appRoutes.has(path) || path.startsWith(`${ROUTES.ADMIN}/`);
+  const isAppRoute = appRoutes.has(path) ||
+    path.startsWith(`${ROUTES.ADMIN}/`) ||
+    path.startsWith(`${ROUTES.DASHBOARD}/`);
 
   return (
     <div className="min-h-screen bg-white text-[#1C1917]">

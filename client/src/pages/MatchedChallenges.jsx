@@ -18,21 +18,34 @@ import {
 } from "../features/matches/useMatches.js";
 import { useMemo, useState } from "react";
 
-const initialFilters = Object.freeze({
-  category: "",
-  minScore: "",
-  sort: "best",
-  status: "all",
-});
+function createInitialFilters(status = "all") {
+  return {
+    category: "",
+    minScore: "",
+    sort: "best",
+    status,
+  };
+}
 
-export function MatchedChallenges() {
-  const [filters, setFilters] = useState(initialFilters);
+export function MatchedChallenges({ initialStatus = "all" }) {
+  const initialFilters = useMemo(() => createInitialFilters(initialStatus), [initialStatus]);
+  const [filters, setFilters] = useState(() => initialFilters);
   const [actionError, setActionError] = useState("");
   const matchesQuery = useMyMatchedChallenges(filters);
   const refreshMutation = useRefreshMyMatches();
   const statusMutation = useUpdateProviderMatchStatus();
   const matches = useMemo(() => matchesQuery.data?.items ?? [], [matchesQuery.data]);
   const stats = getMatchStats(matches);
+  const pageTitle = initialStatus === "saved"
+    ? "Saved Matches"
+    : initialStatus === "applied"
+      ? "Applied Matches"
+      : "Matched Challenges";
+  const pageDescription = initialStatus === "saved"
+    ? "Review outcome challenges you saved for focused follow-up and execution planning."
+    : initialStatus === "applied"
+      ? "Track matched challenges where you already submitted an execution plan."
+      : "Relevant outcome challenges matched to your skills, offers, availability, and proof profile.";
 
   async function handleRefresh() {
     setActionError("");
@@ -92,9 +105,9 @@ export function MatchedChallenges() {
             </Button>
           </div>
         }
-        description="Relevant outcome challenges matched to your skills, offers, availability, and proof profile."
+        description={pageDescription}
         eyebrow="Provider warm leads"
-        title="Matched Challenges"
+        title={pageTitle}
       />
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">

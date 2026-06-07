@@ -114,6 +114,8 @@ export function useUpdateClientMatchStatus() {
 
   return useMutation({
     mutationFn: ({ id, payload }) => matchService.updateClientMatchStatus(id, payload),
-    onSuccess: (data, variables) => invalidateChallengeMatches(queryClient, data?.challenge?.id, variables?.id),
+    onSuccess: (data, variables) => {
+      invalidateChallengeMatches(queryClient, variables?.challengeId ?? data?.challenge?.id, variables?.id);
+    },
   });
 }

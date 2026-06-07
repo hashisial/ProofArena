@@ -13,6 +13,10 @@
 
 # testing
 /coverage
+/.codex-logs
+/.chrome-*
+/responsive-shots
+/uploads
 
 # next.js
 /.next/

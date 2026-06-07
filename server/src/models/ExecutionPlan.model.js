@@ -373,6 +373,10 @@ const executionPlanSchema = new mongoose.Schema(
       default: null,
       type: Date,
     },
+    archivedAt: {
+      default: null,
+      type: Date,
+    },
     aiMetadata: {
       default: () => ({}),
       type: aiMetadataSchema,
@@ -521,6 +525,10 @@ const executionPlanSchema = new mongoose.Schema(
       set: (values) => normalizeStringList(values, 30, 50),
       type: [String],
     },
+    viewedAt: {
+      default: null,
+      type: Date,
+    },
     whyThisProvider: {
       default: "",
       maxlength: 1500,
@@ -544,6 +552,7 @@ executionPlanSchema.index(
         $in: [
           EXECUTION_PLAN_STATUS.DRAFT,
           EXECUTION_PLAN_STATUS.SUBMITTED,
+          EXECUTION_PLAN_STATUS.VIEWED,
           EXECUTION_PLAN_STATUS.SHORTLISTED,
           EXECUTION_PLAN_STATUS.ACCEPTED,
         ],

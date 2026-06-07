@@ -131,7 +131,7 @@ export function VerifiedOutcomesSection({ isOwner = false, providerProfile = nul
               ? "Detailed proof records will connect here when the proof ledger workflow is available."
               : isOwner
                 ? "Verified outcomes will appear here after you complete challenges and submit approved proof."
-                : "Proof-reviewed outcomes will appear here once this provider completes challenges."}
+                : "Verified outcomes will appear after approved proof-reviewed work."}
           </p>
 
           <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-white p-4">

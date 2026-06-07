@@ -4,6 +4,7 @@ import {
   OFFER_PRICE_TYPE,
   OUTCOME_OFFER_STATUS,
   OUTCOME_OFFER_VISIBILITY,
+  PROVIDER_BADGE_KEY,
   USER_ROLES,
 } from "../constants/index.js";
 import { OutcomeOffer } from "../models/OutcomeOffer.model.js";
@@ -14,6 +15,7 @@ import { UserSettings } from "../models/UserSettings.js";
 import { AppError } from "../utils/AppError.js";
 import { slugify } from "../utils/slugify.js";
 import { ensureDatabaseConnection } from "./databaseService.js";
+import { markProviderBadge, syncFirstClientProgress } from "./firstClient.service.js";
 
 const publicUserSelect = "_id avatar fullName name role username accountStatus isSuspended isVerified emailVerified verificationStatus";
 const providerProfileSelect =
@@ -549,6 +551,15 @@ export async function createOutcomeOffer(providerId, payload = {}) {
     }
 
     throw error;
+  }
+
+  try {
+    await markProviderBadge(providerId, PROVIDER_BADGE_KEY.FIRST_OFFER_CREATED, {
+      offerId: offer._id,
+    });
+    await syncFirstClientProgress(providerId);
+  } catch {
+    // First Client Mode is advisory; offer creation must not fail if badge sync fails.
   }
 
   return sanitizeOfferForOwner(offer);

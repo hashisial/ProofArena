@@ -5,6 +5,7 @@ import {
   EXECUTION_PLAN_STATUS,
   PLAN_PRICE_TYPE,
   PLAN_TIMELINE_TYPE,
+  PROVIDER_BADGE_KEY,
   USER_ROLES,
 } from "../constants/index.js";
 import { Challenge } from "../models/Challenge.model.js";
@@ -16,7 +17,13 @@ import { UserProfile } from "../models/UserProfile.js";
 import { UserSettings } from "../models/UserSettings.js";
 import { AppError } from "../utils/AppError.js";
 import { ensureDatabaseConnection } from "./databaseService.js";
+import { markProviderBadge, syncFirstClientProgress } from "./firstClient.service.js";
 import { markMatchApplied } from "./match.service.js";
+import {
+  upsertOpportunityFromAcceptedPlan,
+  upsertOpportunityFromExecutionPlan,
+  upsertOpportunityFromShortlist,
+} from "./opportunityPipeline.service.js";
 
 const publicUserSelect =
   "_id avatar fullName name role username accountStatus isSuspended isVerified emailVerified verificationStatus";
@@ -358,6 +365,7 @@ export function sanitizePlanForProvider(plan, challengeSummary = null) {
       lastAIImprovedAt: data.aiMetadata?.lastAIImprovedAt ?? null,
     },
     acceptedAt: data.acceptedAt ?? null,
+    archivedAt: data.archivedAt ?? null,
     approach: data.approach ?? "",
     attachments: data.attachments ?? [],
     availability: data.availability ?? {},
@@ -386,6 +394,7 @@ export function sanitizePlanForProvider(plan, challengeSummary = null) {
     title: data.title ?? "",
     tools: data.tools ?? [],
     updatedAt: data.updatedAt,
+    viewedAt: data.viewedAt ?? null,
     whyThisProvider: data.whyThisProvider ?? "",
     withdrawnAt: data.withdrawnAt ?? null,
   };
@@ -397,6 +406,7 @@ export function sanitizePlanForClient(plan, providerSummary = null, challengeSum
   return {
     id: normalizeId(data._id ?? data.id),
     acceptedAt: data.acceptedAt ?? null,
+    archivedAt: data.archivedAt ?? null,
     approach: data.approach ?? "",
     attachments: data.attachments ?? [],
     availability: data.availability ?? {},
@@ -423,6 +433,7 @@ export function sanitizePlanForClient(plan, providerSummary = null, challengeSum
     title: data.title ?? "",
     tools: data.tools ?? [],
     updatedAt: data.updatedAt,
+    viewedAt: data.viewedAt ?? null,
     whyThisProvider: data.whyThisProvider ?? "",
     withdrawnAt: data.withdrawnAt ?? null,
   };
@@ -505,6 +516,14 @@ async function findPlanForClient(clientId, planId) {
     throw new AppError("You are not allowed to view this execution plan", 403);
   }
 
+  if (plan.status === EXECUTION_PLAN_STATUS.SUBMITTED) {
+    plan.status = EXECUTION_PLAN_STATUS.VIEWED;
+    plan.viewedAt = plan.viewedAt ?? new Date();
+    plan.stats = plan.stats ?? {};
+    plan.stats.views = Number(plan.stats?.views ?? 0) + 1;
+    await plan.save();
+  }
+
   return { challenge, plan };
 }
 
@@ -564,6 +583,7 @@ export async function submitExecutionPlan(providerId, payload = {}) {
     providerId,
     status: {
       $nin: [
+        EXECUTION_PLAN_STATUS.ARCHIVED,
         EXECUTION_PLAN_STATUS.EXPIRED,
         EXECUTION_PLAN_STATUS.REJECTED,
         EXECUTION_PLAN_STATUS.WITHDRAWN,
@@ -613,6 +633,22 @@ export async function submitExecutionPlan(providerId, payload = {}) {
     await markMatchApplied(providerId, challenge._id);
   } catch {
     // Matching is advisory; execution plan submission must not fail if no match exists.
+  }
+
+  try {
+    await upsertOpportunityFromExecutionPlan(plan);
+  } catch {
+    // Opportunity pipeline is advisory; execution plan submission must not fail if CRM sync fails.
+  }
+
+  try {
+    await markProviderBadge(providerId, PROVIDER_BADGE_KEY.FIRST_EXECUTION_PLAN_SUBMITTED, {
+      planId: plan._id,
+      source: "execution_plan",
+    });
+    await syncFirstClientProgress(providerId);
+  } catch {
+    // First Client Mode is advisory; execution plan submission must not fail if badge sync fails.
   }
 
   return sanitizePlanForProvider(plan, buildChallengeSummary(challenge));
@@ -749,8 +785,9 @@ export async function withdrawExecutionPlan(providerId, planId) {
     throw new AppError("This execution plan cannot be edited", 400);
   }
 
-  plan.status = EXECUTION_PLAN_STATUS.WITHDRAWN;
-  plan.withdrawnAt = new Date();
+  plan.status = EXECUTION_PLAN_STATUS.ARCHIVED;
+  plan.archivedAt = new Date();
+  plan.withdrawnAt = plan.withdrawnAt ?? plan.archivedAt;
   await plan.save();
 
   return sanitizePlanForProvider(plan);
@@ -761,7 +798,10 @@ export async function shortlistExecutionPlan(clientId, planId, note = "") {
   await getClientUser(clientId);
 
   const { challenge, plan } = await findPlanForClient(clientId, planId);
-  assertClientCanDecidePlan(plan, [EXECUTION_PLAN_STATUS.SUBMITTED]);
+  assertClientCanDecidePlan(plan, [
+    EXECUTION_PLAN_STATUS.SUBMITTED,
+    EXECUTION_PLAN_STATUS.VIEWED,
+  ]);
 
   plan.status = EXECUTION_PLAN_STATUS.SHORTLISTED;
   plan.shortlistedAt = new Date();
@@ -775,6 +815,22 @@ export async function shortlistExecutionPlan(clientId, planId, note = "") {
     { _id: challenge._id },
     { $inc: { "applicationStats.shortlistedPlans": 1 } },
   );
+
+  try {
+    await upsertOpportunityFromShortlist(plan);
+  } catch {
+    // Client decisions should not fail because provider CRM sync failed.
+  }
+
+  try {
+    await markProviderBadge(plan.providerId, PROVIDER_BADGE_KEY.FIRST_SHORTLIST, {
+      planId: plan._id,
+      source: "execution_plan",
+    });
+    await syncFirstClientProgress(plan.providerId);
+  } catch {
+    // First Client Mode is advisory; shortlist decisions must remain available.
+  }
 
   const providerSummaries = await getProviderSummaryMap([plan.providerId]);
   return sanitizePlanForClient(
@@ -791,6 +847,7 @@ export async function rejectExecutionPlan(clientId, planId, rejectionReason = ""
   const { challenge, plan } = await findPlanForClient(clientId, planId);
   assertClientCanDecidePlan(plan, [
     EXECUTION_PLAN_STATUS.SUBMITTED,
+    EXECUTION_PLAN_STATUS.VIEWED,
     EXECUTION_PLAN_STATUS.SHORTLISTED,
   ]);
 
@@ -818,6 +875,7 @@ export async function acceptExecutionPlan(clientId, planId, note = "") {
   const { challenge, plan } = await findPlanForClient(clientId, planId);
   assertClientCanDecidePlan(plan, [
     EXECUTION_PLAN_STATUS.SUBMITTED,
+    EXECUTION_PLAN_STATUS.VIEWED,
     EXECUTION_PLAN_STATUS.SHORTLISTED,
   ]);
 
@@ -838,6 +896,22 @@ export async function acceptExecutionPlan(clientId, planId, note = "") {
       },
     },
   );
+
+  try {
+    await upsertOpportunityFromAcceptedPlan(plan);
+  } catch {
+    // Client decisions should not fail because provider CRM sync failed.
+  }
+
+  try {
+    await markProviderBadge(plan.providerId, PROVIDER_BADGE_KEY.FIRST_CHALLENGE_WON, {
+      planId: plan._id,
+      source: "challenge",
+    });
+    await syncFirstClientProgress(plan.providerId);
+  } catch {
+    // First Client Mode is advisory; accept decisions must remain available.
+  }
 
   const providerSummaries = await getProviderSummaryMap([plan.providerId]);
   return sanitizePlanForClient(

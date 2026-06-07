@@ -21,6 +21,7 @@ import { UserProfile } from "../models/UserProfile.js";
 import { UserSettings } from "../models/UserSettings.js";
 import { AppError } from "../utils/AppError.js";
 import { ensureDatabaseConnection } from "./databaseService.js";
+import { upsertOpportunityFromMatch } from "./opportunityPipeline.service.js";
 
 const activeChallengeStatuses = Object.freeze([
   CHALLENGE_STATUS.OPEN,
@@ -33,9 +34,9 @@ const providerProfileSelect =
 const userProfileSelect =
   "_id userId headline profilePicture profileVisibility privacySettings industry location services skills";
 const offerSelect =
-  "_id providerId title slug shortSummary category subCategory targetOutcome deliveryTimeline priceRange availability skills tools industries tags qualityScore status visibility moderation";
+  "_id providerId title slug shortSummary category subCategory targetOutcome deliveryTimeline priceRange proofIncluded availability skills tools industries tags qualityScore status visibility moderation";
 const challengeSelect =
-  "_id clientId title slug shortSummary category subCategory targetOutcome timeline budget skillsNeeded toolsNeeded industries industry tags qualityScore status visibility urgency location moderation publishedAt applicationStats";
+  "_id clientId title slug shortSummary category subCategory targetOutcome successCriteria proofRequirements timeline budget skillsNeeded toolsNeeded industries industry tags qualityScore status visibility urgency location moderation publishedAt applicationStats";
 
 function normalizeId(value) {
   return value?._id?.toString?.() ?? value?.toString?.() ?? String(value ?? "");
@@ -671,6 +672,7 @@ async function getPublicChallengesForMatching(providerId) {
     providerId,
     status: {
       $nin: [
+        EXECUTION_PLAN_STATUS.ARCHIVED,
         EXECUTION_PLAN_STATUS.EXPIRED,
         EXECUTION_PLAN_STATUS.REJECTED,
         EXECUTION_PLAN_STATUS.WITHDRAWN,
@@ -815,6 +817,20 @@ function buildClientSummary(user, profile) {
   };
 }
 
+function formatPublicLocation(location) {
+  if (!location) {
+    return "";
+  }
+
+  if (typeof location === "string") {
+    return location;
+  }
+
+  return [location.city, location.state, location.country, location.timezone]
+    .filter(Boolean)
+    .join(", ");
+}
+
 function buildProviderSummary({ publicProfile, providerProfile, user }) {
   return {
     avatar: user?.avatar ?? publicProfile?.profilePicture ?? "",
@@ -824,6 +840,9 @@ function buildProviderSummary({ publicProfile, providerProfile, user }) {
     fullName: user?.fullName ?? user?.name ?? "",
     headline: publicProfile?.headline || providerProfile?.headline || providerProfile?.title || "",
     id: normalizeId(user?._id),
+    location: formatPublicLocation(publicProfile?.location),
+    onTimeRate: providerProfile?.onTimeRate ?? 0,
+    approvalRate: providerProfile?.approvalRate ?? 0,
     proofScore: providerProfile?.proofScore ?? 0,
     publicUrl: user?.username ? `/providers/${user.username}` : "",
     skills: providerProfile?.skills ?? [],
@@ -846,6 +865,8 @@ function sanitizeChallengeSummary(challenge, clientSummary = null) {
     skillsNeeded: data.skillsNeeded ?? [],
     slug: data.slug ?? "",
     status: data.status ?? "",
+    proofRequirements: data.proofRequirements ?? [],
+    proofRequirementsCount: Array.isArray(data.proofRequirements) ? data.proofRequirements.length : 0,
     targetOutcome: data.targetOutcome ?? {},
     timeline: data.timeline ?? {},
     title: data.title ?? "",
@@ -863,6 +884,7 @@ function sanitizeOfferSummary(offer) {
     priceRange: data.priceRange?.type === "hidden"
       ? { currency: data.priceRange?.currency ?? "USD", type: "hidden" }
       : data.priceRange ?? {},
+    proofIncludedCount: Array.isArray(data.proofIncluded) ? data.proofIncluded.length : 0,
     qualityScore: { score: data.qualityScore?.score ?? 0 },
     shortSummary: data.shortSummary ?? "",
     skills: data.skills ?? [],
@@ -1281,6 +1303,14 @@ export async function updateProviderMatchStatus(providerId, matchId, status) {
     throw new AppError("Match not found", 404);
   }
 
+  if (status === MATCH_STATUS.SAVED) {
+    try {
+      await upsertOpportunityFromMatch(match);
+    } catch {
+      // Opportunity pipeline is advisory; match status updates must remain available.
+    }
+  }
+
   const challengeMap = await getChallengeMap([match.challengeId]);
   return sanitizeMatchForProvider(match, challengeMap.get(normalizeId(match.challengeId)) ?? null);
 }
@@ -1334,7 +1364,7 @@ export async function markMatchInvited(clientId, providerId, challengeId) {
   ensureDatabaseConnection();
   const challenge = await assertOwnedChallenge(clientId, challengeId);
 
-  return MatchRecord.findOneAndUpdate(
+  const match = await MatchRecord.findOneAndUpdate(
     { challengeId: challenge._id, providerId },
     {
       $set: {
@@ -1345,6 +1375,16 @@ export async function markMatchInvited(clientId, providerId, challengeId) {
     },
     { new: true },
   ).lean();
+
+  if (match) {
+    try {
+      await upsertOpportunityFromMatch(match);
+    } catch {
+      // Invites should not fail because the provider CRM pipeline could not sync.
+    }
+  }
+
+  return match;
 }
 
 export async function expireOldMatches() {

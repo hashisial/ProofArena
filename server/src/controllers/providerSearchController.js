@@ -2,7 +2,11 @@ import {
   getPublicProviderByUsername,
   requestProviderConnection,
 } from "../services/providerPublicService.js";
-import { searchProviders } from "../services/providerSearchService.js";
+import {
+  comparePublicProviders,
+  getProviderFilterOptions as getProviderFilterOptionsService,
+  searchProviders,
+} from "../services/providerSearchService.js";
 import { submitProviderVerificationRequest } from "../services/providerVerificationService.js";
 import { emitUserEvent } from "../services/socketService.js";
 import { sendSuccess } from "../utils/apiResponse.js";
@@ -13,7 +17,19 @@ export const getProviders = asyncHandler(async (request, response) => {
     userId: request.user?.id,
   });
 
-  sendSuccess(response, result);
+  sendSuccess(response, result, 200, "Providers fetched successfully");
+});
+
+export const getProviderFilterOptions = asyncHandler(async (_request, response) => {
+  const result = await getProviderFilterOptionsService();
+
+  sendSuccess(response, result, 200, "Provider filters fetched successfully");
+});
+
+export const getProviderComparison = asyncHandler(async (request, response) => {
+  const result = await comparePublicProviders(request.query?.providerIds ?? []);
+
+  sendSuccess(response, result, 200, "Provider comparison fetched successfully");
 });
 
 export const getProviderByUsername = asyncHandler(async (request, response) => {

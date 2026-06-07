@@ -138,6 +138,7 @@ function IconButton({ ariaLabel, children, className = "", onClick = noop }) {
 
 export function ProfileHeader({
   isOwner = false,
+  showPublicActions = true,
   connectLabel = "Connect",
   onAddSection = noop,
   onConnect = noop,
@@ -331,20 +332,22 @@ export function ProfileHeader({
           </div>
         </div>
 
-        <div className="mt-6">
-          <ProfileActions
-            isOwner={ownerMode}
-            onAddSection={onAddSection}
-            onConnect={onConnect}
-            onEnhanceProfile={onEnhanceProfile}
-            onFollow={onFollow}
-            onMessage={onMessage}
-            onMore={onMore}
-            onOpenTo={onOpenTo}
-            connectLabel={connectLabel}
-            followLabel={followLabel}
-          />
-        </div>
+        {ownerMode || showPublicActions ? (
+          <div className="mt-6">
+            <ProfileActions
+              isOwner={ownerMode}
+              onAddSection={onAddSection}
+              onConnect={onConnect}
+              onEnhanceProfile={onEnhanceProfile}
+              onFollow={onFollow}
+              onMessage={onMessage}
+              onMore={onMore}
+              onOpenTo={onOpenTo}
+              connectLabel={connectLabel}
+              followLabel={followLabel}
+            />
+          </div>
+        ) : null}
       </div>
     </Card>
   );

@@ -1,14 +1,19 @@
-import { CalendarDays, FileCheck2, Target } from "lucide-react";
+import { CalendarDays, ClipboardList, FileCheck2, Target, UsersRound } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/index.js";
 import {
   formatChallengeBudget,
   formatChallengeTimeline,
 } from "../../features/challenges/challengeUtils.js";
+import {
+  getChallengeNextAction,
+  getPlansCount,
+  getRecommendedProvidersCount,
+} from "../../utils/challengeNextAction.js";
 import { Badge } from "../ui/Badge.jsx";
 import { Button } from "../ui/Button.jsx";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/Card.jsx";
-import { ChallengeActions } from "./ChallengeActions.jsx";
+import { ChallengeActionMenu } from "./ChallengeActionMenu.jsx";
 import { ChallengeStatusBadge, ChallengeVisibilityBadge } from "./ChallengeStatusBadge.jsx";
 
 function getUpdatedLabel(value) {
@@ -36,6 +41,9 @@ export function ChallengeCard({
   const qualityScore = Number(challenge?.qualityScore?.score ?? 0);
   const targetOutcome = challenge?.targetOutcome?.outcomeStatement || "Outcome statement not added yet.";
   const proofCount = challenge?.proofRequirements?.length ?? 0;
+  const plansCount = getPlansCount(challenge);
+  const recommendedCount = getRecommendedProvidersCount(challenge);
+  const nextAction = getChallengeNextAction(challenge);
 
   return (
     <Card className="h-full" padding="md" variant="interactive">
@@ -74,6 +82,28 @@ export function ChallengeCard({
             </p>
           </div>
         </div>
+        {variant === "owner" ? (
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+              <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
+                <ClipboardList aria-hidden="true" className="h-3.5 w-3.5" />
+                Plans
+              </p>
+              <p className="mt-1 text-sm font-black text-[#1C1917]">{plansCount} received</p>
+            </div>
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+              <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
+                <UsersRound aria-hidden="true" className="h-3.5 w-3.5" />
+                Matches
+              </p>
+              <p className="mt-1 text-sm font-black text-[#1C1917]">{recommendedCount} recommended</p>
+            </div>
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Next action</p>
+              <p className="mt-1 text-sm font-black text-[#1C1917]">{nextAction.label}</p>
+            </div>
+          </div>
+        ) : null}
         <div className="flex flex-wrap gap-2">
           <Badge leftIcon={<FileCheck2 className="h-3.5 w-3.5" />} variant="green">
             {proofCount} proof requirement{proofCount === 1 ? "" : "s"}
@@ -85,7 +115,7 @@ export function ChallengeCard({
       </CardContent>
       {variant === "owner" ? (
         <CardFooter>
-          <ChallengeActions
+          <ChallengeActionMenu
             challenge={challenge}
             isArchiving={actionState.isArchiving}
             isClosing={actionState.isClosing}

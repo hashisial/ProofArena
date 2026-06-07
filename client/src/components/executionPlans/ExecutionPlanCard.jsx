@@ -2,15 +2,31 @@ import { Link } from "react-router-dom";
 import {
   canDecideExecutionPlan,
   canEditExecutionPlan,
+  canShortlistExecutionPlan,
   canWithdrawExecutionPlan,
   formatPlanPrice,
   formatPlanTimeline,
 } from "../../features/executionPlans/executionPlanUtils.js";
+import {
+  getPlanFeedback,
+  getProviderPlanNextAction,
+} from "../../features/executionPlans/providerPlanPerformanceUtils.js";
 import { ROUTES } from "../../constants/index.js";
+import { formatDate } from "../../utils/formatDate.js";
 import { Badge } from "../ui/Badge.jsx";
 import { Button } from "../ui/Button.jsx";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/Card.jsx";
 import { ExecutionPlanStatusBadge } from "./ExecutionPlanStatusBadge.jsx";
+import { ProviderPlanSummary } from "./ProviderPlanSummary.jsx";
+import {
+  formatPlanScore,
+  getChallengeIdFromPlan,
+  getMilestoneCount,
+  getPlanId,
+  getProofCount,
+  getProviderName,
+  getRiskCount,
+} from "./executionPlanReviewUtils.js";
 
 export function ExecutionPlanCard({
   onAccept,
@@ -22,34 +38,36 @@ export function ExecutionPlanCard({
 }) {
   const isClient = variant === "client";
   const challenge = plan?.challenge ?? {};
-  const provider = plan?.provider ?? {};
-  const score = Number(plan?.planScore?.score ?? 0);
   const status = plan?.status ?? "submitted";
+  const planId = getPlanId(plan);
+  const challengeId = getChallengeIdFromPlan(plan);
   const detailTo = isClient
-    ? ROUTES.CLIENT_EXECUTION_PLAN(challenge.id ?? plan.challengeId, plan.id)
-    : ROUTES.EXECUTION_PLAN_DETAIL(plan.id);
-  const editTo = ROUTES.EDIT_EXECUTION_PLAN(plan.id);
+    ? ROUTES.CLIENT_EXECUTION_PLAN(challengeId || challenge.id || plan.challengeId, planId)
+    : ROUTES.EXECUTION_PLAN_DETAIL(planId);
+  const editTo = ROUTES.EDIT_EXECUTION_PLAN(planId);
+  const feedback = getPlanFeedback(plan);
 
   return (
     <Card className="h-full" padding="md" variant="default">
       <CardHeader>
         <div className="flex flex-wrap items-center gap-2">
           <ExecutionPlanStatusBadge status={status} />
-          <Badge variant="outline">{score}/100 plan score</Badge>
-          {isClient && provider?.fullName ? <Badge variant="green">{provider.fullName}</Badge> : null}
+          <Badge variant="outline">{formatPlanScore(plan)} plan score</Badge>
+          {isClient ? <Badge variant="green">{getProviderName(plan)}</Badge> : null}
         </div>
         <CardTitle className="text-xl">{plan.title}</CardTitle>
         <p className="text-sm leading-6 text-[#78716C]">{plan.summary}</p>
       </CardHeader>
       <CardContent className="grid gap-3">
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
-            {isClient ? "Provider" : "Challenge"}
-          </p>
-          <p className="mt-1 font-black text-[#1C1917]">
-            {isClient ? provider?.headline || provider?.title || "Provider summary" : challenge?.title || "Challenge summary"}
-          </p>
-        </div>
+        {isClient ? (
+          <ProviderPlanSummary plan={plan} showProfileLink={false} variant="inline" />
+        ) : (
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Challenge</p>
+            <p className="mt-1 font-black text-[#1C1917]">{challenge?.title || "Challenge summary"}</p>
+            {challenge?.category ? <p className="mt-2 text-sm font-bold text-[#3F6212]">{challenge.category}</p> : null}
+          </div>
+        )}
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
             <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Timeline</p>
@@ -61,12 +79,28 @@ export function ExecutionPlanCard({
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Badge variant="outline">{plan.milestones?.length ?? 0} milestones</Badge>
-          <Badge variant="outline">{plan.proofPlan?.length ?? 0} proof items</Badge>
-          {plan.submittedAt ? (
-            <Badge variant="gray">Submitted {new Date(plan.submittedAt).toLocaleDateString()}</Badge>
+          <Badge variant="outline">{getMilestoneCount(plan)} milestones</Badge>
+          <Badge variant="outline">{getProofCount(plan)} proof items</Badge>
+          <Badge variant="outline">{getRiskCount(plan)} risks handled</Badge>
+          {plan.communicationPlan?.updateFrequency ? (
+            <Badge variant="secondary">{plan.communicationPlan.updateFrequency.replaceAll("_", " ")}</Badge>
+          ) : null}
+          {plan.submittedAt || plan.createdAt ? (
+            <Badge variant="gray">Submitted {formatDate(plan.submittedAt || plan.createdAt)}</Badge>
           ) : null}
         </div>
+        {!isClient ? (
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Next action</p>
+            <p className="mt-2 text-sm font-bold leading-6 text-[#44403C]">{getProviderPlanNextAction(plan)}</p>
+          </div>
+        ) : null}
+        {!isClient && feedback ? (
+          <div className="rounded-2xl border border-[#A16207]/20 bg-[#FFFBEB] p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#854D0E]">Client feedback</p>
+            <p className="mt-2 text-sm leading-6 text-[#57534E]">{feedback}</p>
+          </div>
+        ) : null}
       </CardContent>
       <CardFooter>
         <Button as={Link} className="w-full sm:w-auto" to={detailTo}>
@@ -79,14 +113,21 @@ export function ExecutionPlanCard({
         ) : null}
         {!isClient && canWithdrawExecutionPlan(status) ? (
           <Button className="w-full sm:w-auto" onClick={() => onWithdraw?.(plan)} type="button" variant="outline">
-            Withdraw
+            Archive
+          </Button>
+        ) : null}
+        {!isClient ? (
+          <Button as={Link} className="w-full sm:w-auto" to={`${detailTo}#improvement-tips`} variant="outline">
+            Improve Plan
           </Button>
         ) : null}
         {isClient && canDecideExecutionPlan(status) ? (
           <>
-            <Button className="w-full sm:w-auto" onClick={() => onShortlist?.(plan)} type="button" variant="secondary">
-              Shortlist
-            </Button>
+            {canShortlistExecutionPlan(status) ? (
+              <Button className="w-full sm:w-auto" onClick={() => onShortlist?.(plan)} type="button" variant="secondary">
+                Shortlist
+              </Button>
+            ) : null}
             <Button className="w-full sm:w-auto" onClick={() => onReject?.(plan)} type="button" variant="outline">
               Reject
             </Button>

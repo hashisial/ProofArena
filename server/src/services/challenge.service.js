@@ -79,6 +79,7 @@ function normalizeChallengePayload(payload = {}) {
     shortSummary: payload.shortSummary,
     skillsNeeded:
       payload.skillsNeeded === undefined ? undefined : normalizeList(payload.skillsNeeded, 30, 50),
+    starterChallenge: payload.starterChallenge,
     subCategory: payload.subCategory,
     successCriteria:
       payload.successCriteria === undefined
@@ -291,6 +292,7 @@ export function sanitizeChallengeForOwner(challenge) {
     skillsNeeded: data.skillsNeeded ?? [],
     slug: data.slug ?? "",
     stats: data.stats ?? {},
+    starterChallenge: data.starterChallenge ?? {},
     status: data.status ?? CHALLENGE_STATUS.DRAFT,
     subCategory: data.subCategory ?? "",
     successCriteria: data.successCriteria ?? [],
@@ -341,6 +343,7 @@ export function sanitizeChallengeForPublic(challenge, clientSummary = null) {
     shortSummary: data.shortSummary ?? "",
     skillsNeeded: data.skillsNeeded ?? [],
     slug: data.slug ?? "",
+    starterChallenge: data.starterChallenge ?? {},
     subCategory: data.subCategory ?? "",
     successCriteria: data.successCriteria ?? [],
     tags: data.tags ?? [],

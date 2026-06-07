@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { PROVIDER_BADGE_KEY_VALUES } from "../constants/index.js";
 
 const experienceLevels = ["entry", "intermediate", "expert"];
 const availabilityStatuses = ["available", "limited", "unavailable"];
@@ -57,6 +58,125 @@ const providerStatsSchema = new mongoose.Schema(
       type: Number,
       min: 0,
       default: 0,
+    },
+  },
+  {
+    _id: false,
+  },
+);
+
+const firstClientModeSchema = new mongoose.Schema(
+  {
+    completed: {
+      default: false,
+      type: Boolean,
+    },
+    completedAt: {
+      default: null,
+      type: Date,
+    },
+    enabled: {
+      default: true,
+      type: Boolean,
+    },
+    firstVerifiedOutcomeId: {
+      default: null,
+      ref: "VerifiedOutcome",
+      type: mongoose.Schema.Types.ObjectId,
+    },
+    lastCalculatedAt: {
+      default: null,
+      type: Date,
+    },
+    readinessScore: {
+      default: 0,
+      max: 100,
+      min: 0,
+      type: Number,
+    },
+    starterChallengesApplied: {
+      default: 0,
+      min: 0,
+      type: Number,
+    },
+    starterChallengesWon: {
+      default: 0,
+      min: 0,
+      type: Number,
+    },
+  },
+  {
+    _id: false,
+  },
+);
+
+const onboardingProgressSchema = new mongoose.Schema(
+  {
+    executionPlanSubmitted: {
+      default: false,
+      type: Boolean,
+    },
+    firstChallengeWon: {
+      default: false,
+      type: Boolean,
+    },
+    firstProofSubmitted: {
+      default: false,
+      type: Boolean,
+    },
+    firstVerifiedOutcome: {
+      default: false,
+      type: Boolean,
+    },
+    outcomeOfferCreated: {
+      default: false,
+      type: Boolean,
+    },
+    profileCompleted: {
+      default: false,
+      type: Boolean,
+    },
+    proofAssetAdded: {
+      default: false,
+      type: Boolean,
+    },
+    shortlistedOnce: {
+      default: false,
+      type: Boolean,
+    },
+  },
+  {
+    _id: false,
+  },
+);
+
+const providerBadgeSchema = new mongoose.Schema(
+  {
+    description: {
+      default: "",
+      maxlength: 500,
+      trim: true,
+      type: String,
+    },
+    earnedAt: {
+      default: Date.now,
+      type: Date,
+    },
+    key: {
+      enum: PROVIDER_BADGE_KEY_VALUES,
+      required: true,
+      type: String,
+    },
+    label: {
+      maxlength: 120,
+      required: true,
+      trim: true,
+      type: String,
+    },
+    source: {
+      default: "system",
+      enum: ["system", "admin", "challenge", "execution_plan", "proof"],
+      type: String,
     },
   },
   {
@@ -216,6 +336,10 @@ const providerProfileSchema = new mongoose.Schema(
       default: false,
       index: true,
     },
+    firstClientMode: {
+      default: () => ({}),
+      type: firstClientModeSchema,
+    },
     isFeatured: {
       type: Boolean,
       default: false,
@@ -225,6 +349,10 @@ const providerProfileSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
       index: true,
+    },
+    onboardingProgress: {
+      default: () => ({}),
+      type: onboardingProgressSchema,
     },
     searchBoost: {
       type: Number,
@@ -238,6 +366,15 @@ const providerProfileSchema = new mongoose.Schema(
       default: "",
       trim: true,
       maxlength: 1000,
+    },
+    moderationReviewedAt: {
+      type: Date,
+      default: null,
+    },
+    moderationReviewedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null,
     },
     verificationStatus: {
       type: String,
@@ -289,6 +426,17 @@ const providerProfileSchema = new mongoose.Schema(
       type: providerStatsSchema,
       default: () => ({}),
     },
+    providerBadges: {
+      default: [],
+      type: [providerBadgeSchema],
+      validate: {
+        message: "Provider badges cannot include duplicates",
+        validator(value) {
+          const keys = value.map((badge) => badge.key);
+          return keys.length === new Set(keys).size;
+        },
+      },
+    },
   },
   {
     timestamps: true,
@@ -303,6 +451,7 @@ providerProfileSchema.index({ skills: 1, rating: -1 });
 providerProfileSchema.index({ hourlyRate: 1, rating: -1 });
 providerProfileSchema.index({ "stats.profileViews": -1 });
 providerProfileSchema.index({ userId: 1, availability: 1 });
+providerProfileSchema.index({ "firstClientMode.readinessScore": -1 });
 providerProfileSchema.index(
   {
     title: "text",

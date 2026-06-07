@@ -1,6 +1,5 @@
 import { ArrowRight, Bookmark, Eye, FileText, Sparkles, XCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ROUTES } from "../../constants/index.js";
 import { formatChallengeBudget, formatChallengeTimeline } from "../../features/challenges/challengeUtils.js";
 import {
   buildExecutionPlanApplyPath,

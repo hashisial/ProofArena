@@ -19,6 +19,18 @@ export default defineConfig({
             return "icons";
           }
 
+          if (id.includes("@react-three/fiber") || id.includes("/three/")) {
+            return "three-vendor";
+          }
+
+          if (id.includes("/gsap/")) {
+            return "gsap";
+          }
+
+          if (id.includes("/lenis/")) {
+            return "lenis";
+          }
+
           if (
             id.includes("react") ||
             id.includes("react-dom") ||

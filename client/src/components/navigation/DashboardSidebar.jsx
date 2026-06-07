@@ -1,6 +1,7 @@
 import {
   Bell,
   Bookmark,
+  BriefcaseBusiness,
   CheckCircle2,
   ClipboardList,
   CreditCard,
@@ -24,6 +25,7 @@ import { cn } from "../../utils/cn.js";
 const iconMap = {
   Bell,
   Bookmark,
+  BriefcaseBusiness,
   ClipboardList,
   CreditCard,
   FileCheck2,
@@ -43,7 +45,10 @@ const futureLinks = [
 function SidebarLink({ collapsed = false, href, icon: Icon, label }) {
   const path = useRoutePath();
   const closeSidebar = useUIStore((state) => state.closeSidebar);
-  const isActive = path === href || (href !== "/dashboard" && path.startsWith(`${href}/`));
+  const isActive =
+    path === href ||
+    (href === ROUTES.DASHBOARD && path === ROUTES.PROVIDER_DASHBOARD) ||
+    (href !== ROUTES.DASHBOARD && path.startsWith(`${href}/`));
 
   return (
     <a

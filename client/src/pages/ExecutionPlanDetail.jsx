@@ -3,11 +3,14 @@ import { PageHeader } from "../components/common/PageHeader.jsx";
 import { ExecutionPlanPreview } from "../components/executionPlans/ExecutionPlanPreview.jsx";
 import { ExecutionPlanQualityCard } from "../components/executionPlans/ExecutionPlanQualityCard.jsx";
 import { ExecutionPlanStatusBadge } from "../components/executionPlans/ExecutionPlanStatusBadge.jsx";
+import { PlanImprovementTips } from "../components/executionPlans/PlanImprovementTips.jsx";
+import { ProviderPlanPerformancePanel } from "../components/executionPlans/ProviderPlanPerformancePanel.jsx";
 import { Badge } from "../components/ui/Badge.jsx";
 import { Button } from "../components/ui/Button.jsx";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card.jsx";
 import { PageLoader } from "../components/ui/PageLoader.jsx";
 import { ROUTES } from "../constants/index.js";
+import { formatDate } from "../utils/formatDate.js";
 import {
   canEditExecutionPlan,
   canWithdrawExecutionPlan,
@@ -71,7 +74,7 @@ export function ExecutionPlanDetail() {
   }
 
   async function handleWithdraw() {
-    if (!window.confirm("Withdraw this execution plan?")) {
+    if (!window.confirm("Archive this execution plan?")) {
       return;
     }
 
@@ -89,7 +92,7 @@ export function ExecutionPlanDetail() {
             ) : null}
             {canWithdrawExecutionPlan(plan.status) ? (
               <Button isLoading={withdrawMutation.isPending} onClick={handleWithdraw} type="button" variant="outline">
-                Withdraw
+                Archive
               </Button>
             ) : null}
           </div>
@@ -103,12 +106,40 @@ export function ExecutionPlanDetail() {
 
       <div className="flex flex-wrap gap-2">
         <ExecutionPlanStatusBadge status={plan.status} />
-        <Badge variant="outline">{plan.planScore?.score ?? 0}/100 score</Badge>
+        <Badge variant="outline">
+          {plan.planScore?.score === undefined || plan.planScore?.score === null
+            ? "Plan score not available"
+            : `${plan.planScore.score}/100 score`}
+        </Badge>
         {plan.challenge?.title ? <Badge variant="secondary">{plan.challenge.title}</Badge> : null}
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_26rem] xl:items-start">
         <div className="grid gap-5">
+          <div className="grid gap-5 lg:grid-cols-2">
+            <Card padding="md" variant="muted">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">Challenge summary</p>
+              <h2 className="mt-3 text-xl font-black text-[#1C1917]">{plan.challenge?.title || "Challenge not available"}</h2>
+              <p className="mt-2 text-sm leading-6 text-[#78716C]">
+                {plan.challenge?.shortSummary || plan.challenge?.targetOutcome?.outcomeStatement || "The public challenge summary is not available."}
+              </p>
+              {plan.challenge?.category ? <Badge className="mt-4" variant="outline">{plan.challenge.category}</Badge> : null}
+            </Card>
+            <Card padding="md" variant="bordered">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">Status and decision history</p>
+              <div className="mt-4 grid gap-3 text-sm">
+                <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#78716C]">Submitted</span><span className="font-black text-[#1C1917]">{formatDate(plan.submittedAt || plan.createdAt)}</span></p>
+                {plan.viewedAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#78716C]">Viewed</span><span className="font-black text-[#1C1917]">{formatDate(plan.viewedAt)}</span></p> : null}
+                {plan.shortlistedAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#78716C]">Shortlisted</span><span className="font-black text-[#1C1917]">{formatDate(plan.shortlistedAt)}</span></p> : null}
+                {plan.acceptedAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#78716C]">Accepted</span><span className="font-black text-[#1C1917]">{formatDate(plan.acceptedAt)}</span></p> : null}
+                {plan.rejectedAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#78716C]">Rejected</span><span className="font-black text-[#1C1917]">{formatDate(plan.rejectedAt)}</span></p> : null}
+                {plan.archivedAt || plan.withdrawnAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#78716C]">Archived</span><span className="font-black text-[#1C1917]">{formatDate(plan.archivedAt || plan.withdrawnAt)}</span></p> : null}
+              </div>
+            </Card>
+          </div>
+
+          <ProviderPlanPerformancePanel plan={plan} />
+
           <Card padding="lg" variant="default">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-[#3F6212]">Approach</p>
             <p className="mt-3 text-sm leading-7 text-[#44403C]">{plan.approach}</p>
@@ -151,6 +182,7 @@ export function ExecutionPlanDetail() {
               </div>
             ) : null}
           </Card>
+          <PlanImprovementTips plan={plan} />
         </div>
         <aside className="grid gap-5">
           <ExecutionPlanPreview plan={plan} />

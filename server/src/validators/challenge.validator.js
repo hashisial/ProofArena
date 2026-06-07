@@ -4,7 +4,9 @@ import {
   CHALLENGE_URGENCY_VALUES,
   CLIENT_CHALLENGE_BUDGET_TYPE_VALUES,
   CLIENT_CHALLENGE_VISIBILITY_VALUES,
+  PROOF_SIMPLICITY_VALUES,
   PROOF_TYPE_VALUES,
+  STARTER_CHALLENGE_LEVEL_VALUES,
 } from "../constants/index.js";
 
 const objectIdSchema = z.string().trim().regex(/^[a-f\d]{24}$/i, "Invalid challenge id");
@@ -166,6 +168,18 @@ const clientIntentSchema = z
   })
   .strict();
 
+const starterChallengeSchema = z
+  .object({
+    enabled: z.boolean().optional().default(false),
+    estimatedHours: optionalNumber.pipe(z.number().int().min(1).max(80).optional()),
+    level: z.enum(STARTER_CHALLENGE_LEVEL_VALUES).optional(),
+    newProviderFriendly: z.boolean().optional().default(false),
+    proofSimplicity: z.enum(PROOF_SIMPLICITY_VALUES).optional(),
+    providerLimit: optionalNumber.pipe(z.number().int().min(1).max(50).optional()),
+    recommendedForFirstClient: z.boolean().optional().default(false),
+  })
+  .strict();
+
 const editableChallengeShape = {
   budget: budgetSchema.optional(),
   category: requiredString(1, 80, "Category").optional(),
@@ -178,6 +192,7 @@ const editableChallengeShape = {
   proofRequirements: z.array(proofRequirementSchema).min(1).max(20).optional(),
   shortSummary: requiredString(1, 280, "Short summary").optional(),
   skillsNeeded: uniqueCleanList(30, 50),
+  starterChallenge: starterChallengeSchema.optional(),
   subCategory: optionalString(80),
   successCriteria: z.array(successCriteriaSchema).min(1).max(20).optional(),
   tags: uniqueCleanList(20, 50),

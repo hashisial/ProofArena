@@ -1,12 +1,15 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Plus, RotateCcw } from "lucide-react";
-import { PageHeader } from "../components/common/PageHeader.jsx";
+import { Plus, RotateCcw, Search, UsersRound } from "lucide-react";
 import { ChallengeCard } from "../components/challenges/ChallengeCard.jsx";
 import { ChallengeEmptyState } from "../components/challenges/ChallengeEmptyState.jsx";
+import { ChallengeManagementTabs } from "../components/challenges/ChallengeManagementTabs.jsx";
+import { challengeManagementTabs } from "../components/challenges/challengeManagementTabs.js";
+import { ChallengeStatsStrip } from "../components/challenges/ChallengeStatsStrip.jsx";
 import { Badge } from "../components/ui/Badge.jsx";
 import { Button } from "../components/ui/Button.jsx";
 import { Card } from "../components/ui/Card.jsx";
+import { EmptyState } from "../components/ui/EmptyState.jsx";
 import { Input } from "../components/ui/Input.jsx";
 import { Select } from "../components/ui/Select.jsx";
 import { Skeleton } from "../components/ui/Skeleton.jsx";
@@ -19,75 +22,125 @@ import {
   usePublishChallenge,
 } from "../features/challenges/useChallenges.js";
 import { getChallengeApiErrorMessage } from "../features/challenges/challengeUtils.js";
+import { getPlansCount } from "../utils/challengeNextAction.js";
 
 const statusOptions = [
   { label: "All statuses", value: "all" },
   { label: "Draft", value: "draft" },
   { label: "Open", value: "open" },
   { label: "Reviewing plans", value: "reviewing_plans" },
+  { label: "Provider selected", value: "provider_selected" },
   { label: "In progress", value: "in_progress" },
+  { label: "Proof review", value: "proof_review" },
   { label: "Completed", value: "completed" },
   { label: "Paused", value: "paused" },
   { label: "Archived", value: "archived" },
-];
-
-const visibilityOptions = [
-  { label: "All visibility", value: "all" },
-  { label: "Public", value: "public" },
-  { label: "Private", value: "private" },
-  { label: "Invite only", value: "invite_only" },
-  { label: "Unlisted", value: "unlisted" },
+  { label: "Cancelled", value: "cancelled" },
 ];
 
 const sortOptions = [
   { label: "Newest", value: "newest" },
-  { label: "Quality score", value: "quality_score" },
-  { label: "Plans", value: "plans" },
+  { label: "Last updated", value: "last_updated" },
+  { label: "Most plans", value: "most_plans" },
+  { label: "Highest quality score", value: "quality_score" },
+  { label: "Urgency", value: "urgency" },
 ];
 
-function StatCard({ label, value }) {
-  return (
-    <Card padding="sm" variant="muted">
-      <p className="text-sm font-bold text-[#78716C]">{label}</p>
-      <p className="mt-2 text-3xl font-black tracking-[-0.05em] text-[#1C1917]">{value}</p>
-    </Card>
-  );
-}
+const urgencyRank = {
+  urgent: 4,
+  high: 3,
+  normal: 2,
+  low: 1,
+};
 
 function getChallengeId(challenge) {
   return challenge?.id ?? challenge?._id;
 }
 
+function getDateTime(value) {
+  const date = value ? new Date(value) : null;
+  return date && Number.isFinite(date.getTime()) ? date.getTime() : 0;
+}
+
+function getEmptyCopy(activeTab) {
+  const tab = challengeManagementTabs.find((item) => item.value === activeTab);
+
+  if (activeTab === "draft") {
+    return {
+      description: "Draft challenges will appear here until they are ready to publish.",
+      title: "No draft challenges",
+    };
+  }
+
+  if (activeTab === "open") {
+    return {
+      description: "Published challenges that are ready for provider plans will appear here.",
+      title: "No open challenges",
+    };
+  }
+
+  if (activeTab === "reviewing_plans") {
+    return {
+      description: "Challenges with plan review activity will appear here.",
+      title: "No challenges reviewing plans",
+    };
+  }
+
+  return {
+    description: `${tab?.label ?? "Matching"} challenges will appear here when that workflow state exists.`,
+    title: `No ${String(tab?.label ?? "matching").toLowerCase()} challenges`,
+  };
+}
+
 export function MyChallenges() {
+  const [activeTab, setActiveTab] = useState("all");
   const [filters, setFilters] = useState({
     category: "",
     q: "",
-    sort: "newest",
+    sort: "last_updated",
     status: "all",
-    visibility: "all",
   });
-  const queryFilters = {
-    status: filters.status === "all" ? "" : filters.status,
-    visibility: filters.visibility === "all" ? "" : filters.visibility,
-  };
-  const challengesQuery = useMyChallenges(queryFilters);
+  const challengesQuery = useMyChallenges({});
   const publishMutation = usePublishChallenge();
   const pauseMutation = usePauseChallenge();
   const closeMutation = useCloseChallenge();
   const archiveMutation = useArchiveChallenge();
   const challenges = useMemo(() => challengesQuery.data?.items ?? [], [challengesQuery.data?.items]);
+  const categoryOptions = useMemo(() => {
+    const categories = Array.from(
+      new Set(challenges.map((challenge) => String(challenge.category ?? "").trim()).filter(Boolean)),
+    ).sort((left, right) => left.localeCompare(right));
+
+    return [
+      { label: "All categories", value: "" },
+      ...categories.map((category) => ({ label: category, value: category })),
+    ];
+  }, [challenges]);
   const filteredChallenges = useMemo(() => {
     const search = filters.q.trim().toLowerCase();
     const category = filters.category.trim().toLowerCase();
+    const selectedTab = challengeManagementTabs.find((tab) => tab.value === activeTab);
+    const tabStatuses = selectedTab?.statuses ?? [];
+
     const result = challenges.filter((challenge) => {
+      const matchesTab = tabStatuses.length === 0 || tabStatuses.includes(challenge.status);
+      const matchesStatus = filters.status === "all" || challenge.status === filters.status;
       const matchesSearch = !search ||
-        [challenge.title, challenge.shortSummary, challenge.targetOutcome?.outcomeStatement]
+        [
+          challenge.title,
+          challenge.shortSummary,
+          challenge.category,
+          challenge.subCategory,
+          challenge.targetOutcome?.outcomeStatement,
+          ...(challenge.skillsNeeded ?? []),
+          ...(challenge.toolsNeeded ?? []),
+        ]
           .join(" ")
           .toLowerCase()
           .includes(search);
-      const matchesCategory = !category || String(challenge.category ?? "").toLowerCase().includes(category);
+      const matchesCategory = !category || String(challenge.category ?? "").toLowerCase() === category;
 
-      return matchesSearch && matchesCategory;
+      return matchesTab && matchesStatus && matchesSearch && matchesCategory;
     });
 
     return [...result].sort((left, right) => {
@@ -95,67 +148,84 @@ export function MyChallenges() {
         return Number(right.qualityScore?.score ?? 0) - Number(left.qualityScore?.score ?? 0);
       }
 
-      if (filters.sort === "plans") {
-        return Number(right.applicationStats?.totalPlans ?? 0) - Number(left.applicationStats?.totalPlans ?? 0);
+      if (filters.sort === "most_plans") {
+        return getPlansCount(right) - getPlansCount(left);
       }
 
-      return new Date(right.updatedAt ?? right.createdAt ?? 0) - new Date(left.updatedAt ?? left.createdAt ?? 0);
-    });
-  }, [challenges, filters]);
-  const stats = useMemo(() => {
-    const totalQuality = challenges.reduce((sum, challenge) => sum + Number(challenge.qualityScore?.score ?? 0), 0);
+      if (filters.sort === "urgency") {
+        return (urgencyRank[right.urgency] ?? 0) - (urgencyRank[left.urgency] ?? 0);
+      }
 
-    return {
-      drafts: challenges.filter((challenge) => challenge.status === "draft").length,
-      open: challenges.filter((challenge) => challenge.status === "open").length,
-      quality: challenges.length > 0 ? Math.round(totalQuality / challenges.length) : 0,
-      total: challenges.length,
-    };
-  }, [challenges]);
+      if (filters.sort === "newest") {
+        return getDateTime(right.createdAt) - getDateTime(left.createdAt);
+      }
+
+      return getDateTime(right.updatedAt ?? right.createdAt) - getDateTime(left.updatedAt ?? left.createdAt);
+    });
+  }, [activeTab, challenges, filters]);
   const actionState = {
     isArchiving: archiveMutation.isPending,
     isClosing: closeMutation.isPending,
     isPausing: pauseMutation.isPending,
     isPublishing: publishMutation.isPending,
   };
+  const tabEmptyCopy = getEmptyCopy(activeTab);
 
   function updateFilter(field, value) {
     setFilters((current) => ({ ...current, [field]: value }));
   }
 
   function resetFilters() {
-    setFilters({ category: "", q: "", sort: "newest", status: "all", visibility: "all" });
+    setActiveTab("all");
+    setFilters({ category: "", q: "", sort: "last_updated", status: "all" });
   }
 
   return (
     <div className="grid gap-6">
-      <PageHeader
-        actions={
-          <Button as={Link} to={ROUTES.NEW_CHALLENGE}>
-            <Plus aria-hidden="true" className="mr-2 h-4 w-4" />
-            Create Challenge
-          </Button>
-        }
-        description="Create measurable outcome challenges with clear success criteria, timeline, budget, and proof requirements."
-        eyebrow="Client Challenge Workspace"
-        title="My Challenges"
-      />
+      <section className="rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+          <div>
+            <Badge variant="primary">Client challenge control</Badge>
+            <h1 className="mt-4 text-4xl font-black tracking-normal text-[#1C1917] md:text-5xl">
+              My Challenges
+            </h1>
+            <p className="mt-4 max-w-3xl text-base leading-8 text-[#57534E]">
+              Manage draft, open, reviewing, and active outcome challenges from one control center.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+            <Button as={Link} className="w-full sm:w-auto" to={ROUTES.NEW_CHALLENGE}>
+              <Plus aria-hidden="true" className="mr-2 h-4 w-4" />
+              Create Challenge
+            </Button>
+            <Button as={Link} className="w-full sm:w-auto" to={ROUTES.PROVIDERS} variant="outline">
+              <UsersRound aria-hidden="true" className="mr-2 h-4 w-4" />
+              Find Providers
+            </Button>
+          </div>
+        </div>
+      </section>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Total challenges" value={stats.total} />
-        <StatCard label="Open challenges" value={stats.open} />
-        <StatCard label="Draft challenges" value={stats.drafts} />
-        <StatCard label="Average quality score" value={`${stats.quality}/100`} />
-      </div>
+      <ChallengeStatsStrip challenges={challenges} />
+
+      <ChallengeManagementTabs activeTab={activeTab} challenges={challenges} onChange={setActiveTab} />
 
       <Card padding="md" variant="default">
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_repeat(4,minmax(0,1fr))_auto] lg:items-end">
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.25fr)_repeat(3,minmax(0,1fr))_auto] lg:items-end">
           <Input
             label="Search challenges"
+            leftIcon={<Search className="h-4 w-4" />}
             onChange={(event) => updateFilter("q", event.target.value)}
-            placeholder="Search by outcome, proof, or title"
+            placeholder="Search by outcome, skill, proof, or title"
             type="search"
             value={filters.q}
+          />
+          <Select
+            label="Category"
+            onChange={(event) => updateFilter("category", event.target.value)}
+            options={categoryOptions}
+            placeholder=""
+            value={filters.category}
           />
           <Select
             label="Status"
@@ -163,19 +233,6 @@ export function MyChallenges() {
             options={statusOptions}
             placeholder=""
             value={filters.status}
-          />
-          <Input
-            label="Category"
-            onChange={(event) => updateFilter("category", event.target.value)}
-            placeholder="CRM Automation"
-            value={filters.category}
-          />
-          <Select
-            label="Visibility"
-            onChange={(event) => updateFilter("visibility", event.target.value)}
-            options={visibilityOptions}
-            placeholder=""
-            value={filters.visibility}
           />
           <Select
             label="Sort"
@@ -207,7 +264,7 @@ export function MyChallenges() {
       {challengesQuery.isLoading ? (
         <div className="grid gap-4 xl:grid-cols-2">
           {Array.from({ length: 4 }).map((_, index) => (
-            <Skeleton className="h-72" key={index} />
+            <Skeleton className="h-96" key={index} />
           ))}
         </div>
       ) : null}
@@ -217,15 +274,16 @@ export function MyChallenges() {
       ) : null}
 
       {!challengesQuery.isLoading && !challengesQuery.isError && challenges.length > 0 && filteredChallenges.length === 0 ? (
-        <Card padding="lg" variant="bordered">
-          <h2 className="text-2xl font-black text-[#1C1917]">No challenges match these filters</h2>
-          <p className="mt-2 text-sm leading-6 text-[#78716C]">
-            Adjust search, status, visibility, or category filters to see more challenges.
-          </p>
-          <Button className="mt-5" onClick={resetFilters} type="button" variant="outline">
-            Clear filters
-          </Button>
-        </Card>
+        <EmptyState
+          actionText="Clear filters"
+          description={tabEmptyCopy.description}
+          icon={Search}
+          onAction={resetFilters}
+          secondaryActionHref={ROUTES.NEW_CHALLENGE}
+          secondaryActionText="Create Challenge"
+          title={tabEmptyCopy.title}
+          variant="bordered"
+        />
       ) : null}
 
       {filteredChallenges.length > 0 ? (

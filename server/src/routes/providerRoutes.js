@@ -1,5 +1,7 @@
 import { Router } from "express";
 import {
+  getProviderComparison,
+  getProviderFilterOptions,
   getProviders,
   getProviderByUsername,
   postProviderConnection,
@@ -15,11 +17,16 @@ import {
   roles,
 } from "../middleware/roleMiddleware.js";
 import { validateQuery } from "../middleware/validate.middleware.js";
-import { providerSearchQuerySchema } from "../validators/search.validator.js";
+import {
+  providerCompareQuerySchema,
+  providerSearchQuerySchema,
+} from "../validators/provider.validator.js";
 
 const router = Router();
 
 router.get("/", optionalUser, validateQuery(providerSearchQuerySchema), getProviders);
+router.get("/filters", getProviderFilterOptions);
+router.get("/compare", optionalUser, validateQuery(providerCompareQuerySchema), getProviderComparison);
 router.post(
   "/verification",
   protectUser,
