@@ -441,3 +441,7 @@ If ProofArena succeeds completely:
 
 ProofArena does not eliminate hiring by making people interchangeable. It makes
 execution relationships clearer, fairer, more accountable, and more valuable.
+
+The protocol-level design for portable proof, contextual trust, reputation,
+governance, and interoperability is defined in the
+[ProofArena Trust Infrastructure Protocol](PROOFARENA_TRUST_INFRASTRUCTURE_PROTOCOL.md).

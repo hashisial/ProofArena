@@ -4,8 +4,10 @@ ProofArena is a verified outcome execution network. Clients define measurable
 outcomes, providers compete through execution plans, proof validates delivery,
 and reputation follows verified results.
 
-The long-term product direction is documented in
-[ProofArena Outcome OS 2045](docs/PROOFARENA_OUTCOME_OS_2045.md).
+Long-term product direction:
+
+- [ProofArena Outcome OS 2045](docs/PROOFARENA_OUTCOME_OS_2045.md)
+- [ProofArena Trust Infrastructure Protocol](docs/PROOFARENA_TRUST_INFRASTRUCTURE_PROTOCOL.md)
 
 ## Applications
 
