@@ -1,14 +1,27 @@
 import { app } from "../src/app.js";
 import { connectDB } from "../src/config/db.js";
+import mongoose from "mongoose";
 
 let connectionPromise;
 
 async function ensureConnection() {
-  if (!connectionPromise) {
-    connectionPromise = connectDB();
+  if (mongoose.connection.readyState === 1) {
+    return mongoose.connection;
   }
 
-  return connectionPromise;
+  if (mongoose.connection.readyState === 2) {
+    return mongoose.connection.asPromise();
+  }
+
+  connectionPromise = connectDB();
+
+  try {
+    return await connectionPromise;
+  } finally {
+    if (mongoose.connection.readyState !== 1) {
+      connectionPromise = undefined;
+    }
+  }
 }
 
 export default async function handler(request, response) {
