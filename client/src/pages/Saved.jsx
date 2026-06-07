@@ -28,7 +28,7 @@ function ProviderAvatar({ provider }) {
     return (
       <img
         alt=""
-        className="h-14 w-14 rounded-2xl border border-black/10 object-cover shadow-[0_14px_34px_rgba(63, 98, 18, 0.1)]"
+        className="h-14 w-14 rounded-2xl border border-black/10 object-cover shadow-[0_14px_34px_rgba(124, 58, 237, 0.1)]"
         src={provider.avatar}
       />
     );
@@ -46,8 +46,8 @@ function SavedServiceCard({ item, onRemove, removing }) {
   const provider = item.provider;
 
   return (
-    <article className="group overflow-hidden rounded-[1.7rem] border border-black/10 bg-white shadow-[0_20px_62px_rgba(63, 98, 18, 0.08)] transition duration-300 hover:-translate-y-1 hover:border-[#3F6212]/38 hover:shadow-[0_28px_84px_rgba(63, 98, 18, 0.16)]">
-      <div className="relative aspect-[16/10] overflow-hidden bg-[#1A2E05]">
+    <article className="group overflow-hidden rounded-[1.7rem] border border-black/10 bg-white shadow-[0_20px_62px_rgba(124, 58, 237, 0.08)] transition duration-300 hover:-translate-y-1 hover:border-[#7C3AED]/38 hover:shadow-[0_28px_84px_rgba(124, 58, 237, 0.16)]">
+      <div className="relative aspect-[16/10] overflow-hidden bg-[#12091F]">
         {service?.coverImage ? (
           <img
             alt=""
@@ -55,7 +55,7 @@ function SavedServiceCard({ item, onRemove, removing }) {
             src={service.coverImage}
           />
         ) : (
-          <div className="h-full w-full bg-[radial-gradient(circle_at_20%_18%,rgba(101, 163, 13, 0.58),transparent_12rem),linear-gradient(135deg,#1C1917,#365314)]" />
+          <div className="h-full w-full bg-[radial-gradient(circle_at_20%_18%,rgba(167, 139, 250, 0.58),transparent_12rem),linear-gradient(135deg,#07030D,#5B21B6)]" />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/76 via-black/10 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
@@ -69,7 +69,7 @@ function SavedServiceCard({ item, onRemove, removing }) {
       </div>
       <div className="grid gap-5 p-5">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
             Saved service
           </p>
           <h2 className="mt-2 text-2xl font-black leading-[1.04] tracking-[-0.055em] text-black">
@@ -80,7 +80,7 @@ function SavedServiceCard({ item, onRemove, removing }) {
           </p>
         </div>
         {provider ? (
-          <a className="flex items-center gap-3 rounded-2xl border border-black/10 bg-[#fffbeb] p-3" href={provider.publicUrl || "#"}>
+          <a className="flex items-center gap-3 rounded-2xl border border-black/10 bg-[#F8F4FF] p-3" href={provider.publicUrl || "#"}>
             <ProviderAvatar provider={provider} />
             <span className="min-w-0">
               <span className="block truncate text-sm font-black text-black">{provider.name || provider.fullName}</span>
@@ -115,12 +115,12 @@ function SavedProviderCard({ item, onRemove, removing }) {
   const provider = item.provider;
 
   return (
-    <article className="group relative overflow-hidden rounded-[1.7rem] border border-black/10 bg-white p-5 shadow-[0_20px_62px_rgba(63, 98, 18, 0.08)] transition duration-300 hover:-translate-y-1 hover:border-[#3F6212]/38 hover:shadow-[0_28px_84px_rgba(63, 98, 18, 0.16)]">
-      <div aria-hidden="true" className="absolute -right-14 -top-14 h-36 w-36 rounded-full bg-[#3F6212]/10 blur-3xl" />
+    <article className="group relative overflow-hidden rounded-[1.7rem] border border-black/10 bg-white p-5 shadow-[0_20px_62px_rgba(124, 58, 237, 0.08)] transition duration-300 hover:-translate-y-1 hover:border-[#7C3AED]/38 hover:shadow-[0_28px_84px_rgba(124, 58, 237, 0.16)]">
+      <div aria-hidden="true" className="absolute -right-14 -top-14 h-36 w-36 rounded-full bg-[#7C3AED]/10 blur-3xl" />
       <div className="relative flex items-start gap-4">
         <ProviderAvatar provider={provider} />
         <div className="min-w-0">
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
             Saved provider
           </p>
           <h2 className="mt-2 truncate text-2xl font-black tracking-[-0.055em] text-black">
@@ -137,7 +137,7 @@ function SavedProviderCard({ item, onRemove, removing }) {
           ["Projects", provider?.completedProjects ?? 0],
           ["Rate", provider?.hourlyRate ? `$${provider.hourlyRate}/hr` : "Custom"],
         ].map(([label, value]) => (
-          <div className="rounded-2xl border border-black/10 bg-[#fffbeb] p-3" key={label}>
+          <div className="rounded-2xl border border-black/10 bg-[#F8F4FF] p-3" key={label}>
             <p className="text-[11px] font-black uppercase tracking-[0.14em] text-black/38">{label}</p>
             <p className="mt-1 truncate text-sm font-black text-black">{value}</p>
           </div>
@@ -189,11 +189,11 @@ export function Saved() {
   return (
     <WorkspaceLayout eyebrow="Client shortlist" title="Saved">
       <div className="grid gap-8">
-        <section className="relative overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[radial-gradient(circle_at_92%_12%,rgba(63, 98, 18, 0.2),transparent_34%),linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] md:p-8">
-          <div aria-hidden="true" className="absolute -right-16 -top-20 h-56 w-56 rounded-full bg-[#3F6212]/16 blur-3xl" />
+        <section className="relative overflow-hidden rounded-[2rem] border border-[#7C3AED]/16 bg-[radial-gradient(circle_at_92%_12%,rgba(124, 58, 237, 0.2),transparent_34%),linear-gradient(135deg,#ffffff,#F8F4FF)] p-6 shadow-[0_28px_90px_rgba(124, 58, 237, 0.1)] md:p-8">
+          <div aria-hidden="true" className="absolute -right-16 -top-20 h-56 w-56 rounded-full bg-[#7C3AED]/16 blur-3xl" />
           <div className="relative grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.24em] text-[#3F6212]">
+              <p className="text-xs font-black uppercase tracking-[0.24em] text-[#7C3AED]">
                 Saved workspace
               </p>
               <h1 className="mt-4 max-w-4xl text-4xl font-black tracking-[-0.07em] text-black md:text-6xl">
@@ -233,7 +233,7 @@ export function Saved() {
         {!isLoading && groupedItems.services.length > 0 ? (
           <section className="grid gap-5">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#3F6212]">Saved services</p>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#7C3AED]">Saved services</p>
               <h2 className="mt-2 text-3xl font-black tracking-[-0.055em] text-black">Services to compare</h2>
             </div>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -252,7 +252,7 @@ export function Saved() {
         {!isLoading && groupedItems.providers.length > 0 ? (
           <section className="grid gap-5">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#3F6212]">Saved providers</p>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#7C3AED]">Saved providers</p>
               <h2 className="mt-2 text-3xl font-black tracking-[-0.055em] text-black">People worth contacting</h2>
             </div>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">

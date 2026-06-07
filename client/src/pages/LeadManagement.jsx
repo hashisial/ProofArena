@@ -405,7 +405,7 @@ function LeadScraperPanel() {
 
   return (
     <form
-      className="min-w-0 overflow-hidden rounded-3xl border border-[#65A30D]/18 bg-[linear-gradient(145deg,rgba(63, 98, 18, 0.16),rgba(255,255,255,0.055)_42%,rgba(0,0,0,0.22))] p-6 shadow-2xl shadow-black/20 backdrop-blur-xl"
+      className="min-w-0 overflow-hidden rounded-3xl border border-[#A78BFA]/18 bg-[linear-gradient(145deg,rgba(124, 58, 237, 0.16),rgba(255,255,255,0.055)_42%,rgba(0,0,0,0.22))] p-6 shadow-2xl shadow-black/20 backdrop-blur-xl"
       onSubmit={handleSubmit}
     >
       <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300">
@@ -418,7 +418,7 @@ function LeadScraperPanel() {
 
       <div className="mt-5 grid min-w-0 gap-3">
         <input
-          className="min-h-12 min-w-0 rounded-2xl border border-white/10 bg-[#1C1917]/80 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20"
+          className="min-h-12 min-w-0 rounded-2xl border border-white/10 bg-[#07030D]/80 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20"
           onChange={(event) => {
             setKeyword(event.target.value);
             setMessage("");
@@ -453,13 +453,13 @@ function LeadScraperPanel() {
         </div>
         <div className="mt-3 grid gap-3">
           {!isLoading && jobs.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-white/10 bg-[#1C1917]/55 px-4 py-6 text-sm text-white/48">
+            <div className="rounded-2xl border border-dashed border-white/10 bg-[#07030D]/55 px-4 py-6 text-sm text-white/48">
               No scrape jobs yet.
             </div>
           ) : null}
           {jobs.slice(0, 4).map((job) => (
             <div
-              className="min-w-0 rounded-2xl border border-white/10 bg-[#1C1917]/70 p-4"
+              className="min-w-0 rounded-2xl border border-white/10 bg-[#07030D]/70 p-4"
               key={job._id}
             >
               <div className="flex items-start justify-between gap-4">
@@ -806,7 +806,7 @@ function StatusSelect({ disabled = false, lead, onStatusChange }) {
   return (
     <select
       aria-label={`Change status for ${lead.name}`}
-      className="w-full rounded-xl border border-white/10 bg-[#1C1917]/80 px-3 py-2 text-sm font-semibold text-white outline-none transition focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20"
+      className="w-full rounded-xl border border-white/10 bg-[#07030D]/80 px-3 py-2 text-sm font-semibold text-white outline-none transition focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20"
       disabled={disabled}
       onChange={(event) => onStatusChange(lead, event.target.value)}
       value={normalizeLeadStatus(lead.status)}
@@ -876,7 +876,7 @@ function PipelineBoard({ isUpdating, leads, onEdit, onStatusChange }) {
 
           return (
             <div
-              className="min-h-80 min-w-0 rounded-3xl border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/20 backdrop-blur-xl transition hover:border-[#65A30D]/30"
+              className="min-h-80 min-w-0 rounded-3xl border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/20 backdrop-blur-xl transition hover:border-[#A78BFA]/30"
               key={status.value}
               onDragOver={(event) => event.preventDefault()}
               onDrop={(event) => handleDrop(event, status.value)}
@@ -903,7 +903,7 @@ function PipelineBoard({ isUpdating, leads, onEdit, onStatusChange }) {
                 ) : null}
                 {columnLeads.map((lead) => (
                   <div
-                    className={`min-w-0 rounded-2xl border border-white/10 bg-[#1C1917]/78 p-4 shadow-xl shadow-black/15 transition hover:-translate-y-0.5 hover:border-[#65A30D]/40 ${draggingLeadId === lead._id ? "opacity-50" : ""}`}
+                    className={`min-w-0 rounded-2xl border border-white/10 bg-[#07030D]/78 p-4 shadow-xl shadow-black/15 transition hover:-translate-y-0.5 hover:border-[#A78BFA]/40 ${draggingLeadId === lead._id ? "opacity-50" : ""}`}
                     draggable
                     key={lead._id}
                     onDragEnd={() => setDraggingLeadId("")}
@@ -917,7 +917,7 @@ function PipelineBoard({ isUpdating, leads, onEdit, onStatusChange }) {
                         </p>
                       </div>
                       <button
-                        className="shrink-0 rounded-lg border border-white/10 px-2 py-1 text-xs font-bold text-slate-300 transition hover:border-[#65A30D]/45 hover:text-white"
+                        className="shrink-0 rounded-lg border border-white/10 px-2 py-1 text-xs font-bold text-slate-300 transition hover:border-[#A78BFA]/45 hover:text-white"
                         onClick={() => onEdit(lead)}
                         type="button"
                       >
@@ -996,7 +996,7 @@ function LeadsTable({
       <div className="grid gap-3 p-3 md:hidden">
         {leads.map((lead) => (
           <article
-            className="min-w-0 rounded-2xl border border-white/10 bg-[#1C1917]/70 p-4 shadow-xl shadow-black/15"
+            className="min-w-0 rounded-2xl border border-white/10 bg-[#07030D]/70 p-4 shadow-xl shadow-black/15"
             key={lead._id}
           >
             <div className="flex items-start justify-between gap-3">
@@ -1007,7 +1007,7 @@ function LeadsTable({
                 </p>
               </div>
               <button
-                className="shrink-0 rounded-xl border border-white/10 px-3 py-2 text-xs font-bold text-slate-200 transition hover:border-[#65A30D]/45 hover:text-white"
+                className="shrink-0 rounded-xl border border-white/10 px-3 py-2 text-xs font-bold text-slate-200 transition hover:border-[#A78BFA]/45 hover:text-white"
                 onClick={() => onEdit(lead)}
                 type="button"
               >
@@ -1039,7 +1039,7 @@ function LeadsTable({
                 onStatusChange={onStatusChange}
               />
               <Button
-                className="min-h-10 border-rose-300/30 px-4 py-2 text-white hover:border-rose-300/70 hover:bg-[#3F6212]"
+                className="min-h-10 border-rose-300/30 px-4 py-2 text-white hover:border-rose-300/70 hover:bg-[#7C3AED]"
                 onClick={() => onDelete(lead._id)}
                 type="button"
                 variant="outline"
@@ -1251,8 +1251,8 @@ function LeadManagementContent() {
   return (
     <Container className="max-w-none px-0 sm:px-0 lg:px-0">
       <div className="grid gap-8">
-        <div className="relative flex flex-col gap-5 overflow-hidden rounded-3xl border border-[#65A30D]/18 bg-[linear-gradient(135deg,rgba(63, 98, 18, 0.26),rgba(255,255,255,0.06)_42%,rgba(161,98,7,0.16))] p-5 shadow-2xl shadow-black/25 backdrop-blur-xl sm:p-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="absolute -right-12 -top-16 h-44 w-44 rounded-full bg-[#65A30D]/20 blur-3xl animate-pulse-glow" />
+        <div className="relative flex flex-col gap-5 overflow-hidden rounded-3xl border border-[#A78BFA]/18 bg-[linear-gradient(135deg,rgba(124, 58, 237, 0.26),rgba(255,255,255,0.06)_42%,rgba(109,40,217,0.16))] p-5 shadow-2xl shadow-black/25 backdrop-blur-xl sm:p-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="absolute -right-12 -top-16 h-44 w-44 rounded-full bg-[#A78BFA]/20 blur-3xl animate-pulse-glow" />
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300">
               Lead Management
@@ -1271,7 +1271,7 @@ function LeadManagementContent() {
               ["Closed", stats.closed],
             ].map(([label, value]) => (
               <div
-                className="rounded-2xl border border-white/10 bg-[#1C1917]/68 px-2 py-3 sm:px-4"
+                className="rounded-2xl border border-white/10 bg-[#07030D]/68 px-2 py-3 sm:px-4"
                 key={label}
               >
                 <p className="text-2xl font-bold text-white">{value}</p>

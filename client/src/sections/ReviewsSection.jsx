@@ -37,10 +37,10 @@ export function ReviewsSection() {
   const visibleReviews = reviews.length > 0 ? reviews.slice(0, 6) : fallbackReviews;
 
   return (
-    <section className="relative overflow-hidden bg-[#1C1917] py-24 text-white sm:py-28">
-      <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#3F6212]/28 blur-3xl" />
-      <div className="absolute right-[8%] top-28 h-44 w-44 rounded-[2rem] border border-[#65A30D]/18 bg-[#3F6212]/10 backdrop-blur-xl animate-breathe-rotate" />
-      <div className="absolute bottom-0 left-[42%] h-80 w-80 rounded-full bg-[#365314]/20 blur-3xl" />
+    <section className="relative overflow-hidden bg-[#07030D] py-24 text-white sm:py-28">
+      <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#7C3AED]/28 blur-3xl" />
+      <div className="absolute right-[8%] top-28 h-44 w-44 rounded-[2rem] border border-[#A78BFA]/18 bg-[#7C3AED]/10 backdrop-blur-xl animate-breathe-rotate" />
+      <div className="absolute bottom-0 left-[42%] h-80 w-80 rounded-full bg-[#5B21B6]/20 blur-3xl" />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:items-end">
@@ -50,7 +50,7 @@ export function ReviewsSection() {
             title="What clients feel when the system starts working."
             tone="light"
           />
-          <div className="max-w-xl rounded-[2rem] border border-white/10 bg-white/[0.06] p-5 text-sm leading-6 text-white/72 shadow-[0_28px_90px_rgba(63, 98, 18, 0.16)] backdrop-blur-xl lg:ml-auto">
+          <div className="max-w-xl rounded-[2rem] border border-white/10 bg-white/[0.06] p-5 text-sm leading-6 text-white/72 shadow-[0_28px_90px_rgba(124, 58, 237, 0.16)] backdrop-blur-xl lg:ml-auto">
             Admin-approved reviews are connected to the homepage. New reviews stay private until they are approved in the admin panel.
           </div>
         </div>
@@ -60,12 +60,12 @@ export function ReviewsSection() {
             <article
               className={`group relative overflow-hidden rounded-[2rem] border p-6 transition duration-300 hover:-translate-y-1 ${
                 index === 0
-                  ? "border-[#65A30D]/35 bg-[#3F6212] text-white shadow-[0_34px_100px_rgba(63, 98, 18, 0.32)]"
-                  : "border-white/12 bg-white text-black shadow-[0_24px_70px_rgba(0,0,0,0.18)] hover:border-[#3F6212]/45 hover:shadow-[0_34px_90px_rgba(63, 98, 18, 0.24)]"
+                  ? "border-[#A78BFA]/35 bg-[#7C3AED] text-white shadow-[0_34px_100px_rgba(124, 58, 237, 0.32)]"
+                  : "border-white/12 bg-white text-black shadow-[0_24px_70px_rgba(0,0,0,0.18)] hover:border-[#7C3AED]/45 hover:shadow-[0_34px_90px_rgba(124, 58, 237, 0.24)]"
               }`}
               key={review._id}
             >
-              <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#65A30D]/20 blur-2xl opacity-0 transition duration-500 group-hover:opacity-100" />
+              <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#A78BFA]/20 blur-2xl opacity-0 transition duration-500 group-hover:opacity-100" />
               <div className="relative flex items-center gap-4">
                 {review.image ? (
                   <img
@@ -77,7 +77,7 @@ export function ReviewsSection() {
                 ) : (
                   <div
                     className={`flex h-14 w-14 items-center justify-center rounded-2xl text-sm font-bold ${
-                      index === 0 ? "bg-white text-[#365314]" : "bg-black text-white"
+                      index === 0 ? "bg-white text-[#5B21B6]" : "bg-black text-white"
                     }`}
                   >
                     {getInitials(review.authorName)}
@@ -94,7 +94,7 @@ export function ReviewsSection() {
                           starIndex < Number(review.stars ?? 5)
                             ? index === 0
                               ? "bg-white"
-                              : "bg-[#3F6212]"
+                              : "bg-[#7C3AED]"
                             : index === 0
                               ? "bg-white/25"
                               : "bg-black/12"

@@ -45,23 +45,23 @@ export function SavedProviderCard({
         {avatar ? (
           <img
             alt={`${name} profile photo`}
-            className="h-16 w-16 shrink-0 rounded-2xl object-cover ring-4 ring-[#F7FEE7]"
+            className="h-16 w-16 shrink-0 rounded-2xl object-cover ring-4 ring-[#F5F3FF]"
             src={avatar}
           />
         ) : (
-          <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[#3F6212] text-lg font-black text-white ring-4 ring-[#F7FEE7]">
+          <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[#7C3AED] text-lg font-black text-white ring-4 ring-[#F5F3FF]">
             {getInitials(name)}
           </div>
         )}
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <h2 className="min-w-0 break-words text-xl font-black text-[#1C1917]">{name}</h2>
+            <h2 className="min-w-0 break-words text-xl font-black text-[#07030D]">{name}</h2>
             <ProviderVerificationBadge
               verification={provider.verificationBadge ?? provider.verification}
               verificationStatus={provider.verificationStatus}
             />
           </div>
-          <p className="mt-2 line-clamp-2 text-sm font-semibold leading-6 text-[#78716C]">
+          <p className="mt-2 line-clamp-2 text-sm font-semibold leading-6 text-[#6F657C]">
             {provider.headline || "Public provider profile"}
           </p>
         </div>
@@ -77,7 +77,7 @@ export function SavedProviderCard({
       <ProviderTrustMetrics className="mt-4" provider={provider} />
 
       {item.note ? (
-        <p className="mt-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3 text-sm font-semibold leading-6 text-[#44403C]">
+        <p className="mt-4 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3 text-sm font-semibold leading-6 text-[#493C5E]">
           {item.note}
         </p>
       ) : null}
@@ -92,7 +92,7 @@ export function SavedProviderCard({
         </div>
       ) : null}
 
-      <p className="mt-4 text-xs font-bold text-[#78716C]">
+      <p className="mt-4 text-xs font-bold text-[#6F657C]">
         Saved {formatDate(item.createdAt, { fallback: "recently" })}
       </p>
 

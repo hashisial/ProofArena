@@ -27,9 +27,9 @@ export function PortfolioPreview({ id = "portfolio" }) {
   return (
     <section
       id={id}
-      className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_54%,#ffffff_100%)] py-20 sm:py-24 lg:py-32"
+      className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#F8F4FF_54%,#ffffff_100%)] py-20 sm:py-24 lg:py-32"
     >
-      <div className="absolute left-[12%] top-20 h-64 w-64 rounded-full bg-[#3F6212]/10 blur-3xl" />
+      <div className="absolute left-[12%] top-20 h-64 w-64 rounded-full bg-[#7C3AED]/10 blur-3xl" />
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="relative flex flex-col gap-8 lg:ml-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
@@ -44,8 +44,8 @@ export function PortfolioPreview({ id = "portfolio" }) {
                   key={industry}
                   className={`rounded-full border px-4 py-2 text-sm font-bold transition duration-300 ${
                     activeIndustry === industry
-                      ? "border-black bg-black text-white shadow-[0_18px_50px_rgba(63, 98, 18, 0.22)]"
-                      : "border-black/10 bg-white text-black/58 hover:-translate-y-0.5 hover:border-[#3F6212]/40 hover:bg-[#3F6212] hover:text-white"
+                      ? "border-black bg-black text-white shadow-[0_18px_50px_rgba(124, 58, 237, 0.22)]"
+                      : "border-black/10 bg-white text-black/58 hover:-translate-y-0.5 hover:border-[#7C3AED]/40 hover:bg-[#7C3AED] hover:text-white"
                   }`}
                   onClick={() => setActiveIndustry(industry)}
                   type="button"

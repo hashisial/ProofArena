@@ -43,11 +43,11 @@ function ConnectionCard({
   const canMessage = connection.status === "accepted";
 
   return (
-    <article className="group relative overflow-hidden rounded-[1.8rem] border border-black/10 bg-white p-5 shadow-[0_22px_70px_rgba(63, 98, 18, 0.08)] transition hover:-translate-y-0.5 hover:border-[#3F6212]/38 hover:shadow-[0_28px_90px_rgba(63, 98, 18, 0.15)]">
-      <div aria-hidden="true" className="absolute -right-14 -top-14 h-36 w-36 rounded-full bg-[#3F6212]/10 blur-3xl transition group-hover:bg-[#3F6212]/18" />
+    <article className="group relative overflow-hidden rounded-[1.8rem] border border-black/10 bg-white p-5 shadow-[0_22px_70px_rgba(124, 58, 237, 0.08)] transition hover:-translate-y-0.5 hover:border-[#7C3AED]/38 hover:shadow-[0_28px_90px_rgba(124, 58, 237, 0.15)]">
+      <div aria-hidden="true" className="absolute -right-14 -top-14 h-36 w-36 rounded-full bg-[#7C3AED]/10 blur-3xl transition group-hover:bg-[#7C3AED]/18" />
       <div className="relative grid gap-5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center">
         {other.avatar ? (
-          <img alt="" className="h-16 w-16 rounded-[1.35rem] object-cover shadow-[0_18px_45px_rgba(63, 98, 18, 0.12)]" src={other.avatar} />
+          <img alt="" className="h-16 w-16 rounded-[1.35rem] object-cover shadow-[0_18px_45px_rgba(124, 58, 237, 0.12)]" src={other.avatar} />
         ) : (
           <div className="flex h-16 w-16 items-center justify-center rounded-[1.35rem] bg-black text-lg font-black text-white shadow-[0_18px_45px_rgba(0,0,0,0.14)]">
             {getInitials(name)}
@@ -56,10 +56,10 @@ function ConnectionCard({
 
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full border border-[#3F6212]/18 bg-[#3F6212]/8 px-3 py-1 text-[11px] font-black uppercase tracking-[0.14em] text-[#365314]">
+            <span className="rounded-full border border-[#7C3AED]/18 bg-[#7C3AED]/8 px-3 py-1 text-[11px] font-black uppercase tracking-[0.14em] text-[#5B21B6]">
               {connection.status}
             </span>
-            <span className="rounded-full border border-black/10 bg-[#fffbeb] px-3 py-1 text-[11px] font-black uppercase tracking-[0.14em] text-black/48">
+            <span className="rounded-full border border-black/10 bg-[#F8F4FF] px-3 py-1 text-[11px] font-black uppercase tracking-[0.14em] text-black/48">
               {connection.direction}
             </span>
           </div>
@@ -137,12 +137,12 @@ function CandidateCard({ candidate, isBusy, onConnect, onMessage }) {
           : "Connect";
 
   return (
-    <article className="group overflow-hidden rounded-[1.6rem] border border-black/10 bg-white p-4 shadow-[0_18px_55px_rgba(63, 98, 18, 0.07)] transition hover:-translate-y-0.5 hover:border-[#3F6212]/35 hover:shadow-[0_24px_70px_rgba(63, 98, 18, 0.13)]">
+    <article className="group overflow-hidden rounded-[1.6rem] border border-black/10 bg-white p-4 shadow-[0_18px_55px_rgba(124, 58, 237, 0.07)] transition hover:-translate-y-0.5 hover:border-[#7C3AED]/35 hover:shadow-[0_24px_70px_rgba(124, 58, 237, 0.13)]">
       <div className="flex gap-4">
         {candidate.avatar ? (
           <img alt="" className="h-14 w-14 rounded-2xl object-cover" src={candidate.avatar} />
         ) : (
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#3F6212] text-sm font-black text-white shadow-[0_16px_38px_rgba(63, 98, 18, 0.2)]">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#7C3AED] text-sm font-black text-white shadow-[0_16px_38px_rgba(124, 58, 237, 0.2)]">
             {getInitials(name)}
           </div>
         )}
@@ -151,7 +151,7 @@ function CandidateCard({ candidate, isBusy, onConnect, onMessage }) {
             <h3 className="truncate text-base font-black tracking-[-0.035em] text-black">
               {name}
             </h3>
-            <span className="rounded-full bg-[#3F6212]/8 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[#365314]">
+            <span className="rounded-full bg-[#7C3AED]/8 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[#5B21B6]">
               {candidate.role ?? "client"}
             </span>
           </div>
@@ -319,10 +319,10 @@ export function Connections() {
   return (
     <SaaSLayout eyebrow="Network" title="Connections">
       <section className="grid gap-6">
-        <div className="overflow-hidden rounded-[2.2rem] border border-[#3F6212]/14 bg-[radial-gradient(circle_at_86%_14%,rgba(63, 98, 18, 0.16),transparent_32%),linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] md:p-8">
+        <div className="overflow-hidden rounded-[2.2rem] border border-[#7C3AED]/14 bg-[radial-gradient(circle_at_86%_14%,rgba(124, 58, 237, 0.16),transparent_32%),linear-gradient(135deg,#ffffff,#F8F4FF)] p-6 shadow-[0_28px_90px_rgba(124, 58, 237, 0.1)] md:p-8">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-end">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.24em] text-[#3F6212]">
+              <p className="text-xs font-black uppercase tracking-[0.24em] text-[#7C3AED]">
                 Relationship graph
               </p>
               <h1 className="mt-4 max-w-4xl text-5xl font-black leading-[0.94] tracking-[-0.075em] text-black md:text-6xl">
@@ -342,12 +342,12 @@ export function Connections() {
               </div>
             </div>
 
-            <form className="rounded-[1.6rem] border border-black/10 bg-white p-4 shadow-[0_18px_55px_rgba(63, 98, 18, 0.08)]" onSubmit={submitRequest}>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
+            <form className="rounded-[1.6rem] border border-black/10 bg-white p-4 shadow-[0_18px_55px_rgba(124, 58, 237, 0.08)]" onSubmit={submitRequest}>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
                 Direct request
               </p>
               <input
-                className="mt-4 w-full rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                className="mt-4 w-full rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                 onChange={(event) => setReceiverId(event.target.value)}
                 placeholder="Paste user id"
                 value={receiverId}
@@ -359,10 +359,10 @@ export function Connections() {
           </div>
         </div>
 
-        <section className="rounded-[2rem] border border-[#3F6212]/14 bg-white p-5 shadow-[0_24px_75px_rgba(63, 98, 18, 0.08)] md:p-6">
+        <section className="rounded-[2rem] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_24px_75px_rgba(124, 58, 237, 0.08)] md:p-6">
           <div className="grid gap-5 lg:grid-cols-[360px_minmax(0,1fr)] lg:items-start">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#3F6212]">
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#7C3AED]">
                 Discover people
               </p>
               <h2 className="mt-3 text-3xl font-black leading-[0.98] tracking-[-0.06em] text-black">
@@ -370,7 +370,7 @@ export function Connections() {
               </h2>
               <form className="mt-5 grid gap-3" onSubmit={submitSearch}>
                 <input
-                  className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                  className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                   onChange={(event) => setSearch(event.target.value)}
                   placeholder="Name, username, skill, city, company"
                   value={search}
@@ -403,11 +403,11 @@ export function Connections() {
                 ["Suggested", candidates.length, "Profile-matched people to review"],
               ].map(([label, value, description]) => (
                 <div
-                  className="rounded-[1.35rem] border border-black/10 bg-[#fffbeb] p-4 transition hover:border-[#3F6212]/30 hover:bg-white hover:shadow-[0_18px_50px_rgba(63, 98, 18, 0.1)]"
+                  className="rounded-[1.35rem] border border-black/10 bg-[#F8F4FF] p-4 transition hover:border-[#7C3AED]/30 hover:bg-white hover:shadow-[0_18px_50px_rgba(124, 58, 237, 0.1)]"
                   key={label}
                 >
                   <p className="text-2xl font-black tracking-[-0.055em] text-black">{value}</p>
-                  <p className="mt-1 text-xs font-black uppercase tracking-[0.16em] text-[#3F6212]">{label}</p>
+                  <p className="mt-1 text-xs font-black uppercase tracking-[0.16em] text-[#7C3AED]">{label}</p>
                   <p className="mt-2 text-sm font-medium leading-5 text-black/52">{description}</p>
                 </div>
               ))}
@@ -430,8 +430,8 @@ export function Connections() {
               <button
                 className={`shrink-0 rounded-full border px-5 py-3 text-sm font-black transition ${
                   isActive
-                    ? "border-[#3F6212] bg-[#3F6212] text-white shadow-[0_18px_48px_rgba(63, 98, 18, 0.22)]"
-                    : "border-black/10 bg-white text-black/58 hover:border-[#3F6212]/35 hover:bg-[#3F6212] hover:text-white"
+                    ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow-[0_18px_48px_rgba(124, 58, 237, 0.22)]"
+                    : "border-black/10 bg-white text-black/58 hover:border-[#7C3AED]/35 hover:bg-[#7C3AED] hover:text-white"
                 }`}
                 key={value}
                 onClick={() => setActiveTab(value)}

@@ -49,7 +49,7 @@ export function ClientChallengeSummary({ challenges = [], isLoading = false }) {
         {isLoading ? (
           <div className="grid gap-3">
             {[0, 1, 2].map((item) => (
-              <div className="h-28 animate-pulse rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB]" key={item} />
+              <div className="h-28 animate-pulse rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF]" key={item} />
             ))}
           </div>
         ) : latestChallenges.length > 0 ? (
@@ -58,30 +58,30 @@ export function ClientChallengeSummary({ challenges = [], isLoading = false }) {
               const challengeId = getChallengeId(challenge);
 
               return (
-                <article className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={challengeId || challenge.title}>
+                <article className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={challengeId || challenge.title}>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="min-w-0 break-words text-lg font-black text-[#1C1917]">
+                        <h3 className="min-w-0 break-words text-lg font-black text-[#07030D]">
                           {challenge.title || "Untitled challenge"}
                         </h3>
                         <ChallengeStatusBadge status={challenge.status} />
                       </div>
-                      <p className="mt-2 line-clamp-2 text-sm leading-6 text-[#78716C]">
+                      <p className="mt-2 line-clamp-2 text-sm leading-6 text-[#6F657C]">
                         {getTargetOutcome(challenge)}
                       </p>
                     </div>
-                    <div className="grid shrink-0 gap-1 text-left text-xs font-bold text-[#78716C] sm:text-right">
+                    <div className="grid shrink-0 gap-1 text-left text-xs font-bold text-[#6F657C] sm:text-right">
                       <span>{formatChallengeBudget(challenge.budget)}</span>
                       <span>{formatChallengeTimeline(challenge.timeline)}</span>
                     </div>
                   </div>
 
                   <div className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
-                    <div className="rounded-xl bg-white px-3 py-2 font-bold text-[#44403C]">
+                    <div className="rounded-xl bg-white px-3 py-2 font-bold text-[#493C5E]">
                       {getPlansCount(challenge)} plans received
                     </div>
-                    <div className="rounded-xl bg-white px-3 py-2 font-bold text-[#44403C]">
+                    <div className="rounded-xl bg-white px-3 py-2 font-bold text-[#493C5E]">
                       {getRecommendationCount(challenge)} recommended providers
                     </div>
                   </div>

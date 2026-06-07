@@ -47,14 +47,14 @@ export function ProviderOpportunityPipelineCard({
             ["Won", isStatsError ? "Not available" : stats.won ?? 0],
             ["Due soon", isStatsError ? "Not available" : stats.dueSoon ?? 0],
           ].map(([label, value]) => (
-            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={label}>
-              <p className="text-sm font-bold text-[#78716C]">{label}</p>
-              <p className="mt-2 text-2xl font-black text-[#1C1917]">{value}</p>
+            <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={label}>
+              <p className="text-sm font-bold text-[#6F657C]">{label}</p>
+              <p className="mt-2 text-2xl font-black text-[#07030D]">{value}</p>
             </div>
           ))}
         </div>
         {!isStatsError && Number(overdue) > 0 ? (
-          <div className="mt-4 flex items-start gap-3 rounded-2xl border border-[#A16207]/25 bg-[#FEF3C7] p-4 text-[#854D0E]">
+          <div className="mt-4 flex items-start gap-3 rounded-2xl border border-[#6D28D9]/25 bg-[#FEF3C7] p-4 text-[#4C1D95]">
             <AlertCircle aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0" />
             <p className="text-sm font-bold">
               {overdue} overdue follow-up{Number(overdue) === 1 ? "" : "s"} need attention.
@@ -78,19 +78,19 @@ export function ProviderOpportunityPipelineCard({
 
               return (
                 <a
-                  className="rounded-2xl border border-[#E7E5E4] bg-white p-3 transition hover:border-[#65A30D] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70"
+                  className="rounded-2xl border border-[#E9E2F3] bg-white p-3 transition hover:border-[#A78BFA] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70"
                   href={opportunityId ? ROUTES.OPPORTUNITY_DETAIL(opportunityId) : ROUTES.OPPORTUNITY_PIPELINE}
                   key={opportunityId || `${opportunity.title}-${opportunity.updatedAt}`}
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <p className="min-w-0 break-words font-black text-[#1C1917]">
+                    <p className="min-w-0 break-words font-black text-[#07030D]">
                       {opportunity.title || "Provider opportunity"}
                     </p>
                     <Badge variant={opportunity.stage === "won" ? "green" : "gray"}>
                       {String(opportunity.stage || "new").replaceAll("_", " ")}
                     </Badge>
                   </div>
-                  <p className="mt-2 text-xs font-bold text-[#78716C]">
+                  <p className="mt-2 text-xs font-bold text-[#6F657C]">
                     Updated {formatDate(opportunity.updatedAt || opportunity.createdAt, { fallback: "recently" })}
                   </p>
                 </a>

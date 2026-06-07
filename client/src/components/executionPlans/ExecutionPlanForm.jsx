@@ -17,10 +17,10 @@ import { RiskHandlingEditor } from "./RiskHandlingEditor.jsx";
 
 function Section({ children, description, title }) {
   return (
-    <section className="grid gap-5 rounded-3xl border border-[#E7E5E4] bg-white p-4 shadow-[0_16px_50px_rgba(28,25,23,0.05)] sm:p-6">
+    <section className="grid gap-5 rounded-3xl border border-[#E9E2F3] bg-white p-4 shadow-[0_16px_50px_rgba(31,14,54,0.05)] sm:p-6">
       <div>
-        <h2 className="text-xl font-black text-[#1C1917]">{title}</h2>
-        {description ? <p className="mt-1 text-sm leading-6 text-[#78716C]">{description}</p> : null}
+        <h2 className="text-xl font-black text-[#07030D]">{title}</h2>
+        {description ? <p className="mt-1 text-sm leading-6 text-[#6F657C]">{description}</p> : null}
       </div>
       {children}
     </section>
@@ -45,7 +45,7 @@ function AttachmentEditor({ items = [], onChange }) {
   return (
     <div className="grid gap-4">
       {rows.map((item, index) => (
-        <div className="grid gap-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={index}>
+        <div className="grid gap-4 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={index}>
           <div className="grid gap-4 md:grid-cols-2">
             <Input
               label="Attachment title"
@@ -372,7 +372,7 @@ export function ExecutionPlanForm({
         </div>
       ) : null}
 
-      <div className="flex flex-col gap-3 rounded-3xl border border-[#E7E5E4] bg-white p-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
+      <div className="flex flex-col gap-3 rounded-3xl border border-[#E9E2F3] bg-white p-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
         <Button className="w-full sm:w-auto" onClick={onCancel} type="button" variant="secondary">
           Cancel
         </Button>

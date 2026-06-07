@@ -31,10 +31,10 @@ export function ProviderInviteModal({
       title="Invite Provider"
     >
       <div className="grid gap-4">
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-          <p className="text-sm font-bold leading-6 text-[#44403C]">
-            This will invite <span className="font-black text-[#1C1917]">{providerName}</span> to review{" "}
-            <span className="font-black text-[#1C1917]">{challengeTitle}</span> and submit an execution plan once the invite workflow is connected.
+        <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+          <p className="text-sm font-bold leading-6 text-[#493C5E]">
+            This will invite <span className="font-black text-[#07030D]">{providerName}</span> to review{" "}
+            <span className="font-black text-[#07030D]">{challengeTitle}</span> and submit an execution plan once the invite workflow is connected.
           </p>
         </div>
         <Textarea
@@ -45,7 +45,7 @@ export function ProviderInviteModal({
           rows={4}
           value={message}
         />
-        <p className="text-sm leading-6 text-[#78716C]">
+        <p className="text-sm leading-6 text-[#6F657C]">
           The current match status endpoint allows viewed, saved, and dismissed. It does not accept invited yet, so this UI does not fake an invite or mutate unsupported status.
         </p>
       </div>

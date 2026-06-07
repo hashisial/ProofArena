@@ -19,7 +19,7 @@ import { VerificationBadge } from "./VerificationBadge.jsx";
 const noop = () => {};
 
 const fallbackCoverClass =
-  "bg-[radial-gradient(circle_at_16%_12%,rgba(255,255,255,0.72),transparent_13rem),radial-gradient(circle_at_82%_20%,rgba(101, 163, 13, 0.38),transparent_18rem),linear-gradient(135deg,#FFFBEB_0%,#ECFCCB_48%,#3F6212_100%)]";
+  "bg-[radial-gradient(circle_at_16%_12%,rgba(255,255,255,0.72),transparent_13rem),radial-gradient(circle_at_82%_20%,rgba(167, 139, 250, 0.38),transparent_18rem),linear-gradient(135deg,#F8F4FF_0%,#EDE9FE_48%,#7C3AED_100%)]";
 
 function toAssetUrl(value) {
   const source = typeof value === "string" ? value : value?.url ?? "";
@@ -125,7 +125,7 @@ function IconButton({ ariaLabel, children, className = "", onClick = noop }) {
     <button
       aria-label={ariaLabel}
       className={cn(
-        "inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white text-[#1C1917] shadow-[0_14px_34px_rgba(0,0,0,0.16)] transition hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-white/45",
+        "inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white text-[#07030D] shadow-[0_14px_34px_rgba(0,0,0,0.16)] transition hover:bg-[#F5F3FF] hover:text-[#5B21B6] focus:outline-none focus:ring-4 focus:ring-white/45",
         className,
       )}
       onClick={onClick}
@@ -187,11 +187,11 @@ export function ProfileHeader({
   return (
     <Card
       as="section"
-      className="relative overflow-visible rounded-3xl border-[#E7E5E4] bg-white shadow-[0_24px_80px_rgba(28, 25, 23, 0.1)]"
+      className="relative overflow-visible rounded-3xl border-[#E9E2F3] bg-white shadow-[0_24px_80px_rgba(31, 14, 54, 0.1)]"
       padding="none"
       variant="elevated"
     >
-      <div className="relative h-36 overflow-hidden bg-[#F7FEE7] sm:h-48 lg:h-56">
+      <div className="relative h-36 overflow-hidden bg-[#F5F3FF] sm:h-48 lg:h-56">
         {coverUrl ? (
           <img
             alt={`${displayName} cover image`}
@@ -224,7 +224,7 @@ export function ProfileHeader({
       <div className="relative px-4 pb-6 sm:px-6 sm:pb-7 lg:px-8 lg:pb-8">
         <div className="-mt-12 flex flex-col gap-4 sm:-mt-16 lg:-mt-14 lg:flex-row lg:items-end lg:justify-between">
           <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-end">
-            <div className="relative h-24 w-24 shrink-0 rounded-full border-4 border-white bg-[#F7FEE7] shadow-[0_18px_48px_rgba(28, 25, 23, 0.18)] sm:h-32 sm:w-32">
+            <div className="relative h-24 w-24 shrink-0 rounded-full border-4 border-white bg-[#F5F3FF] shadow-[0_18px_48px_rgba(31, 14, 54, 0.18)] sm:h-32 sm:w-32">
               {avatarUrl ? (
                 <img
                   alt={`${displayName} profile photo`}
@@ -232,14 +232,14 @@ export function ProfileHeader({
                   src={avatarUrl}
                 />
               ) : (
-                <div className="grid h-full w-full place-items-center rounded-full bg-[linear-gradient(135deg,#1C1917,#3F6212)] text-2xl font-black text-white sm:text-4xl">
+                <div className="grid h-full w-full place-items-center rounded-full bg-[linear-gradient(135deg,#07030D,#7C3AED)] text-2xl font-black text-white sm:text-4xl">
                   {getInitials(displayName)}
                 </div>
               )}
               {ownerMode ? (
                 <button
                   aria-label="Edit profile photo"
-                  className="absolute bottom-0 right-0 inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-[#1C1917] text-white shadow-[0_14px_30px_rgba(0,0,0,0.22)] transition hover:bg-[#3F6212] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/20"
+                  className="absolute bottom-0 right-0 inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-[#07030D] text-white shadow-[0_14px_30px_rgba(0,0,0,0.22)] transition hover:bg-[#7C3AED] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/20"
                   onClick={onEditAvatar}
                   type="button"
                 >
@@ -281,13 +281,13 @@ export function ProfileHeader({
               </div>
 
               <div className="mt-3 flex min-w-0 flex-wrap items-center gap-2.5">
-                <h1 className="min-w-0 break-words text-3xl font-black leading-tight tracking-normal text-[#1C1917] sm:text-4xl">
+                <h1 className="min-w-0 break-words text-3xl font-black leading-tight tracking-normal text-[#07030D] sm:text-4xl">
                   {displayName}
                 </h1>
                 {ownerMode ? (
                   <button
                     aria-label="Edit profile intro"
-                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#E7E5E4] bg-white text-[#44403C] transition hover:border-[#3F6212]/40 hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10"
+                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#E9E2F3] bg-white text-[#493C5E] transition hover:border-[#7C3AED]/40 hover:bg-[#F5F3FF] hover:text-[#5B21B6] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/10"
                     onClick={onEditIntro}
                     type="button"
                   >
@@ -297,34 +297,34 @@ export function ProfileHeader({
               </div>
 
               {username ? (
-                <p className="mt-1 inline-flex max-w-full items-center gap-1.5 break-words text-sm font-bold text-[#78716C]">
-                  <AtSign aria-hidden="true" className="h-4 w-4 shrink-0 text-[#3F6212]" />
+                <p className="mt-1 inline-flex max-w-full items-center gap-1.5 break-words text-sm font-bold text-[#6F657C]">
+                  <AtSign aria-hidden="true" className="h-4 w-4 shrink-0 text-[#7C3AED]" />
                   {username.replace(/^@/, "")}
                 </p>
               ) : null}
 
-              <p className="mt-3 max-w-3xl break-words text-sm font-semibold leading-6 text-[#44403C] sm:text-base">
+              <p className="mt-3 max-w-3xl break-words text-sm font-semibold leading-6 text-[#493C5E] sm:text-base">
                 {headline}
               </p>
 
-              <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold leading-6 text-[#78716C]">
+              <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold leading-6 text-[#6F657C]">
                 <span className="inline-flex min-w-0 items-center gap-1.5">
-                  <Building2 aria-hidden="true" className="h-4 w-4 shrink-0 text-[#3F6212]" />
+                  <Building2 aria-hidden="true" className="h-4 w-4 shrink-0 text-[#7C3AED]" />
                   <span className="break-words">{companyLine}</span>
                 </span>
                 <span className="inline-flex min-w-0 items-center gap-1.5">
-                  <MapPin aria-hidden="true" className="h-4 w-4 shrink-0 text-[#3F6212]" />
+                  <MapPin aria-hidden="true" className="h-4 w-4 shrink-0 text-[#7C3AED]" />
                   <span className="break-words">{location}</span>
                 </span>
               </div>
 
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#E7E5E4] bg-[#FFFBEB] px-3 text-xs font-black text-[#44403C]">
-                  <UsersRound aria-hidden="true" className="h-4 w-4 text-[#3F6212]" />
+                <span className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#E9E2F3] bg-[#F8F4FF] px-3 text-xs font-black text-[#493C5E]">
+                  <UsersRound aria-hidden="true" className="h-4 w-4 text-[#7C3AED]" />
                   {connectionsCount} connections
                 </span>
-                <span className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#E7E5E4] bg-[#FFFBEB] px-3 text-xs font-black text-[#44403C]">
-                  <ShieldCheck aria-hidden="true" className="h-4 w-4 text-[#3F6212]" />
+                <span className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#E9E2F3] bg-[#F8F4FF] px-3 text-xs font-black text-[#493C5E]">
+                  <ShieldCheck aria-hidden="true" className="h-4 w-4 text-[#7C3AED]" />
                   {followersCount} followers
                 </span>
               </div>

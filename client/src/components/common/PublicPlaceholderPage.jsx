@@ -26,24 +26,24 @@ export function PublicPlaceholderPage({
   return (
     <section
       className={cn(
-        "relative overflow-hidden bg-[#FEFCE8] px-4 py-16 text-[#1C1917] sm:px-6 sm:py-20 lg:px-8 lg:py-24",
+        "relative overflow-hidden bg-[#FBF9FF] px-4 py-16 text-[#07030D] sm:px-6 sm:py-20 lg:px-8 lg:py-24",
         className,
       )}
     >
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_16%_12%,rgba(63,98,18,0.14),transparent_30%),radial-gradient(circle_at_88%_26%,rgba(161,98,7,0.12),transparent_28%)]"
+        className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_16%_12%,rgba(124,58,237,0.14),transparent_30%),radial-gradient(circle_at_88%_26%,rgba(109,40,217,0.12),transparent_28%)]"
       />
 
       <div className="relative mx-auto grid w-full max-w-7xl gap-8">
         <Card
-          className="relative rounded-[2rem] border-[#E7E5E4] bg-[linear-gradient(135deg,#ffffff,#FFFBEB)] shadow-[0_28px_90px_rgba(28,25,23,0.08)]"
+          className="relative rounded-[2rem] border-[#E9E2F3] bg-[linear-gradient(135deg,#ffffff,#F8F4FF)] shadow-[0_28px_90px_rgba(31,14,54,0.08)]"
           padding="lg"
           variant="elevated"
         >
           <div
             aria-hidden="true"
-            className="absolute -right-16 -top-16 h-52 w-52 rounded-full bg-[#3F6212]/10 blur-3xl"
+            className="absolute -right-16 -top-16 h-52 w-52 rounded-full bg-[#7C3AED]/10 blur-3xl"
           />
           <div className="relative z-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.36fr)] lg:items-end">
             <div className="min-w-0">
@@ -69,17 +69,17 @@ export function PublicPlaceholderPage({
               ) : null}
             </div>
 
-            <div className="rounded-3xl border border-[#E7E5E4] bg-white/88 p-5 shadow-[0_18px_54px_rgba(28,25,23,0.06)]">
+            <div className="rounded-3xl border border-[#E9E2F3] bg-white/88 p-5 shadow-[0_18px_54px_rgba(31,14,54,0.06)]">
               <Badge variant="primary">{badge}</Badge>
               <div className="mt-5 flex items-start gap-3">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]">
                   <ShieldCheck aria-hidden="true" className="h-5 w-5" />
                 </span>
                 <div className="min-w-0">
-                  <p className="text-sm font-black leading-6 text-[#1C1917]">
+                  <p className="text-sm font-black leading-6 text-[#07030D]">
                     Public route is connected.
                   </p>
-                  <p className="mt-1 text-sm font-semibold leading-6 text-[#78716C]">
+                  <p className="mt-1 text-sm font-semibold leading-6 text-[#6F657C]">
                     This placeholder keeps navigation clean until the full module is implemented.
                   </p>
                 </div>
@@ -100,11 +100,11 @@ export function PublicPlaceholderPage({
             <CardContent className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {features.map((feature) => (
                 <div
-                  className="min-w-0 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4"
+                  className="min-w-0 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4"
                   key={feature}
                 >
-                  <CheckCircle2 aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />
-                  <p className="mt-3 break-words text-sm font-black leading-6 text-[#1C1917]">
+                  <CheckCircle2 aria-hidden="true" className="h-5 w-5 text-[#7C3AED]" />
+                  <p className="mt-3 break-words text-sm font-black leading-6 text-[#07030D]">
                     {feature}
                   </p>
                 </div>

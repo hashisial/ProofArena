@@ -117,29 +117,29 @@ function TrustPillarCard({ index, pillar, reduceMotion }) {
     >
       <Card
         as="article"
-        className="premium-motion-card group h-full rounded-[1.7rem] transition duration-300 hover:-translate-y-1 hover:border-[#65A30D] hover:shadow-[0_24px_76px_rgba(63,98,18,0.14)]"
+        className="premium-motion-card group h-full rounded-[1.7rem] transition duration-300 hover:-translate-y-1 hover:border-[#A78BFA] hover:shadow-[0_24px_76px_rgba(124,58,237,0.14)]"
         padding="lg"
         variant="default"
       >
         <div className="flex flex-wrap items-start justify-between gap-4">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314] transition group-hover:bg-[#3F6212] group-hover:text-white">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6] transition group-hover:bg-[#7C3AED] group-hover:text-white">
             <Icon aria-hidden="true" className="h-6 w-6" />
           </span>
           <Badge variant="gray">{pillar.badge}</Badge>
         </div>
 
-        <h3 className="mt-6 break-words text-xl font-black leading-tight text-[#1C1917]">
+        <h3 className="mt-6 break-words text-xl font-black leading-tight text-[#07030D]">
           {pillar.title}
         </h3>
-        <p className="mt-3 text-sm font-semibold leading-7 text-[#57534E]">
+        <p className="mt-3 text-sm font-semibold leading-7 text-[#6F657C]">
           {pillar.description}
         </p>
 
-        <div className="mt-5 rounded-2xl border border-[#A16207]/20 bg-[#FEF3C7] p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#A16207]">
+        <div className="mt-5 rounded-2xl border border-[#6D28D9]/20 bg-[#FEF3C7] p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6D28D9]">
             Evidence point
           </p>
-          <p className="mt-2 text-sm font-black leading-6 text-[#1C1917]">
+          <p className="mt-2 text-sm font-black leading-6 text-[#07030D]">
             {pillar.evidence}
           </p>
         </div>
@@ -152,17 +152,17 @@ function TrustLoopPanel({ reduceMotion }) {
   return (
     <MotionDiv {...getMotionProps(reduceMotion, 0.08)}>
       <Card
-        className="premium-motion-card rounded-[2rem] border-[#ECFCCB] bg-white shadow-[0_24px_80px_rgba(63,98,18,0.1)]"
+        className="premium-motion-card rounded-[2rem] border-[#EDE9FE] bg-white shadow-[0_24px_80px_rgba(124,58,237,0.1)]"
         padding="lg"
         variant="elevated"
       >
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-center">
           <div className="min-w-0">
             <Badge variant="secondary">Trust workflow preview</Badge>
-            <h3 className="mt-4 text-2xl font-black leading-tight text-[#1C1917] sm:text-3xl">
+            <h3 className="mt-4 text-2xl font-black leading-tight text-[#07030D] sm:text-3xl">
               ProofArena trust loop
             </h3>
-            <p className="mt-4 text-sm font-semibold leading-7 text-[#57534E]">
+            <p className="mt-4 text-sm font-semibold leading-7 text-[#6F657C]">
               The platform is structured so credibility comes from a repeatable
               path: define outcomes, show work, review evidence, and earn
               reputation only after proof is accepted.
@@ -180,21 +180,21 @@ function TrustLoopPanel({ reduceMotion }) {
                   className="relative min-w-0"
                   key={step.label}
                 >
-                  <div className="premium-motion-row flex min-w-0 items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 lg:block lg:text-center">
+                  <div className="premium-motion-row flex min-w-0 items-start gap-3 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4 lg:block lg:text-center">
                     <span
                       className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl lg:mx-auto ${
                         isReviewStep
-                          ? "bg-[#FEF3C7] text-[#A16207]"
-                          : "bg-[#F7FEE7] text-[#365314]"
+                          ? "bg-[#FEF3C7] text-[#6D28D9]"
+                          : "bg-[#F5F3FF] text-[#5B21B6]"
                       }`}
                     >
                       <Icon aria-hidden="true" className="h-5 w-5" />
                     </span>
                     <div className="min-w-0 lg:mt-3">
-                      <p className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#78716C]">
+                      <p className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#6F657C]">
                         {String(index + 1).padStart(2, "0")}
                       </p>
-                      <p className="mt-1 break-words text-sm font-black leading-6 text-[#1C1917]">
+                      <p className="mt-1 break-words text-sm font-black leading-6 text-[#07030D]">
                         {step.label}
                       </p>
                     </div>
@@ -213,14 +213,14 @@ function MetricCard({ index, metric, reduceMotion }) {
   return (
     <MotionDiv {...getMotionProps(reduceMotion, 0.18 + index * 0.04)}>
       <Card
-        className="premium-motion-card h-full rounded-[1.5rem] transition duration-300 hover:-translate-y-1 hover:border-[#65A30D] hover:shadow-[0_18px_54px_rgba(63,98,18,0.12)]"
+        className="premium-motion-card h-full rounded-[1.5rem] transition duration-300 hover:-translate-y-1 hover:border-[#A78BFA] hover:shadow-[0_18px_54px_rgba(124,58,237,0.12)]"
         padding="md"
         variant="default"
       >
-        <p className="break-words text-2xl font-black leading-tight text-[#3F6212]">
+        <p className="break-words text-2xl font-black leading-tight text-[#7C3AED]">
           {metric.value}
         </p>
-        <p className="mt-2 text-sm font-black uppercase tracking-[0.12em] text-[#78716C]">
+        <p className="mt-2 text-sm font-black uppercase tracking-[0.12em] text-[#6F657C]">
           {metric.label}
         </p>
       </Card>
@@ -232,23 +232,23 @@ export function TrustEvidenceSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFBEB_0%,#FEFCE8_48%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
-      <div className="absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_14%_18%,rgba(63,98,18,0.12),transparent_32%),radial-gradient(circle_at_86%_44%,rgba(161,98,7,0.09),transparent_28%)]" />
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#F8F4FF_0%,#FBF9FF_48%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
+      <div className="absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_14%_18%,rgba(124,58,237,0.12),transparent_32%),radial-gradient(circle_at_86%_44%,rgba(109,40,217,0.09),transparent_28%)]" />
       <Container className="relative z-10">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <MotionDiv {...getMotionProps(reduceMotion, 0)}>
             <Badge variant="primary">Trust evidence</Badge>
-            <h2 className="mt-4 max-w-4xl break-words text-3xl font-black leading-tight text-[#1C1917] [text-wrap:balance] sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 max-w-4xl break-words text-3xl font-black leading-tight text-[#07030D] [text-wrap:balance] sm:text-4xl lg:text-5xl">
               Trust built from evidence.
             </h2>
-            <p className="mt-5 max-w-3xl text-base font-semibold leading-8 text-[#57534E] sm:text-lg">
+            <p className="mt-5 max-w-3xl text-base font-semibold leading-8 text-[#6F657C] sm:text-lg">
               ProofArena trust is built from outcome challenges, structured
               execution plans, milestone tracking, verified proof, proof score,
               privacy controls, and moderation foundations.
             </p>
-            <div className="mt-6 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-white p-5 shadow-[0_16px_50px_rgba(28,25,23,0.04)]">
-              <CheckCircle2 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#3F6212]" />
-              <p className="text-sm font-semibold leading-7 text-[#57534E]">
+            <div className="mt-6 flex items-start gap-3 rounded-3xl border border-[#E9E2F3] bg-white p-5 shadow-[0_16px_50px_rgba(31,14,54,0.04)]">
+              <CheckCircle2 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#7C3AED]" />
+              <p className="text-sm font-semibold leading-7 text-[#6F657C]">
                 No fake testimonials. No empty claims. ProofArena credibility is
                 built around outcomes, proof, and controlled public visibility.
               </p>
@@ -278,7 +278,7 @@ export function TrustEvidenceSection() {
           {...getMotionProps(reduceMotion, 0.1)}
         >
           <Badge variant="secondary">Platform trust model</Badge>
-          <p className="text-sm font-semibold leading-6 text-[#78716C]">
+          <p className="text-sm font-semibold leading-6 text-[#6F657C]">
             Trust comes from evidence, structure, and reviewed proof.
           </p>
         </MotionDiv>
@@ -306,11 +306,11 @@ export function TrustEvidenceSection() {
         </div>
 
         <MotionDiv
-          className="mt-8 grid gap-4 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-5 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start"
+          className="mt-8 grid gap-4 rounded-3xl border border-[#E9E2F3] bg-[#F8F4FF] p-5 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start"
           {...getMotionProps(reduceMotion, 0.34)}
         >
-          <Eye aria-hidden="true" className="h-6 w-6 shrink-0 text-[#3F6212]" />
-          <p className="text-sm font-semibold leading-7 text-[#57534E]">
+          <Eye aria-hidden="true" className="h-6 w-6 shrink-0 text-[#7C3AED]" />
+          <p className="text-sm font-semibold leading-7 text-[#6F657C]">
             This section uses platform design principles only. Usage numbers,
             customer logos, revenue metrics, and testimonials should be added
             only when they are real, current, and verifiable.

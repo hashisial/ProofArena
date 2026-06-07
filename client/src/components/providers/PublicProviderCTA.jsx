@@ -38,18 +38,18 @@ export function PublicProviderCTA({
       <div className="flex items-start gap-3">
         <div
           aria-hidden="true"
-          className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]"
         >
           <UserRoundPlus className="h-5 w-5" />
         </div>
         <div className="min-w-0">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
             Client action
           </p>
-          <h2 className="mt-1 text-xl font-black tracking-normal text-[#1C1917]">
+          <h2 className="mt-1 text-xl font-black tracking-normal text-[#07030D]">
             Invite to an outcome challenge
           </h2>
-          <p className="mt-2 text-sm font-semibold leading-6 text-[#78716C]">
+          <p className="mt-2 text-sm font-semibold leading-6 text-[#6F657C]">
             {helperText}
           </p>
         </div>
@@ -58,7 +58,7 @@ export function PublicProviderCTA({
       <div className="mt-5 flex flex-wrap items-center gap-2">
         <ProviderAvailabilityBadge availability={availability} />
         {hasOutcomeOffers ? (
-          <span className="rounded-full border border-[#A16207]/20 bg-[#FEF3C7] px-3 py-1.5 text-xs font-black text-[#A16207]">
+          <span className="rounded-full border border-[#6D28D9]/20 bg-[#FEF3C7] px-3 py-1.5 text-xs font-black text-[#6D28D9]">
             Public outcome offers
           </span>
         ) : null}

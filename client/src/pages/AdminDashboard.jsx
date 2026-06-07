@@ -87,9 +87,9 @@ export function AdminDashboard() {
                   ["Flagged records", overview.flaggedItemsCount],
                   ["Pending verification", overview.verificationPendingCount],
                 ].map(([label, value]) => (
-                  <div className="flex items-center justify-between gap-4 border-b border-[#E7E5E4] pb-3 last:border-0 last:pb-0" key={label}>
-                    <dt className="text-sm font-bold text-[#57534E]">{label}</dt>
-                    <dd className="text-lg font-black text-[#1C1917]">{formatNumber(value, { fallback: "Not available" })}</dd>
+                  <div className="flex items-center justify-between gap-4 border-b border-[#E9E2F3] pb-3 last:border-0 last:pb-0" key={label}>
+                    <dt className="text-sm font-bold text-[#6F657C]">{label}</dt>
+                    <dd className="text-lg font-black text-[#07030D]">{formatNumber(value, { fallback: "Not available" })}</dd>
                   </div>
                 ))}
               </dl>
@@ -101,7 +101,7 @@ export function AdminDashboard() {
           </div>
 
           <section aria-labelledby="admin-recent-records">
-            <h3 className="text-2xl font-black tracking-normal text-[#1C1917]" id="admin-recent-records">Recent platform records</h3>
+            <h3 className="text-2xl font-black tracking-normal text-[#07030D]" id="admin-recent-records">Recent platform records</h3>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               <AdminRecentList description="Newest platform accounts." items={overview.recentUsers} title="Recent Users" />
               <AdminRecentList description="Newest client challenges." items={overview.recentChallenges} title="Recent Challenges" />

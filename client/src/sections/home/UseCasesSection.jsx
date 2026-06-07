@@ -95,26 +95,26 @@ function UseCaseCard({ index, reduceMotion, useCase }) {
   return (
     <MotionDiv {...getMotionProps(reduceMotion, index * 0.05)}>
       <Card
-        className="premium-motion-card group flex h-full flex-col transition duration-300 hover:-translate-y-1 hover:border-[#65A30D] hover:shadow-[0_24px_76px_rgba(63, 98, 18, 0.14)]"
+        className="premium-motion-card group flex h-full flex-col transition duration-300 hover:-translate-y-1 hover:border-[#A78BFA] hover:shadow-[0_24px_76px_rgba(124, 58, 237, 0.14)]"
         padding="lg"
         variant="default"
       >
         <div className="flex items-start justify-between gap-4">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314] transition duration-300 group-hover:bg-[#3F6212] group-hover:text-white">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6] transition duration-300 group-hover:bg-[#7C3AED] group-hover:text-white">
             <Icon aria-hidden="true" className="h-6 w-6" />
           </span>
           <Badge variant="primary">{useCase.badge}</Badge>
         </div>
 
-        <h3 className="mt-6 text-xl font-black leading-tight text-[#1C1917]">
+        <h3 className="mt-6 text-xl font-black leading-tight text-[#07030D]">
           {useCase.title}
         </h3>
-        <p className="mt-3 text-sm leading-7 text-[#57534E]">
+        <p className="mt-3 text-sm leading-7 text-[#6F657C]">
           {useCase.description}
         </p>
 
-        <div className="mt-5 rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
+        <div className="mt-5 rounded-2xl border border-[#EDE9FE] bg-[#F8F4FF] p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
             Example outcome
           </p>
           <p className="mt-2 text-sm font-black leading-6 text-[#27272A]">
@@ -122,14 +122,14 @@ function UseCaseCard({ index, reduceMotion, useCase }) {
           </p>
         </div>
 
-        <div className="mt-4 rounded-2xl border border-[#E7E5E4] bg-[#FAFAF9] p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
+        <div className="mt-4 rounded-2xl border border-[#E9E2F3] bg-[#FCFAFF] p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">
             Proof examples
           </p>
           <ul className="mt-3 grid gap-2">
             {useCase.proofExamples.map((proof) => (
-              <li className="flex items-start gap-2 text-sm font-semibold leading-6 text-[#44403C]" key={proof}>
-                <CheckCircle2 aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#3F6212]" />
+              <li className="flex items-start gap-2 text-sm font-semibold leading-6 text-[#493C5E]" key={proof}>
+                <CheckCircle2 aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#7C3AED]" />
                 <span>{proof}</span>
               </li>
             ))}
@@ -151,7 +151,7 @@ export function UseCasesSection() {
 
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#F8F4FF_44%,#F0E7FF_100%)] py-16 sm:py-20 lg:py-24">
-      <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_12%_10%,rgba(63, 98, 18, 0.15),transparent_34%),radial-gradient(circle_at_90%_72%,rgba(101, 163, 13, 0.14),transparent_28%)]" />
+      <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_12%_10%,rgba(124, 58, 237, 0.15),transparent_34%),radial-gradient(circle_at_90%_72%,rgba(167, 139, 250, 0.14),transparent_28%)]" />
       <Container className="relative z-10">
         <MotionDiv {...getMotionProps(reduceMotion, 0)}>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end">
@@ -179,7 +179,7 @@ export function UseCasesSection() {
         >
           {categoryPills.map((category) => (
             <span
-              className="premium-motion-row rounded-full border border-[#E7E5E4] bg-[#FAFAF9] px-4 py-2 text-xs font-black text-[#44403C]"
+              className="premium-motion-row rounded-full border border-[#E9E2F3] bg-[#FCFAFF] px-4 py-2 text-xs font-black text-[#493C5E]"
               key={category}
             >
               {category}
@@ -199,18 +199,18 @@ export function UseCasesSection() {
         </div>
 
         <MotionDiv
-          className="premium-motion-card mt-8 rounded-3xl border border-[#E7E5E4] bg-[#FAFAF9] p-5 sm:p-6"
+          className="premium-motion-card mt-8 rounded-3xl border border-[#E9E2F3] bg-[#FCFAFF] p-5 sm:p-6"
           {...getMotionProps(reduceMotion, 0.18)}
         >
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]">
               <ShieldCheck aria-hidden="true" className="h-6 w-6" />
             </span>
             <div className="min-w-0">
-              <p className="text-base font-black text-[#1C1917]">
+              <p className="text-base font-black text-[#07030D]">
                 Every use case is structured around goals, milestones, and proof.
               </p>
-              <p className="mt-2 text-sm leading-7 text-[#57534E]">
+              <p className="mt-2 text-sm leading-7 text-[#6F657C]">
                 ProofArena keeps business outcomes grounded in measurable
                 targets, delivery checkpoints, and reviewed evidence instead of
                 vague task descriptions.

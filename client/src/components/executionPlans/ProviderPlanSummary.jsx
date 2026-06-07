@@ -15,9 +15,9 @@ import {
 
 function Metric({ label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-white p-3">
-      <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">{label}</p>
-      <p className="mt-1 text-sm font-black text-[#1C1917]">{value}</p>
+    <div className="rounded-2xl border border-[#E9E2F3] bg-white p-3">
+      <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">{label}</p>
+      <p className="mt-1 text-sm font-black text-[#07030D]">{value}</p>
     </div>
   );
 }
@@ -38,7 +38,7 @@ export function ProviderPlanSummary({ className = "", plan, showProfileLink = tr
   return (
     <Wrapper {...wrapperProps}>
       <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-start">
-        <div className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-2xl border border-[#E7E5E4] bg-[#F7FEE7] text-lg font-black text-[#3F6212]">
+        <div className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-2xl border border-[#E9E2F3] bg-[#F5F3FF] text-lg font-black text-[#7C3AED]">
           {avatar ? (
             <img alt={`${providerName} avatar`} className="h-full w-full object-cover" src={avatar} />
           ) : (
@@ -47,7 +47,7 @@ export function ProviderPlanSummary({ className = "", plan, showProfileLink = tr
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="min-w-0 break-words text-lg font-black text-[#1C1917]">{providerName}</h3>
+            <h3 className="min-w-0 break-words text-lg font-black text-[#07030D]">{providerName}</h3>
             <Badge
               leftIcon={verificationLabel === "Verified" ? <ShieldCheck className="h-3.5 w-3.5" /> : null}
               variant={verificationLabel === "Verified" ? "green" : "outline"}
@@ -55,7 +55,7 @@ export function ProviderPlanSummary({ className = "", plan, showProfileLink = tr
               {verificationLabel}
             </Badge>
           </div>
-          <p className="mt-2 text-sm leading-6 text-[#78716C]">{headline}</p>
+          <p className="mt-2 text-sm leading-6 text-[#6F657C]">{headline}</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <Metric label="Proof score" value={proofScore === null ? "Not available" : `${proofScore}/100`} />
             <Metric label="Completed outcomes" value={completedOutcomes === null ? "Not available" : completedOutcomes} />

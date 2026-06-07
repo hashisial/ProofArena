@@ -126,8 +126,8 @@ function CellContent({ provider, row, winnerMap }) {
   const highlighted = isWinner(winnerMap, row.key, provider);
 
   return (
-    <div className={highlighted ? "rounded-xl border border-[#BEF264] bg-[#F7FEE7] p-2" : ""}>
-      <div className="text-sm font-semibold leading-6 text-[#44403C]">
+    <div className={highlighted ? "rounded-xl border border-[#C4B5FD] bg-[#F5F3FF] p-2" : ""}>
+      <div className="text-sm font-semibold leading-6 text-[#493C5E]">
         {row.render(provider)}
       </div>
       {highlighted ? <Badge className="mt-2" variant="green">Visible leader</Badge> : null}
@@ -141,16 +141,16 @@ export function ProviderComparisonTable({ providers = [] }) {
 
   return (
     <div className="grid gap-5">
-      <div className="hidden overflow-hidden rounded-2xl border border-[#E7E5E4] bg-white lg:block">
+      <div className="hidden overflow-hidden rounded-2xl border border-[#E9E2F3] bg-white lg:block">
         <table className="w-full table-fixed border-collapse text-left">
           <thead>
-            <tr className="border-b border-[#E7E5E4] bg-[#FFFBEB]">
-              <th className="w-44 px-4 py-3 text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
+            <tr className="border-b border-[#E9E2F3] bg-[#F8F4FF]">
+              <th className="w-44 px-4 py-3 text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">
                 Compare
               </th>
               {providers.map((provider) => (
                 <th
-                  className="px-4 py-3 text-sm font-black text-[#1C1917]"
+                  className="px-4 py-3 text-sm font-black text-[#07030D]"
                   key={getProviderId(provider)}
                 >
                   {getProviderName(provider)}
@@ -160,8 +160,8 @@ export function ProviderComparisonTable({ providers = [] }) {
           </thead>
           <tbody>
             {rows.map((row) => (
-              <tr className="border-b border-[#E7E5E4] align-top last:border-0" key={row.key}>
-                <th className="bg-[#FFFBEB] px-4 py-3 text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
+              <tr className="border-b border-[#E9E2F3] align-top last:border-0" key={row.key}>
+                <th className="bg-[#F8F4FF] px-4 py-3 text-xs font-black uppercase tracking-[0.12em] text-[#6F657C]">
                   {row.label}
                 </th>
                 {providers.map((provider) => (
@@ -178,17 +178,17 @@ export function ProviderComparisonTable({ providers = [] }) {
       <div className="grid gap-4 lg:hidden">
         {providers.map((provider) => (
           <div
-            className="rounded-2xl border border-[#E7E5E4] bg-white p-4"
+            className="rounded-2xl border border-[#E9E2F3] bg-white p-4"
             key={`mobile-${getProviderId(provider)}`}
           >
-            <h3 className="text-lg font-black text-[#1C1917]">{getProviderName(provider)}</h3>
+            <h3 className="text-lg font-black text-[#07030D]">{getProviderName(provider)}</h3>
             <div className="mt-4 grid gap-3">
               {rows.slice(1).map((row) => (
                 <div
-                  className="grid gap-1 rounded-xl border border-[#E7E5E4] bg-[#FFFBEB] p-3"
+                  className="grid gap-1 rounded-xl border border-[#E9E2F3] bg-[#F8F4FF] p-3"
                   key={`${row.key}-${getProviderId(provider)}`}
                 >
-                  <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
+                  <p className="text-xs font-black uppercase tracking-[0.12em] text-[#6F657C]">
                     {row.label}
                   </p>
                   <CellContent provider={provider} row={row} winnerMap={winnerMap} />
@@ -200,7 +200,7 @@ export function ProviderComparisonTable({ providers = [] }) {
       </div>
 
       {matrix.length ? (
-        <p className="text-sm font-semibold leading-6 text-[#78716C]">
+        <p className="text-sm font-semibold leading-6 text-[#6F657C]">
           Highlighted cells mark the strongest visible public signal for that row.
         </p>
       ) : null}

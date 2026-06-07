@@ -28,22 +28,22 @@ export function SuccessCriteriaEditor({ error, items = [], onChange }) {
   return (
     <section className="grid gap-4" aria-labelledby="challenge-success-criteria-title">
       <div>
-        <h3 className="text-lg font-black text-[#1C1917]" id="challenge-success-criteria-title">
+        <h3 className="text-lg font-black text-[#07030D]" id="challenge-success-criteria-title">
           Success criteria
         </h3>
-        <p className="mt-1 text-sm leading-6 text-[#78716C]">
+        <p className="mt-1 text-sm leading-6 text-[#6F657C]">
           Define what providers must deliver before the challenge is accepted.
         </p>
       </div>
       {error ? <p className="text-sm font-bold text-[#DC2626]" role="alert">{error}</p> : null}
       <div className="grid gap-4">
         {criteria.map((item, index) => (
-          <div className="grid gap-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={index}>
+          <div className="grid gap-4 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={index}>
             <div className="flex items-start justify-between gap-3">
-              <p className="text-sm font-black text-[#3F6212]">Criterion {index + 1}</p>
+              <p className="text-sm font-black text-[#7C3AED]">Criterion {index + 1}</p>
               <button
                 aria-label={`Remove success criterion ${index + 1}`}
-                className="grid h-9 w-9 place-items-center rounded-xl border border-[#E7E5E4] bg-white text-[#78716C] transition hover:border-[#DC2626]/30 hover:text-[#DC2626] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70 disabled:opacity-50"
+                className="grid h-9 w-9 place-items-center rounded-xl border border-[#E9E2F3] bg-white text-[#6F657C] transition hover:border-[#DC2626]/30 hover:text-[#DC2626] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70 disabled:opacity-50"
                 disabled={criteria.length <= 1}
                 onClick={() => removeItem(index)}
                 type="button"

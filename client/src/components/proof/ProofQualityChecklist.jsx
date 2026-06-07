@@ -22,23 +22,23 @@ export function ProofQualityChecklist({ asset }) {
           {quality.checks.map((item) => {
             const Icon = item.complete ? CheckCircle2 : CircleX;
             return (
-              <li className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={item.key}>
+              <li className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={item.key}>
                 <div className="flex items-start gap-3">
-                  <Icon aria-hidden="true" className={`mt-0.5 h-5 w-5 shrink-0 ${item.complete ? "text-[#3F6212]" : "text-[#A16207]"}`} />
+                  <Icon aria-hidden="true" className={`mt-0.5 h-5 w-5 shrink-0 ${item.complete ? "text-[#7C3AED]" : "text-[#6D28D9]"}`} />
                   <div>
-                    <p className="text-sm font-black text-[#1C1917]">{item.label}</p>
-                    <p className="mt-1 text-sm leading-6 text-[#78716C]">{item.description}</p>
+                    <p className="text-sm font-black text-[#07030D]">{item.label}</p>
+                    <p className="mt-1 text-sm leading-6 text-[#6F657C]">{item.description}</p>
                   </div>
                 </div>
               </li>
             );
           })}
         </ul>
-        <div className="mt-4 flex items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-white p-4">
-          <CircleDashed aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#78716C]" />
+        <div className="mt-4 flex items-start gap-3 rounded-2xl border border-[#E9E2F3] bg-white p-4">
+          <CircleDashed aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#6F657C]" />
           <div>
-            <p className="text-sm font-black text-[#1C1917]">{quality.verification.label}</p>
-            <p className="mt-1 text-sm leading-6 text-[#78716C]">
+            <p className="text-sm font-black text-[#07030D]">{quality.verification.label}</p>
+            <p className="mt-1 text-sm leading-6 text-[#6F657C]">
               Verification remains server-controlled and will be connected to a future review workflow.
             </p>
           </div>

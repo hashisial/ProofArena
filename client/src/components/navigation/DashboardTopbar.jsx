@@ -69,11 +69,11 @@ export function DashboardTopbar({ title = "Dashboard" }) {
   }
 
   return (
-    <header className="sticky top-0 z-30 border-b border-[#E7E5E4] bg-white/94 px-4 py-3 backdrop-blur-xl sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-30 border-b border-[#E9E2F3] bg-white/94 px-4 py-3 backdrop-blur-xl sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl items-center gap-3">
         <button
           aria-label="Open dashboard sidebar"
-          className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E7E5E4] bg-white text-[#44403C] shadow-[0_12px_30px_rgba(28, 25, 23, 0.06)] transition hover:border-[#3F6212]/25 hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12 lg:hidden"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E9E2F3] bg-white text-[#493C5E] shadow-[0_12px_30px_rgba(31, 14, 54, 0.06)] transition hover:border-[#7C3AED]/25 hover:text-[#5B21B6] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/12 lg:hidden"
           onClick={toggleSidebar}
           type="button"
         >
@@ -82,7 +82,7 @@ export function DashboardTopbar({ title = "Dashboard" }) {
 
         <button
           aria-label={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-          className="hidden h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E7E5E4] bg-white text-[#44403C] shadow-[0_12px_30px_rgba(28, 25, 23, 0.06)] transition hover:border-[#3F6212]/25 hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12 lg:grid"
+          className="hidden h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E9E2F3] bg-white text-[#493C5E] shadow-[0_12px_30px_rgba(31, 14, 54, 0.06)] transition hover:border-[#7C3AED]/25 hover:text-[#5B21B6] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/12 lg:grid"
           onClick={toggleSidebarCollapsed}
           type="button"
         >
@@ -94,10 +94,10 @@ export function DashboardTopbar({ title = "Dashboard" }) {
         </button>
 
         <div className="min-w-0 flex-1">
-          <p className="hidden text-xs font-black uppercase tracking-[0.18em] text-[#3F6212] sm:block">
+          <p className="hidden text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED] sm:block">
             ProofArena by ScaleOps
           </p>
-          <h1 className="truncate text-xl font-black tracking-[-0.04em] text-[#1C1917] sm:mt-1 sm:text-2xl">
+          <h1 className="truncate text-xl font-black tracking-[-0.04em] text-[#07030D] sm:mt-1 sm:text-2xl">
             {title}
           </h1>
         </div>
@@ -106,11 +106,11 @@ export function DashboardTopbar({ title = "Dashboard" }) {
           <span className="sr-only">Search dashboard</span>
           <Search
             aria-hidden="true"
-            className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#A8A29E]"
+            className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#A69AB5]"
           />
           <input
             aria-label="Search challenges, proof, providers"
-            className="h-11 w-full rounded-2xl border border-[#E7E5E4] bg-[#FAFAFA] pl-11 pr-4 text-sm font-medium text-[#1C1917] outline-none transition placeholder:text-[#A8A29E] focus:border-[#3F6212]/45 focus:bg-white focus:ring-4 focus:ring-[#3F6212]/10"
+            className="h-11 w-full rounded-2xl border border-[#E9E2F3] bg-[#FAFAFA] pl-11 pr-4 text-sm font-medium text-[#07030D] outline-none transition placeholder:text-[#A69AB5] focus:border-[#7C3AED]/45 focus:bg-white focus:ring-4 focus:ring-[#7C3AED]/10"
             placeholder="Search challenges, proof, providers..."
             type="search"
           />
@@ -118,11 +118,11 @@ export function DashboardTopbar({ title = "Dashboard" }) {
 
         <a
           aria-label="Open notifications"
-          className="relative grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E7E5E4] bg-white text-[#44403C] shadow-[0_12px_30px_rgba(28, 25, 23, 0.06)] transition hover:border-[#3F6212]/25 hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12"
+          className="relative grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E9E2F3] bg-white text-[#493C5E] shadow-[0_12px_30px_rgba(31, 14, 54, 0.06)] transition hover:border-[#7C3AED]/25 hover:text-[#5B21B6] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/12"
           href={ROUTES.NOTIFICATIONS}
         >
           <Bell aria-hidden="true" className="h-5 w-5" />
-          <span className="absolute right-2.5 top-2.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#3F6212]" />
+          <span className="absolute right-2.5 top-2.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#7C3AED]" />
           {unreadCount > 0 ? (
             <span className="sr-only">{unreadCount} unread notifications</span>
           ) : null}
@@ -133,41 +133,41 @@ export function DashboardTopbar({ title = "Dashboard" }) {
             aria-expanded={menuOpen}
             aria-haspopup="menu"
             aria-label={`Open account menu for ${userName}`}
-            className="flex shrink-0 items-center gap-3 rounded-2xl border border-[#E7E5E4] bg-white px-2.5 py-2 shadow-[0_12px_30px_rgba(28, 25, 23, 0.06)] transition hover:border-[#3F6212]/25 focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12"
+            className="flex shrink-0 items-center gap-3 rounded-2xl border border-[#E9E2F3] bg-white px-2.5 py-2 shadow-[0_12px_30px_rgba(31, 14, 54, 0.06)] transition hover:border-[#7C3AED]/25 focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/12"
             onClick={() => setMenuOpen((current) => !current)}
             type="button"
           >
             {avatarUrl ? (
               <img alt="" className="h-9 w-9 rounded-xl object-cover" src={avatarUrl} />
             ) : (
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#1C1917] text-xs font-black text-white">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#07030D] text-xs font-black text-white">
                 {getInitials(userName)}
               </span>
             )}
             <span className="hidden min-w-0 pr-2 text-left sm:block">
-              <span className="block max-w-40 truncate text-sm font-black text-[#1C1917]">{userName}</span>
-              <span className="block text-xs font-bold text-[#78716C]">{roleLabel}</span>
+              <span className="block max-w-40 truncate text-sm font-black text-[#07030D]">{userName}</span>
+              <span className="block text-xs font-bold text-[#6F657C]">{roleLabel}</span>
             </span>
           </button>
 
           {menuOpen ? (
             <div
-              className="absolute right-0 top-[calc(100%+0.75rem)] z-50 w-64 rounded-2xl border border-[#E7E5E4] bg-white p-2 shadow-[0_24px_70px_rgba(28, 25, 23, 0.14)]"
+              className="absolute right-0 top-[calc(100%+0.75rem)] z-50 w-64 rounded-2xl border border-[#E9E2F3] bg-white p-2 shadow-[0_24px_70px_rgba(31, 14, 54, 0.14)]"
               role="menu"
             >
               <div className="px-3 py-2">
-                <p className="truncate text-sm font-black text-[#1C1917]">{userName}</p>
+                <p className="truncate text-sm font-black text-[#07030D]">{userName}</p>
                 <Badge className="mt-2" size="sm" variant="primary">
                   {roleLabel}
                 </Badge>
               </div>
-              <a className="block rounded-xl px-3 py-2 text-sm font-bold text-[#44403C] transition hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" href={ROUTES.PROFILE} role="menuitem">
+              <a className="block rounded-xl px-3 py-2 text-sm font-bold text-[#493C5E] transition hover:bg-[#F5F3FF] hover:text-[#5B21B6] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70" href={ROUTES.PROFILE} role="menuitem">
                 Profile
               </a>
-              <a className="block rounded-xl px-3 py-2 text-sm font-bold text-[#44403C] transition hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" href={ROUTES.SETTINGS} role="menuitem">
+              <a className="block rounded-xl px-3 py-2 text-sm font-bold text-[#493C5E] transition hover:bg-[#F5F3FF] hover:text-[#5B21B6] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70" href={ROUTES.SETTINGS} role="menuitem">
                 Settings
               </a>
-              <button className="w-full rounded-xl px-3 py-2 text-left text-sm font-bold text-[#DC2626] transition hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" onClick={handleLogout} role="menuitem" type="button">
+              <button className="w-full rounded-xl px-3 py-2 text-left text-sm font-bold text-[#DC2626] transition hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70" onClick={handleLogout} role="menuitem" type="button">
                 Logout
               </button>
             </div>

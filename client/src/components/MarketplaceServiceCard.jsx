@@ -67,7 +67,7 @@ function BookmarkIcon({ isSaved }) {
 
 function VerifiedMiniBadge() {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-[#3F6212] px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-white">
+    <span className="inline-flex items-center gap-1 rounded-full bg-[#7C3AED] px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-white">
       <svg aria-hidden="true" className="h-3 w-3" fill="none" viewBox="0 0 24 24">
         <path d="m5 12 4 4L19 6.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
       </svg>
@@ -81,7 +81,7 @@ function ProviderAvatar({ avatar, name }) {
     return (
       <img
         alt=""
-        className="h-10 w-10 rounded-xl border border-black/10 object-cover shadow-[0_10px_28px_rgba(63, 98, 18, 0.12)]"
+        className="h-10 w-10 rounded-xl border border-black/10 object-cover shadow-[0_10px_28px_rgba(124, 58, 237, 0.12)]"
         loading="lazy"
         src={avatar}
       />
@@ -89,7 +89,7 @@ function ProviderAvatar({ avatar, name }) {
   }
 
   return (
-    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black text-xs font-black text-white shadow-[0_10px_28px_rgba(63, 98, 18, 0.16)]">
+    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black text-xs font-black text-white shadow-[0_10px_28px_rgba(124, 58, 237, 0.16)]">
       {getInitials(name)}
     </span>
   );
@@ -114,7 +114,7 @@ export function MarketplaceServiceCard({
 
   return (
     <MotionArticle
-      className={`group relative min-w-0 overflow-hidden rounded-[1.45rem] border border-black/10 bg-white shadow-[0_18px_54px_rgba(63, 98, 18, 0.08)] transition-colors duration-300 hover:border-[#3F6212]/42 hover:shadow-[0_30px_84px_rgba(63, 98, 18, 0.18)] ${getCardSpan(index, view)}`}
+      className={`group relative min-w-0 overflow-hidden rounded-[1.45rem] border border-black/10 bg-white shadow-[0_18px_54px_rgba(124, 58, 237, 0.08)] transition-colors duration-300 hover:border-[#7C3AED]/42 hover:shadow-[0_30px_84px_rgba(124, 58, 237, 0.18)] ${getCardSpan(index, view)}`}
       initial={{ opacity: 0, y: 18 }}
       layout
       transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
@@ -122,11 +122,11 @@ export function MarketplaceServiceCard({
       whileHover={{ y: -5 }}
       whileInView={{ opacity: 1, y: 0 }}
     >
-      <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[#3F6212]/55 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+      <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[#7C3AED]/55 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
       <div className={isWide ? "grid h-full lg:grid-cols-[0.9fr_1.1fr]" : "grid h-full"}>
         <a
           aria-label={`View ${service.title}`}
-          className={`relative block overflow-hidden bg-[#1A2E05] ${isWide ? "min-h-72" : "aspect-[16/10]"}`}
+          className={`relative block overflow-hidden bg-[#12091F] ${isWide ? "min-h-72" : "aspect-[16/10]"}`}
           href={serviceUrl}
         >
           {image ? (
@@ -137,7 +137,7 @@ export function MarketplaceServiceCard({
               src={image}
             />
           ) : (
-            <div className="h-full w-full bg-[radial-gradient(circle_at_20%_18%,rgba(101, 163, 13, 0.58),transparent_12rem),radial-gradient(circle_at_82%_18%,rgba(63, 98, 18, 0.5),transparent_10rem),linear-gradient(135deg,#1C1917,#1c0e2e_52%,#365314)]" />
+            <div className="h-full w-full bg-[radial-gradient(circle_at_20%_18%,rgba(167, 139, 250, 0.58),transparent_12rem),radial-gradient(circle_at_82%_18%,rgba(124, 58, 237, 0.5),transparent_10rem),linear-gradient(135deg,#07030D,#1c0e2e_52%,#5B21B6)]" />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/8 to-transparent" />
           <div className="absolute left-4 top-4 flex flex-wrap gap-2">
@@ -164,14 +164,14 @@ export function MarketplaceServiceCard({
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
               <a
-                className={`${isWide ? "text-3xl md:text-4xl" : "text-2xl"} block font-bold leading-[1.02] tracking-[-0.055em] text-black transition hover:text-[#365314]`}
+                className={`${isWide ? "text-3xl md:text-4xl" : "text-2xl"} block font-bold leading-[1.02] tracking-[-0.055em] text-black transition hover:text-[#5B21B6]`}
                 href={serviceUrl}
               >
                 {service.title}
               </a>
               <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-bold text-black/50">
                 <span className="inline-flex items-center gap-1 rounded-full border border-black/10 bg-white px-2.5 py-1 text-black/66">
-                  <span className="text-[#3F6212]"><StarIcon /></span>
+                  <span className="text-[#7C3AED]"><StarIcon /></span>
                   {rating.toFixed(1)}
                 </span>
                 <span>{orders} orders</span>
@@ -181,8 +181,8 @@ export function MarketplaceServiceCard({
               aria-label={service.isSaved ? "Remove saved service" : "Save service"}
               className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition duration-300 ${
                 service.isSaved
-                  ? "border-[#3F6212] bg-[#3F6212] text-white shadow-[0_16px_42px_rgba(63, 98, 18, 0.24)]"
-                  : "border-black/10 bg-white text-black/52 hover:border-[#3F6212]/45 hover:bg-[#3F6212] hover:text-white hover:shadow-[0_16px_42px_rgba(63, 98, 18, 0.2)]"
+                  ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow-[0_16px_42px_rgba(124, 58, 237, 0.24)]"
+                  : "border-black/10 bg-white text-black/52 hover:border-[#7C3AED]/45 hover:bg-[#7C3AED] hover:text-white hover:shadow-[0_16px_42px_rgba(124, 58, 237, 0.2)]"
               }`}
               onClick={() => onToggleSave?.(service)}
               type="button"
@@ -198,7 +198,7 @@ export function MarketplaceServiceCard({
           <div className="mt-5 flex flex-wrap gap-2">
             {(service.tags?.length ? service.tags : service.skills ?? []).slice(0, isWide ? 7 : 4).map((tag) => (
               <span
-                className="rounded-full border border-[#3F6212]/12 bg-[#3F6212]/7 px-3 py-1.5 text-xs font-bold text-[#365314]"
+                className="rounded-full border border-[#7C3AED]/12 bg-[#7C3AED]/7 px-3 py-1.5 text-xs font-bold text-[#5B21B6]"
                 key={tag}
               >
                 {tag}
@@ -207,7 +207,7 @@ export function MarketplaceServiceCard({
           </div>
 
           <div className="mt-auto pt-6">
-            <div className="grid gap-3 rounded-[1.15rem] border border-black/10 bg-[#fffbeb] p-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+            <div className="grid gap-3 rounded-[1.15rem] border border-black/10 bg-[#F8F4FF] p-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
               <a className="flex min-w-0 items-center gap-3" href={providerUrl}>
                 <ProviderAvatar avatar={service.provider?.avatar} name={providerName} />
                 <span className="min-w-0">
@@ -222,13 +222,13 @@ export function MarketplaceServiceCard({
               </a>
               <div className="flex gap-2">
                 <a
-                  className="rounded-full border border-[#3F6212]/18 bg-white px-3 py-2 text-xs font-black text-[#365314] transition hover:bg-[#3F6212] hover:text-white"
+                  className="rounded-full border border-[#7C3AED]/18 bg-white px-3 py-2 text-xs font-black text-[#5B21B6] transition hover:bg-[#7C3AED] hover:text-white"
                   href={providerUrl}
                 >
                   Profile
                 </a>
                 <a
-                  className="rounded-full bg-black px-3 py-2 text-xs font-black text-white shadow-[0_14px_34px_rgba(0,0,0,0.14)] transition hover:bg-[#3F6212] hover:shadow-[0_18px_44px_rgba(63, 98, 18, 0.22)]"
+                  className="rounded-full bg-black px-3 py-2 text-xs font-black text-white shadow-[0_14px_34px_rgba(0,0,0,0.14)] transition hover:bg-[#7C3AED] hover:shadow-[0_18px_44px_rgba(124, 58, 237, 0.22)]"
                   href={serviceUrl}
                 >
                   Details

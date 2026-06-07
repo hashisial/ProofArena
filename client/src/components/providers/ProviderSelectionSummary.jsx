@@ -127,10 +127,10 @@ export function ProviderSelectionSummary({ entries = [], selectedProviderId = ""
         <Badge variant="primary">Provider decision dashboard</Badge>
         <Badge variant="outline">Public signals only</Badge>
       </div>
-      <h2 className="mt-3 text-2xl font-black tracking-normal text-[#1C1917]">
+      <h2 className="mt-3 text-2xl font-black tracking-normal text-[#07030D]">
         Selection Summary
       </h2>
-      <p className="mt-2 text-sm leading-6 text-[#78716C]">
+      <p className="mt-2 text-sm leading-6 text-[#6F657C]">
         Highlights are calculated from visible recommendation, proof, shortlist, and execution plan data. No winner is inferred when data is missing.
       </p>
       <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
@@ -139,15 +139,15 @@ export function ProviderSelectionSummary({ entries = [], selectedProviderId = ""
           const providerName = item.provider ? getProviderName(item.provider) : "Not available";
 
           return (
-            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={item.label}>
+            <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={item.label}>
               <div className="flex items-start gap-3">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#3F6212]">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#7C3AED]">
                   <Icon aria-hidden="true" className="h-5 w-5" />
                 </span>
                 <div className="min-w-0">
-                  <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">{item.label}</p>
-                  <p className="mt-1 break-words text-base font-black text-[#1C1917]">{providerName}</p>
-                  <p className="mt-1 text-sm font-bold text-[#3F6212]">{item.value}</p>
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">{item.label}</p>
+                  <p className="mt-1 break-words text-base font-black text-[#07030D]">{providerName}</p>
+                  <p className="mt-1 text-sm font-bold text-[#7C3AED]">{item.value}</p>
                 </div>
               </div>
             </div>

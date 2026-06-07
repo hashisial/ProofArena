@@ -39,7 +39,7 @@ function ChipList({ emptyText = "None added", items = [] }) {
   const visibleItems = items.filter(Boolean);
 
   if (visibleItems.length === 0) {
-    return <p className="text-sm leading-6 text-[#78716C]">{emptyText}</p>;
+    return <p className="text-sm leading-6 text-[#6F657C]">{emptyText}</p>;
   }
 
   return (
@@ -57,9 +57,9 @@ function ContextRow({ label, values = [] }) {
   const count = values.length;
 
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-      <p className="text-sm font-black text-[#1C1917]">{label}</p>
-      <p className="mt-1 text-sm text-[#78716C]">{count} linked {count === 1 ? "item" : "items"}</p>
+    <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+      <p className="text-sm font-black text-[#07030D]">{label}</p>
+      <p className="mt-1 text-sm text-[#6F657C]">{count} linked {count === 1 ? "item" : "items"}</p>
     </div>
   );
 }
@@ -117,8 +117,8 @@ export function ProofAssetDetail() {
     return (
       <Card padding="lg" variant="bordered">
         <Badge variant="red">Could not load proof asset</Badge>
-        <h1 className="mt-3 text-2xl font-black text-[#1C1917]">Proof asset unavailable</h1>
-        <p className="mt-2 text-sm leading-6 text-[#78716C]">
+        <h1 className="mt-3 text-2xl font-black text-[#07030D]">Proof asset unavailable</h1>
+        <p className="mt-2 text-sm leading-6 text-[#6F657C]">
           {getProofAssetApiErrorMessage(assetQuery.error, "Proof asset could not be loaded.")}
         </p>
         <Button as={Link} className="mt-5" to={ROUTES.PROOF_VAULT} variant="secondary">
@@ -173,19 +173,19 @@ export function ProofAssetDetail() {
             </CardHeader>
             <CardContent className="grid gap-5">
               <div>
-                <p className="mb-2 text-sm font-black text-[#1C1917]">Related skills</p>
+                <p className="mb-2 text-sm font-black text-[#07030D]">Related skills</p>
                 <ChipList items={asset.relatedSkills} />
               </div>
               <div>
-                <p className="mb-2 text-sm font-black text-[#1C1917]">Related tools</p>
+                <p className="mb-2 text-sm font-black text-[#07030D]">Related tools</p>
                 <ChipList items={asset.relatedTools} />
               </div>
               <div>
-                <p className="mb-2 text-sm font-black text-[#1C1917]">Related industries</p>
+                <p className="mb-2 text-sm font-black text-[#07030D]">Related industries</p>
                 <ChipList items={asset.relatedIndustries} />
               </div>
               <div>
-                <p className="mb-2 text-sm font-black text-[#1C1917]">Tags</p>
+                <p className="mb-2 text-sm font-black text-[#07030D]">Tags</p>
                 <ChipList items={asset.tags} />
               </div>
             </CardContent>
@@ -211,17 +211,17 @@ export function ProofAssetDetail() {
               <CardDescription>Private by default. Public and unlisted assets can be reused in public trust surfaces later.</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-3">
-              <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-white p-3">
-                <span className="text-sm font-bold text-[#78716C]">Created</span>
-                <span className="text-sm font-black text-[#1C1917]">{formatDate(asset.createdAt)}</span>
+              <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E9E2F3] bg-white p-3">
+                <span className="text-sm font-bold text-[#6F657C]">Created</span>
+                <span className="text-sm font-black text-[#07030D]">{formatDate(asset.createdAt)}</span>
               </div>
-              <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-white p-3">
-                <span className="text-sm font-bold text-[#78716C]">Updated</span>
-                <span className="text-sm font-black text-[#1C1917]">{formatDate(asset.updatedAt)}</span>
+              <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E9E2F3] bg-white p-3">
+                <span className="text-sm font-bold text-[#6F657C]">Updated</span>
+                <span className="text-sm font-black text-[#07030D]">{formatDate(asset.updatedAt)}</span>
               </div>
-              <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-white p-3">
-                <span className="text-sm font-bold text-[#78716C]">Views</span>
-                <span className="text-sm font-black text-[#1C1917]">{Number(asset.stats?.views ?? 0)}</span>
+              <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E9E2F3] bg-white p-3">
+                <span className="text-sm font-bold text-[#6F657C]">Views</span>
+                <span className="text-sm font-black text-[#07030D]">{Number(asset.stats?.views ?? 0)}</span>
               </div>
             </CardContent>
           </Card>
@@ -230,18 +230,18 @@ export function ProofAssetDetail() {
 
           <Card variant="bordered">
             <CardHeader>
-              <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#F7FEE7] text-[#3F6212]">
+              <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#F5F3FF] text-[#7C3AED]">
                 <ShieldCheck aria-hidden="true" className="h-5 w-5" />
               </div>
               <CardTitle className="text-lg">Visibility and verification</CardTitle>
               <CardDescription>Keep sharing intentional and treat verification as a server-controlled trust signal.</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-3">
-              <p className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 text-sm leading-6 text-[#44403C]">
+              <p className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4 text-sm leading-6 text-[#493C5E]">
                 {visibilityDescriptions[asset.visibility] ?? visibilityDescriptions.private}
               </p>
-              <p className="rounded-2xl border border-[#E7E5E4] bg-white p-4 text-sm leading-6 text-[#78716C]">
-                Verification status: <span className="font-black text-[#1C1917]">{asset.verificationStatus === "verified" ? "Verified" : "Not verified yet"}</span>. A future review workflow will manage verification without exposing internal notes.
+              <p className="rounded-2xl border border-[#E9E2F3] bg-white p-4 text-sm leading-6 text-[#6F657C]">
+                Verification status: <span className="font-black text-[#07030D]">{asset.verificationStatus === "verified" ? "Verified" : "Not verified yet"}</span>. A future review workflow will manage verification without exposing internal notes.
               </p>
             </CardContent>
             <CardFooter>

@@ -2,8 +2,8 @@ import { useCallback, useMemo, useState } from "react";
 import { ToastContext } from "../hooks/useToast.js";
 
 const toneClasses = {
-  error: "border-[#3F6212]/30 bg-[#F7FEE7] text-[#365314]",
-  success: "border-[#3F6212]/25 bg-[#3F6212] text-white",
+  error: "border-[#7C3AED]/30 bg-[#F5F3FF] text-[#5B21B6]",
+  success: "border-[#7C3AED]/25 bg-[#7C3AED] text-white",
 };
 
 export function ToastProvider({ children }) {

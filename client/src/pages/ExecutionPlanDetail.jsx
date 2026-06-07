@@ -31,16 +31,16 @@ function DetailList({ empty = "Nothing added yet.", items = [], title, type }) {
       </CardHeader>
       <CardContent className="grid gap-3">
         {items.length > 0 ? items.map((item, index) => (
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${item.title || item.risk}-${index}`}>
-            <p className="font-black text-[#1C1917]">{item.title || item.risk}</p>
+          <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={`${item.title || item.risk}-${index}`}>
+            <p className="font-black text-[#07030D]">{item.title || item.risk}</p>
             {item.description || item.mitigation ? (
-              <p className="mt-1 text-sm leading-6 text-[#78716C]">{item.description || item.mitigation}</p>
+              <p className="mt-1 text-sm leading-6 text-[#6F657C]">{item.description || item.mitigation}</p>
             ) : null}
-            {item.deliverable ? <p className="mt-2 text-sm font-semibold text-[#44403C]">Deliverable: {item.deliverable}</p> : null}
+            {item.deliverable ? <p className="mt-2 text-sm font-semibold text-[#493C5E]">Deliverable: {item.deliverable}</p> : null}
             {type === "proof" && item.proofType ? <Badge className="mt-3" variant="green">{item.proofType.replaceAll("_", " ")}</Badge> : null}
           </div>
         )) : (
-          <p className="text-sm leading-6 text-[#78716C]">{empty}</p>
+          <p className="text-sm leading-6 text-[#6F657C]">{empty}</p>
         )}
       </CardContent>
     </Card>
@@ -62,8 +62,8 @@ export function ExecutionPlanDetail() {
     return (
       <Card padding="lg" variant="bordered">
         <Badge variant="red">Plan unavailable</Badge>
-        <h1 className="mt-3 text-3xl font-black text-[#1C1917]">Execution plan could not be loaded</h1>
-        <p className="mt-2 text-sm leading-6 text-[#78716C]">
+        <h1 className="mt-3 text-3xl font-black text-[#07030D]">Execution plan could not be loaded</h1>
+        <p className="mt-2 text-sm leading-6 text-[#6F657C]">
           {getExecutionPlanApiErrorMessage(planQuery.error, "This execution plan may have moved or you may not have access.")}
         </p>
         <Button as={Link} className="mt-5" to={ROUTES.MY_EXECUTION_PLANS}>
@@ -118,22 +118,22 @@ export function ExecutionPlanDetail() {
         <div className="grid gap-5">
           <div className="grid gap-5 lg:grid-cols-2">
             <Card padding="md" variant="muted">
-              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">Challenge summary</p>
-              <h2 className="mt-3 text-xl font-black text-[#1C1917]">{plan.challenge?.title || "Challenge not available"}</h2>
-              <p className="mt-2 text-sm leading-6 text-[#78716C]">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">Challenge summary</p>
+              <h2 className="mt-3 text-xl font-black text-[#07030D]">{plan.challenge?.title || "Challenge not available"}</h2>
+              <p className="mt-2 text-sm leading-6 text-[#6F657C]">
                 {plan.challenge?.shortSummary || plan.challenge?.targetOutcome?.outcomeStatement || "The public challenge summary is not available."}
               </p>
               {plan.challenge?.category ? <Badge className="mt-4" variant="outline">{plan.challenge.category}</Badge> : null}
             </Card>
             <Card padding="md" variant="bordered">
-              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">Status and decision history</p>
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">Status and decision history</p>
               <div className="mt-4 grid gap-3 text-sm">
-                <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#78716C]">Submitted</span><span className="font-black text-[#1C1917]">{formatDate(plan.submittedAt || plan.createdAt)}</span></p>
-                {plan.viewedAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#78716C]">Viewed</span><span className="font-black text-[#1C1917]">{formatDate(plan.viewedAt)}</span></p> : null}
-                {plan.shortlistedAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#78716C]">Shortlisted</span><span className="font-black text-[#1C1917]">{formatDate(plan.shortlistedAt)}</span></p> : null}
-                {plan.acceptedAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#78716C]">Accepted</span><span className="font-black text-[#1C1917]">{formatDate(plan.acceptedAt)}</span></p> : null}
-                {plan.rejectedAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#78716C]">Rejected</span><span className="font-black text-[#1C1917]">{formatDate(plan.rejectedAt)}</span></p> : null}
-                {plan.archivedAt || plan.withdrawnAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#78716C]">Archived</span><span className="font-black text-[#1C1917]">{formatDate(plan.archivedAt || plan.withdrawnAt)}</span></p> : null}
+                <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#6F657C]">Submitted</span><span className="font-black text-[#07030D]">{formatDate(plan.submittedAt || plan.createdAt)}</span></p>
+                {plan.viewedAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#6F657C]">Viewed</span><span className="font-black text-[#07030D]">{formatDate(plan.viewedAt)}</span></p> : null}
+                {plan.shortlistedAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#6F657C]">Shortlisted</span><span className="font-black text-[#07030D]">{formatDate(plan.shortlistedAt)}</span></p> : null}
+                {plan.acceptedAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#6F657C]">Accepted</span><span className="font-black text-[#07030D]">{formatDate(plan.acceptedAt)}</span></p> : null}
+                {plan.rejectedAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#6F657C]">Rejected</span><span className="font-black text-[#07030D]">{formatDate(plan.rejectedAt)}</span></p> : null}
+                {plan.archivedAt || plan.withdrawnAt ? <p className="flex flex-wrap justify-between gap-2"><span className="font-bold text-[#6F657C]">Archived</span><span className="font-black text-[#07030D]">{formatDate(plan.archivedAt || plan.withdrawnAt)}</span></p> : null}
               </div>
             </Card>
           </div>
@@ -141,22 +141,22 @@ export function ExecutionPlanDetail() {
           <ProviderPlanPerformancePanel plan={plan} />
 
           <Card padding="lg" variant="default">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#3F6212]">Approach</p>
-            <p className="mt-3 text-sm leading-7 text-[#44403C]">{plan.approach}</p>
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#7C3AED]">Approach</p>
+            <p className="mt-3 text-sm leading-7 text-[#493C5E]">{plan.approach}</p>
             {plan.whyThisProvider ? (
-              <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Why this provider</p>
-                <p className="mt-2 text-sm leading-6 text-[#44403C]">{plan.whyThisProvider}</p>
+              <div className="mt-5 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Why this provider</p>
+                <p className="mt-2 text-sm leading-6 text-[#493C5E]">{plan.whyThisProvider}</p>
               </div>
             ) : null}
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Timeline</p>
-                <p className="mt-1 font-black text-[#1C1917]">{formatPlanTimeline(plan.timeline)}</p>
+              <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Timeline</p>
+                <p className="mt-1 font-black text-[#07030D]">{formatPlanTimeline(plan.timeline)}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Price</p>
-                <p className="mt-1 font-black text-[#1C1917]">{formatPlanPrice(plan.price)}</p>
+              <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Price</p>
+                <p className="mt-1 font-black text-[#07030D]">{formatPlanPrice(plan.price)}</p>
               </div>
             </div>
           </Card>
@@ -166,17 +166,17 @@ export function ExecutionPlanDetail() {
           <DetailList items={plan.riskHandling} title="Risk handling" />
 
           <Card padding="md" variant="muted">
-            <h2 className="text-lg font-black text-[#1C1917]">Communication and availability</h2>
-            <p className="mt-2 text-sm leading-6 text-[#78716C]">
+            <h2 className="text-lg font-black text-[#07030D]">Communication and availability</h2>
+            <p className="mt-2 text-sm leading-6 text-[#6F657C]">
               Updates: {plan.communicationPlan?.updateFrequency?.replaceAll("_", " ") || "Milestone based"}
             </p>
-            <p className="mt-1 text-sm leading-6 text-[#78716C]">
+            <p className="mt-1 text-sm leading-6 text-[#6F657C]">
               Can start: {plan.availability?.canStart?.replaceAll("_", " ") || "This week"}
             </p>
             {plan.clientFeedback?.rejectionReason || plan.clientFeedback?.shortlistNote || plan.clientFeedback?.acceptedNote ? (
-              <div className="mt-4 rounded-2xl border border-[#E7E5E4] bg-white p-4">
-                <p className="font-black text-[#1C1917]">Client feedback</p>
-                <p className="mt-1 text-sm leading-6 text-[#78716C]">
+              <div className="mt-4 rounded-2xl border border-[#E9E2F3] bg-white p-4">
+                <p className="font-black text-[#07030D]">Client feedback</p>
+                <p className="mt-1 text-sm leading-6 text-[#6F657C]">
                   {plan.clientFeedback.rejectionReason || plan.clientFeedback.shortlistNote || plan.clientFeedback.acceptedNote}
                 </p>
               </div>

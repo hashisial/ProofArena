@@ -3,8 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui
 
 function CoverageGroup({ emptyText, items = [], title }) {
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
-      <p className="text-sm font-black text-[#1C1917]">{title}</p>
+    <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
+      <p className="text-sm font-black text-[#07030D]">{title}</p>
       {items.length > 0 ? (
         <div className="mt-3 flex flex-wrap gap-2">
           {items.map((item) => (
@@ -14,7 +14,7 @@ function CoverageGroup({ emptyText, items = [], title }) {
           ))}
         </div>
       ) : (
-        <p className="mt-2 text-sm leading-6 text-[#78716C]">{emptyText}</p>
+        <p className="mt-2 text-sm leading-6 text-[#6F657C]">{emptyText}</p>
       )}
     </div>
   );
@@ -24,8 +24,8 @@ function GapGroup({ items = [], title }) {
   if (items.length === 0) return null;
 
   return (
-    <div className="rounded-2xl border border-[#A16207]/20 bg-[#FEF3C7] p-4">
-      <p className="text-sm font-black text-[#854D0E]">{title}</p>
+    <div className="rounded-2xl border border-[#6D28D9]/20 bg-[#FEF3C7] p-4">
+      <p className="text-sm font-black text-[#4C1D95]">{title}</p>
       <div className="mt-3 flex flex-wrap gap-2">
         {items.slice(0, 10).map((item) => <Badge key={item} variant="secondary">{item}</Badge>)}
       </div>
@@ -52,7 +52,7 @@ export function ProofCategoryCoverage({ coverage = {} }) {
           <GapGroup items={coverage.uncoveredTools} title="Priority tools without proof" />
         </div>
         {!coverage.uncoveredCategories?.length && !coverage.uncoveredSkills?.length && !coverage.uncoveredTools?.length ? (
-          <p className="rounded-2xl border border-[#65A30D]/20 bg-[#F7FEE7] p-4 text-sm font-bold leading-6 text-[#3F6212]">
+          <p className="rounded-2xl border border-[#A78BFA]/20 bg-[#F5F3FF] p-4 text-sm font-bold leading-6 text-[#7C3AED]">
             Current proof coverage aligns with the active skills, categories, and tools available from your profile, offers, and plans.
           </p>
         ) : null}

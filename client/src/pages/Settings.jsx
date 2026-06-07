@@ -28,13 +28,13 @@ function PlanCard({ currentPlanKey, onChoose, plan, pendingPlanKey }) {
     <div
       className={`min-w-0 rounded-3xl border p-5 shadow-2xl shadow-black/20 backdrop-blur-xl transition hover:-translate-y-0.5 sm:p-6 ${
         isCurrent
-          ? "active-plan-card border-[#65A30D]/55 bg-[#3F6212] text-white shadow-[0_26px_80px_rgba(63, 98, 18, 0.28)]"
-          : "border-white/10 bg-white/[0.06] hover:border-[#65A30D]/35 hover:bg-white/[0.08]"
+          ? "active-plan-card border-[#A78BFA]/55 bg-[#7C3AED] text-white shadow-[0_26px_80px_rgba(124, 58, 237, 0.28)]"
+          : "border-white/10 bg-white/[0.06] hover:border-[#A78BFA]/35 hover:bg-white/[0.08]"
       }`}
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${isCurrent ? "text-white/82" : "text-[#65A30D]"}`}>
+          <p className={`text-sm font-semibold uppercase tracking-[0.18em] ${isCurrent ? "text-white/82" : "text-[#A78BFA]"}`}>
             {plan.name}
           </p>
           <p className={`mt-3 break-words text-4xl font-bold ${isCurrent ? "text-white" : "text-white"}`}>
@@ -187,11 +187,11 @@ export function Settings() {
           privacyData={privacyQuery.data}
         />
 
-        <section className="relative overflow-hidden rounded-3xl border border-[#65A30D]/18 bg-[linear-gradient(135deg,rgba(63, 98, 18, 0.24),rgba(255,255,255,0.06)_48%,rgba(161,98,7,0.16))] p-5 shadow-2xl shadow-black/20 backdrop-blur-xl sm:p-6">
-          <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#65A30D]/18 blur-3xl animate-pulse-glow" />
+        <section className="relative overflow-hidden rounded-3xl border border-[#A78BFA]/18 bg-[linear-gradient(135deg,rgba(124, 58, 237, 0.24),rgba(255,255,255,0.06)_48%,rgba(109,40,217,0.16))] p-5 shadow-2xl shadow-black/20 backdrop-blur-xl sm:p-6">
+          <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-[#A78BFA]/18 blur-3xl animate-pulse-glow" />
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="relative text-sm font-semibold uppercase tracking-[0.22em] text-[#65A30D]">
+              <p className="relative text-sm font-semibold uppercase tracking-[0.22em] text-[#A78BFA]">
                 Subscription
               </p>
               <h2 className="mobile-safe-text relative mt-2 text-3xl font-bold text-white">

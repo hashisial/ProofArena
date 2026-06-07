@@ -161,8 +161,8 @@ export function ProfilePhotoModal({
           </div>
         ) : null}
 
-        <div className="grid place-items-center rounded-3xl border border-[#ECFCCB] bg-[radial-gradient(circle_at_50%_0%,rgba(101, 163, 13, 0.2),transparent_18rem),linear-gradient(180deg,#FFFFFF_0%,#FFFBEB_100%)] p-6">
-          <div className="grid h-36 w-36 place-items-center overflow-hidden rounded-full border-4 border-white bg-[#F7FEE7] shadow-[0_24px_60px_rgba(28, 25, 23, 0.18)]">
+        <div className="grid place-items-center rounded-3xl border border-[#EDE9FE] bg-[radial-gradient(circle_at_50%_0%,rgba(167, 139, 250, 0.2),transparent_18rem),linear-gradient(180deg,#FFFFFF_0%,#F8F4FF_100%)] p-6">
+          <div className="grid h-36 w-36 place-items-center overflow-hidden rounded-full border-4 border-white bg-[#F5F3FF] shadow-[0_24px_60px_rgba(31, 14, 54, 0.18)]">
             {previewUrl || currentAvatarUrl ? (
               <img
                 alt={`${userName} profile photo preview`}
@@ -170,7 +170,7 @@ export function ProfilePhotoModal({
                 src={previewUrl || currentAvatarUrl}
               />
             ) : (
-              <span className="text-4xl font-black text-[#365314]">
+              <span className="text-4xl font-black text-[#5B21B6]">
                 {getInitials(userName)}
               </span>
             )}
@@ -179,7 +179,7 @@ export function ProfilePhotoModal({
 
         <label
           className={cn(
-            "flex cursor-pointer flex-col items-center justify-center gap-3 rounded-3xl border border-dashed border-[#65A30D] bg-[#F7FEE7] px-5 py-6 text-center transition hover:border-[#3F6212] hover:bg-[#F7FEE7] focus-within:ring-4 focus-within:ring-[#65A30D]/30",
+            "flex cursor-pointer flex-col items-center justify-center gap-3 rounded-3xl border border-dashed border-[#A78BFA] bg-[#F5F3FF] px-5 py-6 text-center transition hover:border-[#7C3AED] hover:bg-[#F5F3FF] focus-within:ring-4 focus-within:ring-[#A78BFA]/30",
             isUploading && "pointer-events-none opacity-60",
           )}
           htmlFor={inputId}
@@ -192,17 +192,17 @@ export function ProfilePhotoModal({
             onChange={handleFileChange}
             type="file"
           />
-          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-[#3F6212] shadow-[0_16px_40px_rgba(63, 98, 18, 0.16)]">
+          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-[#7C3AED] shadow-[0_16px_40px_rgba(124, 58, 237, 0.16)]">
             {selectedFile ? (
               <ImagePlus aria-hidden="true" className="h-5 w-5" />
             ) : (
               <UploadCloud aria-hidden="true" className="h-5 w-5" />
             )}
           </span>
-          <span className="text-sm font-black text-[#1C1917]">
+          <span className="text-sm font-black text-[#07030D]">
             {selectedFile ? selectedFile.name : "Choose profile photo"}
           </span>
-          <span className="text-xs font-semibold leading-5 text-[#78716C]">
+          <span className="text-xs font-semibold leading-5 text-[#6F657C]">
             JPG, PNG, or WebP up to 3MB
           </span>
         </label>

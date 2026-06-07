@@ -54,7 +54,7 @@ export function ClientRecommendedProvidersCard({
         {isLoading ? (
           <div className="grid gap-3">
             {[0, 1, 2].map((item) => (
-              <div className="h-24 animate-pulse rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB]" key={item} />
+              <div className="h-24 animate-pulse rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF]" key={item} />
             ))}
           </div>
         ) : isError ? (
@@ -70,49 +70,49 @@ export function ClientRecommendedProvidersCard({
         ) : topRecommendations.length > 0 ? (
           <div className="grid gap-4">
             <div className="grid gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-                <p className="text-sm font-bold text-[#78716C]">New recommendations</p>
-                <p className="mt-2 text-2xl font-black text-[#1C1917]">{newRecommendations}</p>
+              <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+                <p className="text-sm font-bold text-[#6F657C]">New recommendations</p>
+                <p className="mt-2 text-2xl font-black text-[#07030D]">{newRecommendations}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-                <p className="text-sm font-bold text-[#78716C]">Shortlisted</p>
-                <p className="mt-2 text-2xl font-black text-[#1C1917]">{shortlistedCount}</p>
+              <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+                <p className="text-sm font-bold text-[#6F657C]">Shortlisted</p>
+                <p className="mt-2 text-2xl font-black text-[#07030D]">{shortlistedCount}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-                <p className="text-sm font-bold text-[#78716C]">Selected provider</p>
-                <p className="mt-2 text-2xl font-black text-[#1C1917]">
+              <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+                <p className="text-sm font-bold text-[#6F657C]">Selected provider</p>
+                <p className="mt-2 text-2xl font-black text-[#07030D]">
                   {hasSelectedProvider ? "Selected" : "None"}
                 </p>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
+            <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
               <div className="grid gap-3 sm:grid-cols-3">
-                <p className="text-sm font-bold text-[#78716C]">
-                  Total recommendations: <span className="text-[#1C1917]">{stats.total}</span>
+                <p className="text-sm font-bold text-[#6F657C]">
+                  Total recommendations: <span className="text-[#07030D]">{stats.total}</span>
                 </p>
-                <p className="text-sm font-bold text-[#78716C]">
-                  Best match: <span className="text-[#1C1917]">{stats.bestScore}/100</span>
+                <p className="text-sm font-bold text-[#6F657C]">
+                  Best match: <span className="text-[#07030D]">{stats.bestScore}/100</span>
                 </p>
-                <p className="text-sm font-bold text-[#78716C]">
-                  Strong fits: <span className="text-[#1C1917]">{stats.strong}</span>
+                <p className="text-sm font-bold text-[#6F657C]">
+                  Strong fits: <span className="text-[#07030D]">{stats.strong}</span>
                 </p>
               </div>
             </div>
 
             <div className="grid gap-3">
               {topRecommendations.map((match) => (
-                <article className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={match.id || match.provider?.userId || getProviderName(match)}>
+                <article className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={match.id || match.provider?.userId || getProviderName(match)}>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="min-w-0 break-words text-base font-black text-[#1C1917]">
+                        <h3 className="min-w-0 break-words text-base font-black text-[#07030D]">
                           {getProviderName(match)}
                         </h3>
                         <Badge variant="primary">{Number(match.matchScore ?? 0)}% fit</Badge>
                         <Badge variant="gray">{MATCH_STATUS_LABELS[match.status] ?? match.status ?? "New"}</Badge>
                       </div>
-                      <p className="mt-2 line-clamp-2 text-sm leading-6 text-[#78716C]">
+                      <p className="mt-2 line-clamp-2 text-sm leading-6 text-[#6F657C]">
                         {getProviderHeadline(match)}
                       </p>
                     </div>

@@ -35,14 +35,14 @@ function AuthorAvatar({ author }) {
     return (
       <img
         alt=""
-        className="h-12 w-12 rounded-2xl object-cover shadow-[0_14px_35px_rgba(63, 98, 18, 0.12)]"
+        className="h-12 w-12 rounded-2xl object-cover shadow-[0_14px_35px_rgba(124, 58, 237, 0.12)]"
         src={author.avatar}
       />
     );
   }
 
   return (
-    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#3F6212] text-sm font-bold text-white shadow-[0_14px_35px_rgba(63, 98, 18, 0.22)]">
+    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#7C3AED] text-sm font-bold text-white shadow-[0_14px_35px_rgba(124, 58, 237, 0.22)]">
       {getInitials(getAuthorName(author))}
     </div>
   );
@@ -54,7 +54,7 @@ function SharedPost({ post }) {
   }
 
   return (
-    <div className="mt-4 rounded-[1.35rem] border border-[#3F6212]/14 bg-[#fffbeb] p-4">
+    <div className="mt-4 rounded-[1.35rem] border border-[#7C3AED]/14 bg-[#F8F4FF] p-4">
       <div className="flex items-center gap-3">
         <AuthorAvatar author={post.author} />
         <div>
@@ -71,7 +71,7 @@ function SharedPost({ post }) {
       ) : null}
       {post.work?.title ? (
         <div className="mt-4 rounded-2xl bg-white p-4">
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#3F6212]">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#7C3AED]">
             Shared work
           </p>
           <p className="mt-2 font-bold text-black">{post.work.title}</p>
@@ -91,7 +91,7 @@ function CommentList({ comments }) {
     <div className="mt-4 grid gap-3">
       {comments.map((comment) => (
         <div
-          className="rounded-2xl border border-black/10 bg-[#fffbeb] p-3"
+          className="rounded-2xl border border-black/10 bg-[#F8F4FF] p-3"
           key={comment._id}
         >
           <p className="text-sm font-bold text-black">{getAuthorName(comment.author)}</p>
@@ -114,13 +114,13 @@ function PostCard({
   post,
 }) {
   return (
-    <article className="overflow-hidden rounded-[2rem] border border-[#3F6212]/14 bg-white p-5 shadow-[0_24px_75px_rgba(63, 98, 18, 0.08)] transition hover:-translate-y-0.5 hover:border-[#3F6212]/35 hover:shadow-[0_30px_90px_rgba(63, 98, 18, 0.15)] md:p-6">
+    <article className="overflow-hidden rounded-[2rem] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_24px_75px_rgba(124, 58, 237, 0.08)] transition hover:-translate-y-0.5 hover:border-[#7C3AED]/35 hover:shadow-[0_30px_90px_rgba(124, 58, 237, 0.15)] md:p-6">
       <div className="flex items-start gap-4">
         <AuthorAvatar author={post.author} />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <p className="font-bold text-black">{getAuthorName(post.author)}</p>
-            <span className="rounded-full border border-[#3F6212]/16 bg-[#3F6212]/8 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#365314]">
+            <span className="rounded-full border border-[#7C3AED]/16 bg-[#7C3AED]/8 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#5B21B6]">
               {post.type}
             </span>
           </div>
@@ -137,8 +137,8 @@ function PostCard({
       ) : null}
 
       {post.work?.title || post.work?.url ? (
-        <div className="mt-5 rounded-[1.5rem] border border-[#3F6212]/14 bg-[radial-gradient(circle_at_top_right,rgba(63, 98, 18, 0.12),transparent_30%),#fffbeb] p-4">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#3F6212]">
+        <div className="mt-5 rounded-[1.5rem] border border-[#7C3AED]/14 bg-[radial-gradient(circle_at_top_right,rgba(124, 58, 237, 0.12),transparent_30%),#F8F4FF] p-4">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#7C3AED]">
             Work shared
           </p>
           <h3 className="mt-2 text-xl font-bold tracking-[-0.04em] text-black">
@@ -149,7 +149,7 @@ function PostCard({
           ) : null}
           {post.work.url ? (
             <a
-              className="mt-3 inline-flex text-sm font-bold text-[#365314] underline decoration-[#65A30D]/50 underline-offset-4"
+              className="mt-3 inline-flex text-sm font-bold text-[#5B21B6] underline decoration-[#A78BFA]/50 underline-offset-4"
               href={post.work.url}
               rel="noreferrer"
               target="_blank"
@@ -164,7 +164,7 @@ function PostCard({
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
           {post.media.map((item) => (
             <a
-              className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-bold text-black transition hover:border-[#3F6212]/35 hover:text-[#365314]"
+              className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-bold text-black transition hover:border-[#7C3AED]/35 hover:text-[#5B21B6]"
               href={item.url}
               key={item.url}
               rel="noreferrer"
@@ -182,8 +182,8 @@ function PostCard({
         <button
           className={`rounded-full border px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5 ${
             post.likedByMe
-              ? "border-[#3F6212] bg-[#3F6212] text-white shadow-[0_16px_40px_rgba(63, 98, 18, 0.2)]"
-              : "border-black/10 bg-white text-black/62 hover:border-[#3F6212]/35 hover:text-[#365314]"
+              ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow-[0_16px_40px_rgba(124, 58, 237, 0.2)]"
+              : "border-black/10 bg-white text-black/62 hover:border-[#7C3AED]/35 hover:text-[#5B21B6]"
           }`}
           disabled={isLiking}
           onClick={() => onLike(post._id)}
@@ -192,14 +192,14 @@ function PostCard({
           {post.likedByMe ? "Liked" : "Like"} {post.likesCount}
         </button>
         <button
-          className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-bold text-black/62 transition hover:-translate-y-0.5 hover:border-[#3F6212]/35 hover:text-[#365314]"
+          className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-bold text-black/62 transition hover:-translate-y-0.5 hover:border-[#7C3AED]/35 hover:text-[#5B21B6]"
           disabled={isSharing}
           onClick={() => onShare(post._id)}
           type="button"
         >
           Share {post.sharesCount}
         </button>
-        <span className="rounded-full bg-[#3F6212]/8 px-4 py-2 text-sm font-bold text-[#365314]">
+        <span className="rounded-full bg-[#7C3AED]/8 px-4 py-2 text-sm font-bold text-[#5B21B6]">
           {post.commentsCount} comments
         </span>
       </div>
@@ -214,7 +214,7 @@ function PostCard({
         }}
       >
         <input
-          className="min-h-12 flex-1 rounded-full border border-black/10 bg-[#fffbeb] px-4 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+          className="min-h-12 flex-1 rounded-full border border-black/10 bg-[#F8F4FF] px-4 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
           onChange={(event) => onCommentDraftChange(post._id, event.target.value)}
           placeholder="Write a comment..."
           value={commentDraft ?? ""}
@@ -348,11 +348,11 @@ export function Network() {
     <SaaSLayout eyebrow="Networking" title="Community feed">
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
         <div className="grid gap-5">
-          <section className="overflow-hidden rounded-[2rem] border border-[#3F6212]/14 bg-[radial-gradient(circle_at_90%_10%,rgba(63, 98, 18, 0.16),transparent_32%),#ffffff] p-5 shadow-[0_24px_75px_rgba(63, 98, 18, 0.08)] md:p-6">
+          <section className="overflow-hidden rounded-[2rem] border border-[#7C3AED]/14 bg-[radial-gradient(circle_at_90%_10%,rgba(124, 58, 237, 0.16),transparent_32%),#ffffff] p-5 shadow-[0_24px_75px_rgba(124, 58, 237, 0.08)] md:p-6">
             <div className="flex items-start gap-4">
               <AuthorAvatar author={user} />
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3F6212]">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7C3AED]">
                   Share with the network
                 </p>
                 <h2 className="mt-2 text-3xl font-bold tracking-[-0.055em] text-black">
@@ -370,8 +370,8 @@ export function Network() {
                   <button
                     className={`rounded-full border px-4 py-2 text-sm font-bold transition ${
                       form.type === value
-                        ? "border-[#3F6212] bg-[#3F6212] text-white shadow-[0_16px_40px_rgba(63, 98, 18, 0.2)]"
-                        : "border-black/10 bg-white text-black/62 hover:border-[#3F6212]/35"
+                        ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow-[0_16px_40px_rgba(124, 58, 237, 0.2)]"
+                        : "border-black/10 bg-white text-black/62 hover:border-[#7C3AED]/35"
                     }`}
                     key={value}
                     onClick={() => setForm((current) => ({ ...current, type: value }))}
@@ -382,7 +382,7 @@ export function Network() {
                 ))}
               </div>
               <textarea
-                className="min-h-28 resize-none rounded-[1.4rem] border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                className="min-h-28 resize-none rounded-[1.4rem] border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                 name="content"
                 onChange={updateForm}
                 placeholder="What are you building, learning, launching, or looking for?"
@@ -392,21 +392,21 @@ export function Network() {
               {form.type === "work" ? (
                 <div className="grid gap-3 md:grid-cols-2">
                   <input
-                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                    className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                     name="workTitle"
                     onChange={updateForm}
                     placeholder="Work title"
                     value={form.workTitle}
                   />
                   <input
-                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                    className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                     name="workUrl"
                     onChange={updateForm}
                     placeholder="Work URL"
                     value={form.workUrl}
                   />
                   <textarea
-                    className="min-h-20 rounded-[1.25rem] border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10 md:col-span-2"
+                    className="min-h-20 rounded-[1.25rem] border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10 md:col-span-2"
                     name="workDescription"
                     onChange={updateForm}
                     placeholder="Short work description"
@@ -417,14 +417,14 @@ export function Network() {
 
               <div className="grid gap-3 md:grid-cols-[1fr_150px_1fr]">
                 <input
-                  className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                  className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                   name="mediaUrl"
                   onChange={updateForm}
                   placeholder="Optional media or link URL"
                   value={form.mediaUrl}
                 />
                 <select
-                  className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-bold text-black outline-none transition focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                  className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-bold text-black outline-none transition focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                   name="mediaType"
                   onChange={updateForm}
                   value={form.mediaType}
@@ -435,7 +435,7 @@ export function Network() {
                   <option value="document">Document</option>
                 </select>
                 <input
-                  className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                  className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                   name="mediaName"
                   onChange={updateForm}
                   placeholder="Media label"
@@ -488,13 +488,13 @@ export function Network() {
         </div>
 
         <aside className="grid content-start gap-5">
-          <section className="rounded-[2rem] border border-[#3F6212]/14 bg-white p-5 shadow-[0_24px_75px_rgba(63, 98, 18, 0.08)]">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3F6212]">
+          <section className="rounded-[2rem] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_24px_75px_rgba(124, 58, 237, 0.08)]">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7C3AED]">
               Search feed
             </p>
             <form className="mt-4 grid gap-3" onSubmit={submitSearch}>
               <input
-                className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                 onChange={(event) => setSearch(event.target.value)}
                 placeholder="Search posts or work"
                 value={search}
@@ -515,8 +515,8 @@ export function Network() {
             </form>
           </section>
 
-          <section className="rounded-[2rem] border border-[#3F6212]/14 bg-white p-5 shadow-[0_24px_75px_rgba(63, 98, 18, 0.08)]">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3F6212]">
+          <section className="rounded-[2rem] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_24px_75px_rgba(124, 58, 237, 0.08)]">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7C3AED]">
               Network pulse
             </p>
             <div className="mt-4 grid gap-3">
@@ -526,7 +526,7 @@ export function Network() {
                 ["Comments", feedStats.comments],
                 ["Shares", feedStats.shares],
               ].map(([label, value]) => (
-                <div className="flex items-center justify-between rounded-2xl bg-[#fffbeb] px-4 py-3" key={label}>
+                <div className="flex items-center justify-between rounded-2xl bg-[#F8F4FF] px-4 py-3" key={label}>
                   <span className="text-sm font-semibold text-black/56">{label}</span>
                   <strong className="text-lg text-black">{value}</strong>
                 </div>

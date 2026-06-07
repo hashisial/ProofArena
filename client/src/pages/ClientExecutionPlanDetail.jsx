@@ -43,9 +43,9 @@ function DetailList({ emptyText = "Nothing added yet.", items = [], title, type 
       </CardHeader>
       <CardContent className="grid gap-3">
         {items.length > 0 ? items.map((item, index) => (
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${item.title || item.risk || index}-${index}`}>
+          <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={`${item.title || item.risk || index}-${index}`}>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-              <p className="font-black text-[#1C1917]">{item.title || item.risk || "Review item"}</p>
+              <p className="font-black text-[#07030D]">{item.title || item.risk || "Review item"}</p>
               {type === "proof" && item.proofType ? (
                 <Badge variant={item.required === false ? "outline" : "green"}>
                   {item.required === false ? "Optional" : "Required"} {item.proofType.replaceAll("_", " ")}
@@ -53,13 +53,13 @@ function DetailList({ emptyText = "Nothing added yet.", items = [], title, type 
               ) : null}
             </div>
             {item.description || item.mitigation ? (
-              <p className="mt-2 text-sm leading-6 text-[#78716C]">{item.description || item.mitigation}</p>
+              <p className="mt-2 text-sm leading-6 text-[#6F657C]">{item.description || item.mitigation}</p>
             ) : null}
-            {item.deliverable ? <p className="mt-3 text-sm font-semibold text-[#44403C]">Deliverable: {item.deliverable}</p> : null}
-            {item.expectedDueDay ? <p className="mt-2 text-sm font-semibold text-[#44403C]">Expected by day {item.expectedDueDay}</p> : null}
+            {item.deliverable ? <p className="mt-3 text-sm font-semibold text-[#493C5E]">Deliverable: {item.deliverable}</p> : null}
+            {item.expectedDueDay ? <p className="mt-2 text-sm font-semibold text-[#493C5E]">Expected by day {item.expectedDueDay}</p> : null}
           </div>
         )) : (
-          <p className="text-sm leading-6 text-[#78716C]">{emptyText}</p>
+          <p className="text-sm leading-6 text-[#6F657C]">{emptyText}</p>
         )}
       </CardContent>
     </Card>
@@ -69,18 +69,18 @@ function DetailList({ emptyText = "Nothing added yet.", items = [], title, type 
 function TextSection({ children, eyebrow, title }) {
   return (
     <Card as="section" padding="lg" variant="default">
-      {eyebrow ? <p className="text-xs font-black uppercase tracking-[0.16em] text-[#3F6212]">{eyebrow}</p> : null}
-      <h2 className="mt-2 text-2xl font-black tracking-normal text-[#1C1917]">{title}</h2>
-      <div className="mt-4 text-sm leading-7 text-[#44403C]">{children}</div>
+      {eyebrow ? <p className="text-xs font-black uppercase tracking-[0.16em] text-[#7C3AED]">{eyebrow}</p> : null}
+      <h2 className="mt-2 text-2xl font-black tracking-normal text-[#07030D]">{title}</h2>
+      <div className="mt-4 text-sm leading-7 text-[#493C5E]">{children}</div>
     </Card>
   );
 }
 
 function Metric({ label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
-      <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">{label}</p>
-      <p className="mt-1 break-words text-base font-black text-[#1C1917]">{value}</p>
+    <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
+      <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">{label}</p>
+      <p className="mt-1 break-words text-base font-black text-[#07030D]">{value}</p>
     </div>
   );
 }
@@ -96,8 +96,8 @@ function ChallengeContext({ challenge }) {
         <Badge variant="primary">Challenge context</Badge>
         {challenge.status ? <Badge variant="outline">{challenge.status.replaceAll("_", " ")}</Badge> : null}
       </div>
-      <h2 className="mt-3 text-xl font-black tracking-normal text-[#1C1917]">{challenge.title || "Outcome challenge"}</h2>
-      <p className="mt-2 text-sm leading-6 text-[#78716C]">
+      <h2 className="mt-3 text-xl font-black tracking-normal text-[#07030D]">{challenge.title || "Outcome challenge"}</h2>
+      <p className="mt-2 text-sm leading-6 text-[#6F657C]">
         {challenge.targetOutcome?.outcomeStatement || challenge.shortSummary || "Challenge summary not available."}
       </p>
       <div className="mt-5 grid gap-3 sm:grid-cols-3">
@@ -128,7 +128,7 @@ function CommunicationSection({ plan }) {
             {channels.map((channel) => <Badge key={channel} variant="outline">{channel}</Badge>)}
           </div>
         ) : null}
-        {note ? <p className="mt-4 text-sm leading-6 text-[#78716C]">{note}</p> : null}
+        {note ? <p className="mt-4 text-sm leading-6 text-[#6F657C]">{note}</p> : null}
       </CardContent>
     </Card>
   );
@@ -144,11 +144,11 @@ function AttachmentsSection({ attachments = [] }) {
         {attachments.length > 0 ? (
           <div className="grid gap-3">
             {attachments.map((attachment, index) => (
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${attachment.title || attachment.url}-${index}`}>
+              <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={`${attachment.title || attachment.url}-${index}`}>
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <p className="font-black text-[#1C1917]">{attachment.title || "Reference"}</p>
-                    {attachment.note ? <p className="mt-1 text-sm leading-6 text-[#78716C]">{attachment.note}</p> : null}
+                    <p className="font-black text-[#07030D]">{attachment.title || "Reference"}</p>
+                    {attachment.note ? <p className="mt-1 text-sm leading-6 text-[#6F657C]">{attachment.note}</p> : null}
                   </div>
                   {attachment.type ? <Badge variant="outline">{attachment.type.replaceAll("_", " ")}</Badge> : null}
                 </div>
@@ -162,7 +162,7 @@ function AttachmentsSection({ attachments = [] }) {
             ))}
           </div>
         ) : (
-          <p className="text-sm leading-6 text-[#78716C]">No public references were attached to this plan.</p>
+          <p className="text-sm leading-6 text-[#6F657C]">No public references were attached to this plan.</p>
         )}
       </CardContent>
     </Card>
@@ -186,15 +186,15 @@ function DecisionHistory({ plan }) {
         {items.length > 0 ? (
           <div className="grid gap-3">
             {items.map(([label, date, note]) => (
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${label}-${date}`}>
-                <p className="font-black text-[#1C1917]">{label}</p>
-                <p className="mt-1 text-sm font-bold text-[#78716C]">{formatDateTime(date, { fallback: "Recently" })}</p>
-                {note ? <p className="mt-2 text-sm leading-6 text-[#44403C]">{note}</p> : null}
+              <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={`${label}-${date}`}>
+                <p className="font-black text-[#07030D]">{label}</p>
+                <p className="mt-1 text-sm font-bold text-[#6F657C]">{formatDateTime(date, { fallback: "Recently" })}</p>
+                {note ? <p className="mt-2 text-sm leading-6 text-[#493C5E]">{note}</p> : null}
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-sm leading-6 text-[#78716C]">
+          <p className="text-sm leading-6 text-[#6F657C]">
             Shortlist, reject, or accept decisions will appear here. This does not start payments, messaging, or proof review.
           </p>
         )}
@@ -283,9 +283,9 @@ export function ClientExecutionPlanDetail() {
           <TextSection eyebrow="Execution approach" title="How this provider plans to deliver">
             <p>{plan.approach || "No detailed approach was provided."}</p>
             {plan.whyThisProvider ? (
-              <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Provider fit note</p>
-                <p className="mt-2 text-sm leading-6 text-[#44403C]">{plan.whyThisProvider}</p>
+              <div className="mt-5 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Provider fit note</p>
+                <p className="mt-2 text-sm leading-6 text-[#493C5E]">{plan.whyThisProvider}</p>
               </div>
             ) : null}
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -327,8 +327,8 @@ export function ClientExecutionPlanDetail() {
           <ExecutionPlanQualityCard plan={plan} />
           <Card padding="md" variant="bordered">
             <div className="flex items-start gap-3">
-              <CalendarClock aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#A16207]" />
-              <p className="text-sm leading-6 text-[#78716C]">
+              <CalendarClock aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#6D28D9]" />
+              <p className="text-sm leading-6 text-[#6F657C]">
                 Milestone workspace, payment handling, messaging, and proof review will connect in later stages. This page records the client plan decision only.
               </p>
             </div>

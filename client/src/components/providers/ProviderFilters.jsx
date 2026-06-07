@@ -51,13 +51,13 @@ export function ProviderFilters({
   }
 
   return (
-    <div className="grid min-w-0 gap-5 rounded-3xl border border-[#ECFCCB] bg-white p-4 shadow-[0_20px_60px_rgba(28,25,23,0.07)] sm:p-5">
+    <div className="grid min-w-0 gap-5 rounded-3xl border border-[#EDE9FE] bg-white p-4 shadow-[0_20px_60px_rgba(31,14,54,0.07)] sm:p-5">
       <div className="flex min-w-0 items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#3F6212]">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#7C3AED]">
             Filters
           </p>
-          <p className="mt-1 text-sm font-semibold text-[#78716C]">
+          <p className="mt-1 text-sm font-semibold text-[#6F657C]">
             {activeFilterCount} active filter{activeFilterCount === 1 ? "" : "s"}
           </p>
         </div>

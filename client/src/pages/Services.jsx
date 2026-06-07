@@ -35,10 +35,10 @@ export function Services() {
   return (
     <>
       <section className="relative overflow-hidden bg-white py-20 sm:py-24">
-        <div className="absolute right-[8%] top-16 h-72 w-72 rounded-full bg-[#3F6212]/10 blur-3xl" />
+        <div className="absolute right-[8%] top-16 h-72 w-72 rounded-full bg-[#7C3AED]/10 blur-3xl" />
         <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-end lg:px-8">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#3F6212]">
+            <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#7C3AED]">
               Services
             </p>
             <h1 className="mobile-safe-text mt-5 max-w-4xl text-4xl font-bold leading-[0.98] tracking-[-0.06em] text-black sm:text-6xl lg:text-7xl">
@@ -65,7 +65,7 @@ export function Services() {
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr]">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#3F6212]">
+              <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#7C3AED]">
                 Capability matrix
               </p>
               <h2 className="mobile-safe-text mt-4 text-3xl font-bold tracking-[-0.055em] text-black sm:text-4xl">
@@ -74,12 +74,12 @@ export function Services() {
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               {serviceCapabilities.map(([title, ...items]) => (
-                <article className="rounded-[2rem] border border-black/10 bg-white p-6 shadow-[0_20px_60px_rgba(17,17,17,0.06)] transition hover:-translate-y-1 hover:border-[#3F6212]/35" key={title}>
+                <article className="rounded-[2rem] border border-black/10 bg-white p-6 shadow-[0_20px_60px_rgba(17,17,17,0.06)] transition hover:-translate-y-1 hover:border-[#7C3AED]/35" key={title}>
                   <h3 className="text-2xl font-bold text-black">{title}</h3>
                   <ul className="mt-5 grid gap-3">
                     {items.map((item) => (
                       <li className="flex items-center gap-3 text-sm font-semibold text-black/62" key={item}>
-                        <span className="h-px w-7 bg-[#3F6212]/50" />
+                        <span className="h-px w-7 bg-[#7C3AED]/50" />
                         {item}
                       </li>
                     ))}

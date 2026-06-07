@@ -153,9 +153,9 @@ export function Register() {
   }
 
   return (
-    <Card className="border-[#E7E5E4] shadow-[0_24px_80px_rgba(63, 98, 18, 0.12)]" padding="lg" variant="elevated">
+    <Card className="border-[#E9E2F3] shadow-[0_24px_80px_rgba(124, 58, 237, 0.12)]" padding="lg" variant="elevated">
       <CardHeader>
-        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
           ProofArena Access
         </p>
         <CardTitle as="h1" className="text-3xl sm:text-4xl">
@@ -257,9 +257,9 @@ export function Register() {
           </Button>
         </form>
 
-        <p className="mt-6 text-sm font-semibold text-[#57534E]">
+        <p className="mt-6 text-sm font-semibold text-[#6F657C]">
           Already have an account?{" "}
-          <Link className="text-[#365314] transition hover:text-[#3F6212] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" to={ROUTES.LOGIN}>
+          <Link className="text-[#5B21B6] transition hover:text-[#7C3AED] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70" to={ROUTES.LOGIN}>
             Login
           </Link>
         </p>

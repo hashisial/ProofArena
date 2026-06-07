@@ -74,7 +74,7 @@ export function SkillsSection({
         isOwner && skills.length ? (
           <button
             aria-label="Edit Skills"
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#E7E5E4] bg-white text-[#44403C] transition hover:border-[#3F6212]/40 hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#E9E2F3] bg-white text-[#493C5E] transition hover:border-[#7C3AED]/40 hover:bg-[#F5F3FF] hover:text-[#5B21B6] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/10"
             onClick={onEdit}
             type="button"
           >
@@ -94,7 +94,7 @@ export function SkillsSection({
       <div className="flex flex-wrap gap-2">
         {visibleSkills.map((skill) => (
           <Badge
-            className="transition hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(63, 98, 18, 0.12)]"
+            className="transition hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(124, 58, 237, 0.12)]"
             key={skill.name}
             size="lg"
             variant={skill.isFeatured ? "primary" : "outline"}

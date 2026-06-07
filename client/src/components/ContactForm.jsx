@@ -195,7 +195,7 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "mt-2 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-black outline-none transition placeholder:text-black/35 focus:border-[#3F6212]/60 focus:ring-4 focus:ring-[#3F6212]/10 disabled:cursor-not-allowed disabled:bg-black/[0.03]";
+    "mt-2 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-black outline-none transition placeholder:text-black/35 focus:border-[#7C3AED]/60 focus:ring-4 focus:ring-[#7C3AED]/10 disabled:cursor-not-allowed disabled:bg-black/[0.03]";
   const getErrorId = (fieldName) => `contact-${fieldName}-error`;
 
   return (
@@ -219,7 +219,7 @@ export function ContactForm() {
           />
           {errors.name ? (
             <span
-              className="mt-2 block text-xs text-[#365314]"
+              className="mt-2 block text-xs text-[#5B21B6]"
               id={getErrorId("name")}
             >
               {errors.name}
@@ -242,7 +242,7 @@ export function ContactForm() {
           />
           {errors.email ? (
             <span
-              className="mt-2 block text-xs text-[#365314]"
+              className="mt-2 block text-xs text-[#5B21B6]"
               id={getErrorId("email")}
             >
               {errors.email}
@@ -271,7 +271,7 @@ export function ContactForm() {
         </select>
         {errors.service ? (
           <span
-            className="mt-2 block text-xs text-[#365314]"
+            className="mt-2 block text-xs text-[#5B21B6]"
             id={getErrorId("service")}
           >
             {errors.service}
@@ -294,7 +294,7 @@ export function ContactForm() {
         />
         {errors.message ? (
           <span
-            className="mt-2 block text-xs text-[#365314]"
+            className="mt-2 block text-xs text-[#5B21B6]"
             id={getErrorId("message")}
           >
             {errors.message}
@@ -306,8 +306,8 @@ export function ContactForm() {
         <div
           className={`mt-5 rounded-2xl border px-4 py-3 text-sm ${
             status.type === "success"
-              ? "border-[#3F6212]/25 bg-[#3F6212] text-white"
-              : "border-[#3F6212]/30 bg-[#F7FEE7] text-[#365314]"
+              ? "border-[#7C3AED]/25 bg-[#7C3AED] text-white"
+              : "border-[#7C3AED]/30 bg-[#F5F3FF] text-[#5B21B6]"
           }`}
         >
           {status.message}

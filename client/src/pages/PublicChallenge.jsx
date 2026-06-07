@@ -26,12 +26,12 @@ export function PublicChallenge() {
 
   if (challengeQuery.isError || !challenge) {
     return (
-      <section className="bg-[#FEFCE8] py-12">
+      <section className="bg-[#FBF9FF] py-12">
         <Container>
           <Card className="mx-auto max-w-3xl" padding="lg" variant="bordered">
             <Badge variant="secondary">Challenge unavailable</Badge>
-            <h1 className="mt-3 text-3xl font-black text-[#1C1917]">Challenge could not be loaded</h1>
-            <p className="mt-2 text-sm leading-6 text-[#78716C]">
+            <h1 className="mt-3 text-3xl font-black text-[#07030D]">Challenge could not be loaded</h1>
+            <p className="mt-2 text-sm leading-6 text-[#6F657C]">
               {getChallengeApiErrorMessage(challengeQuery.error, "This challenge may be private, archived, or not ready for public viewing.")}
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -53,28 +53,28 @@ export function PublicChallenge() {
   ) : currentRole === USER_ROLES.PROVIDER ? (
     <Button as={Link} to={applyPath}>Submit Execution Plan</Button>
   ) : (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 text-sm font-semibold leading-6 text-[#57534E]">
+    <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4 text-sm font-semibold leading-6 text-[#6F657C]">
       Providers submit execution plans for this challenge.
     </div>
   );
 
   return (
-    <section className="bg-[#FEFCE8] py-8 text-[#1C1917] sm:py-12">
+    <section className="bg-[#FBF9FF] py-8 text-[#07030D] sm:py-12">
       <Container>
         <div className="mx-auto grid max-w-6xl gap-6">
           <Card className="rounded-3xl" padding="lg" variant="elevated">
             <Badge variant="primary">Outcome challenge</Badge>
-            <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight tracking-normal text-[#1C1917] sm:text-5xl">
+            <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight tracking-normal text-[#07030D] sm:text-5xl">
               {challenge.title}
             </h1>
-            <p className="mt-4 max-w-3xl text-base leading-7 text-[#57534E]">{challenge.shortSummary}</p>
-            <div className="mt-6 flex flex-wrap items-center gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-              <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#3F6212] text-white">
+            <p className="mt-4 max-w-3xl text-base leading-7 text-[#6F657C]">{challenge.shortSummary}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-3 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+              <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#7C3AED] text-white">
                 <UserRound aria-hidden="true" className="h-5 w-5" />
               </div>
               <div className="min-w-0">
-                <p className="font-black text-[#1C1917]">{client.fullName || "ProofArena client"}</p>
-                <p className="text-sm font-semibold text-[#78716C]">{client.headline || "Outcome-focused client"}</p>
+                <p className="font-black text-[#07030D]">{client.fullName || "ProofArena client"}</p>
+                <p className="text-sm font-semibold text-[#6F657C]">{client.headline || "Outcome-focused client"}</p>
               </div>
               {client.username ? (
                 <Button as={Link} className="ml-auto w-full sm:w-auto" to={`/profile/${client.username}`} variant="secondary">
@@ -87,8 +87,8 @@ export function PublicChallenge() {
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start">
             <ChallengePreview challenge={challenge} />
             <Card padding="lg" variant="default">
-              <h2 className="text-2xl font-black text-[#1C1917]">Ready to submit a plan?</h2>
-              <p className="mt-2 text-sm leading-6 text-[#78716C]">
+              <h2 className="text-2xl font-black text-[#07030D]">Ready to submit a plan?</h2>
+              <p className="mt-2 text-sm leading-6 text-[#6F657C]">
                 Submit a structured plan with approach, milestones, proof, risk handling, timeline, and price.
               </p>
               <div className="mt-6 grid gap-3">

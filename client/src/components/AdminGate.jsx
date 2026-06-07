@@ -98,8 +98,8 @@ export function AdminGate({ children }) {
   }
 
   return (
-    <div className="mx-auto max-w-xl rounded-[2rem] border border-[#3F6212]/18 bg-white p-6 shadow-[0_30px_100px_rgba(63, 98, 18, 0.14)] backdrop-blur-xl">
-      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#65A30D]">
+    <div className="mx-auto max-w-xl rounded-[2rem] border border-[#7C3AED]/18 bg-white p-6 shadow-[0_30px_100px_rgba(124, 58, 237, 0.14)] backdrop-blur-xl">
+      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#A78BFA]">
         Protected
       </p>
       <h1 className="mt-4 text-3xl font-bold tracking-[-0.05em] text-black">
@@ -113,7 +113,7 @@ export function AdminGate({ children }) {
         <label className="text-sm font-semibold text-black/78">
           Email
           <input
-            className="mt-2 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-black outline-none transition placeholder:text-black/35 focus:border-[#65A30D]/60 focus:ring-4 focus:ring-[#3F6212]/15"
+            className="mt-2 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-black outline-none transition placeholder:text-black/35 focus:border-[#A78BFA]/60 focus:ring-4 focus:ring-[#7C3AED]/15"
             name="email"
             onChange={updateField}
             placeholder="admin@example.com"
@@ -125,7 +125,7 @@ export function AdminGate({ children }) {
           Password
           <span className="relative mt-2 block">
             <input
-              className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 pr-12 text-sm text-black outline-none transition placeholder:text-black/35 focus:border-[#65A30D]/60 focus:ring-4 focus:ring-[#3F6212]/15"
+              className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 pr-12 text-sm text-black outline-none transition placeholder:text-black/35 focus:border-[#A78BFA]/60 focus:ring-4 focus:ring-[#7C3AED]/15"
               name="password"
               onChange={updateField}
               placeholder="Admin password"
@@ -134,7 +134,7 @@ export function AdminGate({ children }) {
             />
             <button
               aria-label={isPasswordVisible ? "Hide password" : "Show password"}
-              className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-black/48 transition hover:bg-[#3F6212]/8 hover:text-[#365314]"
+              className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-black/48 transition hover:bg-[#7C3AED]/8 hover:text-[#5B21B6]"
               onClick={() => setIsPasswordVisible((current) => !current)}
               type="button"
             >
@@ -146,12 +146,12 @@ export function AdminGate({ children }) {
           </span>
         </label>
         {errorMessage ? (
-          <p className="mt-5 rounded-2xl border border-[#65A30D]/20 bg-[#3F6212]/8 px-4 py-3 text-sm text-[#365314]">
+          <p className="mt-5 rounded-2xl border border-[#A78BFA]/20 bg-[#7C3AED]/8 px-4 py-3 text-sm text-[#5B21B6]">
             {errorMessage}
           </p>
         ) : null}
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm font-semibold">
-          <a className="premium-link text-[#365314]" href="/forgot-password?role=admin">
+          <a className="premium-link text-[#5B21B6]" href="/forgot-password?role=admin">
             Forgot password?
           </a>
           <a className="premium-link text-black/62 hover:text-black" href="/">

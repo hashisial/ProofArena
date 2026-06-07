@@ -27,14 +27,14 @@ export function OpportunityNextActionCard({ isCompleting = false, nextAction = {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <Clock aria-hidden="true" className="h-4 w-4 text-[#3F6212]" />
-            <p className="font-black text-[#1C1917]">{nextAction.title || "No next action set"}</p>
+            <Clock aria-hidden="true" className="h-4 w-4 text-[#7C3AED]" />
+            <p className="font-black text-[#07030D]">{nextAction.title || "No next action set"}</p>
             <Badge size="sm" variant={dueVariants[dueState] ?? "gray"}>{dueLabels[dueState]}</Badge>
           </div>
           {nextAction.description ? (
-            <p className="mt-2 text-sm leading-6 text-[#78716C]">{nextAction.description}</p>
+            <p className="mt-2 text-sm leading-6 text-[#6F657C]">{nextAction.description}</p>
           ) : null}
-          <p className="mt-2 text-xs font-bold text-[#78716C]">
+          <p className="mt-2 text-xs font-bold text-[#6F657C]">
             Due {formatDate(nextAction.dueAt, { fallback: "not scheduled" })}
           </p>
         </div>

@@ -6,7 +6,7 @@ export function AdminTable({ caption, columns = [], items = [] }) {
       <Card className="hidden overflow-x-auto md:block" padding="none" variant="bordered">
         <table className="w-full min-w-[62rem] border-collapse text-left">
           <caption className="sr-only">{caption}</caption>
-          <thead className="bg-[#FFFBEB] text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
+          <thead className="bg-[#F8F4FF] text-xs font-black uppercase tracking-[0.12em] text-[#6F657C]">
             <tr>
               {columns.map((column) => (
                 <th className="px-5 py-4" key={column.key} scope="col">
@@ -15,11 +15,11 @@ export function AdminTable({ caption, columns = [], items = [] }) {
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#E7E5E4]">
+          <tbody className="divide-y divide-[#E9E2F3]">
             {items.map((item) => (
               <tr className="align-top" key={item.id}>
                 {columns.map((column) => (
-                  <td className="max-w-sm px-5 py-5 text-sm text-[#57534E]" key={column.key}>
+                  <td className="max-w-sm px-5 py-5 text-sm text-[#6F657C]" key={column.key}>
                     {column.render(item)}
                   </td>
                 ))}
@@ -35,10 +35,10 @@ export function AdminTable({ caption, columns = [], items = [] }) {
             <dl className="grid gap-4">
               {columns.map((column) => (
                 <div className="grid gap-1" key={column.key}>
-                  <dt className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
+                  <dt className="text-xs font-black uppercase tracking-[0.12em] text-[#6F657C]">
                     {column.label}
                   </dt>
-                  <dd className="min-w-0 break-words text-sm text-[#44403C]">
+                  <dd className="min-w-0 break-words text-sm text-[#493C5E]">
                     {column.render(item)}
                   </dd>
                 </div>

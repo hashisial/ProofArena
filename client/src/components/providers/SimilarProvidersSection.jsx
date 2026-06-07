@@ -38,10 +38,10 @@ export function SimilarProvidersSection({
     return (
       <section className="grid gap-4">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
             Similar providers
           </p>
-          <h2 className="mt-2 text-2xl font-black tracking-normal text-[#1C1917]">
+          <h2 className="mt-2 text-2xl font-black tracking-normal text-[#07030D]">
             Related public providers
           </h2>
         </div>
@@ -61,10 +61,10 @@ export function SimilarProvidersSection({
   return (
     <section className="grid gap-4">
       <div>
-        <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
+        <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
           Similar providers
         </p>
-        <h2 className="mt-2 text-2xl font-black tracking-normal text-[#1C1917]">
+        <h2 className="mt-2 text-2xl font-black tracking-normal text-[#07030D]">
           Related public providers
         </h2>
       </div>

@@ -44,12 +44,12 @@ export function ChallengeStatsStrip({ challenges = [] }) {
         <Card className="h-full" key={stat.label} padding="sm" variant="muted">
           <div className="flex min-w-0 items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="text-sm font-bold text-[#78716C]">{stat.label}</p>
-              <p className="mt-2 text-3xl font-black tracking-normal text-[#1C1917]">
+              <p className="text-sm font-bold text-[#6F657C]">{stat.label}</p>
+              <p className="mt-2 text-3xl font-black tracking-normal text-[#07030D]">
                 {formatNumber(stat.value(challenges), { fallback: "0" })}
               </p>
             </div>
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white text-[#3F6212]">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white text-[#7C3AED]">
               {createElement(stat.icon, { "aria-hidden": "true", className: "h-5 w-5" })}
             </span>
           </div>

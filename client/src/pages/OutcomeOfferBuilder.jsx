@@ -137,8 +137,8 @@ export function OutcomeOfferBuilder() {
     return (
       <Card padding="lg" variant="bordered">
         <Badge variant="red">Offer unavailable</Badge>
-        <h1 className="mt-3 text-3xl font-black text-[#1C1917]">Outcome offer could not be loaded</h1>
-        <p className="mt-2 text-sm leading-6 text-[#78716C]">
+        <h1 className="mt-3 text-3xl font-black text-[#07030D]">Outcome offer could not be loaded</h1>
+        <p className="mt-2 text-sm leading-6 text-[#6F657C]">
           {getApiErrorMessage(offerQuery.error, "This offer may have moved or you may not have access.")}
         </p>
         <Button as={Link} className="mt-5" to={ROUTES.MY_OUTCOME_OFFERS}>
@@ -159,7 +159,7 @@ export function OutcomeOfferBuilder() {
       />
 
       {notice ? (
-        <div className="rounded-2xl border border-[#65A30D]/20 bg-[#F7FEE7] px-4 py-3 text-sm font-bold text-[#365314]">
+        <div className="rounded-2xl border border-[#A78BFA]/20 bg-[#F5F3FF] px-4 py-3 text-sm font-bold text-[#5B21B6]">
           {notice}
         </div>
       ) : null}
@@ -189,8 +189,8 @@ export function OutcomeOfferBuilder() {
           <OutcomeOfferPreview form={form} offer={offer} />
           <OutcomeOfferQualityCard form={form} />
           <Card padding="md" variant="muted">
-            <p className="text-sm font-black text-[#1C1917]">AI improvement is not enabled yet.</p>
-            <p className="mt-2 text-sm leading-6 text-[#78716C]">
+            <p className="text-sm font-black text-[#07030D]">AI improvement is not enabled yet.</p>
+            <p className="mt-2 text-sm leading-6 text-[#6F657C]">
               The current builder is rule-based. AI-assisted offer improvement belongs to a later stage.
             </p>
             <Button className="mt-4 w-full" disabled type="button" variant="secondary">

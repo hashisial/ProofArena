@@ -44,8 +44,8 @@ const sortOptions = [
 function StatCard({ label, value }) {
   return (
     <Card padding="sm" variant="muted">
-      <p className="text-sm font-bold text-[#78716C]">{label}</p>
-      <p className="mt-2 text-3xl font-black tracking-[-0.05em] text-[#1C1917]">{value}</p>
+      <p className="text-sm font-bold text-[#6F657C]">{label}</p>
+      <p className="mt-2 text-3xl font-black tracking-[-0.05em] text-[#07030D]">{value}</p>
     </Card>
   );
 }
@@ -195,8 +195,8 @@ export function OutcomeOffers() {
       {offersQuery.isError ? (
         <Card padding="lg" variant="bordered">
           <Badge variant="red">Could not load offers</Badge>
-          <h2 className="mt-3 text-2xl font-black text-[#1C1917]">Outcome offers unavailable</h2>
-          <p className="mt-2 text-sm leading-6 text-[#78716C]">
+          <h2 className="mt-3 text-2xl font-black text-[#07030D]">Outcome offers unavailable</h2>
+          <p className="mt-2 text-sm leading-6 text-[#6F657C]">
             {getApiErrorMessage(offersQuery.error, "Offer list could not be loaded. Please try again.")}
           </p>
           <Button className="mt-5" onClick={() => offersQuery.refetch()} type="button">
@@ -219,8 +219,8 @@ export function OutcomeOffers() {
 
       {!offersQuery.isLoading && !offersQuery.isError && offers.length > 0 && filteredOffers.length === 0 ? (
         <Card padding="lg" variant="bordered">
-          <h2 className="text-2xl font-black text-[#1C1917]">No offers match these filters</h2>
-          <p className="mt-2 text-sm leading-6 text-[#78716C]">
+          <h2 className="text-2xl font-black text-[#07030D]">No offers match these filters</h2>
+          <p className="mt-2 text-sm leading-6 text-[#6F657C]">
             Adjust search, status, visibility, or category filters to see more offers.
           </p>
           <Button className="mt-5" onClick={resetFilters} type="button" variant="outline">

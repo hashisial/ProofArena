@@ -17,14 +17,14 @@ export function FormField({
   return (
     <div className="grid gap-2">
       {label ? (
-        <label className="text-sm font-bold text-[#1C1917]" htmlFor={fieldId}>
+        <label className="text-sm font-bold text-[#07030D]" htmlFor={fieldId}>
           {label}
-          {required ? <span aria-hidden="true" className="text-[#3F6212]"> *</span> : null}
+          {required ? <span aria-hidden="true" className="text-[#7C3AED]"> *</span> : null}
         </label>
       ) : null}
       {children({ describedBy, fieldId, hasError: Boolean(error) })}
       {helperText && !error ? (
-        <p className="text-sm leading-6 text-[#78716C]" id={helperId}>
+        <p className="text-sm leading-6 text-[#6F657C]" id={helperId}>
           {helperText}
         </p>
       ) : null}

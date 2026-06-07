@@ -25,15 +25,15 @@ export function ModulePlaceholder({
   title,
 }) {
   return (
-    <section className="bg-white px-4 py-16 text-[#1C1917] sm:px-6 sm:py-20 lg:px-8">
+    <section className="bg-white px-4 py-16 text-[#07030D] sm:px-6 sm:py-20 lg:px-8">
       <div className="mx-auto grid w-full max-w-7xl gap-8">
-        <div className="relative overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[radial-gradient(circle_at_92%_12%,rgba(63, 98, 18, 0.14),transparent_32%),linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_24px_80px_rgba(28, 25, 23, 0.08)] md:p-8">
+        <div className="relative overflow-hidden rounded-[2rem] border border-[#7C3AED]/16 bg-[radial-gradient(circle_at_92%_12%,rgba(124, 58, 237, 0.14),transparent_32%),linear-gradient(135deg,#ffffff,#F8F4FF)] p-6 shadow-[0_24px_80px_rgba(31, 14, 54, 0.08)] md:p-8">
           {showBack ? <BackButton className="mb-5" fallbackPath="/dashboard" /> : null}
           <Badge variant="primary">{badge}</Badge>
-          <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.06em] text-[#1C1917] sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.06em] text-[#07030D] sm:text-5xl lg:text-6xl">
             {title}
           </h1>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-[#44403C]">
+          <p className="mt-5 max-w-3xl text-base leading-8 text-[#493C5E]">
             {description}
           </p>
           {(primaryActionText || secondaryActionText) ? (
@@ -55,7 +55,7 @@ export function ModulePlaceholder({
         <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
           <Card variant="elevated">
             <CardHeader>
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#F7FEE7] text-[#3F6212]">
+              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#F5F3FF] text-[#7C3AED]">
                 <Icon aria-hidden="true" className="h-5 w-5" />
               </div>
               <CardTitle>{title} module shell</CardTitle>
@@ -91,9 +91,9 @@ export function ModulePlaceholder({
             </CardHeader>
             <CardContent className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {highlights.map((item) => (
-                <div className="rounded-2xl border border-[#E7E5E4] bg-[#FAFAFA] px-4 py-4" key={item}>
-                  <ArrowRight aria-hidden="true" className="h-4 w-4 text-[#3F6212]" />
-                  <p className="mt-3 text-sm font-bold leading-6 text-[#44403C]">{item}</p>
+                <div className="rounded-2xl border border-[#E9E2F3] bg-[#FAFAFA] px-4 py-4" key={item}>
+                  <ArrowRight aria-hidden="true" className="h-4 w-4 text-[#7C3AED]" />
+                  <p className="mt-3 text-sm font-bold leading-6 text-[#493C5E]">{item}</p>
                 </div>
               ))}
             </CardContent>

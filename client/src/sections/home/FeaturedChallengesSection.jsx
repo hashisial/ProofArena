@@ -92,19 +92,19 @@ function getMotionProps(reduceMotion, delay = 0) {
 
 function ChallengeStat({ icon, label, value, tone = "olive" }) {
   const Icon = icon;
-  const iconColor = tone === "bronze" ? "text-[#A16207]" : "text-[#3F6212]";
-  const labelColor = tone === "bronze" ? "text-[#A16207]" : "text-[#78716C]";
+  const iconColor = tone === "bronze" ? "text-[#6D28D9]" : "text-[#7C3AED]";
+  const labelColor = tone === "bronze" ? "text-[#6D28D9]" : "text-[#6F657C]";
 
   return (
-    <div className="flex min-w-0 items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-white p-3">
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#FFFBEB]">
+    <div className="flex min-w-0 items-start gap-3 rounded-2xl border border-[#E9E2F3] bg-white p-3">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#F8F4FF]">
         <Icon aria-hidden="true" className={`h-4 w-4 ${iconColor}`} />
       </span>
       <div className="min-w-0">
         <p className={`text-[0.68rem] font-black uppercase tracking-[0.12em] ${labelColor}`}>
           {label}
         </p>
-        <p className="mt-1 break-words text-sm font-black leading-6 text-[#1C1917]">
+        <p className="mt-1 break-words text-sm font-black leading-6 text-[#07030D]">
           {value}
         </p>
       </div>
@@ -122,18 +122,18 @@ function ChallengeCard({ challenge, index, reduceMotion }) {
     >
       <Card
         as="article"
-        className="premium-motion-card group flex h-full flex-col rounded-[1.7rem] transition duration-300 hover:-translate-y-1 hover:border-[#65A30D] hover:shadow-[0_24px_76px_rgba(63,98,18,0.14)]"
+        className="premium-motion-card group flex h-full flex-col rounded-[1.7rem] transition duration-300 hover:-translate-y-1 hover:border-[#A78BFA] hover:shadow-[0_24px_76px_rgba(124,58,237,0.14)]"
         padding="lg"
         variant="default"
       >
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="flex min-w-0 items-start gap-3">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314] transition group-hover:bg-[#3F6212] group-hover:text-white">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6] transition group-hover:bg-[#7C3AED] group-hover:text-white">
               <Icon aria-hidden="true" className="h-6 w-6" />
             </span>
             <div className="min-w-0">
               <Badge variant="gray">Example challenge</Badge>
-              <h3 className="mt-4 break-words text-xl font-black leading-tight text-[#1C1917]">
+              <h3 className="mt-4 break-words text-xl font-black leading-tight text-[#07030D]">
                 {challenge.title}
               </h3>
             </div>
@@ -141,18 +141,18 @@ function ChallengeCard({ challenge, index, reduceMotion }) {
           <Badge variant="primary">{challenge.category}</Badge>
         </div>
 
-        <p className="mt-5 text-sm font-semibold leading-7 text-[#57534E]">
+        <p className="mt-5 text-sm font-semibold leading-7 text-[#6F657C]">
           {challenge.summary}
         </p>
 
-        <div className="mt-5 rounded-3xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+        <div className="mt-5 rounded-3xl border border-[#EDE9FE] bg-[#F8F4FF] p-4">
           <div className="flex items-center gap-2">
-            <Target aria-hidden="true" className="h-5 w-5 shrink-0 text-[#3F6212]" />
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
+            <Target aria-hidden="true" className="h-5 w-5 shrink-0 text-[#7C3AED]" />
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
               Success criteria
             </p>
           </div>
-          <p className="mt-2 text-sm font-black leading-6 text-[#1C1917]">
+          <p className="mt-2 text-sm font-black leading-6 text-[#07030D]">
             {challenge.successCriteria}
           </p>
         </div>
@@ -164,17 +164,17 @@ function ChallengeCard({ challenge, index, reduceMotion }) {
           <ChallengeStat icon={Layers3} label="Milestones" tone="bronze" value={challenge.milestones} />
         </div>
 
-        <div className="mt-5 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="mt-5 rounded-3xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
           <div className="flex items-center gap-2">
-            <FileCheck2 aria-hidden="true" className="h-5 w-5 shrink-0 text-[#A16207]" />
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#A16207]">
+            <FileCheck2 aria-hidden="true" className="h-5 w-5 shrink-0 text-[#6D28D9]" />
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6D28D9]">
               Proof required
             </p>
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
             {challenge.proofRequired.map((item) => (
               <span
-                className="rounded-full border border-[#ECFCCB] bg-white px-3 py-1.5 text-xs font-black leading-5 text-[#365314] transition hover:border-[#65A30D] hover:bg-[#F7FEE7]"
+                className="rounded-full border border-[#EDE9FE] bg-white px-3 py-1.5 text-xs font-black leading-5 text-[#5B21B6] transition hover:border-[#A78BFA] hover:bg-[#F5F3FF]"
                 key={item}
               >
                 {item}
@@ -184,7 +184,7 @@ function ChallengeCard({ challenge, index, reduceMotion }) {
         </div>
 
         <div className="mt-auto pt-5">
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
             <Badge leftIcon={<CheckCircle2 className="h-4 w-4" />} variant="green">
               {challenge.status}
             </Badge>
@@ -203,22 +203,22 @@ export function FeaturedChallengesSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFBEB_0%,#FEFCE8_52%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
-      <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_16%_18%,rgba(63,98,18,0.12),transparent_32%),radial-gradient(circle_at_86%_44%,rgba(161,98,7,0.09),transparent_28%)]" />
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#F8F4FF_0%,#FBF9FF_52%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
+      <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_16%_18%,rgba(124,58,237,0.12),transparent_32%),radial-gradient(circle_at_86%_44%,rgba(109,40,217,0.09),transparent_28%)]" />
       <Container className="relative z-10">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <MotionDiv {...getMotionProps(reduceMotion, 0)}>
             <Badge variant="primary">Featured challenges</Badge>
-            <h2 className="mt-4 max-w-4xl break-words text-3xl font-black leading-tight text-[#1C1917] [text-wrap:balance] sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 max-w-4xl break-words text-3xl font-black leading-tight text-[#07030D] [text-wrap:balance] sm:text-4xl lg:text-5xl">
               Featured outcome challenges
             </h2>
-            <p className="mt-5 max-w-3xl text-base font-semibold leading-8 text-[#57534E] sm:text-lg">
+            <p className="mt-5 max-w-3xl text-base font-semibold leading-8 text-[#6F657C] sm:text-lg">
               Real work should start with a clear result, success criteria,
               timeline, and proof requirements.
             </p>
-            <div className="mt-6 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-white p-5 shadow-[0_16px_50px_rgba(28,25,23,0.04)]">
-              <ClipboardCheck aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#3F6212]" />
-              <p className="text-sm font-semibold leading-7 text-[#57534E]">
+            <div className="mt-6 flex items-start gap-3 rounded-3xl border border-[#E9E2F3] bg-white p-5 shadow-[0_16px_50px_rgba(31,14,54,0.04)]">
+              <ClipboardCheck aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#7C3AED]" />
+              <p className="text-sm font-semibold leading-7 text-[#6F657C]">
                 Every challenge should include target outcome, timeline, proof
                 requirements, and success criteria so providers can submit
                 better plans. Preview examples show how outcome challenges will
@@ -248,7 +248,7 @@ export function FeaturedChallengesSection() {
           <Badge variant="secondary">Challenge previews</Badge>
           {filterChips.map((chip) => (
             <span
-              className="rounded-full border border-[#E7E5E4] bg-white px-4 py-2 text-sm font-black leading-5 text-[#44403C] shadow-[0_10px_28px_rgba(28,25,23,0.04)] transition hover:border-[#65A30D] hover:bg-[#F7FEE7] hover:text-[#365314]"
+              className="rounded-full border border-[#E9E2F3] bg-white px-4 py-2 text-sm font-black leading-5 text-[#493C5E] shadow-[0_10px_28px_rgba(31,14,54,0.04)] transition hover:border-[#A78BFA] hover:bg-[#F5F3FF] hover:text-[#5B21B6]"
               key={chip}
             >
               {chip}
@@ -268,11 +268,11 @@ export function FeaturedChallengesSection() {
         </div>
 
         <MotionDiv
-          className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-5"
+          className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E9E2F3] bg-[#F8F4FF] p-5"
           {...getMotionProps(reduceMotion, 0.28)}
         >
-          <CheckCircle2 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#3F6212]" />
-          <p className="text-sm font-semibold leading-7 text-[#57534E]">
+          <CheckCircle2 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#7C3AED]" />
+          <p className="text-sm font-semibold leading-7 text-[#6F657C]">
             These challenge cards are preview examples. Live challenges should
             come from connected product data, not fabricated clients or fake
             production activity.

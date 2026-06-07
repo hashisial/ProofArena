@@ -101,24 +101,24 @@ export function ActivitySection({ isOwner = false, onCreatePost, profile = {} })
 
             return (
               <div
-                className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 transition hover:border-[#BEF264] hover:bg-white"
+                className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4 transition hover:border-[#C4B5FD] hover:bg-white"
                 key={item.label}
               >
-                <Icon aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />
-                <p className="mt-3 break-words text-lg font-black text-[#1C1917]">
+                <Icon aria-hidden="true" className="h-5 w-5 text-[#7C3AED]" />
+                <p className="mt-3 break-words text-lg font-black text-[#07030D]">
                   {item.value}
                 </p>
-                <p className="mt-1 text-sm font-semibold text-[#78716C]">{item.label}</p>
+                <p className="mt-1 text-sm font-semibold text-[#6F657C]">{item.label}</p>
               </div>
             );
           })}
         </div>
       ) : (
-        <div className="rounded-2xl border border-dashed border-[#BEF264] bg-[#FFFBEB] p-5">
-          <p className="text-sm font-black text-[#1C1917]">
+        <div className="rounded-2xl border border-dashed border-[#C4B5FD] bg-[#F8F4FF] p-5">
+          <p className="text-sm font-black text-[#07030D]">
             {isOwner ? "Start sharing proof-based updates" : "No recent activity"}
           </p>
-          <p className="mt-2 text-sm leading-6 text-[#78716C]">
+          <p className="mt-2 text-sm leading-6 text-[#6F657C]">
             {isOwner
               ? "Share milestones, delivery notes, lessons, and verified outcome stories as your ProofArena activity grows."
               : "Activity from this profile will appear here."}
@@ -146,13 +146,13 @@ export function ActivitySection({ isOwner = false, onCreatePost, profile = {} })
           <div className="mt-5 grid gap-3">
             {previewRows.map((row) => (
               <div
-                className="rounded-2xl border border-[#E7E5E4] bg-white p-4"
+                className="rounded-2xl border border-[#E9E2F3] bg-white p-4"
                 key={row.label}
               >
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
                   {row.label}
                 </p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-[#78716C]">
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#6F657C]">
                   {row.text}
                 </p>
               </div>

@@ -156,7 +156,7 @@ export function ChallengeActionMenu({
         </div>
 
         {nextAction.disabled ? (
-          <p className="text-xs font-bold leading-5 text-[#78716C]">{nextAction.description}</p>
+          <p className="text-xs font-bold leading-5 text-[#6F657C]">{nextAction.description}</p>
         ) : null}
       </div>
 
@@ -181,7 +181,7 @@ export function ChallengeActionMenu({
         onClose={() => setConfirmAction(null)}
         title={confirmAction === "close" ? "Close challenge?" : "Archive challenge?"}
       >
-        <p className="text-sm leading-6 text-[#78716C]">
+        <p className="text-sm leading-6 text-[#6F657C]">
           {confirmAction === "close"
             ? "Closed challenges are removed from public discovery and marked as cancelled for this foundation workflow."
             : "Archived challenges are hidden from active management and public discovery."}

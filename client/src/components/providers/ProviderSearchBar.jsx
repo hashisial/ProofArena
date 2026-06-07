@@ -40,12 +40,12 @@ export function ProviderSearchBar({ onChange, onClear, onPopularSearch, onSubmit
       </form>
       {onPopularSearch ? (
         <div className="flex min-w-0 flex-wrap items-center gap-2">
-          <span className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
+          <span className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">
             Popular
           </span>
           {popularSearches.map((search) => (
             <button
-              className="rounded-full border border-[#E7E5E4] bg-white px-3 py-1.5 text-xs font-black text-[#44403C] transition hover:border-[#65A30D] hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70"
+              className="rounded-full border border-[#E9E2F3] bg-white px-3 py-1.5 text-xs font-black text-[#493C5E] transition hover:border-[#A78BFA] hover:bg-[#F5F3FF] hover:text-[#5B21B6] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70"
               key={search}
               onClick={() => onPopularSearch(search)}
               type="button"

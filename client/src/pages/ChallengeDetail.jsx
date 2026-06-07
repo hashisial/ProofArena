@@ -53,13 +53,13 @@ function DetailList({ emptyText = "Nothing added yet.", items = [], title }) {
       </CardHeader>
       <CardContent className="grid gap-3">
         {items.length > 0 ? items.map((item, index) => (
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${item.title}-${index}`}>
-            <p className="font-black text-[#1C1917]">{item.title}</p>
-            {item.description ? <p className="mt-1 text-sm leading-6 text-[#78716C]">{item.description}</p> : null}
+          <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={`${item.title}-${index}`}>
+            <p className="font-black text-[#07030D]">{item.title}</p>
+            {item.description ? <p className="mt-1 text-sm leading-6 text-[#6F657C]">{item.description}</p> : null}
             {item.proofType ? <Badge className="mt-3" variant="green">{item.proofType.replaceAll("_", " ")}</Badge> : null}
           </div>
         )) : (
-          <p className="text-sm leading-6 text-[#78716C]">{emptyText}</p>
+          <p className="text-sm leading-6 text-[#6F657C]">{emptyText}</p>
         )}
       </CardContent>
     </Card>
@@ -68,9 +68,9 @@ function DetailList({ emptyText = "Nothing added yet.", items = [], title }) {
 
 function SummaryMetric({ label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-      <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">{label}</p>
-      <p className="mt-2 break-words text-lg font-black text-[#1C1917]">{value}</p>
+    <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+      <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">{label}</p>
+      <p className="mt-2 break-words text-lg font-black text-[#07030D]">{value}</p>
     </div>
   );
 }
@@ -95,13 +95,13 @@ function ChallengeSummary({ challenge }) {
         </div>
       </CardHeader>
       <CardContent className="grid gap-5">
-        <div className="rounded-2xl border border-[#3F6212]/20 bg-[#F7FEE7] p-5">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#3F6212]">Target outcome</p>
-          <h2 className="mt-2 text-2xl font-black tracking-normal text-[#1C1917]">
+        <div className="rounded-2xl border border-[#7C3AED]/20 bg-[#F5F3FF] p-5">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#7C3AED]">Target outcome</p>
+          <h2 className="mt-2 text-2xl font-black tracking-normal text-[#07030D]">
             {challenge.targetOutcome?.outcomeStatement || "Target outcome not specified"}
           </h2>
           {challenge.description ? (
-            <p className="mt-4 text-sm leading-7 text-[#44403C]">{challenge.description}</p>
+            <p className="mt-4 text-sm leading-7 text-[#493C5E]">{challenge.description}</p>
           ) : null}
         </div>
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -146,7 +146,7 @@ function ExecutionPlansPanel({ challenge, isLoadingPlans = false, recentPlans = 
           <SummaryMetric label="Shortlisted" value={shortlistedPlans} />
           <SummaryMetric label="Selected provider" value={selectedProvider ? "Selected" : "Not selected"} />
         </div>
-        <p className="mt-4 text-sm leading-6 text-[#78716C]">
+        <p className="mt-4 text-sm leading-6 text-[#6F657C]">
           Review plan approach, proof plan, timeline, price, and quality before selecting a provider.
         </p>
         {isLoadingPlans ? (
@@ -159,14 +159,14 @@ function ExecutionPlansPanel({ challenge, isLoadingPlans = false, recentPlans = 
               const planId = getPlanId(plan);
 
               return (
-                <article className="rounded-2xl border border-[#E7E5E4] bg-white p-4" key={planId || plan.title}>
+                <article className="rounded-2xl border border-[#E9E2F3] bg-white p-4" key={planId || plan.title}>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <p className="font-black text-[#1C1917]">{plan.title || "Execution plan"}</p>
+                        <p className="font-black text-[#07030D]">{plan.title || "Execution plan"}</p>
                         <ExecutionPlanStatusBadge status={plan.status} />
                       </div>
-                      <p className="mt-2 text-sm font-semibold text-[#78716C]">
+                      <p className="mt-2 text-sm font-semibold text-[#6F657C]">
                         {getProviderName(plan)} - {formatPlanScore(plan)}
                       </p>
                     </div>
@@ -225,7 +225,7 @@ function ProviderSelectionPanel({
             />
           </div>
         )}
-        <p className="mt-4 text-sm leading-6 text-[#78716C]">
+        <p className="mt-4 text-sm leading-6 text-[#6F657C]">
           Compare recommendations, manage the challenge shortlist, and select a provider through the submitted execution plan workflow.
         </p>
       </CardContent>
@@ -246,14 +246,14 @@ function SelectedProviderPanel({ challenge }) {
             </Badge>
             <CardTitle className="mt-3 text-lg">Selected Provider</CardTitle>
           </div>
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#3F6212]">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#7C3AED]">
             <UsersRound aria-hidden="true" className="h-5 w-5" />
           </span>
         </div>
       </CardHeader>
       <CardContent>
         {hasSelectedProvider ? (
-          <p className="text-sm leading-6 text-[#78716C]">
+          <p className="text-sm leading-6 text-[#6F657C]">
             A provider is selected for this challenge. Public-safe provider summary will connect when the milestone workspace is introduced.
           </p>
         ) : (
@@ -281,13 +281,13 @@ function ProofReviewPanel() {
             <Badge variant="secondary">Later stage</Badge>
             <CardTitle className="mt-3 text-lg">Proof Review</CardTitle>
           </div>
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#FEF3C7] text-[#A16207]">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#FEF3C7] text-[#6D28D9]">
             <FileCheck2 aria-hidden="true" className="h-5 w-5" />
           </span>
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-sm leading-6 text-[#78716C]">
+        <p className="text-sm leading-6 text-[#6F657C]">
           Proof review will become available after milestone and proof submission stages. This control panel keeps the placeholder visible without enabling unsupported workflow.
         </p>
       </CardContent>
@@ -311,16 +311,16 @@ function ActivityPlaceholder({ challenge }) {
         {items.length > 0 ? (
           <ol className="grid gap-3">
             {items.map(([label, date]) => (
-              <li className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${label}-${date}`}>
-                <p className="text-sm font-black text-[#1C1917]">{label}</p>
-                <p className="mt-1 text-xs font-bold text-[#78716C]">
+              <li className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={`${label}-${date}`}>
+                <p className="text-sm font-black text-[#07030D]">{label}</p>
+                <p className="mt-1 text-xs font-bold text-[#6F657C]">
                   {new Intl.DateTimeFormat("en-US", { dateStyle: "medium" }).format(new Date(date))}
                 </p>
               </li>
             ))}
           </ol>
         ) : (
-          <p className="text-sm leading-6 text-[#78716C]">
+          <p className="text-sm leading-6 text-[#6F657C]">
             Challenge workflow events will appear here as the control center grows.
           </p>
         )}
@@ -384,8 +384,8 @@ export function ChallengeDetail() {
     return (
       <Card padding="lg" variant="bordered">
         <Badge variant="red">Challenge unavailable</Badge>
-        <h1 className="mt-3 text-3xl font-black text-[#1C1917]">Challenge could not be loaded</h1>
-        <p className="mt-2 text-sm leading-6 text-[#78716C]">
+        <h1 className="mt-3 text-3xl font-black text-[#07030D]">Challenge could not be loaded</h1>
+        <p className="mt-2 text-sm leading-6 text-[#6F657C]">
           {getChallengeApiErrorMessage(challengeQuery.error, "This challenge may have moved or you may not have access.")}
         </p>
         <Button as={Link} className="mt-5" to={ROUTES.MY_CHALLENGES}>

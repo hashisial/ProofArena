@@ -215,12 +215,12 @@ export function EditSkillsModal({
           {items.length ? (
             items.map((skill, index) => (
               <div
-                className="flex min-w-0 flex-col gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3 sm:flex-row sm:items-center"
+                className="flex min-w-0 flex-col gap-3 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3 sm:flex-row sm:items-center"
                 key={`${skill.name}-${index}`}
               >
                 <div className="min-w-0 flex-1">
-                  <p className="break-words text-sm font-black text-[#1C1917]">{skill.name}</p>
-                  <p className="mt-1 text-xs font-semibold text-[#78716C]">
+                  <p className="break-words text-sm font-black text-[#07030D]">{skill.name}</p>
+                  <p className="mt-1 text-xs font-semibold text-[#6F657C]">
                     {skill.isFeatured ? "Featured skill" : "Standard skill"}
                   </p>
                 </div>
@@ -228,10 +228,10 @@ export function EditSkillsModal({
                   <button
                     aria-label={`${skill.isFeatured ? "Unfeature" : "Feature"} skill ${skill.name}`}
                     className={cn(
-                      "inline-flex h-9 w-9 items-center justify-center rounded-full border transition focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10",
+                      "inline-flex h-9 w-9 items-center justify-center rounded-full border transition focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/10",
                       skill.isFeatured
-                        ? "border-[#3F6212]/30 bg-[#F7FEE7] text-[#365314]"
-                        : "border-[#E7E5E4] bg-white text-[#78716C] hover:border-[#3F6212]/40 hover:text-[#365314]",
+                        ? "border-[#7C3AED]/30 bg-[#F5F3FF] text-[#5B21B6]"
+                        : "border-[#E9E2F3] bg-white text-[#6F657C] hover:border-[#7C3AED]/40 hover:text-[#5B21B6]",
                     )}
                     onClick={() => toggleFeatured(index)}
                     type="button"
@@ -240,7 +240,7 @@ export function EditSkillsModal({
                   </button>
                   <button
                     aria-label={`Move skill ${skill.name} up`}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E7E5E4] bg-white text-[#78716C] transition hover:border-[#3F6212]/40 hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10 disabled:cursor-not-allowed disabled:opacity-40"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E9E2F3] bg-white text-[#6F657C] transition hover:border-[#7C3AED]/40 hover:text-[#5B21B6] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/10 disabled:cursor-not-allowed disabled:opacity-40"
                     disabled={index === 0}
                     onClick={() => setItems((current) => moveItem(current, index, index - 1))}
                     type="button"
@@ -249,7 +249,7 @@ export function EditSkillsModal({
                   </button>
                   <button
                     aria-label={`Move skill ${skill.name} down`}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E7E5E4] bg-white text-[#78716C] transition hover:border-[#3F6212]/40 hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10 disabled:cursor-not-allowed disabled:opacity-40"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E9E2F3] bg-white text-[#6F657C] transition hover:border-[#7C3AED]/40 hover:text-[#5B21B6] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/10 disabled:cursor-not-allowed disabled:opacity-40"
                     disabled={index === items.length - 1}
                     onClick={() => setItems((current) => moveItem(current, index, index + 1))}
                     type="button"
@@ -268,7 +268,7 @@ export function EditSkillsModal({
               </div>
             ))
           ) : (
-            <div className="rounded-2xl border border-dashed border-[#BEF264] bg-[#F7FEE7]/45 p-4 text-sm font-semibold leading-6 text-[#365314]">
+            <div className="rounded-2xl border border-dashed border-[#C4B5FD] bg-[#F5F3FF]/45 p-4 text-sm font-semibold leading-6 text-[#5B21B6]">
               Add your first skill to help clients understand what outcomes you can deliver.
             </div>
           )}

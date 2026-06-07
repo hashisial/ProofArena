@@ -37,8 +37,8 @@ function ComparisonCard({ accent = false, bullets, icon, title }) {
     <Card
       className={`h-full transition duration-300 ${
         accent
-          ? "border-[#3F6212]/25 shadow-[0_24px_80px_rgba(63, 98, 18, 0.14)] hover:border-[#3F6212]/50"
-          : "bg-[#FAFAF9] hover:border-[#D4D4D8]"
+          ? "border-[#7C3AED]/25 shadow-[0_24px_80px_rgba(124, 58, 237, 0.14)] hover:border-[#7C3AED]/50"
+          : "bg-[#FCFAFF] hover:border-[#D4D4D8]"
       } premium-motion-card`}
       padding="lg"
       variant={accent ? "elevated" : "bordered"}
@@ -46,13 +46,13 @@ function ComparisonCard({ accent = false, bullets, icon, title }) {
       <div className="flex items-start gap-4">
         <span
           className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl ${
-            accent ? "bg-[#3F6212] text-white" : "bg-white text-[#78716C]"
+            accent ? "bg-[#7C3AED] text-white" : "bg-white text-[#6F657C]"
           }`}
         >
           <IconComponent aria-hidden="true" className="h-6 w-6" />
         </span>
         <div className="min-w-0">
-          <h3 className="text-xl font-black text-[#1C1917]">{title}</h3>
+          <h3 className="text-xl font-black text-[#07030D]">{title}</h3>
           {accent ? (
             <Badge className="mt-3" variant="primary">
               Evidence-first workflow
@@ -69,11 +69,11 @@ function ComparisonCard({ accent = false, bullets, icon, title }) {
         {bullets.map((bullet) => (
           <li className="flex items-start gap-3" key={bullet}>
             {accent ? (
-              <CheckCircle2 aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#3F6212]" />
+              <CheckCircle2 aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#7C3AED]" />
             ) : (
-              <MinusCircle aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#78716C]" />
+              <MinusCircle aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#6F657C]" />
             )}
-            <span className="text-sm font-semibold leading-7 text-[#44403C]">
+            <span className="text-sm font-semibold leading-7 text-[#493C5E]">
               {bullet}
             </span>
           </li>
@@ -87,8 +87,8 @@ export function MarketplacePositioningSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#F8F4FF_0%,#F7FEE7_52%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
-      <div className="absolute inset-x-0 top-0 -z-0 h-96 bg-[radial-gradient(circle_at_80%_20%,rgba(63, 98, 18, 0.16),transparent_32%),radial-gradient(circle_at_12%_80%,rgba(10,10,10,0.05),transparent_28%)]" />
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#F8F4FF_0%,#F5F3FF_52%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
+      <div className="absolute inset-x-0 top-0 -z-0 h-96 bg-[radial-gradient(circle_at_80%_20%,rgba(124, 58, 237, 0.16),transparent_32%),radial-gradient(circle_at_12%_80%,rgba(10,10,10,0.05),transparent_28%)]" />
       <Container className="relative z-10">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-end">
           <SectionHeader
@@ -98,11 +98,11 @@ export function MarketplacePositioningSection() {
           />
 
           <MotionDiv
-            className="premium-motion-card rounded-3xl border border-[#65A30D]/30 bg-[#120A22] p-5 text-white shadow-[0_28px_90px_rgba(18,10,34,0.22)] sm:p-6"
+            className="premium-motion-card rounded-3xl border border-[#A78BFA]/30 bg-[#120A22] p-5 text-white shadow-[0_28px_90px_rgba(18,10,34,0.22)] sm:p-6"
             {...getMotionProps(reduceMotion, 0.08)}
           >
             <div className="flex items-start gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]">
                 <Sparkles aria-hidden="true" className="h-6 w-6" />
               </span>
               <div className="min-w-0">

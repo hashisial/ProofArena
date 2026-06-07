@@ -23,34 +23,34 @@ export function ExecutionPlanPreview({ plan }) {
         <Badge variant="secondary">Client preview</Badge>
         <ExecutionPlanStatusBadge status={status} />
       </div>
-      <h2 className="mt-4 text-2xl font-black tracking-normal text-[#1C1917]">
+      <h2 className="mt-4 text-2xl font-black tracking-normal text-[#07030D]">
         {text(plan?.title, "Execution plan title")}
       </h2>
-      <p className="mt-2 text-sm leading-6 text-[#78716C]">
+      <p className="mt-2 text-sm leading-6 text-[#6F657C]">
         {text(plan?.summary, "A concise summary of how this plan delivers the outcome.")}
       </p>
       {plan?.whyThisProvider ? (
-        <div className="mt-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">Provider match note</p>
-          <p className="mt-2 text-sm leading-6 text-[#44403C]">{plan.whyThisProvider}</p>
+        <div className="mt-4 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">Provider match note</p>
+          <p className="mt-2 text-sm leading-6 text-[#493C5E]">{plan.whyThisProvider}</p>
         </div>
       ) : null}
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Timeline</p>
-          <p className="mt-1 font-black text-[#1C1917]">{formatPlanTimeline(plan?.timeline)}</p>
+        <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Timeline</p>
+          <p className="mt-1 font-black text-[#07030D]">{formatPlanTimeline(plan?.timeline)}</p>
         </div>
-        <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Price</p>
-          <p className="mt-1 font-black text-[#1C1917]">{formatPlanPrice(plan?.price)}</p>
+        <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Price</p>
+          <p className="mt-1 font-black text-[#07030D]">{formatPlanPrice(plan?.price)}</p>
         </div>
-        <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Milestones</p>
-          <p className="mt-1 font-black text-[#1C1917]">{milestones.length} planned</p>
+        <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Milestones</p>
+          <p className="mt-1 font-black text-[#07030D]">{milestones.length} planned</p>
         </div>
-        <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Proof plan</p>
-          <p className="mt-1 font-black text-[#1C1917]">{proofPlan.length} items</p>
+        <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Proof plan</p>
+          <p className="mt-1 font-black text-[#07030D]">{proofPlan.length} items</p>
         </div>
       </div>
       <div className="mt-5 flex flex-wrap gap-2">

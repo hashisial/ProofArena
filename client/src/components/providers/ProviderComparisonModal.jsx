@@ -38,10 +38,10 @@ export function ProviderComparisonModal({
 
             return (
               <div
-                className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4"
+                className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4"
                 key={getProviderKey(provider)}
               >
-                <p className="text-sm font-black text-[#1C1917]">{getName(provider)}</p>
+                <p className="text-sm font-black text-[#07030D]">{getName(provider)}</p>
                 <div className="mt-4 grid gap-2">
                   {href ? (
                     <Button as="a" className="min-h-10 px-4 py-2 text-xs" href={href}>

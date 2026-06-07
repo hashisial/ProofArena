@@ -19,10 +19,10 @@ import { SuccessCriteriaEditor } from "./SuccessCriteriaEditor.jsx";
 
 function Section({ children, description, title }) {
   return (
-    <section className="grid gap-5 rounded-3xl border border-[#E7E5E4] bg-white p-4 shadow-[0_16px_50px_rgba(28,25,23,0.05)] sm:p-6">
+    <section className="grid gap-5 rounded-3xl border border-[#E9E2F3] bg-white p-4 shadow-[0_16px_50px_rgba(31,14,54,0.05)] sm:p-6">
       <div>
-        <h2 className="text-xl font-black text-[#1C1917]">{title}</h2>
-        {description ? <p className="mt-1 text-sm leading-6 text-[#78716C]">{description}</p> : null}
+        <h2 className="text-xl font-black text-[#07030D]">{title}</h2>
+        {description ? <p className="mt-1 text-sm leading-6 text-[#6F657C]">{description}</p> : null}
       </div>
       {children}
     </section>
@@ -420,7 +420,7 @@ export function ChallengeForm({
         </p>
       ) : null}
 
-      <div className="sticky bottom-3 z-10 flex flex-col gap-3 rounded-3xl border border-[#E7E5E4] bg-white/95 p-3 shadow-[0_24px_80px_rgba(28,25,23,0.16)] backdrop-blur sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+      <div className="sticky bottom-3 z-10 flex flex-col gap-3 rounded-3xl border border-[#E9E2F3] bg-white/95 p-3 shadow-[0_24px_80px_rgba(31,14,54,0.16)] backdrop-blur sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
         <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
           <Button isLoading={isSubmitting} loadingLabel="Saving..." type="submit">
             <Save aria-hidden="true" className="mr-2 h-4 w-4" />

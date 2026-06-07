@@ -4,7 +4,7 @@ export function Skeleton({ animate = true, className = "", rounded = "rounded-2x
   return (
     <div
       aria-hidden="true"
-      className={cn("bg-[#E7E5E4]", animate && "animate-pulse", rounded, className)}
+      className={cn("bg-[#E9E2F3]", animate && "animate-pulse", rounded, className)}
     />
   );
 }

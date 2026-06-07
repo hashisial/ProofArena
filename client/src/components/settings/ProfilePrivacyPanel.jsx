@@ -127,13 +127,13 @@ export function ProfilePrivacyPanel({
     <Card as="form" className="rounded-3xl" onSubmit={handleSubmit} padding="lg">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
             Profile privacy
           </p>
-          <h2 className="mt-2 text-2xl font-black tracking-[-0.04em] text-[#1C1917]">
+          <h2 className="mt-2 text-2xl font-black tracking-[-0.04em] text-[#07030D]">
             Control public profile visibility
           </h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-[#78716C]">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-[#6F657C]">
             Control who can see your ProofArena profile, contact details,
             services, and proof reputation.
           </p>
@@ -146,7 +146,7 @@ export function ProfilePrivacyPanel({
         </Badge>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+      <div className="mt-6 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
         <Select
           helperText={visibilityDescriptions[form.profileVisibility]}
           label="Profile visibility"
@@ -168,17 +168,17 @@ export function ProfilePrivacyPanel({
 
           return (
             <section
-              className="rounded-2xl border border-[#E7E5E4] bg-white p-4"
+              className="rounded-2xl border border-[#E9E2F3] bg-white p-4"
               key={group.title}
             >
               <div className="flex items-center gap-3">
                 <div
                   aria-hidden="true"
-                  className="grid h-10 w-10 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]"
+                  className="grid h-10 w-10 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]"
                 >
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="text-lg font-black tracking-[-0.03em] text-[#1C1917]">
+                <h3 className="text-lg font-black tracking-[-0.03em] text-[#07030D]">
                   {group.title}
                 </h3>
               </div>

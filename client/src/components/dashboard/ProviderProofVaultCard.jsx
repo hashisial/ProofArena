@@ -38,17 +38,17 @@ export function ProviderProofVaultCard({ assets = [], isError = false, isLoading
               ["Public assets", Number(usage.public ?? 0)],
               ["Unused assets", Number(usage.unused ?? 0)],
             ].map(([label, value]) => (
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={label}>
-                <p className="text-sm font-bold text-[#78716C]">{label}</p>
-                <p className="mt-2 text-2xl font-black text-[#1C1917]">{value}</p>
+              <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={label}>
+                <p className="text-sm font-bold text-[#6F657C]">{label}</p>
+                <p className="mt-2 text-2xl font-black text-[#07030D]">{value}</p>
               </div>
             ))}
           </div>
         )}
         {!isLoading && !isError ? (
-          <div className="mt-4 rounded-2xl border border-[#A16207]/20 bg-[#FEF3C7] p-4">
-            <p className="text-xs font-black uppercase tracking-[0.12em] text-[#854D0E]">Top proof gap</p>
-            <p className="mt-2 text-sm font-black leading-6 text-[#1C1917]">{topGap}</p>
+          <div className="mt-4 rounded-2xl border border-[#6D28D9]/20 bg-[#FEF3C7] p-4">
+            <p className="text-xs font-black uppercase tracking-[0.12em] text-[#4C1D95]">Top proof gap</p>
+            <p className="mt-2 text-sm font-black leading-6 text-[#07030D]">{topGap}</p>
           </div>
         ) : null}
       </CardContent>

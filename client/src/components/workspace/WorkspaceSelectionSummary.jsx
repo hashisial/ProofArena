@@ -11,9 +11,9 @@ import {
 
 function SummaryMetric({ label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-      <p className="text-xs font-black uppercase tracking-[0.13em] text-[#78716C]">{label}</p>
-      <p className="mt-2 break-words text-base font-black text-[#1C1917]">{value}</p>
+    <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+      <p className="text-xs font-black uppercase tracking-[0.13em] text-[#6F657C]">{label}</p>
+      <p className="mt-2 break-words text-base font-black text-[#07030D]">{value}</p>
     </div>
   );
 }
@@ -30,7 +30,7 @@ export function WorkspaceSelectionSummary({
 
   if (isLoading) {
     return (
-      <Card as="section" className="h-80 animate-pulse bg-[#FFFBEB]" padding="md" variant="bordered" />
+      <Card as="section" className="h-80 animate-pulse bg-[#F8F4FF]" padding="md" variant="bordered" />
     );
   }
 
@@ -110,8 +110,8 @@ export function WorkspaceSelectionSummary({
             Review Plans
           </Button>
         </div>
-        <p className="mt-4 flex items-start gap-2 text-sm leading-6 text-[#78716C]">
-          <ShieldCheck aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-[#3F6212]" />
+        <p className="mt-4 flex items-start gap-2 text-sm leading-6 text-[#6F657C]">
+          <ShieldCheck aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-[#7C3AED]" />
           This summary reports visible operational state only. It does not infer a winner or start contracts, payments, or milestones.
         </p>
       </CardContent>

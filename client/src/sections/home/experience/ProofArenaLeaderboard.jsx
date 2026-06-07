@@ -37,26 +37,26 @@ const rankingSignals = [
 
 export function ProofArenaLeaderboard() {
   return (
-    <section className="bg-[#FFFBEB] py-20 sm:py-28 lg:py-36">
+    <section className="bg-[#F8F4FF] py-20 sm:py-28 lg:py-36">
       <Container>
         <div className="grid gap-12 xl:grid-cols-[0.62fr_1.38fr] xl:items-start">
           <div data-story-reveal>
-            <p className="text-xs font-black uppercase text-[#A16207]">09 / Leaderboard</p>
-            <h2 className="mt-4 max-w-xl text-4xl font-black leading-[1.03] text-[#1C1917] [text-wrap:balance] sm:text-5xl lg:text-6xl">
+            <p className="text-xs font-black uppercase text-[#6D28D9]">09 / Leaderboard</p>
+            <h2 className="mt-4 max-w-xl text-4xl font-black leading-[1.03] text-[#07030D] [text-wrap:balance] sm:text-5xl lg:text-6xl">
               Visibility earned through execution.
             </h2>
-            <p className="mt-5 max-w-xl text-base font-semibold leading-8 text-[#57534E]">
+            <p className="mt-5 max-w-xl text-base font-semibold leading-8 text-[#6F657C]">
               Proof-backed rankings make strong operators easier to discover without paid boosts,
               proposal volume, or popularity contests.
             </p>
-            <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden border border-[#D6D3D1] bg-[#D6D3D1]">
+            <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden border border-[#DDD6E8] bg-[#DDD6E8]">
               {rankingSignals.map((signal) => {
                 const Icon = signal.icon;
 
                 return (
-                  <div className="flex min-w-0 items-center gap-3 bg-[#FEFCE8] p-4" key={signal.label}>
-                    <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-[#3F6212]" />
-                    <span className="text-xs font-black leading-5 text-[#1C1917]">{signal.label}</span>
+                  <div className="flex min-w-0 items-center gap-3 bg-[#FBF9FF] p-4" key={signal.label}>
+                    <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-[#7C3AED]" />
+                    <span className="text-xs font-black leading-5 text-[#07030D]">{signal.label}</span>
                   </div>
                 );
               })}
@@ -67,11 +67,11 @@ export function ProofArenaLeaderboard() {
             </Button>
           </div>
 
-          <div className="border border-[#D6D3D1] bg-white shadow-[0_28px_80px_rgba(28,25,23,0.08)]" data-story-reveal>
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E7E5E4] px-5 py-5 sm:px-7">
+          <div className="border border-[#DDD6E8] bg-white shadow-[0_28px_80px_rgba(31,14,54,0.08)]" data-story-reveal>
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E9E2F3] px-5 py-5 sm:px-7">
               <div>
-                <p className="text-sm font-black text-[#1C1917]">Proof-based provider ranking</p>
-                <p className="mt-1 text-xs font-semibold text-[#78716C]">
+                <p className="text-sm font-black text-[#07030D]">Proof-based provider ranking</p>
+                <p className="mt-1 text-xs font-semibold text-[#6F657C]">
                   Generic preview data. Live ranking connects through the existing leaderboard route.
                 </p>
               </div>
@@ -80,7 +80,7 @@ export function ProofArenaLeaderboard() {
               </Badge>
             </div>
 
-            <div className="hidden grid-cols-[4rem_minmax(0,1fr)_6rem_6rem_6rem_6rem] gap-4 border-b border-[#E7E5E4] bg-[#1C1917] px-7 py-3 text-[0.65rem] font-black uppercase text-white/60 lg:grid">
+            <div className="hidden grid-cols-[4rem_minmax(0,1fr)_6rem_6rem_6rem_6rem] gap-4 border-b border-[#E9E2F3] bg-[#07030D] px-7 py-3 text-[0.65rem] font-black uppercase text-white/60 lg:grid">
               <span>Rank</span>
               <span>Provider type</span>
               <span>Proof</span>
@@ -89,27 +89,27 @@ export function ProofArenaLeaderboard() {
               <span>On time</span>
             </div>
 
-            <div className="divide-y divide-[#E7E5E4]">
+            <div className="divide-y divide-[#E9E2F3]">
               {leaderboardRows.map((row, index) => (
                 <article
-                  className="grid gap-5 px-5 py-6 transition-colors hover:bg-[#FEFCE8] sm:px-7 lg:grid-cols-[4rem_minmax(0,1fr)_6rem_6rem_6rem_6rem] lg:items-center lg:gap-4"
+                  className="grid gap-5 px-5 py-6 transition-colors hover:bg-[#FBF9FF] sm:px-7 lg:grid-cols-[4rem_minmax(0,1fr)_6rem_6rem_6rem_6rem] lg:items-center lg:gap-4"
                   key={row.label}
                 >
                   <div className="flex items-center gap-3">
                     <span
                       className={`grid h-10 w-10 shrink-0 place-items-center border text-sm font-black ${
                         index === 0
-                          ? "border-[#A16207] bg-[#A16207] text-white"
-                          : "border-[#D6D3D1] bg-[#F5F5F4] text-[#3F6212]"
+                          ? "border-[#6D28D9] bg-[#6D28D9] text-white"
+                          : "border-[#DDD6E8] bg-[#F7F2FF] text-[#7C3AED]"
                       }`}
                     >
                       {index + 1}
                     </span>
-                    <span className="text-xs font-black uppercase text-[#78716C] lg:hidden">Rank</span>
+                    <span className="text-xs font-black uppercase text-[#6F657C] lg:hidden">Rank</span>
                   </div>
                   <div className="min-w-0">
-                    <h3 className="font-black leading-6 text-[#1C1917]">{row.label}</h3>
-                    <p className="mt-1 text-xs font-semibold text-[#78716C]">Proof-backed provider preview</p>
+                    <h3 className="font-black leading-6 text-[#07030D]">{row.label}</h3>
+                    <p className="mt-1 text-xs font-semibold text-[#6F657C]">Proof-backed provider preview</p>
                   </div>
                   {[
                     ["Proof", row.proofScore],
@@ -117,9 +117,9 @@ export function ProofArenaLeaderboard() {
                     ["Approval", row.approval],
                     ["On time", row.reliability],
                   ].map(([label, value]) => (
-                    <div className="flex items-center justify-between gap-3 border-t border-[#E7E5E4] pt-3 lg:block lg:border-0 lg:pt-0" key={label}>
-                      <p className="text-[0.65rem] font-black uppercase text-[#78716C] lg:hidden">{label}</p>
-                      <p className={`text-sm font-black ${label === "Proof" ? "text-[#3F6212]" : "text-[#1C1917]"}`}>{value}</p>
+                    <div className="flex items-center justify-between gap-3 border-t border-[#E9E2F3] pt-3 lg:block lg:border-0 lg:pt-0" key={label}>
+                      <p className="text-[0.65rem] font-black uppercase text-[#6F657C] lg:hidden">{label}</p>
+                      <p className={`text-sm font-black ${label === "Proof" ? "text-[#7C3AED]" : "text-[#07030D]"}`}>{value}</p>
                     </div>
                   ))}
                 </article>

@@ -5,7 +5,7 @@ import { PublicNavbar } from "../components/navigation/PublicNavbar.jsx";
 
 export function PublicLayout() {
   return (
-    <div className="min-h-screen bg-[#FEFCE8] text-[#1C1917]">
+    <div className="min-h-screen bg-[#FBF9FF] text-[#07030D]">
       <PublicNavbar />
       <main className="min-w-0">
         <Outlet />

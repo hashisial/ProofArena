@@ -8,7 +8,7 @@ function SectionAction({ ariaLabel, children, onClick }) {
   return (
     <button
       aria-label={ariaLabel}
-      className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#E7E5E4] bg-white text-[#44403C] transition hover:-translate-y-0.5 hover:border-[#3F6212]/40 hover:bg-[#F7FEE7] hover:text-[#365314] hover:shadow-[0_14px_34px_rgba(63, 98, 18, 0.14)] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10"
+      className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#E9E2F3] bg-white text-[#493C5E] transition hover:-translate-y-0.5 hover:border-[#7C3AED]/40 hover:bg-[#F5F3FF] hover:text-[#5B21B6] hover:shadow-[0_14px_34px_rgba(124, 58, 237, 0.14)] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/10"
       onClick={onClick}
       type="button"
     >
@@ -56,7 +56,7 @@ export function ProfileSection({
     <Card
       as={motion.section}
       className={cn(
-        "rounded-3xl border-[#E7E5E4] bg-white shadow-[0_18px_58px_rgba(28, 25, 23, 0.07)] transition hover:border-[#BEF264]/70 hover:shadow-[0_24px_72px_rgba(63, 98, 18, 0.12)]",
+        "rounded-3xl border-[#E9E2F3] bg-white shadow-[0_18px_58px_rgba(31, 14, 54, 0.07)] transition hover:border-[#C4B5FD]/70 hover:shadow-[0_24px_72px_rgba(124, 58, 237, 0.12)]",
         className,
       )}
       initial={reduceMotion ? false : { opacity: 0, y: 18 }}
@@ -68,11 +68,11 @@ export function ProfileSection({
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
-          <h2 className="text-2xl font-black tracking-[-0.04em] text-[#1C1917]">
+          <h2 className="text-2xl font-black tracking-[-0.04em] text-[#07030D]">
             {title}
           </h2>
           {supportingText ? (
-            <p className="mt-1 text-sm leading-6 text-[#78716C]">{supportingText}</p>
+            <p className="mt-1 text-sm leading-6 text-[#6F657C]">{supportingText}</p>
           ) : null}
         </div>
         {actionControls}

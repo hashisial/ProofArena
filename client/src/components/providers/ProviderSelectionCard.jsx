@@ -49,9 +49,9 @@ function metricValue(value, suffix = "") {
 
 function SelectionMetric({ label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-white p-3">
-      <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">{label}</p>
-      <p className="mt-1 break-words text-sm font-black text-[#1C1917]">{value}</p>
+    <div className="rounded-2xl border border-[#E9E2F3] bg-white p-3">
+      <p className="text-xs font-black uppercase tracking-[0.12em] text-[#6F657C]">{label}</p>
+      <p className="mt-1 break-words text-sm font-black text-[#07030D]">{value}</p>
     </div>
   );
 }
@@ -81,13 +81,13 @@ export function ProviderSelectionCard({
   const selectedLabel = selected || plan?.status === "accepted";
 
   return (
-    <Card as="article" className={cn("grid gap-5", selectedLabel && "border-[#65A30D] bg-[#F7FEE7]/45")} variant="bordered">
+    <Card as="article" className={cn("grid gap-5", selectedLabel && "border-[#A78BFA] bg-[#F5F3FF]/45")} variant="bordered">
       <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
         <div className="flex min-w-0 items-start gap-4">
           {avatar ? (
-            <img alt={`${providerName} profile photo`} className="h-16 w-16 shrink-0 rounded-2xl object-cover ring-4 ring-[#F7FEE7]" src={avatar} />
+            <img alt={`${providerName} profile photo`} className="h-16 w-16 shrink-0 rounded-2xl object-cover ring-4 ring-[#F5F3FF]" src={avatar} />
           ) : (
-            <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,#1C1917,#3F6212)] text-lg font-black text-white ring-4 ring-[#F7FEE7]">
+            <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,#07030D,#7C3AED)] text-lg font-black text-white ring-4 ring-[#F5F3FF]">
               {getInitials(providerName)}
             </div>
           )}
@@ -99,11 +99,11 @@ export function ProviderSelectionCard({
               {match?.status ? <Badge variant="gray">{MATCH_STATUS_LABELS[match.status] ?? match.status}</Badge> : null}
             </div>
             <div className="mt-3 flex flex-wrap items-center gap-2">
-              <h2 className="break-words text-2xl font-black tracking-normal text-[#1C1917]">{providerName}</h2>
+              <h2 className="break-words text-2xl font-black tracking-normal text-[#07030D]">{providerName}</h2>
               <ProviderVerificationBadge verification={provider.verificationBadge ?? provider.verification} verificationStatus={provider.verificationStatus} />
             </div>
-            {provider.username ? <p className="mt-1 text-sm font-bold text-[#78716C]">@{provider.username}</p> : null}
-            {provider.headline ? <p className="mt-2 text-sm font-semibold leading-6 text-[#57534E]">{provider.headline}</p> : null}
+            {provider.username ? <p className="mt-1 text-sm font-bold text-[#6F657C]">@{provider.username}</p> : null}
+            {provider.headline ? <p className="mt-2 text-sm font-semibold leading-6 text-[#6F657C]">{provider.headline}</p> : null}
           </div>
         </div>
         <ProviderMatchScoreBadge score={match?.matchScore} />
@@ -123,23 +123,23 @@ export function ProviderSelectionCard({
       <ProviderProofSummary provider={provider} />
 
       {plan ? (
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">Execution plan</p>
-              <h3 className="mt-2 text-lg font-black text-[#1C1917]">{plan.title || "Execution plan"}</h3>
-              <p className="mt-2 text-sm leading-6 text-[#78716C]">{plan.summary || "Structured provider plan for this challenge."}</p>
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">Execution plan</p>
+              <h3 className="mt-2 text-lg font-black text-[#07030D]">{plan.title || "Execution plan"}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#6F657C]">{plan.summary || "Structured provider plan for this challenge."}</p>
             </div>
             <Badge variant="outline">{formatPlanPrice(plan.price)}</Badge>
           </div>
         </div>
       ) : (
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 text-sm leading-6 text-[#78716C]">
+        <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4 text-sm leading-6 text-[#6F657C]">
           No execution plan has been submitted by this provider yet. Selection is available after a submitted plan can be accepted.
         </div>
       )}
 
-      <div className="flex flex-col gap-3 border-t border-[#E7E5E4] pt-5 sm:flex-row sm:flex-wrap">
+      <div className="flex flex-col gap-3 border-t border-[#E9E2F3] pt-5 sm:flex-row sm:flex-wrap">
         <Button as={Link} to={profilePath} variant="secondary">
           <Eye aria-hidden="true" className="mr-2 h-4 w-4" />
           View Profile

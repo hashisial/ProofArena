@@ -128,7 +128,7 @@ export function OutcomeCategoriesSection() {
 
   return (
     <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24" id="outcome-categories">
-      <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_15%_14%,rgba(63, 98, 18, 0.1),transparent_32%),radial-gradient(circle_at_85%_78%,rgba(101, 163, 13, 0.12),transparent_28%)]" />
+      <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_15%_14%,rgba(124, 58, 237, 0.1),transparent_32%),radial-gradient(circle_at_85%_78%,rgba(167, 139, 250, 0.12),transparent_28%)]" />
       <Container className="relative z-10">
         <MotionDiv {...getMotionProps(reduceMotion, 0)}>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-end">
@@ -156,46 +156,46 @@ export function OutcomeCategoriesSection() {
             return (
               <MotionDiv key={category.title} {...getMotionProps(reduceMotion, 0.06 + index * 0.04)}>
                 <Card
-                  className="premium-motion-card group flex h-full flex-col transition duration-300 hover:-translate-y-1 hover:border-[#65A30D] hover:shadow-[0_26px_82px_rgba(63, 98, 18, 0.16)]"
+                  className="premium-motion-card group flex h-full flex-col transition duration-300 hover:-translate-y-1 hover:border-[#A78BFA] hover:shadow-[0_26px_82px_rgba(124, 58, 237, 0.16)]"
                   padding="lg"
                   variant="default"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314] transition group-hover:bg-[#3F6212] group-hover:text-white">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6] transition group-hover:bg-[#7C3AED] group-hover:text-white">
                       <Icon aria-hidden="true" className="h-6 w-6" />
                     </span>
                     <Badge variant="primary">{category.badge}</Badge>
                   </div>
-                  <h3 className="mt-6 break-words text-xl font-black leading-tight text-[#1C1917]">
+                  <h3 className="mt-6 break-words text-xl font-black leading-tight text-[#07030D]">
                     {category.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-[#57534E]">{category.description}</p>
-                  <div className="mt-5 rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
-                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
+                  <p className="mt-3 text-sm leading-7 text-[#6F657C]">{category.description}</p>
+                  <div className="mt-5 rounded-2xl border border-[#EDE9FE] bg-[#F8F4FF] p-4">
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
                       Example outcome
                     </p>
-                    <p className="mt-2 text-sm font-black leading-6 text-[#1C1917]">
+                    <p className="mt-2 text-sm font-black leading-6 text-[#07030D]">
                       {category.example}
                     </p>
                   </div>
-                  <div className="mt-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
+                  <div className="mt-4 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">
                       Proof examples
                     </p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {category.proofExamples.map((proof) => (
                         <span
-                          className="inline-flex min-w-0 items-center gap-1.5 rounded-full border border-[#E7E5E4] bg-white px-3 py-2 text-xs font-black leading-5 text-[#44403C]"
+                          className="inline-flex min-w-0 items-center gap-1.5 rounded-full border border-[#E9E2F3] bg-white px-3 py-2 text-xs font-black leading-5 text-[#493C5E]"
                           key={proof}
                         >
-                          <CheckCircle2 aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-[#3F6212]" />
+                          <CheckCircle2 aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-[#7C3AED]" />
                           {proof}
                         </span>
                       ))}
                     </div>
                   </div>
                   <a
-                    className="mt-auto inline-flex min-h-11 w-full items-center justify-center rounded-full border border-[#3F6212]/25 bg-[#3F6212]/5 px-4 py-2 text-center text-sm font-black text-[#365314] transition hover:border-[#3F6212] hover:bg-[#3F6212] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70"
+                    className="mt-auto inline-flex min-h-11 w-full items-center justify-center rounded-full border border-[#7C3AED]/25 bg-[#7C3AED]/5 px-4 py-2 text-center text-sm font-black text-[#5B21B6] transition hover:border-[#7C3AED] hover:bg-[#7C3AED] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70"
                     href={getChallengeCategoryHref(category.slug)}
                   >
                     {category.cta}

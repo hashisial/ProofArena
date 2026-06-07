@@ -92,9 +92,9 @@ export function ResetPassword() {
 
   if (!token) {
     return (
-      <Card className="border-[#E7E5E4] shadow-[0_24px_80px_rgba(63, 98, 18, 0.12)]" padding="lg" variant="elevated">
+      <Card className="border-[#E9E2F3] shadow-[0_24px_80px_rgba(124, 58, 237, 0.12)]" padding="lg" variant="elevated">
         <CardHeader>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
             Reset link
           </p>
           <CardTitle as="h1" className="text-3xl sm:text-4xl">
@@ -108,8 +108,8 @@ export function ResetPassword() {
           <Button as="a" className="w-full" href={ROUTES.FORGOT_PASSWORD}>
             Request a new reset link
           </Button>
-          <p className="mt-6 text-sm font-semibold text-[#57534E]">
-            <Link className="text-[#365314] transition hover:text-[#3F6212] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" to={ROUTES.LOGIN}>
+          <p className="mt-6 text-sm font-semibold text-[#6F657C]">
+            <Link className="text-[#5B21B6] transition hover:text-[#7C3AED] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70" to={ROUTES.LOGIN}>
               Back to login
             </Link>
           </p>
@@ -119,9 +119,9 @@ export function ResetPassword() {
   }
 
   return (
-    <Card className="border-[#E7E5E4] shadow-[0_24px_80px_rgba(63, 98, 18, 0.12)]" padding="lg" variant="elevated">
+    <Card className="border-[#E9E2F3] shadow-[0_24px_80px_rgba(124, 58, 237, 0.12)]" padding="lg" variant="elevated">
       <CardHeader>
-        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
           Secure access
         </p>
         <CardTitle as="h1" className="text-3xl sm:text-4xl">
@@ -135,7 +135,7 @@ export function ResetPassword() {
       <CardContent>
         {isSuccess ? (
           <div className="grid gap-5">
-            <div className="rounded-2xl border border-[#3F6212]/20 bg-[#F7FEE7] px-4 py-4 text-sm font-semibold leading-6 text-[#365314]">
+            <div className="rounded-2xl border border-[#7C3AED]/20 bg-[#F5F3FF] px-4 py-4 text-sm font-semibold leading-6 text-[#5B21B6]">
               Password reset successfully. You can now log in.
             </div>
             <Button as="a" className="w-full" href={ROUTES.LOGIN}>
@@ -188,8 +188,8 @@ export function ResetPassword() {
         )}
 
         {!isSuccess ? (
-          <p className="mt-6 text-sm font-semibold text-[#57534E]">
-            <Link className="text-[#365314] transition hover:text-[#3F6212] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" to={ROUTES.LOGIN}>
+          <p className="mt-6 text-sm font-semibold text-[#6F657C]">
+            <Link className="text-[#5B21B6] transition hover:text-[#7C3AED] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70" to={ROUTES.LOGIN}>
               Back to login
             </Link>
           </p>

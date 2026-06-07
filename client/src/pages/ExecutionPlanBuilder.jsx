@@ -30,17 +30,17 @@ function ChallengeSummary({ challenge, challengeId }) {
   return (
     <Card padding="md" variant="muted">
       <Badge variant="primary">Challenge summary</Badge>
-      <h2 className="mt-3 text-xl font-black text-[#1C1917]">
+      <h2 className="mt-3 text-xl font-black text-[#07030D]">
         {challenge?.title || "Outcome challenge"}
       </h2>
-      <p className="mt-2 text-sm leading-6 text-[#78716C]">
+      <p className="mt-2 text-sm leading-6 text-[#6F657C]">
         {challenge?.shortSummary || "The plan will be submitted against the selected challenge."}
       </p>
       <div className="mt-4 grid gap-3">
         {challenge?.targetOutcome?.outcomeStatement ? (
-          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-3">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Target outcome</p>
-            <p className="mt-1 text-sm font-bold text-[#1C1917]">{challenge.targetOutcome.outcomeStatement}</p>
+          <div className="rounded-2xl border border-[#E9E2F3] bg-white p-3">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Target outcome</p>
+            <p className="mt-1 text-sm font-bold text-[#07030D]">{challenge.targetOutcome.outcomeStatement}</p>
           </div>
         ) : null}
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
@@ -168,7 +168,7 @@ export function ExecutionPlanBuilder() {
       {challengeQuery.isError && !isEditMode ? (
         <Card padding="md" variant="bordered">
           <Badge variant="secondary">Challenge lookup</Badge>
-          <p className="mt-2 text-sm leading-6 text-[#78716C]">
+          <p className="mt-2 text-sm leading-6 text-[#6F657C]">
             The public challenge summary could not be loaded, but the plan can still be submitted if the challenge ID is valid.
           </p>
         </Card>

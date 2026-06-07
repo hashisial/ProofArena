@@ -30,13 +30,13 @@ function DetailList({ items = [], title }) {
       </CardHeader>
       <CardContent className="grid gap-3">
         {items.length > 0 ? items.map((item, index) => (
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${item.title}-${index}`}>
-            <p className="font-black text-[#1C1917]">{item.title}</p>
-            {item.description ? <p className="mt-1 text-sm leading-6 text-[#78716C]">{item.description}</p> : null}
+          <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={`${item.title}-${index}`}>
+            <p className="font-black text-[#07030D]">{item.title}</p>
+            {item.description ? <p className="mt-1 text-sm leading-6 text-[#6F657C]">{item.description}</p> : null}
             {item.proofType ? <Badge className="mt-3" variant="green">{item.proofType.replaceAll("_", " ")}</Badge> : null}
           </div>
         )) : (
-          <p className="text-sm leading-6 text-[#78716C]">Nothing added yet.</p>
+          <p className="text-sm leading-6 text-[#6F657C]">Nothing added yet.</p>
         )}
       </CardContent>
     </Card>
@@ -61,8 +61,8 @@ export function OutcomeOfferDetail() {
     return (
       <Card padding="lg" variant="bordered">
         <Badge variant="red">Offer unavailable</Badge>
-        <h1 className="mt-3 text-3xl font-black text-[#1C1917]">Outcome offer could not be loaded</h1>
-        <p className="mt-2 text-sm leading-6 text-[#78716C]">
+        <h1 className="mt-3 text-3xl font-black text-[#07030D]">Outcome offer could not be loaded</h1>
+        <p className="mt-2 text-sm leading-6 text-[#6F657C]">
           {getApiErrorMessage(offerQuery.error, "This offer may have moved or you may not have access.")}
         </p>
         <Button as={Link} className="mt-5" to={ROUTES.MY_OUTCOME_OFFERS}>
@@ -105,25 +105,25 @@ export function OutcomeOfferDetail() {
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_26rem] xl:items-start">
         <div className="grid gap-5">
           <Card padding="lg" variant="default">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#3F6212]">Target outcome</p>
-            <h2 className="mt-2 text-2xl font-black tracking-normal text-[#1C1917]">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#7C3AED]">Target outcome</p>
+            <h2 className="mt-2 text-2xl font-black tracking-normal text-[#07030D]">
               {offer.targetOutcome?.outcomeStatement}
             </h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Timeline</p>
-                <p className="mt-1 font-black text-[#1C1917]">{formatTimeline(offer.deliveryTimeline)}</p>
+              <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Timeline</p>
+                <p className="mt-1 font-black text-[#07030D]">{formatTimeline(offer.deliveryTimeline)}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Price</p>
-                <p className="mt-1 font-black text-[#1C1917]">{formatOfferPrice(offer.priceRange)}</p>
+              <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Price</p>
+                <p className="mt-1 font-black text-[#07030D]">{formatOfferPrice(offer.priceRange)}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Stats</p>
-                <p className="mt-1 font-black text-[#1C1917]">{Number(offer.stats?.views ?? 0)} views</p>
+              <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Stats</p>
+                <p className="mt-1 font-black text-[#07030D]">{Number(offer.stats?.views ?? 0)} views</p>
               </div>
             </div>
-            <p className="mt-5 text-sm leading-7 text-[#44403C]">{offer.description}</p>
+            <p className="mt-5 text-sm leading-7 text-[#493C5E]">{offer.description}</p>
           </Card>
           <DetailList items={offer.successCriteria} title="Success criteria" />
           <DetailList items={offer.proofIncluded} title="Proof included" />

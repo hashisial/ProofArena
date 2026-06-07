@@ -25,7 +25,7 @@ export function Layout({ children }) {
     path.startsWith(`${ROUTES.DASHBOARD}/`);
 
   return (
-    <div className="min-h-screen bg-white text-[#1C1917]">
+    <div className="min-h-screen bg-white text-[#07030D]">
       {isAppRoute ? null : <Header />}
       <main>{children}</main>
       {isAppRoute ? null : <Footer />}

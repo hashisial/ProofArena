@@ -17,13 +17,13 @@ const initialProjectForm = {
 
 const statusColumns = [
   {
-    accent: "bg-[#3F6212]",
+    accent: "bg-[#7C3AED]",
     description: "New scopes waiting for provider alignment.",
     label: "Open",
     status: "open",
   },
   {
-    accent: "bg-[#65A30D]",
+    accent: "bg-[#A78BFA]",
     description: "Active delivery work with payment and messaging context.",
     label: "In Progress",
     status: "in_progress",
@@ -64,17 +64,17 @@ function getPersonName(person, fallback) {
 
 function ProjectCard({ isUpdating, onStatusChange, project }) {
   return (
-    <article className="group rounded-[1.6rem] border border-black/10 bg-white p-4 shadow-[0_18px_55px_rgba(63, 98, 18, 0.07)] transition duration-300 hover:-translate-y-1 hover:border-[#3F6212]/36 hover:shadow-[0_26px_80px_rgba(63, 98, 18, 0.14)]">
+    <article className="group rounded-[1.6rem] border border-black/10 bg-white p-4 shadow-[0_18px_55px_rgba(124, 58, 237, 0.07)] transition duration-300 hover:-translate-y-1 hover:border-[#7C3AED]/36 hover:shadow-[0_26px_80px_rgba(124, 58, 237, 0.14)]">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#3F6212]">
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#7C3AED]">
             {project.status.replace(/_/g, " ")}
           </p>
           <h3 className="mt-2 text-xl font-bold tracking-[-0.05em] text-black">
             {project.title}
           </h3>
         </div>
-        <span className="rounded-full border border-[#3F6212]/18 bg-[#3F6212]/8 px-3 py-1 text-xs font-bold text-[#365314]">
+        <span className="rounded-full border border-[#7C3AED]/18 bg-[#7C3AED]/8 px-3 py-1 text-xs font-bold text-[#5B21B6]">
           {formatBudget(project.budget)}
         </span>
       </div>
@@ -83,7 +83,7 @@ function ProjectCard({ isUpdating, onStatusChange, project }) {
         {project.description}
       </p>
 
-      <div className="mt-5 grid gap-2 rounded-[1.2rem] border border-[#3F6212]/12 bg-[#fffbeb] p-3 text-sm">
+      <div className="mt-5 grid gap-2 rounded-[1.2rem] border border-[#7C3AED]/12 bg-[#F8F4FF] p-3 text-sm">
         <div className="flex justify-between gap-4">
           <span className="text-black/48">Client</span>
           <strong className="truncate text-black">{getPersonName(project.client, "You")}</strong>
@@ -105,8 +105,8 @@ function ProjectCard({ isUpdating, onStatusChange, project }) {
           <button
             className={`rounded-full border px-3 py-2 text-xs font-bold capitalize transition ${
               project.status === status
-                ? "border-[#3F6212] bg-[#3F6212] text-white shadow-[0_12px_30px_rgba(63, 98, 18, 0.2)]"
-                : "border-black/10 bg-white text-black/58 hover:border-[#3F6212] hover:bg-[#3F6212] hover:text-white"
+                ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow-[0_12px_30px_rgba(124, 58, 237, 0.2)]"
+                : "border-black/10 bg-white text-black/58 hover:border-[#7C3AED] hover:bg-[#7C3AED] hover:text-white"
             }`}
             disabled={isUpdating || project.status === status}
             key={status}
@@ -186,10 +186,10 @@ export function Projects() {
   return (
     <SaaSLayout eyebrow="Projects" title="Project control room">
       <div className="grid gap-6">
-        <section className="overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[radial-gradient(circle_at_92%_10%,rgba(63, 98, 18, 0.18),transparent_30%),linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] md:p-8">
+        <section className="overflow-hidden rounded-[2rem] border border-[#7C3AED]/16 bg-[radial-gradient(circle_at_92%_10%,rgba(124, 58, 237, 0.18),transparent_30%),linear-gradient(135deg,#ffffff,#F8F4FF)] p-6 shadow-[0_28px_90px_rgba(124, 58, 237, 0.1)] md:p-8">
           <div className="grid gap-8 xl:grid-cols-[1fr_410px] xl:items-end">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#3F6212]">
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#7C3AED]">
                 Delivery workspace
               </p>
               <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-[-0.07em] text-black md:text-6xl">
@@ -199,9 +199,9 @@ export function Projects() {
                 Create scopes, attach providers, track progress, and move work from open request to completed delivery.
               </p>
             </div>
-            <div className="grid grid-cols-3 gap-3 rounded-[1.5rem] border border-black/10 bg-white p-4 shadow-[0_20px_65px_rgba(63, 98, 18, 0.08)]">
+            <div className="grid grid-cols-3 gap-3 rounded-[1.5rem] border border-black/10 bg-white p-4 shadow-[0_20px_65px_rgba(124, 58, 237, 0.08)]">
               {statusColumns.map((column) => (
-                <div className="rounded-2xl bg-[#fffbeb] px-4 py-4" key={column.status}>
+                <div className="rounded-2xl bg-[#F8F4FF] px-4 py-4" key={column.status}>
                   <div className={`h-2 w-8 rounded-full ${column.accent}`} />
                   <strong className="mt-4 block text-3xl tracking-[-0.06em] text-black">
                     {groupedProjects[column.status]?.length ?? 0}
@@ -223,10 +223,10 @@ export function Projects() {
 
         <div className="grid gap-6 xl:grid-cols-[410px_minmax(0,1fr)]">
           <form
-            className="h-fit rounded-[2rem] border border-[#3F6212]/14 bg-white p-5 shadow-[0_22px_70px_rgba(63, 98, 18, 0.08)] md:p-6"
+            className="h-fit rounded-[2rem] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_22px_70px_rgba(124, 58, 237, 0.08)] md:p-6"
             onSubmit={submitProject}
           >
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3F6212]">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7C3AED]">
               New project
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-[-0.055em] text-black">
@@ -234,7 +234,7 @@ export function Projects() {
             </h2>
             <div className="mt-5 grid gap-3">
               <input
-                className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                 name="title"
                 onChange={updateForm}
                 placeholder="Project title"
@@ -242,7 +242,7 @@ export function Projects() {
                 value={form.title}
               />
               <textarea
-                className="min-h-28 rounded-[1.25rem] border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                className="min-h-28 rounded-[1.25rem] border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                 name="description"
                 onChange={updateForm}
                 placeholder="Scope, outcome, success criteria"
@@ -251,7 +251,7 @@ export function Projects() {
               />
               <div className="grid gap-3 sm:grid-cols-2">
                 <input
-                  className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                  className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                   min="0"
                   name="budget"
                   onChange={updateForm}
@@ -260,7 +260,7 @@ export function Projects() {
                   value={form.budget}
                 />
                 <input
-                  className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                  className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                   name="deadline"
                   onChange={updateForm}
                   type="date"
@@ -268,7 +268,7 @@ export function Projects() {
                 />
               </div>
               <input
-                className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                 name="providerId"
                 onChange={updateForm}
                 placeholder="Provider ID optional"
@@ -302,7 +302,7 @@ export function Projects() {
               <div className="grid gap-5 xl:grid-cols-3">
                 {statusColumns.map((column) => (
                   <div className="grid content-start gap-3" key={column.status}>
-                    <div className="rounded-[1.4rem] border border-[#3F6212]/14 bg-white p-4 shadow-[0_18px_55px_rgba(63, 98, 18, 0.06)]">
+                    <div className="rounded-[1.4rem] border border-[#7C3AED]/14 bg-white p-4 shadow-[0_18px_55px_rgba(124, 58, 237, 0.06)]">
                       <div className={`h-2 w-10 rounded-full ${column.accent}`} />
                       <h2 className="mt-4 text-2xl font-bold tracking-[-0.055em] text-black">
                         {column.label}
@@ -322,7 +322,7 @@ export function Projects() {
               </div>
             ) : null}
             {cancelledProjects.length > 0 ? (
-              <div className="rounded-[1.5rem] border border-black/10 bg-white p-5 shadow-[0_18px_55px_rgba(63, 98, 18, 0.06)]">
+              <div className="rounded-[1.5rem] border border-black/10 bg-white p-5 shadow-[0_18px_55px_rgba(124, 58, 237, 0.06)]">
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-black/42">
                   Cancelled
                 </p>

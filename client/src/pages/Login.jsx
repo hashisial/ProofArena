@@ -97,9 +97,9 @@ export function Login() {
   }
 
   return (
-    <Card className="border-[#E7E5E4] shadow-[0_24px_80px_rgba(63, 98, 18, 0.12)]" padding="lg" variant="elevated">
+    <Card className="border-[#E9E2F3] shadow-[0_24px_80px_rgba(124, 58, 237, 0.12)]" padding="lg" variant="elevated">
       <CardHeader>
-        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
           ProofArena Access
         </p>
         <CardTitle as="h1" className="text-3xl sm:text-4xl">
@@ -154,10 +154,10 @@ export function Login() {
         </form>
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-3 text-sm font-semibold">
-          <Link className="text-[#365314] transition hover:text-[#3F6212] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" to={ROUTES.REGISTER}>
+          <Link className="text-[#5B21B6] transition hover:text-[#7C3AED] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70" to={ROUTES.REGISTER}>
             Create an account
           </Link>
-          <Link className="text-[#57534E] transition hover:text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" to={ROUTES.FORGOT_PASSWORD}>
+          <Link className="text-[#6F657C] transition hover:text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70" to={ROUTES.FORGOT_PASSWORD}>
             Forgot password?
           </Link>
         </div>

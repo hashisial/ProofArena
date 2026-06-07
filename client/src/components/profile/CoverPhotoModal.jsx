@@ -160,8 +160,8 @@ export function CoverPhotoModal({
           </div>
         ) : null}
 
-        <div className="overflow-hidden rounded-3xl border border-[#ECFCCB] bg-[radial-gradient(circle_at_20%_0%,rgba(101, 163, 13, 0.28),transparent_20rem),linear-gradient(135deg,#FFFFFF_0%,#F7FEE7_44%,#ECFCCB_100%)] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
-          <div className="aspect-[3/1] overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#FFFBEB_0%,#ECFCCB_55%,#65A30D_100%)]">
+        <div className="overflow-hidden rounded-3xl border border-[#EDE9FE] bg-[radial-gradient(circle_at_20%_0%,rgba(167, 139, 250, 0.28),transparent_20rem),linear-gradient(135deg,#FFFFFF_0%,#F5F3FF_44%,#EDE9FE_100%)] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
+          <div className="aspect-[3/1] overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#F8F4FF_0%,#EDE9FE_55%,#A78BFA_100%)]">
             {previewUrl || currentCoverUrl ? (
               <img
                 alt="Cover photo preview"
@@ -171,7 +171,7 @@ export function CoverPhotoModal({
             ) : (
               <div
                 aria-hidden="true"
-                className="h-full w-full bg-[radial-gradient(circle_at_18%_25%,rgba(255,255,255,0.85),transparent_11rem),radial-gradient(circle_at_82%_18%,rgba(63, 98, 18, 0.24),transparent_15rem),linear-gradient(135deg,#FFFFFF_0%,#ECFCCB_50%,#65A30D_100%)]"
+                className="h-full w-full bg-[radial-gradient(circle_at_18%_25%,rgba(255,255,255,0.85),transparent_11rem),radial-gradient(circle_at_82%_18%,rgba(124, 58, 237, 0.24),transparent_15rem),linear-gradient(135deg,#FFFFFF_0%,#EDE9FE_50%,#A78BFA_100%)]"
               />
             )}
           </div>
@@ -179,7 +179,7 @@ export function CoverPhotoModal({
 
         <label
           className={cn(
-            "flex cursor-pointer flex-col items-center justify-center gap-3 rounded-3xl border border-dashed border-[#65A30D] bg-[#F7FEE7] px-5 py-6 text-center transition hover:border-[#3F6212] hover:bg-[#F7FEE7] focus-within:ring-4 focus-within:ring-[#65A30D]/30",
+            "flex cursor-pointer flex-col items-center justify-center gap-3 rounded-3xl border border-dashed border-[#A78BFA] bg-[#F5F3FF] px-5 py-6 text-center transition hover:border-[#7C3AED] hover:bg-[#F5F3FF] focus-within:ring-4 focus-within:ring-[#A78BFA]/30",
             isUploading && "pointer-events-none opacity-60",
           )}
           htmlFor={inputId}
@@ -192,17 +192,17 @@ export function CoverPhotoModal({
             onChange={handleFileChange}
             type="file"
           />
-          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-[#3F6212] shadow-[0_16px_40px_rgba(63, 98, 18, 0.16)]">
+          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-[#7C3AED] shadow-[0_16px_40px_rgba(124, 58, 237, 0.16)]">
             {selectedFile ? (
               <ImagePlus aria-hidden="true" className="h-5 w-5" />
             ) : (
               <UploadCloud aria-hidden="true" className="h-5 w-5" />
             )}
           </span>
-          <span className="text-sm font-black text-[#1C1917]">
+          <span className="text-sm font-black text-[#07030D]">
             {selectedFile ? selectedFile.name : "Choose cover photo"}
           </span>
-          <span className="text-xs font-semibold leading-5 text-[#78716C]">
+          <span className="text-xs font-semibold leading-5 text-[#6F657C]">
             JPG, PNG, or WebP up to 6MB
           </span>
         </label>

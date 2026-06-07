@@ -18,8 +18,8 @@ export function Textarea({
           aria-describedby={describedBy}
           aria-invalid={hasError ? "true" : undefined}
           className={cn(
-            "w-full rounded-2xl border bg-white px-4 py-3 text-[#1C1917] transition placeholder:text-[#A8A29E] focus:border-[#3F6212] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10 disabled:cursor-not-allowed disabled:bg-[#FFFBEB] disabled:text-[#78716C]",
-            hasError ? "border-[#DC2626]" : "border-[#E7E5E4]",
+            "w-full rounded-2xl border bg-white px-4 py-3 text-[#07030D] transition placeholder:text-[#A69AB5] focus:border-[#7C3AED] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/10 disabled:cursor-not-allowed disabled:bg-[#F8F4FF] disabled:text-[#6F657C]",
+            hasError ? "border-[#DC2626]" : "border-[#E9E2F3]",
             className,
           )}
           id={fieldId}

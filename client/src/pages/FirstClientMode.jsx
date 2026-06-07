@@ -86,7 +86,7 @@ export function FirstClientMode() {
       ) : statusQuery.isError ? (
         <Card variant="bordered">
           <Badge variant="red">Could not load First Client Mode</Badge>
-          <p className="mt-3 text-sm leading-6 text-[#78716C]">
+          <p className="mt-3 text-sm leading-6 text-[#6F657C]">
             {getFirstClientApiErrorMessage(statusQuery.error)}
           </p>
           <Button className="mt-5" onClick={handleRefresh} type="button">
@@ -116,11 +116,11 @@ export function FirstClientMode() {
 
             return (
               <Card as={Link} key={action.label} padding="sm" to={action.href} variant="interactive">
-                <div className="grid h-10 w-10 place-items-center rounded-2xl bg-[#F7FEE7] text-[#3F6212]">
+                <div className="grid h-10 w-10 place-items-center rounded-2xl bg-[#F5F3FF] text-[#7C3AED]">
                   <Icon aria-hidden="true" className="h-5 w-5" />
                 </div>
-                <p className="mt-4 text-sm font-black text-[#1C1917]">{action.label}</p>
-                <p className="mt-2 text-sm leading-6 text-[#78716C]">{action.description}</p>
+                <p className="mt-4 text-sm font-black text-[#07030D]">{action.label}</p>
+                <p className="mt-2 text-sm leading-6 text-[#6F657C]">{action.description}</p>
               </Card>
             );
           })}
@@ -142,9 +142,9 @@ export function FirstClientMode() {
               {[0, 1, 2].map((item) => <Skeleton className="h-80" key={item} />)}
             </div>
           ) : starterChallenges.length === 0 ? (
-            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-5">
-              <p className="text-sm font-black text-[#1C1917]">No starter challenges found yet.</p>
-              <p className="mt-2 text-sm leading-6 text-[#78716C]">
+            <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-5">
+              <p className="text-sm font-black text-[#07030D]">No starter challenges found yet.</p>
+              <p className="mt-2 text-sm leading-6 text-[#6F657C]">
                 Browse all open challenges or check back after clients tag beginner-friendly opportunities.
               </p>
             </div>

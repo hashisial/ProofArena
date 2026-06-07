@@ -86,10 +86,10 @@ export function ChallengeWorkflowPanel({
                 className={cn(
                   "rounded-2xl border p-3",
                   isCurrent
-                    ? "border-[#3F6212]/30 bg-[#F7FEE7]"
+                    ? "border-[#7C3AED]/30 bg-[#F5F3FF]"
                     : isComplete
-                      ? "border-[#65A30D]/20 bg-white"
-                      : "border-[#E7E5E4] bg-[#FFFBEB]",
+                      ? "border-[#A78BFA]/20 bg-white"
+                      : "border-[#E9E2F3] bg-[#F8F4FF]",
                 )}
                 key={stage.label}
               >
@@ -98,12 +98,12 @@ export function ChallengeWorkflowPanel({
                     aria-hidden="true"
                     className={cn(
                       "h-5 w-5 shrink-0",
-                      isCurrent || isComplete ? "text-[#3F6212]" : "text-[#A8A29E]",
+                      isCurrent || isComplete ? "text-[#7C3AED]" : "text-[#A69AB5]",
                     )}
                   />
                   <div className="min-w-0">
-                    <p className="text-sm font-black leading-5 text-[#1C1917]">{stage.label}</p>
-                    <p className="mt-1 text-xs font-semibold leading-5 text-[#78716C]">
+                    <p className="text-sm font-black leading-5 text-[#07030D]">{stage.label}</p>
+                    <p className="mt-1 text-xs font-semibold leading-5 text-[#6F657C]">
                       {isCurrent ? "Current step" : isComplete ? "Passed" : "Later"}
                     </p>
                   </div>
@@ -113,15 +113,15 @@ export function ChallengeWorkflowPanel({
           })}
         </div>
 
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
                 <Badge variant="primary">Current step</Badge>
-                <p className="text-sm font-black text-[#1C1917]">{currentStage.label}</p>
+                <p className="text-sm font-black text-[#07030D]">{currentStage.label}</p>
               </div>
-              <p className="mt-2 text-sm leading-6 text-[#78716C]">{currentStage.description}</p>
-              <p className="mt-3 text-sm font-bold leading-6 text-[#44403C]">
+              <p className="mt-2 text-sm leading-6 text-[#6F657C]">{currentStage.description}</p>
+              <p className="mt-3 text-sm font-bold leading-6 text-[#493C5E]">
                 Next: {nextAction.description}
               </p>
             </div>

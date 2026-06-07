@@ -121,7 +121,7 @@ export function OutcomeOfferActions({
         onClose={() => setConfirmAction(null)}
         title={confirmAction === "delete" ? "Delete archived offer?" : "Archive outcome offer?"}
       >
-        <p className="text-sm leading-6 text-[#78716C]">
+        <p className="text-sm leading-6 text-[#6F657C]">
           {confirmAction === "delete"
             ? "This action is only available after an offer has been archived."
             : "Archived offers are hidden from public discovery and can no longer be edited."}

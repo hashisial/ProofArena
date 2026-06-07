@@ -51,16 +51,16 @@ export function HomeSearchDiscovery() {
     <section className="relative z-10 -mt-8 bg-transparent pb-12 sm:-mt-10 sm:pb-16">
       <Container>
         <MotionDiv {...getRevealMotionProps(reduceMotion, { delay: 0.04 })}>
-          <div className="rounded-[2rem] border border-[#ECFCCB] bg-white p-4 shadow-[0_26px_82px_rgba(63, 98, 18, 0.14)] sm:p-6 lg:p-8">
+          <div className="rounded-[2rem] border border-[#EDE9FE] bg-white p-4 shadow-[0_26px_82px_rgba(124, 58, 237, 0.14)] sm:p-6 lg:p-8">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div className="min-w-0">
                 <Badge leftIcon={<SlidersHorizontal className="h-4 w-4" />} variant="primary">
                   Marketplace discovery
                 </Badge>
-                <h2 className="mt-4 break-words text-2xl font-black leading-tight text-[#1C1917] sm:text-3xl">
+                <h2 className="mt-4 break-words text-2xl font-black leading-tight text-[#07030D] sm:text-3xl">
                   Search by outcome, skill, provider, or proof.
                 </h2>
-                <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-[#78716C] sm:text-base">
+                <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-[#6F657C] sm:text-base">
                   Find providers by what they can deliver - not just what they claim.
                 </p>
               </div>
@@ -85,7 +85,7 @@ export function HomeSearchDiscovery() {
             <div className="mt-5 flex flex-wrap gap-2">
               {quickChips.map((chip) => (
                 <a
-                  className="rounded-full border border-[#E7E5E4] bg-[#FFFBEB] px-4 py-2 text-sm font-black text-[#44403C] transition hover:-translate-y-0.5 hover:border-[#65A30D] hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70"
+                  className="rounded-full border border-[#E9E2F3] bg-[#F8F4FF] px-4 py-2 text-sm font-black text-[#493C5E] transition hover:-translate-y-0.5 hover:border-[#A78BFA] hover:bg-[#F5F3FF] hover:text-[#5B21B6] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70"
                   href={buildProviderCategoryUrl(chip)}
                   key={chip}
                 >

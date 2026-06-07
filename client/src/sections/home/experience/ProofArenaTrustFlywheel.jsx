@@ -64,11 +64,11 @@ const defensibilitySignals = [
 
 export function ProofArenaTrustFlywheel() {
   return (
-    <section className="bg-[#151B0D] py-20 text-white sm:py-28 lg:py-36">
+    <section className="bg-[#120A22] py-20 text-white sm:py-28 lg:py-36">
       <Container>
         <div className="grid gap-12 xl:grid-cols-[0.68fr_1.32fr] xl:items-center">
           <div data-story-reveal>
-            <p className="text-xs font-black uppercase text-[#BEF264]">10 / Trust flywheel</p>
+            <p className="text-xs font-black uppercase text-[#C4B5FD]">10 / Trust flywheel</p>
             <h2 className="mt-4 max-w-2xl text-4xl font-black leading-[1.03] text-white [text-wrap:balance] sm:text-5xl lg:text-6xl">
               Every verified outcome makes the network more useful.
             </h2>
@@ -82,7 +82,7 @@ export function ProofArenaTrustFlywheel() {
 
                 return (
                   <article className="flex gap-4 border-t border-white/14 pt-4" key={signal.label}>
-                    <span className="grid h-10 w-10 shrink-0 place-items-center border border-[#BEF264]/25 bg-[#BEF264]/10 text-[#BEF264]">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center border border-[#C4B5FD]/25 bg-[#C4B5FD]/10 text-[#C4B5FD]">
                       <Icon aria-hidden="true" className="h-4 w-4" />
                     </span>
                     <div>
@@ -97,7 +97,7 @@ export function ProofArenaTrustFlywheel() {
 
           <div className="trust-flywheel" data-story-reveal>
             <div className="trust-flywheel-core">
-              <Network aria-hidden="true" className="h-6 w-6 text-[#BEF264]" />
+              <Network aria-hidden="true" className="h-6 w-6 text-[#C4B5FD]" />
               <p className="mt-3 text-xl font-black text-white">ProofArena</p>
               <p className="mt-1 text-xs font-black uppercase text-white/45">Outcome execution network</p>
             </div>
@@ -108,12 +108,12 @@ export function ProofArenaTrustFlywheel() {
 
                 return (
                   <article className={`trust-flywheel-step trust-flywheel-step-${index + 1}`} key={step.label}>
-                    <span className="grid h-9 w-9 shrink-0 place-items-center border border-[#65A30D]/35 bg-[#F7FEE7] text-[#3F6212]">
+                    <span className="grid h-9 w-9 shrink-0 place-items-center border border-[#A78BFA]/35 bg-[#F5F3FF] text-[#7C3AED]">
                       <Icon aria-hidden="true" className="h-4 w-4" />
                     </span>
                     <div className="min-w-0">
-                      <h3 className="text-xs font-black uppercase text-[#1C1917]">{step.label}</h3>
-                      <p className="mt-1 text-[0.68rem] font-semibold leading-5 text-[#78716C]">{step.copy}</p>
+                      <h3 className="text-xs font-black uppercase text-[#07030D]">{step.label}</h3>
+                      <p className="mt-1 text-[0.68rem] font-semibold leading-5 text-[#6F657C]">{step.copy}</p>
                     </div>
                   </article>
                 );

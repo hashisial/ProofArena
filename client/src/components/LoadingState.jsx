@@ -10,7 +10,7 @@ export function LoadingState({ columns = 3 }) {
       {Array.from({ length: columns }).map((_, index) => (
         <div
           key={index}
-          className="h-56 animate-pulse rounded-[1.6rem] border border-[#3F6212]/12 bg-[linear-gradient(110deg,#ffffff,#f4efff,#ffffff)] shadow-[0_18px_55px_rgba(63, 98, 18, 0.06)]"
+          className="h-56 animate-pulse rounded-[1.6rem] border border-[#7C3AED]/12 bg-[linear-gradient(110deg,#ffffff,#f4efff,#ffffff)] shadow-[0_18px_55px_rgba(124, 58, 237, 0.06)]"
         />
       ))}
     </div>

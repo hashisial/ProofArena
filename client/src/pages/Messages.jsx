@@ -79,8 +79,8 @@ function ConversationButton({
     <button
       className={`group rounded-[1.35rem] border p-4 text-left transition ${
         isActive
-          ? "border-[#3F6212]/45 bg-[#3F6212] text-white shadow-[0_22px_70px_rgba(63, 98, 18, 0.24)]"
-          : "border-black/10 bg-white text-black hover:-translate-y-0.5 hover:border-[#3F6212]/25 hover:shadow-[0_18px_55px_rgba(63, 98, 18, 0.12)]"
+          ? "border-[#7C3AED]/45 bg-[#7C3AED] text-white shadow-[0_22px_70px_rgba(124, 58, 237, 0.24)]"
+          : "border-black/10 bg-white text-black hover:-translate-y-0.5 hover:border-[#7C3AED]/25 hover:shadow-[0_18px_55px_rgba(124, 58, 237, 0.12)]"
       }`}
       onClick={onSelect}
       type="button"
@@ -95,7 +95,7 @@ function ConversationButton({
             />
           ) : (
             <div className={`flex h-11 w-11 items-center justify-center rounded-2xl text-sm font-bold ${
-              isActive ? "bg-white text-[#365314]" : "bg-[#3F6212]/10 text-[#365314]"
+              isActive ? "bg-white text-[#5B21B6]" : "bg-[#7C3AED]/10 text-[#5B21B6]"
             }`}>
               {getInitials(name)}
             </div>
@@ -103,7 +103,7 @@ function ConversationButton({
           <span
             className={`absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 ${
               isOnline ? "bg-emerald-400" : "bg-black/20"
-            } ${isActive ? "border-[#3F6212]" : "border-white"}`}
+            } ${isActive ? "border-[#7C3AED]" : "border-white"}`}
           />
         </div>
         <div className="min-w-0 flex-1">
@@ -112,7 +112,7 @@ function ConversationButton({
             <span className="flex shrink-0 items-center gap-2">
               {unreadCount > 0 ? (
                 <span className={`rounded-full px-2 py-0.5 text-[10px] font-black ${
-                  isActive ? "bg-white text-[#365314]" : "bg-[#3F6212] text-white"
+                  isActive ? "bg-white text-[#5B21B6]" : "bg-[#7C3AED] text-white"
                 }`}>
                   {unreadCount}
                 </span>
@@ -143,16 +143,16 @@ function MessageBubble({ isDeleting, message, onDelete, otherParticipants, userI
 
   return (
     <div className={`flex ${isMine ? "justify-end" : "justify-start"}`}>
-      <div className={`group relative max-w-[82%] rounded-[1.35rem] border px-4 py-3 shadow-[0_16px_45px_rgba(63, 98, 18, 0.08)] ${
+      <div className={`group relative max-w-[82%] rounded-[1.35rem] border px-4 py-3 shadow-[0_16px_45px_rgba(124, 58, 237, 0.08)] ${
         isMine
-          ? "border-[#3F6212]/35 bg-[#3F6212] text-white"
+          ? "border-[#7C3AED]/35 bg-[#7C3AED] text-white"
           : "border-black/10 bg-white text-black"
       }`}>
         <button
-          className={`absolute -top-3 ${isMine ? "left-3" : "right-3"} rounded-full border px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] opacity-0 shadow-[0_12px_30px_rgba(63, 98, 18, 0.12)] transition group-hover:opacity-100 ${
+          className={`absolute -top-3 ${isMine ? "left-3" : "right-3"} rounded-full border px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] opacity-0 shadow-[0_12px_30px_rgba(124, 58, 237, 0.12)] transition group-hover:opacity-100 ${
             isMine
-              ? "border-white/20 bg-white text-[#365314]"
-              : "border-[#3F6212]/18 bg-white text-[#365314]"
+              ? "border-white/20 bg-white text-[#5B21B6]"
+              : "border-[#7C3AED]/18 bg-white text-[#5B21B6]"
           }`}
           disabled={isDeleting}
           onClick={() => onDelete(message._id)}
@@ -188,7 +188,7 @@ function MessageBubble({ isDeleting, message, onDelete, otherParticipants, userI
                   className={`mt-2 block rounded-2xl border px-3 py-2 text-xs font-bold transition ${
                     isMine
                       ? "border-white/18 bg-white/12 text-white hover:bg-white/18"
-                      : "border-[#3F6212]/14 bg-[#3F6212]/6 text-[#365314] hover:bg-[#3F6212]/10"
+                      : "border-[#7C3AED]/14 bg-[#7C3AED]/6 text-[#5B21B6] hover:bg-[#7C3AED]/10"
                   }`}
                   href={attachment.url}
                   rel="noreferrer"
@@ -576,10 +576,10 @@ export function Messages() {
   return (
     <SaaSLayout eyebrow="Realtime" title="Messages">
       <div className="grid min-w-0 gap-6 xl:grid-cols-[360px_minmax(0,1fr)]">
-        <aside className={`${isMobileChatOpen ? "hidden" : "block"} min-w-0 rounded-[2rem] border border-[#3F6212]/14 bg-white p-4 shadow-[0_24px_75px_rgba(63, 98, 18, 0.08)] xl:block`}>
+        <aside className={`${isMobileChatOpen ? "hidden" : "block"} min-w-0 rounded-[2rem] border border-[#7C3AED]/14 bg-white p-4 shadow-[0_24px_75px_rgba(124, 58, 237, 0.08)] xl:block`}>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#3F6212]">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#7C3AED]">
                 Inbox
               </p>
               <h2 className="mt-2 text-2xl font-bold tracking-[-0.05em] text-black">
@@ -590,7 +590,7 @@ export function Messages() {
               </p>
             </div>
             <button
-              className="rounded-full bg-black px-4 py-2 text-xs font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#3F6212] hover:shadow-[0_16px_45px_rgba(63, 98, 18, 0.2)]"
+              className="rounded-full bg-black px-4 py-2 text-xs font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#7C3AED] hover:shadow-[0_16px_45px_rgba(124, 58, 237, 0.2)]"
               disabled={adminConversationMutation.isPending}
               onClick={() => adminConversationMutation.mutate()}
               type="button"
@@ -601,7 +601,7 @@ export function Messages() {
 
           <div className="mt-5">
             <input
-              className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+              className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
               onChange={(event) => setConversationSearch(event.target.value)}
               placeholder="Search conversations"
               value={conversationSearch}
@@ -610,7 +610,7 @@ export function Messages() {
 
           <form className="mt-5 grid gap-2" onSubmit={submitStartConversation}>
             <input
-              className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+              className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
               onChange={(event) => {
                 setParticipantId(event.target.value);
                 setErrorMessage("");
@@ -619,7 +619,7 @@ export function Messages() {
               value={participantId}
             />
             <button
-              className="rounded-2xl border border-[#3F6212]/18 bg-[#3F6212]/8 px-4 py-3 text-sm font-bold text-[#365314] transition hover:bg-[#3F6212] hover:text-white"
+              className="rounded-2xl border border-[#7C3AED]/18 bg-[#7C3AED]/8 px-4 py-3 text-sm font-bold text-[#5B21B6] transition hover:bg-[#7C3AED] hover:text-white"
               disabled={startConversationMutation.isPending}
               type="submit"
             >
@@ -675,20 +675,20 @@ export function Messages() {
           </div>
         </aside>
 
-        <section className={`${isMobileChatOpen ? "flex" : "hidden"} min-h-[34rem] min-w-0 flex-col overflow-hidden rounded-[2rem] border border-[#3F6212]/14 bg-[radial-gradient(circle_at_top_right,rgba(63, 98, 18, 0.12),transparent_34%),linear-gradient(180deg,#ffffff,#fffbeb)] shadow-[0_24px_75px_rgba(63, 98, 18, 0.08)] xl:flex xl:h-[calc(100vh-15rem)] xl:min-h-[36rem]`}>
+        <section className={`${isMobileChatOpen ? "flex" : "hidden"} min-h-[34rem] min-w-0 flex-col overflow-hidden rounded-[2rem] border border-[#7C3AED]/14 bg-[radial-gradient(circle_at_top_right,rgba(124, 58, 237, 0.12),transparent_34%),linear-gradient(180deg,#ffffff,#F8F4FF)] shadow-[0_24px_75px_rgba(124, 58, 237, 0.08)] xl:flex xl:h-[calc(100vh-15rem)] xl:min-h-[36rem]`}>
           {activeConversation ? (
             <>
               <header className="border-b border-black/10 bg-white/82 px-5 py-4 backdrop-blur-xl">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <div className="min-w-0">
                     <button
-                      className="mb-3 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-bold text-black/58 transition hover:border-[#3F6212]/35 hover:text-[#365314] xl:hidden"
+                      className="mb-3 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-bold text-black/58 transition hover:border-[#7C3AED]/35 hover:text-[#5B21B6] xl:hidden"
                       onClick={() => setIsMobileChatOpen(false)}
                       type="button"
                     >
                       Back to conversations
                     </button>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#3F6212]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7C3AED]">
                       Live chat
                     </p>
                     <h2 className="mt-1 break-words text-2xl font-bold tracking-normal text-black">
@@ -703,12 +703,12 @@ export function Messages() {
                     </p>
                   </div>
                   <div className="flex shrink-0 flex-wrap gap-2">
-                    <span className="rounded-full border border-[#3F6212]/18 bg-[#3F6212]/8 px-3 py-1 text-xs font-bold text-[#365314]">
+                    <span className="rounded-full border border-[#7C3AED]/18 bg-[#7C3AED]/8 px-3 py-1 text-xs font-bold text-[#5B21B6]">
                       {messages.length} messages
                     </span>
                     {otherParticipants[0]?.id ? (
                       <button
-                        className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold text-black/52 transition hover:border-[#3F6212]/35 hover:bg-[#3F6212] hover:text-white disabled:opacity-50"
+                        className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold text-black/52 transition hover:border-[#7C3AED]/35 hover:bg-[#7C3AED] hover:text-white disabled:opacity-50"
                         disabled={blockMutation.isPending || isActiveConversationBlocked}
                         onClick={() => blockMutation.mutate(otherParticipants[0].id)}
                         type="button"
@@ -751,13 +751,13 @@ export function Messages() {
                 ) : null}
                 <div className="grid gap-3 lg:grid-cols-[1fr_180px]">
                   <input
-                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                    className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                     onChange={(event) => setAttachmentUrl(event.target.value)}
                     placeholder="Optional attachment URL"
                     value={attachmentUrl}
                   />
                   <select
-                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-bold text-black outline-none transition focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                    className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-bold text-black outline-none transition focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                     onChange={(event) => setAttachmentType(event.target.value)}
                     value={attachmentType}
                   >
@@ -768,12 +768,12 @@ export function Messages() {
                     <option value="audio">Audio</option>
                   </select>
                 </div>
-                <div className="mt-3 grid gap-2 rounded-2xl border border-dashed border-[#3F6212]/18 bg-[#3F6212]/5 p-3">
-                  <label className="text-xs font-bold uppercase tracking-[0.16em] text-[#365314]">
+                <div className="mt-3 grid gap-2 rounded-2xl border border-dashed border-[#7C3AED]/18 bg-[#7C3AED]/5 p-3">
+                  <label className="text-xs font-bold uppercase tracking-[0.16em] text-[#5B21B6]">
                     Attach files
                     <input
                       accept="image/*,video/mp4,video/webm,application/pdf,text/plain"
-                      className="mt-2 block w-full text-sm font-semibold text-black/58 file:mr-4 file:rounded-xl file:border-0 file:bg-[#3F6212] file:px-4 file:py-2 file:text-sm file:font-bold file:text-white"
+                      className="mt-2 block w-full text-sm font-semibold text-black/58 file:mr-4 file:rounded-xl file:border-0 file:bg-[#7C3AED] file:px-4 file:py-2 file:text-sm file:font-bold file:text-white"
                       multiple
                       onChange={(event) => setSelectedFiles(Array.from(event.target.files ?? []))}
                       type="file"
@@ -783,7 +783,7 @@ export function Messages() {
                     <div className="flex flex-wrap gap-2">
                       {selectedFiles.map((file) => (
                         <button
-                          className="rounded-full border border-[#3F6212]/18 bg-white px-3 py-1 text-left text-xs font-bold text-black/58 transition hover:border-[#3F6212]/35 hover:text-[#365314]"
+                          className="rounded-full border border-[#7C3AED]/18 bg-white px-3 py-1 text-left text-xs font-bold text-black/58 transition hover:border-[#7C3AED]/35 hover:text-[#5B21B6]"
                           key={`${file.name}-${file.size}`}
                           onClick={() =>
                             setSelectedFiles((current) =>
@@ -800,13 +800,13 @@ export function Messages() {
                 </div>
                 <div className="mt-3 flex flex-col gap-3 sm:flex-row">
                   <textarea
-                    className="min-h-20 flex-1 resize-none rounded-[1.35rem] border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                    className="min-h-20 flex-1 resize-none rounded-[1.35rem] border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
                     onChange={updateDraft}
                     placeholder="Write a message..."
                     value={draft}
                   />
                   <button
-                    className="rounded-[1.35rem] bg-[#3F6212] px-7 py-4 text-sm font-bold text-white shadow-[0_18px_50px_rgba(63, 98, 18, 0.26)] transition hover:-translate-y-0.5 hover:bg-[#365314] disabled:cursor-not-allowed disabled:opacity-60 sm:w-36"
+                    className="rounded-[1.35rem] bg-[#7C3AED] px-7 py-4 text-sm font-bold text-white shadow-[0_18px_50px_rgba(124, 58, 237, 0.26)] transition hover:-translate-y-0.5 hover:bg-[#5B21B6] disabled:cursor-not-allowed disabled:opacity-60 sm:w-36"
                     disabled={
                       isActiveConversationBlocked ||
                       sendMutation.isPending ||

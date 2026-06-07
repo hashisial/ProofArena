@@ -118,8 +118,8 @@ export function MatchedChallenges({ initialStatus = "all" }) {
           ["Average score", `${stats.averageScore}%`],
         ].map(([label, value]) => (
           <Card key={label} padding="sm" variant="muted">
-            <p className="text-sm font-bold text-[#78716C]">{label}</p>
-            <p className="mt-2 text-3xl font-black text-[#1C1917]">{value}</p>
+            <p className="text-sm font-bold text-[#6F657C]">{label}</p>
+            <p className="mt-2 text-3xl font-black text-[#07030D]">{value}</p>
           </Card>
         ))}
       </div>
@@ -135,7 +135,7 @@ export function MatchedChallenges({ initialStatus = "all" }) {
       {actionError ? (
         <Card padding="md" variant="bordered">
           <Badge variant="red">Action needed</Badge>
-          <p className="mt-3 text-sm leading-6 text-[#78716C]">{actionError}</p>
+          <p className="mt-3 text-sm leading-6 text-[#6F657C]">{actionError}</p>
         </Card>
       ) : null}
 
@@ -148,7 +148,7 @@ export function MatchedChallenges({ initialStatus = "all" }) {
           ) : matchesQuery.isError ? (
             <Card padding="lg" variant="bordered">
               <Badge variant="red">Could not load matches</Badge>
-              <p className="mt-3 text-sm leading-6 text-[#78716C]">
+              <p className="mt-3 text-sm leading-6 text-[#6F657C]">
                 {getMatchApiErrorMessage(matchesQuery.error)}
               </p>
               <Button className="mt-5" onClick={handleRefresh} type="button">
@@ -180,7 +180,7 @@ export function MatchedChallenges({ initialStatus = "all" }) {
           />
           <Card padding="md" variant="muted">
             <Badge variant="primary">How to use matches</Badge>
-            <div className="mt-4 grid gap-3 text-sm leading-6 text-[#57534E]">
+            <div className="mt-4 grid gap-3 text-sm leading-6 text-[#6F657C]">
               <p>Review the reasons first, then check the weaknesses before submitting a plan.</p>
               <p>Strong matches still need a specific execution plan with milestones and proof.</p>
               <p>Dismiss poor-fit matches so the feed stays focused as the engine improves.</p>

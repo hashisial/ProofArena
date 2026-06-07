@@ -26,14 +26,14 @@ export function FirstClientChecklist({ checklist = {} }) {
           const Icon = complete ? CheckCircle2 : Circle;
 
           return (
-            <div className="flex gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={key}>
+            <div className="flex gap-3 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={key}>
               <Icon
                 aria-hidden="true"
-                className={complete ? "mt-0.5 h-5 w-5 shrink-0 text-[#3F6212]" : "mt-0.5 h-5 w-5 shrink-0 text-[#A8A29E]"}
+                className={complete ? "mt-0.5 h-5 w-5 shrink-0 text-[#7C3AED]" : "mt-0.5 h-5 w-5 shrink-0 text-[#A69AB5]"}
               />
               <div className="min-w-0">
-                <p className="text-sm font-black text-[#1C1917]">{label}</p>
-                <p className="mt-1 text-sm leading-6 text-[#78716C]">{description}</p>
+                <p className="text-sm font-black text-[#07030D]">{label}</p>
+                <p className="mt-1 text-sm leading-6 text-[#6F657C]">{description}</p>
               </div>
             </div>
           );

@@ -9,10 +9,10 @@ export function ErrorState({ message, title = "Unable to load data", ...props })
     >
       <CardContent>
         <p className="eyebrow">Error</p>
-        <h3 className="mt-3 text-2xl font-black tracking-[-0.04em] text-[#1C1917]">
+        <h3 className="mt-3 text-2xl font-black tracking-[-0.04em] text-[#07030D]">
           {title}
         </h3>
-        <p className="mt-3 text-sm leading-6 text-[#365314]">
+        <p className="mt-3 text-sm leading-6 text-[#5B21B6]">
           {message ?? "Please try again shortly."}
         </p>
       </CardContent>

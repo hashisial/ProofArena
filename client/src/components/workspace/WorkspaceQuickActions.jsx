@@ -47,19 +47,19 @@ export function WorkspaceQuickActions({ focusChallenge }) {
   return (
     <section aria-labelledby="workspace-quick-actions">
       <div>
-        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">Quick actions</p>
-        <h2 id="workspace-quick-actions" className="mt-2 text-2xl font-black tracking-normal text-[#1C1917]">
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">Quick actions</p>
+        <h2 id="workspace-quick-actions" className="mt-2 text-2xl font-black tracking-normal text-[#07030D]">
           Move the workflow forward
         </h2>
       </div>
       <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         {actions.map((action) => (
           <Card as="a" className="block h-full" href={action.href} key={action.label} padding="md" variant="interactive">
-            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#F7FEE7] text-[#3F6212]">
+            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[#F5F3FF] text-[#7C3AED]">
               {createElement(action.icon || UsersRound, { "aria-hidden": "true", className: "h-5 w-5" })}
             </span>
-            <h3 className="mt-4 text-base font-black text-[#1C1917]">{action.label}</h3>
-            <p className="mt-2 text-sm leading-6 text-[#78716C]">{action.description}</p>
+            <h3 className="mt-4 text-base font-black text-[#07030D]">{action.label}</h3>
+            <p className="mt-2 text-sm leading-6 text-[#6F657C]">{action.description}</p>
           </Card>
         ))}
       </div>

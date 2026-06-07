@@ -52,8 +52,8 @@ export function Scraper() {
   return (
     <SaaSLayout eyebrow="Automation" title="Lead Scraper">
       <div className="grid gap-8">
-        <section className="relative overflow-hidden rounded-3xl border border-[#65A30D]/20 bg-[linear-gradient(135deg,rgba(63, 98, 18, 0.28),rgba(255,255,255,0.06)_45%,rgba(161,98,7,0.18))] p-6 shadow-2xl shadow-black/25 backdrop-blur-xl">
-          <div className="absolute -right-14 -top-16 h-44 w-44 rounded-full bg-[#65A30D]/20 blur-3xl animate-pulse-glow" />
+        <section className="relative overflow-hidden rounded-3xl border border-[#A78BFA]/20 bg-[linear-gradient(135deg,rgba(124, 58, 237, 0.28),rgba(255,255,255,0.06)_45%,rgba(109,40,217,0.18))] p-6 shadow-2xl shadow-black/25 backdrop-blur-xl">
+          <div className="absolute -right-14 -top-16 h-44 w-44 rounded-full bg-[#A78BFA]/20 blur-3xl animate-pulse-glow" />
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300">
             Prospecting
           </p>
@@ -68,7 +68,7 @@ export function Scraper() {
 
         <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
           <form
-            className="rounded-3xl border border-[#65A30D]/15 bg-white/[0.065] p-6 shadow-2xl shadow-black/20 backdrop-blur-xl"
+            className="rounded-3xl border border-[#A78BFA]/15 bg-white/[0.065] p-6 shadow-2xl shadow-black/20 backdrop-blur-xl"
             onSubmit={handleSubmit}
           >
             <h3 className="text-2xl font-bold text-white">Start scrape</h3>
@@ -79,7 +79,7 @@ export function Scraper() {
 
             <div className="mt-6 grid gap-3">
               <input
-                className="min-h-12 flex-1 rounded-2xl border border-white/10 bg-[#1C1917]/80 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20"
+                className="min-h-12 flex-1 rounded-2xl border border-white/10 bg-[#07030D]/80 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20"
                 onChange={(event) => {
                   setKeyword(event.target.value);
                   setMessage("");
@@ -88,7 +88,7 @@ export function Scraper() {
                 value={keyword}
               />
               <input
-                className="min-h-12 flex-1 rounded-2xl border border-white/10 bg-[#1C1917]/80 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20"
+                className="min-h-12 flex-1 rounded-2xl border border-white/10 bg-[#07030D]/80 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20"
                 onChange={(event) => {
                   setLocation(event.target.value);
                   setMessage("");
@@ -114,7 +114,7 @@ export function Scraper() {
             ) : null}
           </form>
 
-          <section className="rounded-3xl border border-[#65A30D]/15 bg-white/[0.065] p-6 shadow-2xl shadow-black/20 backdrop-blur-xl">
+          <section className="rounded-3xl border border-[#A78BFA]/15 bg-white/[0.065] p-6 shadow-2xl shadow-black/20 backdrop-blur-xl">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300">
@@ -129,13 +129,13 @@ export function Scraper() {
 
             <div className="mt-6 grid gap-3">
               {!isLoading && jobs.length === 0 ? (
-                <div className="rounded-2xl border border-dashed border-white/10 bg-[#1C1917]/55 px-4 py-8 text-sm text-white/48">
+                <div className="rounded-2xl border border-dashed border-white/10 bg-[#07030D]/55 px-4 py-8 text-sm text-white/48">
                   No scrape jobs yet.
                 </div>
               ) : null}
               {jobs.map((job) => (
                 <div
-                  className="rounded-2xl border border-white/10 bg-[#1C1917]/70 p-4"
+                  className="rounded-2xl border border-white/10 bg-[#07030D]/70 p-4"
                   key={job._id}
                 >
                   <div className="flex items-start justify-between gap-4">

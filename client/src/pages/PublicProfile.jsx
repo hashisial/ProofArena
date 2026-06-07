@@ -97,7 +97,7 @@ function buildProviderDiscoveryData({ data, profile, providerProfile, user }) {
 
 function PublicProfileLoading() {
   return (
-    <section className="bg-[#FFFBEB] py-8 text-[#1C1917] sm:py-12">
+    <section className="bg-[#F8F4FF] py-8 text-[#07030D] sm:py-12">
       <Container>
         <div className="mx-auto grid max-w-6xl gap-5">
           <Card className="rounded-3xl" padding="none">
@@ -145,7 +145,7 @@ function PublicProfileLoading() {
 
 function PublicProfileError({ isNetworkError = false, onRetry }) {
   return (
-    <section className="bg-[#FFFBEB] py-12 sm:py-16">
+    <section className="bg-[#F8F4FF] py-12 sm:py-16">
       <Container>
         <EmptyState
           actionText="Explore Providers"
@@ -175,18 +175,18 @@ function PublicOutcomeOffersSection({ offers = [], provider }) {
       <div className="flex min-w-0 items-start gap-3">
         <div
           aria-hidden="true"
-          className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]"
         >
           <BriefcaseBusiness className="h-5 w-5" />
         </div>
         <div className="min-w-0">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
             Outcome offers
           </p>
-          <h2 className="mt-1 text-2xl font-black tracking-normal text-[#1C1917]">
+          <h2 className="mt-1 text-2xl font-black tracking-normal text-[#07030D]">
             Public outcome offers
           </h2>
-          <p className="mt-2 text-sm font-semibold leading-6 text-[#78716C]">
+          <p className="mt-2 text-sm font-semibold leading-6 text-[#6F657C]">
             Published offers this provider has made public for clients to review.
           </p>
         </div>
@@ -205,9 +205,9 @@ function PublicOutcomeOffersSection({ offers = [], provider }) {
           ))}
         </div>
       ) : (
-        <div className="mt-5 rounded-2xl border border-dashed border-[#BEF264] bg-[#FFFBEB] p-5">
-          <p className="text-sm font-black text-[#1C1917]">No public outcome offers yet.</p>
-          <p className="mt-2 text-sm leading-6 text-[#78716C]">
+        <div className="mt-5 rounded-2xl border border-dashed border-[#C4B5FD] bg-[#F8F4FF] p-5">
+          <p className="text-sm font-black text-[#07030D]">No public outcome offers yet.</p>
+          <p className="mt-2 text-sm leading-6 text-[#6F657C]">
             Public outcome offers will appear here after this provider publishes measurable offers.
           </p>
         </div>
@@ -283,7 +283,7 @@ export function PublicProfile({ username }) {
   }
 
   return (
-    <section className="bg-[#FFFBEB] py-8 text-[#1C1917] sm:py-12">
+    <section className="bg-[#F8F4FF] py-8 text-[#07030D] sm:py-12">
       <Container>
         <div className="mx-auto grid max-w-6xl gap-5 pb-20">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -311,12 +311,12 @@ export function PublicProfile({ username }) {
             <main className="grid min-w-0 gap-5">
               <Card className="rounded-3xl" padding="lg">
                 <ProviderProofSummary provider={provider} />
-                <div className="mt-5 grid gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 sm:grid-cols-2">
+                <div className="mt-5 grid gap-3 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4 sm:grid-cols-2">
                   <div>
-                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
                       Provider since
                     </p>
-                    <p className="mt-2 text-sm font-black text-[#1C1917]">
+                    <p className="mt-2 text-sm font-black text-[#07030D]">
                       {formatDate(provider.providerSince, {
                         fallback: "Not available",
                         month: "short",
@@ -325,10 +325,10 @@ export function PublicProfile({ username }) {
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
                       Availability
                     </p>
-                    <p className="mt-2 text-sm font-black text-[#1C1917]">
+                    <p className="mt-2 text-sm font-black text-[#07030D]">
                       {provider.availability ? provider.availability.replaceAll("_", " ") : "Not listed"}
                     </p>
                   </div>
@@ -357,10 +357,10 @@ export function PublicProfile({ username }) {
                 providerName={providerName}
               />
               <Card className="rounded-3xl" padding="lg" variant="muted">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
                   Public profile
                 </p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-[#78716C]">
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#6F657C]">
                   This page shows public-safe profile data only. Private contact details,
                   draft offers, private proof assets, and owner controls are not shown.
                 </p>

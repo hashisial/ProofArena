@@ -62,13 +62,13 @@ export function ProviderActiveFilters({ filters = {}, onClear, onRemove }) {
   }
 
   return (
-    <div className="flex min-w-0 flex-wrap items-center gap-2 rounded-3xl border border-[#E7E5E4] bg-white p-3">
-      <span className="px-2 text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
+    <div className="flex min-w-0 flex-wrap items-center gap-2 rounded-3xl border border-[#E9E2F3] bg-white p-3">
+      <span className="px-2 text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
         Active filters
       </span>
       {chips.map((chip) => (
         <button
-          className="inline-flex min-h-9 max-w-full items-center gap-2 rounded-full border border-[#ECFCCB] bg-[#F7FEE7] px-3 py-1.5 text-sm font-black leading-5 text-[#365314] transition hover:border-[#65A30D] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70"
+          className="inline-flex min-h-9 max-w-full items-center gap-2 rounded-full border border-[#EDE9FE] bg-[#F5F3FF] px-3 py-1.5 text-sm font-black leading-5 text-[#5B21B6] transition hover:border-[#A78BFA] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70"
           key={chip.key}
           onClick={() => onRemove(chip.key)}
           type="button"

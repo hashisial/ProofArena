@@ -30,7 +30,7 @@ export function ProviderFirstClientCard({
     <Card className="h-full" padding="lg" variant="bordered">
       <CardHeader>
         <div className="flex items-start gap-3">
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#3F6212]">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#7C3AED]">
             <Medal aria-hidden="true" className="h-5 w-5" />
           </span>
           <div>
@@ -57,25 +57,25 @@ export function ProviderFirstClientCard({
         ) : (
           <>
             <div className="grid gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-                <p className="text-sm font-bold text-[#78716C]">Readiness</p>
-                <p className="mt-2 text-2xl font-black text-[#1C1917]">{score}/100</p>
-                <p className="mt-1 text-xs font-bold text-[#57534E]">{getReadinessLabel(score)}</p>
+              <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+                <p className="text-sm font-bold text-[#6F657C]">Readiness</p>
+                <p className="mt-2 text-2xl font-black text-[#07030D]">{score}/100</p>
+                <p className="mt-1 text-xs font-bold text-[#6F657C]">{getReadinessLabel(score)}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-                <p className="text-sm font-bold text-[#78716C]">Checklist</p>
-                <p className="mt-2 text-2xl font-black text-[#1C1917]">
+              <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+                <p className="text-sm font-bold text-[#6F657C]">Checklist</p>
+                <p className="mt-2 text-2xl font-black text-[#07030D]">
                   {checklist.complete}/{checklist.total || 0}
                 </p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-                <p className="text-sm font-bold text-[#78716C]">Earned badges</p>
-                <p className="mt-2 text-2xl font-black text-[#1C1917]">{badges.length}</p>
+              <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+                <p className="text-sm font-bold text-[#6F657C]">Earned badges</p>
+                <p className="mt-2 text-2xl font-black text-[#07030D]">{badges.length}</p>
               </div>
             </div>
-            <div className="mt-4 rounded-2xl border border-[#E7E5E4] bg-white p-4">
-              <p className="text-xs font-black uppercase tracking-[0.12em] text-[#3F6212]">Next suggested action</p>
-              <p className="mt-2 text-sm font-black leading-6 text-[#1C1917]">{nextAction}</p>
+            <div className="mt-4 rounded-2xl border border-[#E9E2F3] bg-white p-4">
+              <p className="text-xs font-black uppercase tracking-[0.12em] text-[#7C3AED]">Next suggested action</p>
+              <p className="mt-2 text-sm font-black leading-6 text-[#07030D]">{nextAction}</p>
             </div>
           </>
         )}

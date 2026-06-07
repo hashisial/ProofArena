@@ -41,9 +41,9 @@ const initialFilters = {
 
 function PlanStatCard({ label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
-      <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">{label}</p>
-      <p className="mt-2 text-2xl font-black tracking-normal text-[#1C1917]">{value}</p>
+    <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
+      <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">{label}</p>
+      <p className="mt-2 text-2xl font-black tracking-normal text-[#07030D]">{value}</p>
     </div>
   );
 }
@@ -177,10 +177,10 @@ export function ChallengePlans() {
         <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_22rem] xl:items-center">
           <div>
             <Badge variant="primary">Challenge context</Badge>
-            <h2 className="mt-3 text-2xl font-black tracking-normal text-[#1C1917]">
+            <h2 className="mt-3 text-2xl font-black tracking-normal text-[#07030D]">
               {challenge?.title || "Loading challenge"}
             </h2>
-            <p className="mt-2 text-sm leading-6 text-[#78716C]">
+            <p className="mt-2 text-sm leading-6 text-[#6F657C]">
               {challenge?.targetOutcome?.outcomeStatement || challenge?.shortSummary || "Structured provider plans will appear here."}
             </p>
           </div>

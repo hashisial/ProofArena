@@ -12,10 +12,10 @@ const healthIcons = {
 };
 
 const healthClasses = {
-  bronze: "border-[#A16207]/20 bg-[#FEF3C7] text-[#A16207]",
-  green: "border-[#65A30D]/20 bg-[#F7FEE7] text-[#3F6212]",
-  neutral: "border-[#E7E5E4] bg-[#FFFBEB] text-[#57534E]",
-  olive: "border-[#3F6212]/20 bg-[#F7FEE7] text-[#3F6212]",
+  bronze: "border-[#6D28D9]/20 bg-[#FEF3C7] text-[#6D28D9]",
+  green: "border-[#A78BFA]/20 bg-[#F5F3FF] text-[#7C3AED]",
+  neutral: "border-[#E9E2F3] bg-[#F8F4FF] text-[#6F657C]",
+  olive: "border-[#7C3AED]/20 bg-[#F5F3FF] text-[#7C3AED]",
 };
 
 const badgeVariants = {

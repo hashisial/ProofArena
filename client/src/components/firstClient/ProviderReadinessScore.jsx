@@ -20,31 +20,31 @@ export function ProviderReadinessScore({ missingItems = [], score = 0 }) {
       </CardHeader>
       <CardContent>
         <div className="flex items-end gap-3">
-          <span className="text-5xl font-black tracking-normal text-[#1C1917]">{value}</span>
-          <span className="pb-2 text-sm font-black text-[#78716C]">/100</span>
+          <span className="text-5xl font-black tracking-normal text-[#07030D]">{value}</span>
+          <span className="pb-2 text-sm font-black text-[#6F657C]">/100</span>
         </div>
         <div
           aria-label={`Readiness score ${value} out of 100`}
           aria-valuemax={100}
           aria-valuemin={0}
           aria-valuenow={value}
-          className="mt-5 h-3 overflow-hidden rounded-full bg-[#E7E5E4]"
+          className="mt-5 h-3 overflow-hidden rounded-full bg-[#E9E2F3]"
           role="progressbar"
         >
           <div
             className={cn(
               "h-full rounded-full transition-all",
-              isReady ? "bg-[#3F6212]" : "bg-[#A16207]",
+              isReady ? "bg-[#7C3AED]" : "bg-[#6D28D9]",
             )}
             style={{ width: `${value}%` }}
           />
         </div>
-        <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
-          <p className="flex items-center gap-2 text-sm font-black text-[#1C1917]">
+        <div className="mt-5 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+          <p className="flex items-center gap-2 text-sm font-black text-[#07030D]">
             {missingItems.length === 0 ? (
-              <CheckCircle2 aria-hidden="true" className="h-4 w-4 text-[#3F6212]" />
+              <CheckCircle2 aria-hidden="true" className="h-4 w-4 text-[#7C3AED]" />
             ) : (
-              <CircleAlert aria-hidden="true" className="h-4 w-4 text-[#A16207]" />
+              <CircleAlert aria-hidden="true" className="h-4 w-4 text-[#6D28D9]" />
             )}
             {missingItems.length === 0 ? "Core setup is ready" : "Next setup gaps"}
           </p>
@@ -57,7 +57,7 @@ export function ProviderReadinessScore({ missingItems = [], score = 0 }) {
               ))}
             </div>
           ) : (
-            <p className="mt-2 text-sm leading-6 text-[#78716C]">
+            <p className="mt-2 text-sm leading-6 text-[#6F657C]">
               Keep applying to starter challenges and attach relevant proof where available.
             </p>
           )}

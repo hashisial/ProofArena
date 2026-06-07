@@ -75,7 +75,7 @@ export function ExperienceSection({
       onAdd={onAdd}
       title="Experience"
     >
-      <div className="divide-y divide-[#E7E5E4]">
+      <div className="divide-y divide-[#E9E2F3]">
         {experience.map((item, index) => {
           const title = item.title || item.role || "Role";
           const company = item.company || item.companyName || "Company";
@@ -91,17 +91,17 @@ export function ExperienceSection({
             >
               <div
                 aria-hidden="true"
-                className="grid h-12 w-12 place-items-center rounded-2xl border border-[#ECFCCB] bg-[#F7FEE7] text-[#365314]"
+                className="grid h-12 w-12 place-items-center rounded-2xl border border-[#EDE9FE] bg-[#F5F3FF] text-[#5B21B6]"
               >
                 <BriefcaseBusiness className="h-5 w-5" />
               </div>
               <div className="min-w-0">
                 <div className="flex min-w-0 items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <h3 className="break-words text-lg font-black tracking-[-0.03em] text-[#1C1917]">
+                    <h3 className="break-words text-lg font-black tracking-[-0.03em] text-[#07030D]">
                       {title}
                     </h3>
-                    <p className="mt-1 break-words text-sm font-bold text-[#365314]">
+                    <p className="mt-1 break-words text-sm font-bold text-[#5B21B6]">
                       {[company, employmentType].filter(Boolean).join(" | ")}
                     </p>
                     {item.isCurrent ? (
@@ -110,7 +110,7 @@ export function ExperienceSection({
                       </Badge>
                     ) : null}
                     {dateRange || location ? (
-                      <p className="mt-1 break-words text-xs font-bold uppercase tracking-[0.12em] text-[#78716C]">
+                      <p className="mt-1 break-words text-xs font-bold uppercase tracking-[0.12em] text-[#6F657C]">
                         {[dateRange, location].filter(Boolean).join(" | ")}
                       </p>
                     ) : null}
@@ -118,7 +118,7 @@ export function ExperienceSection({
                   {isOwner ? (
                     <button
                       aria-label={`Edit experience: ${title}`}
-                      className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#E7E5E4] bg-white text-[#44403C] opacity-100 transition hover:border-[#3F6212]/40 hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10 sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
+                      className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#E9E2F3] bg-white text-[#493C5E] opacity-100 transition hover:border-[#7C3AED]/40 hover:bg-[#F5F3FF] hover:text-[#5B21B6] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/10 sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
                       onClick={() => onEditItem?.(item)}
                       type="button"
                     >
@@ -127,7 +127,7 @@ export function ExperienceSection({
                   ) : null}
                 </div>
                 {item.description ? (
-                  <p className="mt-3 whitespace-pre-line text-sm leading-6 text-[#44403C]">
+                  <p className="mt-3 whitespace-pre-line text-sm leading-6 text-[#493C5E]">
                     {item.description}
                   </p>
                 ) : null}

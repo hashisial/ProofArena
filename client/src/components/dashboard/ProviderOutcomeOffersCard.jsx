@@ -49,20 +49,20 @@ export function ProviderOutcomeOffersCard({ isError = false, isLoading = false, 
             ["Published", published],
             ["Drafts", drafts],
           ].map(([label, value]) => (
-            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3" key={label}>
-              <p className="text-xs font-bold text-[#78716C]">{label}</p>
-              <p className="mt-1 text-xl font-black text-[#1C1917]">{value}</p>
+            <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3" key={label}>
+              <p className="text-xs font-bold text-[#6F657C]">{label}</p>
+              <p className="mt-1 text-xl font-black text-[#07030D]">{value}</p>
             </div>
           ))}
         </div>
-        <p className="mt-4 text-sm font-bold text-[#57534E]">
+        <p className="mt-4 text-sm font-bold text-[#6F657C]">
           Average quality: {averageQuality === null ? "Not available" : `${averageQuality}/100`}
         </p>
         {latestOffers.length > 0 ? (
           <div className="mt-4 grid gap-2">
             {latestOffers.map((offer) => (
-              <a className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-white p-3 transition hover:border-[#65A30D]" href={ROUTES.OWNER_OUTCOME_OFFER(offer.id)} key={offer.id}>
-                <p className="min-w-0 break-words font-black text-[#1C1917]">{offer.title || "Outcome offer"}</p>
+              <a className="flex items-center justify-between gap-3 rounded-2xl border border-[#E9E2F3] bg-white p-3 transition hover:border-[#A78BFA]" href={ROUTES.OWNER_OUTCOME_OFFER(offer.id)} key={offer.id}>
+                <p className="min-w-0 break-words font-black text-[#07030D]">{offer.title || "Outcome offer"}</p>
                 <Badge variant={offer.status === "published" ? "primary" : "gray"}>{offer.status || "draft"}</Badge>
               </a>
             ))}

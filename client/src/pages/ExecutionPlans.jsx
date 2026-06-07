@@ -87,8 +87,8 @@ export function ExecutionPlans() {
 
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#3F6212]">Plan library</p>
-          <h2 className="mt-2 text-2xl font-black text-[#1C1917]">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#7C3AED]">Plan library</p>
+          <h2 className="mt-2 text-2xl font-black text-[#07030D]">
             {visiblePlans.length} plan{visiblePlans.length === 1 ? "" : "s"} shown
           </h2>
         </div>
@@ -104,7 +104,7 @@ export function ExecutionPlans() {
       ) : plansQuery.isError ? (
         <Card padding="lg" variant="bordered">
           <Badge variant="red">Could not load plans</Badge>
-          <p className="mt-3 text-sm leading-6 text-[#78716C]">
+          <p className="mt-3 text-sm leading-6 text-[#6F657C]">
             {getExecutionPlanApiErrorMessage(plansQuery.error, "Execution plans could not be loaded. Try again.")}
           </p>
           <Button className="mt-5" onClick={() => plansQuery.refetch()} type="button">Retry</Button>
