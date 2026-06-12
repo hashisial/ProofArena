@@ -60,7 +60,7 @@ export function AddSectionModal({ onClose, open = false }) {
       <div className="grid gap-6">
         {sectionGroups.map((group) => (
           <section className="grid gap-3" key={group.title}>
-            <h3 className="text-sm font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+            <h3 className="text-sm font-black uppercase tracking-[0.14em] text-[#3F6212]">
               {group.title}
             </h3>
             <div className="grid gap-3 md:grid-cols-2">
@@ -69,16 +69,16 @@ export function AddSectionModal({ onClose, open = false }) {
 
                 return (
                   <div
-                    className="rounded-2xl border border-[#E9E2F3] bg-white p-4 transition hover:border-[#A78BFA] hover:shadow-[0_18px_48px_rgba(124, 58, 237, 0.1)]"
+                    className="rounded-2xl border border-[#E7E5E4] bg-white p-4 transition hover:border-[#65A30D] hover:shadow-[0_18px_48px_rgba(63, 98, 18, 0.1)]"
                     key={`${group.title}-${title}`}
                   >
                     <div className="flex items-start gap-3">
-                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]">
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]">
                         <SectionIcon aria-hidden="true" className="h-5 w-5" />
                       </span>
                       <div className="min-w-0">
-                        <p className="text-sm font-black text-[#07030D]">{title}</p>
-                        <p className="mt-1 text-sm leading-6 text-[#6F657C]">{description}</p>
+                        <p className="text-sm font-black text-[#1C1917]">{title}</p>
+                        <p className="mt-1 text-sm leading-6 text-[#78716C]">{description}</p>
                       </div>
                     </div>
                     <Button className="mt-4 w-full" onClick={onClose} type="button" variant="secondary">

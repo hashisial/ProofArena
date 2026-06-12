@@ -2,7 +2,7 @@ import { Skeleton } from "../ui/Skeleton.jsx";
 
 export function ProviderSkeletonCard() {
   return (
-    <div className="rounded-3xl border border-[#E9E2F3] bg-white p-5 shadow-[0_16px_50px_rgba(31,14,54,0.06)]">
+    <div className="rounded-3xl border border-[#E7E5E4] bg-white p-5 shadow-[0_16px_50px_rgba(28,25,23,0.06)]">
       <div className="flex gap-4">
         <Skeleton className="h-16 w-16 shrink-0 rounded-2xl" />
         <div className="grid flex-1 gap-3">

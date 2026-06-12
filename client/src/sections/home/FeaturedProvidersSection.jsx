@@ -80,18 +80,18 @@ function getMotionProps(reduceMotion, delay = 0) {
 
 function ProviderStat({ icon, label, tone = "olive", value }) {
   const Icon = icon;
-  const iconColor = tone === "bronze" ? "text-[#6D28D9]" : "text-[#7C3AED]";
-  const labelColor = tone === "bronze" ? "text-[#6D28D9]" : "text-[#6F657C]";
+  const iconColor = tone === "bronze" ? "text-[#A16207]" : "text-[#3F6212]";
+  const labelColor = tone === "bronze" ? "text-[#A16207]" : "text-[#78716C]";
 
   return (
-    <div className="min-w-0 rounded-2xl border border-[#E9E2F3] bg-white p-3">
+    <div className="min-w-0 rounded-2xl border border-[#E7E5E4] bg-white p-3">
       <div className="flex items-center gap-2">
         <Icon aria-hidden="true" className={`h-4 w-4 shrink-0 ${iconColor}`} />
         <p className={`text-[0.68rem] font-black uppercase tracking-[0.12em] ${labelColor}`}>
           {label}
         </p>
       </div>
-      <p className="mt-2 break-words text-xl font-black leading-7 text-[#07030D]">
+      <p className="mt-2 break-words text-xl font-black leading-7 text-[#1C1917]">
         {value}
       </p>
     </div>
@@ -100,22 +100,22 @@ function ProviderStat({ icon, label, tone = "olive", value }) {
 
 function ProofScorePreview({ score }) {
   return (
-    <div className="rounded-3xl border border-[#A78BFA]/20 bg-[#F5F3FF] p-4">
+    <div className="rounded-3xl border border-[#65A30D]/20 bg-[#F7FEE7] p-4">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+          <p className="text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#3F6212]">
             Proof Score
           </p>
-          <p className="mt-2 text-4xl font-black leading-none text-[#7C3AED]">
+          <p className="mt-2 text-4xl font-black leading-none text-[#3F6212]">
             {score}
-            <span className="text-lg text-[#6F657C]">/100</span>
+            <span className="text-lg text-[#78716C]">/100</span>
           </p>
         </div>
         <Badge variant="green">Preview metric</Badge>
       </div>
       <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-white">
         <div
-          className="motion-score-fill h-full rounded-full bg-[#7C3AED]"
+          className="motion-score-fill h-full rounded-full bg-[#3F6212]"
           style={{ width: `${score}%` }}
         />
       </div>
@@ -131,24 +131,24 @@ function FeaturedProviderCard({ index, provider, reduceMotion }) {
     >
       <Card
         as="article"
-        className="premium-motion-card group flex h-full flex-col rounded-[1.7rem] transition duration-300 hover:-translate-y-1 hover:border-[#A78BFA] hover:shadow-[0_24px_76px_rgba(124,58,237,0.14)]"
+        className="premium-motion-card group flex h-full flex-col rounded-[1.7rem] transition duration-300 hover:-translate-y-1 hover:border-[#65A30D] hover:shadow-[0_24px_76px_rgba(63,98,18,0.14)]"
         padding="lg"
         variant="default"
       >
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="flex min-w-0 items-start gap-4">
-            <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,#07030D,#7C3AED)] text-lg font-black text-white ring-4 ring-[#F5F3FF]">
+            <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,#1C1917,#3F6212)] text-lg font-black text-white ring-4 ring-[#F7FEE7]">
               {provider.initials}
             </span>
             <div className="min-w-0">
               <Badge variant="gray">Provider preview</Badge>
               <div className="mt-4 flex min-w-0 flex-wrap items-center gap-2">
-                <h3 className="break-words text-xl font-black leading-tight text-[#07030D]">
+                <h3 className="break-words text-xl font-black leading-tight text-[#1C1917]">
                   {provider.label}
                 </h3>
-                <ShieldCheck aria-hidden="true" className="h-5 w-5 shrink-0 text-[#7C3AED]" />
+                <ShieldCheck aria-hidden="true" className="h-5 w-5 shrink-0 text-[#3F6212]" />
               </div>
-              <p className="mt-2 text-sm font-semibold leading-6 text-[#6F657C]">
+              <p className="mt-2 text-sm font-semibold leading-6 text-[#57534E]">
                 {provider.headline}
               </p>
             </div>
@@ -179,17 +179,17 @@ function FeaturedProviderCard({ index, provider, reduceMotion }) {
           />
         </div>
 
-        <div className="mt-5 rounded-3xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+        <div className="mt-5 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
           <div className="flex items-center gap-2">
-            <UserRoundCheck aria-hidden="true" className="h-5 w-5 shrink-0 text-[#7C3AED]" />
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+            <UserRoundCheck aria-hidden="true" className="h-5 w-5 shrink-0 text-[#3F6212]" />
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
               Skills and outcomes
             </p>
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
             {provider.skills.map((skill) => (
               <span
-                className="rounded-full border border-[#EDE9FE] bg-white px-3 py-1.5 text-xs font-black leading-5 text-[#5B21B6] transition hover:border-[#A78BFA] hover:bg-[#F5F3FF]"
+                className="rounded-full border border-[#ECFCCB] bg-white px-3 py-1.5 text-xs font-black leading-5 text-[#365314] transition hover:border-[#65A30D] hover:bg-[#F7FEE7]"
                 key={skill}
               >
                 {skill}
@@ -234,22 +234,22 @@ export function FeaturedProvidersSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FBF9FF_48%,#F8F4FF_100%)] py-16 sm:py-20 lg:py-24">
-      <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_14%_18%,rgba(124,58,237,0.12),transparent_32%),radial-gradient(circle_at_86%_50%,rgba(109,40,217,0.09),transparent_28%)]" />
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FEFCE8_48%,#FFFBEB_100%)] py-16 sm:py-20 lg:py-24">
+      <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_14%_18%,rgba(63,98,18,0.12),transparent_32%),radial-gradient(circle_at_86%_50%,rgba(161,98,7,0.09),transparent_28%)]" />
       <Container className="relative z-10">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <MotionDiv {...getMotionProps(reduceMotion, 0)}>
             <Badge variant="primary">Featured providers</Badge>
-            <h2 className="mt-4 max-w-4xl break-words text-3xl font-black leading-tight text-[#07030D] [text-wrap:balance] sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 max-w-4xl break-words text-3xl font-black leading-tight text-[#1C1917] [text-wrap:balance] sm:text-4xl lg:text-5xl">
               Providers with proof-backed reputation
             </h2>
-            <p className="mt-5 max-w-3xl text-base font-semibold leading-8 text-[#6F657C] sm:text-lg">
+            <p className="mt-5 max-w-3xl text-base font-semibold leading-8 text-[#57534E] sm:text-lg">
               Compare providers by proof score, completed outcomes, skills, and
               similar delivery history.
             </p>
-            <div className="mt-6 flex items-start gap-3 rounded-3xl border border-[#E9E2F3] bg-white p-5 shadow-[0_16px_50px_rgba(31,14,54,0.04)]">
-              <CheckCircle2 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#7C3AED]" />
-              <p className="text-sm font-semibold leading-7 text-[#6F657C]">
+            <div className="mt-6 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-white p-5 shadow-[0_16px_50px_rgba(28,25,23,0.04)]">
+              <CheckCircle2 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#3F6212]" />
+              <p className="text-sm font-semibold leading-7 text-[#57534E]">
                 Provider cards are designed around proof score, completed
                 outcomes, similar delivery history, and skills - not only
                 reviews. Preview cards use generic provider labels until live
@@ -279,7 +279,7 @@ export function FeaturedProvidersSection() {
           <Badge variant="secondary">Provider previews</Badge>
           {filterChips.map((chip) => (
             <span
-              className="rounded-full border border-[#E9E2F3] bg-white px-4 py-2 text-sm font-black leading-5 text-[#493C5E] shadow-[0_10px_28px_rgba(31,14,54,0.04)] transition hover:border-[#A78BFA] hover:bg-[#F5F3FF] hover:text-[#5B21B6]"
+              className="rounded-full border border-[#E7E5E4] bg-white px-4 py-2 text-sm font-black leading-5 text-[#44403C] shadow-[0_10px_28px_rgba(28,25,23,0.04)] transition hover:border-[#65A30D] hover:bg-[#F7FEE7] hover:text-[#365314]"
               key={chip}
             >
               {chip}
@@ -299,11 +299,11 @@ export function FeaturedProvidersSection() {
         </div>
 
         <MotionDiv
-          className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E9E2F3] bg-[#F8F4FF] p-5"
+          className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-5"
           {...getMotionProps(reduceMotion, 0.28)}
         >
-          <BarChart3 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#7C3AED]" />
-          <p className="text-sm font-semibold leading-7 text-[#6F657C]">
+          <BarChart3 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#3F6212]" />
+          <p className="text-sm font-semibold leading-7 text-[#57534E]">
             These provider cards are preview examples. They do not use fake real
             identities, fake profile photos, testimonials, or live production
             ranking data.

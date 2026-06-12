@@ -18,7 +18,7 @@ export function BackgroundVideo({
       <div
         aria-hidden="true"
         className={cn(
-          "absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(124, 58, 237, 0.2),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.92),rgba(243,232,255,0.72))]",
+          "absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(63, 98, 18, 0.2),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.92),rgba(243,232,255,0.72))]",
           fallbackClassName,
         )}
       />

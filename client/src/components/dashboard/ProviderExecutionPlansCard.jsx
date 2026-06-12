@@ -48,21 +48,21 @@ export function ProviderExecutionPlansCard({ isError = false, isLoading = false,
                 ["Rejected", stats.rejected],
                 ["Shortlist rate", stats.shortlistRate === null ? "Not available" : `${stats.shortlistRate}%`],
               ].map(([label, value]) => (
-                <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3" key={label}>
-                  <p className="text-xs font-bold text-[#6F657C]">{label}</p>
-                  <p className="mt-1 text-xl font-black text-[#07030D]">{value}</p>
+                <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3" key={label}>
+                  <p className="text-xs font-bold text-[#78716C]">{label}</p>
+                  <p className="mt-1 text-xl font-black text-[#1C1917]">{value}</p>
                 </div>
               ))}
             </div>
             {latestPlans.length > 0 ? (
               <div className="mt-4 grid gap-2">
                 {latestPlans.map((plan) => (
-                  <a className="rounded-2xl border border-[#E9E2F3] bg-white p-3 transition hover:border-[#A78BFA]" href={ROUTES.EXECUTION_PLAN_DETAIL(plan.id)} key={plan.id}>
+                  <a className="rounded-2xl border border-[#E7E5E4] bg-white p-3 transition hover:border-[#65A30D]" href={ROUTES.EXECUTION_PLAN_DETAIL(plan.id)} key={plan.id}>
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="font-black text-[#07030D]">{plan.title || "Execution plan"}</p>
+                      <p className="font-black text-[#1C1917]">{plan.title || "Execution plan"}</p>
                       <ExecutionPlanStatusBadge status={plan.status} />
                     </div>
-                    <p className="mt-2 text-xs font-bold text-[#6F657C]">
+                    <p className="mt-2 text-xs font-bold text-[#78716C]">
                       Updated {formatDate(plan.updatedAt || plan.createdAt, { fallback: "recently" })}
                     </p>
                   </a>

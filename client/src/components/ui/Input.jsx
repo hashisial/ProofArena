@@ -25,15 +25,15 @@ export function Input({
     <FormField error={error} helperText={helperText} id={id} label={label} required={required}>
       {({ describedBy, fieldId, hasError }) => (
         <div className="relative">
-          {leftIcon ? <span aria-hidden="true" className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6F657C]">{leftIcon}</span> : null}
+          {leftIcon ? <span aria-hidden="true" className="absolute left-4 top-1/2 -translate-y-1/2 text-[#78716C]">{leftIcon}</span> : null}
           <input
             aria-describedby={describedBy}
             aria-invalid={hasError ? "true" : undefined}
             className={cn(
-              "min-h-12 w-full rounded-2xl border bg-white px-4 text-[#07030D] transition placeholder:text-[#A69AB5] focus:border-[#7C3AED] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/10 disabled:cursor-not-allowed disabled:bg-[#F8F4FF] disabled:text-[#6F657C]",
+              "min-h-12 w-full rounded-2xl border bg-white px-4 text-[#1C1917] transition placeholder:text-[#A8A29E] focus:border-[#3F6212] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10 disabled:cursor-not-allowed disabled:bg-[#FFFBEB] disabled:text-[#78716C]",
               leftIcon && "pl-11",
               (rightIcon || isPassword) && "pr-12",
-              hasError ? "border-[#DC2626]" : "border-[#E9E2F3]",
+              hasError ? "border-[#DC2626]" : "border-[#E7E5E4]",
               className,
             )}
             id={fieldId}
@@ -44,7 +44,7 @@ export function Input({
           {isPassword ? (
             <button
               aria-label={passwordVisible ? "Hide password" : "Show password"}
-              className="absolute right-2 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-xl text-[#6F657C] transition hover:bg-[#F5F3FF] hover:text-[#5B21B6] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70"
+              className="absolute right-2 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-xl text-[#78716C] transition hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70"
               onClick={() => setPasswordVisible((current) => !current)}
               type="button"
             >
@@ -55,7 +55,7 @@ export function Input({
               )}
             </button>
           ) : rightIcon ? (
-            <span aria-hidden="true" className="absolute right-4 top-1/2 -translate-y-1/2 text-[#6F657C]">{rightIcon}</span>
+            <span aria-hidden="true" className="absolute right-4 top-1/2 -translate-y-1/2 text-[#78716C]">{rightIcon}</span>
           ) : null}
         </div>
       )}

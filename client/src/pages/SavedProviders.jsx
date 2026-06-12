@@ -94,16 +94,16 @@ export function SavedProviders() {
 
   return (
     <div className="grid gap-6">
-      <section className="rounded-[2rem] border border-[#7C3AED]/16 bg-[linear-gradient(135deg,#ffffff,#F8F4FF)] p-6 shadow-[0_24px_80px_rgba(31,14,54,0.08)] md:p-8">
+      <section className="rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
         <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
               Client shortlist
             </p>
-            <h1 className="mt-3 text-4xl font-black tracking-[-0.06em] text-[#07030D] md:text-5xl">
+            <h1 className="mt-3 text-4xl font-black tracking-[-0.06em] text-[#1C1917] md:text-5xl">
               Saved Providers
             </h1>
-            <p className="mt-4 max-w-2xl text-sm font-semibold leading-6 text-[#6F657C]">
+            <p className="mt-4 max-w-2xl text-sm font-semibold leading-6 text-[#78716C]">
               Keep track of providers you may want to invite to future outcome challenges.
             </p>
           </div>
@@ -113,9 +113,9 @@ export function SavedProviders() {
               ["Shortlisted", stats.shortlisted ?? 0],
               ["Total", stats.total ?? 0],
             ].map(([label, value]) => (
-              <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4" key={label}>
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">{label}</p>
-                <p className="mt-2 text-2xl font-black text-[#07030D]">{value}</p>
+              <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4" key={label}>
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">{label}</p>
+                <p className="mt-2 text-2xl font-black text-[#1C1917]">{value}</p>
               </div>
             ))}
           </div>

@@ -46,7 +46,7 @@ function getStatusClasses(status) {
   }
 
   if (["paid", "completed", "release_pending"].includes(status)) {
-    return "border-[#7C3AED]/24 bg-[#7C3AED]/10 text-[#5B21B6]";
+    return "border-[#3F6212]/24 bg-[#3F6212]/10 text-[#365314]";
   }
 
   if (["failed", "cancelled", "refunded"].includes(status)) {
@@ -61,7 +61,7 @@ function TransactionCard({ isCompleting, onComplete, transaction, userId }) {
   const canComplete = isProvider && ["paid", "in_progress"].includes(transaction.status);
 
   return (
-    <article className="group overflow-hidden rounded-[1.6rem] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_20px_65px_rgba(124, 58, 237, 0.08)] transition hover:-translate-y-0.5 hover:border-[#7C3AED]/36 hover:shadow-[0_28px_85px_rgba(124, 58, 237, 0.15)]">
+    <article className="group overflow-hidden rounded-[1.6rem] border border-[#3F6212]/14 bg-white p-5 shadow-[0_20px_65px_rgba(63, 98, 18, 0.08)] transition hover:-translate-y-0.5 hover:border-[#3F6212]/36 hover:shadow-[0_28px_85px_rgba(63, 98, 18, 0.15)]">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div className="min-w-0">
           <span className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold capitalize ${getStatusClasses(transaction.status)}`}>
@@ -80,7 +80,7 @@ function TransactionCard({ isCompleting, onComplete, transaction, userId }) {
             <span>Released: <strong className="text-black">{formatDateTime(transaction.releasedAt, { fallback: "Pending" })}</strong></span>
           </div>
         </div>
-        <div className="grid shrink-0 gap-2 rounded-[1.25rem] border border-[#7C3AED]/12 bg-[#F8F4FF] p-4 text-sm">
+        <div className="grid shrink-0 gap-2 rounded-[1.25rem] border border-[#3F6212]/12 bg-[#fffbeb] p-4 text-sm">
           <div className="flex justify-between gap-8">
             <span className="text-black/50">Total</span>
             <strong className="text-black">{transaction.amountLabel}</strong>
@@ -91,7 +91,7 @@ function TransactionCard({ isCompleting, onComplete, transaction, userId }) {
           </div>
           <div className="flex justify-between gap-8">
             <span className="text-black/50">Commission</span>
-            <strong className="text-[#5B21B6]">{transaction.platformFeeLabel}</strong>
+            <strong className="text-[#365314]">{transaction.platformFeeLabel}</strong>
           </div>
           {canComplete ? (
             <Button
@@ -206,10 +206,10 @@ export function Payments() {
   return (
     <SaaSLayout eyebrow="Marketplace" title="Payments and payouts">
       <div className="grid gap-6">
-        <section className="overflow-hidden rounded-[2rem] border border-[#7C3AED]/16 bg-[radial-gradient(circle_at_85%_15%,rgba(124, 58, 237, 0.18),transparent_32%),linear-gradient(135deg,#ffffff,#F8F4FF)] p-6 shadow-[0_28px_90px_rgba(124, 58, 237, 0.1)] md:p-8">
+        <section className="overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[radial-gradient(circle_at_85%_15%,rgba(63, 98, 18, 0.18),transparent_32%),linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] md:p-8">
           <div className="grid gap-8 xl:grid-cols-[1fr_420px]">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#7C3AED]">
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#3F6212]">
                 Secure marketplace flow
               </p>
               <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-[-0.07em] text-black md:text-6xl">
@@ -219,13 +219,13 @@ export function Payments() {
                 Track every payment, commission, completion event, and provider release from one workspace.
               </p>
             </div>
-            <div className="grid gap-3 rounded-[1.5rem] border border-black/10 bg-white p-4 shadow-[0_20px_65px_rgba(124, 58, 237, 0.08)]">
+            <div className="grid gap-3 rounded-[1.5rem] border border-black/10 bg-white p-4 shadow-[0_20px_65px_rgba(63, 98, 18, 0.08)]">
               {[
                 ["Held for release", totals.held],
                 ["Released to providers", totals.released],
                 ["Platform commission", totals.commission],
               ].map(([label, value]) => (
-                <div className="flex items-center justify-between rounded-2xl bg-[#F8F4FF] px-4 py-3" key={label}>
+                <div className="flex items-center justify-between rounded-2xl bg-[#fffbeb] px-4 py-3" key={label}>
                   <span className="text-sm font-semibold text-black/56">{label}</span>
                   <strong className="text-lg text-black">
                     ${(value / 100).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}
@@ -239,8 +239,8 @@ export function Payments() {
         {message ? <StatusBanner>{message}</StatusBanner> : null}
 
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_420px]">
-          <section className="rounded-[2rem] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_22px_70px_rgba(124, 58, 237, 0.08)] md:p-6">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7C3AED]">
+          <section className="rounded-[2rem] border border-[#3F6212]/14 bg-white p-5 shadow-[0_22px_70px_rgba(63, 98, 18, 0.08)] md:p-6">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3F6212]">
               Client checkout
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-[-0.055em] text-black">
@@ -250,7 +250,7 @@ export function Payments() {
               <form className="mt-5 grid gap-4" onSubmit={submitPayment}>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <input
-                    className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
+                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                     name="title"
                     onChange={updateForm}
                     placeholder="Project title"
@@ -258,7 +258,7 @@ export function Payments() {
                     value={form.title}
                   />
                   <input
-                    className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
+                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                     name="providerId"
                     onChange={updateForm}
                     placeholder="Provider user ID"
@@ -266,7 +266,7 @@ export function Payments() {
                     value={form.providerId}
                   />
                   <input
-                    className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
+                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                     min="0.5"
                     name="amount"
                     onChange={updateForm}
@@ -277,7 +277,7 @@ export function Payments() {
                     value={form.amount}
                   />
                   <input
-                    className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold uppercase text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
+                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold uppercase text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                     maxLength={3}
                     name="currency"
                     onChange={updateForm}
@@ -285,14 +285,14 @@ export function Payments() {
                     value={form.currency}
                   />
                   <input
-                    className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
+                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                     name="projectId"
                     onChange={updateForm}
                     placeholder="Project ID optional"
                     value={form.projectId}
                   />
                   <input
-                    className="rounded-2xl border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
+                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                     name="proposalId"
                     onChange={updateForm}
                     placeholder="Proposal ID optional"
@@ -300,7 +300,7 @@ export function Payments() {
                   />
                 </div>
                 <textarea
-                  className="min-h-24 rounded-[1.25rem] border border-black/10 bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/45 focus:ring-4 focus:ring-[#7C3AED]/10"
+                  className="min-h-24 rounded-[1.25rem] border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                   name="description"
                   onChange={updateForm}
                   placeholder="Payment description"
@@ -315,7 +315,7 @@ export function Payments() {
                 </Button>
               </form>
             ) : (
-              <div className="mt-5 rounded-[1.5rem] border border-[#7C3AED]/14 bg-[#7C3AED]/6 p-5">
+              <div className="mt-5 rounded-[1.5rem] border border-[#3F6212]/14 bg-[#3F6212]/6 p-5">
                 <p className="font-bold text-black">Client permission required</p>
                 <p className="mt-2 text-sm leading-6 text-black/58">
                   Provider accounts can view transactions and manage payouts. Client accounts create held payments for hiring providers.
@@ -324,8 +324,8 @@ export function Payments() {
             )}
           </section>
 
-          <aside className="rounded-[2rem] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_22px_70px_rgba(124, 58, 237, 0.08)] md:p-6">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7C3AED]">
+          <aside className="rounded-[2rem] border border-[#3F6212]/14 bg-white p-5 shadow-[0_22px_70px_rgba(63, 98, 18, 0.08)] md:p-6">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3F6212]">
               Provider payouts
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-[-0.055em] text-black">
@@ -339,7 +339,7 @@ export function Payments() {
             {canManagePayouts && isConnectLoading ? <LoadingState columns={2} /> : null}
             {canManagePayouts && !isConnectLoading ? (
               <div className="mt-5 grid gap-4">
-                <div className="rounded-[1.25rem] border border-[#7C3AED]/14 bg-[#F8F4FF] p-4">
+                <div className="rounded-[1.25rem] border border-[#3F6212]/14 bg-[#fffbeb] p-4">
                   <p className="text-sm font-semibold text-black/56">Connect status</p>
                   <p className="mt-2 text-2xl font-bold capitalize text-black">
                     {(connectAccount?.status ?? "not_started").replace(/_/g, " ")}
@@ -377,7 +377,7 @@ export function Payments() {
         <section className="grid gap-4">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7C3AED]">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3F6212]">
                 Transaction history
               </p>
               <h2 className="mt-2 text-3xl font-bold tracking-[-0.055em] text-black">

@@ -53,13 +53,13 @@ import {
 function ProfileError({ message }) {
   return (
     <Card className="rounded-3xl" padding="lg">
-      <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
+      <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
         Profile unavailable
       </p>
-      <h1 className="mt-2 text-3xl font-black tracking-[-0.05em] text-[#07030D]">
+      <h1 className="mt-2 text-3xl font-black tracking-[-0.05em] text-[#1C1917]">
         Profile could not be loaded
       </h1>
-      <p className="mt-3 text-sm leading-6 text-[#6F657C]">
+      <p className="mt-3 text-sm leading-6 text-[#78716C]">
         {message || "We could not load your profile workspace. Try refreshing the page."}
       </p>
       <Button className="mt-5" onClick={() => window.location.reload()} type="button">

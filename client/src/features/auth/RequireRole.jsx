@@ -25,9 +25,9 @@ export function RequireRole({
 
   if (!isAuthenticated) {
     return (
-      <section className="flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_top_right,rgba(124, 58, 237, 0.16),transparent_32%),linear-gradient(180deg,#ffffff,#f6f2ff)] px-5">
+      <section className="flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_top_right,rgba(63, 98, 18, 0.16),transparent_32%),linear-gradient(180deg,#ffffff,#f6f2ff)] px-5">
         <div className="max-w-lg rounded-[2rem] border border-black/10 bg-white p-8 text-center shadow-[0_30px_90px_rgba(17,17,17,0.12)]">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#7C3AED]">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#3F6212]">
             Protected Workspace
           </p>
           <h1 className="mt-4 text-4xl font-bold tracking-[-0.06em] text-black">

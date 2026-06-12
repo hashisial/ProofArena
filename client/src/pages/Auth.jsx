@@ -36,8 +36,8 @@ function AuthField({ autoComplete, error, label, name, onChange, type = "text", 
           autoComplete={autoComplete}
           className={`w-full rounded-2xl border bg-white px-4 py-3 pr-12 text-sm font-semibold text-black outline-none transition placeholder:text-black/35 focus:ring-4 ${
             error
-              ? "border-[#7C3AED]/60 ring-4 ring-[#7C3AED]/10"
-              : "border-black/10 focus:border-[#7C3AED]/60 focus:ring-[#7C3AED]/10"
+              ? "border-[#3F6212]/60 ring-4 ring-[#3F6212]/10"
+              : "border-black/10 focus:border-[#3F6212]/60 focus:ring-[#3F6212]/10"
           }`}
           name={name}
           onChange={onChange}
@@ -47,7 +47,7 @@ function AuthField({ autoComplete, error, label, name, onChange, type = "text", 
         {canReveal ? (
           <button
             aria-label={isVisible ? "Hide password" : "Show password"}
-            className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-black/48 transition hover:bg-[#7C3AED]/8 hover:text-[#5B21B6]"
+            className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-black/48 transition hover:bg-[#3F6212]/8 hover:text-[#365314]"
             onClick={() => setIsVisible((current) => !current)}
             type="button"
           >
@@ -58,7 +58,7 @@ function AuthField({ autoComplete, error, label, name, onChange, type = "text", 
           </button>
         ) : null}
       </span>
-      {error ? <span className="mt-2 block text-xs font-bold text-[#5B21B6]">{error}</span> : null}
+      {error ? <span className="mt-2 block text-xs font-bold text-[#365314]">{error}</span> : null}
     </label>
   );
 }
@@ -238,17 +238,17 @@ export function Auth() {
         : "Access your outcome workspace and continue tracking verified execution.";
 
   return (
-    <section className="relative isolate min-h-[calc(100vh-4rem)] overflow-hidden bg-[radial-gradient(circle_at_12%_8%,rgba(124, 58, 237, 0.18),transparent_32rem),linear-gradient(180deg,#ffffff,#FBF9FF)] py-10 sm:py-16">
+    <section className="relative isolate min-h-[calc(100vh-4rem)] overflow-hidden bg-[radial-gradient(circle_at_12%_8%,rgba(63, 98, 18, 0.18),transparent_32rem),linear-gradient(180deg,#ffffff,#fefce8)] py-10 sm:py-16">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute right-[8%] top-14 h-80 w-80 rounded-full bg-[#7C3AED]/12 blur-3xl" />
-        <div className="absolute left-[10%] bottom-10 h-44 w-44 rotate-12 rounded-[2.5rem] border border-[#7C3AED]/16 bg-[#7C3AED]/6" />
+        <div className="absolute right-[8%] top-14 h-80 w-80 rounded-full bg-[#3F6212]/12 blur-3xl" />
+        <div className="absolute left-[10%] bottom-10 h-44 w-44 rotate-12 rounded-[2.5rem] border border-[#3F6212]/16 bg-[#3F6212]/6" />
       </div>
       <Container className="relative z-10">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <aside className="relative hidden overflow-hidden rounded-[2.2rem] border border-[#7C3AED]/16 bg-white p-8 text-black shadow-[0_24px_80px_rgba(124, 58, 237, 0.1)] lg:block">
-            <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#7C3AED]/16 blur-3xl" />
-            <div className="absolute bottom-12 right-12 h-28 w-28 rotate-12 rounded-[2rem] border border-[#7C3AED]/16 bg-[#7C3AED]/6" />
-            <p className="relative text-xs font-bold uppercase tracking-[0.28em] text-[#7C3AED]">
+          <aside className="relative hidden overflow-hidden rounded-[2.2rem] border border-[#3F6212]/16 bg-white p-8 text-black shadow-[0_24px_80px_rgba(63, 98, 18, 0.1)] lg:block">
+            <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#3F6212]/16 blur-3xl" />
+            <div className="absolute bottom-12 right-12 h-28 w-28 rotate-12 rounded-[2rem] border border-[#3F6212]/16 bg-[#3F6212]/6" />
+            <p className="relative text-xs font-bold uppercase tracking-[0.28em] text-[#3F6212]">
               ProofArena by ScaleOps
             </p>
             <h2 className="relative mt-8 max-w-md text-5xl font-bold leading-[0.92] tracking-[-0.075em] text-black">
@@ -259,7 +259,7 @@ export function Auth() {
             </p>
             <div className="relative mt-10 grid gap-3">
               {["HTTP-only refresh session", "Role-aware workspace access", "Rate-limited auth routes"].map((item) => (
-                <div className="rounded-2xl border border-[#7C3AED]/14 bg-[#F8F4FF] px-4 py-3 text-sm font-bold text-black" key={item}>
+                <div className="rounded-2xl border border-[#3F6212]/14 bg-[#FFFBEB] px-4 py-3 text-sm font-bold text-black" key={item}>
                   {item}
                 </div>
               ))}
@@ -287,7 +287,7 @@ export function Auth() {
                 aria-pressed={mode === value}
                 className={`rounded-xl px-4 py-3 text-sm font-semibold transition ${
                   mode === value
-                    ? "bg-black text-white shadow-[0_14px_35px_rgba(124, 58, 237, 0.18)]"
+                    ? "bg-black text-white shadow-[0_14px_35px_rgba(63, 98, 18, 0.18)]"
                     : "text-black/54 hover:text-black"
                 }`}
                 key={value}
@@ -332,8 +332,8 @@ export function Auth() {
                     <button
                       className={`rounded-2xl border px-4 py-4 text-left transition ${
                         form.role === roleValue
-                          ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow-[0_20px_55px_rgba(124, 58, 237, 0.22)]"
-                          : "border-black/10 bg-white text-black hover:border-[#7C3AED]/35 hover:bg-[#7C3AED]/6"
+                          ? "border-[#3F6212] bg-[#3F6212] text-white shadow-[0_20px_55px_rgba(63, 98, 18, 0.22)]"
+                          : "border-black/10 bg-white text-black hover:border-[#3F6212]/35 hover:bg-[#3F6212]/6"
                       }`}
                       key={roleValue}
                       onClick={() => updateField({ target: { name: "role", value: roleValue } })}
@@ -348,7 +348,7 @@ export function Auth() {
                   <label className="block text-sm font-semibold text-black sm:col-span-2">
                     Account type
                     <select
-                      className="mt-2 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-black outline-none transition focus:border-[#7C3AED]/60 focus:ring-4 focus:ring-[#7C3AED]/10"
+                      className="mt-2 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-black outline-none transition focus:border-[#3F6212]/60 focus:ring-4 focus:ring-[#3F6212]/10"
                       name="accountType"
                       onChange={updateField}
                       value={form.accountType}
@@ -420,11 +420,11 @@ export function Auth() {
           </form>
           <div className="relative z-10 mt-5 flex flex-wrap items-center justify-between gap-3 text-sm font-semibold">
             {!isForgotMode && !isResetMode ? (
-              <a className="premium-link text-[#5B21B6]" href="/forgot-password">
+              <a className="premium-link text-[#365314]" href="/forgot-password">
                 Forgot password?
               </a>
             ) : (
-              <a className="premium-link text-[#5B21B6]" href="/login">
+              <a className="premium-link text-[#365314]" href="/login">
                 Back to login
               </a>
             )}

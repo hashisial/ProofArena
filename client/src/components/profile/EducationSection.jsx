@@ -48,7 +48,7 @@ export function EducationSection({
       onAdd={onAdd}
       title="Education"
     >
-      <div className="divide-y divide-[#E9E2F3]">
+      <div className="divide-y divide-[#E7E5E4]">
         {education.map((item, index) => {
           const school = item.school || item.institution || "School";
           const degree = [item.degree, item.fieldOfStudy].filter(Boolean).join(" | ");
@@ -62,23 +62,23 @@ export function EducationSection({
             >
               <div
                 aria-hidden="true"
-                className="grid h-12 w-12 place-items-center rounded-2xl border border-[#EDE9FE] bg-[#F5F3FF] text-[#5B21B6]"
+                className="grid h-12 w-12 place-items-center rounded-2xl border border-[#ECFCCB] bg-[#F7FEE7] text-[#365314]"
               >
                 <GraduationCap className="h-5 w-5" />
               </div>
               <div className="min-w-0">
                 <div className="flex min-w-0 items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <h3 className="break-words text-lg font-black tracking-[-0.03em] text-[#07030D]">
+                    <h3 className="break-words text-lg font-black tracking-[-0.03em] text-[#1C1917]">
                       {school}
                     </h3>
                     {degree ? (
-                      <p className="mt-1 break-words text-sm font-bold text-[#5B21B6]">
+                      <p className="mt-1 break-words text-sm font-bold text-[#365314]">
                         {degree}
                       </p>
                     ) : null}
                     {dateRange || item.grade ? (
-                      <p className="mt-1 break-words text-xs font-bold uppercase tracking-[0.12em] text-[#6F657C]">
+                      <p className="mt-1 break-words text-xs font-bold uppercase tracking-[0.12em] text-[#78716C]">
                         {[dateRange, item.grade ? `Grade ${item.grade}` : ""]
                           .filter(Boolean)
                           .join(" | ")}
@@ -88,7 +88,7 @@ export function EducationSection({
                   {isOwner ? (
                     <button
                       aria-label={`Edit education: ${school}`}
-                      className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#E9E2F3] bg-white text-[#493C5E] opacity-100 transition hover:border-[#7C3AED]/40 hover:bg-[#F5F3FF] hover:text-[#5B21B6] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/10 sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
+                      className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#E7E5E4] bg-white text-[#44403C] opacity-100 transition hover:border-[#3F6212]/40 hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10 sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
                       onClick={() => onEditItem?.(item)}
                       type="button"
                     >
@@ -97,7 +97,7 @@ export function EducationSection({
                   ) : null}
                 </div>
                 {description ? (
-                  <p className="mt-3 whitespace-pre-line text-sm leading-6 text-[#493C5E]">
+                  <p className="mt-3 whitespace-pre-line text-sm leading-6 text-[#44403C]">
                     {description}
                   </p>
                 ) : null}

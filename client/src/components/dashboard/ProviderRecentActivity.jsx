@@ -112,17 +112,17 @@ export function ProviderRecentActivity({ isLoading = false, ...props }) {
         ) : activity.length > 0 ? (
           <ol className="grid gap-3">
             {activity.map((item) => (
-              <li className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={`${item.label}-${item.title}-${item.date}`}>
-                <a className="flex min-w-0 items-start gap-3 focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70" href={item.href}>
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white text-[#7C3AED]">
+              <li className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${item.label}-${item.title}-${item.date}`}>
+                <a className="flex min-w-0 items-start gap-3 focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" href={item.href}>
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white text-[#3F6212]">
                     {createElement(item.icon || Activity, { "aria-hidden": "true", className: "h-5 w-5" })}
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="flex flex-wrap items-center gap-2">
-                      <span className="break-words text-sm font-black text-[#07030D]">{item.title}</span>
+                      <span className="break-words text-sm font-black text-[#1C1917]">{item.title}</span>
                       <Badge size="sm" variant="gray">{item.label}</Badge>
                     </span>
-                    <span className="mt-1 block text-xs font-bold text-[#6F657C]">
+                    <span className="mt-1 block text-xs font-bold text-[#78716C]">
                       {formatDate(item.date, { fallback: "Recently" })}
                     </span>
                   </span>

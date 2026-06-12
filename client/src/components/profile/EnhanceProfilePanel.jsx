@@ -75,23 +75,23 @@ export function EnhanceProfilePanel({
   return (
     <Card
       as="aside"
-      className="rounded-3xl border-[#C4B5FD]/45 bg-[linear-gradient(180deg,#FFFFFF_0%,#F8F4FF_58%,#F5F3FF_100%)] shadow-[0_24px_80px_rgba(124, 58, 237, 0.12)]"
+      className="rounded-3xl border-[#BEF264]/45 bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFBEB_58%,#F7FEE7_100%)] shadow-[0_24px_80px_rgba(63, 98, 18, 0.12)]"
       padding="lg"
       variant="elevated"
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <Badge variant="primary">Owner toolkit</Badge>
-          <h2 className="mt-3 text-2xl font-black leading-tight text-[#07030D]">
+          <h2 className="mt-3 text-2xl font-black leading-tight text-[#1C1917]">
             Enhance your profile
           </h2>
-          <p className="mt-2 text-sm leading-7 text-[#6F657C]">
+          <p className="mt-2 text-sm leading-7 text-[#57534E]">
             Complete key sections to make your ProofArena profile more credible.
           </p>
         </div>
-        <div className="rounded-2xl border border-[#7C3AED]/20 bg-white px-4 py-3 text-center shadow-[0_12px_34px_rgba(124, 58, 237, 0.1)]">
-          <p className="text-2xl font-black text-[#5B21B6]">{completion}%</p>
-          <p className="text-xs font-black uppercase tracking-[0.12em] text-[#6F657C]">
+        <div className="rounded-2xl border border-[#3F6212]/20 bg-white px-4 py-3 text-center shadow-[0_12px_34px_rgba(63, 98, 18, 0.1)]">
+          <p className="text-2xl font-black text-[#365314]">{completion}%</p>
+          <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
             Complete
           </p>
         </div>
@@ -99,7 +99,7 @@ export function EnhanceProfilePanel({
 
       <div className="mt-6 h-3 overflow-hidden rounded-full bg-white shadow-inner">
         <div
-          className="h-full rounded-full bg-[linear-gradient(90deg,#7C3AED,#A78BFA)]"
+          className="h-full rounded-full bg-[linear-gradient(90deg,#3F6212,#65A30D)]"
           style={{ width: `${completion}%` }}
         />
       </div>
@@ -115,20 +115,20 @@ export function EnhanceProfilePanel({
 
           return (
             <div
-              className="flex items-center gap-3 rounded-2xl border border-[#E9E2F3] bg-white p-3"
+              className="flex items-center gap-3 rounded-2xl border border-[#E7E5E4] bg-white p-3"
               key={title}
             >
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]">
                 <SuggestionIcon aria-hidden="true" className="h-5 w-5" />
               </span>
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-black text-[#07030D]">{title}</p>
-                <p className="text-xs font-semibold text-[#6F657C]">
+                <p className="text-sm font-black text-[#1C1917]">{title}</p>
+                <p className="text-xs font-semibold text-[#78716C]">
                   {statusText}
                 </p>
               </div>
               {complete ? (
-                <CheckCircle2 aria-label="Completed" className="h-5 w-5 shrink-0 text-[#A78BFA]" />
+                <CheckCircle2 aria-label="Completed" className="h-5 w-5 shrink-0 text-[#65A30D]" />
               ) : (
                 <Button
                   className="min-h-9 px-3 py-1.5 text-xs"

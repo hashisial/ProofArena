@@ -54,7 +54,7 @@ export function ProviderMatchedChallengesCard({
             const challenge = match.challenge ?? {};
 
             return (
-              <article className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={match.id ?? challenge.id}>
+              <article className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={match.id ?? challenge.id}>
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex flex-wrap items-center gap-2">
                     {challenge.category ? <Badge variant="outline">{challenge.category}</Badge> : null}
@@ -62,13 +62,13 @@ export function ProviderMatchedChallengesCard({
                   </div>
                   <MatchScoreBadge score={match.matchScore} />
                 </div>
-                <h3 className="mt-3 text-base font-black text-[#07030D]">{challenge.title || "Matched challenge"}</h3>
-                <p className="mt-2 text-sm leading-6 text-[#6F657C]">
+                <h3 className="mt-3 text-base font-black text-[#1C1917]">{challenge.title || "Matched challenge"}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#78716C]">
                   {formatChallengeBudget(challenge.budget)} | {formatChallengeTimeline(challenge.timeline)}
                 </p>
                 {match.matchReasons?.[0] ? (
-                  <p className="mt-3 flex items-start gap-2 break-words text-sm font-bold leading-6 text-[#493C5E]">
-                    <CheckCircle2 aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-[#A78BFA]" />
+                  <p className="mt-3 flex items-start gap-2 break-words text-sm font-bold leading-6 text-[#44403C]">
+                    <CheckCircle2 aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-[#65A30D]" />
                     <span>{match.matchReasons[0]}</span>
                   </p>
                 ) : null}

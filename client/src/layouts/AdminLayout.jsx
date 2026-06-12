@@ -10,11 +10,11 @@ export function AdminLayout({ children, title = "ProofArena Control Center" }) {
   const closeSidebar = useUIStore((state) => state.closeSidebar);
 
   return (
-    <div className="h-screen overflow-hidden bg-[#FBF9FF] text-[#07030D]">
+    <div className="h-screen overflow-hidden bg-[#FEFCE8] text-[#1C1917]">
       {sidebarOpen ? (
         <button
           aria-label="Close admin sidebar"
-          className="fixed inset-0 z-40 bg-[#07030D]/28 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-[#1C1917]/28 backdrop-blur-sm lg:hidden"
           onClick={closeSidebar}
           type="button"
         />

@@ -52,20 +52,20 @@ export function ProfileVisibilityCard({
       <div className="flex items-start gap-3">
         <div
           aria-hidden="true"
-          className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]"
         >
           <Icon className="h-5 w-5" />
         </div>
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <h2 className="text-lg font-black tracking-[-0.03em] text-[#07030D]">
+            <h2 className="text-lg font-black tracking-[-0.03em] text-[#1C1917]">
               Visibility
             </h2>
             <Badge variant={meta.variant}>{meta.label}</Badge>
           </div>
-          <p className="mt-2 text-sm leading-6 text-[#6F657C]">{meta.text}</p>
+          <p className="mt-2 text-sm leading-6 text-[#78716C]">{meta.text}</p>
           {publicUrl ? (
-            <p className="mt-3 break-all rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] px-3 py-2 text-xs font-bold text-[#493C5E]">
+            <p className="mt-3 break-all rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] px-3 py-2 text-xs font-bold text-[#44403C]">
               {publicUrl}
             </p>
           ) : null}

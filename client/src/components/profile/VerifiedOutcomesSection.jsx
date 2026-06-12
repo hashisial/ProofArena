@@ -33,12 +33,12 @@ function MetricCard({ icon, label, value }) {
   const IconComponent = icon;
 
   return (
-    <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4 transition hover:-translate-y-0.5 hover:border-[#C4B5FD] hover:shadow-[0_16px_42px_rgba(124, 58, 237, 0.1)]">
-      <IconComponent aria-hidden="true" className="h-5 w-5 text-[#7C3AED]" />
-      <p className="mt-3 break-words text-xl font-black tracking-[-0.04em] text-[#07030D]">
+    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 transition hover:-translate-y-0.5 hover:border-[#BEF264] hover:shadow-[0_16px_42px_rgba(63, 98, 18, 0.1)]">
+      <IconComponent aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />
+      <p className="mt-3 break-words text-xl font-black tracking-[-0.04em] text-[#1C1917]">
         {value}
       </p>
-      <p className="mt-1 text-sm font-semibold text-[#6F657C]">{label}</p>
+      <p className="mt-1 text-sm font-semibold text-[#78716C]">{label}</p>
     </div>
   );
 }
@@ -118,15 +118,15 @@ export function VerifiedOutcomesSection({ isOwner = false, providerProfile = nul
           ))}
         </div>
 
-        <div className="rounded-2xl border border-dashed border-[#C4B5FD] bg-[#F8F4FF] p-5">
-          <p className="text-sm font-black text-[#07030D]">
+        <div className="rounded-2xl border border-dashed border-[#BEF264] bg-[#FFFBEB] p-5">
+          <p className="text-sm font-black text-[#1C1917]">
             {hasVerifiedSignals
               ? "Proof records foundation"
               : isOwner
                 ? "Verified outcomes will appear here"
                 : "No verified outcomes yet"}
           </p>
-          <p className="mt-2 text-sm leading-6 text-[#6F657C]">
+          <p className="mt-2 text-sm leading-6 text-[#78716C]">
             {hasVerifiedSignals
               ? "Detailed proof records will connect here when the proof ledger workflow is available."
               : isOwner
@@ -134,20 +134,20 @@ export function VerifiedOutcomesSection({ isOwner = false, providerProfile = nul
                 : "Verified outcomes will appear after approved proof-reviewed work."}
           </p>
 
-          <div className="mt-5 rounded-2xl border border-[#E9E2F3] bg-white p-4">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+          <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-white p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
               Proof record preview
             </p>
             <div className="mt-3 grid gap-2">
               {previewRows.map(([label, value]) => (
                 <div
-                  className="grid gap-1 rounded-xl bg-[#F8F4FF] px-3 py-2 sm:grid-cols-[140px_minmax(0,1fr)]"
+                  className="grid gap-1 rounded-xl bg-[#FFFBEB] px-3 py-2 sm:grid-cols-[140px_minmax(0,1fr)]"
                   key={label}
                 >
-                  <span className="text-xs font-black uppercase tracking-[0.12em] text-[#6F657C]">
+                  <span className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
                     {label}
                   </span>
-                  <span className="text-sm font-semibold text-[#493C5E]">{value}</span>
+                  <span className="text-sm font-semibold text-[#44403C]">{value}</span>
                 </div>
               ))}
             </div>

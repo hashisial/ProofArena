@@ -50,7 +50,7 @@ export function ClientExecutionPlansCard({
         {isLoading ? (
           <div className="grid gap-3">
             {[0, 1, 2].map((item) => (
-              <div className="h-24 animate-pulse rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF]" key={item} />
+              <div className="h-24 animate-pulse rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB]" key={item} />
             ))}
           </div>
         ) : isError ? (
@@ -75,25 +75,25 @@ export function ClientExecutionPlansCard({
               const planId = getPlanId(plan);
 
               return (
-                <article className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={planId || plan.title}>
+                <article className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={planId || plan.title}>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="min-w-0 break-words text-base font-black text-[#07030D]">
+                        <h3 className="min-w-0 break-words text-base font-black text-[#1C1917]">
                           {plan.title || "Execution plan"}
                         </h3>
                         <ExecutionPlanStatusBadge status={plan.status} />
                       </div>
-                      <p className="mt-2 text-sm font-semibold text-[#6F657C]">
+                      <p className="mt-2 text-sm font-semibold text-[#78716C]">
                         {getProviderName(plan)} for {activeChallenge?.title || plan.challenge?.title || "your challenge"}
                       </p>
                     </div>
-                    <div className="rounded-xl bg-white px-3 py-2 text-sm font-black text-[#7C3AED]">
+                    <div className="rounded-xl bg-white px-3 py-2 text-sm font-black text-[#3F6212]">
                       Score {formatPlanScore(plan)}
                     </div>
                   </div>
                   <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                    <p className="text-xs font-bold text-[#6F657C]">
+                    <p className="text-xs font-bold text-[#78716C]">
                       Received {formatDate(plan.submittedAt || plan.createdAt, { fallback: "recently" })}
                     </p>
                     {challengeId && planId ? (

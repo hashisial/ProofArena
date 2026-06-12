@@ -2,10 +2,10 @@ import { getMatchScoreLabel } from "../../features/matches/matchUtils.js";
 import { cn } from "../../utils/cn.js";
 
 function scoreTone(score) {
-  if (score >= 85) return "border-[#7C3AED]/25 bg-[#F5F3FF] text-[#5B21B6]";
-  if (score >= 70) return "border-[#A78BFA]/25 bg-[#F5F3FF] text-[#7C3AED]";
-  if (score >= 40) return "border-[#6D28D9]/25 bg-[#F8F4FF] text-[#6D28D9]";
-  return "border-[#E9E2F3] bg-[#FAFAFA] text-[#6F657C]";
+  if (score >= 85) return "border-[#3F6212]/25 bg-[#F7FEE7] text-[#365314]";
+  if (score >= 70) return "border-[#65A30D]/25 bg-[#F7FEE7] text-[#3F6212]";
+  if (score >= 40) return "border-[#A16207]/25 bg-[#FFFBEB] text-[#A16207]";
+  return "border-[#E7E5E4] bg-[#FAFAFA] text-[#78716C]";
 }
 
 export function MatchScoreBadge({ score = 0 }) {

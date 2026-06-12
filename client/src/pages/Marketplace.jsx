@@ -72,7 +72,7 @@ const ratingOptions = [
 ];
 
 const fieldClass =
-  "h-12 w-full rounded-2xl border border-black/10 bg-white px-4 text-sm font-semibold text-black outline-none transition placeholder:text-black/30 focus:border-[#7C3AED]/50 focus:ring-4 focus:ring-[#7C3AED]/10";
+  "h-12 w-full rounded-2xl border border-black/10 bg-white px-4 text-sm font-semibold text-black outline-none transition placeholder:text-black/30 focus:border-[#3F6212]/50 focus:ring-4 focus:ring-[#3F6212]/10";
 
 function getCategoryLabel(categoryId, categories = []) {
   return categories.find((category) => category.slug === categoryId)?.name ?? categoryId;
@@ -118,8 +118,8 @@ function SegmentedFilter({ label, name, onChange, options, value }) {
             <button
               className={`rounded-full border px-4 py-2 text-sm font-bold transition duration-300 ${
                 isActive
-                  ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow-[0_14px_40px_rgba(124, 58, 237, 0.24)]"
-                  : "border-black/10 bg-white text-black/58 hover:-translate-y-0.5 hover:border-[#7C3AED]/35 hover:bg-[#7C3AED] hover:text-white"
+                  ? "border-[#3F6212] bg-[#3F6212] text-white shadow-[0_14px_40px_rgba(63, 98, 18, 0.24)]"
+                  : "border-black/10 bg-white text-black/58 hover:-translate-y-0.5 hover:border-[#3F6212]/35 hover:bg-[#3F6212] hover:text-white"
               }`}
               key={optionValue || "all"}
               onClick={() => onChange(name, optionValue)}
@@ -141,10 +141,10 @@ function CategoryNavigation({ activeCategory, categories }) {
   return (
     <nav className={horizontalScrollClass} aria-label="Marketplace categories">
       <a
-        className={`shrink-0 rounded-full border px-5 py-3 text-sm font-bold shadow-[0_18px_48px_rgba(0,0,0,0.12)] transition hover:bg-[#7C3AED] hover:text-white ${
+        className={`shrink-0 rounded-full border px-5 py-3 text-sm font-bold shadow-[0_18px_48px_rgba(0,0,0,0.12)] transition hover:bg-[#3F6212] hover:text-white ${
           !activeCategory
             ? "border-black/10 bg-black text-white"
-            : "border-[#7C3AED]/16 bg-white text-black/62"
+            : "border-[#3F6212]/16 bg-white text-black/62"
         }`}
         href="/marketplace"
       >
@@ -152,10 +152,10 @@ function CategoryNavigation({ activeCategory, categories }) {
       </a>
       {categories.map((category) => (
         <a
-          className={`shrink-0 rounded-full border px-5 py-3 text-sm font-bold transition hover:-translate-y-0.5 hover:border-[#7C3AED]/40 hover:bg-[#7C3AED] hover:text-white hover:shadow-[0_18px_48px_rgba(124, 58, 237, 0.18)] ${
+          className={`shrink-0 rounded-full border px-5 py-3 text-sm font-bold transition hover:-translate-y-0.5 hover:border-[#3F6212]/40 hover:bg-[#3F6212] hover:text-white hover:shadow-[0_18px_48px_rgba(63, 98, 18, 0.18)] ${
             activeCategory === category.slug
-              ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow-[0_18px_48px_rgba(124, 58, 237, 0.22)]"
-              : "border-[#7C3AED]/16 bg-white text-black/62"
+              ? "border-[#3F6212] bg-[#3F6212] text-white shadow-[0_18px_48px_rgba(63, 98, 18, 0.22)]"
+              : "border-[#3F6212]/16 bg-white text-black/62"
           }`}
           href={`/marketplace/category/${category.slug}`}
           key={category.slug}
@@ -173,8 +173,8 @@ function CategoryFilters({ activeCategory, categories, onChange }) {
       <button
         className={`shrink-0 rounded-full border px-5 py-3 text-sm font-bold transition ${
           !activeCategory
-            ? "border-[#7C3AED] bg-black text-white shadow-[0_18px_48px_rgba(0,0,0,0.18)]"
-            : "border-black/10 bg-white text-black/58 hover:border-[#7C3AED]/35 hover:text-black"
+            ? "border-[#3F6212] bg-black text-white shadow-[0_18px_48px_rgba(0,0,0,0.18)]"
+            : "border-black/10 bg-white text-black/58 hover:border-[#3F6212]/35 hover:text-black"
         }`}
         onClick={() => onChange("category", "")}
         type="button"
@@ -188,8 +188,8 @@ function CategoryFilters({ activeCategory, categories, onChange }) {
           <button
             className={`shrink-0 rounded-full border px-5 py-3 text-sm font-bold transition ${
               isActive
-                ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow-[0_18px_48px_rgba(124, 58, 237, 0.22)]"
-                : "border-black/10 bg-white text-black/58 hover:border-[#7C3AED]/35 hover:text-black"
+                ? "border-[#3F6212] bg-[#3F6212] text-white shadow-[0_18px_48px_rgba(63, 98, 18, 0.22)]"
+                : "border-black/10 bg-white text-black/58 hover:border-[#3F6212]/35 hover:text-black"
             }`}
             key={category.slug}
             onClick={() => onChange("category", category.slug)}
@@ -222,7 +222,7 @@ function ActiveFilterBar({ categories, filters, onClear, onRemove }) {
     <div className="flex flex-wrap items-center gap-2">
       {chips.map(([key, label]) => (
         <button
-          className="rounded-full border border-[#7C3AED]/20 bg-[#F5F3FF] px-3 py-1.5 text-xs font-bold text-[#5B21B6] transition hover:bg-[#7C3AED] hover:text-white"
+          className="rounded-full border border-[#3F6212]/20 bg-[#F7FEE7] px-3 py-1.5 text-xs font-bold text-[#365314] transition hover:bg-[#3F6212] hover:text-white"
           key={`${key}-${label}`}
           onClick={() => onRemove(key)}
           type="button"
@@ -250,7 +250,7 @@ function ProviderSpotlight({ provider }) {
 
   return (
     <MotionAnchor
-      className="group relative grid gap-4 overflow-hidden rounded-[1.7rem] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_22px_70px_rgba(124, 58, 237, 0.08)] transition hover:border-[#7C3AED]/34"
+      className="group relative grid gap-4 overflow-hidden rounded-[1.7rem] border border-[#3F6212]/14 bg-white p-5 shadow-[0_22px_70px_rgba(63, 98, 18, 0.08)] transition hover:border-[#3F6212]/34"
       href={provider.publicUrl || `/providers/${provider.user?.username ?? ""}`}
       initial={{ opacity: 0, x: 18 }}
       layout
@@ -259,23 +259,23 @@ function ProviderSpotlight({ provider }) {
       whileHover={{ x: 3 }}
       whileInView={{ opacity: 1, x: 0 }}
     >
-      <div className="absolute -right-16 -top-16 h-36 w-36 rounded-full bg-[#7C3AED]/10 blur-3xl transition group-hover:bg-[#7C3AED]/18" />
+      <div className="absolute -right-16 -top-16 h-36 w-36 rounded-full bg-[#3F6212]/10 blur-3xl transition group-hover:bg-[#3F6212]/18" />
       <div className="relative flex items-center gap-3">
         {provider.profilePicture ? (
           <img alt="" className="h-14 w-14 rounded-2xl object-cover" src={provider.profilePicture} />
         ) : (
-          <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#7C3AED] text-sm font-bold text-white">
+          <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#3F6212] text-sm font-bold text-white">
             {getInitials(name)}
           </span>
         )}
         <div className="min-w-0">
           <p className="truncate text-base font-bold text-black">{name}</p>
           <div className="mt-1 flex flex-wrap items-center gap-1.5">
-            <p className="truncate text-xs font-bold uppercase tracking-[0.14em] text-[#7C3AED]">
+            <p className="truncate text-xs font-bold uppercase tracking-[0.14em] text-[#3F6212]">
               {provider.availability}
             </p>
             {isVerified ? (
-              <span className="rounded-full bg-[#7C3AED] px-2 py-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-white">
+              <span className="rounded-full bg-[#3F6212] px-2 py-0.5 text-[9px] font-black uppercase tracking-[0.12em] text-white">
                 Verified
               </span>
             ) : null}
@@ -309,14 +309,14 @@ function CategoryLandingPanel({ categories, filters, onChange, providers, select
 
   return (
     <MotionSection
-      className="overflow-hidden rounded-[2.35rem] border border-[#7C3AED]/14 bg-white shadow-[0_28px_90px_rgba(124, 58, 237, 0.09)]"
+      className="overflow-hidden rounded-[2.35rem] border border-[#3F6212]/14 bg-white shadow-[0_28px_90px_rgba(63, 98, 18, 0.09)]"
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.08, duration: 0.45 }}
     >
       <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_380px]">
         <div className="min-w-0 p-6 sm:p-8">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#7C3AED]">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#3F6212]">
             {selectedCategory.name}
           </p>
           <h2 className="mt-3 max-w-3xl break-words text-[2.2rem] font-black leading-[0.98] tracking-[-0.055em] text-black sm:text-5xl sm:tracking-[-0.065em]">
@@ -328,7 +328,7 @@ function CategoryLandingPanel({ categories, filters, onChange, providers, select
 
           <div className="mt-7 grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto]">
             <input
-              className="min-h-[3.25rem] rounded-[1.2rem] border border-black/10 bg-[#F8F4FF] px-5 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#7C3AED]/50 focus:ring-4 focus:ring-[#7C3AED]/10"
+              className="min-h-[3.25rem] rounded-[1.2rem] border border-black/10 bg-[#fffbeb] px-5 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/50 focus:ring-4 focus:ring-[#3F6212]/10"
               name="search"
               onChange={(event) => onChange("search", event.target.value)}
               placeholder={`Search inside ${selectedCategory.name.toLowerCase()}...`}
@@ -342,19 +342,19 @@ function CategoryLandingPanel({ categories, filters, onChange, providers, select
           <div className="mt-8 grid gap-3 md:grid-cols-3">
             {popularServices.length > 0 ? popularServices.map((service) => (
               <a
-                className="group rounded-[1.35rem] border border-black/10 bg-[#F8F4FF] p-4 transition hover:-translate-y-0.5 hover:border-[#7C3AED]/34 hover:bg-white hover:shadow-[0_18px_55px_rgba(124, 58, 237, 0.12)]"
+                className="group rounded-[1.35rem] border border-black/10 bg-[#fffbeb] p-4 transition hover:-translate-y-0.5 hover:border-[#3F6212]/34 hover:bg-white hover:shadow-[0_18px_55px_rgba(63, 98, 18, 0.12)]"
                 href={`/marketplace/service/${service.slug || service._id}`}
                 key={service._id}
               >
                 <p className="line-clamp-2 text-lg font-black leading-tight tracking-[-0.04em] text-black">
                   {service.title}
                 </p>
-                <p className="mt-3 text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+                <p className="mt-3 text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
                   {service.deliveryTime || "Scoped delivery"}
                 </p>
               </a>
             )) : (
-              <div className="rounded-[1.35rem] border border-dashed border-[#7C3AED]/22 bg-[#F8F4FF] p-4 md:col-span-3">
+              <div className="rounded-[1.35rem] border border-dashed border-[#3F6212]/22 bg-[#fffbeb] p-4 md:col-span-3">
                 <p className="text-sm font-bold text-black/54">
                   Popular services will appear here as this category grows.
                 </p>
@@ -365,7 +365,7 @@ function CategoryLandingPanel({ categories, filters, onChange, providers, select
 
         <aside className="grid min-w-0 content-between gap-6 border-t border-black/10 bg-black p-6 text-white lg:border-l lg:border-t-0 sm:p-8">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#A78BFA]">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#65A30D]">
               Top providers
             </p>
             <div className="mt-5 grid gap-3">
@@ -378,14 +378,14 @@ function CategoryLandingPanel({ categories, filters, onChange, providers, select
 
                 return (
                   <a
-                    className="rounded-[1.25rem] border border-white/12 bg-white/8 p-4 transition hover:border-[#A78BFA]/45 hover:bg-white/12"
+                    className="rounded-[1.25rem] border border-white/12 bg-white/8 p-4 transition hover:border-[#65A30D]/45 hover:bg-white/12"
                     href={provider.publicUrl || `/providers/${provider.user?.username ?? ""}`}
                     key={provider.id || provider._id || provider.username || provider.user?.username}
                   >
                     <div className="flex items-center justify-between gap-3">
                       <p className="truncate text-base font-black">{name}</p>
                       {isVerified ? (
-                        <span className="rounded-full bg-[#7C3AED] px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-white">
+                        <span className="rounded-full bg-[#3F6212] px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-white">
                           Verified
                         </span>
                       ) : null}
@@ -402,13 +402,13 @@ function CategoryLandingPanel({ categories, filters, onChange, providers, select
           </div>
 
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#A78BFA]">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#65A30D]">
               Related categories
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {relatedCategories.map((category) => (
                 <a
-                  className="rounded-full border border-white/12 bg-white px-3 py-2 text-xs font-black text-black transition hover:bg-[#7C3AED] hover:text-white"
+                  className="rounded-full border border-white/12 bg-white px-3 py-2 text-xs font-black text-black transition hover:bg-[#3F6212] hover:text-white"
                   href={`/marketplace/category/${category.slug}`}
                   key={category.slug}
                 >
@@ -448,7 +448,7 @@ function MobileFilterDrawer({
             type="button"
           />
           <MotionDiv
-            className="absolute inset-x-0 bottom-0 max-h-[88vh] overflow-y-auto rounded-t-[2rem] border border-[#7C3AED]/16 bg-white p-5 shadow-[0_-24px_80px_rgba(124, 58, 237, 0.2)]"
+            className="absolute inset-x-0 bottom-0 max-h-[88vh] overflow-y-auto rounded-t-[2rem] border border-[#3F6212]/16 bg-white p-5 shadow-[0_-24px_80px_rgba(63, 98, 18, 0.2)]"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
@@ -456,11 +456,11 @@ function MobileFilterDrawer({
           >
             <div className="mb-5 flex items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">Filters</p>
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">Filters</p>
                 <h3 className="mt-1 text-2xl font-black tracking-[-0.055em] text-black">Refine marketplace</h3>
               </div>
               <button
-                className="h-11 w-11 rounded-full border border-black/10 bg-white text-xl font-black text-black transition hover:bg-[#7C3AED] hover:text-white"
+                className="h-11 w-11 rounded-full border border-black/10 bg-white text-xl font-black text-black transition hover:bg-[#3F6212] hover:text-white"
                 onClick={onClose}
                 type="button"
               >
@@ -526,7 +526,7 @@ function Pagination({ pagination, onPageChange }) {
   }
 
   return (
-    <div className="flex flex-col gap-3 rounded-[1.5rem] border border-black/10 bg-white p-3 shadow-[0_18px_55px_rgba(124, 58, 237, 0.07)] sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-3 rounded-[1.5rem] border border-black/10 bg-white p-3 shadow-[0_18px_55px_rgba(63, 98, 18, 0.07)] sm:flex-row sm:items-center sm:justify-between">
       <p className="text-sm font-bold text-black/52">
         Page {page} of {totalPages}
       </p>
@@ -653,16 +653,16 @@ export function Marketplace({ categorySlug = "" }) {
   }
 
   return (
-    <section className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#F8F4FF_48%,#ffffff_100%)] text-black">
+    <section className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_48%,#ffffff_100%)] text-black">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <MotionDiv
           animate={{ rotate: 360, scale: [1, 1.08, 1] }}
-          className="absolute right-[6%] top-24 h-80 w-80 rounded-[6rem] border border-[#7C3AED]/14 bg-[#7C3AED]/6 blur-[1px]"
+          className="absolute right-[6%] top-24 h-80 w-80 rounded-[6rem] border border-[#3F6212]/14 bg-[#3F6212]/6 blur-[1px]"
           transition={{ duration: 28, ease: "linear", repeat: Infinity }}
         />
         <MotionDiv
           animate={{ x: [0, 24, 0], y: [0, -18, 0] }}
-          className="absolute left-[7%] top-[34rem] h-52 w-52 rounded-full bg-[#A78BFA]/18 blur-3xl"
+          className="absolute left-[7%] top-[34rem] h-52 w-52 rounded-full bg-[#65A30D]/18 blur-3xl"
           transition={{ duration: 9, ease: "easeInOut", repeat: Infinity }}
         />
       </div>
@@ -670,7 +670,7 @@ export function Marketplace({ categorySlug = "" }) {
       <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <MotionDiv className="min-w-0" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#7C3AED]">
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#3F6212]">
               {selectedCategory ? "Category marketplace" : "Services marketplace"}
             </p>
             <h1 className="mt-5 max-w-[9.6ch] break-words text-[2.55rem] font-bold leading-[0.96] tracking-[-0.055em] text-black sm:max-w-4xl sm:text-7xl sm:leading-[0.94] sm:tracking-[-0.075em]">
@@ -695,7 +695,7 @@ export function Marketplace({ categorySlug = "" }) {
                 ["Featured providers", providersQuery.data?.pagination?.total ?? providers.length],
                 ["Filter latency", isRefreshing ? "Refreshing" : "Instant"],
               ].map(([label, value]) => (
-                <div className="rounded-2xl border border-[#7C3AED]/14 bg-white p-4 shadow-[0_16px_45px_rgba(124, 58, 237, 0.07)]" key={label}>
+                <div className="rounded-2xl border border-[#3F6212]/14 bg-white p-4 shadow-[0_16px_45px_rgba(63, 98, 18, 0.07)]" key={label}>
                   <p className="text-2xl font-bold tracking-[-0.05em] text-black">{value}</p>
                   <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-black/42">{label}</p>
                 </div>
@@ -707,7 +707,7 @@ export function Marketplace({ categorySlug = "" }) {
         <div className="grid gap-3">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7C3AED]">Browse categories</p>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3F6212]">Browse categories</p>
               <h2 className="mt-2 text-2xl font-bold tracking-[-0.05em] text-black">
                 Move by market need, not by template.
               </h2>
@@ -728,10 +728,10 @@ export function Marketplace({ categorySlug = "" }) {
           services={services}
         />
 
-        <div className="sticky top-0 z-30 -mx-4 grid gap-3 border-y border-[#7C3AED]/12 bg-white/92 px-4 py-3 shadow-[0_18px_50px_rgba(124, 58, 237, 0.08)] backdrop-blur-xl lg:hidden">
+        <div className="sticky top-0 z-30 -mx-4 grid gap-3 border-y border-[#3F6212]/12 bg-white/92 px-4 py-3 shadow-[0_18px_50px_rgba(63, 98, 18, 0.08)] backdrop-blur-xl lg:hidden">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-3">
             <input
-              className="min-h-12 min-w-0 rounded-[1.1rem] border border-black/10 bg-white px-4 text-sm font-semibold text-black outline-none placeholder:text-black/32 focus:border-[#7C3AED]/50 focus:ring-4 focus:ring-[#7C3AED]/10"
+              className="min-h-12 min-w-0 rounded-[1.1rem] border border-black/10 bg-white px-4 text-sm font-semibold text-black outline-none placeholder:text-black/32 focus:border-[#3F6212]/50 focus:ring-4 focus:ring-[#3F6212]/10"
               name="search"
               onChange={updateField}
               placeholder="Search marketplace..."
@@ -749,7 +749,7 @@ export function Marketplace({ categorySlug = "" }) {
         </div>
 
         <MotionSection
-          className="hidden rounded-[2.2rem] border border-[#7C3AED]/16 bg-white/88 p-4 shadow-[0_28px_90px_rgba(124, 58, 237, 0.1)] backdrop-blur-2xl md:p-6 lg:block"
+          className="hidden rounded-[2.2rem] border border-[#3F6212]/16 bg-white/88 p-4 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] backdrop-blur-2xl md:p-6 lg:block"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.12, duration: 0.5 }}
@@ -759,13 +759,13 @@ export function Marketplace({ categorySlug = "" }) {
               <FilterLabel label="Search services, providers, skills">
                 <div className="relative">
                   <input
-                    className="h-14 w-full rounded-[1.35rem] border border-black/10 bg-white px-5 pr-14 text-base font-semibold text-black outline-none transition placeholder:text-black/30 focus:border-[#7C3AED]/50 focus:ring-4 focus:ring-[#7C3AED]/10"
+                    className="h-14 w-full rounded-[1.35rem] border border-black/10 bg-white px-5 pr-14 text-base font-semibold text-black outline-none transition placeholder:text-black/30 focus:border-[#3F6212]/50 focus:ring-4 focus:ring-[#3F6212]/10"
                     name="search"
                     onChange={updateField}
                     placeholder="Funnels, React, Web3 support, provider name..."
                     value={filters.search}
                   />
-                  <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-[#7C3AED] px-3 py-1 text-xs font-black text-white">
+                  <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-[#3F6212] px-3 py-1 text-xs font-black text-white">
                     Search
                   </span>
                 </div>
@@ -782,7 +782,7 @@ export function Marketplace({ categorySlug = "" }) {
                   {["grid", "list"].map((viewMode) => (
                     <button
                       className={`rounded-xl text-sm font-bold capitalize transition ${
-                        view === viewMode ? "bg-black text-white" : "text-black/52 hover:bg-[#7C3AED]/8 hover:text-black"
+                        view === viewMode ? "bg-black text-white" : "text-black/52 hover:bg-[#3F6212]/8 hover:text-black"
                       }`}
                       key={viewMode}
                       onClick={() => setView(viewMode)}
@@ -852,18 +852,18 @@ export function Marketplace({ categorySlug = "" }) {
           <main className="grid gap-5">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7C3AED]">Service listings</p>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3F6212]">Service listings</p>
                 <h2 className="mt-2 text-3xl font-bold tracking-[-0.055em] text-black">
                   {servicesQuery.data?.pagination?.total ?? services.length} marketplace services
                 </h2>
               </div>
               <div className="flex items-center gap-3">
                 {isRefreshing ? (
-                  <span className="rounded-full border border-[#7C3AED]/18 bg-[#F5F3FF] px-3 py-1.5 text-xs font-bold text-[#5B21B6]">
+                  <span className="rounded-full border border-[#3F6212]/18 bg-[#F7FEE7] px-3 py-1.5 text-xs font-bold text-[#365314]">
                     Updating results
                   </span>
                 ) : null}
-                <a className="text-sm font-bold text-[#5B21B6] underline decoration-[#A78BFA]/40 underline-offset-4 transition hover:text-[#7C3AED]" href="/provider-services">
+                <a className="text-sm font-bold text-[#365314] underline decoration-[#65A30D]/40 underline-offset-4 transition hover:text-[#3F6212]" href="/provider-services">
                   Create provider listing
                 </a>
               </div>
@@ -898,7 +898,7 @@ export function Marketplace({ categorySlug = "" }) {
 
           <aside className="grid content-start gap-5 xl:sticky xl:top-24">
             <section className="rounded-[2rem] border border-black/10 bg-black p-6 text-white shadow-[0_28px_90px_rgba(0,0,0,0.18)]">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#A78BFA]">Shortlist</p>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#65A30D]">Shortlist</p>
               <h2 className="mt-3 text-3xl font-bold tracking-[-0.06em]">Build a serious hiring path.</h2>
               <p className="mt-4 text-sm leading-6 text-white/66">
                 Save services, inspect provider profiles, then use projects and payments once the scope is ready.
@@ -910,7 +910,7 @@ export function Marketplace({ categorySlug = "" }) {
 
             <section className="grid gap-3">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7C3AED]">Featured providers</p>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3F6212]">Featured providers</p>
                 <h2 className="mt-2 text-2xl font-bold tracking-[-0.05em] text-black">Matched operators</h2>
               </div>
               {providersQuery.isError ? (

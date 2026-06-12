@@ -62,15 +62,15 @@ export function Challenges() {
   }
 
   return (
-    <section className="bg-[#FBF9FF] py-8 text-[#07030D] sm:py-12">
+    <section className="bg-[#FEFCE8] py-8 text-[#1C1917] sm:py-12">
       <Container>
         <div className="mx-auto grid max-w-7xl gap-6">
           <Card className="rounded-3xl" padding="lg" variant="elevated">
             <Badge variant="primary">Outcome challenges</Badge>
-            <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight tracking-normal text-[#07030D] sm:text-5xl">
+            <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight tracking-normal text-[#1C1917] sm:text-5xl">
               Outcome Challenges
             </h1>
-            <p className="mt-4 max-w-3xl text-base leading-7 text-[#6F657C]">
+            <p className="mt-4 max-w-3xl text-base leading-7 text-[#57534E]">
               Browse measurable business challenges with clear goals, timelines, proof requirements, and execution-plan opportunities.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -143,8 +143,8 @@ export function Challenges() {
           {challengesQuery.isError ? (
             <Card padding="lg" variant="bordered">
               <Badge variant="red">Could not load challenges</Badge>
-              <h2 className="mt-3 text-2xl font-black text-[#07030D]">Outcome challenges unavailable</h2>
-              <p className="mt-2 text-sm leading-6 text-[#6F657C]">
+              <h2 className="mt-3 text-2xl font-black text-[#1C1917]">Outcome challenges unavailable</h2>
+              <p className="mt-2 text-sm leading-6 text-[#78716C]">
                 {getChallengeApiErrorMessage(challengesQuery.error, "Challenge discovery could not be loaded. Please try again.")}
               </p>
               <Button className="mt-5" onClick={() => challengesQuery.refetch()} type="button">

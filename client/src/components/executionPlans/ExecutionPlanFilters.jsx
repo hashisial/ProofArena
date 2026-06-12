@@ -55,7 +55,7 @@ export function ExecutionPlanFilters({
               </Badge>
               {activeFilterCount > 0 ? <Badge variant="outline">{activeFilterCount} active</Badge> : null}
             </div>
-            <p className="mt-2 text-sm font-bold text-[#6F657C]">
+            <p className="mt-2 text-sm font-bold text-[#78716C]">
               Showing {resultCount} of {totalCount} execution plans
             </p>
           </div>

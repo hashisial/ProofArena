@@ -19,7 +19,7 @@ export function AboutSection({ isOwner = false, onEdit, profile = {} }) {
       onEdit={about ? onEdit : undefined}
       title="About"
     >
-      <p className="max-w-4xl whitespace-pre-line text-sm leading-7 text-[#493C5E] sm:text-base">
+      <p className="max-w-4xl whitespace-pre-line text-sm leading-7 text-[#44403C] sm:text-base">
         {about}
       </p>
     </ProfileSection>

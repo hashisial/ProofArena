@@ -88,7 +88,7 @@ function ProviderAvatar({ avatar, name, size = "lg" }) {
     return (
       <img
         alt=""
-        className={`${sizeClasses} shrink-0 border border-black/10 object-cover shadow-[0_18px_44px_rgba(124, 58, 237, 0.12)]`}
+        className={`${sizeClasses} shrink-0 border border-black/10 object-cover shadow-[0_18px_44px_rgba(63, 98, 18, 0.12)]`}
         src={avatar}
       />
     );
@@ -96,7 +96,7 @@ function ProviderAvatar({ avatar, name, size = "lg" }) {
 
   return (
     <span
-      className={`${sizeClasses} flex shrink-0 items-center justify-center bg-black text-sm font-black text-white shadow-[0_18px_44px_rgba(124, 58, 237, 0.14)]`}
+      className={`${sizeClasses} flex shrink-0 items-center justify-center bg-black text-sm font-black text-white shadow-[0_18px_44px_rgba(63, 98, 18, 0.14)]`}
     >
       {getInitials(name)}
     </span>
@@ -106,7 +106,7 @@ function ProviderAvatar({ avatar, name, size = "lg" }) {
 function ServiceImageGallery({ images, selectedImage, selectedImageIndex, serviceTitle, setSelectedImageIndex }) {
   return (
     <div className="grid gap-3">
-      <div className="relative min-h-[23rem] overflow-hidden rounded-[2rem] bg-[#12091F] shadow-[0_26px_80px_rgba(124, 58, 237, 0.2)] sm:min-h-[30rem]">
+      <div className="relative min-h-[23rem] overflow-hidden rounded-[2rem] bg-[#1A2E05] shadow-[0_26px_80px_rgba(63, 98, 18, 0.2)] sm:min-h-[30rem]">
         {selectedImage ? (
           <img
             alt=""
@@ -114,11 +114,11 @@ function ServiceImageGallery({ images, selectedImage, selectedImageIndex, servic
             src={selectedImage}
           />
         ) : (
-          <div className="h-full min-h-[23rem] bg-[radial-gradient(circle_at_22%_18%,rgba(167, 139, 250, 0.62),transparent_12rem),radial-gradient(circle_at_80%_16%,rgba(124, 58, 237, 0.42),transparent_11rem),linear-gradient(135deg,#07030D,#1c0e2e_50%,#5B21B6)] sm:min-h-[30rem]" />
+          <div className="h-full min-h-[23rem] bg-[radial-gradient(circle_at_22%_18%,rgba(101, 163, 13, 0.62),transparent_12rem),radial-gradient(circle_at_80%_16%,rgba(63, 98, 18, 0.42),transparent_11rem),linear-gradient(135deg,#1C1917,#1c0e2e_50%,#365314)] sm:min-h-[30rem]" />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/76 via-black/10 to-transparent" />
         <div className="absolute bottom-5 left-5 right-5 rounded-[1.35rem] border border-white/18 bg-white/12 p-4 text-white backdrop-blur-2xl">
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#DDD6FE]">Service preview</p>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#D9F99D]">Service preview</p>
           <p className="mt-2 max-w-lg text-xl font-black leading-tight tracking-[-0.04em]">
             {serviceTitle}
           </p>
@@ -129,10 +129,10 @@ function ServiceImageGallery({ images, selectedImage, selectedImageIndex, servic
         {(images.length ? images : [""]).slice(0, 4).map((image, index) => (
           <button
             aria-label={`Show service image ${index + 1}`}
-            className={`relative aspect-[4/3] overflow-hidden rounded-[1rem] border bg-[#12091F] transition duration-300 ${
+            className={`relative aspect-[4/3] overflow-hidden rounded-[1rem] border bg-[#1A2E05] transition duration-300 ${
               selectedImageIndex === index
-                ? "border-[#7C3AED] shadow-[0_18px_44px_rgba(124, 58, 237, 0.22)]"
-                : "border-black/10 hover:border-[#7C3AED]/45"
+                ? "border-[#3F6212] shadow-[0_18px_44px_rgba(63, 98, 18, 0.22)]"
+                : "border-black/10 hover:border-[#3F6212]/45"
             }`}
             key={`${image || "placeholder"}-${index}`}
             onClick={() => setSelectedImageIndex(index)}
@@ -141,7 +141,7 @@ function ServiceImageGallery({ images, selectedImage, selectedImageIndex, servic
             {image ? (
               <img alt="" className="h-full w-full object-cover" src={image} />
             ) : (
-              <span className="block h-full w-full bg-[linear-gradient(135deg,#07030D,#5B21B6)]" />
+              <span className="block h-full w-full bg-[linear-gradient(135deg,#1C1917,#365314)]" />
             )}
           </button>
         ))}
@@ -153,13 +153,13 @@ function ServiceImageGallery({ images, selectedImage, selectedImageIndex, servic
 function DetailSection({ children, eyebrow, title }) {
   return (
     <MotionSection
-      className="rounded-[2rem] border border-[#7C3AED]/14 bg-white p-6 shadow-[0_22px_70px_rgba(124, 58, 237, 0.08)] sm:p-8"
+      className="rounded-[2rem] border border-[#3F6212]/14 bg-white p-6 shadow-[0_22px_70px_rgba(63, 98, 18, 0.08)] sm:p-8"
       initial={{ opacity: 0, y: 18 }}
       transition={{ duration: 0.46, ease: [0.16, 1, 0.3, 1] }}
       viewport={{ once: true, margin: "-80px" }}
       whileInView={{ opacity: 1, y: 0 }}
     >
-      <p className="text-xs font-black uppercase tracking-[0.2em] text-[#7C3AED]">{eyebrow}</p>
+      <p className="text-xs font-black uppercase tracking-[0.2em] text-[#3F6212]">{eyebrow}</p>
       <h2 className="mt-3 text-3xl font-black leading-[1.02] tracking-[-0.055em] text-black sm:text-4xl">
         {title}
       </h2>
@@ -173,13 +173,13 @@ function ProviderMiniProfile({ provider }) {
 
   return (
     <DetailSection eyebrow="Provider" title="Built by a verified marketplace operator.">
-      <div className="grid gap-5 rounded-[1.5rem] border border-black/10 bg-[#F8F4FF] p-5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center">
+      <div className="grid gap-5 rounded-[1.5rem] border border-black/10 bg-[#fffbeb] p-5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center">
         <ProviderAvatar avatar={provider?.avatar} name={providerName} />
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="truncate text-2xl font-black tracking-[-0.05em] text-black">{providerName}</h3>
             {provider?.isVerified ? (
-              <span className="rounded-full bg-[#7C3AED] px-3 py-1 text-xs font-black uppercase tracking-[0.12em] text-white">
+              <span className="rounded-full bg-[#3F6212] px-3 py-1 text-xs font-black uppercase tracking-[0.12em] text-white">
                 Verified
               </span>
             ) : null}
@@ -200,7 +200,7 @@ function ProviderMiniProfile({ provider }) {
               </span>
             ) : null}
             {provider?.availability ? (
-              <span className="rounded-full border border-[#7C3AED]/18 bg-[#7C3AED]/8 px-3 py-1.5 text-[#5B21B6]">
+              <span className="rounded-full border border-[#3F6212]/18 bg-[#3F6212]/8 px-3 py-1.5 text-[#365314]">
                 {getDisplayLabel(provider.availability)}
               </span>
             ) : null}
@@ -220,8 +220,8 @@ function IncludedList({ items }) {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {items.map((item) => (
-        <div className="flex gap-3 rounded-[1.2rem] border border-black/10 bg-[#F8F4FF] p-4" key={item}>
-          <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#7C3AED] text-white">
+        <div className="flex gap-3 rounded-[1.2rem] border border-black/10 bg-[#fffbeb] p-4" key={item}>
+          <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#3F6212] text-white">
             <CheckIcon />
           </span>
           <p className="text-sm font-semibold leading-6 text-black/68">{item}</p>
@@ -235,7 +235,7 @@ function InfoTiles({ items }) {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {items.map(([label, value]) => (
-        <div className="rounded-[1.25rem] border border-black/10 bg-[#F8F4FF] p-5" key={label}>
+        <div className="rounded-[1.25rem] border border-black/10 bg-[#fffbeb] p-5" key={label}>
           <p className="text-xs font-black uppercase tracking-[0.16em] text-black/42">{label}</p>
           <p className="mt-3 text-2xl font-black tracking-[-0.05em] text-black">{value}</p>
         </div>
@@ -251,7 +251,7 @@ function ReviewsPlaceholder({ reviews = [], service }) {
     <DetailSection eyebrow="Reviews" title={hasReviews ? "Verified marketplace feedback." : "Verified reviews will live here."}>
       <div className="grid gap-4 lg:grid-cols-[0.7fr_1fr]">
         <div className="rounded-[1.5rem] bg-black p-6 text-white">
-          <div className="flex gap-1 text-[#A78BFA]">
+          <div className="flex gap-1 text-[#65A30D]">
             {[0, 1, 2, 3, 4].map((index) => (
               <StarIcon key={index} />
             ))}
@@ -266,12 +266,12 @@ function ReviewsPlaceholder({ reviews = [], service }) {
         {hasReviews ? (
           <div className="grid gap-3">
             {reviews.slice(0, 3).map((review) => (
-              <article className="rounded-[1.5rem] border border-black/10 bg-[#F8F4FF] p-5" key={review._id}>
+              <article className="rounded-[1.5rem] border border-black/10 bg-[#fffbeb] p-5" key={review._id}>
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-lg font-black tracking-[-0.035em] text-black">
                     {review.heading || "Client feedback"}
                   </p>
-                  <span className="rounded-full bg-[#7C3AED] px-3 py-1 text-xs font-black text-white">
+                  <span className="rounded-full bg-[#3F6212] px-3 py-1 text-xs font-black text-white">
                     {Number(review.rating ?? review.stars ?? 5).toFixed(1)}
                   </span>
                 </div>
@@ -283,7 +283,7 @@ function ReviewsPlaceholder({ reviews = [], service }) {
             ))}
           </div>
         ) : (
-          <div className="rounded-[1.5rem] border border-black/10 bg-[#F8F4FF] p-6">
+          <div className="rounded-[1.5rem] border border-black/10 bg-[#fffbeb] p-6">
             <p className="text-lg font-black tracking-[-0.035em] text-black">
               Buyer feedback appears after completed projects.
             </p>
@@ -466,15 +466,15 @@ export function ServiceDetail({ serviceId }) {
   return (
     <section className="relative isolate overflow-hidden bg-white py-12 text-black sm:py-16">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-[30rem] bg-[radial-gradient(circle_at_14%_20%,rgba(124,58,237,0.18),transparent_18rem),radial-gradient(circle_at_86%_8%,rgba(167,139,250,0.22),transparent_18rem),linear-gradient(180deg,#FBF9FF_0%,#ffffff_72%)]" />
+        <div className="absolute inset-x-0 top-0 h-[30rem] bg-[radial-gradient(circle_at_14%_20%,rgba(63,98,18,0.18),transparent_18rem),radial-gradient(circle_at_86%_8%,rgba(101,163,13,0.22),transparent_18rem),linear-gradient(180deg,#FEFCE8_0%,#ffffff_72%)]" />
         <MotionDiv
           animate={{ rotate: 360, y: [0, -14, 0] }}
-          className="absolute right-[7%] top-20 h-40 w-40 rounded-[2rem] border border-[#7C3AED]/14 bg-[#7C3AED]/8 blur-[0.2px]"
+          className="absolute right-[7%] top-20 h-40 w-40 rounded-[2rem] border border-[#3F6212]/14 bg-[#3F6212]/8 blur-[0.2px]"
           transition={{ duration: 28, ease: "linear", repeat: Infinity }}
         />
         <MotionDiv
           animate={{ rotate: -360, x: [0, 18, 0] }}
-          className="absolute left-[5%] top-[34rem] h-28 w-28 rounded-full border border-[#A78BFA]/20 bg-white shadow-[0_26px_80px_rgba(124, 58, 237, 0.14)]"
+          className="absolute left-[5%] top-[34rem] h-28 w-28 rounded-full border border-[#65A30D]/20 bg-white shadow-[0_26px_80px_rgba(63, 98, 18, 0.14)]"
           transition={{ duration: 34, ease: "linear", repeat: Infinity }}
         />
       </div>
@@ -491,18 +491,18 @@ export function ServiceDetail({ serviceId }) {
         {!isLoading && service ? (
           <div className="grid gap-10">
             <MotionSection
-              className="grid gap-8 rounded-[2.6rem] border border-[#7C3AED]/14 bg-white p-4 shadow-[0_34px_110px_rgba(124, 58, 237, 0.12)] sm:p-6 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.9fr)] lg:items-center"
+              className="grid gap-8 rounded-[2.6rem] border border-[#3F6212]/14 bg-white p-4 shadow-[0_34px_110px_rgba(63, 98, 18, 0.12)] sm:p-6 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.9fr)] lg:items-center"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="px-2 py-4 sm:px-4 lg:px-6">
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="rounded-full bg-[#7C3AED] px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-white shadow-[0_18px_46px_rgba(124, 58, 237, 0.26)]">
+                  <span className="rounded-full bg-[#3F6212] px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-white shadow-[0_18px_46px_rgba(63, 98, 18, 0.26)]">
                     {getDisplayLabel(service.category)}
                   </span>
                   {service.subCategory ? (
-                    <span className="rounded-full border border-[#7C3AED]/18 bg-[#7C3AED]/8 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-[#5B21B6]">
+                    <span className="rounded-full border border-[#3F6212]/18 bg-[#3F6212]/8 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-[#365314]">
                       {getDisplayLabel(service.subCategory)}
                     </span>
                   ) : null}
@@ -542,7 +542,7 @@ export function ServiceDetail({ serviceId }) {
                     ["Orders", service.totalOrders ?? 0],
                     ["Views", service.viewCount ?? 0],
                   ].map(([label, value]) => (
-                    <div className="rounded-[1.15rem] border border-black/10 bg-[#F8F4FF] p-4" key={label}>
+                    <div className="rounded-[1.15rem] border border-black/10 bg-[#fffbeb] p-4" key={label}>
                       <p className="text-xs font-black uppercase tracking-[0.16em] text-black/42">{label}</p>
                       <p className="mt-2 text-xl font-black tracking-[-0.05em] text-black">{value}</p>
                     </div>
@@ -627,7 +627,7 @@ export function ServiceDetail({ serviceId }) {
                 >
                   <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
                     <div>
-                      <p className="text-xs font-black uppercase tracking-[0.2em] text-[#A78BFA]">
+                      <p className="text-xs font-black uppercase tracking-[0.2em] text-[#65A30D]">
                         Start with confidence
                       </p>
                       <h2 className="mt-3 max-w-2xl text-4xl font-black leading-[0.98] tracking-[-0.065em]">
@@ -656,9 +656,9 @@ export function ServiceDetail({ serviceId }) {
               </main>
 
               <aside className="grid content-start gap-5 lg:sticky lg:top-24">
-                <section className="rounded-[2rem] border border-black/10 bg-white p-5 shadow-[0_28px_90px_rgba(124, 58, 237, 0.12)]">
+                <section className="rounded-[2rem] border border-black/10 bg-white p-5 shadow-[0_28px_90px_rgba(63, 98, 18, 0.12)]">
                   <div className="rounded-[1.5rem] bg-black p-6 text-white">
-                    <p className="text-xs font-black uppercase tracking-[0.2em] text-[#A78BFA]">
+                    <p className="text-xs font-black uppercase tracking-[0.2em] text-[#65A30D]">
                       Pricing and contact
                     </p>
                     <p className="mt-4 text-5xl font-black tracking-[-0.075em]">
@@ -693,7 +693,7 @@ export function ServiceDetail({ serviceId }) {
                       </span>
                     </Button>
                     <button
-                      className="min-h-12 rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-black text-black/58 transition duration-300 hover:border-[#7C3AED]/45 hover:bg-[#7C3AED] hover:text-white hover:shadow-[0_20px_58px_rgba(124, 58, 237, 0.18)]"
+                      className="min-h-12 rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-black text-black/58 transition duration-300 hover:border-[#3F6212]/45 hover:bg-[#3F6212] hover:text-white hover:shadow-[0_20px_58px_rgba(63, 98, 18, 0.18)]"
                       onClick={() => setReportedServiceId(service._id)}
                       type="button"
                     >
@@ -714,8 +714,8 @@ export function ServiceDetail({ serviceId }) {
                   ) : null}
                 </section>
 
-                <section className="rounded-[2rem] border border-[#7C3AED]/14 bg-white p-6 shadow-[0_22px_70px_rgba(124, 58, 237, 0.08)]">
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-[#7C3AED]">Provider</p>
+                <section className="rounded-[2rem] border border-[#3F6212]/14 bg-white p-6 shadow-[0_22px_70px_rgba(63, 98, 18, 0.08)]">
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-[#3F6212]">Provider</p>
                   <div className="mt-4 flex items-center gap-3">
                     <ProviderAvatar avatar={service.provider?.avatar} name={providerName} size="sm" />
                     <div className="min-w-0">
@@ -733,12 +733,12 @@ export function ServiceDetail({ serviceId }) {
                 </section>
 
                 {(service.tags?.length || service.skills?.length) ? (
-                  <section className="rounded-[2rem] border border-[#7C3AED]/14 bg-white p-6 shadow-[0_22px_70px_rgba(124, 58, 237, 0.08)]">
-                    <p className="text-xs font-black uppercase tracking-[0.2em] text-[#7C3AED]">Skills and tags</p>
+                  <section className="rounded-[2rem] border border-[#3F6212]/14 bg-white p-6 shadow-[0_22px_70px_rgba(63, 98, 18, 0.08)]">
+                    <p className="text-xs font-black uppercase tracking-[0.2em] text-[#3F6212]">Skills and tags</p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {[...(service.tags ?? []), ...(service.skills ?? [])].slice(0, 12).map((tag) => (
                         <span
-                          className="rounded-full border border-[#7C3AED]/12 bg-[#7C3AED]/8 px-3 py-1.5 text-xs font-black text-[#5B21B6]"
+                          className="rounded-full border border-[#3F6212]/12 bg-[#3F6212]/8 px-3 py-1.5 text-xs font-black text-[#365314]"
                           key={tag}
                         >
                           {tag}
@@ -750,10 +750,10 @@ export function ServiceDetail({ serviceId }) {
               </aside>
             </div>
 
-            <div className="fixed inset-x-0 bottom-0 z-40 border-t border-black/10 bg-white/92 px-4 py-3 shadow-[0_-18px_50px_rgba(124, 58, 237, 0.12)] backdrop-blur-xl lg:hidden">
+            <div className="fixed inset-x-0 bottom-0 z-40 border-t border-black/10 bg-white/92 px-4 py-3 shadow-[0_-18px_50px_rgba(63, 98, 18, 0.12)] backdrop-blur-xl lg:hidden">
               <div className="mx-auto grid max-w-md grid-cols-[1fr_auto] items-center gap-3">
                 <div className="min-w-0">
-                  <p className="truncate text-xs font-black uppercase tracking-[0.16em] text-[#7C3AED]">
+                  <p className="truncate text-xs font-black uppercase tracking-[0.16em] text-[#3F6212]">
                     {formatPrice(service)}
                   </p>
                   <p className="truncate text-sm font-black text-black">

@@ -65,7 +65,7 @@ const stepFields = [
 ];
 
 const fieldClass =
-  "mt-2 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/30 focus:border-[#7C3AED]/55 focus:ring-4 focus:ring-[#7C3AED]/10";
+  "mt-2 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/30 focus:border-[#3F6212]/55 focus:ring-4 focus:ring-[#3F6212]/10";
 const labelClass = "text-sm font-bold text-black/72";
 
 function normalizeList(value) {
@@ -225,13 +225,13 @@ function Field({ error, label, name, onChange, value, ...props }) {
     <label className={labelClass}>
       {label}
       <input
-        className={`${fieldClass} ${error ? "border-[#7C3AED]/55 bg-[#F5F3FF]" : ""}`}
+        className={`${fieldClass} ${error ? "border-[#3F6212]/55 bg-[#F7FEE7]" : ""}`}
         name={name}
         onChange={onChange}
         value={value}
         {...props}
       />
-      {error ? <span className="mt-2 block text-xs font-bold text-[#5B21B6]">{error}</span> : null}
+      {error ? <span className="mt-2 block text-xs font-bold text-[#365314]">{error}</span> : null}
     </label>
   );
 }
@@ -241,13 +241,13 @@ function TextArea({ error, label, name, onChange, value, ...props }) {
     <label className={labelClass}>
       {label}
       <textarea
-        className={`${fieldClass} min-h-32 resize-none ${error ? "border-[#7C3AED]/55 bg-[#F5F3FF]" : ""}`}
+        className={`${fieldClass} min-h-32 resize-none ${error ? "border-[#3F6212]/55 bg-[#F7FEE7]" : ""}`}
         name={name}
         onChange={onChange}
         value={value}
         {...props}
       />
-      {error ? <span className="mt-2 block text-xs font-bold text-[#5B21B6]">{error}</span> : null}
+      {error ? <span className="mt-2 block text-xs font-bold text-[#365314]">{error}</span> : null}
     </label>
   );
 }
@@ -261,7 +261,7 @@ function StatusPill({ status }) {
         ? "border-red-500/20 bg-red-500/10 text-red-700"
         : status === "draft"
           ? "border-black/10 bg-white text-black/58"
-          : "border-[#7C3AED]/20 bg-[#7C3AED]/10 text-[#5B21B6]";
+          : "border-[#3F6212]/20 bg-[#3F6212]/10 text-[#365314]";
 
   return (
     <span className={`rounded-full border px-3 py-1 text-xs font-bold capitalize ${classes}`}>
@@ -281,15 +281,15 @@ function ProgressRail({ currentStep, fieldErrors, onSelectStep }) {
           <button
             className={`group rounded-[1.35rem] border p-4 text-left transition duration-300 ${
               isActive
-                ? "border-[#7C3AED]/45 bg-[#7C3AED] text-white shadow-[0_22px_60px_rgba(124, 58, 237, 0.26)]"
-                : "border-black/10 bg-white text-black hover:-translate-y-0.5 hover:border-[#7C3AED]/30 hover:shadow-[0_18px_45px_rgba(124, 58, 237, 0.12)]"
+                ? "border-[#3F6212]/45 bg-[#3F6212] text-white shadow-[0_22px_60px_rgba(63, 98, 18, 0.26)]"
+                : "border-black/10 bg-white text-black hover:-translate-y-0.5 hover:border-[#3F6212]/30 hover:shadow-[0_18px_45px_rgba(63, 98, 18, 0.12)]"
             }`}
             key={step.label}
             onClick={() => onSelectStep(index)}
             type="button"
           >
             <span className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold ${
-              isActive ? "bg-white text-[#5B21B6]" : "bg-[#F5F3FF] text-[#5B21B6]"
+              isActive ? "bg-white text-[#365314]" : "bg-[#F7FEE7] text-[#365314]"
             }`}>
               {index + 1}
             </span>
@@ -320,8 +320,8 @@ function PricingSelector({ errors, form, onChange }) {
             <button
               className={`rounded-[1.35rem] border p-4 text-left transition duration-300 ${
                 isActive
-                  ? "border-[#7C3AED]/55 bg-[#7C3AED] text-white shadow-[0_22px_60px_rgba(124, 58, 237, 0.25)]"
-                  : "border-black/10 bg-white text-black hover:-translate-y-0.5 hover:border-[#7C3AED]/30 hover:bg-[#7C3AED]/5"
+                  ? "border-[#3F6212]/55 bg-[#3F6212] text-white shadow-[0_22px_60px_rgba(63, 98, 18, 0.25)]"
+                  : "border-black/10 bg-white text-black hover:-translate-y-0.5 hover:border-[#3F6212]/30 hover:bg-[#3F6212]/5"
               }`}
               key={value}
               name="pricingType"
@@ -336,7 +336,7 @@ function PricingSelector({ errors, form, onChange }) {
           );
         })}
       </div>
-      {errors.pricingType ? <span className="text-xs font-bold text-[#5B21B6]">{errors.pricingType}</span> : null}
+      {errors.pricingType ? <span className="text-xs font-bold text-[#365314]">{errors.pricingType}</span> : null}
       {form.pricingType === "fixed" ? (
         <Field
           error={errors.fixedPrice}
@@ -362,7 +362,7 @@ function PricingSelector({ errors, form, onChange }) {
         />
       ) : null}
       {form.pricingType === "custom" ? (
-        <div className="rounded-[1.35rem] border border-[#7C3AED]/16 bg-[#F5F3FF] p-5 text-sm font-semibold leading-6 text-[#5B21B6]">
+        <div className="rounded-[1.35rem] border border-[#3F6212]/16 bg-[#F7FEE7] p-5 text-sm font-semibold leading-6 text-[#365314]">
           Custom pricing will show as a consultation-based offer. Buyers see the scope first, then contact you for a quote.
         </div>
       ) : null}
@@ -373,8 +373,8 @@ function PricingSelector({ errors, form, onChange }) {
 function ImageUploader({ errors, form, isUploading, onRemoveImage, onUpload }) {
   return (
     <div className="grid gap-4">
-      <label className="flex min-h-48 cursor-pointer flex-col items-center justify-center rounded-[1.6rem] border border-dashed border-[#7C3AED]/30 bg-[radial-gradient(circle_at_50%_0%,rgba(124, 58, 237, 0.12),transparent_18rem),#ffffff] p-6 text-center transition hover:-translate-y-0.5 hover:border-[#7C3AED]/55 hover:shadow-[0_22px_60px_rgba(124, 58, 237, 0.16)]">
-        <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7C3AED] text-lg font-black text-white shadow-[0_18px_44px_rgba(124, 58, 237, 0.28)]">
+      <label className="flex min-h-48 cursor-pointer flex-col items-center justify-center rounded-[1.6rem] border border-dashed border-[#3F6212]/30 bg-[radial-gradient(circle_at_50%_0%,rgba(63, 98, 18, 0.12),transparent_18rem),#ffffff] p-6 text-center transition hover:-translate-y-0.5 hover:border-[#3F6212]/55 hover:shadow-[0_22px_60px_rgba(63, 98, 18, 0.16)]">
+        <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#3F6212] text-lg font-black text-white shadow-[0_18px_44px_rgba(63, 98, 18, 0.28)]">
           +
         </span>
         <span className="mt-4 text-lg font-bold tracking-[-0.04em] text-black">
@@ -392,17 +392,17 @@ function ImageUploader({ errors, form, isUploading, onRemoveImage, onUpload }) {
           type="file"
         />
       </label>
-      {errors.images ? <span className="text-xs font-bold text-[#5B21B6]">{errors.images}</span> : null}
+      {errors.images ? <span className="text-xs font-bold text-[#365314]">{errors.images}</span> : null}
       {isUploading ? (
         <StatusBanner>Uploading images to the media service...</StatusBanner>
       ) : null}
       {form.images.length > 0 ? (
         <div className="grid gap-3 sm:grid-cols-3">
           {form.images.map((image) => (
-            <div className="group relative overflow-hidden rounded-[1.25rem] border border-black/10 bg-white shadow-[0_16px_44px_rgba(124, 58, 237, 0.08)]" key={image}>
+            <div className="group relative overflow-hidden rounded-[1.25rem] border border-black/10 bg-white shadow-[0_16px_44px_rgba(63, 98, 18, 0.08)]" key={image}>
               <img alt="" className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" src={image} />
               <button
-                className="absolute right-2 top-2 rounded-full bg-black px-3 py-1 text-xs font-bold text-white transition hover:bg-[#7C3AED]"
+                className="absolute right-2 top-2 rounded-full bg-black px-3 py-1 text-xs font-bold text-white transition hover:bg-[#3F6212]"
                 onClick={() => onRemoveImage(image)}
                 type="button"
               >
@@ -433,12 +433,12 @@ function ServicePreview({ categories, form }) {
 
   return (
     <aside className="xl:sticky xl:top-8">
-      <div className="overflow-hidden rounded-[2rem] border border-[#7C3AED]/14 bg-white shadow-[0_28px_90px_rgba(124, 58, 237, 0.12)]">
+      <div className="overflow-hidden rounded-[2rem] border border-[#3F6212]/14 bg-white shadow-[0_28px_90px_rgba(63, 98, 18, 0.12)]">
         <div className="relative aspect-[16/10] overflow-hidden bg-[#100719]">
           {previewImage ? (
             <img alt="" className="h-full w-full object-cover" src={previewImage} />
           ) : (
-            <div className="h-full w-full bg-[radial-gradient(circle_at_22%_12%,rgba(167, 139, 250, 0.62),transparent_8rem),radial-gradient(circle_at_80%_35%,rgba(124, 58, 237, 0.46),transparent_10rem),linear-gradient(135deg,#07030D,#1b0c2c_58%,#7C3AED)]" />
+            <div className="h-full w-full bg-[radial-gradient(circle_at_22%_12%,rgba(101, 163, 13, 0.62),transparent_8rem),radial-gradient(circle_at_80%_35%,rgba(63, 98, 18, 0.46),transparent_10rem),linear-gradient(135deg,#1C1917,#1b0c2c_58%,#3F6212)]" />
           )}
           <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded-2xl border border-white/20 bg-black/56 px-4 py-3 text-white backdrop-blur-xl">
             <span className="text-xs font-bold uppercase tracking-[0.18em]">
@@ -448,7 +448,7 @@ function ServicePreview({ categories, form }) {
           </div>
         </div>
         <div className="p-5">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7C3AED]">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3F6212]">
             Marketplace preview
           </p>
           <h3 className="mt-3 text-3xl font-bold leading-[0.98] tracking-[-0.06em] text-black">
@@ -461,7 +461,7 @@ function ServicePreview({ categories, form }) {
             {normalizeList(form.skills || form.tags)
               .slice(0, 5)
               .map((skill) => (
-                <span className="rounded-full border border-[#7C3AED]/18 bg-[#F5F3FF] px-3 py-1 text-xs font-bold text-[#5B21B6]" key={skill}>
+                <span className="rounded-full border border-[#3F6212]/18 bg-[#F7FEE7] px-3 py-1 text-xs font-bold text-[#365314]" key={skill}>
                   {skill}
                 </span>
               ))}
@@ -487,7 +487,7 @@ function ExistingServiceCard({ categories, service }) {
 
   return (
     <MotionArticle
-      className="overflow-hidden rounded-[1.7rem] border border-[#7C3AED]/14 bg-white shadow-[0_22px_70px_rgba(124, 58, 237, 0.08)]"
+      className="overflow-hidden rounded-[1.7rem] border border-[#3F6212]/14 bg-white shadow-[0_22px_70px_rgba(63, 98, 18, 0.08)]"
       initial={{ opacity: 0, y: 14 }}
       transition={{ duration: 0.35 }}
       viewport={{ once: true }}
@@ -498,7 +498,7 @@ function ExistingServiceCard({ categories, service }) {
           {service.coverImage || service.images?.[0] ? (
             <img alt="" className="h-full w-full object-cover" src={service.coverImage || service.images?.[0]} />
           ) : (
-            <div className="h-full w-full bg-[radial-gradient(circle_at_25%_20%,rgba(167, 139, 250, 0.55),transparent_8rem),linear-gradient(135deg,#07030D,#7C3AED)]" />
+            <div className="h-full w-full bg-[radial-gradient(circle_at_25%_20%,rgba(101, 163, 13, 0.55),transparent_8rem),linear-gradient(135deg,#1C1917,#3F6212)]" />
           )}
         </div>
         <div className="min-w-0">
@@ -730,7 +730,7 @@ export function ProviderServices() {
             <label className={labelClass}>
               Category
               <select
-                className={`${fieldClass} ${errors.category ? "border-[#7C3AED]/55 bg-[#F5F3FF]" : ""}`}
+                className={`${fieldClass} ${errors.category ? "border-[#3F6212]/55 bg-[#F7FEE7]" : ""}`}
                 name="category"
                 onChange={updateForm}
                 value={form.category}
@@ -744,7 +744,7 @@ export function ProviderServices() {
                   </option>
                 ))}
               </select>
-              {errors.category ? <span className="mt-2 block text-xs font-bold text-[#5B21B6]">{errors.category}</span> : null}
+              {errors.category ? <span className="mt-2 block text-xs font-bold text-[#365314]">{errors.category}</span> : null}
             </label>
           </div>
           <Field
@@ -838,10 +838,10 @@ export function ProviderServices() {
   return (
     <SaaSLayout eyebrow="Provider marketplace" title="Service listings">
       <div className="grid gap-7">
-        <section className="overflow-hidden rounded-[2rem] border border-[#7C3AED]/16 bg-[radial-gradient(circle_at_90%_10%,rgba(124, 58, 237, 0.16),transparent_30%),#ffffff] p-6 shadow-[0_28px_90px_rgba(124, 58, 237, 0.1)] md:p-8">
+        <section className="overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[radial-gradient(circle_at_90%_10%,rgba(63, 98, 18, 0.16),transparent_30%),#ffffff] p-6 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] md:p-8">
           <div className="grid gap-8 xl:grid-cols-[1fr_420px]">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#7C3AED]">
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#3F6212]">
                 Provider offer builder
               </p>
               <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-[0.98] tracking-[-0.07em] text-black md:text-6xl">
@@ -851,13 +851,13 @@ export function ProviderServices() {
                 Build a clear offer, upload polished visuals, preview the listing, and submit it for admin review before it appears in marketplace discovery.
               </p>
             </div>
-            <div className="grid gap-3 rounded-[1.5rem] border border-black/10 bg-white p-4 shadow-[0_20px_65px_rgba(124, 58, 237, 0.08)]">
+            <div className="grid gap-3 rounded-[1.5rem] border border-black/10 bg-white p-4 shadow-[0_20px_65px_rgba(63, 98, 18, 0.08)]">
               {[
                 ["Total listings", stats.total],
                 ["Pending review", stats.pending],
                 ["Live marketplace", stats.active],
               ].map(([label, value]) => (
-                <div className="flex items-center justify-between rounded-2xl bg-[#F8F4FF] px-4 py-3" key={label}>
+                <div className="flex items-center justify-between rounded-2xl bg-[#fffbeb] px-4 py-3" key={label}>
                   <span className="text-sm font-semibold text-black/56">{label}</span>
                   <strong className="text-xl text-black">{value}</strong>
                 </div>
@@ -868,7 +868,7 @@ export function ProviderServices() {
 
         {notice ? <StatusBanner tone={notice.tone}>{notice.text}</StatusBanner> : null}
 
-        <section className="rounded-[2rem] border border-[#7C3AED]/12 bg-white p-4 shadow-[0_26px_80px_rgba(124, 58, 237, 0.08)] sm:p-5 lg:p-6">
+        <section className="rounded-[2rem] border border-[#3F6212]/12 bg-white p-4 shadow-[0_26px_80px_rgba(63, 98, 18, 0.08)] sm:p-5 lg:p-6">
           <ProgressRail
             currentStep={step}
             fieldErrors={errors}
@@ -877,17 +877,17 @@ export function ProviderServices() {
         </section>
 
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_420px]">
-          <section className="rounded-[2rem] border border-[#7C3AED]/14 bg-white p-5 shadow-[0_26px_80px_rgba(124, 58, 237, 0.08)] sm:p-6 lg:p-8">
+          <section className="rounded-[2rem] border border-[#3F6212]/14 bg-white p-5 shadow-[0_26px_80px_rgba(63, 98, 18, 0.08)] sm:p-6 lg:p-8">
             <div className="flex flex-col gap-4 border-b border-black/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#7C3AED]">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#3F6212]">
                   {steps[step].eyebrow}
                 </p>
                 <h2 className="mt-2 text-3xl font-bold leading-none tracking-[-0.06em] text-black md:text-4xl">
                   {steps[step].title}
                 </h2>
               </div>
-              <span className="rounded-full border border-[#7C3AED]/18 bg-[#F5F3FF] px-4 py-2 text-xs font-bold text-[#5B21B6]">
+              <span className="rounded-full border border-[#3F6212]/18 bg-[#F7FEE7] px-4 py-2 text-xs font-bold text-[#365314]">
                 Step {step + 1} of {steps.length}
               </span>
             </div>
@@ -957,7 +957,7 @@ export function ProviderServices() {
 
         <section className="grid gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7C3AED]">Your catalog</p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#3F6212]">Your catalog</p>
             <h2 className="mt-2 text-3xl font-bold tracking-[-0.055em] text-black">Current listings</h2>
           </div>
           {isError ? <StatusBanner tone="error">{error?.message ?? "Unable to load listings."}</StatusBanner> : null}

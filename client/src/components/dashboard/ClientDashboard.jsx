@@ -198,14 +198,14 @@ export function ClientDashboard() {
 
   return (
     <div className="grid gap-8">
-      <section className="relative overflow-hidden rounded-[2rem] border border-[#7C3AED]/16 bg-[linear-gradient(135deg,#ffffff,#F8F4FF)] p-6 shadow-[0_24px_80px_rgba(31,14,54,0.08)] md:p-8">
+      <section className="relative overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div>
             <Badge variant="primary">Client control center</Badge>
-            <h1 className="mt-5 max-w-4xl break-words text-3xl font-black tracking-normal text-[#07030D] sm:text-4xl md:text-5xl">
+            <h1 className="mt-5 max-w-4xl break-words text-3xl font-black tracking-normal text-[#1C1917] sm:text-4xl md:text-5xl">
               Client Dashboard
             </h1>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-[#493C5E]">
+            <p className="mt-4 max-w-3xl text-base leading-8 text-[#44403C]">
               Manage outcome challenges, review execution plans, compare providers, and track proof-based work.
             </p>
           </div>
@@ -226,15 +226,15 @@ export function ClientDashboard() {
       <section aria-labelledby="client-dashboard-stats">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
               Overview
             </p>
-            <h2 id="client-dashboard-stats" className="mt-2 text-2xl font-black tracking-normal text-[#07030D]">
+            <h2 id="client-dashboard-stats" className="mt-2 text-2xl font-black tracking-normal text-[#1C1917]">
               Workflow at a glance
             </h2>
           </div>
           {activeChallenge ? (
-            <p className="text-sm font-bold text-[#6F657C]">
+            <p className="text-sm font-bold text-[#78716C]">
               Active focus: {activeChallenge.title || "Outcome challenge"}
             </p>
           ) : null}
@@ -302,21 +302,21 @@ export function ClientDashboard() {
               ) : savedProviders.length > 0 ? (
                 <div className="grid gap-3">
                   {savedProviders.map((item) => (
-                    <article className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={item.savedProviderId || item.id || getProviderName(item)}>
+                    <article className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={item.savedProviderId || item.id || getProviderName(item)}>
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                         <div className="min-w-0">
                           <div className="flex flex-wrap items-center gap-2">
-                            <h3 className="min-w-0 break-words text-base font-black text-[#07030D]">
+                            <h3 className="min-w-0 break-words text-base font-black text-[#1C1917]">
                               {getProviderName(item)}
                             </h3>
                             <Badge variant={item.status === "shortlisted" ? "green" : "primary"}>
                               {item.status === "shortlisted" ? "Shortlisted" : "Saved"}
                             </Badge>
                           </div>
-                          <p className="mt-2 line-clamp-2 text-sm leading-6 text-[#6F657C]">
+                          <p className="mt-2 line-clamp-2 text-sm leading-6 text-[#78716C]">
                             {getProviderHeadline(item)}
                           </p>
-                          <p className="mt-2 text-xs font-bold text-[#6F657C]">
+                          <p className="mt-2 text-xs font-bold text-[#78716C]">
                             Saved {formatDate(item.createdAt, { fallback: "recently" })}
                           </p>
                         </div>

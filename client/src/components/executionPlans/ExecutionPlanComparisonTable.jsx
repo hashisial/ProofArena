@@ -60,8 +60,8 @@ function MobileComparisonCard({ onAccept, onReject, onShortlist, plan }) {
         <ExecutionPlanStatusBadge status={plan?.status} />
         <Badge variant="outline">{formatPlanScore(plan)}</Badge>
       </div>
-      <h3 className="mt-3 text-lg font-black text-[#07030D]">{plan?.title || "Execution plan"}</h3>
-      <p className="mt-2 line-clamp-3 text-sm leading-6 text-[#6F657C]">{plan?.summary || "No summary provided."}</p>
+      <h3 className="mt-3 text-lg font-black text-[#1C1917]">{plan?.title || "Execution plan"}</h3>
+      <p className="mt-2 line-clamp-3 text-sm leading-6 text-[#78716C]">{plan?.summary || "No summary provided."}</p>
       <ProviderPlanSummary className="mt-4" plan={plan} showProfileLink={false} variant="inline" />
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {[
@@ -70,9 +70,9 @@ function MobileComparisonCard({ onAccept, onReject, onShortlist, plan }) {
           ["Proof", "proof"],
           ["Risks", "risks"],
         ].map(([label, key]) => (
-          <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3" key={key}>
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">{label}</p>
-            <p className="mt-1 text-sm font-black text-[#07030D]">{formatReviewMetricValue(plan, key)}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3" key={key}>
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">{label}</p>
+            <p className="mt-1 text-sm font-black text-[#1C1917]">{formatReviewMetricValue(plan, key)}</p>
           </div>
         ))}
       </div>
@@ -111,10 +111,10 @@ export function ExecutionPlanComparisonTable({
         <div className="overflow-x-auto">
           <table className="w-full min-w-[58rem] border-collapse text-left">
             <caption className="sr-only">Execution plan comparison table</caption>
-            <thead className="bg-[#F8F4FF]">
-              <tr className="border-b border-[#E9E2F3]">
+            <thead className="bg-[#FFFBEB]">
+              <tr className="border-b border-[#E7E5E4]">
                 {["Provider and plan", "Score", "Timeline", "Price", "Proof", "Risks", "Status", "Actions"].map((heading) => (
-                  <th className="px-4 py-4 text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]" key={heading} scope="col">
+                  <th className="px-4 py-4 text-xs font-black uppercase tracking-[0.14em] text-[#78716C]" key={heading} scope="col">
                     {heading}
                   </th>
                 ))}
@@ -122,17 +122,17 @@ export function ExecutionPlanComparisonTable({
             </thead>
             <tbody>
               {plans.map((plan) => (
-                <tr className="border-b border-[#E9E2F3] align-top last:border-b-0" key={getPlanId(plan) || `${plan?.title}-${getProviderName(plan)}`}>
+                <tr className="border-b border-[#E7E5E4] align-top last:border-b-0" key={getPlanId(plan) || `${plan?.title}-${getProviderName(plan)}`}>
                   <td className="max-w-[20rem] px-4 py-4">
-                    <p className="font-black text-[#07030D]">{plan?.title || "Execution plan"}</p>
-                    <p className="mt-1 text-sm font-semibold text-[#6F657C]">{getProviderName(plan)}</p>
-                    <p className="mt-2 line-clamp-3 text-sm leading-6 text-[#6F657C]">{plan?.summary || "No summary provided."}</p>
+                    <p className="font-black text-[#1C1917]">{plan?.title || "Execution plan"}</p>
+                    <p className="mt-1 text-sm font-semibold text-[#78716C]">{getProviderName(plan)}</p>
+                    <p className="mt-2 line-clamp-3 text-sm leading-6 text-[#78716C]">{plan?.summary || "No summary provided."}</p>
                   </td>
-                  <td className="px-4 py-4 font-black text-[#07030D]">{formatPlanScore(plan)}</td>
-                  <td className="px-4 py-4 text-sm font-bold text-[#493C5E]">{formatReviewMetricValue(plan, "timeline")}</td>
-                  <td className="px-4 py-4 text-sm font-bold text-[#493C5E]">{formatReviewMetricValue(plan, "price")}</td>
-                  <td className="px-4 py-4 text-sm font-bold text-[#493C5E]">{formatReviewMetricValue(plan, "proof")}</td>
-                  <td className="px-4 py-4 text-sm font-bold text-[#493C5E]">{formatReviewMetricValue(plan, "risks")}</td>
+                  <td className="px-4 py-4 font-black text-[#1C1917]">{formatPlanScore(plan)}</td>
+                  <td className="px-4 py-4 text-sm font-bold text-[#44403C]">{formatReviewMetricValue(plan, "timeline")}</td>
+                  <td className="px-4 py-4 text-sm font-bold text-[#44403C]">{formatReviewMetricValue(plan, "price")}</td>
+                  <td className="px-4 py-4 text-sm font-bold text-[#44403C]">{formatReviewMetricValue(plan, "proof")}</td>
+                  <td className="px-4 py-4 text-sm font-bold text-[#44403C]">{formatReviewMetricValue(plan, "risks")}</td>
                   <td className="px-4 py-4"><ExecutionPlanStatusBadge status={plan?.status} /></td>
                   <td className="w-44 px-4 py-4">
                     <PlanActions onAccept={onAccept} onReject={onReject} onShortlist={onShortlist} plan={plan} />

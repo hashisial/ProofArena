@@ -79,35 +79,35 @@ function WorkflowStep({ index, isLast, step }) {
   return (
     <div className="relative flex gap-4 sm:gap-5">
       <div className="flex shrink-0 flex-col items-center">
-        <span className="relative z-10 grid h-12 w-12 place-items-center rounded-2xl border border-[#7C3AED]/20 bg-[#F5F3FF] text-sm font-black text-[#5B21B6] shadow-[0_14px_38px_rgba(124, 58, 237, 0.12)]">
+        <span className="relative z-10 grid h-12 w-12 place-items-center rounded-2xl border border-[#3F6212]/20 bg-[#F7FEE7] text-sm font-black text-[#365314] shadow-[0_14px_38px_rgba(63, 98, 18, 0.12)]">
           {index + 1}
         </span>
         {!isLast ? (
-          <span className="mt-3 h-full min-h-12 w-px bg-gradient-to-b from-[#A78BFA] via-[#E9E2F3] to-[#E9E2F3]" />
+          <span className="mt-3 h-full min-h-12 w-px bg-gradient-to-b from-[#65A30D] via-[#E7E5E4] to-[#E7E5E4]" />
         ) : null}
       </div>
 
       <Card
-        className="premium-motion-card mb-4 flex-1 transition duration-300 hover:-translate-y-0.5 hover:border-[#A78BFA] hover:shadow-[0_22px_64px_rgba(124, 58, 237, 0.12)]"
+        className="premium-motion-card mb-4 flex-1 transition duration-300 hover:-translate-y-0.5 hover:border-[#65A30D] hover:shadow-[0_22px_64px_rgba(63, 98, 18, 0.12)]"
         padding="lg"
         variant="default"
       >
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#07030D] text-white">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#1C1917] text-white">
             <Icon aria-hidden="true" className="h-5 w-5" />
           </span>
           <div className="min-w-0">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
               Step {index + 1}
             </p>
-            <h3 className="mt-2 text-xl font-black text-[#07030D]">
+            <h3 className="mt-2 text-xl font-black text-[#1C1917]">
               {step.title}
             </h3>
-            <p className="mt-3 text-sm leading-7 text-[#6F657C]">
+            <p className="mt-3 text-sm leading-7 text-[#57534E]">
               {step.description}
             </p>
-            <div className="mt-5 rounded-2xl border border-[#E9E2F3] bg-[#FCFAFF] p-4">
-              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">
+            <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FAFAF9] p-4">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
                 Example
               </p>
               <p className="mt-2 text-sm font-bold leading-6 text-[#27272A]">
@@ -125,8 +125,8 @@ export function HowItWorksSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FCFAFF_48%,#F5F3FF_100%)] py-16 sm:py-20 lg:py-24">
-      <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_14%_8%,rgba(124, 58, 237, 0.14),transparent_32%),radial-gradient(circle_at_92%_70%,rgba(167, 139, 250, 0.16),transparent_26%)]" />
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FCFAFF_48%,#F7FEE7_100%)] py-16 sm:py-20 lg:py-24">
+      <div className="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_14%_8%,rgba(63, 98, 18, 0.14),transparent_32%),radial-gradient(circle_at_92%_70%,rgba(101, 163, 13, 0.16),transparent_26%)]" />
       <Container className="relative z-10">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-start">
           <MotionDiv {...getMotionProps(reduceMotion, 0)}>
@@ -139,10 +139,10 @@ export function HowItWorksSection() {
             <Card className="premium-motion-card mt-8" padding="lg" variant="elevated">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <p className="text-sm font-black text-[#07030D]">
+                  <p className="text-sm font-black text-[#1C1917]">
                     Challenge workflow
                   </p>
-                  <p className="mt-1 text-sm leading-6 text-[#6F657C]">
+                  <p className="mt-1 text-sm leading-6 text-[#78716C]">
                     A lightweight preview of structured delivery.
                   </p>
                 </div>
@@ -155,10 +155,10 @@ export function HowItWorksSection() {
 
                   return (
                     <div
-                      className="flex items-center gap-3 rounded-2xl border border-[#E9E2F3] bg-[#FCFAFF] p-4"
+                      className="flex items-center gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FAFAF9] p-4"
                       key={row.label}
                     >
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white text-[#5B21B6]">
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white text-[#365314]">
                         <Icon aria-hidden="true" className="h-5 w-5" />
                       </span>
                       <span className="min-w-0 text-sm font-black leading-6 text-[#27272A]">
@@ -166,7 +166,7 @@ export function HowItWorksSection() {
                       </span>
                       <CheckCircle2
                         aria-hidden="true"
-                        className="ml-auto h-5 w-5 shrink-0 text-[#7C3AED]"
+                        className="ml-auto h-5 w-5 shrink-0 text-[#3F6212]"
                       />
                     </div>
                   );

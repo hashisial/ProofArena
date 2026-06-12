@@ -1,13 +1,13 @@
 import { cn } from "../../utils/cn.js";
 
 const variants = {
-  black: "border-[#07030D] bg-[#07030D] text-white",
+  black: "border-[#1C1917] bg-[#1C1917] text-white",
   blue: "border-[#0F766E]/20 bg-[#CCFBF1] text-[#0F766E]",
-  gray: "border-[#E9E2F3] bg-[#F8F4FF] text-[#493C5E]",
-  green: "border-[#A78BFA]/20 bg-[#F5F3FF] text-[#7C3AED]",
-  outline: "border-[#E9E2F3] bg-white text-[#493C5E]",
-  primary: "border-[#7C3AED]/20 bg-[#EDE9FE] text-[#7C3AED]",
-  secondary: "border-[#6D28D9]/20 bg-[#FEF3C7] text-[#6D28D9]",
+  gray: "border-[#E7E5E4] bg-[#FFFBEB] text-[#44403C]",
+  green: "border-[#65A30D]/20 bg-[#F7FEE7] text-[#3F6212]",
+  outline: "border-[#E7E5E4] bg-white text-[#44403C]",
+  primary: "border-[#3F6212]/20 bg-[#ECFCCB] text-[#3F6212]",
+  secondary: "border-[#A16207]/20 bg-[#FEF3C7] text-[#A16207]",
   red: "border-[#DC2626]/20 bg-[#FEE2E2] text-[#DC2626]",
   yellow: "border-[#D97706]/20 bg-[#FEF3C7] text-[#D97706]",
 };

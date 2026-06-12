@@ -27,7 +27,7 @@ export function ProviderTodayActions({ data = {} }) {
     <Card as="section" aria-labelledby="provider-today-actions-title" padding="lg" variant="elevated">
       <CardHeader>
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">Today</p>
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">Today</p>
           <CardTitle as="h2" className="mt-2 text-2xl" id="provider-today-actions-title">
             Today&apos;s Action Plan
           </CardTitle>

@@ -24,24 +24,24 @@ export function ProviderComparisonCard({ provider = {} }) {
   return (
     <Card
       as="article"
-      className="group h-full rounded-3xl transition hover:-translate-y-1 hover:border-[#A78BFA] hover:shadow-[0_22px_70px_rgba(124,58,237,0.14)]"
+      className="group h-full rounded-3xl transition hover:-translate-y-1 hover:border-[#65A30D] hover:shadow-[0_22px_70px_rgba(63,98,18,0.14)]"
       padding="lg"
     >
       <div className="flex min-w-0 items-start gap-4">
         {avatar ? (
           <img
             alt={`${name} profile photo`}
-            className="h-16 w-16 shrink-0 rounded-2xl object-cover ring-4 ring-[#F5F3FF]"
+            className="h-16 w-16 shrink-0 rounded-2xl object-cover ring-4 ring-[#F7FEE7]"
             src={avatar}
           />
         ) : (
-          <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,#07030D,#7C3AED)] text-lg font-black text-white ring-4 ring-[#F5F3FF]">
+          <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,#1C1917,#3F6212)] text-lg font-black text-white ring-4 ring-[#F7FEE7]">
             {getInitials(name)}
           </span>
         )}
         <div className="min-w-0 flex-1">
           <div className="flex min-w-0 flex-wrap items-center gap-2">
-            <h2 className="break-words text-xl font-black tracking-normal text-[#07030D]">
+            <h2 className="break-words text-xl font-black tracking-normal text-[#1C1917]">
               {name}
             </h2>
             <ProviderVerificationBadge
@@ -50,7 +50,7 @@ export function ProviderComparisonCard({ provider = {} }) {
             />
           </div>
           {provider.headline ? (
-            <p className="mt-2 text-sm font-semibold leading-6 text-[#6F657C]">
+            <p className="mt-2 text-sm font-semibold leading-6 text-[#78716C]">
               {provider.headline}
             </p>
           ) : null}

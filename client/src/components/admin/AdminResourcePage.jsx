@@ -119,11 +119,11 @@ function Identity({ record, type }) {
 
   return (
     <div className="min-w-0">
-      <p className="font-black text-[#07030D]">{title}</p>
+      <p className="font-black text-[#1C1917]">{title}</p>
       {owner.displayName && owner.displayName !== title ? (
-        <p className="mt-1 text-xs font-bold text-[#6F657C]">{owner.displayName}</p>
+        <p className="mt-1 text-xs font-bold text-[#78716C]">{owner.displayName}</p>
       ) : null}
-      {type === "users" && record.email ? <p className="mt-1 break-all text-xs text-[#6F657C]">{record.email}</p> : null}
+      {type === "users" && record.email ? <p className="mt-1 break-all text-xs text-[#78716C]">{record.email}</p> : null}
     </div>
   );
 }
@@ -303,7 +303,7 @@ export function AdminResourcePage({ resource }) {
     <div className="grid gap-6">
       <AdminPageHeader description={config.description} title={config.title} />
 
-      <section aria-label={`${config.title} filters`} className="grid gap-4 rounded-2xl border border-[#E9E2F3] bg-white p-4 lg:grid-cols-[minmax(16rem,1fr)_repeat(3,minmax(10rem,0.5fr))]">
+      <section aria-label={`${config.title} filters`} className="grid gap-4 rounded-2xl border border-[#E7E5E4] bg-white p-4 lg:grid-cols-[minmax(16rem,1fr)_repeat(3,minmax(10rem,0.5fr))]">
         <Input
           label="Search"
           leftIcon={<Search className="h-4 w-4" />}
@@ -323,7 +323,7 @@ export function AdminResourcePage({ resource }) {
 
       <div aria-live="polite">
         {feedback ? (
-          <p className="rounded-xl border border-[#A78BFA]/25 bg-[#F5F3FF] px-4 py-3 text-sm font-bold text-[#5B21B6]">
+          <p className="rounded-xl border border-[#65A30D]/25 bg-[#F7FEE7] px-4 py-3 text-sm font-bold text-[#365314]">
             {feedback}
           </p>
         ) : null}
@@ -339,8 +339,8 @@ export function AdminResourcePage({ resource }) {
 
       {query.isError ? (
         <Card variant="bordered">
-          <p className="font-black text-[#07030D]">Could not load {config.title.toLowerCase()}</p>
-          <p className="mt-2 text-sm text-[#6F657C]">The admin data request failed. Try again.</p>
+          <p className="font-black text-[#1C1917]">Could not load {config.title.toLowerCase()}</p>
+          <p className="mt-2 text-sm text-[#78716C]">The admin data request failed. Try again.</p>
           <Button className="mt-4" onClick={() => query.refetch()} type="button" variant="secondary">
             <RotateCcw aria-hidden="true" className="h-4 w-4" />
             Retry
@@ -363,8 +363,8 @@ export function AdminResourcePage({ resource }) {
       ) : null}
 
       {!query.isLoading && !query.isError && pagination.pages > 1 ? (
-        <nav aria-label={`${config.title} pagination`} className="flex flex-col gap-3 rounded-2xl border border-[#E9E2F3] bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm font-bold text-[#6F657C]">
+        <nav aria-label={`${config.title} pagination`} className="flex flex-col gap-3 rounded-2xl border border-[#E7E5E4] bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm font-bold text-[#57534E]">
             Page {pagination.page} of {pagination.pages} · {formatNumber(pagination.total)} records
           </p>
           <div className="flex gap-2">

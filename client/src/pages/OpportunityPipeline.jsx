@@ -58,8 +58,8 @@ function parseTags(value) {
 function StatCard({ label, value }) {
   return (
     <Card padding="sm" variant="muted">
-      <p className="text-sm font-bold text-[#6F657C]">{label}</p>
-      <p className="mt-2 text-3xl font-black text-[#07030D]">{value}</p>
+      <p className="text-sm font-bold text-[#78716C]">{label}</p>
+      <p className="mt-2 text-3xl font-black text-[#1C1917]">{value}</p>
     </Card>
   );
 }
@@ -229,7 +229,7 @@ export function OpportunityPipeline() {
       {opportunitiesQuery.isError ? (
         <Card padding="lg" variant="bordered">
           <Badge variant="red">Could not load opportunities</Badge>
-          <p className="mt-3 text-sm leading-6 text-[#6F657C]">
+          <p className="mt-3 text-sm leading-6 text-[#78716C]">
             {getOpportunityApiErrorMessage(opportunitiesQuery.error, "Opportunity pipeline could not be loaded.")}
           </p>
           <Button className="mt-5" onClick={() => opportunitiesQuery.refetch()} type="button">

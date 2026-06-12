@@ -19,9 +19,9 @@ export function ProofUsageSummary({ compact = false, usage = {} }) {
       </CardHeader>
       <CardContent className={`grid gap-3 ${compact ? "grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-4"}`}>
         {METRICS.map(([label, key]) => (
-          <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={key}>
-            <p className="text-sm font-bold text-[#6F657C]">{label}</p>
-            <p className="mt-2 text-2xl font-black text-[#07030D]">{Number(usage[key] ?? 0)}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={key}>
+            <p className="text-sm font-bold text-[#78716C]">{label}</p>
+            <p className="mt-2 text-2xl font-black text-[#1C1917]">{Number(usage[key] ?? 0)}</p>
           </div>
         ))}
       </CardContent>

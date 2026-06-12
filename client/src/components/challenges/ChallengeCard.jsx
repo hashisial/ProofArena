@@ -58,49 +58,49 @@ export function ChallengeCard({
         <CardDescription>{challenge?.shortSummary || "Add a clear summary so providers understand the result."}</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
           <div className="flex items-start gap-3">
-            <Target aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#7C3AED]" />
-            <p className="text-sm font-semibold leading-6 text-[#493C5E]">{targetOutcome}</p>
+            <Target aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#3F6212]" />
+            <p className="text-sm font-semibold leading-6 text-[#44403C]">{targetOutcome}</p>
           </div>
         </div>
         <div className="grid gap-3 sm:grid-cols-3">
-          <div className="rounded-2xl border border-[#E9E2F3] bg-white p-3">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Timeline</p>
-            <p className="mt-1 text-sm font-black text-[#07030D]">{formatChallengeTimeline(challenge?.timeline)}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-3">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Timeline</p>
+            <p className="mt-1 text-sm font-black text-[#1C1917]">{formatChallengeTimeline(challenge?.timeline)}</p>
           </div>
-          <div className="rounded-2xl border border-[#E9E2F3] bg-white p-3">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Budget</p>
-            <p className="mt-1 text-sm font-black text-[#07030D]">{formatChallengeBudget(challenge?.budget)}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-3">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Budget</p>
+            <p className="mt-1 text-sm font-black text-[#1C1917]">{formatChallengeBudget(challenge?.budget)}</p>
           </div>
-          <div className="rounded-2xl border border-[#E9E2F3] bg-white p-3">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-3">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
               {variant === "owner" ? "Quality" : "Plans"}
             </p>
-            <p className="mt-1 text-sm font-black text-[#07030D]">
+            <p className="mt-1 text-sm font-black text-[#1C1917]">
               {variant === "owner" ? `${qualityScore}/100` : `${Number(challenge?.applicationStats?.totalPlans ?? 0)} submitted`}
             </p>
           </div>
         </div>
         {variant === "owner" ? (
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3">
-              <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+              <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
                 <ClipboardList aria-hidden="true" className="h-3.5 w-3.5" />
                 Plans
               </p>
-              <p className="mt-1 text-sm font-black text-[#07030D]">{plansCount} received</p>
+              <p className="mt-1 text-sm font-black text-[#1C1917]">{plansCount} received</p>
             </div>
-            <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3">
-              <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+              <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
                 <UsersRound aria-hidden="true" className="h-3.5 w-3.5" />
                 Matches
               </p>
-              <p className="mt-1 text-sm font-black text-[#07030D]">{recommendedCount} recommended</p>
+              <p className="mt-1 text-sm font-black text-[#1C1917]">{recommendedCount} recommended</p>
             </div>
-            <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3">
-              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Next action</p>
-              <p className="mt-1 text-sm font-black text-[#07030D]">{nextAction.label}</p>
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Next action</p>
+              <p className="mt-1 text-sm font-black text-[#1C1917]">{nextAction.label}</p>
             </div>
           </div>
         ) : null}

@@ -39,40 +39,40 @@ export function PublicProfileSidebar({
         <div className="flex items-start gap-3">
           <div
             aria-hidden="true"
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]"
           >
             <ShieldCheck className="h-5 w-5" />
           </div>
           <div className="min-w-0">
-            <h2 className="text-lg font-black tracking-[-0.03em] text-[#07030D]">
+            <h2 className="text-lg font-black tracking-[-0.03em] text-[#1C1917]">
               ProofArena trust summary
             </h2>
-            <p className="mt-1 text-sm leading-6 text-[#6F657C]">
+            <p className="mt-1 text-sm leading-6 text-[#78716C]">
               Public proof and credibility signals available on this profile.
             </p>
           </div>
         </div>
 
         <div className="mt-5 grid gap-3">
-          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3">
-            <span className="text-sm font-bold text-[#493C5E]">Verification</span>
+          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+            <span className="text-sm font-bold text-[#44403C]">Verification</span>
             <Badge variant={isVerified ? "green" : "gray"}>
               {isVerified ? verification.label || "Verified" : "Not verified"}
             </Badge>
           </div>
-          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3">
-            <span className="text-sm font-bold text-[#493C5E]">Proof score</span>
-            <span className="text-sm font-black text-[#07030D]">{proofScore}/100</span>
+          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+            <span className="text-sm font-bold text-[#44403C]">Proof score</span>
+            <span className="text-sm font-black text-[#1C1917]">{proofScore}/100</span>
           </div>
-          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3">
-            <span className="text-sm font-bold text-[#493C5E]">Completed outcomes</span>
-            <span className="text-sm font-black text-[#07030D]">
+          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+            <span className="text-sm font-bold text-[#44403C]">Completed outcomes</span>
+            <span className="text-sm font-black text-[#1C1917]">
               {formatCompactNumber(completedOutcomes, { fallback: "0" })}
             </span>
           </div>
-          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3">
-            <span className="text-sm font-bold text-[#493C5E]">Approval rate</span>
-            <span className="text-sm font-black text-[#07030D]">
+          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+            <span className="text-sm font-bold text-[#44403C]">Approval rate</span>
+            <span className="text-sm font-black text-[#1C1917]">
               {approvalRate > 0 ? formatPercentage(approvalRate, { fallback: "0%" }) : "0%"}
             </span>
           </div>
@@ -84,21 +84,21 @@ export function PublicProfileSidebar({
           <div className="flex items-start gap-3">
             <div
               aria-hidden="true"
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]"
             >
               <Sparkles className="h-5 w-5" />
             </div>
             <div className="min-w-0">
-              <h2 className="text-lg font-black tracking-[-0.03em] text-[#07030D]">
+              <h2 className="text-lg font-black tracking-[-0.03em] text-[#1C1917]">
                 Open to
               </h2>
-              <p className="mt-2 text-sm font-semibold leading-6 text-[#493C5E]">
+              <p className="mt-2 text-sm font-semibold leading-6 text-[#44403C]">
                 {profile.openTo.title || "Open to outcome challenges and collaborations"}
               </p>
             </div>
           </div>
           {profile.openTo.note ? (
-            <p className="mt-4 text-sm leading-6 text-[#6F657C]">{profile.openTo.note}</p>
+            <p className="mt-4 text-sm leading-6 text-[#78716C]">{profile.openTo.note}</p>
           ) : null}
           {profile.openTo.categories?.length ? (
             <div className="mt-4 flex flex-wrap gap-2">
@@ -113,7 +113,7 @@ export function PublicProfileSidebar({
       ) : null}
 
       <Card className="rounded-3xl" padding="md">
-        <h2 className="text-lg font-black tracking-[-0.03em] text-[#07030D]">
+        <h2 className="text-lg font-black tracking-[-0.03em] text-[#1C1917]">
           Profile actions
         </h2>
         <div className="mt-4 grid gap-2">
@@ -130,7 +130,7 @@ export function PublicProfileSidebar({
           </Button>
         </div>
         {statusMessage ? (
-          <p className="mt-4 rounded-2xl border border-[#EDE9FE] bg-[#F5F3FF] px-4 py-3 text-sm font-bold text-[#5B21B6]">
+          <p className="mt-4 rounded-2xl border border-[#ECFCCB] bg-[#F7FEE7] px-4 py-3 text-sm font-bold text-[#365314]">
             {statusMessage}
           </p>
         ) : null}

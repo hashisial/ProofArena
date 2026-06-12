@@ -14,7 +14,7 @@ export function ContactSection({ id = "contact" }) {
       id={id}
       className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28"
     >
-      <div className="absolute right-[8%] top-20 h-80 w-80 rounded-full bg-[#7C3AED]/10 blur-3xl" />
+      <div className="absolute right-[8%] top-20 h-80 w-80 rounded-full bg-[#3F6212]/10 blur-3xl" />
       <Container className="relative grid gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
         <div className="lg:pt-10">
           <SectionHeading
@@ -26,7 +26,7 @@ export function ContactSection({ id = "contact" }) {
             {contactPoints.map((point) => (
               <div
                 key={point}
-                className="rounded-2xl border border-black/10 bg-white px-4 py-4 text-sm font-medium text-black/58 shadow-[0_18px_55px_rgba(17,17,17,0.05)] transition hover:-translate-y-0.5 hover:border-[#7C3AED]/30"
+                className="rounded-2xl border border-black/10 bg-white px-4 py-4 text-sm font-medium text-black/58 shadow-[0_18px_55px_rgba(17,17,17,0.05)] transition hover:-translate-y-0.5 hover:border-[#3F6212]/30"
               >
                 {point}
               </div>

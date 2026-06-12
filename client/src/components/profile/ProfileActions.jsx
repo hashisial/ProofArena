@@ -103,7 +103,7 @@ function MoreMenu({ isOwner, onMore = noop }) {
 
       {isOpen ? (
         <div
-          className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-full min-w-56 rounded-2xl border border-[#E9E2F3] bg-white p-2 shadow-[0_24px_70px_rgba(31, 14, 54, 0.14)] sm:w-64"
+          className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-full min-w-56 rounded-2xl border border-[#E7E5E4] bg-white p-2 shadow-[0_24px_70px_rgba(28, 25, 23, 0.14)] sm:w-64"
           role="menu"
         >
           {items.map((item) => {
@@ -111,7 +111,7 @@ function MoreMenu({ isOwner, onMore = noop }) {
 
             return (
               <button
-                className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-[#493C5E] transition hover:bg-[#F5F3FF] hover:text-[#5B21B6] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70"
+                className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-bold text-[#44403C] transition hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70"
                 key={item.key}
                 onClick={() => handleMenuItemClick(item.key)}
                 role="menuitem"

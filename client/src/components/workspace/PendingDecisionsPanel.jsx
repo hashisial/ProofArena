@@ -27,20 +27,20 @@ export function PendingDecisionsPanel({ challenges = [] }) {
         {decisions.length > 0 ? (
           <ol className="grid gap-3">
             {decisions.map((decision) => (
-              <li className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={`${decision.challengeId}-${decision.title}`}>
+              <li className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${decision.challengeId}-${decision.title}`}>
                 <div className="flex min-w-0 items-start gap-3">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-[#6D28D9]">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-[#A16207]">
                     <AlertCircle aria-hidden="true" className="h-5 w-5" />
                   </span>
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="break-words text-sm font-black text-[#07030D]">{decision.title}</h3>
+                      <h3 className="break-words text-sm font-black text-[#1C1917]">{decision.title}</h3>
                       <Badge size="sm" variant={priorityVariants[decision.priority] || "gray"}>
                         {decision.priority}
                       </Badge>
                     </div>
-                    <p className="mt-1 break-words text-xs font-bold text-[#6F657C]">{decision.challengeTitle}</p>
-                    <p className="mt-2 text-sm leading-6 text-[#6F657C]">{decision.description}</p>
+                    <p className="mt-1 break-words text-xs font-bold text-[#57534E]">{decision.challengeTitle}</p>
+                    <p className="mt-2 text-sm leading-6 text-[#78716C]">{decision.description}</p>
                     <Button as="a" className="mt-3 min-h-10 px-4 py-2 text-xs" href={decision.href} variant="outline">
                       {decision.label}
                       <ArrowRight aria-hidden="true" className="ml-2 h-4 w-4" />

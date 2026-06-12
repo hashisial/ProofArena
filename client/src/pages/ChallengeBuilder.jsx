@@ -148,8 +148,8 @@ export function ChallengeBuilder() {
     return (
       <Card padding="lg" variant="bordered">
         <Badge variant="red">Challenge unavailable</Badge>
-        <h1 className="mt-3 text-3xl font-black text-[#07030D]">Challenge could not be loaded</h1>
-        <p className="mt-2 text-sm leading-6 text-[#6F657C]">
+        <h1 className="mt-3 text-3xl font-black text-[#1C1917]">Challenge could not be loaded</h1>
+        <p className="mt-2 text-sm leading-6 text-[#78716C]">
           {getChallengeApiErrorMessage(challengeQuery.error, "This challenge may have moved or you may not have access.")}
         </p>
         <Button as={Link} className="mt-5" to={ROUTES.MY_CHALLENGES}>
@@ -170,7 +170,7 @@ export function ChallengeBuilder() {
       />
 
       {notice ? (
-        <div className="rounded-2xl border border-[#A78BFA]/20 bg-[#F5F3FF] px-4 py-3 text-sm font-bold text-[#5B21B6]">
+        <div className="rounded-2xl border border-[#65A30D]/20 bg-[#F7FEE7] px-4 py-3 text-sm font-bold text-[#365314]">
           {notice}
         </div>
       ) : null}
@@ -202,8 +202,8 @@ export function ChallengeBuilder() {
           <ChallengePreview challenge={challenge} form={form} />
           <ChallengeQualityCard form={form} />
           <Card padding="md" variant="muted">
-            <p className="text-sm font-black text-[#07030D]">AI challenge drafting is not enabled yet.</p>
-            <p className="mt-2 text-sm leading-6 text-[#6F657C]">
+            <p className="text-sm font-black text-[#1C1917]">AI challenge drafting is not enabled yet.</p>
+            <p className="mt-2 text-sm leading-6 text-[#78716C]">
               The current builder is rule-based. AI-assisted challenge improvement belongs to a later stage.
             </p>
             <Button className="mt-4 w-full" disabled type="button" variant="secondary">

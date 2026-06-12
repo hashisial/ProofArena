@@ -34,24 +34,24 @@ export function ChallengePreview({ challenge, form }) {
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#6D28D9]">Target outcome</p>
-          <p className="mt-2 text-sm font-black leading-6 text-[#07030D]">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#A16207]">Target outcome</p>
+          <p className="mt-2 text-sm font-black leading-6 text-[#1C1917]">
             {preview.targetOutcome?.outcomeStatement || "Define a measurable outcome providers can plan for and prove."}
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-2xl border border-[#E9E2F3] bg-white p-3">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Timeline</p>
-            <p className="mt-1 text-sm font-black text-[#07030D]">{formatChallengeTimeline(preview.timeline)}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-3">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Timeline</p>
+            <p className="mt-1 text-sm font-black text-[#1C1917]">{formatChallengeTimeline(preview.timeline)}</p>
           </div>
-          <div className="rounded-2xl border border-[#E9E2F3] bg-white p-3">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Budget</p>
-            <p className="mt-1 text-sm font-black text-[#07030D]">{formatChallengeBudget(preview.budget)}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-3">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Budget</p>
+            <p className="mt-1 text-sm font-black text-[#1C1917]">{formatChallengeBudget(preview.budget)}</p>
           </div>
         </div>
         <div className="grid gap-2">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Proof required</p>
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Proof required</p>
           <div className="flex flex-wrap gap-2">
             {proofItems.length > 0 ? proofItems.slice(0, 5).map((item) => (
               <Badge key={`${item.title}-${item.proofType}`} variant="green">
@@ -61,7 +61,7 @@ export function ChallengePreview({ challenge, form }) {
           </div>
         </div>
         <div className="grid gap-2">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Skills and tools</p>
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Skills and tools</p>
           <div className="flex flex-wrap gap-2">
             {[...skills, ...tools].slice(0, 8).map((item) => (
               <Badge key={item} variant="outline">{item}</Badge>
@@ -69,9 +69,9 @@ export function ChallengePreview({ challenge, form }) {
             {skills.length + tools.length === 0 ? <Badge variant="gray">Add skills and tools</Badge> : null}
           </div>
         </div>
-        <div className="flex flex-col gap-3 rounded-2xl border border-[#7C3AED]/20 bg-[#F5F3FF] p-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm font-bold text-[#5B21B6]">Provider action preview</p>
-          <span className="rounded-full bg-[#7C3AED] px-4 py-2 text-center text-sm font-black text-white">
+        <div className="flex flex-col gap-3 rounded-2xl border border-[#3F6212]/20 bg-[#F7FEE7] p-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm font-bold text-[#365314]">Provider action preview</p>
+          <span className="rounded-full bg-[#3F6212] px-4 py-2 text-center text-sm font-black text-white">
             Submit execution plan
           </span>
         </div>

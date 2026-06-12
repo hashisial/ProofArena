@@ -87,23 +87,23 @@ function MetricCard({ index, metric, reduceMotion }) {
   return (
     <MotionDiv {...getMotionProps(reduceMotion, index * 0.05)}>
       <Card
-        className="premium-motion-card group h-full transition duration-300 hover:-translate-y-1 hover:border-[#A78BFA] hover:shadow-[0_24px_76px_rgba(124, 58, 237, 0.14)]"
+        className="premium-motion-card group h-full transition duration-300 hover:-translate-y-1 hover:border-[#65A30D] hover:shadow-[0_24px_76px_rgba(63, 98, 18, 0.14)]"
         padding="lg"
         variant="default"
       >
         <div className="flex items-start justify-between gap-4">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6] transition duration-300 group-hover:bg-[#7C3AED] group-hover:text-white">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314] transition duration-300 group-hover:bg-[#3F6212] group-hover:text-white">
             <Icon aria-hidden="true" className="h-6 w-6" />
           </span>
           <Badge variant="gray">Foundation</Badge>
         </div>
-        <p className="mt-6 break-words text-3xl font-black leading-tight text-[#07030D]">
+        <p className="mt-6 break-words text-3xl font-black leading-tight text-[#1C1917]">
           {metric.value}
         </p>
-        <p className="mt-2 text-base font-black text-[#07030D]">
+        <p className="mt-2 text-base font-black text-[#1C1917]">
           {metric.label}
         </p>
-        <p className="mt-3 text-sm leading-7 text-[#6F657C]">
+        <p className="mt-3 text-sm leading-7 text-[#57534E]">
           {metric.description}
         </p>
       </Card>
@@ -118,14 +118,14 @@ function TrustPillarCard({ index, pillar, reduceMotion }) {
     <MotionDiv {...getMotionProps(reduceMotion, 0.12 + index * 0.05)}>
       <Card className="premium-motion-card h-full" padding="lg" variant="bordered">
         <div className="flex items-start gap-4">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]">
             <Icon aria-hidden="true" className="h-6 w-6" />
           </span>
           <div className="min-w-0">
-            <h3 className="text-xl font-black leading-tight text-[#07030D]">
+            <h3 className="text-xl font-black leading-tight text-[#1C1917]">
               {pillar.title}
             </h3>
-            <p className="mt-3 text-sm leading-7 text-[#6F657C]">
+            <p className="mt-3 text-sm leading-7 text-[#57534E]">
               {pillar.description}
             </p>
           </div>
@@ -139,8 +139,8 @@ export function SocialProofSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#F8F4FF_46%,#F5F3FF_100%)] py-16 sm:py-20 lg:py-24">
-      <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_82%_12%,rgba(124, 58, 237, 0.14),transparent_34%),radial-gradient(circle_at_10%_76%,rgba(167, 139, 250, 0.12),transparent_28%)]" />
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFBEB_46%,#F7FEE7_100%)] py-16 sm:py-20 lg:py-24">
+      <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_82%_12%,rgba(63, 98, 18, 0.14),transparent_34%),radial-gradient(circle_at_10%_76%,rgba(101, 163, 13, 0.12),transparent_28%)]" />
       <Container className="relative z-10">
         <MotionDiv {...getMotionProps(reduceMotion, 0)}>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end">
@@ -185,16 +185,16 @@ export function SocialProofSection() {
         </div>
 
         <MotionDiv
-          className="premium-motion-card mt-12 rounded-[2rem] border border-[#E9E2F3] bg-white p-6 shadow-[0_24px_80px_rgba(31, 14, 54, 0.08)] sm:p-8 lg:p-10"
+          className="premium-motion-card mt-12 rounded-[2rem] border border-[#E7E5E4] bg-white p-6 shadow-[0_24px_80px_rgba(28, 25, 23, 0.08)] sm:p-8 lg:p-10"
           {...getMotionProps(reduceMotion, 0.18)}
         >
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center">
             <div>
               <Badge variant="primary">Proof-based trust model</Badge>
-              <h3 className="mt-4 text-3xl font-black leading-tight text-[#07030D]">
+              <h3 className="mt-4 text-3xl font-black leading-tight text-[#1C1917]">
                 What ProofArena believes
               </h3>
-              <p className="mt-4 text-base leading-8 text-[#6F657C]">
+              <p className="mt-4 text-base leading-8 text-[#57534E]">
                 A professional work platform should make outcomes measurable,
                 progress visible, and trust evidence-based.
               </p>
@@ -203,10 +203,10 @@ export function SocialProofSection() {
             <div className="grid gap-3 sm:grid-cols-2">
               {trustStatements.map((statement) => (
                 <div
-                  className="flex items-start gap-3 rounded-2xl border border-[#E9E2F3] bg-[#FCFAFF] p-4"
+                  className="flex items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FAFAF9] p-4"
                   key={statement}
                 >
-                  <CheckCircle2 aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#7C3AED]" />
+                  <CheckCircle2 aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#3F6212]" />
                   <p className="text-sm font-black leading-6 text-[#27272A]">
                     {statement}
                   </p>
@@ -215,9 +215,9 @@ export function SocialProofSection() {
             </div>
           </div>
 
-          <div className="mt-8 flex items-start gap-3 rounded-3xl border border-[#EDE9FE] bg-[#F8F4FF] p-5">
-            <FileCheck2 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#7C3AED]" />
-            <p className="text-sm font-semibold leading-7 text-[#6F657C]">
+          <div className="mt-8 flex items-start gap-3 rounded-3xl border border-[#ECFCCB] bg-[#FFFBEB] p-5">
+            <FileCheck2 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#3F6212]" />
+            <p className="text-sm font-semibold leading-7 text-[#57534E]">
               This section uses foundation metrics and trust principles only.
               External customer proof assets and usage numbers should be added
               only when they are real and verifiable.
@@ -226,10 +226,10 @@ export function SocialProofSection() {
         </MotionDiv>
 
         <MotionDiv
-          className="mt-8 flex items-center gap-3 text-sm font-bold text-[#6F657C]"
+          className="mt-8 flex items-center gap-3 text-sm font-bold text-[#57534E]"
           {...getMotionProps(reduceMotion, 0.22)}
         >
-          <TrendingUp aria-hidden="true" className="h-5 w-5 shrink-0 text-[#7C3AED]" />
+          <TrendingUp aria-hidden="true" className="h-5 w-5 shrink-0 text-[#3F6212]" />
           Built for measurable outcomes, milestone visibility, and evidence-backed reputation.
         </MotionDiv>
       </Container>

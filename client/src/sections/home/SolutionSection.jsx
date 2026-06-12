@@ -42,17 +42,17 @@ export function SolutionSection() {
             const Icon = item.icon;
 
             return (
-              <div className="relative rounded-3xl border border-[#E9E2F3] bg-white p-5 shadow-[0_16px_50px_rgba(31, 14, 54, 0.05)]" key={item.title}>
+              <div className="relative rounded-3xl border border-[#E7E5E4] bg-white p-5 shadow-[0_16px_50px_rgba(28, 25, 23, 0.05)]" key={item.title}>
                 <div className="flex items-center justify-between gap-4">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]">
                     <Icon aria-hidden="true" className="h-6 w-6" />
                   </span>
                   <Badge variant="outline">0{index + 1}</Badge>
                 </div>
-                <h3 className="mt-6 text-xl font-black text-[#07030D]">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#6F657C]">{item.text}</p>
+                <h3 className="mt-6 text-xl font-black text-[#1C1917]">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-[#57534E]">{item.text}</p>
                 {index < solutionFlow.length - 1 ? (
-                  <ArrowRight aria-hidden="true" className="absolute -right-3 top-10 hidden h-6 w-6 rounded-full bg-white text-[#7C3AED] lg:block" />
+                  <ArrowRight aria-hidden="true" className="absolute -right-3 top-10 hidden h-6 w-6 rounded-full bg-white text-[#3F6212] lg:block" />
                 ) : null}
               </div>
             );

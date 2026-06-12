@@ -1,8 +1,8 @@
 const industryGradients = {
-  Business: "from-black via-[#5B21B6] to-[#A78BFA]",
-  Crypto: "from-[#7C3AED] via-black to-[#A78BFA]",
-  "Real Estate": "from-black via-[#7C3AED] to-white",
-  SaaS: "from-[#5B21B6] via-black to-[#A78BFA]",
+  Business: "from-black via-[#365314] to-[#65A30D]",
+  Crypto: "from-[#3F6212] via-black to-[#65A30D]",
+  "Real Estate": "from-black via-[#3F6212] to-white",
+  SaaS: "from-[#365314] via-black to-[#65A30D]",
 };
 
 function isImageUrl(value) {
@@ -24,12 +24,12 @@ function isVideoUrl(value) {
 
 export function PortfolioCard({ className = "", item }) {
   const gradient =
-    industryGradients[item.industry] ?? "from-black via-[#7C3AED] to-[#A78BFA]";
+    industryGradients[item.industry] ?? "from-black via-[#3F6212] to-[#65A30D]";
   const hasImage = isImageUrl(item.image);
   const hasVideo = isVideoUrl(item.image);
 
   return (
-    <article className={`magnetic-quiet group overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-[0_24px_80px_rgba(17,17,17,0.08)] transition duration-500 hover:border-[#7C3AED]/35 hover:shadow-[0_32px_95px_rgba(124, 58, 237, 0.18)] ${className}`}>
+    <article className={`magnetic-quiet group overflow-hidden rounded-[2rem] border border-black/10 bg-white shadow-[0_24px_80px_rgba(17,17,17,0.08)] transition duration-500 hover:border-[#3F6212]/35 hover:shadow-[0_32px_95px_rgba(63, 98, 18, 0.18)] ${className}`}>
       <div className={`relative aspect-[16/11] bg-gradient-to-br ${gradient} p-5`}>
         {hasImage && !hasVideo ? (
           <img
@@ -71,7 +71,7 @@ export function PortfolioCard({ className = "", item }) {
           {(item.results ?? []).slice(0, 3).map((result) => (
             <span
               key={result}
-              className="rounded-full border border-[#7C3AED]/20 bg-[#7C3AED]/[0.07] px-3 py-1 text-xs font-semibold text-[#5B21B6]"
+              className="rounded-full border border-[#3F6212]/20 bg-[#3F6212]/[0.07] px-3 py-1 text-xs font-semibold text-[#365314]"
             >
               {result}
             </span>
@@ -88,8 +88,8 @@ export function PortfolioCard({ className = "", item }) {
               </div>
             ) : null}
             {item.afterState ? (
-              <div className="rounded-2xl border border-[#7C3AED]/18 bg-[#7C3AED]/[0.06] p-4">
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#7C3AED]">
+              <div className="rounded-2xl border border-[#3F6212]/18 bg-[#3F6212]/[0.06] p-4">
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#3F6212]">
                   After
                 </p>
                 <p className="mt-2 leading-6 text-black/68">{item.afterState}</p>
@@ -98,7 +98,7 @@ export function PortfolioCard({ className = "", item }) {
           </div>
         ) : null}
         {item.testimonial ? (
-          <blockquote className="mt-5 rounded-2xl border-l-4 border-[#7C3AED] bg-[#F8F4FF] px-4 py-3 text-sm font-medium leading-6 text-black/66">
+          <blockquote className="mt-5 rounded-2xl border-l-4 border-[#3F6212] bg-[#fffbeb] px-4 py-3 text-sm font-medium leading-6 text-black/66">
             {item.testimonial}
           </blockquote>
         ) : null}

@@ -153,7 +153,7 @@ export function Providers() {
   }
 
   return (
-    <section className="min-w-0 bg-[#F8F4FF] py-8 text-[#07030D] sm:py-12 lg:py-14">
+    <section className="min-w-0 bg-[#FFFBEB] py-8 text-[#1C1917] sm:py-12 lg:py-14">
       <Container>
         <div className="mx-auto grid max-w-7xl gap-6">
           <ProviderDiscoveryHeader
@@ -189,15 +189,15 @@ export function Providers() {
             </aside>
 
             <div className="grid min-w-0 gap-5">
-              <div className="grid min-w-0 gap-4 rounded-3xl border border-[#E9E2F3] bg-white p-4 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
+              <div className="grid min-w-0 gap-4 rounded-3xl border border-[#E7E5E4] bg-white p-4 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
                 <div className="min-w-0">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
                     Results
                   </p>
-                  <h2 className="mt-2 break-words text-2xl font-black tracking-normal text-[#07030D] sm:text-3xl">
+                  <h2 className="mt-2 break-words text-2xl font-black tracking-normal text-[#1C1917] sm:text-3xl">
                     {pagination.total ?? providers.length} provider profiles
                   </h2>
-                  <p className="mt-2 max-w-xl text-sm font-semibold leading-6 text-[#6F657C]">
+                  <p className="mt-2 max-w-xl text-sm font-semibold leading-6 text-[#78716C]">
                     Results exclude private, hidden, suspended, and discovery-disabled profiles.
                   </p>
                 </div>
@@ -219,8 +219,8 @@ export function Providers() {
               />
 
               {!providerQuery.isLoading && !providerQuery.isError && providers.length > 0 ? (
-                <div className="flex flex-col gap-3 rounded-3xl border border-[#E9E2F3] bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
-                  <p className="text-sm font-bold text-[#6F657C]">
+                <div className="flex flex-col gap-3 rounded-3xl border border-[#E7E5E4] bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="text-sm font-bold text-[#78716C]">
                     Page {pagination.page ?? page} of {pagination.pages ?? 1}
                   </p>
                   <div className="flex flex-col gap-2 sm:flex-row">
@@ -248,11 +248,11 @@ export function Providers() {
 
           <div className="grid gap-4 lg:grid-cols-2">
             <Card className="rounded-3xl" padding="lg" variant="muted">
-              <UserRoundPlus aria-hidden="true" className="h-6 w-6 text-[#7C3AED]" />
-              <h2 className="mt-3 text-2xl font-black tracking-normal text-[#07030D]">
+              <UserRoundPlus aria-hidden="true" className="h-6 w-6 text-[#3F6212]" />
+              <h2 className="mt-3 text-2xl font-black tracking-normal text-[#1C1917]">
                 Build your provider profile
               </h2>
-              <p className="mt-2 text-sm leading-6 text-[#6F657C]">
+              <p className="mt-2 text-sm leading-6 text-[#78716C]">
                 Add offers, proof assets, skills, and availability so clients can
                 evaluate your public profile with concrete signals.
               </p>
@@ -261,10 +261,10 @@ export function Providers() {
               </Button>
             </Card>
             <Card className="rounded-3xl" padding="lg" variant="muted">
-              <h2 className="text-2xl font-black tracking-normal text-[#07030D]">
+              <h2 className="text-2xl font-black tracking-normal text-[#1C1917]">
                 Need outcome-based work?
               </h2>
-              <p className="mt-2 text-sm leading-6 text-[#6F657C]">
+              <p className="mt-2 text-sm leading-6 text-[#78716C]">
                 Create a challenge, then compare providers by proof, skills,
                 outcome offers, availability, and public reputation.
               </p>

@@ -22,19 +22,19 @@ export function MilestoneTemplateEditor({ items = [], onChange }) {
   return (
     <section className="grid gap-4" aria-labelledby="milestones-title">
       <div>
-        <h3 className="text-lg font-black text-[#07030D]" id="milestones-title">Milestone template</h3>
-        <p className="mt-1 text-sm leading-6 text-[#6F657C]">
+        <h3 className="text-lg font-black text-[#1C1917]" id="milestones-title">Milestone template</h3>
+        <p className="mt-1 text-sm leading-6 text-[#78716C]">
           Set a reusable delivery path. Actual milestone tracking will be connected later.
         </p>
       </div>
       <div className="grid gap-4">
         {milestones.map((item, index) => (
-          <div className="grid gap-4 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={index}>
+          <div className="grid gap-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={index}>
             <div className="flex items-start justify-between gap-3">
-              <p className="text-sm font-black text-[#7C3AED]">Milestone {index + 1}</p>
+              <p className="text-sm font-black text-[#3F6212]">Milestone {index + 1}</p>
               <button
                 aria-label={`Remove milestone ${index + 1}`}
-                className="grid h-9 w-9 place-items-center rounded-xl border border-[#E9E2F3] bg-white text-[#6F657C] transition hover:border-[#DC2626]/30 hover:text-[#DC2626] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70"
+                className="grid h-9 w-9 place-items-center rounded-xl border border-[#E7E5E4] bg-white text-[#78716C] transition hover:border-[#DC2626]/30 hover:text-[#DC2626] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70"
                 onClick={() => removeItem(index)}
                 type="button"
               >

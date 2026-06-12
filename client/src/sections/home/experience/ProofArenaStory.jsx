@@ -57,18 +57,18 @@ const trustSignals = [
 function SectionIntro({ badge, children, copy, dark = false }) {
   return (
     <div data-story-reveal>
-      <p className={`text-xs font-black uppercase ${dark ? "text-[#C4B5FD]" : "text-[#7C3AED]"}`}>
+      <p className={`text-xs font-black uppercase ${dark ? "text-[#BEF264]" : "text-[#3F6212]"}`}>
         {badge}
       </p>
       <h2
         className={`mt-4 max-w-4xl text-4xl font-black leading-[1.03] [text-wrap:balance] sm:text-5xl lg:text-6xl ${
-          dark ? "text-white" : "text-[#07030D]"
+          dark ? "text-white" : "text-[#1C1917]"
         }`}
       >
         {children}
       </h2>
       {copy ? (
-        <p className={`mt-5 max-w-2xl text-base font-semibold leading-8 ${dark ? "text-white/62" : "text-[#6F657C]"}`}>
+        <p className={`mt-5 max-w-2xl text-base font-semibold leading-8 ${dark ? "text-white/62" : "text-[#57534E]"}`}>
           {copy}
         </p>
       ) : null}
@@ -80,7 +80,7 @@ function ProductLabel({ children, icon, tone = "olive" }) {
   return (
     <div
       className={`flex items-center gap-2 text-xs font-black uppercase ${
-        tone === "bronze" ? "text-[#6D28D9]" : "text-[#7C3AED]"
+        tone === "bronze" ? "text-[#A16207]" : "text-[#3F6212]"
       }`}
     >
       {createElement(icon, { "aria-hidden": "true", className: "h-4 w-4" })}
@@ -96,7 +96,7 @@ function OutcomeChallengeVisual() {
         <ProductLabel icon={Target}>Outcome challenge</ProductLabel>
         <Badge variant="primary">Ready for plans</Badge>
       </div>
-      <h3 className="mt-8 max-w-xl text-3xl font-black leading-tight text-[#07030D]">
+      <h3 className="mt-8 max-w-xl text-3xl font-black leading-tight text-[#1C1917]">
         Increase qualified pipeline by 30% in 45 days.
       </h3>
       <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -105,15 +105,15 @@ function OutcomeChallengeVisual() {
           ["Timeline", "45 days"],
           ["Proof required", "CRM report + source log"],
         ].map(([label, value]) => (
-          <div className="border-t border-[#DDD6E8] pt-4" key={label}>
-            <p className="text-xs font-black uppercase text-[#6F657C]">{label}</p>
-            <p className="mt-2 text-sm font-black leading-6 text-[#07030D]">{value}</p>
+          <div className="border-t border-[#D6D3D1] pt-4" key={label}>
+            <p className="text-xs font-black uppercase text-[#78716C]">{label}</p>
+            <p className="mt-2 text-sm font-black leading-6 text-[#1C1917]">{value}</p>
           </div>
         ))}
       </div>
-      <div className="mt-8 flex items-center gap-3 border-t border-[#E9E2F3] pt-5">
-        <ShieldCheck aria-hidden="true" className="h-5 w-5 text-[#7C3AED]" />
-        <p className="text-sm font-bold text-[#6F657C]">Outcome, acceptance criteria, and proof are defined before work starts.</p>
+      <div className="mt-8 flex items-center gap-3 border-t border-[#E7E5E4] pt-5">
+        <ShieldCheck aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />
+        <p className="text-sm font-bold text-[#57534E]">Outcome, acceptance criteria, and proof are defined before work starts.</p>
       </div>
     </div>
   );
@@ -136,13 +136,13 @@ function ExecutionPlanVisual() {
         {plans.map((plan, index) => (
           <div
             className={`grid gap-3 border p-4 sm:grid-cols-[minmax(0,1fr)_repeat(4,minmax(0,0.7fr))] sm:items-center ${
-              index === 0 ? "border-[#A78BFA] bg-[#F5F3FF]" : "border-[#E9E2F3] bg-white"
+              index === 0 ? "border-[#65A30D] bg-[#F7FEE7]" : "border-[#E7E5E4] bg-white"
             }`}
             key={plan.label}
           >
             <div>
-              <p className="text-sm font-black text-[#07030D]">{plan.label}</p>
-              <p className="mt-1 text-xs font-bold text-[#6F657C]">{index === 0 ? "Best visible fit" : "Execution option"}</p>
+              <p className="text-sm font-black text-[#1C1917]">{plan.label}</p>
+              <p className="mt-1 text-xs font-bold text-[#78716C]">{index === 0 ? "Best visible fit" : "Execution option"}</p>
             </div>
             {[
               ["Match", plan.match],
@@ -151,8 +151,8 @@ function ExecutionPlanVisual() {
               ["Timeline", plan.timeline],
             ].map(([label, value]) => (
               <div key={label}>
-                <p className="text-[0.64rem] font-black uppercase text-[#6F657C]">{label}</p>
-                <p className="mt-1 text-sm font-black text-[#07030D]">{value}</p>
+                <p className="text-[0.64rem] font-black uppercase text-[#78716C]">{label}</p>
+                <p className="mt-1 text-sm font-black text-[#1C1917]">{value}</p>
               </div>
             ))}
           </div>
@@ -174,14 +174,14 @@ function ProofSystemVisual() {
           const Icon = item.icon;
           return (
             <div className="relative flex items-center gap-4 border border-white/10 bg-white/[0.045] p-4" key={item.label}>
-              <span className="grid h-11 w-11 shrink-0 place-items-center border border-[#C4B5FD]/25 bg-[#C4B5FD]/10 text-[#C4B5FD]">
+              <span className="grid h-11 w-11 shrink-0 place-items-center border border-[#BEF264]/25 bg-[#BEF264]/10 text-[#BEF264]">
                 <Icon aria-hidden="true" className="h-5 w-5" />
               </span>
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-black text-white">{item.label}</p>
                 <p className="mt-1 text-xs font-bold text-white/42">{item.state}</p>
               </div>
-              <span className="text-xs font-black text-[#C4B5FD]">0{index + 1}</span>
+              <span className="text-xs font-black text-[#BEF264]">0{index + 1}</span>
             </div>
           );
         })}
@@ -193,20 +193,20 @@ function ProofSystemVisual() {
 function TrustEngineVisual() {
   return (
     <div className="experience-product-panel grid gap-8 lg:grid-cols-[0.66fr_1.34fr] lg:items-center" data-story-reveal>
-      <div className="mx-auto grid aspect-square w-full max-w-[16rem] place-items-center border border-[#A78BFA]/30 bg-[#F5F3FF]">
-        <div className="grid h-[72%] w-[72%] place-items-center border border-[#7C3AED]/30 bg-white text-center shadow-[0_22px_60px_rgba(124,58,237,0.12)]">
-          <Gauge aria-hidden="true" className="h-7 w-7 text-[#7C3AED]" />
+      <div className="mx-auto grid aspect-square w-full max-w-[16rem] place-items-center border border-[#65A30D]/30 bg-[#F7FEE7]">
+        <div className="grid h-[72%] w-[72%] place-items-center border border-[#3F6212]/30 bg-white text-center shadow-[0_22px_60px_rgba(63,98,18,0.12)]">
+          <Gauge aria-hidden="true" className="h-7 w-7 text-[#3F6212]" />
           <div>
-            <p className="text-5xl font-black text-[#7C3AED]">92</p>
-            <p className="mt-1 text-xs font-black uppercase text-[#6F657C]">Proof Score</p>
+            <p className="text-5xl font-black text-[#3F6212]">92</p>
+            <p className="mt-1 text-xs font-black uppercase text-[#78716C]">Proof Score</p>
           </div>
         </div>
       </div>
       <div className="grid gap-2">
         {trustSignals.map((signal) => (
-          <div className="flex items-center justify-between gap-4 border-b border-[#E9E2F3] py-4" key={signal.label}>
-            <p className="text-sm font-bold text-[#6F657C]">{signal.label}</p>
-            <p className="text-right text-sm font-black text-[#07030D]">{signal.value}</p>
+          <div className="flex items-center justify-between gap-4 border-b border-[#E7E5E4] py-4" key={signal.label}>
+            <p className="text-sm font-bold text-[#57534E]">{signal.label}</p>
+            <p className="text-right text-sm font-black text-[#1C1917]">{signal.value}</p>
           </div>
         ))}
       </div>
@@ -225,7 +225,7 @@ function MatchingVisual() {
   return (
     <div className="matching-visual" data-story-reveal>
       <div className="matching-core">
-        <Sparkles aria-hidden="true" className="h-6 w-6 text-[#C4B5FD]" />
+        <Sparkles aria-hidden="true" className="h-6 w-6 text-[#BEF264]" />
         <p className="mt-3 text-3xl font-black text-white">94%</p>
         <p className="mt-1 text-xs font-black uppercase text-white/45">Outcome fit</p>
       </div>
@@ -233,7 +233,7 @@ function MatchingVisual() {
         const Icon = node.icon;
         return (
           <div className={`matching-node ${node.position}`} key={node.label}>
-            <Icon aria-hidden="true" className="h-5 w-5 text-[#7C3AED]" />
+            <Icon aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />
             <span>{node.label}</span>
           </div>
         );
@@ -252,20 +252,20 @@ function MarketplacePreview() {
       <article className="experience-market-card">
         <div className="flex items-center justify-between gap-3">
           <Badge variant="primary">Challenge preview</Badge>
-          <span className="text-xs font-black text-[#7C3AED]">Open</span>
+          <span className="text-xs font-black text-[#3F6212]">Open</span>
         </div>
-        <h3 className="mt-6 text-2xl font-black leading-tight text-[#07030D]">Build a measurable customer acquisition engine</h3>
-        <p className="mt-3 text-sm font-semibold leading-7 text-[#6F657C]">Clear result, structured proof requirements, and a decision-ready execution plan workflow.</p>
+        <h3 className="mt-6 text-2xl font-black leading-tight text-[#1C1917]">Build a measurable customer acquisition engine</h3>
+        <p className="mt-3 text-sm font-semibold leading-7 text-[#57534E]">Clear result, structured proof requirements, and a decision-ready execution plan workflow.</p>
         <div className="mt-6 grid grid-cols-2 gap-3">
-          <div className="border-t border-[#E9E2F3] pt-3"><p className="text-xs font-black uppercase text-[#6F657C]">Timeline</p><p className="mt-2 text-sm font-black">45 days</p></div>
-          <div className="border-t border-[#E9E2F3] pt-3"><p className="text-xs font-black uppercase text-[#6F657C]">Proof</p><p className="mt-2 text-sm font-black">Required</p></div>
+          <div className="border-t border-[#E7E5E4] pt-3"><p className="text-xs font-black uppercase text-[#78716C]">Timeline</p><p className="mt-2 text-sm font-black">45 days</p></div>
+          <div className="border-t border-[#E7E5E4] pt-3"><p className="text-xs font-black uppercase text-[#78716C]">Proof</p><p className="mt-2 text-sm font-black">Required</p></div>
         </div>
         <Button as="a" className="mt-7 w-full" href={ROUTES.CHALLENGES} variant="secondary">Explore challenges</Button>
       </article>
-      <article className="experience-market-card bg-[#07030D] text-white">
+      <article className="experience-market-card bg-[#1C1917] text-white">
         <div className="flex items-center justify-between gap-3">
-          <Badge className="border-white/15 bg-white/10 text-[#EDE9FE]" variant="outline">Provider preview</Badge>
-          <ShieldCheck aria-hidden="true" className="h-5 w-5 text-[#C4B5FD]" />
+          <Badge className="border-white/15 bg-white/10 text-[#ECFCCB]" variant="outline">Provider preview</Badge>
+          <ShieldCheck aria-hidden="true" className="h-5 w-5 text-[#BEF264]" />
         </div>
         <h3 className="mt-6 text-2xl font-black leading-tight text-white">Proof-backed execution specialist</h3>
         <p className="mt-3 text-sm font-semibold leading-7 text-white/58">Compared by relevant outcomes, proof score, reliability, and plan quality.</p>
@@ -285,7 +285,7 @@ export function ProofArenaStory() {
 
   return (
     <>
-      <section className="bg-[#FBF9FF] py-20 sm:py-28 lg:py-36">
+      <section className="bg-[#FEFCE8] py-20 sm:py-28 lg:py-36">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
             <SectionIntro
@@ -294,14 +294,14 @@ export function ProofArenaStory() {
             >
               The old system asks clients to trust noise.
             </SectionIntro>
-            <div className="grid gap-0 border-y border-[#DDD6E8]" data-story-reveal>
+            <div className="grid gap-0 border-y border-[#D6D3D1]" data-story-reveal>
               {brokenSignals.map(([title, copy]) => (
-                <div className="grid gap-3 border-b border-[#DDD6E8] py-5 last:border-b-0 sm:grid-cols-[0.8fr_1.2fr] sm:items-center" key={title}>
+                <div className="grid gap-3 border-b border-[#D6D3D1] py-5 last:border-b-0 sm:grid-cols-[0.8fr_1.2fr] sm:items-center" key={title}>
                   <div className="flex items-center gap-3">
-                    <X aria-hidden="true" className="h-4 w-4 text-[#6D28D9]" />
-                    <p className="font-black text-[#07030D]">{title}</p>
+                    <X aria-hidden="true" className="h-4 w-4 text-[#A16207]" />
+                    <p className="font-black text-[#1C1917]">{title}</p>
                   </div>
-                  <p className="text-sm font-semibold text-[#6F657C]">{copy}</p>
+                  <p className="text-sm font-semibold text-[#78716C]">{copy}</p>
                 </div>
               ))}
             </div>
@@ -309,7 +309,7 @@ export function ProofArenaStory() {
         </Container>
       </section>
 
-      <section className="bg-[#07030D] py-20 text-white sm:py-28 lg:py-36">
+      <section className="bg-[#1C1917] py-20 text-white sm:py-28 lg:py-36">
         <Container>
           <SectionIntro
             badge="02 / The shift"
@@ -328,7 +328,7 @@ export function ProofArenaStory() {
                   {...getRevealMotionProps(reduceMotion, { delay: index * 0.05 })}
                 >
                   <div className="flex items-center justify-between">
-                    <Icon aria-hidden="true" className="h-5 w-5 text-[#C4B5FD]" />
+                    <Icon aria-hidden="true" className="h-5 w-5 text-[#BEF264]" />
                     <span className="text-xs font-black text-white/32">0{index + 1}</span>
                   </div>
                   <h3 className="mt-8 text-xl font-black text-white">{step.title}</h3>
@@ -337,7 +337,7 @@ export function ProofArenaStory() {
               );
             })}
           </div>
-          <div className="mt-14 h-px origin-left bg-[#C4B5FD]/45" data-story-line />
+          <div className="mt-14 h-px origin-left bg-[#BEF264]/45" data-story-line />
         </Container>
       </section>
 
@@ -353,7 +353,7 @@ export function ProofArenaStory() {
         </Container>
       </section>
 
-      <section className="bg-[#F7F2FF] py-20 sm:py-28 lg:py-36">
+      <section className="bg-[#F5F5F4] py-20 sm:py-28 lg:py-36">
         <Container className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
           <SectionIntro
             badge="04 / Execution plans"
@@ -365,7 +365,7 @@ export function ProofArenaStory() {
         </Container>
       </section>
 
-      <section className="bg-[#120A22] py-20 text-white sm:py-28 lg:py-36">
+      <section className="bg-[#151B0D] py-20 text-white sm:py-28 lg:py-36">
         <Container className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
           <SectionIntro
             badge="05 / Proof system"
@@ -378,7 +378,7 @@ export function ProofArenaStory() {
         </Container>
       </section>
 
-      <section className="bg-[#F8F4FF] py-20 sm:py-28 lg:py-36">
+      <section className="bg-[#FFFBEB] py-20 sm:py-28 lg:py-36">
         <Container className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
           <SectionIntro
             badge="06 / Trust engine"
@@ -390,7 +390,7 @@ export function ProofArenaStory() {
         </Container>
       </section>
 
-      <section className="bg-[#07030D] py-20 text-white sm:py-28 lg:py-36">
+      <section className="bg-[#1C1917] py-20 text-white sm:py-28 lg:py-36">
         <Container className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:items-center">
           <SectionIntro
             badge="07 / Smart matching"

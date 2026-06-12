@@ -16,11 +16,11 @@ export function SectionHeader({
           {badge}
         </Badge>
       ) : null}
-      <h2 className="mt-4 break-words text-3xl font-black leading-tight text-[#07030D] [text-wrap:balance] sm:text-4xl lg:text-5xl">
+      <h2 className="mt-4 break-words text-3xl font-black leading-tight text-[#1C1917] [text-wrap:balance] sm:text-4xl lg:text-5xl">
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 break-words text-base leading-8 text-[#6F657C] sm:text-lg">
+        <p className="mt-4 break-words text-base leading-8 text-[#57534E] sm:text-lg">
           {description}
         </p>
       ) : null}

@@ -28,9 +28,9 @@ function formatAvailability(value = "") {
 function MatchedOfferSummary({ offer, provider }) {
   if (!offer) {
     return (
-      <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
-        <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Matched outcome offer</p>
-        <p className="mt-2 text-sm font-semibold leading-6 text-[#6F657C]">
+      <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Matched outcome offer</p>
+        <p className="mt-2 text-sm font-semibold leading-6 text-[#57534E]">
           No public outcome offer was attached to this match yet.
         </p>
       </div>
@@ -38,16 +38,16 @@ function MatchedOfferSummary({ offer, provider }) {
   }
 
   return (
-    <div className="rounded-2xl border border-[#7C3AED]/15 bg-[#F5F3FF] p-4">
+    <div className="rounded-2xl border border-[#3F6212]/15 bg-[#F7FEE7] p-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+          <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
             <PackageCheck aria-hidden="true" className="h-4 w-4" />
             Matched outcome offer
           </p>
-          <h3 className="mt-2 text-lg font-black text-[#07030D]">{offer.title}</h3>
+          <h3 className="mt-2 text-lg font-black text-[#1C1917]">{offer.title}</h3>
           {offer.targetOutcome?.outcomeStatement ? (
-            <p className="mt-2 text-sm font-semibold leading-6 text-[#5B21B6]">{offer.targetOutcome.outcomeStatement}</p>
+            <p className="mt-2 text-sm font-semibold leading-6 text-[#365314]">{offer.targetOutcome.outcomeStatement}</p>
           ) : null}
         </div>
         <Button as={Link} className="w-full sm:w-auto" to={buildMatchedOfferPath(provider, offer)} variant="outline">
@@ -60,9 +60,9 @@ function MatchedOfferSummary({ offer, provider }) {
           ["Timeline", formatTimeline(offer.deliveryTimeline)],
           ["Price", formatOfferPrice(offer.priceRange)],
         ].map(([label, value]) => (
-          <div className="rounded-2xl border border-[#E9E2F3] bg-white/80 p-3" key={label}>
-            <p className="text-xs font-black uppercase tracking-[0.12em] text-[#6F657C]">{label}</p>
-            <p className="mt-1 text-sm font-black text-[#07030D]">{value}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white/80 p-3" key={label}>
+            <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">{label}</p>
+            <p className="mt-1 text-sm font-black text-[#1C1917]">{value}</p>
           </div>
         ))}
       </div>
@@ -96,17 +96,17 @@ export function RecommendedProviderCard({
           {provider.avatar ? (
             <img
               alt={`${providerName} profile photo`}
-              className="h-16 w-16 shrink-0 rounded-2xl object-cover ring-4 ring-[#F5F3FF]"
+              className="h-16 w-16 shrink-0 rounded-2xl object-cover ring-4 ring-[#F7FEE7]"
               src={provider.avatar}
             />
           ) : (
-            <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,#07030D,#7C3AED)] text-lg font-black text-white ring-4 ring-[#F5F3FF]">
+            <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,#1C1917,#3F6212)] text-lg font-black text-white ring-4 ring-[#F7FEE7]">
               {getInitials(providerName)}
             </div>
           )}
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <h2 className="break-words text-2xl font-black tracking-normal text-[#07030D]">{providerName}</h2>
+              <h2 className="break-words text-2xl font-black tracking-normal text-[#1C1917]">{providerName}</h2>
               <VerificationBadge
                 isVerified={provider.verificationStatus === "verified"}
                 label="Verified"
@@ -115,11 +115,11 @@ export function RecommendedProviderCard({
               />
               <MatchStatusBadge status={match?.status} />
             </div>
-            {provider.username ? <p className="mt-1 text-sm font-bold text-[#6F657C]">@{provider.username}</p> : null}
-            {provider.headline ? <p className="mt-2 text-sm font-semibold leading-6 text-[#6F657C]">{provider.headline}</p> : null}
+            {provider.username ? <p className="mt-1 text-sm font-bold text-[#78716C]">@{provider.username}</p> : null}
+            {provider.headline ? <p className="mt-2 text-sm font-semibold leading-6 text-[#57534E]">{provider.headline}</p> : null}
             {provider.location ? (
-              <p className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-[#6F657C]">
-                <MapPin aria-hidden="true" className="h-4 w-4 shrink-0 text-[#7C3AED]" />
+              <p className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-[#78716C]">
+                <MapPin aria-hidden="true" className="h-4 w-4 shrink-0 text-[#3F6212]" />
                 <span className="min-w-0 break-words">{provider.location}</span>
               </p>
             ) : null}
@@ -150,13 +150,13 @@ export function RecommendedProviderCard({
       <ProviderMatchWeaknessList weaknesses={match?.weaknesses ?? []} />
 
       {match?.recommendedAction ? (
-        <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Recommended action</p>
-          <p className="mt-2 text-sm font-bold leading-6 text-[#07030D]">{match.recommendedAction}</p>
+        <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Recommended action</p>
+          <p className="mt-2 text-sm font-bold leading-6 text-[#1C1917]">{match.recommendedAction}</p>
         </div>
       ) : null}
 
-      <div className="flex flex-col gap-3 border-t border-[#E9E2F3] pt-5 sm:flex-row sm:flex-wrap">
+      <div className="flex flex-col gap-3 border-t border-[#E7E5E4] pt-5 sm:flex-row sm:flex-wrap">
         <Button as={Link} onClick={() => onView?.(match)} to={profilePath} variant="secondary">
           <Eye aria-hidden="true" className="h-4 w-4" />
           View Profile

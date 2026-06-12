@@ -35,11 +35,11 @@ const typeFilters = [
 
 function getToneClasses(eventType, isUnread) {
   if (isUnread) {
-    return "border-[#7C3AED]/32 bg-[radial-gradient(circle_at_top_right,rgba(124, 58, 237, 0.14),transparent_30%),#ffffff] shadow-[0_22px_70px_rgba(124, 58, 237, 0.13)]";
+    return "border-[#3F6212]/32 bg-[radial-gradient(circle_at_top_right,rgba(63, 98, 18, 0.14),transparent_30%),#ffffff] shadow-[0_22px_70px_rgba(63, 98, 18, 0.13)]";
   }
 
   if (eventType === "payment_update") {
-    return "border-[#A78BFA]/18 bg-[#F8F4FF]";
+    return "border-[#65A30D]/18 bg-[#fffbeb]";
   }
 
   return "border-black/10 bg-white";
@@ -50,16 +50,16 @@ function NotificationCard({ notification, onDelete, onRead, isDeleting, isMarkin
 
   return (
     <article
-      className={`group relative overflow-hidden rounded-[1.6rem] border p-5 transition duration-300 hover:-translate-y-0.5 hover:border-[#7C3AED]/45 hover:shadow-[0_24px_75px_rgba(124, 58, 237, 0.16)] ${getToneClasses(notification.eventType, isUnread)}`}
+      className={`group relative overflow-hidden rounded-[1.6rem] border p-5 transition duration-300 hover:-translate-y-0.5 hover:border-[#3F6212]/45 hover:shadow-[0_24px_75px_rgba(63, 98, 18, 0.16)] ${getToneClasses(notification.eventType, isUnread)}`}
     >
       <div
         aria-hidden="true"
-        className="absolute -right-10 -top-12 h-32 w-32 rounded-full bg-[#7C3AED]/10 blur-2xl transition duration-500 group-hover:bg-[#7C3AED]/18"
+        className="absolute -right-10 -top-12 h-32 w-32 rounded-full bg-[#3F6212]/10 blur-2xl transition duration-500 group-hover:bg-[#3F6212]/18"
       />
       <div className="relative flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full border border-[#7C3AED]/18 bg-[#7C3AED]/8 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#5B21B6]">
+            <span className="rounded-full border border-[#3F6212]/18 bg-[#3F6212]/8 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#365314]">
               {eventLabels[notification.eventType] ?? "Update"}
             </span>
             {isUnread ? (
@@ -159,10 +159,10 @@ export function Notifications() {
   return (
     <SaaSLayout eyebrow="Notification center" title="Updates that need attention">
       <section className="grid gap-6">
-        <div className="overflow-hidden rounded-[2rem] border border-[#7C3AED]/16 bg-[radial-gradient(circle_at_90%_10%,rgba(124, 58, 237, 0.16),transparent_30%),linear-gradient(135deg,#ffffff,#F8F4FF)] p-6 shadow-[0_28px_90px_rgba(124, 58, 237, 0.1)] md:p-8">
+        <div className="overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[radial-gradient(circle_at_90%_10%,rgba(63, 98, 18, 0.16),transparent_30%),linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] md:p-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#7C3AED]">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#3F6212]">
                 Live workspace signals
               </p>
               <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-[-0.065em] text-black md:text-5xl">
@@ -176,8 +176,8 @@ export function Notifications() {
               <button
                 className={`rounded-full border px-5 py-3 text-sm font-bold transition hover:-translate-y-0.5 ${
                   showUnreadOnly
-                    ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow-[0_18px_50px_rgba(124, 58, 237, 0.24)]"
-                    : "border-black/10 bg-white text-black hover:border-[#7C3AED]/35 hover:text-[#5B21B6]"
+                    ? "border-[#3F6212] bg-[#3F6212] text-white shadow-[0_18px_50px_rgba(63, 98, 18, 0.24)]"
+                    : "border-black/10 bg-white text-black hover:border-[#3F6212]/35 hover:text-[#365314]"
                 }`}
                 onClick={() => setShowUnreadOnly((current) => !current)}
                 type="button"
@@ -209,8 +209,8 @@ export function Notifications() {
               <button
                 className={`shrink-0 rounded-full border px-4 py-2 text-sm font-bold transition ${
                   isActive
-                    ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow-[0_16px_40px_rgba(124, 58, 237, 0.18)]"
-                    : "border-black/10 bg-white text-black/58 hover:border-[#7C3AED]/35 hover:text-[#5B21B6]"
+                    ? "border-[#3F6212] bg-[#3F6212] text-white shadow-[0_16px_40px_rgba(63, 98, 18, 0.18)]"
+                    : "border-black/10 bg-white text-black/58 hover:border-[#3F6212]/35 hover:text-[#365314]"
                 }`}
                 key={value || "all"}
                 onClick={() => setSelectedType(value)}

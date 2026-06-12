@@ -56,26 +56,26 @@ export function ExecutionPlanCard({
           {isClient ? <Badge variant="green">{getProviderName(plan)}</Badge> : null}
         </div>
         <CardTitle className="text-xl">{plan.title}</CardTitle>
-        <p className="text-sm leading-6 text-[#6F657C]">{plan.summary}</p>
+        <p className="text-sm leading-6 text-[#78716C]">{plan.summary}</p>
       </CardHeader>
       <CardContent className="grid gap-3">
         {isClient ? (
           <ProviderPlanSummary plan={plan} showProfileLink={false} variant="inline" />
         ) : (
-          <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Challenge</p>
-            <p className="mt-1 font-black text-[#07030D]">{challenge?.title || "Challenge summary"}</p>
-            {challenge?.category ? <p className="mt-2 text-sm font-bold text-[#7C3AED]">{challenge.category}</p> : null}
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Challenge</p>
+            <p className="mt-1 font-black text-[#1C1917]">{challenge?.title || "Challenge summary"}</p>
+            {challenge?.category ? <p className="mt-2 text-sm font-bold text-[#3F6212]">{challenge.category}</p> : null}
           </div>
         )}
         <div className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Timeline</p>
-            <p className="mt-1 font-black text-[#07030D]">{formatPlanTimeline(plan.timeline)}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Timeline</p>
+            <p className="mt-1 font-black text-[#1C1917]">{formatPlanTimeline(plan.timeline)}</p>
           </div>
-          <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Price</p>
-            <p className="mt-1 font-black text-[#07030D]">{formatPlanPrice(plan.price)}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Price</p>
+            <p className="mt-1 font-black text-[#1C1917]">{formatPlanPrice(plan.price)}</p>
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -90,15 +90,15 @@ export function ExecutionPlanCard({
           ) : null}
         </div>
         {!isClient ? (
-          <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Next action</p>
-            <p className="mt-2 text-sm font-bold leading-6 text-[#493C5E]">{getProviderPlanNextAction(plan)}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Next action</p>
+            <p className="mt-2 text-sm font-bold leading-6 text-[#44403C]">{getProviderPlanNextAction(plan)}</p>
           </div>
         ) : null}
         {!isClient && feedback ? (
-          <div className="rounded-2xl border border-[#6D28D9]/20 bg-[#F8F4FF] p-4">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#4C1D95]">Client feedback</p>
-            <p className="mt-2 text-sm leading-6 text-[#6F657C]">{feedback}</p>
+          <div className="rounded-2xl border border-[#A16207]/20 bg-[#FFFBEB] p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#854D0E]">Client feedback</p>
+            <p className="mt-2 text-sm leading-6 text-[#57534E]">{feedback}</p>
           </div>
         ) : null}
       </CardContent>

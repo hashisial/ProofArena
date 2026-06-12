@@ -4,19 +4,19 @@ import { PRODUCT_NAME, PRODUCT_TAGLINE } from "../constants/index.js";
 
 export function AuthLayout() {
   return (
-    <div className="grid min-h-screen overflow-x-hidden bg-[#FBF9FF] lg:grid-cols-[0.95fr_1.05fr]">
-      <aside className="hidden border-r border-[#E9E2F3] bg-[#F8F4FF] p-10 lg:grid lg:content-between">
-        <a className="text-2xl font-black tracking-[-0.05em] text-[#07030D]" href="/">
+    <div className="grid min-h-screen overflow-x-hidden bg-[#FEFCE8] lg:grid-cols-[0.95fr_1.05fr]">
+      <aside className="hidden border-r border-[#E7E5E4] bg-[#FFFBEB] p-10 lg:grid lg:content-between">
+        <a className="text-2xl font-black tracking-[-0.05em] text-[#1C1917]" href="/">
           {PRODUCT_NAME}
         </a>
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
             ProofArena by ScaleOps
           </p>
-          <h1 className="mt-4 max-w-xl text-5xl font-black leading-none tracking-[-0.06em] text-[#07030D]">
+          <h1 className="mt-4 max-w-xl text-5xl font-black leading-none tracking-[-0.06em] text-[#1C1917]">
             {PRODUCT_TAGLINE}
           </h1>
-          <p className="mt-5 max-w-md text-base leading-7 text-[#493C5E]">
+          <p className="mt-5 max-w-md text-base leading-7 text-[#44403C]">
             Create measurable challenges, track milestones, and verify proof before reputation is earned.
           </p>
         </div>

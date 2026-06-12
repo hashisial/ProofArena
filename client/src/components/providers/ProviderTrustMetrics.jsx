@@ -76,11 +76,11 @@ export function ProviderTrustMetrics({ className = "", provider = {} }) {
   if (!hasAnyMetric) {
     return (
       <div className={className}>
-        <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
             Proof metrics
           </p>
-          <p className="mt-2 text-sm font-semibold leading-6 text-[#6F657C]">
+          <p className="mt-2 text-sm font-semibold leading-6 text-[#78716C]">
             Proof metrics will appear after verified outcomes.
           </p>
         </div>
@@ -92,19 +92,19 @@ export function ProviderTrustMetrics({ className = "", provider = {} }) {
     <div className={`grid min-w-0 grid-cols-2 gap-3 ${className}`}>
       {metricConfig.map((metric) => (
         <div
-          className="min-w-0 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3"
+          className="min-w-0 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3"
           key={metric.key}
         >
           <div className="flex items-center gap-2">
             {createElement(metric.icon, {
               "aria-hidden": "true",
-              className: "h-4 w-4 shrink-0 text-[#7C3AED]",
+              className: "h-4 w-4 shrink-0 text-[#3F6212]",
             })}
-            <p className="text-[0.67rem] font-black uppercase tracking-[0.12em] text-[#6F657C]">
+            <p className="text-[0.67rem] font-black uppercase tracking-[0.12em] text-[#78716C]">
               {metric.label}
             </p>
           </div>
-          <p className="mt-2 break-words text-lg font-black leading-6 text-[#07030D]">
+          <p className="mt-2 break-words text-lg font-black leading-6 text-[#1C1917]">
             {metric.read(provider)}
           </p>
         </div>

@@ -48,18 +48,18 @@ export function StarterChallenges() {
 
       <div className="grid gap-3 sm:grid-cols-3">
         <Card padding="sm" variant="muted">
-          <p className="text-sm font-bold text-[#6F657C]">Starter challenges</p>
-          <p className="mt-2 text-3xl font-black text-[#07030D]">{total}</p>
+          <p className="text-sm font-bold text-[#78716C]">Starter challenges</p>
+          <p className="mt-2 text-3xl font-black text-[#1C1917]">{total}</p>
         </Card>
         <Card padding="sm" variant="muted">
-          <p className="text-sm font-bold text-[#6F657C]">Current level</p>
-          <p className="mt-2 text-3xl font-black text-[#07030D]">
+          <p className="text-sm font-bold text-[#78716C]">Current level</p>
+          <p className="mt-2 text-3xl font-black text-[#1C1917]">
             {filters.level === "all" ? "All" : filters.level}
           </p>
         </Card>
         <Card padding="sm" variant="muted">
-          <p className="text-sm font-bold text-[#6F657C]">Sort</p>
-          <p className="mt-2 text-3xl font-black text-[#07030D]">{filters.sort.replaceAll("_", " ")}</p>
+          <p className="text-sm font-bold text-[#78716C]">Sort</p>
+          <p className="mt-2 text-3xl font-black text-[#1C1917]">{filters.sort.replaceAll("_", " ")}</p>
         </Card>
       </div>
 
@@ -78,7 +78,7 @@ export function StarterChallenges() {
       ) : starterQuery.isError ? (
         <Card variant="bordered">
           <Badge variant="red">Could not load starter challenges</Badge>
-          <p className="mt-3 text-sm leading-6 text-[#6F657C]">
+          <p className="mt-3 text-sm leading-6 text-[#78716C]">
             {getFirstClientApiErrorMessage(starterQuery.error)}
           </p>
           <Button className="mt-5" onClick={() => starterQuery.refetch()} type="button">

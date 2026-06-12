@@ -7,9 +7,9 @@ const sizes = {
 };
 
 const variants = {
-  dark: "text-[#07030D]",
+  dark: "text-[#1C1917]",
   light: "text-white",
-  primary: "text-[#7C3AED]",
+  primary: "text-[#3F6212]",
 };
 
 export function Spinner({ className = "", label = "Loading", size = "md", variant = "primary" }) {

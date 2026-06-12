@@ -112,11 +112,11 @@ function BulletList({ accent = false, items }) {
       {items.map((item) => (
         <li className="flex items-start gap-3" key={item}>
           {accent ? (
-            <CheckCircle2 aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#7C3AED]" />
+            <CheckCircle2 aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#3F6212]" />
           ) : (
-            <MinusCircle aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#6F657C]" />
+            <MinusCircle aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#78716C]" />
           )}
-          <span className="text-sm font-semibold leading-7 text-[#493C5E]">
+          <span className="text-sm font-semibold leading-7 text-[#44403C]">
             {item}
           </span>
         </li>
@@ -131,32 +131,32 @@ function OutcomePackageCard({ index, pkg, reduceMotion }) {
   return (
     <MotionDiv {...getMotionProps(reduceMotion, index * 0.05)}>
       <Card
-        className="premium-motion-card group flex h-full flex-col transition duration-300 hover:-translate-y-1 hover:border-[#A78BFA] hover:shadow-[0_24px_76px_rgba(124, 58, 237, 0.14)]"
+        className="premium-motion-card group flex h-full flex-col transition duration-300 hover:-translate-y-1 hover:border-[#65A30D] hover:shadow-[0_24px_76px_rgba(63, 98, 18, 0.14)]"
         padding="lg"
         variant="default"
       >
         <div className="flex items-start justify-between gap-4">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6] transition duration-300 group-hover:bg-[#7C3AED] group-hover:text-white">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314] transition duration-300 group-hover:bg-[#3F6212] group-hover:text-white">
             <Icon aria-hidden="true" className="h-6 w-6" />
           </span>
           <Badge variant="primary">{pkg.badge}</Badge>
         </div>
 
-        <h3 className="mt-6 text-xl font-black leading-tight text-[#07030D]">
+        <h3 className="mt-6 text-xl font-black leading-tight text-[#1C1917]">
           {pkg.title}
         </h3>
-        <p className="mt-3 text-sm font-bold leading-7 text-[#6F657C]">
+        <p className="mt-3 text-sm font-bold leading-7 text-[#57534E]">
           {pkg.description}
         </p>
 
-        <div className="mt-5 rounded-2xl border border-[#E9E2F3] bg-[#FCFAFF] p-4">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">
+        <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FAFAF9] p-4">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
             Includes
           </p>
           <ul className="mt-3 grid gap-2">
             {pkg.includes.map((item) => (
-              <li className="flex items-start gap-2 text-sm font-semibold leading-6 text-[#493C5E]" key={item}>
-                <CheckCircle2 aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#7C3AED]" />
+              <li className="flex items-start gap-2 text-sm font-semibold leading-6 text-[#44403C]" key={item}>
+                <CheckCircle2 aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#3F6212]" />
                 {item}
               </li>
             ))}
@@ -164,19 +164,19 @@ function OutcomePackageCard({ index, pkg, reduceMotion }) {
         </div>
 
         <div className="mt-4 grid gap-3">
-          <div className="rounded-2xl border border-[#EDE9FE] bg-[#F8F4FF] p-4">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+          <div className="rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
               Proof required
             </p>
             <p className="mt-2 text-sm font-bold leading-6 text-[#27272A]">
               {pkg.proof}
             </p>
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E9E2F3] px-4 py-3">
-            <span className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] px-4 py-3">
+            <span className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
               Timeline
             </span>
-            <span className="text-sm font-black text-[#07030D]">{pkg.timeline}</span>
+            <span className="text-sm font-black text-[#1C1917]">{pkg.timeline}</span>
           </div>
         </div>
 
@@ -194,8 +194,8 @@ export function ClientValueSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#F8F4FF_48%,#FBF9FF_100%)] py-16 sm:py-20 lg:py-24">
-      <div className="absolute inset-x-0 top-0 -z-0 h-96 bg-[radial-gradient(circle_at_15%_8%,rgba(124, 58, 237, 0.13),transparent_34%),radial-gradient(circle_at_85%_86%,rgba(167, 139, 250, 0.12),transparent_30%)]" />
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFBEB_48%,#FEFCE8_100%)] py-16 sm:py-20 lg:py-24">
+      <div className="absolute inset-x-0 top-0 -z-0 h-96 bg-[radial-gradient(circle_at_15%_8%,rgba(63, 98, 18, 0.13),transparent_34%),radial-gradient(circle_at_85%_86%,rgba(101, 163, 13, 0.12),transparent_30%)]" />
       <Container className="relative z-10">
         <MotionDiv {...getMotionProps(reduceMotion, 0)}>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-end">
@@ -219,13 +219,13 @@ export function ClientValueSection() {
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-[minmax(0,0.72fr)_minmax(0,0.72fr)_minmax(280px,0.56fr)]">
           <MotionDiv {...getMotionProps(reduceMotion, 0.08)}>
-            <Card className="premium-motion-card h-full bg-[#FCFAFF]" padding="lg" variant="bordered">
+            <Card className="premium-motion-card h-full bg-[#FAFAF9]" padding="lg" variant="bordered">
               <div className="flex items-start gap-4">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white text-[#6F657C]">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white text-[#78716C]">
                   <MinusCircle aria-hidden="true" className="h-6 w-6" />
                 </span>
                 <div>
-                  <h3 className="text-xl font-black text-[#07030D]">
+                  <h3 className="text-xl font-black text-[#1C1917]">
                     Traditional hiring creates too much friction.
                   </h3>
                   <BulletList items={frictionBullets} />
@@ -236,16 +236,16 @@ export function ClientValueSection() {
 
           <MotionDiv {...getMotionProps(reduceMotion, 0.14)}>
             <Card
-              className="premium-motion-card h-full border-[#7C3AED]/25 shadow-[0_24px_80px_rgba(124, 58, 237, 0.12)]"
+              className="premium-motion-card h-full border-[#3F6212]/25 shadow-[0_24px_80px_rgba(63, 98, 18, 0.12)]"
               padding="lg"
               variant="elevated"
             >
               <div className="flex items-start gap-4">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#7C3AED] text-white">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#3F6212] text-white">
                   <ShieldCheck aria-hidden="true" className="h-6 w-6" />
                 </span>
                 <div>
-                  <h3 className="text-xl font-black text-[#07030D]">
+                  <h3 className="text-xl font-black text-[#1C1917]">
                     ProofArena structures the work before it starts.
                   </h3>
                   <BulletList accent items={proofArenaBullets} />
@@ -258,10 +258,10 @@ export function ClientValueSection() {
             <Card className="premium-motion-card h-full" padding="lg" variant="default">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <p className="text-sm font-black text-[#07030D]">
+                  <p className="text-sm font-black text-[#1C1917]">
                     Client workspace flow
                   </p>
-                  <p className="mt-1 text-sm leading-6 text-[#6F657C]">
+                  <p className="mt-1 text-sm leading-6 text-[#78716C]">
                     Clear steps from goal to proof approval.
                   </p>
                 </div>
@@ -270,8 +270,8 @@ export function ClientValueSection() {
 
               <div className="mt-6 grid gap-3">
                 {workspaceRows.map((row, index) => (
-                  <div className="flex items-center gap-3 rounded-2xl border border-[#E9E2F3] bg-[#FCFAFF] p-4" key={row}>
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-sm font-black text-[#5B21B6]">
+                  <div className="flex items-center gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FAFAF9] p-4" key={row}>
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-sm font-black text-[#365314]">
                       {index + 1}
                     </span>
                     <span className="text-sm font-black text-[#27272A]">{row}</span>
@@ -293,9 +293,9 @@ export function ClientValueSection() {
           ))}
         </div>
 
-        <div className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E9E2F3] bg-[#FCFAFF] p-5">
-          <Target aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#7C3AED]" />
-          <p className="text-sm font-semibold leading-7 text-[#6F657C]">
+        <div className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FAFAF9] p-5">
+          <Target aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#3F6212]" />
+          <p className="text-sm font-semibold leading-7 text-[#57534E]">
             Outcome packages are challenge templates, not performance claims.
             Providers still submit execution plans and proof is reviewed before
             reputation grows.

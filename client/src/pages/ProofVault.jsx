@@ -44,8 +44,8 @@ const defaultFilters = {
 function StatCard({ label, value }) {
   return (
     <Card padding="sm" variant="muted">
-      <p className="text-sm font-bold text-[#6F657C]">{label}</p>
-      <p className="mt-2 text-3xl font-black text-[#07030D]">{value}</p>
+      <p className="text-sm font-bold text-[#78716C]">{label}</p>
+      <p className="mt-2 text-3xl font-black text-[#1C1917]">{value}</p>
     </Card>
   );
 }
@@ -177,7 +177,7 @@ export function ProofVault() {
 
       {notice ? (
         <Card padding="sm" variant="muted">
-          <p className="text-sm font-bold text-[#7C3AED]">{notice}</p>
+          <p className="text-sm font-bold text-[#3F6212]">{notice}</p>
         </Card>
       ) : null}
 
@@ -188,7 +188,7 @@ export function ProofVault() {
         <StatCard label="Readiness score" value={readinessMetric(`${readiness.score}/100`)} />
       </div>
 
-      <div aria-label="Proof Vault sections" className="grid grid-cols-3 gap-2 rounded-2xl border border-[#E9E2F3] bg-white p-2" role="tablist">
+      <div aria-label="Proof Vault sections" className="grid grid-cols-3 gap-2 rounded-2xl border border-[#E7E5E4] bg-white p-2" role="tablist">
         {TABS.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.value;
@@ -196,8 +196,8 @@ export function ProofVault() {
             <button
               aria-controls={`proof-${tab.value}-panel`}
               aria-selected={isActive}
-              className={`flex min-h-12 min-w-0 items-center justify-center gap-2 rounded-xl px-3 text-sm font-black transition focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/15 ${
-                isActive ? "bg-[#7C3AED] text-white" : "bg-[#F8F4FF] text-[#493C5E] hover:bg-[#F5F3FF]"
+              className={`flex min-h-12 min-w-0 items-center justify-center gap-2 rounded-xl px-3 text-sm font-black transition focus:outline-none focus:ring-4 focus:ring-[#3F6212]/15 ${
+                isActive ? "bg-[#3F6212] text-white" : "bg-[#FFFBEB] text-[#44403C] hover:bg-[#F7FEE7]"
               }`}
               id={`proof-${tab.value}-tab`}
               key={tab.value}
@@ -221,8 +221,8 @@ export function ProofVault() {
           {assetsQuery.isError ? (
             <Card padding="lg" variant="bordered">
               <Badge variant="red">Could not load proof assets</Badge>
-              <h2 className="mt-3 text-2xl font-black text-[#07030D]">Proof Vault unavailable</h2>
-              <p className="mt-2 text-sm leading-6 text-[#6F657C]">
+              <h2 className="mt-3 text-2xl font-black text-[#1C1917]">Proof Vault unavailable</h2>
+              <p className="mt-2 text-sm leading-6 text-[#78716C]">
                 {getProofAssetApiErrorMessage(assetsQuery.error, "Proof assets could not be loaded.")}
               </p>
               <Button className="mt-5" onClick={() => assetsQuery.refetch()} type="button">Retry</Button>
@@ -265,7 +265,7 @@ export function ProofVault() {
           ) : readinessError ? (
             <Card padding="lg" variant="bordered">
               <Badge variant="red">Could not calculate proof readiness</Badge>
-              <p className="mt-3 text-sm leading-6 text-[#6F657C]">Some Proof Vault, offer, plan, or profile data could not be loaded.</p>
+              <p className="mt-3 text-sm leading-6 text-[#78716C]">Some Proof Vault, offer, plan, or profile data could not be loaded.</p>
               <Button className="mt-5" onClick={() => readinessQueries.filter((query) => query.isError).forEach((query) => query.refetch())} type="button">Retry</Button>
             </Card>
           ) : (
@@ -287,7 +287,7 @@ export function ProofVault() {
           ) : readinessError ? (
             <Card padding="lg" variant="bordered">
               <Badge variant="red">Could not calculate proof coverage</Badge>
-              <p className="mt-3 text-sm leading-6 text-[#6F657C]">Proof coverage needs current asset, profile, offer, and plan data.</p>
+              <p className="mt-3 text-sm leading-6 text-[#78716C]">Proof coverage needs current asset, profile, offer, and plan data.</p>
               <Button className="mt-5" onClick={() => readinessQueries.filter((query) => query.isError).forEach((query) => query.refetch())} type="button">Retry</Button>
             </Card>
           ) : (

@@ -69,7 +69,7 @@ function WorkspaceNavigation({ focusChallenge }) {
       {shortcuts.map((shortcut) => (
         <a
           aria-current={shortcut.href === ROUTES.CLIENT_WORKSPACE ? "page" : undefined}
-          className="rounded-xl border border-[#E9E2F3] bg-white px-3 py-2 text-xs font-black text-[#493C5E] transition hover:border-[#A78BFA] hover:text-[#5B21B6] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/12"
+          className="rounded-xl border border-[#E7E5E4] bg-white px-3 py-2 text-xs font-black text-[#44403C] transition hover:border-[#65A30D] hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12"
           href={shortcut.href}
           key={shortcut.label}
         >
@@ -194,14 +194,14 @@ export function ClientWorkspace() {
 
   return (
     <div className="grid gap-8">
-      <section className="overflow-hidden rounded-[2rem] border border-[#7C3AED]/16 bg-[linear-gradient(135deg,#ffffff,#F8F4FF)] p-6 shadow-[0_24px_80px_rgba(31,14,54,0.08)] md:p-8">
+      <section className="overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-end">
           <div>
             <Badge variant="primary">Operational command center</Badge>
-            <h1 className="mt-5 max-w-4xl break-words text-3xl font-black tracking-normal text-[#07030D] sm:text-4xl md:text-5xl">
+            <h1 className="mt-5 max-w-4xl break-words text-3xl font-black tracking-normal text-[#1C1917] sm:text-4xl md:text-5xl">
               Client Workspace
             </h1>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-[#493C5E]">
+            <p className="mt-4 max-w-3xl text-base leading-8 text-[#44403C]">
               Monitor active challenges, provider decisions, and next actions from one place.
             </p>
             <div className="mt-5">
@@ -221,8 +221,8 @@ export function ClientWorkspace() {
       </section>
 
       <section aria-labelledby="workspace-stats">
-        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">Workspace overview</p>
-        <h2 id="workspace-stats" className="mt-2 text-2xl font-black tracking-normal text-[#07030D]">
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">Workspace overview</p>
+        <h2 id="workspace-stats" className="mt-2 text-2xl font-black tracking-normal text-[#1C1917]">
           Active client operations
         </h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -236,8 +236,8 @@ export function ClientWorkspace() {
         <Card padding="md" variant="muted">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="font-black text-[#07030D]">Some workspace details are unavailable</p>
-              <p className="mt-1 text-sm leading-6 text-[#6F657C]">
+              <p className="font-black text-[#1C1917]">Some workspace details are unavailable</p>
+              <p className="mt-1 text-sm leading-6 text-[#78716C]">
                 Challenge data is loaded, but provider, plan, or recommendation details could not be refreshed.
               </p>
             </div>
@@ -262,8 +262,8 @@ export function ClientWorkspace() {
           <section aria-labelledby="active-challenges">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">Active challenges</p>
-                <h2 id="active-challenges" className="mt-2 text-2xl font-black tracking-normal text-[#07030D]">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">Active challenges</p>
+                <h2 id="active-challenges" className="mt-2 text-2xl font-black tracking-normal text-[#1C1917]">
                   Current outcome work
                 </h2>
               </div>
@@ -316,8 +316,8 @@ export function ClientWorkspace() {
           <PendingDecisionsPanel challenges={challenges} />
           <Card as="section" padding="md" variant="bordered">
             <Badge variant="outline">Workspace status</Badge>
-            <h2 className="mt-3 text-xl font-black text-[#07030D]">Decision coverage</h2>
-            <p className="mt-2 text-sm leading-6 text-[#6F657C]">
+            <h2 className="mt-3 text-xl font-black text-[#1C1917]">Decision coverage</h2>
+            <p className="mt-2 text-sm leading-6 text-[#78716C]">
               {pendingDecisions.length > 0
                 ? `${pendingDecisions.length} known ${pendingDecisions.length === 1 ? "decision needs" : "decisions need"} client attention.`
                 : "No known provider or plan decisions currently require attention."}

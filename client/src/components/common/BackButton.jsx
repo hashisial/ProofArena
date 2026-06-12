@@ -24,10 +24,10 @@ export function BackButton({
     <button
       aria-label="Go back"
       className={cn(
-        "inline-flex min-h-10 items-center gap-2 rounded-full border px-4 text-sm font-black transition focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/12",
+        "inline-flex min-h-10 items-center gap-2 rounded-full border px-4 text-sm font-black transition focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12",
         variant === "ghost"
-          ? "border-transparent bg-transparent text-[#493C5E] hover:bg-[#F5F3FF] hover:text-[#5B21B6]"
-          : "border-[#E9E2F3] bg-white text-[#493C5E] shadow-[0_12px_30px_rgba(31, 14, 54, 0.06)] hover:border-[#7C3AED]/30 hover:text-[#5B21B6]",
+          ? "border-transparent bg-transparent text-[#44403C] hover:bg-[#F7FEE7] hover:text-[#365314]"
+          : "border-[#E7E5E4] bg-white text-[#44403C] shadow-[0_12px_30px_rgba(28, 25, 23, 0.06)] hover:border-[#3F6212]/30 hover:text-[#365314]",
         className,
       )}
       onClick={handleBack}

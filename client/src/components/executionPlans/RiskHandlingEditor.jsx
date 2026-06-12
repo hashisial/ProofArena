@@ -26,9 +26,9 @@ export function RiskHandlingEditor({ items = [], onChange }) {
   return (
     <div className="grid gap-4">
       {rows.map((item, index) => (
-        <div className="grid gap-4 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={index}>
+        <div className="grid gap-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={index}>
           <div className="flex items-center justify-between gap-3">
-            <p className="font-black text-[#07030D]">Risk {index + 1}</p>
+            <p className="font-black text-[#1C1917]">Risk {index + 1}</p>
             <Button
               aria-label={`Remove risk ${index + 1}`}
               onClick={() => removeItem(index)}

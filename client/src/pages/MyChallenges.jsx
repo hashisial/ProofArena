@@ -182,14 +182,14 @@ export function MyChallenges() {
 
   return (
     <div className="grid gap-6">
-      <section className="rounded-[2rem] border border-[#7C3AED]/16 bg-[linear-gradient(135deg,#ffffff,#F8F4FF)] p-6 shadow-[0_24px_80px_rgba(31,14,54,0.08)] md:p-8">
+      <section className="rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div>
             <Badge variant="primary">Client challenge control</Badge>
-            <h1 className="mt-4 text-4xl font-black tracking-normal text-[#07030D] md:text-5xl">
+            <h1 className="mt-4 text-4xl font-black tracking-normal text-[#1C1917] md:text-5xl">
               My Challenges
             </h1>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-[#6F657C]">
+            <p className="mt-4 max-w-3xl text-base leading-8 text-[#57534E]">
               Manage draft, open, reviewing, and active outcome challenges from one control center.
             </p>
           </div>
@@ -251,8 +251,8 @@ export function MyChallenges() {
       {challengesQuery.isError ? (
         <Card padding="lg" variant="bordered">
           <Badge variant="red">Could not load challenges</Badge>
-          <h2 className="mt-3 text-2xl font-black text-[#07030D]">Challenges unavailable</h2>
-          <p className="mt-2 text-sm leading-6 text-[#6F657C]">
+          <h2 className="mt-3 text-2xl font-black text-[#1C1917]">Challenges unavailable</h2>
+          <p className="mt-2 text-sm leading-6 text-[#78716C]">
             {getChallengeApiErrorMessage(challengesQuery.error, "Challenge list could not be loaded. Please try again.")}
           </p>
           <Button className="mt-5" onClick={() => challengesQuery.refetch()} type="button">

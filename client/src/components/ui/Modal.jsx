@@ -105,7 +105,7 @@ export function Modal({
     <AnimatePresence>
       {isOpen ? (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#07030D]/45 px-3 py-4 sm:px-4 sm:py-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1C1917]/45 px-3 py-4 sm:px-4 sm:py-6"
           onMouseDown={(event) => {
             if (closeOnOverlayClick && event.target === event.currentTarget) {
               onClose?.();
@@ -117,7 +117,7 @@ export function Modal({
             aria-labelledby={title ? titleId : undefined}
             aria-modal="true"
             className={cn(
-              "max-h-[calc(100vh-2rem)] w-full min-w-0 overflow-hidden rounded-2xl border border-[#E9E2F3] bg-white shadow-[0_28px_90px_rgba(31, 14, 54, 0.18)] focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/10",
+              "max-h-[calc(100vh-2rem)] w-full min-w-0 overflow-hidden rounded-2xl border border-[#E7E5E4] bg-white shadow-[0_28px_90px_rgba(28, 25, 23, 0.18)] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10",
               sizes[size] ?? sizes.md,
               className,
             )}
@@ -126,10 +126,10 @@ export function Modal({
             tabIndex={-1}
           >
             {(title || description || showCloseButton) ? (
-              <div className="flex items-start justify-between gap-4 border-b border-[#E9E2F3] px-4 py-4 sm:gap-5 sm:px-6 sm:py-5">
+              <div className="flex items-start justify-between gap-4 border-b border-[#E7E5E4] px-4 py-4 sm:gap-5 sm:px-6 sm:py-5">
                 <div className="min-w-0">
-                  {title ? <h2 className="text-2xl font-black tracking-normal text-[#07030D]" id={titleId}>{title}</h2> : null}
-                  {description ? <p className="mt-2 text-sm leading-6 text-[#6F657C]" id={descriptionId}>{description}</p> : null}
+                  {title ? <h2 className="text-2xl font-black tracking-normal text-[#1C1917]" id={titleId}>{title}</h2> : null}
+                  {description ? <p className="mt-2 text-sm leading-6 text-[#78716C]" id={descriptionId}>{description}</p> : null}
                 </div>
                 {showCloseButton ? (
                   <Button aria-label="Close modal" onClick={onClose} type="button" variant="secondary">
@@ -139,7 +139,7 @@ export function Modal({
               </div>
             ) : null}
             <div className="max-h-[calc(100vh-13rem)] overflow-y-auto px-4 py-4 sm:px-6 sm:py-5">{children}</div>
-            {footer ? <div className="flex flex-col-reverse gap-3 border-t border-[#E9E2F3] px-4 py-4 sm:flex-row sm:flex-wrap sm:justify-end sm:px-6 sm:py-5">{footer}</div> : null}
+            {footer ? <div className="flex flex-col-reverse gap-3 border-t border-[#E7E5E4] px-4 py-4 sm:flex-row sm:flex-wrap sm:justify-end sm:px-6 sm:py-5">{footer}</div> : null}
           </div>
         </div>
       ) : null}

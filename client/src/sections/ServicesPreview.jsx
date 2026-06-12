@@ -47,13 +47,13 @@ export function ServicesPreview({ id = "services" }) {
   const serviceCategories = buildServiceCategories(services);
 
   return (
-    <section id={id} className="ambient-line relative overflow-hidden border-t border-[#A78BFA]/15 bg-[linear-gradient(180deg,#5B21B6_0%,#12091F_52%,#12091F_100%)] py-20 sm:py-24 lg:py-32">
-      <div className="absolute left-0 top-0 h-28 w-full bg-gradient-to-b from-[#5B21B6] to-transparent" />
-      <div className="absolute left-1/2 top-0 h-px w-[82%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#A78BFA]/70 to-transparent" />
-      <div className="absolute -right-24 top-24 h-80 w-80 rounded-full bg-[#7C3AED]/25 blur-3xl" />
-      <div className="absolute bottom-10 left-8 h-72 w-72 rounded-full bg-[#5B21B6]/20 blur-3xl" />
+    <section id={id} className="ambient-line relative overflow-hidden border-t border-[#65A30D]/15 bg-[linear-gradient(180deg,#365314_0%,#1A2E05_52%,#1A2E05_100%)] py-20 sm:py-24 lg:py-32">
+      <div className="absolute left-0 top-0 h-28 w-full bg-gradient-to-b from-[#365314] to-transparent" />
+      <div className="absolute left-1/2 top-0 h-px w-[82%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#65A30D]/70 to-transparent" />
+      <div className="absolute -right-24 top-24 h-80 w-80 rounded-full bg-[#3F6212]/25 blur-3xl" />
+      <div className="absolute bottom-10 left-8 h-72 w-72 rounded-full bg-[#365314]/20 blur-3xl" />
       <div className="absolute left-[8%] top-32 h-24 w-24 rounded-[1.5rem] border border-white/10 bg-white/[0.03] backdrop-blur-xl animate-float-diagonal" />
-      <div className="absolute bottom-28 right-[12%] h-36 w-36 rounded-full border border-[#A78BFA]/12 animate-orbit-wide" />
+      <div className="absolute bottom-28 right-[12%] h-36 w-36 rounded-full border border-[#65A30D]/12 animate-orbit-wide" />
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="relative flex flex-col gap-8 lg:ml-16 lg:max-w-5xl">
           <SectionHeading

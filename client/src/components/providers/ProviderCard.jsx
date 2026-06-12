@@ -67,7 +67,7 @@ export function ProviderCard({
     <Card
       as="article"
       className={cn(
-        "group flex h-full min-w-0 flex-col rounded-3xl border-[#E9E2F3] bg-white transition hover:-translate-y-1 hover:border-[#A78BFA] hover:shadow-[0_22px_70px_rgba(124,58,237,0.16)]",
+        "group flex h-full min-w-0 flex-col rounded-3xl border-[#E7E5E4] bg-white transition hover:-translate-y-1 hover:border-[#65A30D] hover:shadow-[0_22px_70px_rgba(63,98,18,0.16)]",
         className,
       )}
       padding="md"
@@ -77,18 +77,18 @@ export function ProviderCard({
         {avatar ? (
           <img
             alt={`${name} profile photo`}
-            className="h-16 w-16 shrink-0 rounded-2xl object-cover ring-4 ring-[#F5F3FF]"
+            className="h-16 w-16 shrink-0 rounded-2xl object-cover ring-4 ring-[#F7FEE7]"
             src={avatar}
           />
         ) : (
-          <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,#07030D,#7C3AED)] text-lg font-black text-white ring-4 ring-[#F5F3FF]">
+          <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-[linear-gradient(135deg,#1C1917,#3F6212)] text-lg font-black text-white ring-4 ring-[#F7FEE7]">
             {getInitials(name)}
           </div>
         )}
 
         <div className="min-w-0 flex-1">
           <div className="flex min-w-0 flex-wrap items-center gap-2">
-            <h2 className="min-w-0 break-words text-xl font-black tracking-normal text-[#07030D]">
+            <h2 className="min-w-0 break-words text-xl font-black tracking-normal text-[#1C1917]">
               {name}
             </h2>
             <ProviderVerificationBadge
@@ -97,18 +97,18 @@ export function ProviderCard({
             />
           </div>
           {username ? (
-            <p className="mt-1 truncate text-sm font-bold text-[#6F657C]">@{username}</p>
+            <p className="mt-1 truncate text-sm font-bold text-[#78716C]">@{username}</p>
           ) : null}
           {provider.location ? (
-            <p className="mt-2 flex min-w-0 items-center gap-1.5 text-sm font-semibold text-[#6F657C]">
-              <MapPin aria-hidden="true" className="h-4 w-4 shrink-0 text-[#7C3AED]" />
+            <p className="mt-2 flex min-w-0 items-center gap-1.5 text-sm font-semibold text-[#78716C]">
+              <MapPin aria-hidden="true" className="h-4 w-4 shrink-0 text-[#3F6212]" />
               <span className="min-w-0 break-words">{provider.location}</span>
             </p>
           ) : null}
         </div>
       </div>
 
-      <div className="mt-5 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+      <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
         <div className="flex flex-wrap items-center gap-2">
           {mainCategory ? <Badge variant="primary">{mainCategory}</Badge> : null}
           {uniqueCategories.slice(mainCategory ? 1 : 0, 3).map((item) => (
@@ -117,15 +117,15 @@ export function ProviderCard({
             </Badge>
           ))}
         </div>
-        <p className="mt-3 line-clamp-3 text-sm font-semibold leading-6 text-[#493C5E]">
+        <p className="mt-3 line-clamp-3 text-sm font-semibold leading-6 text-[#44403C]">
           {positioning}
         </p>
 
         {visibleSkills.length > 0 ? (
           <div className="mt-4">
             <div className="flex items-center gap-2">
-              <Tags aria-hidden="true" className="h-4 w-4 shrink-0 text-[#7C3AED]" />
-              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+              <Tags aria-hidden="true" className="h-4 w-4 shrink-0 text-[#3F6212]" />
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
                 Helps with
               </p>
             </div>
@@ -145,15 +145,15 @@ export function ProviderCard({
 
       <ProviderOutcomeOfferPreview className="mt-5" provider={provider} />
 
-      <div className="mt-5 rounded-2xl border border-[#E9E2F3] bg-white p-4">
+      <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-white p-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
             Availability
           </p>
           <ProviderAvailabilityBadge availability={provider.availability} />
         </div>
         {capacityNote ? (
-          <p className="mt-3 text-sm font-semibold leading-6 text-[#6F657C]">
+          <p className="mt-3 text-sm font-semibold leading-6 text-[#78716C]">
             {capacityNote}
           </p>
         ) : null}

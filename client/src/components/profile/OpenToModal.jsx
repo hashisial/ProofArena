@@ -116,7 +116,7 @@ export function OpenToModal({
         />
 
         <div className="grid gap-2" aria-disabled={!enabled}>
-          <p className="text-sm font-bold text-[#07030D]">Categories</p>
+          <p className="text-sm font-bold text-[#1C1917]">Categories</p>
           <div className="grid gap-3 sm:grid-cols-2">
             {openToOptions.map((option) => {
               const Icon = option.icon;
@@ -124,10 +124,10 @@ export function OpenToModal({
 
               return (
                 <button
-                  className={`flex items-center gap-3 rounded-2xl border p-4 text-left transition focus:outline-none focus:ring-4 focus:ring-[#7C3AED]/10 ${
+                  className={`flex items-center gap-3 rounded-2xl border p-4 text-left transition focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10 ${
                     isActive
-                      ? "border-[#7C3AED]/45 bg-[#F5F3FF] text-[#5B21B6]"
-                      : "border-[#E9E2F3] bg-white text-[#493C5E] hover:border-[#A78BFA]"
+                      ? "border-[#3F6212]/45 bg-[#F7FEE7] text-[#365314]"
+                      : "border-[#E7E5E4] bg-white text-[#44403C] hover:border-[#65A30D]"
                   }`}
                   disabled={!enabled}
                   key={option.label}

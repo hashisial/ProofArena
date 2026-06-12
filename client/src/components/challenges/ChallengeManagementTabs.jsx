@@ -25,7 +25,7 @@ export function ChallengeManagementTabs({
       </div>
       <div
         aria-label="Challenge management status tabs"
-        className="hidden gap-2 overflow-x-auto rounded-2xl border border-[#E9E2F3] bg-white p-2 sm:flex"
+        className="hidden gap-2 overflow-x-auto rounded-2xl border border-[#E7E5E4] bg-white p-2 sm:flex"
         role="tablist"
       >
         {challengeManagementTabs.map((tab) => {
@@ -35,10 +35,10 @@ export function ChallengeManagementTabs({
             <button
               aria-selected={selected}
               className={cn(
-                "min-h-11 shrink-0 rounded-xl px-4 text-sm font-black transition focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70",
+                "min-h-11 shrink-0 rounded-xl px-4 text-sm font-black transition focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70",
                 selected
-                  ? "bg-[#7C3AED] text-white shadow-[0_14px_32px_rgba(124,58,237,0.18)]"
-                  : "bg-[#F8F4FF] text-[#6F657C] hover:bg-[#F5F3FF] hover:text-[#5B21B6]",
+                  ? "bg-[#3F6212] text-white shadow-[0_14px_32px_rgba(63,98,18,0.18)]"
+                  : "bg-[#FFFBEB] text-[#57534E] hover:bg-[#F7FEE7] hover:text-[#365314]",
               )}
               key={tab.value}
               onClick={() => onChange?.(tab.value)}

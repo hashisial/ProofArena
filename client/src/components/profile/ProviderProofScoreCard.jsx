@@ -47,12 +47,12 @@ function StatItem({ icon, label, value }) {
   const IconComponent = icon;
 
   return (
-    <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
-      <IconComponent aria-hidden="true" className="h-5 w-5 text-[#7C3AED]" />
-      <p className="mt-3 break-words text-lg font-black tracking-[-0.03em] text-[#07030D]">
+    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+      <IconComponent aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />
+      <p className="mt-3 break-words text-lg font-black tracking-[-0.03em] text-[#1C1917]">
         {value}
       </p>
-      <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#6F657C]">
+      <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
         {label}
       </p>
     </div>
@@ -107,7 +107,7 @@ export function ProviderProofScoreCard({
 
   const content = (
       <div className={cn("grid gap-5", compact ? "" : "lg:grid-cols-[240px_minmax(0,1fr)]")}>
-        <div className="rounded-3xl border border-[#EDE9FE] bg-[linear-gradient(180deg,#F8F4FF_0%,#F5F3FF_100%)] p-5 text-center">
+        <div className="rounded-3xl border border-[#ECFCCB] bg-[linear-gradient(180deg,#FFFBEB_0%,#F7FEE7_100%)] p-5 text-center">
           <div
             aria-label={`Proof Score ${proofScore} out of 100`}
             className="relative mx-auto grid h-32 w-32 place-items-center"
@@ -119,7 +119,7 @@ export function ProviderProofScoreCard({
                 cy="50"
                 fill="none"
                 r="42"
-                stroke="#E9E2F3"
+                stroke="#E7E5E4"
                 strokeWidth="9"
               />
               <circle
@@ -127,7 +127,7 @@ export function ProviderProofScoreCard({
                 cy="50"
                 fill="none"
                 r="42"
-                stroke="#7C3AED"
+                stroke="#3F6212"
                 strokeDasharray={circumference}
                 strokeDashoffset={scoreOffset}
                 strokeLinecap="round"
@@ -136,34 +136,34 @@ export function ProviderProofScoreCard({
             </svg>
             <div className="absolute inset-0 grid place-items-center">
               <div>
-                <p className="text-4xl font-black tracking-[-0.06em] text-[#07030D]">
+                <p className="text-4xl font-black tracking-[-0.06em] text-[#1C1917]">
                   {proofScore}
                 </p>
-                <p className="text-xs font-black uppercase tracking-[0.12em] text-[#7C3AED]">
+                <p className="text-xs font-black uppercase tracking-[0.12em] text-[#3F6212]">
                   / 100
                 </p>
               </div>
             </div>
           </div>
-          <h3 className="mt-4 text-lg font-black tracking-[-0.03em] text-[#07030D]">
+          <h3 className="mt-4 text-lg font-black tracking-[-0.03em] text-[#1C1917]">
             Proof Score
           </h3>
-          <p className="mt-1 text-sm font-bold text-[#5B21B6]">{getScoreLabel(proofScore)}</p>
+          <p className="mt-1 text-sm font-bold text-[#365314]">{getScoreLabel(proofScore)}</p>
         </div>
 
         <div className="min-w-0">
           <div className="flex min-w-0 items-start gap-3">
             <div
               aria-hidden="true"
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#5B21B6]"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#365314]"
             >
               <ShieldCheck className="h-5 w-5" />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+              <p className="text-sm font-black uppercase tracking-[0.14em] text-[#3F6212]">
                 Proof reputation
               </p>
-              <p className="mt-2 text-sm leading-6 text-[#6F657C]">
+              <p className="mt-2 text-sm leading-6 text-[#78716C]">
                 Proof score is designed to reflect approved proof, completed outcomes,
                 delivery reliability, and client review signals.
               </p>
@@ -181,15 +181,15 @@ export function ProviderProofScoreCard({
             ))}
           </div>
 
-          <div className="mt-5 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+          <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
             <div className="flex flex-wrap items-center gap-2">
-              <Award aria-hidden="true" className="h-5 w-5 text-[#7C3AED]" />
-              <p className="text-sm font-black text-[#07030D]">Score breakdown foundation</p>
+              <Award aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />
+              <p className="text-sm font-black text-[#1C1917]">Score breakdown foundation</p>
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
               {breakdownItems.map((item) => (
                 <span
-                  className="rounded-full border border-[#EDE9FE] bg-white px-3 py-1.5 text-xs font-black text-[#5B21B6]"
+                  className="rounded-full border border-[#ECFCCB] bg-white px-3 py-1.5 text-xs font-black text-[#365314]"
                   key={item}
                 >
                   {item}
@@ -197,7 +197,7 @@ export function ProviderProofScoreCard({
               ))}
             </div>
             {!hasProofSignals ? (
-              <p className="mt-3 text-sm leading-6 text-[#6F657C]">
+              <p className="mt-3 text-sm leading-6 text-[#78716C]">
                 {isOwner
                   ? "Complete challenges and submit approved proof to build your proof score."
                   : "Verified proof history will appear as this provider completes reviewed outcomes."}
@@ -219,7 +219,7 @@ export function ProviderProofScoreCard({
   return (
     <Card
       className={cn(
-        "rounded-3xl border-[#E9E2F3] bg-white shadow-[0_18px_58px_rgba(31, 14, 54, 0.07)]",
+        "rounded-3xl border-[#E7E5E4] bg-white shadow-[0_18px_58px_rgba(28, 25, 23, 0.07)]",
         className,
       )}
       padding={compact ? "md" : "lg"}

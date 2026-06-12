@@ -21,10 +21,10 @@ export function OpportunityTable({
   opportunities = [],
 }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#E9E2F3] bg-white">
+    <div className="overflow-hidden rounded-2xl border border-[#E7E5E4] bg-white">
       <div className="overflow-x-auto">
         <table className="min-w-[64rem] table-auto text-left">
-          <thead className="bg-[#F8F4FF] text-xs font-black uppercase tracking-[0.12em] text-[#6F657C]">
+          <thead className="bg-[#FFFBEB] text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
             <tr>
               <th className="px-4 py-3">Opportunity</th>
               <th className="px-4 py-3">Stage</th>
@@ -34,12 +34,12 @@ export function OpportunityTable({
               <th className="px-4 py-3">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#E9E2F3]">
+          <tbody className="divide-y divide-[#E7E5E4]">
             {opportunities.map((opportunity) => (
               <tr key={opportunity.id}>
                 <td className="px-4 py-4 align-top">
-                  <p className="font-black text-[#07030D]">{opportunity.title}</p>
-                  <p className="mt-1 text-sm text-[#6F657C]">{opportunity.challenge?.title || opportunity.client?.fullName || "Manual opportunity"}</p>
+                  <p className="font-black text-[#1C1917]">{opportunity.title}</p>
+                  <p className="mt-1 text-sm text-[#78716C]">{opportunity.challenge?.title || opportunity.client?.fullName || "Manual opportunity"}</p>
                   <div className="mt-2 flex flex-wrap gap-2">
                     <OpportunitySourceBadge source={opportunity.source} />
                     <OpportunityPriorityBadge priority={opportunity.priority} />
@@ -58,16 +58,16 @@ export function OpportunityTable({
                     />
                   </div>
                 </td>
-                <td className="px-4 py-4 align-top text-sm font-black text-[#07030D]">
+                <td className="px-4 py-4 align-top text-sm font-black text-[#1C1917]">
                   {formatOpportunityValue(opportunity.value)}
                 </td>
                 <td className="px-4 py-4 align-top">
-                  <p className="text-sm font-black text-[#07030D]">{opportunity.nextAction?.title || "No next action"}</p>
-                  <p className="mt-1 text-xs font-bold text-[#6F657C]">
+                  <p className="text-sm font-black text-[#1C1917]">{opportunity.nextAction?.title || "No next action"}</p>
+                  <p className="mt-1 text-xs font-bold text-[#78716C]">
                     Due {formatDate(opportunity.nextAction?.dueAt, { fallback: "not scheduled" })}
                   </p>
                 </td>
-                <td className="px-4 py-4 align-top text-sm text-[#6F657C]">
+                <td className="px-4 py-4 align-top text-sm text-[#78716C]">
                   {formatDate(opportunity.lastActivityAt ?? opportunity.updatedAt)}
                 </td>
                 <td className="px-4 py-4 align-top">

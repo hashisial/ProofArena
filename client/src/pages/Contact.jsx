@@ -5,10 +5,10 @@ export function Contact() {
   return (
     <>
       <section className="relative overflow-hidden bg-white py-20 sm:py-24">
-        <div className="absolute right-[8%] top-16 h-72 w-72 rounded-full bg-[#7C3AED]/10 blur-3xl" />
+        <div className="absolute right-[8%] top-16 h-72 w-72 rounded-full bg-[#3F6212]/10 blur-3xl" />
         <div className="relative mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-end lg:px-8">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#7C3AED]">
+            <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#3F6212]">
               Contact
             </p>
             <h1 className="mobile-safe-text mt-5 max-w-4xl text-4xl font-bold leading-[0.98] tracking-[-0.06em] text-black sm:text-6xl lg:text-7xl">

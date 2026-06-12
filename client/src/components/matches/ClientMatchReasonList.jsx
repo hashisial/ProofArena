@@ -11,11 +11,11 @@ export function ClientMatchReasonList({ reasons = [] }) {
   }
 
   return (
-    <div className="rounded-2xl border border-[#7C3AED]/15 bg-[#F5F3FF] p-4">
-      <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">Why this provider matches</p>
+    <div className="rounded-2xl border border-[#3F6212]/15 bg-[#F7FEE7] p-4">
+      <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">Why this provider matches</p>
       <div className="mt-3 grid gap-2">
         {visibleReasons.map((reason, index) => (
-          <div className="flex gap-2 text-sm font-semibold leading-6 text-[#5B21B6]" key={`${reason}-${index}`}>
+          <div className="flex gap-2 text-sm font-semibold leading-6 text-[#365314]" key={`${reason}-${index}`}>
             <CheckCircle2 aria-hidden="true" className="mt-1 h-4 w-4 shrink-0" />
             <p>{reason}</p>
           </div>

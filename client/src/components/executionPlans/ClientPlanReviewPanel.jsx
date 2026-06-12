@@ -18,9 +18,9 @@ import {
 
 function ReviewMetric({ label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
-      <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">{label}</p>
-      <p className="mt-1 break-words text-base font-black text-[#07030D]">{value}</p>
+    <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
+      <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">{label}</p>
+      <p className="mt-1 break-words text-base font-black text-[#1C1917]">{value}</p>
     </div>
   );
 }
@@ -47,8 +47,8 @@ export function ClientPlanReviewPanel({
         <Badge variant="primary">Decision center</Badge>
         <ExecutionPlanStatusBadge status={status} />
       </div>
-      <h2 className="mt-4 text-2xl font-black tracking-normal text-[#07030D]">Review this plan</h2>
-      <p className="mt-2 text-sm leading-6 text-[#6F657C]">
+      <h2 className="mt-4 text-2xl font-black tracking-normal text-[#1C1917]">Review this plan</h2>
+      <p className="mt-2 text-sm leading-6 text-[#78716C]">
         Compare execution confidence, proof structure, price, timeline, and provider fit before making a client decision.
       </p>
 
@@ -62,10 +62,10 @@ export function ClientPlanReviewPanel({
         </div>
       </div>
 
-      <div className="mt-5 rounded-2xl border border-[#6D28D9]/25 bg-[#F8F4FF] p-4">
+      <div className="mt-5 rounded-2xl border border-[#A16207]/25 bg-[#FFFBEB] p-4">
         <div className="flex items-start gap-3">
-          <ShieldAlert aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#6D28D9]" />
-          <p className="text-sm leading-6 text-[#6F657C]">
+          <ShieldAlert aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#A16207]" />
+          <p className="text-sm leading-6 text-[#57534E]">
             Accepting selects the provider for this challenge. Payments, milestone workspace, messaging, and proof review are later-stage workflows.
           </p>
         </div>
@@ -89,7 +89,7 @@ export function ClientPlanReviewPanel({
           </Button>
         </div>
       ) : (
-        <div className="mt-6 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4 text-sm leading-6 text-[#6F657C]">
+        <div className="mt-6 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 text-sm leading-6 text-[#78716C]">
           This plan already has a decision. You can still review the details and compare the decision history.
         </div>
       )}
@@ -102,7 +102,7 @@ export function ClientPlanReviewPanel({
       ) : null}
 
       {challengeId && planId ? (
-        <p className="mt-4 text-xs font-bold leading-5 text-[#6F657C]">
+        <p className="mt-4 text-xs font-bold leading-5 text-[#78716C]">
           Plan record: {planId.slice(0, 8)} for challenge {challengeId.slice(0, 8)}
         </p>
       ) : null}

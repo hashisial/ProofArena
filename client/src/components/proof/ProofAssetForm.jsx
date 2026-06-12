@@ -61,7 +61,7 @@ export function ProofAssetForm({
       ) : null}
 
       <section className="grid gap-4">
-        <h3 className="text-lg font-black text-[#07030D]">Basic info</h3>
+        <h3 className="text-lg font-black text-[#1C1917]">Basic info</h3>
         <Input
           error={errors.title}
           label="Title"
@@ -97,7 +97,7 @@ export function ProofAssetForm({
       </section>
 
       <section className="grid gap-4">
-        <h3 className="text-lg font-black text-[#07030D]">Source</h3>
+        <h3 className="text-lg font-black text-[#1C1917]">Source</h3>
         <Select
           error={errors.sourceType}
           label="Source type"
@@ -138,12 +138,12 @@ export function ProofAssetForm({
           />
         ) : null}
         {errors.file ? (
-          <p className="text-sm font-bold text-[#6D28D9]">{errors.file}</p>
+          <p className="text-sm font-bold text-[#A16207]">{errors.file}</p>
         ) : null}
       </section>
 
       <section className="grid gap-4">
-        <h3 className="text-lg font-black text-[#07030D]">Tags and relation</h3>
+        <h3 className="text-lg font-black text-[#1C1917]">Tags and relation</h3>
         <div className="grid gap-4 sm:grid-cols-2">
           <Input label="Related skills" onChange={(event) => setField("relatedSkillsText", event.target.value)} placeholder="CRM, Lead Cleaning" value={form.relatedSkillsText} />
           <Input label="Related tools" onChange={(event) => setField("relatedToolsText", event.target.value)} placeholder="HubSpot, Google Sheets" value={form.relatedToolsText} />
@@ -153,7 +153,7 @@ export function ProofAssetForm({
       </section>
 
       <section className="grid gap-4">
-        <h3 className="text-lg font-black text-[#07030D]">Visibility</h3>
+        <h3 className="text-lg font-black text-[#1C1917]">Visibility</h3>
         <Select
           label="Visibility"
           onChange={(event) => setField("visibility", event.target.value)}
@@ -163,7 +163,7 @@ export function ProofAssetForm({
         />
       </section>
 
-      <div className="flex flex-col gap-3 border-t border-[#E9E2F3] pt-5 sm:flex-row sm:justify-end">
+      <div className="flex flex-col gap-3 border-t border-[#E7E5E4] pt-5 sm:flex-row sm:justify-end">
         <Button onClick={onCancel} type="button" variant="secondary">
           Cancel
         </Button>

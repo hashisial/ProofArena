@@ -233,14 +233,14 @@ function getStatusLabel(value) {
 
 function StatCard({ icon: Icon, label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4 shadow-[0_14px_36px_rgba(31,14,54,0.05)]">
+    <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4 shadow-[0_14px_36px_rgba(28,25,23,0.05)]">
       <div className="flex items-start gap-3">
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#F5F3FF] text-[#7C3AED]">
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#3F6212]">
           {createElement(Icon, { "aria-hidden": "true", className: "h-5 w-5" })}
         </span>
         <div className="min-w-0">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">{label}</p>
-          <p className="mt-1 break-words text-2xl font-black text-[#07030D]">{value}</p>
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">{label}</p>
+          <p className="mt-1 break-words text-2xl font-black text-[#1C1917]">{value}</p>
         </div>
       </div>
     </div>
@@ -261,25 +261,25 @@ function ChallengeSelectionBrief({ challenge, isLoading }) {
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
         <div>
           <Badge variant="primary">Challenge context</Badge>
-          <h2 className="mt-3 break-words text-2xl font-black tracking-normal text-[#07030D]">
+          <h2 className="mt-3 break-words text-2xl font-black tracking-normal text-[#1C1917]">
             {challenge.title || "Outcome challenge"}
           </h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-[#6F657C]">
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-[#78716C]">
             {challenge.targetOutcome?.outcomeStatement || challenge.shortSummary || "Use this provider center to compare candidates against the challenge outcome."}
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-3 lg:min-w-[32rem]">
-          <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Budget</p>
-            <p className="mt-2 text-sm font-black text-[#07030D]">{formatChallengeBudget(challenge.budget)}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Budget</p>
+            <p className="mt-2 text-sm font-black text-[#1C1917]">{formatChallengeBudget(challenge.budget)}</p>
           </div>
-          <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Timeline</p>
-            <p className="mt-2 text-sm font-black text-[#07030D]">{formatChallengeTimeline(challenge.timeline)}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Timeline</p>
+            <p className="mt-2 text-sm font-black text-[#1C1917]">{formatChallengeTimeline(challenge.timeline)}</p>
           </div>
-          <div className="rounded-2xl border border-[#E9E2F3] bg-white p-4">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Status</p>
-            <p className="mt-2 text-sm font-black capitalize text-[#07030D]">{getStatusLabel(challenge.status)}</p>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-white p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Status</p>
+            <p className="mt-2 text-sm font-black capitalize text-[#1C1917]">{getStatusLabel(challenge.status)}</p>
           </div>
         </div>
       </div>
@@ -320,31 +320,31 @@ function ProviderPipeline({ entries = [], selectedProviderId = "", selectedIdSet
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <Badge variant="secondary">Provider pipeline</Badge>
-          <h2 className="mt-3 text-2xl font-black tracking-normal text-[#07030D]">Recommendation to selection</h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-[#6F657C]">
+          <h2 className="mt-3 text-2xl font-black tracking-normal text-[#1C1917]">Recommendation to selection</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-[#78716C]">
             Move providers through decision stages with explicit actions. Drag and drop is intentionally not required for this foundation.
           </p>
         </div>
       </div>
       <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
         {stages.map((stage, index) => (
-          <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={stage.label}>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={stage.label}>
             <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#6F657C]">Step {index + 1}</p>
-                <h3 className="mt-1 text-lg font-black text-[#07030D]">{stage.label}</h3>
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Step {index + 1}</p>
+                <h3 className="mt-1 text-lg font-black text-[#1C1917]">{stage.label}</h3>
               </div>
               <Badge variant={stage.items.length > 0 ? "primary" : "gray"}>{stage.items.length}</Badge>
             </div>
-            <p className="mt-3 text-sm leading-6 text-[#6F657C]">{stage.description}</p>
+            <p className="mt-3 text-sm leading-6 text-[#78716C]">{stage.description}</p>
             <div className="mt-4 grid gap-2">
               {stage.items.slice(0, 3).map((entry) => (
-                <p className="truncate rounded-full bg-white px-3 py-2 text-xs font-black text-[#07030D]" key={`${stage.label}-${getProviderId(entry.provider)}`}>
+                <p className="truncate rounded-full bg-white px-3 py-2 text-xs font-black text-[#1C1917]" key={`${stage.label}-${getProviderId(entry.provider)}`}>
                   {getProviderName(entry.provider)}
                 </p>
               ))}
               {stage.items.length > 3 ? (
-                <p className="text-xs font-bold text-[#6F657C]">+{stage.items.length - 3} more</p>
+                <p className="text-xs font-bold text-[#78716C]">+{stage.items.length - 3} more</p>
               ) : null}
             </div>
           </div>
@@ -639,10 +639,10 @@ export function RecommendedProviders() {
             <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
               <div>
                 <Badge variant="primary">Provider ranking</Badge>
-                <h2 className="mt-3 text-2xl font-black tracking-normal text-[#07030D]">
+                <h2 className="mt-3 text-2xl font-black tracking-normal text-[#1C1917]">
                   {isShortlistedRoute ? "Shortlisted providers" : "Ranked provider candidates"}
                 </h2>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-[#6F657C]">
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-[#78716C]">
                   Rankings prioritize selected, shortlisted, compared, match score, proof score, and provider name. Missing data stays visible as not available.
                 </p>
               </div>
@@ -664,7 +664,7 @@ export function RecommendedProviders() {
               </div>
             </div>
 
-            <div className="mt-5 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
+            <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
               <RecommendedProviderFilters
                 filters={filters}
                 onChange={setFilters}
@@ -732,7 +732,7 @@ export function RecommendedProviders() {
               >
                 Compare Selected Providers
               </Button>
-              <p className="text-sm leading-6 text-[#6F657C]">
+              <p className="text-sm leading-6 text-[#78716C]">
                 Selection is confirmed by accepting a submitted execution plan. Contracts, payments, and milestone workspace are intentionally not enabled here.
               </p>
             </CardContent>
@@ -750,14 +750,14 @@ export function RecommendedProviders() {
                 .filter((entry) => isSelectedEntry(entry, selectedProviderId))
                 .slice(0, 1)
                 .map((entry) => (
-                  <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4" key={getProviderId(entry.provider)}>
-                    <p className="font-black text-[#07030D]">{getProviderName(entry.provider)}</p>
-                    <p className="mt-2 text-sm leading-6 text-[#6F657C]">{entry.provider.headline || "Selected execution partner."}</p>
+                  <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={getProviderId(entry.provider)}>
+                    <p className="font-black text-[#1C1917]">{getProviderName(entry.provider)}</p>
+                    <p className="mt-2 text-sm leading-6 text-[#78716C]">{entry.provider.headline || "Selected execution partner."}</p>
                     {entry.plan ? <ExecutionPlanStatusBadge className="mt-3" status={entry.plan.status} /> : null}
                   </div>
                 ))}
               {!selectedProviderId ? (
-                <p className="text-sm leading-6 text-[#6F657C]">
+                <p className="text-sm leading-6 text-[#78716C]">
                   Select a provider only after reviewing their execution plan and proof-backed signals.
                 </p>
               ) : null}
@@ -799,13 +799,13 @@ export function RecommendedProviders() {
         title="Select provider"
       >
         <div className="grid gap-4">
-          <p className="text-sm leading-6 text-[#6F657C]">
+          <p className="text-sm leading-6 text-[#78716C]">
             This accepts the provider execution plan and marks the provider as the preferred execution partner. This does not create a contract, process payment, open messaging, or start milestone tracking.
           </p>
           {selectionEntry ? (
-            <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-4">
-              <p className="font-black text-[#07030D]">{getProviderName(selectionEntry.provider)}</p>
-              <p className="mt-2 text-sm text-[#6F657C]">{selectionEntry.plan?.title || "Execution plan"}</p>
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <p className="font-black text-[#1C1917]">{getProviderName(selectionEntry.provider)}</p>
+              <p className="mt-2 text-sm text-[#78716C]">{selectionEntry.plan?.title || "Execution plan"}</p>
             </div>
           ) : null}
         </div>

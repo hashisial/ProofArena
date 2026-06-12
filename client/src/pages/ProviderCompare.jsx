@@ -87,19 +87,19 @@ export function ProviderCompare() {
   }
 
   return (
-    <section className="min-w-0 bg-[#F8F4FF] py-8 text-[#07030D] sm:py-12 lg:py-14">
+    <section className="min-w-0 bg-[#FFFBEB] py-8 text-[#1C1917] sm:py-12 lg:py-14">
       <Container>
         <div className="mx-auto grid max-w-7xl gap-6 pb-20">
-          <section className="rounded-[2rem] border border-[#7C3AED]/16 bg-[linear-gradient(135deg,#ffffff,#F8F4FF)] p-6 shadow-[0_24px_80px_rgba(31,14,54,0.08)] md:p-8">
+          <section className="rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
             <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
               <div className="min-w-0">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
                   Provider comparison engine
                 </p>
-                <h1 className="mt-3 break-words text-4xl font-black tracking-normal text-[#07030D] md:text-5xl">
+                <h1 className="mt-3 break-words text-4xl font-black tracking-normal text-[#1C1917] md:text-5xl">
                   Compare providers by proof-backed signals.
                 </h1>
-                <p className="mt-4 max-w-3xl text-sm font-semibold leading-6 text-[#6F657C]">
+                <p className="mt-4 max-w-3xl text-sm font-semibold leading-6 text-[#78716C]">
                   Review public proof score, completed outcomes, availability, outcome offers,
                   skills, categories, and reputation signals side-by-side.
                 </p>
@@ -160,17 +160,17 @@ export function ProviderCompare() {
           {providers.length >= 2 ? (
             <>
               <Card className="rounded-3xl" padding="lg">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
                   Comparison summary
                 </p>
-                <h2 className="mt-1 text-2xl font-black tracking-normal text-[#07030D]">
+                <h2 className="mt-1 text-2xl font-black tracking-normal text-[#1C1917]">
                   What stands out
                 </h2>
                 {summary.length ? (
                   <ul className="mt-4 grid gap-3">
                     {summary.map((item) => (
                       <li
-                        className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] px-4 py-3 text-sm font-semibold leading-6 text-[#493C5E]"
+                        className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] px-4 py-3 text-sm font-semibold leading-6 text-[#44403C]"
                         key={item}
                       >
                         {item}
@@ -178,7 +178,7 @@ export function ProviderCompare() {
                     ))}
                   </ul>
                 ) : (
-                  <p className="mt-3 text-sm font-semibold leading-6 text-[#6F657C]">
+                  <p className="mt-3 text-sm font-semibold leading-6 text-[#78716C]">
                     Summary highlights will appear when comparable public proof and offer data is available.
                   </p>
                 )}
@@ -197,10 +197,10 @@ export function ProviderCompare() {
 
               <Card className="rounded-3xl" padding="lg">
                 <div className="mb-5">
-                  <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
                     Side-by-side matrix
                   </p>
-                  <h2 className="mt-1 text-2xl font-black tracking-normal text-[#07030D]">
+                  <h2 className="mt-1 text-2xl font-black tracking-normal text-[#1C1917]">
                     Provider decision table
                   </h2>
                 </div>

@@ -26,20 +26,20 @@ export function AdminModerationQueue({ items = [] }) {
             <CardTitle>Moderation queue</CardTitle>
             <CardDescription>Pending and flagged records requiring an admin decision.</CardDescription>
           </div>
-          <ShieldAlert aria-hidden="true" className="h-5 w-5 shrink-0 text-[#6D28D9]" />
+          <ShieldAlert aria-hidden="true" className="h-5 w-5 shrink-0 text-[#A16207]" />
         </div>
       </CardHeader>
       <div className="mt-5">
         {items.length ? (
-          <div className="divide-y divide-[#E9E2F3]">
+          <div className="divide-y divide-[#E7E5E4]">
             {items.map((item) => (
               <div className="flex flex-col gap-3 py-4 first:pt-0 sm:flex-row sm:items-center sm:justify-between" key={`${item.resourceType}-${item.id}`}>
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
-                    <p className="font-black text-[#07030D]">{getItemTitle(item)}</p>
+                    <p className="font-black text-[#1C1917]">{getItemTitle(item)}</p>
                     <AdminStatusBadge status={item.moderation?.status} />
                   </div>
-                  <p className="mt-1 text-xs font-bold uppercase tracking-[0.1em] text-[#6F657C]">
+                  <p className="mt-1 text-xs font-bold uppercase tracking-[0.1em] text-[#78716C]">
                     {item.resourceType?.replaceAll("-", " ")} · {formatDate(item.updatedAt)}
                   </p>
                 </div>

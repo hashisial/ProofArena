@@ -5,12 +5,12 @@ import { ProviderVerificationBadge } from "./ProviderVerificationBadge.jsx";
 
 function ProofStat({ icon: Icon, label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] p-3">
+    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
       <div className="flex items-center gap-2">
-        {createElement(Icon, { "aria-hidden": "true", className: "h-4 w-4 text-[#7C3AED]" })}
-        <p className="text-xs font-black uppercase tracking-[0.12em] text-[#6F657C]">{label}</p>
+        {createElement(Icon, { "aria-hidden": "true", className: "h-4 w-4 text-[#3F6212]" })}
+        <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">{label}</p>
       </div>
-      <p className="mt-2 text-2xl font-black text-[#07030D]">{value}</p>
+      <p className="mt-2 text-2xl font-black text-[#1C1917]">{value}</p>
     </div>
   );
 }
@@ -60,10 +60,10 @@ export function ProviderProofSummary({ provider = {} }) {
     <div className="grid gap-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#7C3AED]">
+          <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
             Proof summary
           </p>
-          <p className="mt-2 text-sm font-semibold leading-6 text-[#6F657C]">
+          <p className="mt-2 text-sm font-semibold leading-6 text-[#78716C]">
             {hasProof
               ? "Reputation is based on approved proof and completed outcomes."
               : "Proof metrics will appear as this provider completes verified outcomes."}

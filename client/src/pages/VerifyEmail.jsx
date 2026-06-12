@@ -89,7 +89,7 @@ function ResendVerificationForm() {
       ) : null}
 
       {successMessage ? (
-        <p className="rounded-2xl border border-[#7C3AED]/20 bg-[#F5F3FF] px-4 py-3 text-sm font-semibold text-[#5B21B6]">
+        <p className="rounded-2xl border border-[#3F6212]/20 bg-[#F7FEE7] px-4 py-3 text-sm font-semibold text-[#365314]">
           {successMessage}
         </p>
       ) : null}
@@ -145,9 +145,9 @@ export function VerifyEmail() {
   const isError = status === "error";
 
   return (
-    <Card className="border-[#E9E2F3] shadow-[0_24px_80px_rgba(124, 58, 237, 0.12)]" padding="lg" variant="elevated">
+    <Card className="border-[#E7E5E4] shadow-[0_24px_80px_rgba(63, 98, 18, 0.12)]" padding="lg" variant="elevated">
       <CardHeader>
-        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
           Email verification
         </p>
 
@@ -200,7 +200,7 @@ export function VerifyEmail() {
 
       <CardContent>
         {isLoading ? (
-          <div className="rounded-2xl border border-[#7C3AED]/20 bg-[#F5F3FF] px-4 py-4 text-sm font-semibold leading-6 text-[#5B21B6]">
+          <div className="rounded-2xl border border-[#3F6212]/20 bg-[#F7FEE7] px-4 py-4 text-sm font-semibold leading-6 text-[#365314]">
             Verifying your account now.
           </div>
         ) : null}
@@ -230,14 +230,14 @@ export function VerifyEmail() {
               </Button>
             ) : null}
             {showResendForm ? <ResendVerificationForm /> : null}
-            <Link className="text-center text-sm font-semibold text-[#5B21B6] transition hover:text-[#7C3AED] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/70" to={ROUTES.LOGIN}>
+            <Link className="text-center text-sm font-semibold text-[#365314] transition hover:text-[#3F6212] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" to={ROUTES.LOGIN}>
               Back to Login
             </Link>
           </div>
         ) : null}
 
         {isSuccess && isAuthenticated ? (
-          <p className="mt-5 rounded-2xl border border-[#E9E2F3] bg-[#F8F4FF] px-4 py-3 text-sm font-semibold text-[#6F657C]">
+          <p className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] px-4 py-3 text-sm font-semibold text-[#57534E]">
             Your current session has been updated with verified email status.
           </p>
         ) : null}
