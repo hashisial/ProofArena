@@ -2,10 +2,10 @@ import { API_BASE_URL } from "../../services/apiClient.js";
 import { formatCurrency } from "../../utils/formatCurrency.js";
 
 export const READINESS_LABELS = Object.freeze([
-  { label: "Strong first-client setup", min: 90 },
-  { label: "Ready to apply", min: 70 },
-  { label: "Getting ready", min: 40 },
-  { label: "Not ready yet", min: 0 },
+  { label: "Ready For First Win", min: 86 },
+  { label: "Client Ready", min: 61 },
+  { label: "Getting Ready", min: 31 },
+  { label: "Just Starting", min: 0 },
 ]);
 
 export const STARTER_LEVEL_LABELS = Object.freeze({

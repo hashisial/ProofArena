@@ -178,6 +178,7 @@ export function ProviderDashboard() {
   }
 
   const todayActionsData = {
+    firstClientStatus: firstClientQuery.isError || !firstClientQuery.data ? null : firstClientStatus,
     matches: matchesQuery.isError || !matchesQuery.data ? null : matches,
     offers: offersQuery.isError || !offersQuery.data ? null : offers,
     opportunities: opportunitiesQuery.isError || !opportunitiesQuery.data ? null : opportunities,
@@ -191,14 +192,14 @@ export function ProviderDashboard() {
 
   return (
     <div className="grid gap-8">
-      <section className="relative overflow-hidden rounded-[2rem] border border-[#7C3AED]/16 bg-[linear-gradient(135deg,#ffffff,#F8F4FF)] p-6 shadow-[0_24px_80px_rgba(31,14,54,0.08)] md:p-8">
+      <section className="relative overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#FFFBEB)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div>
             <Badge variant="primary">Provider acquisition home</Badge>
-            <h1 className="mt-5 max-w-4xl break-words text-3xl font-black tracking-normal text-[#07030D] sm:text-4xl md:text-5xl">
+            <h1 className="mt-5 max-w-4xl break-words text-3xl font-black tracking-normal text-[#1C1917] sm:text-4xl md:text-5xl">
               Provider Dashboard
             </h1>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-[#493C5E]">
+            <p className="mt-4 max-w-3xl text-base leading-8 text-[#44403C]">
               Track matched challenges, execution plans, proof assets, opportunities, and next actions from one acquisition home.
             </p>
           </div>
@@ -214,10 +215,10 @@ export function ProviderDashboard() {
       </section>
 
       {hasError ? (
-        <Card className="flex flex-col gap-3 border-[#6D28D9]/25 bg-[#FEF3C7] sm:flex-row sm:items-center sm:justify-between" padding="sm" variant="bordered">
+        <Card className="flex flex-col gap-3 border-[#A16207]/25 bg-[#FEF3C7] sm:flex-row sm:items-center sm:justify-between" padding="sm" variant="bordered">
           <div>
-            <p className="font-black text-[#4C1D95]">Some acquisition data could not be refreshed.</p>
-            <p className="mt-1 text-sm text-[#4C1D95]">Available dashboard data is still shown below.</p>
+            <p className="font-black text-[#854D0E]">Some acquisition data could not be refreshed.</p>
+            <p className="mt-1 text-sm text-[#854D0E]">Available dashboard data is still shown below.</p>
           </div>
           <Button onClick={() => queries.filter((query) => query.isError).forEach((query) => query.refetch())} type="button" variant="outline">
             Retry failed sections
@@ -227,8 +228,8 @@ export function ProviderDashboard() {
 
       <section aria-labelledby="provider-priority-center">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">Provider priority center</p>
-          <h2 id="provider-priority-center" className="mt-2 text-2xl font-black tracking-normal text-[#07030D]">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">Provider priority center</p>
+          <h2 id="provider-priority-center" className="mt-2 text-2xl font-black tracking-normal text-[#1C1917]">
             Know what to fix and do next
           </h2>
         </div>
@@ -242,8 +243,8 @@ export function ProviderDashboard() {
 
       <section aria-labelledby="provider-dashboard-stats">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7C3AED]">Acquisition overview</p>
-          <h2 id="provider-dashboard-stats" className="mt-2 text-2xl font-black tracking-normal text-[#07030D]">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">Acquisition overview</p>
+          <h2 id="provider-dashboard-stats" className="mt-2 text-2xl font-black tracking-normal text-[#1C1917]">
             Pipeline at a glance
           </h2>
         </div>

@@ -35,6 +35,7 @@ function sortActions(actions = []) {
 }
 
 export function buildProviderActions({
+  firstClientStatus = null,
   matches = null,
   offers = null,
   opportunities = null,
@@ -51,6 +52,7 @@ export function buildProviderActions({
     ? 0
     : Number(opportunityStats.overdue ?? 0) + Number(opportunityStats.dueSoon ?? 0);
   const shortlistedCount = plans?.filter((plan) => plan.status === "shortlisted").length ?? 0;
+  const firstClientShortlisted = Boolean(firstClientStatus?.checklist?.shortlistedOnce);
   const hasSubmittedPlan = plans?.some((plan) =>
     ["accepted", "archived", "expired", "rejected", "shortlisted", "submitted", "viewed", "withdrawn"].includes(plan.status),
   );
@@ -113,6 +115,21 @@ export function buildProviderActions({
       priority: "high",
       route: ROUTES.OPPORTUNITY_PIPELINE,
       title: "Follow up on shortlisted opportunity",
+    });
+  }
+
+  if (
+    firstClientStatus !== null &&
+    !firstClientShortlisted &&
+    shortlistedCount === 0
+  ) {
+    actions.push({
+      ctaLabel: "View Starter Challenges",
+      description: "Apply to beginner-friendly opportunities to create the first shortlist signal.",
+      icon: "shortlist",
+      priority: "medium",
+      route: ROUTES.STARTER_CHALLENGES,
+      title: "Apply to beginner-friendly opportunities",
     });
   }
 
