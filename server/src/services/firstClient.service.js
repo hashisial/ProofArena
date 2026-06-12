@@ -308,6 +308,9 @@ function buildReadiness({
 
 function sanitizeChallenge(challenge = {}) {
   return {
+    applicationStats: {
+      totalPlans: Number(challenge.applicationStats?.totalPlans ?? 0),
+    },
     budget: publicBudget(challenge.budget ?? {}),
     category: challenge.category ?? "",
     client: challenge.client ?? null,

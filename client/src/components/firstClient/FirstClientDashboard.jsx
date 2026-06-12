@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { ArrowRight, FileCheck2, PackagePlus, RefreshCw, Target } from "lucide-react";
 import { Link } from "react-router-dom";
 import { PageHeader } from "../common/PageHeader.jsx";
@@ -14,7 +14,11 @@ import {
   useRefreshFirstClientStatus,
   useStarterChallenges,
 } from "../../features/firstClient/useFirstClient.js";
-import { useMyMatchedChallenges } from "../../features/matches/useMatches.js";
+import { getMatchApiErrorMessage } from "../../features/matches/matchUtils.js";
+import {
+  useMyMatchedChallenges,
+  useUpdateProviderMatchStatus,
+} from "../../features/matches/useMatches.js";
 import { useMyOutcomeOffers } from "../../features/outcomeOffers/useOutcomeOffers.js";
 import { useMyProfile } from "../../features/profile/useProfile.js";
 import { useMyProofAssets } from "../../features/proofAssets/useProofAssets.js";
@@ -215,6 +219,7 @@ function buildCommandCenterState({
 }
 
 export function FirstClientDashboard() {
+  const [matchActionError, setMatchActionError] = useState("");
   const statusQuery = useFirstClientStatus();
   const refreshMutation = useRefreshFirstClientStatus();
   const starterQuery = useStarterChallenges({ limit: 6, sort: "best_match" });
@@ -223,6 +228,7 @@ export function FirstClientDashboard() {
   const offersQuery = useMyOutcomeOffers({ limit: 50, sort: "newest" });
   const plansQuery = useMyExecutionPlans({ limit: 50, sort: "newest" });
   const matchesQuery = useMyMatchedChallenges({ limit: 50, sort: "best" });
+  const matchStatusMutation = useUpdateProviderMatchStatus();
   const starterChallenges = starterQuery.data?.items ?? [];
   const commandCenter = useMemo(
     () => {
@@ -269,6 +275,26 @@ export function FirstClientDashboard() {
       matchesQuery.refetch();
     } catch {
       // Error messaging is handled by the status card below.
+    }
+  }
+
+  async function handleSaveMatch(match) {
+    if (!match?.id || String(match.status ?? "").toLowerCase() === "saved") {
+      return;
+    }
+
+    setMatchActionError("");
+
+    try {
+      await matchStatusMutation.mutateAsync({
+        id: match.id,
+        payload: { status: "saved" },
+      });
+      statusQuery.refetch();
+    } catch (error) {
+      setMatchActionError(
+        getMatchApiErrorMessage(error, "This matched challenge could not be saved. Please try again."),
+      );
     }
   }
 
@@ -358,11 +384,16 @@ export function FirstClientDashboard() {
       </Card>
 
       <FirstClientChallengeFeed
+        actionError={matchActionError}
         challenges={starterChallenges}
         error={starterQuery.error}
         isError={starterQuery.isError}
         isLoading={starterQuery.isLoading}
+        matches={matches}
+        onSaveMatch={handleSaveMatch}
         onRetry={() => starterQuery.refetch()}
+        profileSkills={commandCenter.profileSkills}
+        savingMatchId={matchStatusMutation.isPending ? matchStatusMutation.variables?.id : ""}
       />
 
       <MicroWinBadgeGrid badges={status.badges ?? []} />

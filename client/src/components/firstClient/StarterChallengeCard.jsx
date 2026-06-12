@@ -1,4 +1,4 @@
-import { ArrowRight, Clock3, FileText, Target } from "lucide-react";
+import { ArrowRight, Bookmark, BookmarkCheck, Clock3, FileText, Target } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   buildChallengeViewPath,
@@ -11,6 +11,7 @@ import {
 import { Badge } from "../ui/Badge.jsx";
 import { Button } from "../ui/Button.jsx";
 import { Card } from "../ui/Card.jsx";
+import { MatchScoreBadge } from "../matches/MatchScoreBadge.jsx";
 
 function Detail({ label, value }) {
   return (
@@ -21,20 +22,30 @@ function Detail({ label, value }) {
   );
 }
 
-export function StarterChallengeCard({ challenge }) {
+export function StarterChallengeCard({
+  challenge,
+  isSaving = false,
+  match = null,
+  onSave,
+}) {
   const starter = challenge?.starterChallenge ?? {};
   const skills = Array.isArray(challenge?.skillsNeeded) ? challenge.skillsNeeded.slice(0, 5) : [];
+  const totalPlans = Number(challenge?.applicationStats?.totalPlans ?? 0);
+  const isSaved = String(match?.status ?? "").toLowerCase() === "saved";
 
   return (
     <Card className="grid gap-5" variant="bordered">
-      <div className="flex flex-wrap items-center gap-2">
-        <Badge variant="primary">
-          {STARTER_LEVEL_LABELS[starter.level] ?? "Starter"}
-        </Badge>
-        <Badge variant="secondary">
-          {PROOF_SIMPLICITY_LABELS[starter.proofSimplicity] ?? "Proof scoped"}
-        </Badge>
-        {challenge?.category ? <Badge variant="outline">{challenge.category}</Badge> : null}
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge variant="primary">
+            {STARTER_LEVEL_LABELS[starter.level] ?? "Starter"}
+          </Badge>
+          <Badge variant="secondary">
+            {PROOF_SIMPLICITY_LABELS[starter.proofSimplicity] ?? "Proof scoped"}
+          </Badge>
+          {challenge?.category ? <Badge variant="outline">{challenge.category}</Badge> : null}
+        </div>
+        {match ? <MatchScoreBadge score={match.matchScore} /> : null}
       </div>
 
       <div>
@@ -54,12 +65,16 @@ export function StarterChallengeCard({ challenge }) {
         </div>
       ) : null}
 
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Detail label="Budget" value={formatStarterBudget(challenge?.budget)} />
         <Detail label="Timeline" value={formatStarterTimeline(challenge?.timeline)} />
         <Detail
           label="Estimated"
           value={starter.estimatedHours ? `${starter.estimatedHours} hours` : "Small scope"}
+        />
+        <Detail
+          label="Plans received"
+          value={totalPlans === 0 ? "None yet" : totalPlans}
         />
       </div>
 
@@ -75,6 +90,23 @@ export function StarterChallengeCard({ challenge }) {
       </div>
 
       <div className="flex flex-col gap-3 border-t border-[#E7E5E4] pt-5 sm:flex-row sm:flex-wrap">
+        {match?.id ? (
+          <Button
+            disabled={isSaved}
+            isLoading={isSaving}
+            loadingLabel="Saving..."
+            onClick={() => onSave?.(match)}
+            type="button"
+            variant="outline"
+          >
+            {isSaved ? (
+              <BookmarkCheck aria-hidden="true" className="h-4 w-4" />
+            ) : (
+              <Bookmark aria-hidden="true" className="h-4 w-4" />
+            )}
+            {isSaved ? "Saved" : "Save Match"}
+          </Button>
+        ) : null}
         <Button as={Link} to={buildChallengeViewPath(challenge)} variant="secondary">
           <Clock3 aria-hidden="true" className="h-4 w-4" />
           View Challenge

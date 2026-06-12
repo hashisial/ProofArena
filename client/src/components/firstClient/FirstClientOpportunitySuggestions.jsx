@@ -62,6 +62,9 @@ export function FirstClientOpportunitySuggestions({
     ["beginner", "easy"].includes(challenge?.starterChallenge?.level) ||
     challenge?.starterChallenge?.proofSimplicity === "simple",
   );
+  const noPlanStarter = [...starterChallenges]
+    .filter((challenge) => Number(challenge?.applicationStats?.totalPlans ?? 0) === 0)
+    .sort((left, right) => scoreChallenge(right, profileSkills) - scoreChallenge(left, profileSkills))[0];
   const bestMatch = [...matches]
     .filter((match) => match?.challenge)
     .sort((left, right) => Number(right.matchScore ?? 0) - Number(left.matchScore ?? 0))[0];
@@ -69,6 +72,11 @@ export function FirstClientOpportunitySuggestions({
     bestStarter ? suggestionFromStarter(bestStarter, "Best first opportunity", profileSkills) : null,
     easiestStarter && easiestStarter.id !== bestStarter?.id
       ? suggestionFromStarter(easiestStarter, "Easiest entry opportunity", profileSkills)
+      : null,
+    noPlanStarter &&
+    noPlanStarter.id !== bestStarter?.id &&
+    noPlanStarter.id !== easiestStarter?.id
+      ? suggestionFromStarter(noPlanStarter, "No plans submitted yet", profileSkills)
       : null,
     bestMatch ? suggestionFromMatch(bestMatch) : null,
   ].filter(Boolean);
