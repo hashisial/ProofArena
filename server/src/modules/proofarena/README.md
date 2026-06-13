@@ -5,6 +5,10 @@ existing ScaleOps API. It is not a second server and must not duplicate
 existing routes, controllers, services, models, middleware, validators, or
 platform adapters.
 
+Shared ScaleOps infrastructure must not import this module. When this module
+gains executable code, expose cross-module behavior from a public `index.js`
+instead of allowing imports into private implementation folders.
+
 ## Current Ownership
 
 ProofArena currently spans established domains including challenges,
@@ -49,4 +53,5 @@ it coordinates multiple ProofArena domains as one tested use case.
 
 Move one complete vertical slice at a time. Preserve `/api/v1` contracts,
 update all imports, and verify permissions and public/private data behavior
-before retiring compatibility paths.
+before retiring compatibility paths. Run the server boundary check before each
+migration.

@@ -4,8 +4,10 @@ import {
   ACCOUNT_STATUS_VALUES,
   USER_ROLE_VALUES,
 } from "../constants/index.js";
+import { applyBaseSchemaConfig } from "./base.model.js";
 
 const saltRounds = 12;
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const legacyRoleMap = {
   user: "client",
 };
@@ -48,6 +50,8 @@ const userSchema = new mongoose.Schema(
       required: true,
       trim: true,
       lowercase: true,
+      maxlength: 254,
+      match: emailPattern,
     },
     password: {
       type: String,
@@ -202,7 +206,7 @@ userSchema.pre("validate", function normalizeIdentityFields() {
     this.accountStatus = "suspended";
   }
 
-  if (["suspended", "deleted"].includes(this.accountStatus)) {
+  if (["banned", "deleted", "suspended"].includes(this.accountStatus)) {
     this.isSuspended = true;
   }
 
@@ -246,7 +250,28 @@ userSchema.pre("save", async function hashPassword() {
 });
 
 userSchema.methods.comparePassword = function comparePassword(candidatePassword) {
+  if (!candidatePassword || !this.password) {
+    return false;
+  }
+
   return bcrypt.compare(candidatePassword, this.password);
+};
+
+userSchema.methods.toPublicJSON = function toPublicJSON() {
+  const fullName = this.fullName ?? this.name ?? "";
+  const emailVerified = Boolean(
+    this.emailVerified || this.isEmailVerified || this.isVerified,
+  );
+
+  return {
+    id: this._id?.toString?.() ?? this.id,
+    accountStatus: this.accountStatus ?? "active",
+    avatar: this.avatar ?? "",
+    emailVerified,
+    name: this.name ?? fullName,
+    role: this.role ?? "client",
+    username: this.username ?? "",
+  };
 };
 
 userSchema.index({ createdAt: -1 });
@@ -256,5 +281,7 @@ userSchema.index({ passwordResetToken: 1 });
 userSchema.index({ refreshTokenHash: 1 });
 userSchema.index({ accountStatus: 1, role: 1 });
 userSchema.index({ emailVerificationToken: 1 });
+
+applyBaseSchemaConfig(userSchema);
 
 export const User = mongoose.model("User", userSchema);

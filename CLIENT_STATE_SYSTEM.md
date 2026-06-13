@@ -23,6 +23,7 @@ Owns shared application-shell and transient UI state:
 - `activeModal`
 - `commandMenuOpen`
 - `pageTitle`
+- `themePreference`
 
 Canonical sidebar and mobile-menu actions:
 
@@ -37,6 +38,9 @@ state. This is intentional for the current single-shell-at-a-time routing
 model. Split these preferences only if both shells need independent persisted
 behavior.
 
+The theme preference is a non-persisted placeholder and does not currently
+change the approved global theme.
+
 ### `useAuthStore.js`
 
 Owns lightweight authenticated-session coordination:
@@ -46,6 +50,8 @@ Owns lightweight authenticated-session coordination:
 - Role
 - Authentication/checking status
 - Authentication errors
+- Explicit auth status (`checking`, `authenticated`, `unauthenticated`, or
+  `error`)
 
 It must not become the owner of the full editable profile, public provider
 profile, or profile analytics. Those remain React Query data.
@@ -68,8 +74,22 @@ Owns ephemeral realtime notification UI coordination:
 - Notification panel visibility
 - Unread count
 - Latest realtime notification
+- Transient toast queue and actions
 
 Notification history and paginated notification records remain in React Query.
+`ToastProvider` remains the visual presentation and timeout layer.
+
+### `useProofArenaStore.js`
+
+Owns the minimal cross-page ProofArena active workspace-role placeholder:
+
+- `activeRole`
+- `setActiveRole`
+- `clearActiveRole`
+
+This role is a UI preference only. Authorization continues to use the
+authenticated user and server-side permission checks. ProofArena API records
+remain in React Query.
 
 ### `authSession.js`
 

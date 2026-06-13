@@ -19,7 +19,9 @@ directories so future domains can migrate safely as tested vertical slices.
   server/                    Express/Mongoose application
   ARCHITECTURE_AUDIT.md      Current-state architecture findings
   FOUNDATION_PLAN.md         Incremental target architecture
+  MODULE_BOUNDARIES.md       Import directions and ownership rules
   PROJECT_STRUCTURE.md       Canonical structure and ownership rules
+  scripts/                   Repository-wide architecture checks
 ```
 
 There is one client root and one server root. A standalone ProofArena root
@@ -208,4 +210,5 @@ Before moving or consolidating existing files:
 6. Remove compatibility files only after import scans confirm zero consumers.
 
 See `ARCHITECTURE_AUDIT.md` for current risks and `FOUNDATION_PLAN.md` for the
-phased consolidation strategy.
+phased consolidation strategy. Run `npm run check:boundaries` from both
+`client/` and `server/` before merging structural changes.

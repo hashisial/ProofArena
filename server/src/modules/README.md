@@ -15,3 +15,6 @@ tested vertical slice. Shared platform capabilities such as database,
 security, queues, payments, storage, email, and realtime remain outside
 product modules.
 
+Modules expose cross-module behavior through a public `index.js` only after
+real module code exists. Shared infrastructure must never import a product
+module. Run `npm run check:boundaries` before merging architecture changes.

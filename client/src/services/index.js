@@ -18,4 +18,12 @@ export {
 } from "./apiClient.js";
 export { isApiResponseEnvelope, parseApiResponse, unwrapApiResponse } from "./apiContracts.js";
 export { ApiError, normalizeApiError } from "./apiErrors.js";
+export {
+  AppError,
+  ERROR_MESSAGES,
+  getDefaultErrorMessage,
+  getUserErrorMessage,
+  getValidationErrors,
+  normalizeError,
+} from "../errors/index.js";
 export { buildQueryString, mapCollectionItems, mapItemsResponse } from "./shared/index.js";

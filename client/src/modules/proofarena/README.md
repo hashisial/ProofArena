@@ -2,7 +2,12 @@
 
 This directory is the product boundary for ProofArena inside the existing
 ScaleOps client. It is not a separate application and does not own a second
-router, API client, state store, layout system, or UI library.
+router, API client, layout system, or UI library. Minimal cross-page module UI
+state is coordinated by the canonical `store/useProofArenaStore.js`.
+
+The module's public import surface is `modules/proofarena/index.js`. Code
+outside this directory must use that entry point instead of importing private
+module files.
 
 ## Current Ownership
 
@@ -53,12 +58,13 @@ belong to one domain.
 
 ## Hook Ownership
 
-`modules/proofarena/hooks/useProofArenaModule.js` exposes stable module identity
-and enabled status only. Future cross-feature module coordination belongs
-there only after real consumers exist. Domain queries and mutations remain in
-their established feature hooks.
+`modules/proofarena/hooks/useProofArenaModule.js` exposes stable module identity,
+enabled status, and the active workspace-role preference from the canonical
+store. Domain queries and mutations remain in their established feature hooks.
 
 ## Migration Rule
 
 Migrate one vertical domain at a time only after its routes, API contracts, and
 permissions have regression coverage. Do not create compatibility copies.
+Feature domains may be composed by ProofArena, but they must not import the
+ProofArena product module.

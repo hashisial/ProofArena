@@ -2,6 +2,7 @@ export const USER_ROLES = Object.freeze({
   ADMIN: "admin",
   CLIENT: "client",
   PROVIDER: "provider",
+  SUPPORT: "support",
   USER: "user",
 });
 
@@ -11,6 +12,7 @@ export const USER_ROLE_VALUES = Object.freeze([
   USER_ROLES.ADMIN,
   USER_ROLES.CLIENT,
   USER_ROLES.PROVIDER,
+  USER_ROLES.SUPPORT,
 ]);
 
 export const PUBLIC_REGISTER_ROLE_VALUES = Object.freeze([

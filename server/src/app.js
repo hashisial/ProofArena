@@ -2,7 +2,8 @@ import express from "express";
 import path from "path";
 import { env } from "./config/env.js";
 import { stripeWebhook } from "./controllers/billingController.js";
-import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import { errorHandler } from "./errors/errorHandler.js";
+import { notFoundHandler } from "./errors/notFoundHandler.js";
 import { requestLogger } from "./middleware/requestLogger.middleware.js";
 import { sanitizeRequest } from "./middleware/sanitizeMiddleware.js";
 import { applySecurityMiddleware } from "./middleware/security.middleware.js";
@@ -91,5 +92,5 @@ app.get("/api", (_req, res) => {
 app.use("/api/v1", v1Routes);
 app.use("/api", apiRoutes);
 
-app.use(notFound);
+app.use(notFoundHandler);
 app.use(errorHandler);

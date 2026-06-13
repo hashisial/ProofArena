@@ -13,6 +13,8 @@ export function isStrongPassword(password) {
   );
 }
 
+export const isValidPassword = isStrongPassword;
+
 export function isValidUsername(username) {
   return /^[a-zA-Z0-9_-]{3,30}$/.test(String(username ?? "").trim());
 }

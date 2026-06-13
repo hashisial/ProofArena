@@ -37,7 +37,7 @@ export async function protectAdmin(request, response, next) {
         return;
       }
 
-      if (admin.isSuspended || ["deleted", "suspended"].includes(admin.accountStatus)) {
+      if (admin.isSuspended || ["banned", "deleted", "suspended"].includes(admin.accountStatus)) {
         next(new AppError("Admin account is not available", 403));
         return;
       }

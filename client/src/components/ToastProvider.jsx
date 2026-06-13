@@ -1,37 +1,47 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { ToastContext } from "../hooks/useToast.js";
+import { useNotificationStore } from "../store/useNotificationStore.js";
 
 const toneClasses = {
   error: "border-[#3F6212]/30 bg-[#F7FEE7] text-[#365314]",
+  info: "border-[#3F6212]/20 bg-white text-[#1C1917]",
   success: "border-[#3F6212]/25 bg-[#3F6212] text-white",
+  warning: "border-[#A16207]/25 bg-[#FFFBEB] text-[#713F12]",
 };
 
 export function ToastProvider({ children }) {
-  const [toasts, setToasts] = useState([]);
+  const timersRef = useRef(new Map());
+  const addToast = useNotificationStore((state) => state.addToast);
+  const removeToast = useNotificationStore((state) => state.removeToast);
+  const toasts = useNotificationStore((state) => state.toasts);
 
-  const removeToast = useCallback((toastId) => {
-    setToasts((currentToasts) =>
-      currentToasts.filter((toast) => toast.id !== toastId),
-    );
-  }, []);
+  useEffect(() => {
+    const activeToastIds = new Set(toasts.map((toast) => toast.id));
 
-  const showToast = useCallback(
-    ({ message, type = "success" }) => {
-      const toastId = crypto.randomUUID();
+    timersRef.current.forEach((timer, toastId) => {
+      if (!activeToastIds.has(toastId)) {
+        window.clearTimeout(timer);
+        timersRef.current.delete(toastId);
+      }
+    });
 
-      setToasts((currentToasts) => [
-        ...currentToasts,
-        {
-          id: toastId,
-          message,
-          type,
-        },
-      ]);
+    toasts.forEach((toast) => {
+      if (toast.duration > 0 && !timersRef.current.has(toast.id)) {
+        const timer = window.setTimeout(() => removeToast(toast.id), toast.duration);
+        timersRef.current.set(toast.id, timer);
+      }
+    });
+  }, [removeToast, toasts]);
 
-      window.setTimeout(() => removeToast(toastId), 4500);
+  useEffect(
+    () => () => {
+      timersRef.current.forEach((timer) => window.clearTimeout(timer));
+      timersRef.current.clear();
     },
-    [removeToast],
+    [],
   );
+
+  const showToast = useCallback((toast) => addToast(toast), [addToast]);
 
   const contextValue = useMemo(() => ({ showToast }), [showToast]);
 

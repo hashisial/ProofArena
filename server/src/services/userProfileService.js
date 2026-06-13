@@ -52,7 +52,7 @@ function getAccountStatus(user = {}) {
 function assertProfileAccountAvailable(user) {
   const accountStatus = getAccountStatus(user);
 
-  if (accountStatus === "deleted") {
+  if (["banned", "deleted"].includes(accountStatus)) {
     throw new AppError("Profile not found", 404);
   }
 

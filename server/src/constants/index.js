@@ -38,6 +38,7 @@ export {
 
 export const ACCOUNT_STATUS = Object.freeze({
   ACTIVE: "active",
+  BANNED: "banned",
   DELETED: "deleted",
   PENDING: "pending",
   SUSPENDED: "suspended",

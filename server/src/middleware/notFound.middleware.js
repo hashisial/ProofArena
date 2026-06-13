@@ -1,1 +1,4 @@
-export { notFound as default, notFound as notFoundHandler } from "./errorMiddleware.js";
+export {
+  notFoundHandler as default,
+  notFoundHandler,
+} from "../errors/notFoundHandler.js";

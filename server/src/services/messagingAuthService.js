@@ -65,7 +65,7 @@ export async function getMessagingPrincipalFromToken(token, { allowVirtualAdmin 
       .select("_id accountStatus accountType avatar email fullName isSuspended name role username")
       .lean();
 
-    if (!admin || admin.isSuspended || ["deleted", "suspended"].includes(admin.accountStatus)) {
+    if (!admin || admin.isSuspended || ["banned", "deleted", "suspended"].includes(admin.accountStatus)) {
       throw new AppError("Admin access revoked or account suspended", 403);
     }
 
@@ -83,7 +83,7 @@ export async function getMessagingPrincipalFromToken(token, { allowVirtualAdmin 
     .select("_id accountStatus accountType avatar email fullName isSuspended name role username")
     .lean();
 
-  if (!user || user.isSuspended || ["deleted", "suspended"].includes(user.accountStatus)) {
+  if (!user || user.isSuspended || ["banned", "deleted", "suspended"].includes(user.accountStatus)) {
     throw new AppError("User access revoked or account suspended", 403);
   }
 

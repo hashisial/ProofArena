@@ -1,5 +1,6 @@
 import { validationResult } from "express-validator";
-import { AppError } from "../utils/AppError.js";
+import { AppError } from "../errors/AppError.js";
+import { ERROR_CODES } from "../errors/errorCodes.js";
 
 export function validateRequest(request, response, next) {
   const result = validationResult(request);
@@ -14,5 +15,5 @@ export function validateRequest(request, response, next) {
     message: validationError.msg,
   }));
 
-  next(new AppError("Validation failed", 400, errors));
+  next(new AppError("Validation failed", 400, errors, ERROR_CODES.VALIDATION_ERROR));
 }

@@ -152,8 +152,6 @@ apiClient.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config ?? {};
-    const responseData = error.response?.data;
-    const isNetworkError = error.message === "Network Error" || error.code === "ERR_NETWORK";
     const requestUrl = String(originalRequest.url ?? "");
     const canAttemptRefresh =
       error.response?.status === 401 &&
@@ -193,14 +191,8 @@ apiClient.interceptors.response.use(
       }
     }
 
-    const message =
-      responseData?.message ??
-      (isNetworkError
-        ? "API server is unreachable. Check that the backend is deployed and VITE_API_BASE_URL points to its origin or API base URL."
-        : error.message) ??
-      "Unable to complete the request";
-    const status = error.response?.status ?? (isNetworkError ? 503 : 500);
-    const normalizedError = normalizeApiError(error, message);
+    const normalizedError = normalizeApiError(error);
+    const { message, status } = normalizedError;
 
     if (shouldClearStaleAuth(status, message, requestUrl)) {
       useAuthStore.getState().clearAuth();

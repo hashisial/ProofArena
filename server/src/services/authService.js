@@ -262,7 +262,7 @@ function verifyRefreshToken(refreshToken) {
 function assertAccountCanAuthenticate(user) {
   const accountStatus = user.accountStatus ?? (user.isSuspended ? "suspended" : "active");
 
-  if (accountStatus === "deleted") {
+  if (["banned", "deleted"].includes(accountStatus)) {
     throw new AppError("Account is not available", 403);
   }
 

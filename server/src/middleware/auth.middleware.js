@@ -18,7 +18,7 @@ function getAccountStatus(user) {
 function assertActiveAccount(user) {
   const accountStatus = getAccountStatus(user);
 
-  if (accountStatus === "deleted") {
+  if (["banned", "deleted"].includes(accountStatus)) {
     throw new AppError("Account is not available", 403);
   }
 

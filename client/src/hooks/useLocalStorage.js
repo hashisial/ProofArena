@@ -1,4 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
+import {
+  getStorageItem,
+  removeStorageItem,
+  setStorageItem,
+} from "../utils/storage.js";
 
 function resolveInitialValue(initialValue) {
   return typeof initialValue === "function" ? initialValue() : initialValue;
@@ -9,9 +14,14 @@ function readStorageValue(key, initialValue, deserialize) {
     return resolveInitialValue(initialValue);
   }
 
+  const storedValue = getStorageItem(key);
+
+  if (storedValue === null) {
+    return resolveInitialValue(initialValue);
+  }
+
   try {
-    const storedValue = window.localStorage.getItem(key);
-    return storedValue === null ? resolveInitialValue(initialValue) : deserialize(storedValue);
+    return deserialize(storedValue);
   } catch {
     return resolveInitialValue(initialValue);
   }
@@ -56,9 +66,7 @@ export function useLocalStorage(key, initialValue, options = {}) {
           typeof nextValue === "function" ? nextValue(currentValue) : nextValue;
 
         if (typeof window !== "undefined") {
-          try {
-            window.localStorage.setItem(key, serialize(resolvedValue));
-          } catch {
+          if (!setStorageItem(key, serialize(resolvedValue))) {
             return currentValue;
           }
         }
@@ -71,9 +79,7 @@ export function useLocalStorage(key, initialValue, options = {}) {
 
   const removeValue = useCallback(() => {
     if (typeof window !== "undefined") {
-      try {
-        window.localStorage.removeItem(key);
-      } catch {
+      if (!removeStorageItem(key)) {
         return;
       }
     }

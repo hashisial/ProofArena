@@ -1,7 +1,10 @@
 import { z } from "zod";
-import { PUBLIC_REGISTER_ROLE_VALUES } from "../constants/index.js";
+import {
+  ACCOUNT_STATUS_VALUES,
+  PUBLIC_REGISTER_ROLE_VALUES,
+  USER_ROLE_VALUES,
+} from "../constants/index.js";
 
-const usernamePattern = /^[a-z0-9_-]+$/;
 const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
 const tokenPattern = /^[A-Za-z0-9._~+/=-]+$/;
 
@@ -13,7 +16,27 @@ const requiredString = (message) =>
 
 const emailSchema = requiredString("Email is required.")
   .email("Please enter a valid email address.")
+  .max(254, "Email must be 254 characters or fewer.")
   .toLowerCase();
+
+function sanitizeUsername(value) {
+  return String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9._-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 32);
+}
+
+const optionalUsernameSchema = z.preprocess(
+  (value) => (typeof value === "string" && value.trim() === "" ? undefined : value),
+  z
+    .string({ error: "Username must be text." })
+    .transform(sanitizeUsername)
+    .refine((value) => value.length >= 3, "Username must be 3-32 characters.")
+    .refine((value) => value.length <= 32, "Username must be 3-32 characters.")
+    .optional(),
+);
 
 const strongPasswordSchema = z
   .string({ error: "Password is required." })
@@ -27,6 +50,15 @@ const authTokenSchema = requiredString("Token is required.")
   .regex(tokenPattern, "Token is invalid.");
 
 const emptyBodySchema = z.object({}).strict();
+export const userRoleSchema = z.enum(USER_ROLE_VALUES, {
+  error: "Role must be admin, client, provider, or support.",
+});
+export const accountStatusSchema = z.enum(ACCOUNT_STATUS_VALUES, {
+  error: "Account status is invalid.",
+});
+const publicRegisterRoleSchema = z.enum(PUBLIC_REGISTER_ROLE_VALUES, {
+  error: "Public registration is limited to client or provider accounts.",
+});
 
 export const registerSchema = z
   .object({
@@ -45,20 +77,10 @@ export const registerSchema = z
       .max(80, "Full name must be 80 characters or fewer.")
       .optional(),
     password: strongPasswordSchema,
-    role: z.enum(PUBLIC_REGISTER_ROLE_VALUES, {
-      error: "Admin accounts cannot be created through public registration.",
-    }),
-    username: requiredString("Username is required.")
-      .toLowerCase()
-      .min(3, "Username must be 3-30 characters.")
-      .max(30, "Username must be 3-30 characters.")
-      .regex(usernamePattern, "Username can only contain letters, numbers, underscores, and hyphens."),
+    role: publicRegisterRoleSchema,
+    username: optionalUsernameSchema,
   })
   .strict()
-  .refine((value) => value.role !== "admin", {
-    message: "Admin accounts cannot be created through public registration.",
-    path: ["role"],
-  })
   .refine((value) => Boolean(value.fullName || value.name), {
     message: "Full name is required.",
     path: ["fullName"],
@@ -145,3 +167,11 @@ export const authSchemas = Object.freeze({
   verifyEmail: verifyEmailSchema,
   verifyEmailParams: verifyEmailParamsSchema,
 });
+
+export {
+  authTokenSchema,
+  emailSchema,
+  publicRegisterRoleSchema,
+  sanitizeUsername,
+  strongPasswordSchema,
+};

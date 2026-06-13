@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getUserErrorMessage } from "../errors/normalizeError.js";
 import { useAdminLogin } from "../hooks/useAdminLogin.js";
 import { logoutUser, refreshUserSession } from "../services/api.js";
 import {
@@ -76,9 +77,7 @@ export function AdminGate({ children }) {
       setToken(response.token);
       setCredentials({ email: "", password: "" });
     } catch (error) {
-      setErrorMessage(
-        error.response?.data?.message ?? error.message ?? "Unable to log in as admin.",
-      );
+      setErrorMessage(getUserErrorMessage(error, "Unable to log in as admin."));
     }
   }
 

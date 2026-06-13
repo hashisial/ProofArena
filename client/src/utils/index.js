@@ -6,5 +6,6 @@ export * from "./formatFileSize.js";
 export * from "./formatNumber.js";
 export * from "./getInitials.js";
 export * from "./slugify.js";
+export * from "./storage.js";
 export * from "./truncateText.js";
 export * from "./validators.js";

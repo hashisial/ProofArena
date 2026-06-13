@@ -4,30 +4,17 @@ import {
   MAX_COMPARE_PROVIDERS,
   ProviderComparisonContext,
 } from "./providerComparisonState.js";
+import { getJsonStorageItem, setJsonStorageItem } from "../../utils/storage.js";
 
 const comparisonStorageKey = "proofarena.providerComparison.selected";
 const savedComparisonsStorageKey = "proofarena.providerComparison.saved";
 
 function readJsonStorage(key, fallback) {
-  if (typeof window === "undefined") {
-    return fallback;
-  }
-
-  try {
-    const parsed = JSON.parse(window.localStorage.getItem(key) || "");
-
-    return parsed ?? fallback;
-  } catch {
-    return fallback;
-  }
+  return getJsonStorageItem(key, fallback);
 }
 
 function writeJsonStorage(key, value) {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  window.localStorage.setItem(key, JSON.stringify(value));
+  setJsonStorageItem(key, value);
 }
 
 function normalizeProviderSnapshot(provider = {}) {

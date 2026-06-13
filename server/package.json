@@ -7,6 +7,7 @@
     "node": ">=20"
   },
   "scripts": {
+    "check:boundaries": "node ../scripts/check-module-boundaries.mjs server",
     "dev": "nodemon src/server.js",
     "start": "node src/server.js"
   },

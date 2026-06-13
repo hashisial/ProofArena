@@ -11,9 +11,12 @@ Rules:
 
 - ScaleOps remains the application root.
 - ProofArena remains a module inside ScaleOps.
+- Import a module from its public `index.js`; do not reach into another
+  module's private folders.
 - New module code must reuse `components/ui`, `services/apiClient.js`,
   centralized constants, and React Query feature hooks.
 - Do not import another module's private implementation.
+- Feature domains must not import product-composition modules.
+- Run `npm run check:boundaries` before merging architecture changes.
 - Do not move active files into a module without updating all consumers and
   passing lint, build, and runtime checks.
-

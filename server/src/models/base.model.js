@@ -2,12 +2,15 @@ const SENSITIVE_MODEL_FIELDS = Object.freeze([
   "__v",
   "adminNotes",
   "emailVerificationToken",
+  "emailVerificationExpires",
   "internalNotes",
   "password",
   "passwordResetExpires",
   "passwordResetToken",
   "refreshToken",
+  "refreshTokenExpiresAt",
   "refreshTokenHash",
+  "refreshTokenVersion",
   "twoFactorSecret",
 ]);
 

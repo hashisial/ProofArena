@@ -1,5 +1,6 @@
 import { ZodError } from "zod";
-import { errorResponse } from "../utils/apiResponse.js";
+import { AppError } from "../errors/AppError.js";
+import { ERROR_CODES } from "../errors/errorCodes.js";
 
 function formatZodErrors(error) {
   return error.issues.map((issue) => ({
@@ -13,7 +14,14 @@ function validatePart(source, schema) {
     const result = schema.safeParse(request[source] ?? {});
 
     if (!result.success) {
-      return errorResponse(response, 400, "Validation failed", formatZodErrors(result.error));
+      return next(
+        new AppError(
+          "Validation failed",
+          400,
+          formatZodErrors(result.error),
+          ERROR_CODES.VALIDATION_ERROR,
+        ),
+      );
     }
 
     if (source === "query") {
@@ -38,7 +46,14 @@ export const validate = (schema) => (request, response, next) => {
   const result = schema.safeParse(request);
 
   if (!result.success) {
-    return errorResponse(response, 400, "Validation failed", formatZodErrors(result.error));
+    return next(
+      new AppError(
+        "Validation failed",
+        400,
+        formatZodErrors(result.error),
+        ERROR_CODES.VALIDATION_ERROR,
+      ),
+    );
   }
 
   return next();
@@ -71,7 +86,9 @@ export function validateRequest({ body, params, query }) {
     }
 
     if (errors.length > 0) {
-      return errorResponse(response, 400, "Validation failed", errors);
+      return next(
+        new AppError("Validation failed", 400, errors, ERROR_CODES.VALIDATION_ERROR),
+      );
     }
 
     return next();

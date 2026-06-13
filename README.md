@@ -14,6 +14,14 @@ Long-term product direction:
 - `client`: React and Vite product experience
 - `server`: Express and MongoDB API
 
+## Architecture
+
+- [Canonical Architecture](ARCHITECTURE.md)
+- [Stage 1 Completion Report](STAGE_1_COMPLETION_REPORT.md)
+- [Project Structure](PROJECT_STRUCTURE.md)
+- [Module Boundaries](MODULE_BOUNDARIES.md)
+- [Environment Setup](ENVIRONMENT_SETUP.md)
+
 ## Local Development
 
 Environment setup and validation rules are documented in
@@ -30,3 +38,6 @@ cd client
 npm install
 npm run dev
 ```
+
+Before merging structural changes, run `npm run check:boundaries` from both
+application directories.
