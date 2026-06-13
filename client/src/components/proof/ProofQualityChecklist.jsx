@@ -22,7 +22,7 @@ export function ProofQualityChecklist({ asset }) {
           {quality.checks.map((item) => {
             const Icon = item.complete ? CheckCircle2 : CircleX;
             return (
-              <li className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={item.key}>
+              <li className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={item.key}>
                 <div className="flex items-start gap-3">
                   <Icon aria-hidden="true" className={`mt-0.5 h-5 w-5 shrink-0 ${item.complete ? "text-[#3F6212]" : "text-[#A16207]"}`} />
                   <div>

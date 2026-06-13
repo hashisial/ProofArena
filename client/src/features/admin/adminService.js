@@ -1,5 +1,6 @@
 import { API_ENDPOINTS } from "../../constants/index.js";
 import { api } from "../../services/apiClient.js";
+import { buildQueryString } from "../../services/shared/index.js";
 
 const resourceEndpoints = Object.freeze({
   challenges: API_ENDPOINTS.ADMIN.CHALLENGES,
@@ -16,18 +17,6 @@ const moderationEndpoints = Object.freeze({
   providers: API_ENDPOINTS.ADMIN.PROVIDER_MODERATION,
 });
 
-function buildQuery(params = {}) {
-  const query = new URLSearchParams();
-
-  Object.entries(params).forEach(([key, value]) => {
-    if (value !== undefined && value !== null && value !== "" && value !== "all") {
-      query.set(key, String(value));
-    }
-  });
-
-  return query.toString();
-}
-
 function normalizeList(result) {
   if (Array.isArray(result)) {
     return { items: result, pagination: { limit: result.length, page: 1, pages: 1, total: result.length } };
@@ -42,7 +31,7 @@ function normalizeList(result) {
 export const adminService = Object.freeze({
   async getList(resource, params = {}) {
     const endpoint = resourceEndpoints[resource];
-    const query = buildQuery(params);
+    const query = buildQueryString(params, { omitValues: ["all"] });
 
     return normalizeList(await api.get(`${endpoint}${query ? `?${query}` : ""}`));
   },

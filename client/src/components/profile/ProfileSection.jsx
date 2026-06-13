@@ -56,7 +56,7 @@ export function ProfileSection({
     <Card
       as={motion.section}
       className={cn(
-        "rounded-3xl border-[#E7E5E4] bg-white shadow-[0_18px_58px_rgba(28, 25, 23, 0.07)] transition hover:border-[#BEF264]/70 hover:shadow-[0_24px_72px_rgba(63, 98, 18, 0.12)]",
+        "rounded-3xl border-[#E7E5E4] bg-white shadow-[0_18px_58px_rgba(28, 25, 23, 0.07)] transition hover:border-[#D9F99D]/70 hover:shadow-[0_24px_72px_rgba(63, 98, 18, 0.12)]",
         className,
       )}
       initial={reduceMotion ? false : { opacity: 0, y: 18 }}

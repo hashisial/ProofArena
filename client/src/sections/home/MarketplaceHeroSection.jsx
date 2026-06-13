@@ -47,7 +47,7 @@ function ProductPreview() {
       padding="none"
       variant="elevated"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(63, 98, 18, 0.14),transparent_30%),linear-gradient(135deg,#FFFFFF_0%,#FFFBEB_52%,#F7FEE7_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(63, 98, 18, 0.14),transparent_30%),linear-gradient(135deg,#FFFFFF_0%,#FEFCE8_52%,#F7FEE7_100%)]" />
       <div className="absolute inset-y-6 left-0 w-1 rounded-r-full bg-[#3F6212]" />
       <div className="relative z-10 p-4 sm:p-5">
         <div className="rounded-[1.5rem] border border-[#ECFCCB] bg-white p-5 sm:p-6">
@@ -69,7 +69,7 @@ function ProductPreview() {
             </span>
           </div>
 
-          <div className="mt-6 rounded-3xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+          <div className="mt-6 rounded-3xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="min-w-0">
                 <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
@@ -109,7 +109,7 @@ function ProductPreview() {
             })}
           </div>
 
-          <div className="mt-5 rounded-3xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+          <div className="mt-5 rounded-3xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
             <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
               Status rows
             </p>
@@ -139,8 +139,8 @@ export function MarketplaceHeroSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative isolate overflow-hidden border-b border-[#E7E5E4] bg-[#FFFBEB]">
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(135deg,#FFFFFF_0%,#FFFBEB_46%,#F7FEE7_100%)]" />
+    <section className="relative isolate overflow-hidden border-b border-[#E7E5E4] bg-[#FEFCE8]">
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(135deg,#FFFFFF_0%,#FEFCE8_46%,#F7FEE7_100%)]" />
       <div className="absolute inset-x-0 top-0 -z-10 h-[36rem] bg-[radial-gradient(circle_at_18%_12%,rgba(63, 98, 18, 0.18),transparent_34%),radial-gradient(circle_at_92%_24%,rgba(101, 163, 13, 0.18),transparent_28%)]" />
       <Container className="grid gap-10 py-14 sm:py-20 lg:min-h-[720px] lg:grid-cols-[minmax(0,0.98fr)_minmax(0,1.02fr)] lg:items-center lg:gap-14 lg:py-24">
         <div className="min-w-0">

@@ -70,7 +70,7 @@ function MobileComparisonCard({ onAccept, onReject, onShortlist, plan }) {
           ["Proof", "proof"],
           ["Risks", "risks"],
         ].map(([label, key]) => (
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3" key={key}>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3" key={key}>
             <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">{label}</p>
             <p className="mt-1 text-sm font-black text-[#1C1917]">{formatReviewMetricValue(plan, key)}</p>
           </div>
@@ -111,7 +111,7 @@ export function ExecutionPlanComparisonTable({
         <div className="overflow-x-auto">
           <table className="w-full min-w-[58rem] border-collapse text-left">
             <caption className="sr-only">Execution plan comparison table</caption>
-            <thead className="bg-[#FFFBEB]">
+            <thead className="bg-[#FEFCE8]">
               <tr className="border-b border-[#E7E5E4]">
                 {["Provider and plan", "Score", "Timeline", "Price", "Proof", "Risks", "Status", "Actions"].map((heading) => (
                   <th className="px-4 py-4 text-xs font-black uppercase tracking-[0.14em] text-[#78716C]" key={heading} scope="col">

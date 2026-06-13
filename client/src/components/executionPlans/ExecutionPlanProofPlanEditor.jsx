@@ -32,7 +32,7 @@ export function ExecutionPlanProofPlanEditor({ error, items = [], onChange }) {
   return (
     <div className="grid gap-4">
       {rows.map((item, index) => (
-        <div className="grid gap-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={index}>
+        <div className="grid gap-4 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={index}>
           <div className="flex items-center justify-between gap-3">
             <p className="font-black text-[#1C1917]">Proof item {index + 1}</p>
             <Button

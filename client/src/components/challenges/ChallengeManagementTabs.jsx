@@ -38,7 +38,7 @@ export function ChallengeManagementTabs({
                 "min-h-11 shrink-0 rounded-xl px-4 text-sm font-black transition focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70",
                 selected
                   ? "bg-[#3F6212] text-white shadow-[0_14px_32px_rgba(63,98,18,0.18)]"
-                  : "bg-[#FFFBEB] text-[#57534E] hover:bg-[#F7FEE7] hover:text-[#365314]",
+                  : "bg-[#FEFCE8] text-[#57534E] hover:bg-[#F7FEE7] hover:text-[#365314]",
               )}
               key={tab.value}
               onClick={() => onChange?.(tab.value)}

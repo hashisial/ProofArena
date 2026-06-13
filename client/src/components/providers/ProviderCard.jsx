@@ -2,7 +2,7 @@ import { MapPin, Tags, UserRoundPlus } from "lucide-react";
 import { Badge } from "../ui/Badge.jsx";
 import { Button } from "../ui/Button.jsx";
 import { Card } from "../ui/Card.jsx";
-import { ROUTES } from "../../constants/index.js";
+import { ROUTES, getProfileRoute } from "../../constants/index.js";
 import { cn, getInitials } from "../../utils/index.js";
 import { ProviderAvailabilityBadge } from "./ProviderAvailabilityBadge.jsx";
 import { ProviderOutcomeOfferPreview } from "./ProviderOutcomeOfferPreview.jsx";
@@ -33,7 +33,7 @@ export function ProviderCard({
 }) {
   const name = getName(provider);
   const username = getUsername(provider);
-  const profileHref = provider.publicProfileUrl || provider.profileUrl || (username ? `/profile/${username}` : "");
+  const profileHref = provider.publicProfileUrl || provider.profileUrl || (username ? getProfileRoute(username) : "");
   const avatar = provider.avatarUrl || provider.avatar || provider.profilePicture || provider.user?.avatar || "";
   const skills = provider.skills ?? [];
   const visibleSkills = skills.slice(0, 5);
@@ -108,7 +108,7 @@ export function ProviderCard({
         </div>
       </div>
 
-      <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+      <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
         <div className="flex flex-wrap items-center gap-2">
           {mainCategory ? <Badge variant="primary">{mainCategory}</Badge> : null}
           {uniqueCategories.slice(mainCategory ? 1 : 0, 3).map((item) => (

@@ -94,7 +94,7 @@ export function SavedProviders() {
 
   return (
     <div className="grid gap-6">
-      <section className="rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
+      <section className="rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fefce8)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
         <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">

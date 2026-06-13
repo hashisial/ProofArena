@@ -62,7 +62,7 @@ export function ExecutionPlanCard({
         {isClient ? (
           <ProviderPlanSummary plan={plan} showProfileLink={false} variant="inline" />
         ) : (
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
             <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Challenge</p>
             <p className="mt-1 font-black text-[#1C1917]">{challenge?.title || "Challenge summary"}</p>
             {challenge?.category ? <p className="mt-2 text-sm font-bold text-[#3F6212]">{challenge.category}</p> : null}
@@ -96,8 +96,8 @@ export function ExecutionPlanCard({
           </div>
         ) : null}
         {!isClient && feedback ? (
-          <div className="rounded-2xl border border-[#A16207]/20 bg-[#FFFBEB] p-4">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#854D0E]">Client feedback</p>
+          <div className="rounded-2xl border border-[#A16207]/20 bg-[#FEFCE8] p-4">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-[#365314]">Client feedback</p>
             <p className="mt-2 text-sm leading-6 text-[#57534E]">{feedback}</p>
           </div>
         ) : null}

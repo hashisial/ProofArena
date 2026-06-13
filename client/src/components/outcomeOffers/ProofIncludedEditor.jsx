@@ -39,7 +39,7 @@ export function ProofIncludedEditor({ error, items = [], onChange }) {
       {error ? <p className="text-sm font-bold text-[#DC2626]" role="alert">{error}</p> : null}
       <div className="grid gap-4">
         {proofItems.map((item, index) => (
-          <div className="grid gap-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={index}>
+          <div className="grid gap-4 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={index}>
             <div className="flex items-start justify-between gap-3">
               <p className="text-sm font-black text-[#3F6212]">Proof item {index + 1}</p>
               <button

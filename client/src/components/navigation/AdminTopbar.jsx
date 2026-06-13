@@ -20,8 +20,9 @@ export function AdminTopbar({ title = "ProofArena Control Center" }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const unreadCount = useNotificationStore((state) => state.unreadCount);
-  const sidebarCollapsed = useUIStore((state) => state.sidebarCollapsed);
-  const toggleSidebarCollapsed = useUIStore((state) => state.toggleSidebarCollapsed);
+  const isMobileMenuOpen = useUIStore((state) => state.isMobileMenuOpen);
+  const isSidebarCollapsed = useUIStore((state) => state.isSidebarCollapsed);
+  const toggleMobileMenu = useUIStore((state) => state.toggleMobileMenu);
   const toggleSidebar = useUIStore((state) => state.toggleSidebar);
   const { logout, user } = useAuth();
   const navigate = useNavigate();
@@ -63,21 +64,23 @@ export function AdminTopbar({ title = "ProofArena Control Center" }) {
     <header className="sticky top-0 z-30 border-b border-[#E7E5E4] bg-white/94 px-4 py-3 backdrop-blur-xl sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl items-center gap-3">
         <button
-          aria-label="Open admin sidebar"
+          aria-controls="admin-sidebar"
+          aria-expanded={isMobileMenuOpen}
+          aria-label={isMobileMenuOpen ? "Close admin sidebar" : "Open admin sidebar"}
           className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E7E5E4] bg-white text-[#44403C] shadow-[0_12px_30px_rgba(28, 25, 23, 0.06)] transition hover:border-[#3F6212]/25 hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12 lg:hidden"
-          onClick={toggleSidebar}
+          onClick={toggleMobileMenu}
           type="button"
         >
           <Menu aria-hidden="true" className="h-5 w-5" />
         </button>
 
         <button
-          aria-label={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
           className="hidden h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E7E5E4] bg-white text-[#44403C] shadow-[0_12px_30px_rgba(28, 25, 23, 0.06)] transition hover:border-[#3F6212]/25 hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12 lg:grid"
-          onClick={toggleSidebarCollapsed}
+          onClick={toggleSidebar}
           type="button"
         >
-          {sidebarCollapsed ? (
+          {isSidebarCollapsed ? (
             <PanelLeftOpen aria-hidden="true" className="h-5 w-5" />
           ) : (
             <PanelLeftClose aria-hidden="true" className="h-5 w-5" />

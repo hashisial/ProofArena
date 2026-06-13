@@ -87,7 +87,7 @@ export function MarketplacePositioningSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFBEB_0%,#F7FEE7_52%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FEFCE8_0%,#F7FEE7_52%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 -z-0 h-96 bg-[radial-gradient(circle_at_80%_20%,rgba(63, 98, 18, 0.16),transparent_32%),radial-gradient(circle_at_12%_80%,rgba(10,10,10,0.05),transparent_28%)]" />
       <Container className="relative z-10">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-end">
@@ -98,7 +98,7 @@ export function MarketplacePositioningSection() {
           />
 
           <MotionDiv
-            className="premium-motion-card rounded-3xl border border-[#65A30D]/30 bg-[#151B0D] p-5 text-white shadow-[0_28px_90px_rgba(18,10,34,0.22)] sm:p-6"
+            className="premium-motion-card rounded-3xl border border-[#65A30D]/30 bg-[#1C1917] p-5 text-white shadow-[0_28px_90px_rgba(18,10,34,0.22)] sm:p-6"
             {...getMotionProps(reduceMotion, 0.08)}
           >
             <div className="flex items-start gap-4">

@@ -8,7 +8,7 @@ export function PlanImprovementTips({ plan }) {
   return (
     <Card as="section" aria-labelledby="plan-improvement-title" id="improvement-tips" padding="lg" variant="muted">
       <div className="flex items-start gap-3">
-        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#FEF3C7] text-[#A16207]">
+        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#ECFCCB] text-[#A16207]">
           <Lightbulb aria-hidden="true" className="h-5 w-5" />
         </span>
         <div>

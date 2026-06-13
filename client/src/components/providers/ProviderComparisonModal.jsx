@@ -38,7 +38,7 @@ export function ProviderComparisonModal({
 
             return (
               <div
-                className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4"
+                className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4"
                 key={getProviderKey(provider)}
               >
                 <p className="text-sm font-black text-[#1C1917]">{getName(provider)}</p>

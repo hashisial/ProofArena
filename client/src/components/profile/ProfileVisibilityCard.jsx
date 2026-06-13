@@ -65,7 +65,7 @@ export function ProfileVisibilityCard({
           </div>
           <p className="mt-2 text-sm leading-6 text-[#78716C]">{meta.text}</p>
           {publicUrl ? (
-            <p className="mt-3 break-all rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] px-3 py-2 text-xs font-bold text-[#44403C]">
+            <p className="mt-3 break-all rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] px-3 py-2 text-xs font-bold text-[#44403C]">
               {publicUrl}
             </p>
           ) : null}

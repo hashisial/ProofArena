@@ -146,7 +146,7 @@ export function ProfilePrivacyPanel({
         </Badge>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+      <div className="mt-6 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
         <Select
           helperText={visibilityDescriptions[form.profileVisibility]}
           label="Profile visibility"

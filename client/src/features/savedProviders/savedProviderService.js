@@ -1,33 +1,12 @@
 import { API_ENDPOINTS } from "../../constants/index.js";
 import { api } from "../../services/apiClient.js";
-
-function buildQuery(params = {}) {
-  const query = new URLSearchParams();
-
-  Object.entries(params).forEach(([key, value]) => {
-    if (value === undefined || value === null || value === "" || value === "all") {
-      return;
-    }
-
-    query.set(key, String(value));
-  });
-
-  return query.toString();
-}
-
-function normalizeResult(result) {
-  if (Array.isArray(result)) {
-    return { items: result };
-  }
-
-  return result ?? { items: [] };
-}
+import { buildQueryString, mapItemsResponse } from "../../services/shared/index.js";
 
 export const savedProviderService = Object.freeze({
   async getMySavedProviders(params = {}) {
-    const query = buildQuery(params);
+    const query = buildQueryString(params, { omitValues: ["all"] });
 
-    return normalizeResult(
+    return mapItemsResponse(
       await api.get(`${API_ENDPOINTS.SAVED_PROVIDERS.BASE}${query ? `?${query}` : ""}`),
     );
   },

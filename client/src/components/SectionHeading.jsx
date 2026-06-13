@@ -9,7 +9,7 @@ export function SectionHeading({
   const alignment = align === "center" ? "mx-auto text-center" : "";
   const titleClass = tone === "light" ? "text-white" : "text-black";
   const descriptionClass = tone === "light" ? "text-white/62" : "text-black/58";
-  const eyebrowClass = tone === "light" ? "text-[#BEF264]" : "text-[#3F6212]";
+  const eyebrowClass = tone === "light" ? "text-[#D9F99D]" : "text-[#3F6212]";
 
   return (
     <div className={`min-w-0 max-w-3xl ${alignment} ${className}`}>

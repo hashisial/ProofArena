@@ -62,7 +62,7 @@ export function TrustBuildingGuide() {
           const Icon = item.icon;
 
           return (
-            <article className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={item.title}>
+            <article className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={item.title}>
               <span className="grid h-10 w-10 place-items-center rounded-2xl bg-white text-[#3F6212]">
                 <Icon aria-hidden="true" className="h-5 w-5" />
               </span>

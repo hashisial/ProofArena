@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../constants/queryKeys.js";
 import { Button } from "../components/Button.jsx";
 import { EmptyState } from "../components/EmptyState.jsx";
 import { LoadingState } from "../components/LoadingState.jsx";
@@ -39,7 +40,7 @@ function getToneClasses(eventType, isUnread) {
   }
 
   if (eventType === "payment_update") {
-    return "border-[#65A30D]/18 bg-[#fffbeb]";
+    return "border-[#65A30D]/18 bg-[#fefce8]";
   }
 
   return "border-black/10 bg-white";
@@ -120,7 +121,7 @@ export function Notifications() {
   const [selectedType, setSelectedType] = useState("");
   const queryClient = useQueryClient();
   const queryKey = useMemo(
-    () => ["notifications", { type: selectedType, unreadOnly: showUnreadOnly }],
+    () => queryKeys.notifications.list({ type: selectedType, unreadOnly: showUnreadOnly }),
     [selectedType, showUnreadOnly],
   );
   const {
@@ -136,22 +137,22 @@ export function Notifications() {
   const markReadMutation = useMutation({
     mutationFn: markNotificationRead,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["notifications"] });
-      queryClient.invalidateQueries({ queryKey: ["notifications", "unread-count"] });
+      queryClient.invalidateQueries({ queryKey: queryKeys.notifications.all });
+      queryClient.invalidateQueries({ queryKey: queryKeys.notifications.unreadCount() });
     },
   });
   const markAllMutation = useMutation({
     mutationFn: markAllNotificationsRead,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["notifications"] });
-      queryClient.invalidateQueries({ queryKey: ["notifications", "unread-count"] });
+      queryClient.invalidateQueries({ queryKey: queryKeys.notifications.all });
+      queryClient.invalidateQueries({ queryKey: queryKeys.notifications.unreadCount() });
     },
   });
   const deleteMutation = useMutation({
     mutationFn: deleteNotification,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["notifications"] });
-      queryClient.invalidateQueries({ queryKey: ["notifications", "unread-count"] });
+      queryClient.invalidateQueries({ queryKey: queryKeys.notifications.all });
+      queryClient.invalidateQueries({ queryKey: queryKeys.notifications.unreadCount() });
     },
   });
   const unreadCount = notifications.filter((notification) => !notification.read).length;
@@ -159,7 +160,7 @@ export function Notifications() {
   return (
     <SaaSLayout eyebrow="Notification center" title="Updates that need attention">
       <section className="grid gap-6">
-        <div className="overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[radial-gradient(circle_at_90%_10%,rgba(63, 98, 18, 0.16),transparent_30%),linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] md:p-8">
+        <div className="overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[radial-gradient(circle_at_90%_10%,rgba(63, 98, 18, 0.16),transparent_30%),linear-gradient(135deg,#ffffff,#fefce8)] p-6 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] md:p-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#3F6212]">

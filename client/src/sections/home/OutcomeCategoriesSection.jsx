@@ -170,7 +170,7 @@ export function OutcomeCategoriesSection() {
                     {category.title}
                   </h3>
                   <p className="mt-3 text-sm leading-7 text-[#57534E]">{category.description}</p>
-                  <div className="mt-5 rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+                  <div className="mt-5 rounded-2xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
                     <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
                       Example outcome
                     </p>
@@ -178,7 +178,7 @@ export function OutcomeCategoriesSection() {
                       {category.example}
                     </p>
                   </div>
-                  <div className="mt-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+                  <div className="mt-4 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                     <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
                       Proof examples
                     </p>

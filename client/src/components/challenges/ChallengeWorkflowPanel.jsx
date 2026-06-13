@@ -89,7 +89,7 @@ export function ChallengeWorkflowPanel({
                     ? "border-[#3F6212]/30 bg-[#F7FEE7]"
                     : isComplete
                       ? "border-[#65A30D]/20 bg-white"
-                      : "border-[#E7E5E4] bg-[#FFFBEB]",
+                      : "border-[#E7E5E4] bg-[#FEFCE8]",
                 )}
                 key={stage.label}
               >
@@ -113,7 +113,7 @@ export function ChallengeWorkflowPanel({
           })}
         </div>
 
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">

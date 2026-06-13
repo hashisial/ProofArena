@@ -192,7 +192,7 @@ function ProviderPreviewPanel() {
           ))}
         </div>
 
-        <div className="mt-6 rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+        <div className="mt-6 rounded-2xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
           <div className="flex items-start gap-3">
             <Star aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#3F6212]" />
             <p className="text-sm font-semibold leading-7 text-[#57534E]">

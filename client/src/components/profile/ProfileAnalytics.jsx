@@ -73,7 +73,7 @@ export function ProfileAnalytics({
       <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {items.map((item) => (
           <div
-            className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 transition hover:border-[#BEF264] hover:bg-white hover:shadow-[0_14px_36px_rgba(63, 98, 18, 0.08)]"
+            className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4 transition hover:border-[#D9F99D] hover:bg-white hover:shadow-[0_14px_36px_rgba(63, 98, 18, 0.08)]"
             key={item.label}
           >
             <item.icon aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />
@@ -88,7 +88,7 @@ export function ProfileAnalytics({
         ))}
       </div>
 
-      <div className="mt-5 rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+      <div className="mt-5 rounded-2xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-sm font-black text-[#1C1917]">

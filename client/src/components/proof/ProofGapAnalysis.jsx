@@ -18,7 +18,7 @@ export function ProofGapAnalysis({ readiness = {} }) {
         {actions.length > 0 ? (
           <ol className="grid gap-3">
             {actions.map((action) => (
-              <li className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={action.key}>
+              <li className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={action.key}>
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">

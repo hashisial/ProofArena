@@ -34,7 +34,7 @@ export function ChallengePreview({ challenge, form }) {
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-[#A16207]">Target outcome</p>
           <p className="mt-2 text-sm font-black leading-6 text-[#1C1917]">
             {preview.targetOutcome?.outcomeStatement || "Define a measurable outcome providers can plan for and prove."}

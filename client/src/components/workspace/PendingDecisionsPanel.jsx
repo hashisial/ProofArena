@@ -27,7 +27,7 @@ export function PendingDecisionsPanel({ challenges = [] }) {
         {decisions.length > 0 ? (
           <ol className="grid gap-3">
             {decisions.map((decision) => (
-              <li className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${decision.challengeId}-${decision.title}`}>
+              <li className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={`${decision.challengeId}-${decision.title}`}>
                 <div className="flex min-w-0 items-start gap-3">
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-[#A16207]">
                     <AlertCircle aria-hidden="true" className="h-5 w-5" />

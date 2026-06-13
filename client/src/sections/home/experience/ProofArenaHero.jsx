@@ -112,14 +112,14 @@ function EcosystemCards() {
             key={card.label}
           >
             <div className="flex items-center justify-between gap-3">
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/10 text-[#BEF264]">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/10 text-[#D9F99D]">
                 <Icon aria-hidden="true" className="h-4 w-4" />
               </span>
               <span className="text-[0.64rem] font-black uppercase text-white/45">
                 Live architecture
               </span>
             </div>
-            <p className="mt-4 text-[0.66rem] font-black uppercase text-[#BEF264]">{card.label}</p>
+            <p className="mt-4 text-[0.66rem] font-black uppercase text-[#D9F99D]">{card.label}</p>
             <h2 className="mt-2 text-sm font-black leading-5 text-white sm:text-base">{card.title}</h2>
             <p className="mt-3 text-xs font-semibold text-white/55">{card.meta}</p>
           </article>
@@ -147,10 +147,10 @@ export function ProofArenaHero() {
   }, []);
 
   return (
-    <section aria-labelledby="proofarena-home-title" className="proof-hero relative min-h-[calc(100svh-4rem)] overflow-hidden bg-[#151B0D] text-white">
+    <section aria-labelledby="proofarena-home-title" className="proof-hero relative min-h-[calc(100svh-4rem)] overflow-hidden bg-[#1C1917] text-white">
       <div className="absolute inset-0 hidden lg:block">
         {showScene && !reduceMotion ? (
-          <Suspense fallback={<div className="h-full w-full bg-[#151B0D]" />}>
+          <Suspense fallback={<div className="h-full w-full bg-[#1C1917]" />}>
             <ProofEcosystemScene />
           </Suspense>
         ) : null}
@@ -169,7 +169,7 @@ export function ProofArenaHero() {
             {...getRevealMotionProps(reduceMotion, { delay: 0.07 })}
           >
             Launch measurable outcomes.
-            <span className="mt-2 block text-[#BEF264]">Verify execution.</span>
+            <span className="mt-2 block text-[#D9F99D]">Verify execution.</span>
           </MotionH1>
           <MotionP
             className="mt-6 max-w-2xl text-base font-semibold leading-8 text-white/68 sm:text-lg"
@@ -186,7 +186,7 @@ export function ProofArenaHero() {
             <div className="min-w-0">
               <Button
                 as="a"
-                className="magnetic-action w-full border-[#BEF264] bg-[#BEF264] text-[#1C1917] hover:border-white hover:bg-white hover:text-[#1C1917]"
+                className="magnetic-action w-full border-[#D9F99D] bg-[#D9F99D] text-[#1C1917] hover:border-white hover:bg-white hover:text-[#1C1917]"
                 href={ROUTES.REGISTER}
               >
                 Create Challenge
@@ -218,7 +218,7 @@ export function ProofArenaHero() {
               const Icon = signal.icon;
               return (
                 <li className="flex items-center gap-2 text-xs font-black text-white/62" key={signal.label}>
-                  <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-[#BEF264]" />
+                  <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-[#D9F99D]" />
                   {signal.label}
                 </li>
               );

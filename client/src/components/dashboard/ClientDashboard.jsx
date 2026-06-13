@@ -198,7 +198,7 @@ export function ClientDashboard() {
 
   return (
     <div className="grid gap-8">
-      <section className="relative overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
+      <section className="relative overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fefce8)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div>
             <Badge variant="primary">Client control center</Badge>
@@ -302,7 +302,7 @@ export function ClientDashboard() {
               ) : savedProviders.length > 0 ? (
                 <div className="grid gap-3">
                   {savedProviders.map((item) => (
-                    <article className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={item.savedProviderId || item.id || getProviderName(item)}>
+                    <article className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={item.savedProviderId || item.id || getProviderName(item)}>
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                         <div className="min-w-0">
                           <div className="flex flex-wrap items-center gap-2">

@@ -3,23 +3,20 @@ import { create } from "zustand";
 export const useUIStore = create((set) => ({
   activeModal: null,
   commandMenuOpen: false,
-  mobileMenuOpen: false,
+  isMobileMenuOpen: false,
+  isSidebarCollapsed: false,
   pageTitle: "",
-  sidebarCollapsed: false,
-  sidebarOpen: false,
   closeCommandMenu: () => set({ commandMenuOpen: false }),
-  closeMobileMenu: () => set({ mobileMenuOpen: false }),
+  closeMobileMenu: () => set({ isMobileMenuOpen: false }),
   closeModal: () => set({ activeModal: null }),
-  closeSidebar: () => set({ sidebarOpen: false }),
   openCommandMenu: () => set({ commandMenuOpen: true }),
-  openMobileMenu: () => set({ mobileMenuOpen: true }),
+  openMobileMenu: () => set({ isMobileMenuOpen: true }),
   openModal: (modalName) => set({ activeModal: modalName }),
-  openSidebar: () => set({ sidebarOpen: true }),
   setPageTitle: (pageTitle) => set({ pageTitle }),
-  setSidebarCollapsed: (sidebarCollapsed) => set({ sidebarCollapsed }),
+  setSidebarCollapsed: (isSidebarCollapsed) =>
+    set({ isSidebarCollapsed: Boolean(isSidebarCollapsed) }),
   toggleMobileMenu: () =>
-    set((state) => ({ mobileMenuOpen: !state.mobileMenuOpen })),
-  toggleSidebarCollapsed: () =>
-    set((state) => ({ sidebarCollapsed: !state.sidebarCollapsed })),
-  toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
+    set((state) => ({ isMobileMenuOpen: !state.isMobileMenuOpen })),
+  toggleSidebar: () =>
+    set((state) => ({ isSidebarCollapsed: !state.isSidebarCollapsed })),
 }));

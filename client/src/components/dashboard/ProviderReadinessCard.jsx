@@ -11,7 +11,7 @@ function ReadinessItem({ complete, label, points }) {
   const variant = complete === true ? "green" : complete === false ? "primary" : "gray";
 
   return (
-    <li className="flex min-w-0 items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+    <li className="flex min-w-0 items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
       <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-[#3F6212]">
         {createElement(Icon, { "aria-hidden": "true", className: "h-4 w-4" })}
       </span>
@@ -98,7 +98,7 @@ export function ProviderReadinessCard({ isLoading = false, proofReadiness = {}, 
                   <p className="mt-2 text-sm leading-6 text-[#78716C]">
                     {proofReadiness?.label ?? "Proof readiness could not be calculated from the current dashboard data."}
                   </p>
-                  <Button as="a" className="mt-3" href={`${ROUTES.PROOF_VAULT}?tab=readiness`} variant="outline">
+                  <Button as="a" className="mt-3" href={ROUTES.PROOF_READINESS} variant="outline">
                     Review Proof Readiness
                   </Button>
                 </div>
@@ -110,7 +110,7 @@ export function ProviderReadinessCard({ isLoading = false, proofReadiness = {}, 
                 ["Strongest area", strongestArea],
                 ["Weakest area", weakestArea],
               ].map(([label, area]) => (
-                <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={label}>
+                <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={label}>
                   <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">{label}</p>
                   <p className="mt-2 text-sm font-black text-[#1C1917]">{area?.label ?? "Not available"}</p>
                   <p className="mt-1 text-xs font-bold text-[#57534E]">
@@ -141,7 +141,7 @@ export function ProviderReadinessCard({ isLoading = false, proofReadiness = {}, 
             ) : null}
 
             {unavailableItems.length > 0 ? (
-              <p className="mt-4 rounded-2xl border border-[#A16207]/25 bg-[#FEF3C7] p-4 text-sm font-bold text-[#854D0E]">
+              <p className="mt-4 rounded-2xl border border-[#A16207]/25 bg-[#ECFCCB] p-4 text-sm font-bold text-[#365314]">
                 Some readiness checks are unavailable because dashboard data could not be loaded.
               </p>
             ) : null}

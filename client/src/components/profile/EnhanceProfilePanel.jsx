@@ -75,7 +75,7 @@ export function EnhanceProfilePanel({
   return (
     <Card
       as="aside"
-      className="rounded-3xl border-[#BEF264]/45 bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFBEB_58%,#F7FEE7_100%)] shadow-[0_24px_80px_rgba(63, 98, 18, 0.12)]"
+      className="rounded-3xl border-[#D9F99D]/45 bg-[linear-gradient(180deg,#FFFFFF_0%,#FEFCE8_58%,#F7FEE7_100%)] shadow-[0_24px_80px_rgba(63, 98, 18, 0.12)]"
       padding="lg"
       variant="elevated"
     >

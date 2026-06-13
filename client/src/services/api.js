@@ -1,6 +1,7 @@
 import { apiClient, apiDelete, apiGet, apiPatch, apiPost, apiPostForm, withAuth } from "./apiClient.js";
-import { API_ENDPOINTS } from "../constants/index.js";
+import { API_ENDPOINTS, DASHBOARD_API } from "../constants/index.js";
 import { authService } from "../features/auth/authService.js";
+import { dashboardService } from "../features/dashboard/dashboardService.js";
 import { profileService } from "../features/profile/profileService.js";
 import {
   DEFAULT_MARKETPLACE_CATEGORIES,
@@ -138,11 +139,11 @@ export async function getMyLeads(sort = "desc") {
 }
 
 export async function getMyDashboard() {
-  return apiGet("/account/dashboard");
+  return dashboardService.getMyDashboard();
 }
 
 export async function getMyActivityFeed() {
-  return getCollection(await apiGet("/account/activity-feed"));
+  return dashboardService.getMyActivityFeed();
 }
 
 export async function getMyProfile() {
@@ -184,23 +185,23 @@ export async function uploadProfileCover(file) {
 }
 
 export async function getSubscriptionPlans() {
-  return getCollection(await apiGet("/billing/plans", { skipUserAuth: true }));
+  return getCollection(await apiGet(DASHBOARD_API.BILLING.PLANS, { skipUserAuth: true }));
 }
 
 export async function getMySubscription() {
-  return apiGet("/billing/subscription");
+  return apiGet(DASHBOARD_API.BILLING.SUBSCRIPTION);
 }
 
 export async function createCheckoutSession(planKey) {
-  return apiPost("/billing/checkout-session", { planKey });
+  return apiPost(DASHBOARD_API.BILLING.CHECKOUT_SESSION, { planKey });
 }
 
 export async function createCustomerPortalSession() {
-  return apiPost("/billing/portal-session", {});
+  return apiPost(DASHBOARD_API.BILLING.PORTAL_SESSION, {});
 }
 
 export async function selectFreePlan() {
-  return apiPost("/billing/select-free", {});
+  return apiPost(DASHBOARD_API.BILLING.SELECT_FREE, {});
 }
 
 export async function createMyLead(leadData) {
@@ -363,23 +364,25 @@ export async function getNotifications({ type = "", unreadOnly = false } = {}) {
   }
 
   const query = params.toString();
-  return getCollection(await apiGet(`/notifications${query ? `?${query}` : ""}`));
+  return getCollection(
+    await apiGet(`${DASHBOARD_API.NOTIFICATIONS.BASE}${query ? `?${query}` : ""}`),
+  );
 }
 
 export async function getUnreadNotificationCount() {
-  return apiGet("/notifications/unread-count");
+  return apiGet(DASHBOARD_API.NOTIFICATIONS.UNREAD_COUNT);
 }
 
 export async function markNotificationRead(notificationId) {
-  return apiPatch(`/notifications/${notificationId}/read`, {});
+  return apiPatch(DASHBOARD_API.NOTIFICATIONS.READ(notificationId), {});
 }
 
 export async function markAllNotificationsRead() {
-  return apiPatch("/notifications/read-all", {});
+  return apiPatch(DASHBOARD_API.NOTIFICATIONS.READ_ALL, {});
 }
 
 export async function deleteNotification(notificationId) {
-  return apiDelete(`/notifications/${encodeURIComponent(notificationId)}`);
+  return apiDelete(DASHBOARD_API.NOTIFICATIONS.DELETE(notificationId));
 }
 
 export async function getPresence(userIds) {
@@ -524,15 +527,15 @@ export async function submitProviderVerification(documents) {
 }
 
 export async function getSavedItems() {
-  return getCollection(await apiGet("/saved"));
+  return getCollection(await apiGet(DASHBOARD_API.SAVED.BASE));
 }
 
 export async function saveItem(savedItemData) {
-  return apiPost("/saved", savedItemData);
+  return apiPost(DASHBOARD_API.SAVED.BASE, savedItemData);
 }
 
 export async function deleteSavedItem(savedItemId) {
-  return apiDelete(`/saved/${encodeURIComponent(savedItemId)}`);
+  return apiDelete(DASHBOARD_API.SAVED.DELETE(savedItemId));
 }
 
 export async function searchMarketplaceServices(filters = {}) {

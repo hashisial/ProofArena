@@ -1,13 +1,13 @@
 import { Inbox } from "lucide-react";
-import { createElement } from "react";
+import { createElement, isValidElement } from "react";
 import { Button } from "./Button.jsx";
 import { cn } from "../../utils/cn.js";
 
 const variants = {
-  bordered: "border border-[#E7E5E4] bg-white shadow-[0_16px_50px_rgba(28, 25, 23, 0.06)]",
-  default: "bg-white",
+  bordered: "border border-[var(--color-border)] bg-[var(--color-card)] shadow-[var(--shadow-soft)]",
+  default: "bg-[var(--color-card)]",
   minimal: "bg-transparent",
-  spotlight: "border border-[#3F6212]/20 bg-[#F7FEE7]/45 shadow-[0_20px_58px_rgba(63, 98, 18, 0.16)]",
+  spotlight: "border border-[var(--color-primary-border)] bg-[var(--color-accent-soft)] shadow-[var(--shadow-primary-glow)]",
 };
 
 const sizes = {
@@ -17,37 +17,47 @@ const sizes = {
 };
 
 export function EmptyState({
+  action,
   actionHref,
   actionText,
   className = "",
   description,
   icon: Icon = Inbox,
   onAction,
+  secondaryAction,
   secondaryActionHref,
   secondaryActionText,
   size = "md",
   title,
   variant = "default",
 }) {
+  const iconContent = Icon
+    ? isValidElement(Icon)
+      ? Icon
+      : createElement(Icon, { className: "h-5 w-5" })
+    : null;
+
   return (
-    <section className={cn("grid justify-items-center rounded-2xl text-center", variants[variant] ?? variants.default, sizes[size] ?? sizes.md, className)}>
-      <div aria-hidden="true" className="grid h-12 w-12 place-items-center rounded-2xl border border-[#3F6212]/20 bg-[#F7FEE7] text-[#3F6212]">
-        {createElement(Icon, { className: "h-5 w-5" })}
-      </div>
-      <h2 className="mt-5 text-2xl font-black tracking-normal text-[#1C1917]">{title}</h2>
-      {description ? <p className="mt-3 max-w-md text-sm leading-6 text-[#78716C]">{description}</p> : null}
-      {(actionText || secondaryActionText) ? (
+    <section className={cn("grid justify-items-center rounded-[var(--radius-card)] text-center", variants[variant] ?? variants.default, sizes[size] ?? sizes.md, className)}>
+      {iconContent ? (
+        <div aria-hidden="true" className="grid h-12 w-12 place-items-center rounded-[var(--radius-card)] border border-[var(--color-primary-border)] bg-[var(--color-accent-soft)] text-[var(--color-primary)]">
+          {iconContent}
+        </div>
+      ) : null}
+      <h2 className="mt-5 text-2xl font-black tracking-normal text-[var(--color-foreground)]">{title}</h2>
+      {description ? <p className="mt-3 max-w-md text-sm leading-6 text-[var(--color-text-muted)]">{description}</p> : null}
+      {(action || actionText || secondaryAction || secondaryActionText) ? (
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          {actionText ? (
+          {action ?? (actionText ? (
             <Button as={actionHref ? "a" : "button"} className="w-full sm:w-auto" href={actionHref} onClick={onAction}>
               {actionText}
             </Button>
-          ) : null}
-          {secondaryActionText ? (
+          ) : null)}
+          {secondaryAction ?? (secondaryActionText ? (
             <Button as="a" className="w-full sm:w-auto" href={secondaryActionHref} variant="outline">
               {secondaryActionText}
             </Button>
-          ) : null}
+          ) : null)}
         </div>
       ) : null}
     </section>

@@ -20,12 +20,12 @@ export function Checkbox({
 
   return (
     <div className={cn("grid gap-2", className)}>
-      <label className="flex gap-3 rounded-2xl border border-[#E7E5E4] bg-white p-4 transition has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-[#3F6212]/10" htmlFor={fieldId}>
+      <label className="flex gap-3 rounded-[var(--radius-input)] border border-[var(--color-border)] bg-[var(--color-card)] p-4 transition duration-[var(--motion-duration-standard)] has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-[var(--color-primary-ring)]" htmlFor={fieldId}>
         <input
           aria-describedby={describedBy}
           aria-invalid={error ? "true" : undefined}
           checked={checked}
-          className="mt-1 h-4 w-4 accent-[#3F6212]"
+          className="mt-1 h-4 w-4 accent-[var(--color-primary)]"
           disabled={disabled}
           id={fieldId}
           onChange={onChange}
@@ -33,11 +33,11 @@ export function Checkbox({
           {...props}
         />
         <span>
-          <span className="block text-sm font-bold text-[#1C1917]">{label}</span>
-          {description ? <span className="mt-1 block text-sm leading-6 text-[#78716C]" id={descriptionId}>{description}</span> : null}
+          <span className="block text-sm font-bold text-[var(--color-foreground)]">{label}</span>
+          {description ? <span className="mt-1 block text-sm leading-6 text-[var(--color-text-muted)]" id={descriptionId}>{description}</span> : null}
         </span>
       </label>
-      {error ? <p className="text-sm font-semibold text-[#DC2626]" id={errorId} role="alert">{error}</p> : null}
+      {error ? <p className="text-sm font-semibold text-[var(--color-danger)]" id={errorId} role="alert">{error}</p> : null}
     </div>
   );
 }

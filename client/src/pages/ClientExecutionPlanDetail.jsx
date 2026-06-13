@@ -43,7 +43,7 @@ function DetailList({ emptyText = "Nothing added yet.", items = [], title, type 
       </CardHeader>
       <CardContent className="grid gap-3">
         {items.length > 0 ? items.map((item, index) => (
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${item.title || item.risk || index}-${index}`}>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={`${item.title || item.risk || index}-${index}`}>
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
               <p className="font-black text-[#1C1917]">{item.title || item.risk || "Review item"}</p>
               {type === "proof" && item.proofType ? (
@@ -144,7 +144,7 @@ function AttachmentsSection({ attachments = [] }) {
         {attachments.length > 0 ? (
           <div className="grid gap-3">
             {attachments.map((attachment, index) => (
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${attachment.title || attachment.url}-${index}`}>
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={`${attachment.title || attachment.url}-${index}`}>
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <p className="font-black text-[#1C1917]">{attachment.title || "Reference"}</p>
@@ -186,7 +186,7 @@ function DecisionHistory({ plan }) {
         {items.length > 0 ? (
           <div className="grid gap-3">
             {items.map(([label, date, note]) => (
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${label}-${date}`}>
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={`${label}-${date}`}>
                 <p className="font-black text-[#1C1917]">{label}</p>
                 <p className="mt-1 text-sm font-bold text-[#78716C]">{formatDateTime(date, { fallback: "Recently" })}</p>
                 {note ? <p className="mt-2 text-sm leading-6 text-[#44403C]">{note}</p> : null}
@@ -283,7 +283,7 @@ export function ClientExecutionPlanDetail() {
           <TextSection eyebrow="Execution approach" title="How this provider plans to deliver">
             <p>{plan.approach || "No detailed approach was provided."}</p>
             {plan.whyThisProvider ? (
-              <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                 <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Provider fit note</p>
                 <p className="mt-2 text-sm leading-6 text-[#44403C]">{plan.whyThisProvider}</p>
               </div>

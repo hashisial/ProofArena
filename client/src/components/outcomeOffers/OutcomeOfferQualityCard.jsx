@@ -36,7 +36,7 @@ export function OutcomeOfferQualityCard({ form, offer }) {
             <p className="text-4xl font-black tracking-[-0.06em] text-[#1C1917]">{score}</p>
             <p className="text-sm font-bold text-[#78716C]">out of 100</p>
           </div>
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] px-3 py-2 text-sm font-black text-[#365314]">
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] px-3 py-2 text-sm font-black text-[#365314]">
             {label}
           </div>
         </div>

@@ -54,7 +54,7 @@ export function ClientRecommendedProvidersCard({
         {isLoading ? (
           <div className="grid gap-3">
             {[0, 1, 2].map((item) => (
-              <div className="h-24 animate-pulse rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB]" key={item} />
+              <div className="h-24 animate-pulse rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8]" key={item} />
             ))}
           </div>
         ) : isError ? (
@@ -70,15 +70,15 @@ export function ClientRecommendedProvidersCard({
         ) : topRecommendations.length > 0 ? (
           <div className="grid gap-4">
             <div className="grid gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                 <p className="text-sm font-bold text-[#78716C]">New recommendations</p>
                 <p className="mt-2 text-2xl font-black text-[#1C1917]">{newRecommendations}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                 <p className="text-sm font-bold text-[#78716C]">Shortlisted</p>
                 <p className="mt-2 text-2xl font-black text-[#1C1917]">{shortlistedCount}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                 <p className="text-sm font-bold text-[#78716C]">Selected provider</p>
                 <p className="mt-2 text-2xl font-black text-[#1C1917]">
                   {hasSelectedProvider ? "Selected" : "None"}
@@ -102,7 +102,7 @@ export function ClientRecommendedProvidersCard({
 
             <div className="grid gap-3">
               {topRecommendations.map((match) => (
-                <article className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={match.id || match.provider?.userId || getProviderName(match)}>
+                <article className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={match.id || match.provider?.userId || getProviderName(match)}>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">

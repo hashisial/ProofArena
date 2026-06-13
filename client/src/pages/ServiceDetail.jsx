@@ -106,7 +106,7 @@ function ProviderAvatar({ avatar, name, size = "lg" }) {
 function ServiceImageGallery({ images, selectedImage, selectedImageIndex, serviceTitle, setSelectedImageIndex }) {
   return (
     <div className="grid gap-3">
-      <div className="relative min-h-[23rem] overflow-hidden rounded-[2rem] bg-[#1A2E05] shadow-[0_26px_80px_rgba(63, 98, 18, 0.2)] sm:min-h-[30rem]">
+      <div className="relative min-h-[23rem] overflow-hidden rounded-[2rem] bg-[#26350F] shadow-[0_26px_80px_rgba(63, 98, 18, 0.2)] sm:min-h-[30rem]">
         {selectedImage ? (
           <img
             alt=""
@@ -118,7 +118,7 @@ function ServiceImageGallery({ images, selectedImage, selectedImageIndex, servic
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/76 via-black/10 to-transparent" />
         <div className="absolute bottom-5 left-5 right-5 rounded-[1.35rem] border border-white/18 bg-white/12 p-4 text-white backdrop-blur-2xl">
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#D9F99D]">Service preview</p>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ECFCCB]">Service preview</p>
           <p className="mt-2 max-w-lg text-xl font-black leading-tight tracking-[-0.04em]">
             {serviceTitle}
           </p>
@@ -129,7 +129,7 @@ function ServiceImageGallery({ images, selectedImage, selectedImageIndex, servic
         {(images.length ? images : [""]).slice(0, 4).map((image, index) => (
           <button
             aria-label={`Show service image ${index + 1}`}
-            className={`relative aspect-[4/3] overflow-hidden rounded-[1rem] border bg-[#1A2E05] transition duration-300 ${
+            className={`relative aspect-[4/3] overflow-hidden rounded-[1rem] border bg-[#26350F] transition duration-300 ${
               selectedImageIndex === index
                 ? "border-[#3F6212] shadow-[0_18px_44px_rgba(63, 98, 18, 0.22)]"
                 : "border-black/10 hover:border-[#3F6212]/45"
@@ -173,7 +173,7 @@ function ProviderMiniProfile({ provider }) {
 
   return (
     <DetailSection eyebrow="Provider" title="Built by a verified marketplace operator.">
-      <div className="grid gap-5 rounded-[1.5rem] border border-black/10 bg-[#fffbeb] p-5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center">
+      <div className="grid gap-5 rounded-[1.5rem] border border-black/10 bg-[#fefce8] p-5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center">
         <ProviderAvatar avatar={provider?.avatar} name={providerName} />
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
@@ -220,7 +220,7 @@ function IncludedList({ items }) {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {items.map((item) => (
-        <div className="flex gap-3 rounded-[1.2rem] border border-black/10 bg-[#fffbeb] p-4" key={item}>
+        <div className="flex gap-3 rounded-[1.2rem] border border-black/10 bg-[#fefce8] p-4" key={item}>
           <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#3F6212] text-white">
             <CheckIcon />
           </span>
@@ -235,7 +235,7 @@ function InfoTiles({ items }) {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {items.map(([label, value]) => (
-        <div className="rounded-[1.25rem] border border-black/10 bg-[#fffbeb] p-5" key={label}>
+        <div className="rounded-[1.25rem] border border-black/10 bg-[#fefce8] p-5" key={label}>
           <p className="text-xs font-black uppercase tracking-[0.16em] text-black/42">{label}</p>
           <p className="mt-3 text-2xl font-black tracking-[-0.05em] text-black">{value}</p>
         </div>
@@ -266,7 +266,7 @@ function ReviewsPlaceholder({ reviews = [], service }) {
         {hasReviews ? (
           <div className="grid gap-3">
             {reviews.slice(0, 3).map((review) => (
-              <article className="rounded-[1.5rem] border border-black/10 bg-[#fffbeb] p-5" key={review._id}>
+              <article className="rounded-[1.5rem] border border-black/10 bg-[#fefce8] p-5" key={review._id}>
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-lg font-black tracking-[-0.035em] text-black">
                     {review.heading || "Client feedback"}
@@ -283,7 +283,7 @@ function ReviewsPlaceholder({ reviews = [], service }) {
             ))}
           </div>
         ) : (
-          <div className="rounded-[1.5rem] border border-black/10 bg-[#fffbeb] p-6">
+          <div className="rounded-[1.5rem] border border-black/10 bg-[#fefce8] p-6">
             <p className="text-lg font-black tracking-[-0.035em] text-black">
               Buyer feedback appears after completed projects.
             </p>
@@ -466,7 +466,7 @@ export function ServiceDetail({ serviceId }) {
   return (
     <section className="relative isolate overflow-hidden bg-white py-12 text-black sm:py-16">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-[30rem] bg-[radial-gradient(circle_at_14%_20%,rgba(63,98,18,0.18),transparent_18rem),radial-gradient(circle_at_86%_8%,rgba(101,163,13,0.22),transparent_18rem),linear-gradient(180deg,#FEFCE8_0%,#ffffff_72%)]" />
+        <div className="absolute inset-x-0 top-0 h-[30rem] bg-[radial-gradient(circle_at_14%_20%,rgba(63,98,18,0.18),transparent_18rem),radial-gradient(circle_at_86%_8%,rgba(101,163,13,0.22),transparent_18rem),linear-gradient(180deg,#FFFFFF_0%,#ffffff_72%)]" />
         <MotionDiv
           animate={{ rotate: 360, y: [0, -14, 0] }}
           className="absolute right-[7%] top-20 h-40 w-40 rounded-[2rem] border border-[#3F6212]/14 bg-[#3F6212]/8 blur-[0.2px]"
@@ -542,7 +542,7 @@ export function ServiceDetail({ serviceId }) {
                     ["Orders", service.totalOrders ?? 0],
                     ["Views", service.viewCount ?? 0],
                   ].map(([label, value]) => (
-                    <div className="rounded-[1.15rem] border border-black/10 bg-[#fffbeb] p-4" key={label}>
+                    <div className="rounded-[1.15rem] border border-black/10 bg-[#fefce8] p-4" key={label}>
                       <p className="text-xs font-black uppercase tracking-[0.16em] text-black/42">{label}</p>
                       <p className="mt-2 text-xl font-black tracking-[-0.05em] text-black">{value}</p>
                     </div>

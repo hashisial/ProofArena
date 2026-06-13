@@ -109,7 +109,7 @@ function LeaderboardRow({ index, reduceMotion, row }) {
   return (
     <MotionArticle
       {...getMotionProps(reduceMotion, 0.1 + index * 0.05)}
-      className="premium-motion-row group min-w-0 rounded-3xl border border-[#E7E5E4] bg-white p-4 shadow-[0_14px_42px_rgba(28,25,23,0.05)] transition duration-300 hover:-translate-y-1 hover:border-[#65A30D] hover:bg-[#FFFBEB] hover:shadow-[0_24px_70px_rgba(63,98,18,0.13)]"
+      className="premium-motion-row group min-w-0 rounded-3xl border border-[#E7E5E4] bg-white p-4 shadow-[0_14px_42px_rgba(28,25,23,0.05)] transition duration-300 hover:-translate-y-1 hover:border-[#65A30D] hover:bg-[#FEFCE8] hover:shadow-[0_24px_70px_rgba(63,98,18,0.13)]"
     >
       <div className="grid min-w-0 gap-4 lg:grid-cols-[72px_minmax(0,1fr)_104px_112px_92px_92px_minmax(112px,auto)] lg:items-center">
         <div className="flex min-w-0 items-center gap-3 lg:block">
@@ -196,7 +196,7 @@ function ReputationPanel({ reduceMotion }) {
             return (
               <MotionLi
                 {...getMotionProps(reduceMotion, 0.2 + index * 0.04)}
-                className="premium-motion-row flex min-w-0 items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4"
+                className="premium-motion-row flex min-w-0 items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4"
                 key={item.title}
               >
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white text-[#365314]">
@@ -223,7 +223,7 @@ function ProofScorePanel({ reduceMotion }) {
   return (
     <MotionDiv {...getMotionProps(reduceMotion, 0.22)}>
       <Card
-        className="premium-motion-card h-full rounded-[2rem] bg-[linear-gradient(135deg,#FFFFFF_0%,#FFFBEB_58%,#F7FEE7_100%)]"
+        className="premium-motion-card h-full rounded-[2rem] bg-[linear-gradient(135deg,#FFFFFF_0%,#FEFCE8_58%,#F7FEE7_100%)]"
         padding="lg"
         variant="elevated"
       >
@@ -271,7 +271,7 @@ export function LeaderboardShowcase() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FEFCE8_45%,#FFFBEB_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_45%,#FEFCE8_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_12%_12%,rgba(63,98,18,0.14),transparent_32%),radial-gradient(circle_at_88%_48%,rgba(161,98,7,0.1),transparent_30%)]" />
       <Container className="relative z-10">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">

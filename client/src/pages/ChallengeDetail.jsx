@@ -53,7 +53,7 @@ function DetailList({ emptyText = "Nothing added yet.", items = [], title }) {
       </CardHeader>
       <CardContent className="grid gap-3">
         {items.length > 0 ? items.map((item, index) => (
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${item.title}-${index}`}>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={`${item.title}-${index}`}>
             <p className="font-black text-[#1C1917]">{item.title}</p>
             {item.description ? <p className="mt-1 text-sm leading-6 text-[#78716C]">{item.description}</p> : null}
             {item.proofType ? <Badge className="mt-3" variant="green">{item.proofType.replaceAll("_", " ")}</Badge> : null}
@@ -68,7 +68,7 @@ function DetailList({ emptyText = "Nothing added yet.", items = [], title }) {
 
 function SummaryMetric({ label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
       <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">{label}</p>
       <p className="mt-2 break-words text-lg font-black text-[#1C1917]">{value}</p>
     </div>
@@ -281,7 +281,7 @@ function ProofReviewPanel() {
             <Badge variant="secondary">Later stage</Badge>
             <CardTitle className="mt-3 text-lg">Proof Review</CardTitle>
           </div>
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#FEF3C7] text-[#A16207]">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#ECFCCB] text-[#A16207]">
             <FileCheck2 aria-hidden="true" className="h-5 w-5" />
           </span>
         </div>
@@ -311,7 +311,7 @@ function ActivityPlaceholder({ challenge }) {
         {items.length > 0 ? (
           <ol className="grid gap-3">
             {items.map(([label, date]) => (
-              <li className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${label}-${date}`}>
+              <li className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={`${label}-${date}`}>
                 <p className="text-sm font-black text-[#1C1917]">{label}</p>
                 <p className="mt-1 text-xs font-bold text-[#78716C]">
                   {new Intl.DateTimeFormat("en-US", { dateStyle: "medium" }).format(new Date(date))}

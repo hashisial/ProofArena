@@ -1,11 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../../constants/queryKeys.js";
 import { profileKeys } from "../profile/useProfile.js";
 import { socialService } from "./socialService.js";
 
-export const socialKeys = Object.freeze({
-  connectionStatus: (userId) => ["social", "connection", userId],
-  followStatus: (userId) => ["social", "follow", userId],
-});
+export const socialKeys = queryKeys.social;
 
 function normalizeUserId(userId) {
   return String(userId ?? "").trim();

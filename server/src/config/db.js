@@ -53,7 +53,7 @@ async function repairProviderProfileIndexes() {
 
 export async function connectDB() {
   if (!env.mongoUri) {
-    logger.warn("MONGO_URI is not set. MongoDB connection skipped.");
+    logger.warn("MONGODB_URI is not set. MongoDB connection skipped.");
     return null;
   }
 

@@ -57,7 +57,7 @@ const trustSignals = [
 function SectionIntro({ badge, children, copy, dark = false }) {
   return (
     <div data-story-reveal>
-      <p className={`text-xs font-black uppercase ${dark ? "text-[#BEF264]" : "text-[#3F6212]"}`}>
+      <p className={`text-xs font-black uppercase ${dark ? "text-[#D9F99D]" : "text-[#3F6212]"}`}>
         {badge}
       </p>
       <h2
@@ -174,14 +174,14 @@ function ProofSystemVisual() {
           const Icon = item.icon;
           return (
             <div className="relative flex items-center gap-4 border border-white/10 bg-white/[0.045] p-4" key={item.label}>
-              <span className="grid h-11 w-11 shrink-0 place-items-center border border-[#BEF264]/25 bg-[#BEF264]/10 text-[#BEF264]">
+              <span className="grid h-11 w-11 shrink-0 place-items-center border border-[#D9F99D]/25 bg-[#D9F99D]/10 text-[#D9F99D]">
                 <Icon aria-hidden="true" className="h-5 w-5" />
               </span>
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-black text-white">{item.label}</p>
                 <p className="mt-1 text-xs font-bold text-white/42">{item.state}</p>
               </div>
-              <span className="text-xs font-black text-[#BEF264]">0{index + 1}</span>
+              <span className="text-xs font-black text-[#D9F99D]">0{index + 1}</span>
             </div>
           );
         })}
@@ -225,7 +225,7 @@ function MatchingVisual() {
   return (
     <div className="matching-visual" data-story-reveal>
       <div className="matching-core">
-        <Sparkles aria-hidden="true" className="h-6 w-6 text-[#BEF264]" />
+        <Sparkles aria-hidden="true" className="h-6 w-6 text-[#D9F99D]" />
         <p className="mt-3 text-3xl font-black text-white">94%</p>
         <p className="mt-1 text-xs font-black uppercase text-white/45">Outcome fit</p>
       </div>
@@ -262,10 +262,10 @@ function MarketplacePreview() {
         </div>
         <Button as="a" className="mt-7 w-full" href={ROUTES.CHALLENGES} variant="secondary">Explore challenges</Button>
       </article>
-      <article className="experience-market-card bg-[#1C1917] text-white">
+      <article className="experience-market-card experience-market-card-dark text-white">
         <div className="flex items-center justify-between gap-3">
           <Badge className="border-white/15 bg-white/10 text-[#ECFCCB]" variant="outline">Provider preview</Badge>
-          <ShieldCheck aria-hidden="true" className="h-5 w-5 text-[#BEF264]" />
+          <ShieldCheck aria-hidden="true" className="h-5 w-5 text-[#D9F99D]" />
         </div>
         <h3 className="mt-6 text-2xl font-black leading-tight text-white">Proof-backed execution specialist</h3>
         <p className="mt-3 text-sm font-semibold leading-7 text-white/58">Compared by relevant outcomes, proof score, reliability, and plan quality.</p>
@@ -285,7 +285,7 @@ export function ProofArenaStory() {
 
   return (
     <>
-      <section className="bg-[#FEFCE8] py-20 sm:py-28 lg:py-36">
+      <section className="bg-[#FFFFFF] py-20 sm:py-28 lg:py-36">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
             <SectionIntro
@@ -328,7 +328,7 @@ export function ProofArenaStory() {
                   {...getRevealMotionProps(reduceMotion, { delay: index * 0.05 })}
                 >
                   <div className="flex items-center justify-between">
-                    <Icon aria-hidden="true" className="h-5 w-5 text-[#BEF264]" />
+                    <Icon aria-hidden="true" className="h-5 w-5 text-[#D9F99D]" />
                     <span className="text-xs font-black text-white/32">0{index + 1}</span>
                   </div>
                   <h3 className="mt-8 text-xl font-black text-white">{step.title}</h3>
@@ -337,7 +337,7 @@ export function ProofArenaStory() {
               );
             })}
           </div>
-          <div className="mt-14 h-px origin-left bg-[#BEF264]/45" data-story-line />
+          <div className="mt-14 h-px origin-left bg-[#D9F99D]/45" data-story-line />
         </Container>
       </section>
 
@@ -365,7 +365,7 @@ export function ProofArenaStory() {
         </Container>
       </section>
 
-      <section className="bg-[#151B0D] py-20 text-white sm:py-28 lg:py-36">
+      <section className="bg-[#1C1917] py-20 text-white sm:py-28 lg:py-36">
         <Container className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
           <SectionIntro
             badge="05 / Proof system"
@@ -378,7 +378,7 @@ export function ProofArenaStory() {
         </Container>
       </section>
 
-      <section className="bg-[#FFFBEB] py-20 sm:py-28 lg:py-36">
+      <section className="bg-[#FEFCE8] py-20 sm:py-28 lg:py-36">
         <Container className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
           <SectionIntro
             badge="06 / Trust engine"

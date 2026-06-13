@@ -110,7 +110,7 @@ export function FirstClientOpportunitySuggestions({
         ) : (
           <div className="grid gap-3">
             {suggestions.map((suggestion) => (
-              <article className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${suggestion.label}-${suggestion.title}`}>
+              <article className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={`${suggestion.label}-${suggestion.title}`}>
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge variant="primary">{suggestion.label}</Badge>
                   {suggestion.category ? <Badge variant="outline">{suggestion.category}</Badge> : null}

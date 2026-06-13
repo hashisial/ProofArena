@@ -11,7 +11,7 @@ export function ProviderMatchWeaknessList({ weaknesses = [] }) {
   }
 
   return (
-    <div className="rounded-2xl border border-[#A16207]/20 bg-[#FFFBEB] p-4">
+    <div className="rounded-2xl border border-[#A16207]/20 bg-[#FEFCE8] p-4">
       <p className="text-xs font-black uppercase tracking-[0.14em] text-[#A16207]">Check before inviting</p>
       <div className="mt-3 grid gap-2">
         {visibleWeaknesses.map((weakness, index) => (

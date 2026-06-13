@@ -47,7 +47,7 @@ export function ServicesPreview({ id = "services" }) {
   const serviceCategories = buildServiceCategories(services);
 
   return (
-    <section id={id} className="ambient-line relative overflow-hidden border-t border-[#65A30D]/15 bg-[linear-gradient(180deg,#365314_0%,#1A2E05_52%,#1A2E05_100%)] py-20 sm:py-24 lg:py-32">
+    <section id={id} className="ambient-line relative overflow-hidden border-t border-[#65A30D]/15 bg-[linear-gradient(180deg,#365314_0%,#26350F_52%,#26350F_100%)] py-20 sm:py-24 lg:py-32">
       <div className="absolute left-0 top-0 h-28 w-full bg-gradient-to-b from-[#365314] to-transparent" />
       <div className="absolute left-1/2 top-0 h-px w-[82%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#65A30D]/70 to-transparent" />
       <div className="absolute -right-24 top-24 h-80 w-80 rounded-full bg-[#3F6212]/25 blur-3xl" />

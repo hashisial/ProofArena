@@ -94,7 +94,7 @@ function PreviewCard({ panel, provider = false }) {
       </div>
 
       {provider ? (
-        <div className="mt-5 rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+        <div className="mt-5 rounded-2xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
           <div className="flex items-center justify-between gap-3">
             <span className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
               Proof score
@@ -106,7 +106,7 @@ function PreviewCard({ panel, provider = false }) {
           </div>
         </div>
       ) : (
-        <div className="mt-5 rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+        <div className="mt-5 rounded-2xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
               Proof requirement
@@ -118,7 +118,7 @@ function PreviewCard({ panel, provider = false }) {
 
       <div className="mt-4 grid gap-3">
         {panel.previewRows.map((row, index) => (
-          <div className="flex items-center gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3" key={row}>
+          <div className="flex items-center gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3" key={row}>
             <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-white text-xs font-black text-[#365314]">
               {index + 1}
             </span>
@@ -137,7 +137,7 @@ export function ClientProviderSplitSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[#FFFBEB] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[#FEFCE8] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_18%_12%,rgba(63, 98, 18, 0.13),transparent_34%),radial-gradient(circle_at_88%_74%,rgba(101, 163, 13, 0.12),transparent_28%)]" />
       <Container className="relative z-10">
         <MotionDiv {...getMotionProps(reduceMotion, 0)}>
@@ -169,7 +169,7 @@ export function ClientProviderSplitSection() {
                 <Card
                   className={`premium-motion-card group h-full border-[#E7E5E4] transition duration-300 hover:-translate-y-1 hover:border-[#65A30D] hover:shadow-[0_28px_86px_rgba(63, 98, 18, 0.16)] ${
                     isProvider
-                      ? "bg-[linear-gradient(135deg,#FFFFFF_0%,#FFFBEB_54%,#F7FEE7_100%)]"
+                      ? "bg-[linear-gradient(135deg,#FFFFFF_0%,#FEFCE8_54%,#F7FEE7_100%)]"
                       : "bg-white"
                   }`}
                   padding="lg"

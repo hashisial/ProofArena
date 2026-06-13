@@ -48,7 +48,7 @@ export function ProviderExecutionPlansCard({ isError = false, isLoading = false,
                 ["Rejected", stats.rejected],
                 ["Shortlist rate", stats.shortlistRate === null ? "Not available" : `${stats.shortlistRate}%`],
               ].map(([label, value]) => (
-                <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3" key={label}>
+                <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3" key={label}>
                   <p className="text-xs font-bold text-[#78716C]">{label}</p>
                   <p className="mt-1 text-xl font-black text-[#1C1917]">{value}</p>
                 </div>

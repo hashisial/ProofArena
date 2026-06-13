@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../constants/queryKeys.js";
 import { EmptyState } from "../components/EmptyState.jsx";
 import { LoadingState } from "../components/LoadingState.jsx";
 import { SaaSLayout } from "../components/SaaSLayout.jsx";
@@ -20,7 +21,7 @@ import {
 import { createMessagingSocket } from "../services/messagingSocket.js";
 import { getInitials } from "../utils/index.js";
 
-const conversationQueryKey = ["messages", "conversations"];
+const conversationQueryKey = queryKeys.messages.conversations();
 
 function formatTime(value) {
   if (!value) {
@@ -254,7 +255,7 @@ export function Messages() {
   const { data: messages = [], isLoading: isMessagesLoading } = useQuery({
     enabled: Boolean(activeId),
     queryFn: () => getConversationMessages(activeId),
-    queryKey: ["messages", activeId],
+    queryKey: queryKeys.messages.conversation(activeId),
     staleTime: 5_000,
   });
   const startConversationMutation = useMutation({
@@ -286,7 +287,7 @@ export function Messages() {
     mutationFn: ({ conversationId, payload }) =>
       sendConversationMessage(conversationId, payload),
     onSuccess: (result) => {
-      queryClient.setQueryData(["messages", result.message.conversationId], (current = []) =>
+      queryClient.setQueryData(queryKeys.messages.conversation(result.message.conversationId), (current = []) =>
         upsertMessage(current, result.message),
       );
       queryClient.setQueryData(conversationQueryKey, (current = []) =>
@@ -302,7 +303,7 @@ export function Messages() {
   const deleteMessageMutation = useMutation({
     mutationFn: deleteConversationMessage,
     onSuccess: (message) => {
-      queryClient.setQueryData(["messages", message.conversationId], (current = []) =>
+      queryClient.setQueryData(queryKeys.messages.conversation(message.conversationId), (current = []) =>
         current.filter((item) => item._id !== message._id),
       );
       setErrorMessage("");
@@ -341,7 +342,7 @@ export function Messages() {
       queryClient.setQueryData(conversationQueryKey, (current = []) =>
         upsertConversation(current, conversation),
       );
-      queryClient.setQueryData(["messages", message.conversationId], (current = []) =>
+      queryClient.setQueryData(queryKeys.messages.conversation(message.conversationId), (current = []) =>
         upsertMessage(current, message),
       );
     });
@@ -349,7 +350,7 @@ export function Messages() {
       queryClient.setQueryData(conversationQueryKey, (current = []) =>
         upsertConversation(current, conversation),
       );
-      queryClient.setQueryData(["messages", message.conversationId], (current = []) =>
+      queryClient.setQueryData(queryKeys.messages.conversation(message.conversationId), (current = []) =>
         upsertMessage(current, message),
       );
     });
@@ -362,7 +363,7 @@ export function Messages() {
     });
 
     socket.on("message:read", ({ conversationId, readerId }) => {
-      queryClient.setQueryData(["messages", conversationId], (current = []) =>
+      queryClient.setQueryData(queryKeys.messages.conversation(conversationId), (current = []) =>
         current.map((message) => ({
           ...message,
           readBy: message.readBy?.includes(readerId)
@@ -610,7 +611,7 @@ export function Messages() {
 
           <form className="mt-5 grid gap-2" onSubmit={submitStartConversation}>
             <input
-              className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+              className="rounded-2xl border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
               onChange={(event) => {
                 setParticipantId(event.target.value);
                 setErrorMessage("");
@@ -675,7 +676,7 @@ export function Messages() {
           </div>
         </aside>
 
-        <section className={`${isMobileChatOpen ? "flex" : "hidden"} min-h-[34rem] min-w-0 flex-col overflow-hidden rounded-[2rem] border border-[#3F6212]/14 bg-[radial-gradient(circle_at_top_right,rgba(63, 98, 18, 0.12),transparent_34%),linear-gradient(180deg,#ffffff,#fffbeb)] shadow-[0_24px_75px_rgba(63, 98, 18, 0.08)] xl:flex xl:h-[calc(100vh-15rem)] xl:min-h-[36rem]`}>
+        <section className={`${isMobileChatOpen ? "flex" : "hidden"} min-h-[34rem] min-w-0 flex-col overflow-hidden rounded-[2rem] border border-[#3F6212]/14 bg-[radial-gradient(circle_at_top_right,rgba(63, 98, 18, 0.12),transparent_34%),linear-gradient(180deg,#ffffff,#fefce8)] shadow-[0_24px_75px_rgba(63, 98, 18, 0.08)] xl:flex xl:h-[calc(100vh-15rem)] xl:min-h-[36rem]`}>
           {activeConversation ? (
             <>
               <header className="border-b border-black/10 bg-white/82 px-5 py-4 backdrop-blur-xl">
@@ -751,13 +752,13 @@ export function Messages() {
                 ) : null}
                 <div className="grid gap-3 lg:grid-cols-[1fr_180px]">
                   <input
-                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                    className="rounded-2xl border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                     onChange={(event) => setAttachmentUrl(event.target.value)}
                     placeholder="Optional attachment URL"
                     value={attachmentUrl}
                   />
                   <select
-                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-bold text-black outline-none transition focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                    className="rounded-2xl border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-bold text-black outline-none transition focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                     onChange={(event) => setAttachmentType(event.target.value)}
                     value={attachmentType}
                   >
@@ -800,7 +801,7 @@ export function Messages() {
                 </div>
                 <div className="mt-3 flex flex-col gap-3 sm:flex-row">
                   <textarea
-                    className="min-h-20 flex-1 resize-none rounded-[1.35rem] border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                    className="min-h-20 flex-1 resize-none rounded-[1.35rem] border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                     onChange={updateDraft}
                     placeholder="Write a message..."
                     value={draft}

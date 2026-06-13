@@ -1,12 +1,9 @@
 import { useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../../constants/queryKeys.js";
 import { savedProviderService } from "./savedProviderService.js";
 
-export const savedProviderKeys = Object.freeze({
-  all: ["savedProviders"],
-  me: (filters = {}) => ["savedProviders", "me", filters],
-  status: (providerId) => ["savedProviders", "status", providerId],
-});
+export const savedProviderKeys = queryKeys.savedProviders;
 
 function cleanFilters(filters = {}) {
   return Object.fromEntries(

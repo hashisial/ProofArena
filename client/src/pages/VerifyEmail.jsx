@@ -237,7 +237,7 @@ export function VerifyEmail() {
         ) : null}
 
         {isSuccess && isAuthenticated ? (
-          <p className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] px-4 py-3 text-sm font-semibold text-[#57534E]">
+          <p className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] px-4 py-3 text-sm font-semibold text-[#57534E]">
             Your current session has been updated with verified email status.
           </p>
         ) : null}

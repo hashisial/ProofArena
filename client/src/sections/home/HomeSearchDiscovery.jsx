@@ -85,7 +85,7 @@ export function HomeSearchDiscovery() {
             <div className="mt-5 flex flex-wrap gap-2">
               {quickChips.map((chip) => (
                 <a
-                  className="rounded-full border border-[#E7E5E4] bg-[#FFFBEB] px-4 py-2 text-sm font-black text-[#44403C] transition hover:-translate-y-0.5 hover:border-[#65A30D] hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70"
+                  className="rounded-full border border-[#E7E5E4] bg-[#FEFCE8] px-4 py-2 text-sm font-black text-[#44403C] transition hover:-translate-y-0.5 hover:border-[#65A30D] hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70"
                   href={buildProviderCategoryUrl(chip)}
                   key={chip}
                 >

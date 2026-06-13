@@ -179,7 +179,7 @@ function FeaturedProviderCard({ index, provider, reduceMotion }) {
           />
         </div>
 
-        <div className="mt-5 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="mt-5 rounded-3xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <div className="flex items-center gap-2">
             <UserRoundCheck aria-hidden="true" className="h-5 w-5 shrink-0 text-[#3F6212]" />
             <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
@@ -234,7 +234,7 @@ export function FeaturedProvidersSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FEFCE8_48%,#FFFBEB_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_48%,#FEFCE8_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_14%_18%,rgba(63,98,18,0.12),transparent_32%),radial-gradient(circle_at_86%_50%,rgba(161,98,7,0.09),transparent_28%)]" />
       <Container className="relative z-10">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
@@ -299,7 +299,7 @@ export function FeaturedProvidersSection() {
         </div>
 
         <MotionDiv
-          className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-5"
+          className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FEFCE8] p-5"
           {...getMotionProps(reduceMotion, 0.28)}
         >
           <BarChart3 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#3F6212]" />

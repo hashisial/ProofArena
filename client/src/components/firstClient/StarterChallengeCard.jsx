@@ -15,7 +15,7 @@ import { MatchScoreBadge } from "../matches/MatchScoreBadge.jsx";
 
 function Detail({ label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
       <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">{label}</p>
       <p className="mt-1 text-sm font-black text-[#1C1917]">{value}</p>
     </div>

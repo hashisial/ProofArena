@@ -4,7 +4,7 @@ import { cn } from "../../utils/cn.js";
 function scoreTone(score) {
   if (score >= 85) return "border-[#3F6212]/25 bg-[#F7FEE7] text-[#365314]";
   if (score >= 70) return "border-[#65A30D]/25 bg-[#F7FEE7] text-[#3F6212]";
-  if (score >= 40) return "border-[#A16207]/25 bg-[#FFFBEB] text-[#A16207]";
+  if (score >= 40) return "border-[#A16207]/25 bg-[#FEFCE8] text-[#A16207]";
   return "border-[#E7E5E4] bg-[#FAFAFA] text-[#78716C]";
 }
 

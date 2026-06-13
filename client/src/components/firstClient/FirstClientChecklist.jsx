@@ -44,7 +44,7 @@ export function FirstClientChecklist({ checklist = {}, items = null }) {
               Concrete setup steps that move a new provider toward a proof-backed client win.
             </CardDescription>
           </div>
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] px-4 py-3 text-right">
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] px-4 py-3 text-right">
             <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">Progress</p>
             <p className="mt-1 text-2xl font-black text-[#1C1917]">{progress}%</p>
           </div>
@@ -66,7 +66,7 @@ export function FirstClientChecklist({ checklist = {}, items = null }) {
             const Icon = complete ? CheckCircle2 : Circle;
 
             return (
-              <li className="flex gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={key}>
+              <li className="flex gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={key}>
                 <Icon
                   aria-hidden="true"
                   className={complete ? "mt-0.5 h-5 w-5 shrink-0 text-[#3F6212]" : "mt-0.5 h-5 w-5 shrink-0 text-[#A8A29E]"}

@@ -1,14 +1,33 @@
 import { Outlet } from "react-router-dom";
-import { PageQuickActions } from "../components/common/PageQuickActions.jsx";
-import { PRODUCT_NAME, PRODUCT_TAGLINE } from "../constants/index.js";
+import { BrandLogo } from "../components/BrandLogo.jsx";
+import { BackButton } from "../components/common/BackButton.jsx";
+import { PRODUCT_TAGLINE, ROUTES } from "../constants/index.js";
+import { cn } from "../utils/cn.js";
 
-export function AuthLayout() {
+export function AuthLayout({
+  children,
+  className = "",
+  contentClassName = "",
+}) {
   return (
-    <div className="grid min-h-screen overflow-x-hidden bg-[#FEFCE8] lg:grid-cols-[0.95fr_1.05fr]">
-      <aside className="hidden border-r border-[#E7E5E4] bg-[#FFFBEB] p-10 lg:grid lg:content-between">
-        <a className="text-2xl font-black tracking-[-0.05em] text-[#1C1917]" href="/">
-          {PRODUCT_NAME}
-        </a>
+    <div
+      className={cn(
+        "grid min-h-svh min-w-0 overflow-x-clip bg-[#FFFFFF] lg:grid-cols-[0.95fr_1.05fr]",
+        className,
+      )}
+      data-layout="auth"
+    >
+      <a
+        className="fixed left-4 top-4 z-[70] -translate-y-24 rounded-xl bg-[#3F6212] px-4 py-2 text-sm font-bold text-white shadow-lg transition focus:translate-y-0"
+        href="#main-content"
+      >
+        Skip to content
+      </a>
+      <aside
+        aria-label="ProofArena introduction"
+        className="hidden min-h-svh border-r border-[#E7E5E4] bg-[#FEFCE8] p-10 lg:grid lg:content-between"
+      >
+        <BrandLogo size="lg" />
         <div>
           <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
             ProofArena by ScaleOps
@@ -21,12 +40,16 @@ export function AuthLayout() {
           </p>
         </div>
       </aside>
-      <main className="grid min-w-0 place-items-center px-4 py-8 sm:px-6 sm:py-10">
-        <div className="w-full max-w-md">
-          <Outlet />
+      <main
+        className="grid min-h-svh min-w-0 place-items-center bg-[radial-gradient(circle_at_top_right,rgba(63,98,18,0.08),transparent_32%),#FFFFFF] px-4 py-8 sm:px-6 sm:py-10"
+        id="main-content"
+        tabIndex={-1}
+      >
+        <div className={cn("w-full max-w-md", contentClassName)}>
+          <BackButton className="mb-5" fallbackPath={ROUTES.HOME} iconOnly />
+          {children ?? <Outlet />}
         </div>
       </main>
-      <PageQuickActions />
     </div>
   );
 }

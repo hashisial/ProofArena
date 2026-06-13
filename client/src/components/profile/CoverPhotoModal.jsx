@@ -161,7 +161,7 @@ export function CoverPhotoModal({
         ) : null}
 
         <div className="overflow-hidden rounded-3xl border border-[#ECFCCB] bg-[radial-gradient(circle_at_20%_0%,rgba(101, 163, 13, 0.28),transparent_20rem),linear-gradient(135deg,#FFFFFF_0%,#F7FEE7_44%,#ECFCCB_100%)] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
-          <div className="aspect-[3/1] overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#FFFBEB_0%,#ECFCCB_55%,#65A30D_100%)]">
+          <div className="aspect-[3/1] overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#FEFCE8_0%,#ECFCCB_55%,#65A30D_100%)]">
             {previewUrl || currentCoverUrl ? (
               <img
                 alt="Cover photo preview"

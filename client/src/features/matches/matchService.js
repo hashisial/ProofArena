@@ -1,37 +1,16 @@
 import { API_ENDPOINTS } from "../../constants/index.js";
 import { api } from "../../services/apiClient.js";
+import { buildQueryString, mapItemsResponse } from "../../services/shared/index.js";
 import { buildMatchEndpoint } from "./matchUtils.js";
-
-function buildQuery(params = {}) {
-  const query = new URLSearchParams();
-
-  Object.entries(params).forEach(([key, value]) => {
-    if (value === undefined || value === null || value === "" || value === "all") {
-      return;
-    }
-
-    query.set(key, String(value));
-  });
-
-  return query.toString();
-}
 
 function endpoint(path) {
   return buildMatchEndpoint(path);
 }
 
-function normalizeResult(result) {
-  if (Array.isArray(result)) {
-    return { items: result };
-  }
-
-  return result ?? { items: [] };
-}
-
 export const matchService = Object.freeze({
   async getChallengeRecommendedProviders(challengeId, params = {}) {
-    const query = buildQuery(params);
-    return normalizeResult(
+    const query = buildQueryString(params, { omitValues: ["all"] });
+    return mapItemsResponse(
       await api.get(`${endpoint(API_ENDPOINTS.MATCHES.CHALLENGE_PROVIDERS(challengeId))}${query ? `?${query}` : ""}`),
     );
   },
@@ -41,8 +20,8 @@ export const matchService = Object.freeze({
   },
 
   async getMyMatchedChallenges(params = {}) {
-    const query = buildQuery(params);
-    return normalizeResult(
+    const query = buildQueryString(params, { omitValues: ["all"] });
+    return mapItemsResponse(
       await api.get(`${endpoint(API_ENDPOINTS.MATCHES.PROVIDER)}${query ? `?${query}` : ""}`),
     );
   },

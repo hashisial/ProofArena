@@ -1,12 +1,9 @@
 import { useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../../constants/queryKeys.js";
 import { adminService } from "./adminService.js";
 
-export const adminKeys = Object.freeze({
-  all: ["admin"],
-  list: (resource, filters) => ["admin", resource, filters],
-  overview: ["admin", "overview"],
-});
+export const adminKeys = queryKeys.admin;
 
 function cleanFilters(filters = {}) {
   return Object.fromEntries(

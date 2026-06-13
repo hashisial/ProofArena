@@ -1,8 +1,40 @@
-export const USER_ROLES = Object.freeze({
-  ADMIN: "admin",
-  CLIENT: "client",
-  PROVIDER: "provider",
-});
+import {
+  PUBLIC_REGISTER_ROLE_VALUES,
+  USER_ROLES,
+  USER_ROLE_VALUES,
+} from "./roles.js";
+import {
+  APPLICATION_STATUS,
+  APPLICATION_STATUS_VALUES,
+  CHALLENGE_STATUS,
+  CHALLENGE_STATUS_VALUES,
+  ENTRY_STATUS,
+  ENTRY_STATUS_VALUES,
+  EXECUTION_PLAN_STATUS,
+  EXECUTION_PLAN_STATUS_VALUES,
+  MILESTONE_STATUS,
+  MILESTONE_STATUS_VALUES,
+  PROOF_STATUS,
+  PROOF_STATUS_VALUES,
+} from "./statuses.js";
+
+export {
+  APPLICATION_STATUS,
+  APPLICATION_STATUS_VALUES,
+  CHALLENGE_STATUS,
+  CHALLENGE_STATUS_VALUES,
+  ENTRY_STATUS,
+  ENTRY_STATUS_VALUES,
+  EXECUTION_PLAN_STATUS,
+  EXECUTION_PLAN_STATUS_VALUES,
+  MILESTONE_STATUS,
+  MILESTONE_STATUS_VALUES,
+  PROOF_STATUS,
+  PROOF_STATUS_VALUES,
+  PUBLIC_REGISTER_ROLE_VALUES,
+  USER_ROLES,
+  USER_ROLE_VALUES,
+};
 
 export const ACCOUNT_STATUS = Object.freeze({
   ACTIVE: "active",
@@ -42,23 +74,6 @@ export const PROVIDER_VERIFICATION_STATUS = Object.freeze({
   PENDING: "pending",
   REJECTED: "rejected",
   VERIFIED: "verified",
-});
-
-export const CHALLENGE_STATUS = Object.freeze({
-  ARCHIVED: "archived",
-  CANCELLED: "cancelled",
-  COMPLETED: "completed",
-  DISPUTED: "disputed",
-  DRAFT: "draft",
-  FAILED: "failed",
-  IN_PROGRESS: "in_progress",
-  OPEN: "open",
-  PAUSED: "paused",
-  PENDING_REVIEW: "pending_review",
-  PROVIDER_SELECTED: "provider_selected",
-  PROOF_REVIEW: "proof_review",
-  REVIEWING_PLANS: "reviewing_plans",
-  SHORTLISTING: "shortlisting",
 });
 
 export const CHALLENGE_VISIBILITY = Object.freeze({
@@ -116,26 +131,6 @@ export const ADMIN_REVIEW_STATUS = Object.freeze({
   REJECTED: "rejected",
 });
 
-export const ENTRY_STATUS = Object.freeze({
-  ACCEPTED: "accepted",
-  REJECTED: "rejected",
-  SHORTLISTED: "shortlisted",
-  SUBMITTED: "submitted",
-  WITHDRAWN: "withdrawn",
-});
-
-export const EXECUTION_PLAN_STATUS = Object.freeze({
-  ACCEPTED: "accepted",
-  ARCHIVED: "archived",
-  DRAFT: "draft",
-  EXPIRED: "expired",
-  REJECTED: "rejected",
-  SHORTLISTED: "shortlisted",
-  SUBMITTED: "submitted",
-  VIEWED: "viewed",
-  WITHDRAWN: "withdrawn",
-});
-
 export const PLAN_TIMELINE_TYPE = Object.freeze({
   CUSTOM: "custom",
   FIXED_DAYS: "fixed_days",
@@ -191,23 +186,6 @@ export const MATCH_DIRECTION = Object.freeze({
   BOTH: "both",
   CHALLENGE_TO_PROVIDER: "challenge_to_provider",
   PROVIDER_TO_CHALLENGE: "provider_to_challenge",
-});
-
-export const MILESTONE_STATUS = Object.freeze({
-  APPROVED: "approved",
-  IN_PROGRESS: "in_progress",
-  PENDING: "pending",
-  REJECTED: "rejected",
-  REVISION_REQUESTED: "revision_requested",
-  SUBMITTED: "submitted",
-});
-
-export const PROOF_STATUS = Object.freeze({
-  APPROVED: "approved",
-  REJECTED: "rejected",
-  REVISION_REQUIRED: "revision_required",
-  SUBMITTED: "submitted",
-  UNDER_REVIEW: "under_review",
 });
 
 export const PROOF_TYPES = Object.freeze({
@@ -454,18 +432,12 @@ export const PLATFORM_ROUTES = Object.freeze({
   API_V1: "/api/v1",
 });
 
-export const USER_ROLE_VALUES = Object.freeze(Object.values(USER_ROLES));
-export const PUBLIC_REGISTER_ROLE_VALUES = Object.freeze([
-  USER_ROLES.CLIENT,
-  USER_ROLES.PROVIDER,
-]);
 export const ACCOUNT_STATUS_VALUES = Object.freeze(Object.values(ACCOUNT_STATUS));
 export const PROFILE_VISIBILITY_VALUES = Object.freeze(Object.values(PROFILE_VISIBILITY));
 export const VERIFICATION_BADGE_STATUS_VALUES = Object.freeze(Object.values(VERIFICATION_BADGE_STATUS));
 export const BUSINESS_TYPE_VALUES = Object.freeze(Object.values(BUSINESS_TYPE));
 export const OPEN_TO_STATUS_VALUES = Object.freeze(Object.values(OPEN_TO_STATUS));
 export const PROVIDER_VERIFICATION_STATUS_VALUES = Object.freeze(Object.values(PROVIDER_VERIFICATION_STATUS));
-export const CHALLENGE_STATUS_VALUES = Object.freeze(Object.values(CHALLENGE_STATUS));
 export const CHALLENGE_VISIBILITY_VALUES = Object.freeze(Object.values(CHALLENGE_VISIBILITY));
 export const CLIENT_CHALLENGE_STATUS_VALUES = Object.freeze([
   CHALLENGE_STATUS.DRAFT,
@@ -491,8 +463,6 @@ export const CHALLENGE_BUDGET_TYPE_VALUES = Object.freeze(Object.values(CHALLENG
 export const CLIENT_CHALLENGE_BUDGET_TYPE_VALUES = Object.freeze(Object.values(CHALLENGE_BUDGET_TYPE));
 export const CHALLENGE_TIMELINE_TYPE_VALUES = Object.freeze(Object.values(CHALLENGE_TIMELINE_TYPE));
 export const ADMIN_REVIEW_STATUS_VALUES = Object.freeze(Object.values(ADMIN_REVIEW_STATUS));
-export const ENTRY_STATUS_VALUES = Object.freeze(Object.values(ENTRY_STATUS));
-export const EXECUTION_PLAN_STATUS_VALUES = Object.freeze(Object.values(EXECUTION_PLAN_STATUS));
 export const PLAN_TIMELINE_TYPE_VALUES = Object.freeze(Object.values(PLAN_TIMELINE_TYPE));
 export const PLAN_PRICE_TYPE_VALUES = Object.freeze(Object.values(PLAN_PRICE_TYPE));
 export const PLAN_CAN_START_VALUES = Object.freeze(Object.values(PLAN_CAN_START));
@@ -500,8 +470,6 @@ export const PLAN_UPDATE_FREQUENCY_VALUES = Object.freeze(Object.values(PLAN_UPD
 export const MATCH_STATUS_VALUES = Object.freeze(Object.values(MATCH_STATUS));
 export const MATCH_SOURCE_VALUES = Object.freeze(Object.values(MATCH_SOURCE));
 export const MATCH_DIRECTION_VALUES = Object.freeze(Object.values(MATCH_DIRECTION));
-export const MILESTONE_STATUS_VALUES = Object.freeze(Object.values(MILESTONE_STATUS));
-export const PROOF_STATUS_VALUES = Object.freeze(Object.values(PROOF_STATUS));
 export const PROOF_TYPE_VALUES = Object.freeze(Object.values(PROOF_TYPES));
 export const PROOF_ASSET_TYPE_VALUES = Object.freeze(Object.values(PROOF_ASSET_TYPE));
 export const PROOF_SOURCE_TYPE_VALUES = Object.freeze(Object.values(PROOF_SOURCE_TYPE));

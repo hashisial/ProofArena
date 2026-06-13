@@ -155,7 +155,7 @@ export function VerificationRequestModal({
           value={form.requestNote}
         />
 
-        <div className="rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4 text-sm font-semibold leading-6 text-[#57534E]">
+        <div className="rounded-2xl border border-[#ECFCCB] bg-[#FEFCE8] p-4 text-sm font-semibold leading-6 text-[#57534E]">
           Submitting a request does not guarantee approval. ScaleOps admins will review
           verification requests in a later admin workflow.
         </div>

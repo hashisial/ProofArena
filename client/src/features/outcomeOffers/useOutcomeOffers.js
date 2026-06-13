@@ -1,14 +1,10 @@
 import { useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../../constants/queryKeys.js";
 import { profileKeys } from "../profile/useProfile.js";
 import { outcomeOfferService } from "./outcomeOfferService.js";
 
-export const outcomeOfferKeys = Object.freeze({
-  detail: (id) => ["outcomeOffers", "detail", id],
-  me: (filters = {}) => ["outcomeOffers", "me", filters],
-  public: (filters = {}) => ["outcomeOffers", "public", filters],
-  publicDetail: (username, slug) => ["outcomeOffers", "public", username, slug],
-});
+export const outcomeOfferKeys = queryKeys.outcomeOffers;
 
 function cleanFilters(filters = {}) {
   return Object.fromEntries(
@@ -19,7 +15,7 @@ function cleanFilters(filters = {}) {
 }
 
 function invalidateMyOffers(queryClient) {
-  queryClient.invalidateQueries({ queryKey: ["outcomeOffers", "me"] });
+  queryClient.invalidateQueries({ queryKey: outcomeOfferKeys.meRoot });
   queryClient.invalidateQueries({ queryKey: profileKeys.me });
 }
 

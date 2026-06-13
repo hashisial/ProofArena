@@ -19,8 +19,8 @@ export function Select({
           aria-describedby={describedBy}
           aria-invalid={hasError ? "true" : undefined}
           className={cn(
-            "min-h-12 w-full rounded-2xl border bg-white px-4 text-[#1C1917] transition focus:border-[#3F6212] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10 disabled:cursor-not-allowed disabled:bg-[#FFFBEB] disabled:text-[#78716C]",
-            hasError ? "border-[#DC2626]" : "border-[#E7E5E4]",
+            "min-h-12 w-full rounded-[var(--radius-input)] border bg-[var(--color-card)] px-4 text-[var(--color-foreground)] transition duration-[var(--motion-duration-standard)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-ring)] disabled:cursor-not-allowed disabled:bg-[var(--color-muted-surface)] disabled:text-[var(--color-text-muted)]",
+            hasError ? "border-[var(--color-danger)]" : "border-[var(--color-border)]",
             className,
           )}
           id={fieldId}

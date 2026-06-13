@@ -2,7 +2,7 @@ import { FileUp } from "lucide-react";
 
 export function ProofAssetUploadBox() {
   return (
-    <div className="rounded-2xl border border-dashed border-[#A16207]/35 bg-[#FFFBEB] p-5 text-center">
+    <div className="rounded-2xl border border-dashed border-[#A16207]/35 bg-[#FEFCE8] p-5 text-center">
       <div className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-white text-[#A16207]">
         <FileUp aria-hidden="true" className="h-5 w-5" />
       </div>

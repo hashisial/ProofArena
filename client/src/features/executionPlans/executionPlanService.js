@@ -1,31 +1,10 @@
 import { API_ENDPOINTS } from "../../constants/index.js";
 import { api } from "../../services/apiClient.js";
+import { buildQueryString, mapItemsResponse } from "../../services/shared/index.js";
 import { buildExecutionPlanEndpoint } from "./executionPlanUtils.js";
-
-function buildQuery(params = {}) {
-  const query = new URLSearchParams();
-
-  Object.entries(params).forEach(([key, value]) => {
-    if (value === undefined || value === null || value === "") {
-      return;
-    }
-
-    query.set(key, String(value));
-  });
-
-  return query.toString();
-}
 
 function endpoint(path) {
   return buildExecutionPlanEndpoint(path);
-}
-
-function normalizeResult(result) {
-  if (Array.isArray(result)) {
-    return { items: result };
-  }
-
-  return result ?? { items: [] };
 }
 
 export const executionPlanService = Object.freeze({
@@ -42,15 +21,15 @@ export const executionPlanService = Object.freeze({
   },
 
   async getMyExecutionPlans(params = {}) {
-    const query = buildQuery(params);
-    return normalizeResult(
+    const query = buildQueryString(params);
+    return mapItemsResponse(
       await api.get(`${endpoint(API_ENDPOINTS.EXECUTION_PLANS.MY)}${query ? `?${query}` : ""}`),
     );
   },
 
   async getPlansForClientChallenge(challengeId, params = {}) {
-    const query = buildQuery(params);
-    return normalizeResult(
+    const query = buildQueryString(params);
+    return mapItemsResponse(
       await api.get(`${endpoint(API_ENDPOINTS.EXECUTION_PLANS.BY_CHALLENGE(challengeId))}${query ? `?${query}` : ""}`),
     );
   },

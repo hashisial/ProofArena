@@ -1,15 +1,22 @@
 import { cn } from "../../utils/cn.js";
 
 const variants = {
-  black: "border-[#1C1917] bg-[#1C1917] text-white",
-  blue: "border-[#0F766E]/20 bg-[#CCFBF1] text-[#0F766E]",
-  gray: "border-[#E7E5E4] bg-[#FFFBEB] text-[#44403C]",
-  green: "border-[#65A30D]/20 bg-[#F7FEE7] text-[#3F6212]",
-  outline: "border-[#E7E5E4] bg-white text-[#44403C]",
-  primary: "border-[#3F6212]/20 bg-[#ECFCCB] text-[#3F6212]",
-  secondary: "border-[#A16207]/20 bg-[#FEF3C7] text-[#A16207]",
-  red: "border-[#DC2626]/20 bg-[#FEE2E2] text-[#DC2626]",
-  yellow: "border-[#D97706]/20 bg-[#FEF3C7] text-[#D97706]",
+  black: "border-[var(--color-black)] bg-[var(--color-black)] text-white",
+  blue: "border-[var(--color-info)] bg-[var(--color-info-soft)] text-[var(--color-info)]",
+  danger: "border-[var(--color-danger)] bg-[var(--color-danger-soft)] text-[var(--color-danger-strong)]",
+  default: "border-[var(--color-border)] bg-[var(--color-muted-surface)] text-[var(--color-text-secondary)]",
+  gray: "border-[var(--color-border)] bg-[var(--color-muted-surface)] text-[var(--color-text-secondary)]",
+  green: "border-[var(--color-success)] bg-[var(--color-success-soft)] text-[var(--color-success-strong)]",
+  outline: "border-[var(--color-border)] bg-[var(--color-card)] text-[var(--color-text-secondary)]",
+  primary: "border-[var(--color-primary-border)] bg-[var(--color-primary-soft)] text-[var(--color-primary)]",
+  proof: "border-[var(--color-proof)] bg-[var(--color-proof-soft)] text-[var(--color-proof-strong)]",
+  purple: "border-[var(--color-primary-border)] bg-[var(--color-primary-soft)] text-[var(--color-primary)]",
+  secondary: "border-[var(--color-secondary)] bg-[var(--color-secondary-soft)] text-[var(--color-secondary)]",
+  red: "border-[var(--color-danger)] bg-[var(--color-danger-soft)] text-[var(--color-danger)]",
+  success: "border-[var(--color-success)] bg-[var(--color-success-soft)] text-[var(--color-success-strong)]",
+  warning: "border-[var(--color-warning)] bg-[var(--color-warning-soft)] text-[var(--color-warning-strong)]",
+  verified: "border-[var(--color-verified)] bg-[var(--color-verified-soft)] text-[var(--color-verified-strong)]",
+  yellow: "border-[var(--color-warning)] bg-[var(--color-warning-soft)] text-[var(--color-warning-strong)]",
 };
 
 const sizes = {
@@ -25,15 +32,15 @@ export function Badge({
   rightIcon,
   rounded = "full",
   size = "md",
-  variant = "gray",
+  variant = "default",
 }) {
   return (
     <span
       className={cn(
         "inline-flex max-w-full min-w-0 items-center justify-center gap-1.5 break-words border text-center font-black leading-tight whitespace-normal [overflow-wrap:anywhere]",
-        variants[variant] ?? variants.gray,
+        variants[variant] ?? variants.default,
         sizes[size] ?? sizes.md,
-        rounded === "md" ? "rounded-xl" : "rounded-full",
+        rounded === "md" ? "rounded-[var(--radius-sm)]" : "rounded-[var(--radius-full)]",
         className,
       )}
     >

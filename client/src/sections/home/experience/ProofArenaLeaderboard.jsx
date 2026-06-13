@@ -37,7 +37,7 @@ const rankingSignals = [
 
 export function ProofArenaLeaderboard() {
   return (
-    <section className="bg-[#FFFBEB] py-20 sm:py-28 lg:py-36">
+    <section className="bg-[#FEFCE8] py-20 sm:py-28 lg:py-36">
       <Container>
         <div className="grid gap-12 xl:grid-cols-[0.62fr_1.38fr] xl:items-start">
           <div data-story-reveal>
@@ -54,7 +54,7 @@ export function ProofArenaLeaderboard() {
                 const Icon = signal.icon;
 
                 return (
-                  <div className="flex min-w-0 items-center gap-3 bg-[#FEFCE8] p-4" key={signal.label}>
+                  <div className="flex min-w-0 items-center gap-3 bg-[#FFFFFF] p-4" key={signal.label}>
                     <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-[#3F6212]" />
                     <span className="text-xs font-black leading-5 text-[#1C1917]">{signal.label}</span>
                   </div>
@@ -92,7 +92,7 @@ export function ProofArenaLeaderboard() {
             <div className="divide-y divide-[#E7E5E4]">
               {leaderboardRows.map((row, index) => (
                 <article
-                  className="grid gap-5 px-5 py-6 transition-colors hover:bg-[#FEFCE8] sm:px-7 lg:grid-cols-[4rem_minmax(0,1fr)_6rem_6rem_6rem_6rem] lg:items-center lg:gap-4"
+                  className="grid gap-5 px-5 py-6 transition-colors hover:bg-[#FFFFFF] sm:px-7 lg:grid-cols-[4rem_minmax(0,1fr)_6rem_6rem_6rem_6rem] lg:items-center lg:gap-4"
                   key={row.label}
                 >
                   <div className="flex items-center gap-3">

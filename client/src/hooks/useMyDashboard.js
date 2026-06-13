@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { getMyDashboard } from "../services/api.js";
+import { queryKeys } from "../constants/queryKeys.js";
+import { dashboardService } from "../features/dashboard/dashboardService.js";
 
 const emptyDashboard = {
   overview: {
@@ -34,8 +35,8 @@ const emptyDashboard = {
 export function useMyDashboard(enabled = true) {
   const query = useQuery({
     enabled,
-    queryFn: getMyDashboard,
-    queryKey: ["account", "dashboard"],
+    queryFn: dashboardService.getMyDashboard,
+    queryKey: queryKeys.dashboard.overview,
     staleTime: 30_000,
   });
 

@@ -12,7 +12,7 @@ export function ProviderPlanTable({ plans }) {
     <Card className="hidden overflow-x-auto md:block" padding="none" variant="bordered">
       <table className="w-full min-w-[58rem] border-collapse text-left">
         <caption className="sr-only">Provider execution plan performance table</caption>
-        <thead className="bg-[#FFFBEB] text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
+        <thead className="bg-[#FEFCE8] text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
           <tr>
             <th className="px-5 py-4">Plan and challenge</th>
             <th className="px-5 py-4">Status</th>

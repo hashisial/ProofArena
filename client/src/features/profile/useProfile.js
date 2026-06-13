@@ -1,16 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../../constants/queryKeys.js";
 import { useAuth } from "../auth/useAuth.js";
 import { profileService } from "./profileService.js";
 
-export const profileKeys = Object.freeze({
-  analytics: ["profile", "me", "analytics"],
-  me: ["profile", "me"],
-  owner: ["profile", "me"],
-  privacy: ["profile", "me", "privacy"],
-  publicActivity: (username) => ["profile", "public", username, "activity"],
-  public: (username) => ["profile", "public", username],
-  verification: ["profile", "me", "verification"],
-});
+export const profileKeys = queryKeys.profile;
 
 export function useMyProfile(enabled = true) {
   return useQuery({

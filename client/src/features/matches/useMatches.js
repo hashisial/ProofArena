@@ -1,13 +1,9 @@
 import { useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../../constants/queryKeys.js";
 import { matchService } from "./matchService.js";
 
-export const matchKeys = Object.freeze({
-  challengeProviders: (challengeId, filters = {}) => ["matches", "challenge", challengeId, "providers", filters],
-  clientDetail: (id) => ["matches", "client", id],
-  provider: (filters = {}) => ["matches", "provider", filters],
-  providerDetail: (id) => ["matches", "provider", id],
-});
+export const matchKeys = queryKeys.matches;
 
 function cleanFilters(filters = {}) {
   return Object.fromEntries(
@@ -18,7 +14,7 @@ function cleanFilters(filters = {}) {
 }
 
 function invalidateProviderMatches(queryClient, id) {
-  queryClient.invalidateQueries({ queryKey: ["matches", "provider"] });
+  queryClient.invalidateQueries({ queryKey: matchKeys.providerRoot });
   if (id) {
     queryClient.invalidateQueries({ queryKey: matchKeys.providerDetail(id) });
   }
@@ -26,9 +22,9 @@ function invalidateProviderMatches(queryClient, id) {
 
 function invalidateChallengeMatches(queryClient, challengeId, id) {
   if (challengeId) {
-    queryClient.invalidateQueries({ queryKey: ["matches", "challenge", challengeId, "providers"] });
+    queryClient.invalidateQueries({ queryKey: matchKeys.challengeProvidersRoot(challengeId) });
   } else {
-    queryClient.invalidateQueries({ queryKey: ["matches", "challenge"] });
+    queryClient.invalidateQueries({ queryKey: matchKeys.challengeRoot });
   }
 
   if (id) {

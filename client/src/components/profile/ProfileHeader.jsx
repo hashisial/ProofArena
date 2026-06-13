@@ -19,7 +19,7 @@ import { VerificationBadge } from "./VerificationBadge.jsx";
 const noop = () => {};
 
 const fallbackCoverClass =
-  "bg-[radial-gradient(circle_at_16%_12%,rgba(255,255,255,0.72),transparent_13rem),radial-gradient(circle_at_82%_20%,rgba(101, 163, 13, 0.38),transparent_18rem),linear-gradient(135deg,#FFFBEB_0%,#ECFCCB_48%,#3F6212_100%)]";
+  "bg-[radial-gradient(circle_at_16%_12%,rgba(255,255,255,0.72),transparent_13rem),radial-gradient(circle_at_82%_20%,rgba(101, 163, 13, 0.38),transparent_18rem),linear-gradient(135deg,#FEFCE8_0%,#ECFCCB_48%,#3F6212_100%)]";
 
 function toAssetUrl(value) {
   const source = typeof value === "string" ? value : value?.url ?? "";
@@ -319,11 +319,11 @@ export function ProfileHeader({
               </div>
 
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#E7E5E4] bg-[#FFFBEB] px-3 text-xs font-black text-[#44403C]">
+                <span className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#E7E5E4] bg-[#FEFCE8] px-3 text-xs font-black text-[#44403C]">
                   <UsersRound aria-hidden="true" className="h-4 w-4 text-[#3F6212]" />
                   {connectionsCount} connections
                 </span>
-                <span className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#E7E5E4] bg-[#FFFBEB] px-3 text-xs font-black text-[#44403C]">
+                <span className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#E7E5E4] bg-[#FEFCE8] px-3 text-xs font-black text-[#44403C]">
                   <ShieldCheck aria-hidden="true" className="h-4 w-4 text-[#3F6212]" />
                   {followersCount} followers
                 </span>

@@ -1,4 +1,6 @@
 import { AppError } from "../utils/AppError.js";
+import { env } from "../config/env.js";
+import { sendError } from "../utils/apiResponse.js";
 import { logError } from "../utils/logger.js";
 
 export function notFound(request, response, next) {
@@ -8,12 +10,12 @@ export function notFound(request, response, next) {
 export function errorHandler(error, request, response, _next) {
   const statusCode =
     error.statusCode ?? (response.statusCode === 200 ? 500 : response.statusCode);
-  const errorResponse = {
-    errors: error.errors ?? [],
-    success: false,
-    message: error.message || "Server Error",
-  };
+  const isOperational = error instanceof AppError || error.isOperational;
+  const message =
+    env.isProduction && !isOperational
+      ? "Internal server error"
+      : error.message || "Server Error";
 
   logError(error, request, statusCode);
-  response.status(statusCode).json(errorResponse);
+  return sendError(response, statusCode, message, error.errors ?? [], error.code);
 }

@@ -328,7 +328,7 @@ function ProviderPipeline({ entries = [], selectedProviderId = "", selectedIdSet
       </div>
       <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
         {stages.map((stage, index) => (
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={stage.label}>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={stage.label}>
             <div className="flex items-start justify-between gap-3">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Step {index + 1}</p>
@@ -664,7 +664,7 @@ export function RecommendedProviders() {
               </div>
             </div>
 
-            <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+            <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
               <RecommendedProviderFilters
                 filters={filters}
                 onChange={setFilters}
@@ -750,7 +750,7 @@ export function RecommendedProviders() {
                 .filter((entry) => isSelectedEntry(entry, selectedProviderId))
                 .slice(0, 1)
                 .map((entry) => (
-                  <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={getProviderId(entry.provider)}>
+                  <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={getProviderId(entry.provider)}>
                     <p className="font-black text-[#1C1917]">{getProviderName(entry.provider)}</p>
                     <p className="mt-2 text-sm leading-6 text-[#78716C]">{entry.provider.headline || "Selected execution partner."}</p>
                     {entry.plan ? <ExecutionPlanStatusBadge className="mt-3" status={entry.plan.status} /> : null}
@@ -803,7 +803,7 @@ export function RecommendedProviders() {
             This accepts the provider execution plan and marks the provider as the preferred execution partner. This does not create a contract, process payment, open messaging, or start milestone tracking.
           </p>
           {selectionEntry ? (
-            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
               <p className="font-black text-[#1C1917]">{getProviderName(selectionEntry.provider)}</p>
               <p className="mt-2 text-sm text-[#78716C]">{selectionEntry.plan?.title || "Execution plan"}</p>
             </div>

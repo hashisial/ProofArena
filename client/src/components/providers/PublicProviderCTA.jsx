@@ -58,7 +58,7 @@ export function PublicProviderCTA({
       <div className="mt-5 flex flex-wrap items-center gap-2">
         <ProviderAvailabilityBadge availability={availability} />
         {hasOutcomeOffers ? (
-          <span className="rounded-full border border-[#A16207]/20 bg-[#FEF3C7] px-3 py-1.5 text-xs font-black text-[#A16207]">
+          <span className="rounded-full border border-[#A16207]/20 bg-[#ECFCCB] px-3 py-1.5 text-xs font-black text-[#A16207]">
             Public outcome offers
           </span>
         ) : null}

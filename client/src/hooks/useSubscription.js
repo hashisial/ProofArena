@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../constants/queryKeys.js";
 import {
   createCheckoutSession,
   createCustomerPortalSession,
@@ -10,7 +11,7 @@ import {
 export function useSubscriptionPlans() {
   const query = useQuery({
     queryFn: getSubscriptionPlans,
-    queryKey: ["billing", "plans"],
+    queryKey: queryKeys.billing.plans(),
     staleTime: 60_000,
   });
 
@@ -26,7 +27,7 @@ export function useMySubscription(enabled = true) {
   const query = useQuery({
     enabled,
     queryFn: getMySubscription,
-    queryKey: ["billing", "subscription"],
+    queryKey: queryKeys.billing.subscription(),
     staleTime: 30_000,
   });
 
@@ -56,7 +57,7 @@ export function useSelectFreePlan() {
   return useMutation({
     mutationFn: selectFreePlan,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["billing", "subscription"] });
+      queryClient.invalidateQueries({ queryKey: queryKeys.billing.subscription() });
       queryClient.invalidateQueries({ queryKey: ["account", "dashboard"] });
     },
   });

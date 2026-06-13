@@ -7,7 +7,9 @@ const inputTypes = new Set(["date", "email", "month", "number", "password", "sea
 
 export function Input({
   className = "",
+  containerClassName = "",
   error,
+  fullWidth = true,
   helperText,
   id,
   label,
@@ -22,18 +24,25 @@ export function Input({
   const inputType = isPassword && passwordVisible ? "text" : type;
 
   return (
-    <FormField error={error} helperText={helperText} id={id} label={label} required={required}>
+    <FormField
+      className={cn(fullWidth ? "w-full" : "w-fit", containerClassName)}
+      error={error}
+      helperText={helperText}
+      id={id}
+      label={label}
+      required={required}
+    >
       {({ describedBy, fieldId, hasError }) => (
         <div className="relative">
-          {leftIcon ? <span aria-hidden="true" className="absolute left-4 top-1/2 -translate-y-1/2 text-[#78716C]">{leftIcon}</span> : null}
+          {leftIcon ? <span aria-hidden="true" className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)]">{leftIcon}</span> : null}
           <input
             aria-describedby={describedBy}
             aria-invalid={hasError ? "true" : undefined}
             className={cn(
-              "min-h-12 w-full rounded-2xl border bg-white px-4 text-[#1C1917] transition placeholder:text-[#A8A29E] focus:border-[#3F6212] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10 disabled:cursor-not-allowed disabled:bg-[#FFFBEB] disabled:text-[#78716C]",
+              "min-h-12 w-full rounded-[var(--radius-input)] border bg-[var(--color-card)] px-4 text-[var(--color-foreground)] transition duration-[var(--motion-duration-standard)] placeholder:text-[var(--color-text-light)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-ring)] disabled:cursor-not-allowed disabled:bg-[var(--color-muted-surface)] disabled:text-[var(--color-text-muted)]",
               leftIcon && "pl-11",
               (rightIcon || isPassword) && "pr-12",
-              hasError ? "border-[#DC2626]" : "border-[#E7E5E4]",
+              hasError ? "border-[var(--color-danger)]" : "border-[var(--color-border)]",
               className,
             )}
             id={fieldId}
@@ -44,7 +53,7 @@ export function Input({
           {isPassword ? (
             <button
               aria-label={passwordVisible ? "Hide password" : "Show password"}
-              className="absolute right-2 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-xl text-[#78716C] transition hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70"
+              className="absolute right-2 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-[var(--radius-sm)] text-[var(--color-text-muted)] transition duration-[var(--motion-duration-standard)] hover:bg-[var(--color-accent-soft)] hover:text-[var(--color-primary-hover)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
               onClick={() => setPasswordVisible((current) => !current)}
               type="button"
             >
@@ -55,7 +64,7 @@ export function Input({
               )}
             </button>
           ) : rightIcon ? (
-            <span aria-hidden="true" className="absolute right-4 top-1/2 -translate-y-1/2 text-[#78716C]">{rightIcon}</span>
+            <span aria-hidden="true" className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)]">{rightIcon}</span>
           ) : null}
         </div>
       )}

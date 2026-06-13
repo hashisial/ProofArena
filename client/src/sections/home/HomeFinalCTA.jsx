@@ -78,7 +78,7 @@ function ConversionCard({ card, index, reduceMotion }) {
           {card.description}
         </p>
 
-        <ul className="mt-6 grid gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <ul className="mt-6 grid gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           {card.bullets.map((bullet) => (
             <li className="flex items-start gap-3 text-sm font-black leading-6 text-[#1C1917]" key={bullet}>
               <CheckCircle2 aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#3F6212]" />
@@ -102,11 +102,11 @@ export function HomeFinalCTA() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FEFCE8_40%,#FFFBEB_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_40%,#FEFCE8_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_16%_12%,rgba(63,98,18,0.12),transparent_34%),radial-gradient(circle_at_86%_58%,rgba(161,98,7,0.1),transparent_30%)]" />
       <Container className="relative z-10">
         <MotionDiv
-          className="premium-tilt premium-motion-card relative overflow-hidden rounded-[2rem] border border-[#BEF264]/70 bg-[linear-gradient(135deg,#3F6212_0%,#365314_48%,#1A2E05_100%)] p-6 text-white shadow-[0_34px_100px_rgba(63,98,18,0.34)] sm:p-8 lg:p-12"
+          className="premium-tilt premium-motion-card relative overflow-hidden rounded-[2rem] border border-[#D9F99D]/70 bg-[linear-gradient(135deg,#3F6212_0%,#365314_48%,#26350F_100%)] p-6 text-white shadow-[0_34px_100px_rgba(63,98,18,0.34)] sm:p-8 lg:p-12"
           {...getRevealMotionProps(reduceMotion)}
         >
           <div
@@ -151,7 +151,7 @@ export function HomeFinalCTA() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   as="a"
-                  className="w-full border-white bg-white text-[#3F6212] hover:border-[#FFFBEB] hover:bg-[#FFFBEB] hover:text-[#365314] sm:w-auto"
+                  className="w-full border-white bg-white text-[#3F6212] hover:border-[#FEFCE8] hover:bg-[#FEFCE8] hover:text-[#365314] sm:w-auto"
                   href={ROUTES.REGISTER}
                   variant="secondary"
                 >
@@ -212,7 +212,7 @@ export function HomeFinalCTA() {
         </div>
 
         <MotionDiv
-          className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-5"
+          className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FEFCE8] p-5"
           {...getMotionProps(reduceMotion, 0.28)}
         >
           <BadgeCheck aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#3F6212]" />

@@ -215,7 +215,7 @@ export function EditSkillsModal({
           {items.length ? (
             items.map((skill, index) => (
               <div
-                className="flex min-w-0 flex-col gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3 sm:flex-row sm:items-center"
+                className="flex min-w-0 flex-col gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3 sm:flex-row sm:items-center"
                 key={`${skill.name}-${index}`}
               >
                 <div className="min-w-0 flex-1">
@@ -268,7 +268,7 @@ export function EditSkillsModal({
               </div>
             ))
           ) : (
-            <div className="rounded-2xl border border-dashed border-[#BEF264] bg-[#F7FEE7]/45 p-4 text-sm font-semibold leading-6 text-[#365314]">
+            <div className="rounded-2xl border border-dashed border-[#D9F99D] bg-[#F7FEE7]/45 p-4 text-sm font-semibold leading-6 text-[#365314]">
               Add your first skill to help clients understand what outcomes you can deliver.
             </div>
           )}

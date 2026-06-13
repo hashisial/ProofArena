@@ -139,7 +139,7 @@ export function SocialProofSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFBEB_46%,#F7FEE7_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FEFCE8_46%,#F7FEE7_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_82%_12%,rgba(63, 98, 18, 0.14),transparent_34%),radial-gradient(circle_at_10%_76%,rgba(101, 163, 13, 0.12),transparent_28%)]" />
       <Container className="relative z-10">
         <MotionDiv {...getMotionProps(reduceMotion, 0)}>
@@ -215,7 +215,7 @@ export function SocialProofSection() {
             </div>
           </div>
 
-          <div className="mt-8 flex items-start gap-3 rounded-3xl border border-[#ECFCCB] bg-[#FFFBEB] p-5">
+          <div className="mt-8 flex items-start gap-3 rounded-3xl border border-[#ECFCCB] bg-[#FEFCE8] p-5">
             <FileCheck2 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#3F6212]" />
             <p className="text-sm font-semibold leading-7 text-[#57534E]">
               This section uses foundation metrics and trust principles only.

@@ -27,7 +27,7 @@ export function PortfolioPreview({ id = "portfolio" }) {
   return (
     <section
       id={id}
-      className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_54%,#ffffff_100%)] py-20 sm:py-24 lg:py-32"
+      className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#fefce8_54%,#ffffff_100%)] py-20 sm:py-24 lg:py-32"
     >
       <div className="absolute left-[12%] top-20 h-64 w-64 rounded-full bg-[#3F6212]/10 blur-3xl" />
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">

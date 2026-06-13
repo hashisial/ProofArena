@@ -45,7 +45,7 @@ function AttachmentEditor({ items = [], onChange }) {
   return (
     <div className="grid gap-4">
       {rows.map((item, index) => (
-        <div className="grid gap-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={index}>
+        <div className="grid gap-4 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={index}>
           <div className="grid gap-4 md:grid-cols-2">
             <Input
               label="Attachment title"

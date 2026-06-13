@@ -33,7 +33,7 @@ function MetricCard({ icon, label, value }) {
   const IconComponent = icon;
 
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 transition hover:-translate-y-0.5 hover:border-[#BEF264] hover:shadow-[0_16px_42px_rgba(63, 98, 18, 0.1)]">
+    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4 transition hover:-translate-y-0.5 hover:border-[#D9F99D] hover:shadow-[0_16px_42px_rgba(63, 98, 18, 0.1)]">
       <IconComponent aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />
       <p className="mt-3 break-words text-xl font-black tracking-[-0.04em] text-[#1C1917]">
         {value}
@@ -118,7 +118,7 @@ export function VerifiedOutcomesSection({ isOwner = false, providerProfile = nul
           ))}
         </div>
 
-        <div className="rounded-2xl border border-dashed border-[#BEF264] bg-[#FFFBEB] p-5">
+        <div className="rounded-2xl border border-dashed border-[#D9F99D] bg-[#FEFCE8] p-5">
           <p className="text-sm font-black text-[#1C1917]">
             {hasVerifiedSignals
               ? "Proof records foundation"
@@ -141,7 +141,7 @@ export function VerifiedOutcomesSection({ isOwner = false, providerProfile = nul
             <div className="mt-3 grid gap-2">
               {previewRows.map(([label, value]) => (
                 <div
-                  className="grid gap-1 rounded-xl bg-[#FFFBEB] px-3 py-2 sm:grid-cols-[140px_minmax(0,1fr)]"
+                  className="grid gap-1 rounded-xl bg-[#FEFCE8] px-3 py-2 sm:grid-cols-[140px_minmax(0,1fr)]"
                   key={label}
                 >
                   <span className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">

@@ -6,7 +6,7 @@ export function AdminTable({ caption, columns = [], items = [] }) {
       <Card className="hidden overflow-x-auto md:block" padding="none" variant="bordered">
         <table className="w-full min-w-[62rem] border-collapse text-left">
           <caption className="sr-only">{caption}</caption>
-          <thead className="bg-[#FFFBEB] text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
+          <thead className="bg-[#FEFCE8] text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
             <tr>
               {columns.map((column) => (
                 <th className="px-5 py-4" key={column.key} scope="col">

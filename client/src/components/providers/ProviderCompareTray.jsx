@@ -52,7 +52,7 @@ export function ProviderCompareTray({
 
                   return (
                     <span
-                      className="inline-flex max-w-full items-center gap-2 rounded-full border border-[#E7E5E4] bg-[#FFFBEB] py-1 pl-1 pr-2"
+                      className="inline-flex max-w-full items-center gap-2 rounded-full border border-[#E7E5E4] bg-[#FEFCE8] py-1 pl-1 pr-2"
                       key={provider.userId || provider.id || provider.username}
                     >
                       {avatar ? (

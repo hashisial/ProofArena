@@ -16,6 +16,9 @@ Long-term product direction:
 
 ## Local Development
 
+Environment setup and validation rules are documented in
+[ENVIRONMENT_SETUP.md](ENVIRONMENT_SETUP.md).
+
 ```bash
 cd server
 npm install

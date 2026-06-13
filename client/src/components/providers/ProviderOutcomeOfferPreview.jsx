@@ -115,7 +115,7 @@ export function ProviderOutcomeOfferPreview({
     return (
       <div
         className={cn(
-          "rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4",
+          "rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4",
           className,
         )}
       >
@@ -143,7 +143,7 @@ export function ProviderOutcomeOfferPreview({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4",
+        "rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4",
         className,
       )}
     >

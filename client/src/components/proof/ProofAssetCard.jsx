@@ -36,11 +36,11 @@ export function ProofAssetCard({
         {asset?.description || "No description added yet."}
       </p>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
           <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">Category</p>
           <p className="mt-1 text-sm font-black text-[#1C1917]">{asset?.category || "Uncategorized"}</p>
         </div>
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
           <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">Usage</p>
           <p className="mt-1 text-sm font-black text-[#1C1917]">{usage.total} linked context{usage.total === 1 ? "" : "s"}</p>
         </div>

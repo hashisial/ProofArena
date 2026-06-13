@@ -161,7 +161,7 @@ export function ProfilePhotoModal({
           </div>
         ) : null}
 
-        <div className="grid place-items-center rounded-3xl border border-[#ECFCCB] bg-[radial-gradient(circle_at_50%_0%,rgba(101, 163, 13, 0.2),transparent_18rem),linear-gradient(180deg,#FFFFFF_0%,#FFFBEB_100%)] p-6">
+        <div className="grid place-items-center rounded-3xl border border-[#ECFCCB] bg-[radial-gradient(circle_at_50%_0%,rgba(101, 163, 13, 0.2),transparent_18rem),linear-gradient(180deg,#FFFFFF_0%,#FEFCE8_100%)] p-6">
           <div className="grid h-36 w-36 place-items-center overflow-hidden rounded-full border-4 border-white bg-[#F7FEE7] shadow-[0_24px_60px_rgba(28, 25, 23, 0.18)]">
             {previewUrl || currentAvatarUrl ? (
               <img

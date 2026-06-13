@@ -153,7 +153,7 @@ export function Providers() {
   }
 
   return (
-    <section className="min-w-0 bg-[#FFFBEB] py-8 text-[#1C1917] sm:py-12 lg:py-14">
+    <section className="min-w-0 bg-[#FEFCE8] py-8 text-[#1C1917] sm:py-12 lg:py-14">
       <Container>
         <div className="mx-auto grid max-w-7xl gap-6">
           <ProviderDiscoveryHeader

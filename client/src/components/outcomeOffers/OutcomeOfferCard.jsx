@@ -38,7 +38,7 @@ export function OutcomeOfferCard({
         <CardDescription>{offer?.shortSummary || "Add a clear summary so clients understand the result."}</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <div className="flex items-start gap-3">
             <Target aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#3F6212]" />
             <p className="text-sm font-semibold leading-6 text-[#44403C]">{targetOutcome}</p>

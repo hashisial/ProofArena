@@ -24,7 +24,7 @@ export function OpportunityTable({
     <div className="overflow-hidden rounded-2xl border border-[#E7E5E4] bg-white">
       <div className="overflow-x-auto">
         <table className="min-w-[64rem] table-auto text-left">
-          <thead className="bg-[#FFFBEB] text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
+          <thead className="bg-[#FEFCE8] text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
             <tr>
               <th className="px-4 py-3">Opportunity</th>
               <th className="px-4 py-3">Stage</th>

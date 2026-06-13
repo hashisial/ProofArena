@@ -59,7 +59,7 @@ function ConnectionCard({
             <span className="rounded-full border border-[#3F6212]/18 bg-[#3F6212]/8 px-3 py-1 text-[11px] font-black uppercase tracking-[0.14em] text-[#365314]">
               {connection.status}
             </span>
-            <span className="rounded-full border border-black/10 bg-[#fffbeb] px-3 py-1 text-[11px] font-black uppercase tracking-[0.14em] text-black/48">
+            <span className="rounded-full border border-black/10 bg-[#fefce8] px-3 py-1 text-[11px] font-black uppercase tracking-[0.14em] text-black/48">
               {connection.direction}
             </span>
           </div>
@@ -319,7 +319,7 @@ export function Connections() {
   return (
     <SaaSLayout eyebrow="Network" title="Connections">
       <section className="grid gap-6">
-        <div className="overflow-hidden rounded-[2.2rem] border border-[#3F6212]/14 bg-[radial-gradient(circle_at_86%_14%,rgba(63, 98, 18, 0.16),transparent_32%),linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] md:p-8">
+        <div className="overflow-hidden rounded-[2.2rem] border border-[#3F6212]/14 bg-[radial-gradient(circle_at_86%_14%,rgba(63, 98, 18, 0.16),transparent_32%),linear-gradient(135deg,#ffffff,#fefce8)] p-6 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] md:p-8">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-end">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.24em] text-[#3F6212]">
@@ -347,7 +347,7 @@ export function Connections() {
                 Direct request
               </p>
               <input
-                className="mt-4 w-full rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                className="mt-4 w-full rounded-2xl border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-semibold text-black outline-none placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                 onChange={(event) => setReceiverId(event.target.value)}
                 placeholder="Paste user id"
                 value={receiverId}
@@ -370,7 +370,7 @@ export function Connections() {
               </h2>
               <form className="mt-5 grid gap-3" onSubmit={submitSearch}>
                 <input
-                  className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                  className="rounded-2xl border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-semibold text-black outline-none placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                   onChange={(event) => setSearch(event.target.value)}
                   placeholder="Name, username, skill, city, company"
                   value={search}
@@ -403,7 +403,7 @@ export function Connections() {
                 ["Suggested", candidates.length, "Profile-matched people to review"],
               ].map(([label, value, description]) => (
                 <div
-                  className="rounded-[1.35rem] border border-black/10 bg-[#fffbeb] p-4 transition hover:border-[#3F6212]/30 hover:bg-white hover:shadow-[0_18px_50px_rgba(63, 98, 18, 0.1)]"
+                  className="rounded-[1.35rem] border border-black/10 bg-[#fefce8] p-4 transition hover:border-[#3F6212]/30 hover:bg-white hover:shadow-[0_18px_50px_rgba(63, 98, 18, 0.1)]"
                   key={label}
                 >
                   <p className="text-2xl font-black tracking-[-0.055em] text-black">{value}</p>

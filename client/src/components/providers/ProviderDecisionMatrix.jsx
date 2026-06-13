@@ -57,7 +57,7 @@ export function ProviderDecisionMatrix({ providers = [] }) {
 
           return (
             <div
-              className="rounded-2xl border border-[#D9F99D] bg-[#F7FEE7] p-4"
+              className="rounded-2xl border border-[#ECFCCB] bg-[#F7FEE7] p-4"
               key={item.key}
             >
               <Badge variant="green">{item.label}</Badge>

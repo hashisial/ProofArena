@@ -94,7 +94,7 @@ const previewRows = [
 const statusToneClasses = {
   active: "border-[#65A30D]/25 bg-[#F7FEE7] text-[#3F6212]",
   complete: "border-[#3F6212]/20 bg-[#ECFCCB] text-[#3F6212]",
-  pending: "border-[#A16207]/25 bg-[#FEF3C7] text-[#A16207]",
+  pending: "border-[#A16207]/25 bg-[#ECFCCB] text-[#A16207]",
   verified: "border-[#65A30D]/25 bg-[#F7FEE7] text-[#3F6212]",
 };
 
@@ -125,7 +125,7 @@ function WorkflowPreview() {
         </span>
       </div>
 
-      <div className="mt-6 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+      <div className="mt-6 rounded-3xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
         <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
           Proof requirement
         </p>
@@ -204,7 +204,7 @@ function WorkflowStepCard({ index, isLast, reduceMotion, step }) {
           <div className="mt-6 grid gap-2">
             {step.details.map((detail) => (
               <div
-                className="flex items-center gap-2 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] px-3 py-2"
+                className="flex items-center gap-2 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] px-3 py-2"
                 key={detail}
               >
                 <CheckCircle2 aria-hidden="true" className="h-4 w-4 shrink-0 text-[#3F6212]" />
@@ -213,7 +213,7 @@ function WorkflowStepCard({ index, isLast, reduceMotion, step }) {
             ))}
           </div>
 
-          <div className="mt-6 rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+          <div className="mt-6 rounded-2xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
             <p className="text-xs font-black uppercase tracking-[0.14em] text-[#A16207]">
               Example
             </p>
@@ -231,7 +231,7 @@ export function HomeHowItWorksSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FEFCE8_0%,#FFFFFF_46%,#FFFBEB_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFFFF_46%,#FEFCE8_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_14%_10%,rgba(63,98,18,0.14),transparent_32%),radial-gradient(circle_at_88%_58%,rgba(161,98,7,0.1),transparent_26%)]" />
       <Container className="relative z-10">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.42fr)] lg:items-end">

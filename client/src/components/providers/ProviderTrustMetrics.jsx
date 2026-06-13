@@ -76,7 +76,7 @@ export function ProviderTrustMetrics({ className = "", provider = {} }) {
   if (!hasAnyMetric) {
     return (
       <div className={className}>
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
             Proof metrics
           </p>
@@ -92,7 +92,7 @@ export function ProviderTrustMetrics({ className = "", provider = {} }) {
     <div className={`grid min-w-0 grid-cols-2 gap-3 ${className}`}>
       {metricConfig.map((metric) => (
         <div
-          className="min-w-0 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3"
+          className="min-w-0 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3"
           key={metric.key}
         >
           <div className="flex items-center gap-2">

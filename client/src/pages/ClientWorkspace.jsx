@@ -194,7 +194,7 @@ export function ClientWorkspace() {
 
   return (
     <div className="grid gap-8">
-      <section className="overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
+      <section className="overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fefce8)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-end">
           <div>
             <Badge variant="primary">Operational command center</Badge>

@@ -57,7 +57,7 @@ function ContextRow({ label, values = [] }) {
   const count = values.length;
 
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
       <p className="text-sm font-black text-[#1C1917]">{label}</p>
       <p className="mt-1 text-sm text-[#78716C]">{count} linked {count === 1 ? "item" : "items"}</p>
     </div>
@@ -237,7 +237,7 @@ export function ProofAssetDetail() {
               <CardDescription>Keep sharing intentional and treat verification as a server-controlled trust signal.</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-3">
-              <p className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 text-sm leading-6 text-[#44403C]">
+              <p className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4 text-sm leading-6 text-[#44403C]">
                 {visibilityDescriptions[asset.visibility] ?? visibilityDescriptions.private}
               </p>
               <p className="rounded-2xl border border-[#E7E5E4] bg-white p-4 text-sm leading-6 text-[#78716C]">

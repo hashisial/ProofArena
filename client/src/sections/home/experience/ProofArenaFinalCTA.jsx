@@ -5,7 +5,7 @@ import { ROUTES } from "../../../constants/index.js";
 
 export function ProofArenaFinalCTA() {
   return (
-    <section className="bg-[#FEFCE8] py-20 sm:py-28 lg:py-36">
+    <section className="bg-[#FFFFFF] py-20 sm:py-28 lg:py-36">
       <Container>
         <div className="border border-[#3F6212]/20 bg-[#3F6212] px-5 py-12 text-white shadow-[0_30px_90px_rgba(63,98,18,0.24)] sm:px-10 lg:px-14 lg:py-16" data-story-reveal>
           <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">

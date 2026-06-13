@@ -35,7 +35,7 @@ export function OpportunityCard({
         <h3 className="text-lg font-black tracking-normal text-[#1C1917]">{opportunity.title}</h3>
         <p className="mt-2 line-clamp-2 text-sm leading-6 text-[#78716C]">{opportunity.summary || challengeTitle}</p>
       </div>
-      <div className="grid gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3 text-sm">
+      <div className="grid gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3 text-sm">
         <div className="flex items-center justify-between gap-3">
           <span className="font-bold text-[#78716C]">Challenge</span>
           <span className="text-right font-black text-[#1C1917]">{challengeTitle}</span>

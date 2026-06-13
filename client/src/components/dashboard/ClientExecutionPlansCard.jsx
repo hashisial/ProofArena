@@ -50,7 +50,7 @@ export function ClientExecutionPlansCard({
         {isLoading ? (
           <div className="grid gap-3">
             {[0, 1, 2].map((item) => (
-              <div className="h-24 animate-pulse rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB]" key={item} />
+              <div className="h-24 animate-pulse rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8]" key={item} />
             ))}
           </div>
         ) : isError ? (
@@ -75,7 +75,7 @@ export function ClientExecutionPlansCard({
               const planId = getPlanId(plan);
 
               return (
-                <article className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={planId || plan.title}>
+                <article className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={planId || plan.title}>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">

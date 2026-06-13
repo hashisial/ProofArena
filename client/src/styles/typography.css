@@ -1,37 +1,69 @@
 .heading-hero {
   color: var(--color-text-primary);
-  font-size: 5rem;
-  font-weight: 900;
+  font-size: var(--font-size-heading-hero);
+  font-weight: var(--font-weight-black);
   letter-spacing: 0;
   line-height: 0.94;
 }
 
 .heading-xl {
   color: var(--color-text-primary);
-  font-size: 4rem;
-  font-weight: 900;
+  font-size: var(--font-size-heading-display);
+  font-weight: var(--font-weight-black);
   letter-spacing: 0;
   line-height: 0.98;
 }
 
+.page-title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-page-title);
+  font-weight: var(--font-weight-black);
+  letter-spacing: 0;
+  line-height: var(--line-height-heading);
+}
+
+.section-title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+  line-height: var(--line-height-heading);
+}
+
+.card-title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+  line-height: var(--line-height-heading);
+}
+
 .body-base {
   color: var(--color-text-secondary);
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.65;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+}
+
+.small-label {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small-label);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0;
+  line-height: 1.4;
 }
 
 .body-muted {
   color: var(--color-text-muted);
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.65;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
 }
 
 .eyebrow {
   color: var(--color-primary);
-  font-size: 0.75rem;
-  font-weight: 900;
+  font-size: var(--font-size-eyebrow);
+  font-weight: var(--font-weight-black);
   letter-spacing: 0.16em;
   line-height: 1.2;
   text-transform: uppercase;
@@ -39,14 +71,4 @@
 
 .text-balance-custom {
   text-wrap: balance;
-}
-
-@media (max-width: 640px) {
-  .heading-hero {
-    font-size: 2.75rem;
-  }
-
-  .heading-xl {
-    font-size: 2.35rem;
-  }
 }

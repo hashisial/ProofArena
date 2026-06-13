@@ -68,13 +68,13 @@ function DecisionModalBody({
   return (
     <>
       {plan ? (
-        <div className="mb-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="mb-4 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <p className="text-sm font-black text-[#1C1917]">{plan.title}</p>
           <p className="mt-1 text-sm leading-6 text-[#78716C]">{plan.summary}</p>
         </div>
       ) : null}
       {mode === "accept" ? (
-        <div className="mb-4 rounded-2xl border border-[#A16207]/25 bg-[#FFFBEB] p-4 text-sm leading-6 text-[#57534E]">
+        <div className="mb-4 rounded-2xl border border-[#A16207]/25 bg-[#FEFCE8] p-4 text-sm leading-6 text-[#57534E]">
           Accepting a plan does not trigger payment, messaging, milestone workspace, or proof review. It only records the selected provider for this challenge.
         </div>
       ) : null}

@@ -47,7 +47,7 @@ function StatItem({ icon, label, value }) {
   const IconComponent = icon;
 
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
       <IconComponent aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />
       <p className="mt-3 break-words text-lg font-black tracking-[-0.03em] text-[#1C1917]">
         {value}
@@ -107,7 +107,7 @@ export function ProviderProofScoreCard({
 
   const content = (
       <div className={cn("grid gap-5", compact ? "" : "lg:grid-cols-[240px_minmax(0,1fr)]")}>
-        <div className="rounded-3xl border border-[#ECFCCB] bg-[linear-gradient(180deg,#FFFBEB_0%,#F7FEE7_100%)] p-5 text-center">
+        <div className="rounded-3xl border border-[#ECFCCB] bg-[linear-gradient(180deg,#FEFCE8_0%,#F7FEE7_100%)] p-5 text-center">
           <div
             aria-label={`Proof Score ${proofScore} out of 100`}
             className="relative mx-auto grid h-32 w-32 place-items-center"
@@ -181,7 +181,7 @@ export function ProviderProofScoreCard({
             ))}
           </div>
 
-          <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+          <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
             <div className="flex flex-wrap items-center gap-2">
               <Award aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />
               <p className="text-sm font-black text-[#1C1917]">Score breakdown foundation</p>

@@ -47,14 +47,14 @@ export function ProviderOpportunityPipelineCard({
             ["Won", isStatsError ? "Not available" : stats.won ?? 0],
             ["Due soon", isStatsError ? "Not available" : stats.dueSoon ?? 0],
           ].map(([label, value]) => (
-            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={label}>
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={label}>
               <p className="text-sm font-bold text-[#78716C]">{label}</p>
               <p className="mt-2 text-2xl font-black text-[#1C1917]">{value}</p>
             </div>
           ))}
         </div>
         {!isStatsError && Number(overdue) > 0 ? (
-          <div className="mt-4 flex items-start gap-3 rounded-2xl border border-[#A16207]/25 bg-[#FEF3C7] p-4 text-[#854D0E]">
+          <div className="mt-4 flex items-start gap-3 rounded-2xl border border-[#A16207]/25 bg-[#ECFCCB] p-4 text-[#365314]">
             <AlertCircle aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0" />
             <p className="text-sm font-bold">
               {overdue} overdue follow-up{Number(overdue) === 1 ? "" : "s"} need attention.

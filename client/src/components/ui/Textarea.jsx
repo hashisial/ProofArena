@@ -3,7 +3,9 @@ import { FormField } from "./FormField.jsx";
 
 export function Textarea({
   className = "",
+  containerClassName = "",
   error,
+  fullWidth = true,
   helperText,
   id,
   label,
@@ -12,14 +14,21 @@ export function Textarea({
   ...props
 }) {
   return (
-    <FormField error={error} helperText={helperText} id={id} label={label} required={required}>
+    <FormField
+      className={cn(fullWidth ? "w-full" : "w-fit", containerClassName)}
+      error={error}
+      helperText={helperText}
+      id={id}
+      label={label}
+      required={required}
+    >
       {({ describedBy, fieldId, hasError }) => (
         <textarea
           aria-describedby={describedBy}
           aria-invalid={hasError ? "true" : undefined}
           className={cn(
-            "w-full rounded-2xl border bg-white px-4 py-3 text-[#1C1917] transition placeholder:text-[#A8A29E] focus:border-[#3F6212] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10 disabled:cursor-not-allowed disabled:bg-[#FFFBEB] disabled:text-[#78716C]",
-            hasError ? "border-[#DC2626]" : "border-[#E7E5E4]",
+            "w-full rounded-[var(--radius-input)] border bg-[var(--color-card)] px-4 py-3 text-[var(--color-foreground)] transition duration-[var(--motion-duration-standard)] placeholder:text-[var(--color-text-light)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-ring)] disabled:cursor-not-allowed disabled:bg-[var(--color-muted-surface)] disabled:text-[var(--color-text-muted)]",
+            hasError ? "border-[var(--color-danger)]" : "border-[var(--color-border)]",
             className,
           )}
           id={fieldId}

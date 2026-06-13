@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { clientEnv } from "../config/env.js";
 import { trackPageVisit } from "../services/api.js";
 
 export function usePageAnalytics(path) {
@@ -12,7 +13,7 @@ export function usePageAnalytics(path) {
           referrer: document.referrer,
         });
       } catch {
-        if (isCurrent && import.meta.env.DEV) {
+        if (isCurrent && clientEnv.isDevelopment) {
           console.info("Page analytics request skipped.");
         }
       }

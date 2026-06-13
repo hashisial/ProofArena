@@ -123,7 +123,7 @@ export function ProviderSelectionCard({
       <ProviderProofSummary provider={provider} />
 
       {plan ? (
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">Execution plan</p>
@@ -134,7 +134,7 @@ export function ProviderSelectionCard({
           </div>
         </div>
       ) : (
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 text-sm leading-6 text-[#78716C]">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4 text-sm leading-6 text-[#78716C]">
           No execution plan has been submitted by this provider yet. Selection is available after a submitted plan can be accepted.
         </div>
       )}

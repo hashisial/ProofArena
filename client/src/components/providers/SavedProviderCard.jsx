@@ -77,7 +77,7 @@ export function SavedProviderCard({
       <ProviderTrustMetrics className="mt-4" provider={provider} />
 
       {item.note ? (
-        <p className="mt-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3 text-sm font-semibold leading-6 text-[#44403C]">
+        <p className="mt-4 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3 text-sm font-semibold leading-6 text-[#44403C]">
           {item.note}
         </p>
       ) : null}

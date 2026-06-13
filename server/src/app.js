@@ -7,35 +7,13 @@ import { requestLogger } from "./middleware/requestLogger.middleware.js";
 import { sanitizeRequest } from "./middleware/sanitizeMiddleware.js";
 import { applySecurityMiddleware } from "./middleware/security.middleware.js";
 import { sendSuccess } from "./utils/apiResponse.js";
-import accountRoutes from "./routes/accountRoutes.js";
-import adminRoutes from "./routes/adminRoutes.js";
-import analyticsRoutes from "./routes/analyticsRoutes.js";
-import authRoutes from "./routes/authRoutes.js";
-import billingRoutes from "./routes/billingRoutes.js";
-import blogRoutes from "./routes/blogRoutes.js";
-import connectionRoutes from "./routes/connectionRoutes.js";
-import conversationRoutes from "./routes/conversationRoutes.js";
-import contactRoutes from "./routes/contactRoutes.js";
-import followRoutes from "./routes/followRoutes.js";
-import healthRoutes from "./routes/healthRoutes.js";
-import leadRoutes from "./routes/leadRoutes.js";
-import messageRoutes from "./routes/messageRoutes.js";
-import marketplacePaymentRoutes from "./routes/marketplacePaymentRoutes.js";
-import networkRoutes from "./routes/networkRoutes.js";
-import notificationRoutes from "./routes/notificationRoutes.js";
-import portfolioRoutes from "./routes/portfolioRoutes.js";
-import providerRoutes from "./routes/providerRoutes.js";
-import profileRoutes from "./routes/profileRoutes.js";
-import reviewRoutes from "./routes/reviewRoutes.js";
-import savedItemRoutes from "./routes/savedItemRoutes.js";
-import serviceRoutes from "./routes/serviceRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
+import apiRoutes from "./routes/index.js";
 import v1Routes from "./routes/v1/index.js";
 
 export const app = express();
-const uploadRoot = process.env.UPLOAD_DIR
-  ? path.resolve(process.env.UPLOAD_DIR)
-  : process.env.VERCEL
+const uploadRoot = env.uploadDir
+  ? path.resolve(env.uploadDir)
+  : env.isVercel
     ? path.join("/tmp", "uploads")
     : path.resolve(process.cwd(), "uploads");
 
@@ -111,29 +89,7 @@ app.get("/api", (_req, res) => {
 });
 
 app.use("/api/v1", v1Routes);
-app.use("/api/account", accountRoutes);
-app.use("/api/admin", adminRoutes);
-app.use("/api/analytics", analyticsRoutes);
-app.use("/api/auth", authRoutes);
-app.use("/api/billing", billingRoutes);
-app.use("/api/blogs", blogRoutes);
-app.use("/api/connections", connectionRoutes);
-app.use("/api/conversations", conversationRoutes);
-app.use("/api/contact", contactRoutes);
-app.use("/api/follows", followRoutes);
-app.use("/api/health", healthRoutes);
-app.use("/api/leads", leadRoutes);
-app.use("/api/messages", messageRoutes);
-app.use("/api/marketplace", marketplacePaymentRoutes);
-app.use("/api/network", networkRoutes);
-app.use("/api/notifications", notificationRoutes);
-app.use("/api/portfolio", portfolioRoutes);
-app.use("/api/providers", providerRoutes);
-app.use("/api/profile", profileRoutes);
-app.use("/api/reviews", reviewRoutes);
-app.use("/api/saved", savedItemRoutes);
-app.use("/api/services", serviceRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api", apiRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

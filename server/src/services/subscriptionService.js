@@ -33,7 +33,7 @@ function getConfiguredDefaultPlans() {
 }
 
 function getClientUrl(path = "") {
-  const baseUrl = env.clientUrls[0] ?? "http://localhost:5173";
+  const baseUrl = env.clientUrl;
   return `${baseUrl.replace(/\/$/, "")}${path}`;
 }
 

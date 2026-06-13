@@ -60,19 +60,19 @@ const comparisonCards = [
 const toneClasses = {
   bronze: {
     badge: "secondary",
-    card: "border-[#A16207]/25 bg-[linear-gradient(135deg,#FFFFFF_0%,#FFFBEB_58%,#FEF3C7_100%)]",
-    icon: "bg-[#FEF3C7] text-[#A16207]",
+    card: "border-[#A16207]/25 bg-[linear-gradient(135deg,#FFFFFF_0%,#FEFCE8_58%,#ECFCCB_100%)]",
+    icon: "bg-[#ECFCCB] text-[#A16207]",
     pointIcon: "text-[#A16207]",
   },
   neutral: {
     badge: "gray",
     card: "border-[#E7E5E4] bg-white",
-    icon: "bg-[#FFFBEB] text-[#44403C]",
+    icon: "bg-[#FEFCE8] text-[#44403C]",
     pointIcon: "text-[#78716C]",
   },
   olive: {
     badge: "primary",
-    card: "border-[#65A30D]/35 bg-[linear-gradient(135deg,#FFFFFF_0%,#FFFBEB_50%,#F7FEE7_100%)]",
+    card: "border-[#65A30D]/35 bg-[linear-gradient(135deg,#FFFFFF_0%,#FEFCE8_50%,#F7FEE7_100%)]",
     icon: "bg-[#F7FEE7] text-[#365314]",
     pointIcon: "text-[#3F6212]",
   },
@@ -125,7 +125,7 @@ export function MarketplaceDifferenceSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFBEB_0%,#FEFCE8_48%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FEFCE8_0%,#FFFFFF_48%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_16%_16%,rgba(63,98,18,0.12),transparent_32%),radial-gradient(circle_at_88%_42%,rgba(161,98,7,0.1),transparent_28%)]" />
       <Container className="relative z-10">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">

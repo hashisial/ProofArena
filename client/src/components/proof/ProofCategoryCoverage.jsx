@@ -24,8 +24,8 @@ function GapGroup({ items = [], title }) {
   if (items.length === 0) return null;
 
   return (
-    <div className="rounded-2xl border border-[#A16207]/20 bg-[#FEF3C7] p-4">
-      <p className="text-sm font-black text-[#854D0E]">{title}</p>
+    <div className="rounded-2xl border border-[#A16207]/20 bg-[#ECFCCB] p-4">
+      <p className="text-sm font-black text-[#365314]">{title}</p>
       <div className="mt-3 flex flex-wrap gap-2">
         {items.slice(0, 10).map((item) => <Badge key={item} variant="secondary">{item}</Badge>)}
       </div>

@@ -54,23 +54,23 @@ export function PublicProfileSidebar({
         </div>
 
         <div className="mt-5 grid gap-3">
-          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
             <span className="text-sm font-bold text-[#44403C]">Verification</span>
             <Badge variant={isVerified ? "green" : "gray"}>
               {isVerified ? verification.label || "Verified" : "Not verified"}
             </Badge>
           </div>
-          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
             <span className="text-sm font-bold text-[#44403C]">Proof score</span>
             <span className="text-sm font-black text-[#1C1917]">{proofScore}/100</span>
           </div>
-          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
             <span className="text-sm font-bold text-[#44403C]">Completed outcomes</span>
             <span className="text-sm font-black text-[#1C1917]">
               {formatCompactNumber(completedOutcomes, { fallback: "0" })}
             </span>
           </div>
-          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
             <span className="text-sm font-bold text-[#44403C]">Approval rate</span>
             <span className="text-sm font-black text-[#1C1917]">
               {approvalRate > 0 ? formatPercentage(approvalRate, { fallback: "0%" }) : "0%"}

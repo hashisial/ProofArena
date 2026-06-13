@@ -58,7 +58,7 @@ export function ExecutionPlanQualityCard({ plan }) {
         </div>
       ) : null}
       {warnings.length > 0 ? (
-        <div className="mt-4 rounded-2xl border border-[#A16207]/25 bg-[#FFFBEB] p-3 text-sm leading-6 text-[#57534E]">
+        <div className="mt-4 rounded-2xl border border-[#A16207]/25 bg-[#FEFCE8] p-3 text-sm leading-6 text-[#57534E]">
           {warnings.slice(0, 2).join(" ")}
         </div>
       ) : null}

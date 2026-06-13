@@ -139,7 +139,7 @@ export function ProviderSelectionSummary({ entries = [], selectedProviderId = ""
           const providerName = item.provider ? getProviderName(item.provider) : "Not available";
 
           return (
-            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={item.label}>
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={item.label}>
               <div className="flex items-start gap-3">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#3F6212]">
                   <Icon aria-hidden="true" className="h-5 w-5" />

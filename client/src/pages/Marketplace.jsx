@@ -328,7 +328,7 @@ function CategoryLandingPanel({ categories, filters, onChange, providers, select
 
           <div className="mt-7 grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto]">
             <input
-              className="min-h-[3.25rem] rounded-[1.2rem] border border-black/10 bg-[#fffbeb] px-5 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/50 focus:ring-4 focus:ring-[#3F6212]/10"
+              className="min-h-[3.25rem] rounded-[1.2rem] border border-black/10 bg-[#fefce8] px-5 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/50 focus:ring-4 focus:ring-[#3F6212]/10"
               name="search"
               onChange={(event) => onChange("search", event.target.value)}
               placeholder={`Search inside ${selectedCategory.name.toLowerCase()}...`}
@@ -342,7 +342,7 @@ function CategoryLandingPanel({ categories, filters, onChange, providers, select
           <div className="mt-8 grid gap-3 md:grid-cols-3">
             {popularServices.length > 0 ? popularServices.map((service) => (
               <a
-                className="group rounded-[1.35rem] border border-black/10 bg-[#fffbeb] p-4 transition hover:-translate-y-0.5 hover:border-[#3F6212]/34 hover:bg-white hover:shadow-[0_18px_55px_rgba(63, 98, 18, 0.12)]"
+                className="group rounded-[1.35rem] border border-black/10 bg-[#fefce8] p-4 transition hover:-translate-y-0.5 hover:border-[#3F6212]/34 hover:bg-white hover:shadow-[0_18px_55px_rgba(63, 98, 18, 0.12)]"
                 href={`/marketplace/service/${service.slug || service._id}`}
                 key={service._id}
               >
@@ -354,7 +354,7 @@ function CategoryLandingPanel({ categories, filters, onChange, providers, select
                 </p>
               </a>
             )) : (
-              <div className="rounded-[1.35rem] border border-dashed border-[#3F6212]/22 bg-[#fffbeb] p-4 md:col-span-3">
+              <div className="rounded-[1.35rem] border border-dashed border-[#3F6212]/22 bg-[#fefce8] p-4 md:col-span-3">
                 <p className="text-sm font-bold text-black/54">
                   Popular services will appear here as this category grows.
                 </p>
@@ -653,7 +653,7 @@ export function Marketplace({ categorySlug = "" }) {
   }
 
   return (
-    <section className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#fffbeb_48%,#ffffff_100%)] text-black">
+    <section className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#fefce8_48%,#ffffff_100%)] text-black">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <MotionDiv
           animate={{ rotate: 360, scale: [1, 1.08, 1] }}

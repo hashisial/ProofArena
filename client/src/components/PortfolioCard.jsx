@@ -98,7 +98,7 @@ export function PortfolioCard({ className = "", item }) {
           </div>
         ) : null}
         {item.testimonial ? (
-          <blockquote className="mt-5 rounded-2xl border-l-4 border-[#3F6212] bg-[#fffbeb] px-4 py-3 text-sm font-medium leading-6 text-black/66">
+          <blockquote className="mt-5 rounded-2xl border-l-4 border-[#3F6212] bg-[#fefce8] px-4 py-3 text-sm font-medium leading-6 text-black/66">
             {item.testimonial}
           </blockquote>
         ) : null}

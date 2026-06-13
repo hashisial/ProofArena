@@ -27,7 +27,7 @@ export function ModulePlaceholder({
   return (
     <section className="bg-white px-4 py-16 text-[#1C1917] sm:px-6 sm:py-20 lg:px-8">
       <div className="mx-auto grid w-full max-w-7xl gap-8">
-        <div className="relative overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[radial-gradient(circle_at_92%_12%,rgba(63, 98, 18, 0.14),transparent_32%),linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_24px_80px_rgba(28, 25, 23, 0.08)] md:p-8">
+        <div className="relative overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[radial-gradient(circle_at_92%_12%,rgba(63, 98, 18, 0.14),transparent_32%),linear-gradient(135deg,#ffffff,#fefce8)] p-6 shadow-[0_24px_80px_rgba(28, 25, 23, 0.08)] md:p-8">
           {showBack ? <BackButton className="mb-5" fallbackPath="/dashboard" /> : null}
           <Badge variant="primary">{badge}</Badge>
           <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.06em] text-[#1C1917] sm:text-5xl lg:text-6xl">

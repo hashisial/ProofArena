@@ -42,7 +42,7 @@ function MiniService({ service }) {
       className="group grid grid-cols-[74px_minmax(0,1fr)] gap-4 rounded-[1.35rem] border border-black/10 bg-white p-3 transition hover:-translate-y-0.5 hover:border-[#3F6212]/35 hover:shadow-[0_20px_58px_rgba(63, 98, 18, 0.13)]"
       href={`/marketplace/service/${service.slug || service._id}`}
     >
-      <div className="overflow-hidden rounded-[1rem] bg-[#1A2E05]">
+      <div className="overflow-hidden rounded-[1rem] bg-[#26350F]">
         {service.coverImage ? (
           <img alt="" className="h-full min-h-[74px] w-full object-cover transition duration-700 group-hover:scale-105" src={service.coverImage} />
         ) : (
@@ -150,7 +150,7 @@ export function MarketplacePreview() {
           </div>
 
           <div className="grid gap-5">
-            <div className="rounded-[1.5rem] border border-black/10 bg-[#fffbeb] p-4 shadow-[0_22px_70px_rgba(63, 98, 18, 0.08)] sm:rounded-[2rem] sm:p-5">
+            <div className="rounded-[1.5rem] border border-black/10 bg-[#fefce8] p-4 shadow-[0_22px_70px_rgba(63, 98, 18, 0.08)] sm:rounded-[2rem] sm:p-5">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-[#3F6212]">

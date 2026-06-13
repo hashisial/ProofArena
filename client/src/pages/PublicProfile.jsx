@@ -97,7 +97,7 @@ function buildProviderDiscoveryData({ data, profile, providerProfile, user }) {
 
 function PublicProfileLoading() {
   return (
-    <section className="bg-[#FFFBEB] py-8 text-[#1C1917] sm:py-12">
+    <section className="bg-[#FEFCE8] py-8 text-[#1C1917] sm:py-12">
       <Container>
         <div className="mx-auto grid max-w-6xl gap-5">
           <Card className="rounded-3xl" padding="none">
@@ -145,7 +145,7 @@ function PublicProfileLoading() {
 
 function PublicProfileError({ isNetworkError = false, onRetry }) {
   return (
-    <section className="bg-[#FFFBEB] py-12 sm:py-16">
+    <section className="bg-[#FEFCE8] py-12 sm:py-16">
       <Container>
         <EmptyState
           actionText="Explore Providers"
@@ -205,7 +205,7 @@ function PublicOutcomeOffersSection({ offers = [], provider }) {
           ))}
         </div>
       ) : (
-        <div className="mt-5 rounded-2xl border border-dashed border-[#BEF264] bg-[#FFFBEB] p-5">
+        <div className="mt-5 rounded-2xl border border-dashed border-[#D9F99D] bg-[#FEFCE8] p-5">
           <p className="text-sm font-black text-[#1C1917]">No public outcome offers yet.</p>
           <p className="mt-2 text-sm leading-6 text-[#78716C]">
             Public outcome offers will appear here after this provider publishes measurable offers.
@@ -283,7 +283,7 @@ export function PublicProfile({ username }) {
   }
 
   return (
-    <section className="bg-[#FFFBEB] py-8 text-[#1C1917] sm:py-12">
+    <section className="bg-[#FEFCE8] py-8 text-[#1C1917] sm:py-12">
       <Container>
         <div className="mx-auto grid max-w-6xl gap-5 pb-20">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -311,7 +311,7 @@ export function PublicProfile({ username }) {
             <main className="grid min-w-0 gap-5">
               <Card className="rounded-3xl" padding="lg">
                 <ProviderProofSummary provider={provider} />
-                <div className="mt-5 grid gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 sm:grid-cols-2">
+                <div className="mt-5 grid gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4 sm:grid-cols-2">
                   <div>
                     <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
                       Provider since

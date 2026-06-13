@@ -5,7 +5,7 @@ import { ProviderVerificationBadge } from "./ProviderVerificationBadge.jsx";
 
 function ProofStat({ icon: Icon, label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
       <div className="flex items-center gap-2">
         {createElement(Icon, { "aria-hidden": "true", className: "h-4 w-4 text-[#3F6212]" })}
         <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">{label}</p>

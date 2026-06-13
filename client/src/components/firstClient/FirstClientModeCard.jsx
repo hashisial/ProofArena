@@ -26,16 +26,16 @@ export function FirstClientModeCard({
       </CardHeader>
       <CardContent>
         <div className="grid gap-3 sm:grid-cols-3">
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
             <p className="text-sm font-bold text-[#78716C]">Readiness</p>
             <p className="mt-2 text-2xl font-black text-[#1C1917]">{isLoading ? "..." : `${score}/100`}</p>
             <p className="mt-1 text-xs font-bold text-[#57534E]">{getReadinessLabel(score)}</p>
           </div>
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
             <p className="text-sm font-bold text-[#78716C]">Next action</p>
             <p className="mt-2 text-sm font-black leading-6 text-[#1C1917]">{nextAction}</p>
           </div>
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
             <p className="text-sm font-bold text-[#78716C]">Badges</p>
             <p className="mt-2 text-2xl font-black text-[#1C1917]">{badges.length}</p>
           </div>

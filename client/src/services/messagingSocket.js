@@ -1,4 +1,5 @@
 import { io } from "socket.io-client";
+import { clientEnv } from "../config/env.js";
 import { getRealtimeBaseUrl } from "./apiClient.js";
 
 function isVercelServerlessUrl(url) {
@@ -12,7 +13,7 @@ function isVercelServerlessUrl(url) {
 export function createMessagingSocket(token) {
   const realtimeBaseUrl = getRealtimeBaseUrl();
 
-  if (!import.meta.env.VITE_REALTIME_URL && isVercelServerlessUrl(realtimeBaseUrl)) {
+  if (!clientEnv.realtimeUrl && isVercelServerlessUrl(realtimeBaseUrl)) {
     return null;
   }
 

@@ -135,7 +135,7 @@ function TrustPillarCard({ index, pillar, reduceMotion }) {
           {pillar.description}
         </p>
 
-        <div className="mt-5 rounded-2xl border border-[#A16207]/20 bg-[#FEF3C7] p-4">
+        <div className="mt-5 rounded-2xl border border-[#A16207]/20 bg-[#ECFCCB] p-4">
           <p className="text-xs font-black uppercase tracking-[0.14em] text-[#A16207]">
             Evidence point
           </p>
@@ -180,11 +180,11 @@ function TrustLoopPanel({ reduceMotion }) {
                   className="relative min-w-0"
                   key={step.label}
                 >
-                  <div className="premium-motion-row flex min-w-0 items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 lg:block lg:text-center">
+                  <div className="premium-motion-row flex min-w-0 items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4 lg:block lg:text-center">
                     <span
                       className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl lg:mx-auto ${
                         isReviewStep
-                          ? "bg-[#FEF3C7] text-[#A16207]"
+                          ? "bg-[#ECFCCB] text-[#A16207]"
                           : "bg-[#F7FEE7] text-[#365314]"
                       }`}
                     >
@@ -232,7 +232,7 @@ export function TrustEvidenceSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFBEB_0%,#FEFCE8_48%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FEFCE8_0%,#FFFFFF_48%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_14%_18%,rgba(63,98,18,0.12),transparent_32%),radial-gradient(circle_at_86%_44%,rgba(161,98,7,0.09),transparent_28%)]" />
       <Container className="relative z-10">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
@@ -306,7 +306,7 @@ export function TrustEvidenceSection() {
         </div>
 
         <MotionDiv
-          className="mt-8 grid gap-4 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-5 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start"
+          className="mt-8 grid gap-4 rounded-3xl border border-[#E7E5E4] bg-[#FEFCE8] p-5 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start"
           {...getMotionProps(reduceMotion, 0.34)}
         >
           <Eye aria-hidden="true" className="h-6 w-6 shrink-0 text-[#3F6212]" />

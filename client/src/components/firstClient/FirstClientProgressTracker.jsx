@@ -23,7 +23,7 @@ export function FirstClientProgressTracker({ milestones = [] }) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <p className="text-sm font-bold text-[#78716C]">Milestones complete</p>
           <p className="mt-2 text-3xl font-black text-[#1C1917]">
             {completed}/{milestones.length}

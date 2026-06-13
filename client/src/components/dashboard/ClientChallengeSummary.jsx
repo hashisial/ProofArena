@@ -49,7 +49,7 @@ export function ClientChallengeSummary({ challenges = [], isLoading = false }) {
         {isLoading ? (
           <div className="grid gap-3">
             {[0, 1, 2].map((item) => (
-              <div className="h-28 animate-pulse rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB]" key={item} />
+              <div className="h-28 animate-pulse rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8]" key={item} />
             ))}
           </div>
         ) : latestChallenges.length > 0 ? (
@@ -58,7 +58,7 @@ export function ClientChallengeSummary({ challenges = [], isLoading = false }) {
               const challengeId = getChallengeId(challenge);
 
               return (
-                <article className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={challengeId || challenge.title}>
+                <article className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={challengeId || challenge.title}>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">

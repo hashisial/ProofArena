@@ -101,7 +101,7 @@ export function ActivitySection({ isOwner = false, onCreatePost, profile = {} })
 
             return (
               <div
-                className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 transition hover:border-[#BEF264] hover:bg-white"
+                className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4 transition hover:border-[#D9F99D] hover:bg-white"
                 key={item.label}
               >
                 <Icon aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />
@@ -114,7 +114,7 @@ export function ActivitySection({ isOwner = false, onCreatePost, profile = {} })
           })}
         </div>
       ) : (
-        <div className="rounded-2xl border border-dashed border-[#BEF264] bg-[#FFFBEB] p-5">
+        <div className="rounded-2xl border border-dashed border-[#D9F99D] bg-[#FEFCE8] p-5">
           <p className="text-sm font-black text-[#1C1917]">
             {isOwner ? "Start sharing proof-based updates" : "No recent activity"}
           </p>

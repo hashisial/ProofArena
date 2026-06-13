@@ -3,7 +3,7 @@ import { Container } from "../components/Container.jsx";
 
 export function CTASection() {
   return (
-    <section className="bg-[#1A2E05] py-20 sm:py-24 lg:py-28">
+    <section className="bg-[#26350F] py-20 sm:py-24 lg:py-28">
       <Container>
         <div className="relative overflow-hidden rounded-[1.75rem] border border-black/10 bg-black p-5 text-white shadow-[0_36px_110px_rgba(161,98,7,0.24)] sm:rounded-[2.5rem] sm:p-12 lg:p-16">
           <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-[#3F6212]/40 blur-3xl" />

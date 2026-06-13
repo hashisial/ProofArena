@@ -192,7 +192,7 @@ export function ProviderDashboard() {
 
   return (
     <div className="grid gap-8">
-      <section className="relative overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#FFFBEB)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
+      <section className="relative overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#FEFCE8)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div>
             <Badge variant="primary">Provider acquisition home</Badge>
@@ -215,10 +215,10 @@ export function ProviderDashboard() {
       </section>
 
       {hasError ? (
-        <Card className="flex flex-col gap-3 border-[#A16207]/25 bg-[#FEF3C7] sm:flex-row sm:items-center sm:justify-between" padding="sm" variant="bordered">
+        <Card className="flex flex-col gap-3 border-[#A16207]/25 bg-[#ECFCCB] sm:flex-row sm:items-center sm:justify-between" padding="sm" variant="bordered">
           <div>
-            <p className="font-black text-[#854D0E]">Some acquisition data could not be refreshed.</p>
-            <p className="mt-1 text-sm text-[#854D0E]">Available dashboard data is still shown below.</p>
+            <p className="font-black text-[#365314]">Some acquisition data could not be refreshed.</p>
+            <p className="mt-1 text-sm text-[#365314]">Available dashboard data is still shown below.</p>
           </div>
           <Button onClick={() => queries.filter((query) => query.isError).forEach((query) => query.refetch())} type="button" variant="outline">
             Retry failed sections

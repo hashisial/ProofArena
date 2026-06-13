@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { PageLoader } from "../components/ui/PageLoader.jsx";
-import { ROUTES, USER_ROLES } from "../constants/index.js";
+import { DYNAMIC_ROUTES, ROUTES, USER_ROLES } from "../constants/index.js";
 import { AdminLayout } from "../layouts/AdminLayout.jsx";
 import { AuthLayout } from "../layouts/AuthLayout.jsx";
 import { DashboardLayout } from "../layouts/DashboardLayout.jsx";
@@ -120,13 +120,13 @@ export function AppRoutes() {
           <Route element={<Home />} index />
           <Route element={<HowItWorks />} path={routeSegment(ROUTES.HOW_IT_WORKS)} />
           <Route element={<Challenges />} path={routeSegment(ROUTES.CHALLENGES)} />
-          <Route element={<PublicChallenge />} path={`${routeSegment(ROUTES.CHALLENGES)}/:username/:slug`} />
+          <Route element={<PublicChallenge />} path={routeSegment(DYNAMIC_ROUTES.PUBLIC_CHALLENGE)} />
           <Route element={<Providers />} path={routeSegment(ROUTES.PROVIDERS)} />
           <Route element={<ProviderCompare />} path={routeSegment(ROUTES.PROVIDER_COMPARE)} />
-          <Route element={<ProviderProfileRoute />} path={`${routeSegment(ROUTES.PROVIDERS)}/:username`} />
+          <Route element={<ProviderProfileRoute />} path={routeSegment(DYNAMIC_ROUTES.PROVIDER_PROFILE)} />
           <Route element={<ProofLedger />} path={routeSegment(ROUTES.PROOF_LEDGER)} />
           <Route element={<Leaderboard />} path={routeSegment(ROUTES.LEADERBOARD)} />
-          <Route element={<PublicOutcomeOffer />} path={`${routeSegment(ROUTES.OUTCOME_OFFERS)}/:username/:slug`} />
+          <Route element={<PublicOutcomeOffer />} path={routeSegment(DYNAMIC_ROUTES.PUBLIC_OUTCOME_OFFER)} />
           <Route element={<Blog />} path={routeSegment(ROUTES.BLOG)} />
           <Route element={<ContactPlaceholder />} path={routeSegment(ROUTES.CONTACT)} />
           <Route element={<Resources />} path={routeSegment(ROUTES.RESOURCES)} />
@@ -136,11 +136,11 @@ export function AppRoutes() {
           <Route element={<PrivacyPolicy />} path={routeSegment(ROUTES.PRIVACY)} />
           <Route element={<TermsOfService />} path={routeSegment(ROUTES.TERMS)} />
           <Route element={<TrustSafety />} path={routeSegment(ROUTES.TRUST_SAFETY)} />
-          <Route element={<PublicProfileRoute />} path={`${routeSegment(ROUTES.PROFILE)}/:username`} />
-          <Route element={<PublicProfileRoute />} path="u/:username" />
+          <Route element={<PublicProfileRoute />} path={routeSegment(DYNAMIC_ROUTES.PUBLIC_PROFILE)} />
+          <Route element={<PublicProfileRoute />} path={routeSegment(DYNAMIC_ROUTES.LEGACY_PUBLIC_PROFILE)} />
           <Route element={<Marketplace />} path={routeSegment(ROUTES.MARKETPLACE)} />
-          <Route element={<MarketplaceCategoryRoute />} path={`${routeSegment(ROUTES.MARKETPLACE)}/category/:categorySlug`} />
-          <Route element={<ServiceDetailRoute />} path={`${routeSegment(ROUTES.MARKETPLACE)}/service/:serviceId`} />
+          <Route element={<MarketplaceCategoryRoute />} path={routeSegment(DYNAMIC_ROUTES.MARKETPLACE_CATEGORY)} />
+          <Route element={<ServiceDetailRoute />} path={routeSegment(DYNAMIC_ROUTES.MARKETPLACE_SERVICE)} />
           <Route element={<Portfolio />} path={routeSegment(ROUTES.PORTFOLIO)} />
           <Route element={<Services />} path={routeSegment(ROUTES.SERVICES)} />
           <Route element={<Forbidden />} path={routeSegment(ROUTES.FORBIDDEN)} />
@@ -184,39 +184,39 @@ export function AppRoutes() {
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT]}><ChallengeBuilder /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_CHALLENGES)}/new`}
+            path={routeSegment(ROUTES.NEW_CHALLENGE)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT]}><ChallengeBuilder /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_CHALLENGES)}/:challengeId/edit`}
+            path={routeSegment(DYNAMIC_ROUTES.EDIT_CHALLENGE)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT]}><RecommendedProviders /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_CHALLENGES)}/:challengeId/providers/shortlisted`}
+            path={routeSegment(DYNAMIC_ROUTES.CHALLENGE_SHORTLISTED_PROVIDERS)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT]}><RecommendedProviders /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_CHALLENGES)}/:challengeId/providers`}
+            path={routeSegment(DYNAMIC_ROUTES.CHALLENGE_PROVIDERS)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT]}><RecommendedProviders /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_CHALLENGES)}/:challengeId/provider-selection`}
+            path={routeSegment(DYNAMIC_ROUTES.PROVIDER_SELECTION)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT]}><RecommendedProviders /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_CHALLENGES)}/:challengeId/recommended-providers`}
+            path={routeSegment(DYNAMIC_ROUTES.LEGACY_RECOMMENDED_PROVIDERS)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT]}><ChallengePlans /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_CHALLENGES)}/:challengeId/plans`}
+            path={routeSegment(DYNAMIC_ROUTES.CHALLENGE_PLANS)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT]}><ClientExecutionPlanDetail /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_CHALLENGES)}/:challengeId/plans/:planId`}
+            path={routeSegment(DYNAMIC_ROUTES.CLIENT_EXECUTION_PLAN)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT]}><ChallengeDetail /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_CHALLENGES)}/:challengeId`}
+            path={routeSegment(DYNAMIC_ROUTES.OWNER_CHALLENGE)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT]}><SavedProviders /></RoleRoute>}
@@ -247,12 +247,20 @@ export function AppRoutes() {
             path={routeSegment(ROUTES.OPPORTUNITY_PIPELINE)}
           />
           <Route
+            element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><OpportunityPipeline /></RoleRoute>}
+            path={routeSegment(DYNAMIC_ROUTES.OPPORTUNITY_DETAIL)}
+          />
+          <Route
+            element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><ProofVault initialTab="readiness" /></RoleRoute>}
+            path={routeSegment(ROUTES.PROOF_READINESS)}
+          />
+          <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><ProofVault /></RoleRoute>}
             path={routeSegment(ROUTES.PROOF_VAULT)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><ProofAssetDetail /></RoleRoute>}
-            path={`${routeSegment(ROUTES.PROOF_VAULT)}/:assetId`}
+            path={routeSegment(DYNAMIC_ROUTES.PROOF_ASSET_DETAIL)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><ExecutionPlans /></RoleRoute>}
@@ -260,15 +268,15 @@ export function AppRoutes() {
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><ExecutionPlanBuilder /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_EXECUTION_PLANS)}/new`}
+            path={routeSegment(ROUTES.NEW_EXECUTION_PLAN)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><ExecutionPlanBuilder /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_EXECUTION_PLANS)}/:planId/edit`}
+            path={routeSegment(DYNAMIC_ROUTES.EDIT_EXECUTION_PLAN)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><ExecutionPlanDetail /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_EXECUTION_PLANS)}/:planId`}
+            path={routeSegment(DYNAMIC_ROUTES.EXECUTION_PLAN_DETAIL)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><OutcomeOffers /></RoleRoute>}
@@ -276,15 +284,15 @@ export function AppRoutes() {
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><OutcomeOfferBuilder /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_OUTCOME_OFFERS)}/new`}
+            path={routeSegment(ROUTES.NEW_OUTCOME_OFFER)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><OutcomeOfferBuilder /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_OUTCOME_OFFERS)}/:offerId/edit`}
+            path={routeSegment(DYNAMIC_ROUTES.EDIT_OUTCOME_OFFER)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><OutcomeOfferDetail /></RoleRoute>}
-            path={`${routeSegment(ROUTES.MY_OUTCOME_OFFERS)}/:offerId`}
+            path={routeSegment(DYNAMIC_ROUTES.OWNER_OUTCOME_OFFER)}
           />
           <Route element={<Payments />} path={routeSegment(ROUTES.PAYMENTS)} />
           <Route element={<Profile />} path={routeSegment(ROUTES.PROFILE)} />

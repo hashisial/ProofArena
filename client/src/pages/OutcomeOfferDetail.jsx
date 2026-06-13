@@ -30,7 +30,7 @@ function DetailList({ items = [], title }) {
       </CardHeader>
       <CardContent className="grid gap-3">
         {items.length > 0 ? items.map((item, index) => (
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${item.title}-${index}`}>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={`${item.title}-${index}`}>
             <p className="font-black text-[#1C1917]">{item.title}</p>
             {item.description ? <p className="mt-1 text-sm leading-6 text-[#78716C]">{item.description}</p> : null}
             {item.proofType ? <Badge className="mt-3" variant="green">{item.proofType.replaceAll("_", " ")}</Badge> : null}
@@ -110,15 +110,15 @@ export function OutcomeOfferDetail() {
               {offer.targetOutcome?.outcomeStatement}
             </h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                 <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Timeline</p>
                 <p className="mt-1 font-black text-[#1C1917]">{formatTimeline(offer.deliveryTimeline)}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                 <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Price</p>
                 <p className="mt-1 font-black text-[#1C1917]">{formatOfferPrice(offer.priceRange)}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                 <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Stats</p>
                 <p className="mt-1 font-black text-[#1C1917]">{Number(offer.stats?.views ?? 0)} views</p>
               </div>

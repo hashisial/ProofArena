@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { X } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { APP_BRAND, PUBLIC_NAV_LINKS, ROUTES } from "../constants/index.js";
+import { APP_BRAND, PUBLIC_NAV_DROPDOWNS, PUBLIC_NAV_LINKS, ROUTES } from "../constants/index.js";
 import { useAuth } from "../hooks/useAuth.js";
 import { useRoutePath } from "../hooks/useRoutePath.js";
 import { getInitials } from "../utils/index.js";
 import { Badge } from "./ui/Badge.jsx";
 import { Button } from "./Button.jsx";
+import { BrandLogo } from "./BrandLogo.jsx";
 import { Container } from "./Container.jsx";
 
 function isActiveRoute(path, href) {
@@ -15,30 +16,6 @@ function isActiveRoute(path, href) {
   }
 
   return path === href || path.startsWith(`${href}/`);
-}
-
-function Wordmark({ onClick }) {
-  return (
-    <a
-      aria-label={`${APP_BRAND.PRODUCT_NAME} home`}
-      className="group flex min-w-0 items-center gap-3 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70"
-      href={ROUTES.HOME}
-      onClick={onClick}
-    >
-      <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-[#3F6212]/20 bg-[#F7FEE7] text-xs font-black text-[#365314] shadow-[0_14px_34px_rgba(63, 98, 18, 0.14)] transition group-hover:-translate-y-0.5 group-hover:border-[#3F6212]/40 group-hover:shadow-[0_18px_44px_rgba(63, 98, 18, 0.2)]">
-        PA
-        <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full border-2 border-white bg-[#3F6212]" />
-      </span>
-      <span className="min-w-0">
-        <span className="block truncate text-lg font-black tracking-normal text-[#1C1917]">
-          {APP_BRAND.PRODUCT_NAME}
-        </span>
-        <span className="hidden text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#78716C] sm:block">
-          by {APP_BRAND.COMPANY_NAME}
-        </span>
-      </span>
-    </a>
-  );
 }
 
 function NavItem({ href, label, onClick, path, variant = "desktop" }) {
@@ -51,7 +28,7 @@ function NavItem({ href, label, onClick, path, variant = "desktop" }) {
         className={`rounded-2xl px-4 py-4 text-xl font-black tracking-normal transition focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70 ${
           active
             ? "bg-[#F7FEE7] text-[#365314]"
-            : "text-[#44403C] hover:bg-[#FFFBEB] hover:text-[#365314]"
+            : "text-[#44403C] hover:bg-[#FEFCE8] hover:text-[#365314]"
         }`}
         href={href}
         onClick={onClick}
@@ -74,6 +51,63 @@ function NavItem({ href, label, onClick, path, variant = "desktop" }) {
     >
       {label}
     </a>
+  );
+}
+
+function NavDropdown({ group, onClick, path, variant = "desktop" }) {
+  const active = group.links.some((item) => isActiveRoute(path, item.href));
+
+  if (variant === "mobile") {
+    return (
+      <div className="border-t border-[var(--color-border)] pt-4">
+        <p className="px-4 text-xs font-black uppercase tracking-[0.16em] text-[var(--color-primary)]">
+          {group.title}
+        </p>
+        <div className="mt-2 grid gap-1">
+          {group.links.map((item) => (
+            <NavItem
+              href={item.href}
+              key={item.href}
+              label={item.label}
+              onClick={onClick}
+              path={path}
+              variant="mobile"
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="group relative">
+      <button
+        aria-haspopup="true"
+        className={`inline-flex items-center gap-1.5 rounded-lg py-2 text-sm font-extrabold transition focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-ring)] ${
+          active
+            ? "text-[var(--color-primary-hover)]"
+            : "text-[var(--color-text-muted)] hover:text-[var(--color-primary-hover)]"
+        }`}
+        type="button"
+      >
+        {group.title}
+        <ChevronDown aria-hidden="true" className="h-4 w-4 shrink-0 transition group-hover:rotate-180 group-focus-within:rotate-180" />
+      </button>
+      <div className="invisible absolute left-1/2 top-[calc(100%+0.65rem)] z-50 w-64 -translate-x-1/2 translate-y-1 rounded-lg border border-[var(--color-border)] bg-white p-2 opacity-0 shadow-[var(--shadow-premium)] transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+        {group.links.map((item) => (
+          <a
+            className="block rounded-md px-3 py-2.5 transition hover:bg-[var(--color-surface-soft)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+            href={item.href}
+            key={item.href}
+          >
+            <span className="block text-sm font-black text-[var(--color-foreground)]">{item.label}</span>
+            <span className="mt-0.5 block text-xs font-semibold leading-5 text-[var(--color-text-muted)]">
+              {item.description}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -180,19 +214,22 @@ export function Header() {
         }`}
       >
         <Container className="flex min-h-18 items-center justify-between gap-5 py-4">
-          <Wordmark onClick={closeMenu} />
+          <BrandLogo onClick={closeMenu} />
 
           <nav
             aria-label="Primary navigation"
-            className="hidden items-center gap-7 xl:flex"
+            className="hidden items-center gap-4 xl:flex"
           >
             {PUBLIC_NAV_LINKS.map((item) => (
               <NavItem
-                href={item.path}
-                key={item.path}
+                href={item.href}
+                key={item.href}
                 label={item.label}
                 path={path}
               />
+            ))}
+            {PUBLIC_NAV_DROPDOWNS.map((group) => (
+              <NavDropdown group={group} key={group.title} path={path} />
             ))}
           </nav>
 
@@ -279,7 +316,7 @@ export function Header() {
         </Container>
       </header>
       {isMenuOpen ? (
-        <div className="fixed inset-x-0 bottom-0 top-[4.5rem] z-40 overflow-y-auto border-t border-[#E7E5E4] bg-[#FFFBEB]/98 shadow-[0_28px_80px_rgba(63,98,18,0.12)] backdrop-blur-xl xl:hidden" id="public-mobile-menu">
+        <div className="fixed inset-x-0 bottom-0 top-[4.5rem] z-40 overflow-y-auto border-t border-[#E7E5E4] bg-[#FEFCE8]/98 shadow-[0_28px_80px_rgba(63,98,18,0.12)] backdrop-blur-xl xl:hidden" id="public-mobile-menu">
           <Container className="section-reveal grid gap-3 py-6 sm:gap-4 sm:py-8">
             <div className="mb-2 flex items-center justify-between">
               <div>
@@ -299,9 +336,18 @@ export function Header() {
             <nav aria-label="Mobile navigation" className="grid gap-3 sm:gap-4">
               {PUBLIC_NAV_LINKS.map((item) => (
                 <NavItem
-                  href={item.path}
-                  key={item.path}
+                  href={item.href}
+                  key={item.href}
                   label={item.label}
+                  onClick={closeMenu}
+                  path={path}
+                  variant="mobile"
+                />
+              ))}
+              {PUBLIC_NAV_DROPDOWNS.map((group) => (
+                <NavDropdown
+                  group={group}
+                  key={group.title}
                   onClick={closeMenu}
                   path={path}
                   variant="mobile"
@@ -309,7 +355,7 @@ export function Header() {
               ))}
               {isAuthenticated ? (
                 <>
-                  <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+                  <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                     <div className="flex items-center gap-3">
                       {avatarUrl ? (
                         <img alt="" className="h-11 w-11 rounded-2xl object-cover" src={avatarUrl} />

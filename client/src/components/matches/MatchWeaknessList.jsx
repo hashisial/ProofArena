@@ -10,7 +10,7 @@ export function MatchWeaknessList({ weaknesses = [] }) {
   }
 
   return (
-    <div className="rounded-2xl border border-[#A16207]/18 bg-[#FFFBEB] p-4">
+    <div className="rounded-2xl border border-[#A16207]/18 bg-[#FEFCE8] p-4">
       <p className="text-xs font-black uppercase tracking-[0.14em] text-[#A16207]">Improve your chances</p>
       <ul className="mt-3 grid gap-2">
         {visibleWeaknesses.map((weakness) => (
@@ -22,7 +22,7 @@ export function MatchWeaknessList({ weaknesses = [] }) {
       </ul>
       {weaknesses.length > 3 ? (
         <button
-          className="mt-2 text-sm font-black text-[#A16207] transition hover:text-[#854D0E] focus:outline-none focus:ring-4 focus:ring-[#A16207]/12"
+          className="mt-2 text-sm font-black text-[#A16207] transition hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#A16207]/12"
           onClick={() => setExpanded((value) => !value)}
           type="button"
         >

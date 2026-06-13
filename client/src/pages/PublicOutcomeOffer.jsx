@@ -6,7 +6,7 @@ import { Button } from "../components/ui/Button.jsx";
 import { Card } from "../components/ui/Card.jsx";
 import { PageLoader } from "../components/ui/PageLoader.jsx";
 import { Container } from "../components/Container.jsx";
-import { ROUTES } from "../constants/index.js";
+import { ROUTES, getProfileRoute } from "../constants/index.js";
 import { usePublicOutcomeOffer } from "../features/outcomeOffers/useOutcomeOffers.js";
 import { getApiErrorMessage } from "../features/outcomeOffers/outcomeOfferUtils.js";
 
@@ -22,7 +22,7 @@ export function PublicOutcomeOffer() {
 
   if (offerQuery.isError || !offer) {
     return (
-      <section className="bg-[#FEFCE8] py-12">
+      <section className="bg-[#FFFFFF] py-12">
         <Container>
           <Card className="mx-auto max-w-3xl" padding="lg" variant="bordered">
             <Badge variant="secondary">Offer unavailable</Badge>
@@ -41,7 +41,7 @@ export function PublicOutcomeOffer() {
   }
 
   return (
-    <section className="bg-[#FEFCE8] py-8 text-[#1C1917] sm:py-12">
+    <section className="bg-[#FFFFFF] py-8 text-[#1C1917] sm:py-12">
       <Container>
         <div className="mx-auto grid max-w-6xl gap-6">
           <Card className="rounded-3xl" padding="lg" variant="elevated">
@@ -50,7 +50,7 @@ export function PublicOutcomeOffer() {
               {offer.title}
             </h1>
             <p className="mt-4 max-w-3xl text-base leading-7 text-[#57534E]">{offer.shortSummary}</p>
-            <div className="mt-6 flex flex-wrap items-center gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+            <div className="mt-6 flex flex-wrap items-center gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
               <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[#3F6212] text-white">
                 <UserRound aria-hidden="true" className="h-5 w-5" />
               </div>
@@ -59,7 +59,7 @@ export function PublicOutcomeOffer() {
                 <p className="text-sm font-semibold text-[#78716C]">{provider.headline || provider.title || "Proof-backed provider"}</p>
               </div>
               {provider.username ? (
-                <Button as={Link} className="ml-auto w-full sm:w-auto" to={`/profile/${provider.username}`} variant="secondary">
+                <Button as={Link} className="ml-auto w-full sm:w-auto" to={getProfileRoute(provider.username)} variant="secondary">
                   View provider profile
                 </Button>
               ) : null}

@@ -1,27 +1,45 @@
 import "./loadEnv.js";
 
-const isProduction = process.env.NODE_ENV === "production";
-const defaultClientUrls = isProduction
-  ? []
-  : [
-      "http://localhost:5173",
-      "http://127.0.0.1:5173",
-      "http://localhost:5174",
-      "http://127.0.0.1:5174",
-    ];
 const validNodeEnvs = new Set(["development", "production", "test"]);
 const validationErrors = [];
+const validationWarnings = [];
+const nodeEnv = String(process.env.NODE_ENV ?? "development").trim();
+const isProduction = nodeEnv === "production";
 
 function splitCsv(value) {
-  return value
-    ?.split(",")
+  return String(value ?? "")
+    .split(",")
     .map((item) => item.trim())
-    .filter(Boolean) ?? [];
+    .filter(Boolean);
 }
 
-function requiredInProduction(name, value) {
+function readWithAliases(canonicalName, aliases = []) {
+  for (const name of [canonicalName, ...aliases]) {
+    const value = process.env[name]?.trim();
+
+    if (value) {
+      if (name !== canonicalName) {
+        validationWarnings.push(`${name} is deprecated; use ${canonicalName}`);
+      }
+
+      return value;
+    }
+  }
+
+  return undefined;
+}
+
+function requireInProduction(name, value) {
   if (isProduction && !value) {
     validationErrors.push(`${name} is required in production`);
+  }
+
+  return value;
+}
+
+function recommendInDevelopment(name, value) {
+  if (nodeEnv === "development" && !value) {
+    validationWarnings.push(`${name} is not set`);
   }
 
   return value;
@@ -46,114 +64,267 @@ function parseOptionalPositiveInteger(name, value, fallback) {
   return parsePositiveInteger(name, value, fallback);
 }
 
-if (!validNodeEnvs.has(process.env.NODE_ENV ?? "development")) {
+function parseBoolean(name, value, fallback = false) {
+  if (value === undefined || value === "") {
+    return fallback;
+  }
+
+  if (value === "true") {
+    return true;
+  }
+
+  if (value === "false") {
+    return false;
+  }
+
+  validationErrors.push(`${name} must be true or false`);
+  return fallback;
+}
+
+function validateUrl(name, value, { protocols = ["http:", "https:"] } = {}) {
+  if (!value) {
+    return value;
+  }
+
+  try {
+    const parsedUrl = new URL(value);
+
+    if (!protocols.includes(parsedUrl.protocol)) {
+      validationErrors.push(`${name} must use ${protocols.join(" or ")}`);
+    }
+  } catch {
+    validationErrors.push(`${name} must be a valid URL`);
+  }
+
+  return value;
+}
+
+function validateMongoUri(name, value) {
+  if (value && !/^mongodb(?:\+srv)?:\/\//i.test(value)) {
+    validationErrors.push(`${name} must be a valid MongoDB connection URI`);
+  }
+
+  return value;
+}
+
+function validateDuration(name, value) {
+  if (value && !/^\d+(?:ms|s|m|h|d|w|y)$/i.test(value)) {
+    validationErrors.push(`${name} must be a duration such as 15m or 7d`);
+  }
+
+  return value;
+}
+
+function validateProductionSecret(name, value) {
+  if (isProduction && value && value.length < 32) {
+    validationErrors.push(`${name} must be at least 32 characters in production`);
+  }
+
+  return value;
+}
+
+if (!validNodeEnvs.has(nodeEnv)) {
   validationErrors.push("NODE_ENV must be development, production, or test");
 }
 
-const clientUrls = [
-  ...new Set([
-    process.env.CLIENT_URL,
-    ...splitCsv(process.env.CLIENT_URLS),
-    ...defaultClientUrls,
-  ].filter(Boolean)),
-];
+if (!process.env.NODE_ENV) {
+  recommendInDevelopment("NODE_ENV", process.env.NODE_ENV);
+}
 
-if (isProduction && clientUrls.length === 0) {
+if (isProduction && !process.env.PORT) {
+  validationErrors.push("PORT is required in production");
+}
+
+const port = parsePositiveInteger("PORT", process.env.PORT, "5000");
+recommendInDevelopment("PORT", process.env.PORT);
+const defaultClientUrls = isProduction
+  ? []
+  : [
+      "http://localhost:5173",
+      "http://127.0.0.1:5173",
+      "http://localhost:5174",
+      "http://127.0.0.1:5174",
+    ];
+const configuredClientUrls = [
+  process.env.CLIENT_URL,
+  ...splitCsv(process.env.CLIENT_URLS),
+].filter(Boolean);
+const clientUrls = [...new Set([...configuredClientUrls, ...defaultClientUrls])];
+
+if (isProduction && configuredClientUrls.length === 0) {
   validationErrors.push("CLIENT_URL or CLIENT_URLS is required in production");
 }
 
-const adminEmail = requiredInProduction("ADMIN_EMAIL", process.env.ADMIN_EMAIL);
-const adminPassword = requiredInProduction(
+configuredClientUrls.forEach((url, index) => {
+  validateUrl(index === 0 ? "CLIENT_URL" : "CLIENT_URLS", url);
+});
+
+const clientUrl = clientUrls[0];
+recommendInDevelopment("CLIENT_URL", configuredClientUrls[0]);
+const serverUrl = validateUrl(
+  "SERVER_URL",
+  requireInProduction(
+    "SERVER_URL",
+    process.env.SERVER_URL?.trim() || (isProduction ? undefined : `http://localhost:${port}`),
+  ),
+);
+const mongoUri = validateMongoUri(
+  "MONGODB_URI",
+  requireInProduction(
+    "MONGODB_URI",
+    readWithAliases("MONGODB_URI", ["MONGO_URI"]),
+  ),
+);
+const jwtLegacySecret = process.env.JWT_SECRET?.trim();
+const jwtAccessSecret = validateProductionSecret(
+  "JWT_ACCESS_SECRET",
+  requireInProduction(
+    "JWT_ACCESS_SECRET",
+    readWithAliases("JWT_ACCESS_SECRET") ?? jwtLegacySecret,
+  ),
+);
+const jwtRefreshSecret = validateProductionSecret(
+  "JWT_REFRESH_SECRET",
+  requireInProduction(
+    "JWT_REFRESH_SECRET",
+    readWithAliases("JWT_REFRESH_SECRET") ?? jwtLegacySecret,
+  ),
+);
+const jwtAccessExpiresIn = validateDuration(
+  "JWT_ACCESS_EXPIRES_IN",
+  requireInProduction(
+    "JWT_ACCESS_EXPIRES_IN",
+    process.env.JWT_ACCESS_EXPIRES_IN?.trim() || (isProduction ? undefined : "15m"),
+  ),
+);
+const jwtRefreshExpiresIn = validateDuration(
+  "JWT_REFRESH_EXPIRES_IN",
+  requireInProduction(
+    "JWT_REFRESH_EXPIRES_IN",
+    process.env.JWT_REFRESH_EXPIRES_IN?.trim() || (isProduction ? undefined : "7d"),
+  ),
+);
+
+if (jwtLegacySecret && (!process.env.JWT_ACCESS_SECRET || !process.env.JWT_REFRESH_SECRET)) {
+  validationWarnings.push(
+    "JWT_SECRET is deprecated; use independent JWT_ACCESS_SECRET and JWT_REFRESH_SECRET",
+  );
+}
+
+recommendInDevelopment("SERVER_URL", process.env.SERVER_URL);
+recommendInDevelopment("MONGODB_URI", mongoUri);
+recommendInDevelopment("JWT_ACCESS_SECRET", jwtAccessSecret);
+recommendInDevelopment("JWT_REFRESH_SECRET", jwtRefreshSecret);
+recommendInDevelopment("JWT_ACCESS_EXPIRES_IN", process.env.JWT_ACCESS_EXPIRES_IN);
+recommendInDevelopment("JWT_REFRESH_EXPIRES_IN", process.env.JWT_REFRESH_EXPIRES_IN);
+
+const adminEmail = requireInProduction("ADMIN_EMAIL", process.env.ADMIN_EMAIL?.trim());
+const adminPassword = validateProductionSecret(
   "ADMIN_PASSWORD",
-  process.env.ADMIN_PASSWORD,
+  requireInProduction("ADMIN_PASSWORD", process.env.ADMIN_PASSWORD),
 );
 const contactRateLimitMax = parsePositiveInteger(
   "CONTACT_RATE_LIMIT_MAX",
   process.env.CONTACT_RATE_LIMIT_MAX,
   "5",
 );
-const jwtSecret = process.env.JWT_SECRET;
-const jwtAccessSecret = requiredInProduction(
-  "JWT_ACCESS_SECRET",
-  process.env.JWT_ACCESS_SECRET ?? jwtSecret,
-);
-const jwtRefreshSecret = requiredInProduction(
-  "JWT_REFRESH_SECRET",
-  process.env.JWT_REFRESH_SECRET ?? jwtSecret,
-);
-const jwtAccessExpiresIn = process.env.JWT_ACCESS_EXPIRES_IN ?? "15m";
-const jwtRefreshExpiresIn = process.env.JWT_REFRESH_EXPIRES_IN ?? "7d";
-const mongoUri = requiredInProduction("MONGO_URI", process.env.MONGO_URI);
 const rateLimitWindowMs = parsePositiveInteger(
   "RATE_LIMIT_WINDOW_MS",
   process.env.RATE_LIMIT_WINDOW_MS,
   "900000",
 );
-const emailFrom = process.env.EMAIL_FROM ?? process.env.SMTP_FROM;
-const emailEnabled =
-  process.env.EMAIL_ENABLED !== undefined
-    ? process.env.EMAIL_ENABLED === "true"
-    : Boolean(process.env.SMTP_HOST && (process.env.LEAD_NOTIFICATION_EMAIL ?? adminEmail));
-const leadNotificationEmail = process.env.LEAD_NOTIFICATION_EMAIL ?? adminEmail;
-const smtpHost = process.env.SMTP_HOST;
-const smtpPass = process.env.SMTP_PASS;
-const smtpPort = parseOptionalPositiveInteger("SMTP_PORT", process.env.SMTP_PORT, "587");
-const smtpSecure =
-  process.env.SMTP_SECURE === "true" || (!process.env.SMTP_SECURE && smtpPort === 465);
-const smtpUser = process.env.SMTP_USER;
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-const stripeProPriceId = process.env.STRIPE_PRO_PRICE_ID;
-const stripeAgencyPriceId = process.env.STRIPE_AGENCY_PRICE_ID;
-const stripeConnectCountry = process.env.STRIPE_CONNECT_COUNTRY ?? "US";
+const emailFrom = readWithAliases("EMAIL_FROM", ["SMTP_FROM"]);
+const emailHost = readWithAliases("EMAIL_HOST", ["SMTP_HOST"]);
+const emailPass = readWithAliases("EMAIL_PASS", ["SMTP_PASS"]);
+const emailPort = parseOptionalPositiveInteger(
+  "EMAIL_PORT",
+  readWithAliases("EMAIL_PORT", ["SMTP_PORT"]),
+  "587",
+);
+const emailUser = readWithAliases("EMAIL_USER", ["SMTP_USER"]);
+const emailEnabled = parseBoolean(
+  "EMAIL_ENABLED",
+  process.env.EMAIL_ENABLED,
+  Boolean(emailHost && (process.env.LEAD_NOTIFICATION_EMAIL ?? adminEmail)),
+);
+const emailSecure = parseBoolean(
+  "EMAIL_SECURE",
+  readWithAliases("EMAIL_SECURE", ["SMTP_SECURE"]),
+  emailPort === 465,
+);
+const leadNotificationEmail = process.env.LEAD_NOTIFICATION_EMAIL?.trim() ?? adminEmail;
+const openAiApiKey = process.env.OPENAI_API_KEY?.trim();
+const openAiModel = process.env.OPENAI_MODEL?.trim();
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY?.trim();
+const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET?.trim();
+const stripeProPriceId = process.env.STRIPE_PRO_PRICE_ID?.trim();
+const stripeAgencyPriceId = process.env.STRIPE_AGENCY_PRICE_ID?.trim();
+const stripeConnectCountry = process.env.STRIPE_CONNECT_COUNTRY?.trim() ?? "US";
 const stripeMarketplaceCommissionBps = parsePositiveInteger(
   "STRIPE_MARKETPLACE_COMMISSION_BPS",
   process.env.STRIPE_MARKETPLACE_COMMISSION_BPS,
   "1000",
 );
-const stripeBillingEnabled =
-  process.env.STRIPE_BILLING_ENABLED !== undefined
-    ? process.env.STRIPE_BILLING_ENABLED === "true"
-    : Boolean(stripeSecretKey);
-const stripeMarketplaceEnabled =
-  process.env.STRIPE_MARKETPLACE_ENABLED !== undefined
-    ? process.env.STRIPE_MARKETPLACE_ENABLED === "true"
-    : Boolean(stripeSecretKey);
-const redisUrl = process.env.REDIS_URL;
-const refreshCookieName = process.env.REFRESH_COOKIE_NAME ?? "proofarena_refresh";
-const refreshCookieSameSite = process.env.REFRESH_COOKIE_SAME_SITE;
-const queueDriver = process.env.QUEUE_DRIVER ?? (redisUrl ? "bullmq" : "memory");
+const stripeBillingEnabled = parseBoolean(
+  "STRIPE_BILLING_ENABLED",
+  process.env.STRIPE_BILLING_ENABLED,
+  Boolean(stripeSecretKey),
+);
+const stripeMarketplaceEnabled = parseBoolean(
+  "STRIPE_MARKETPLACE_ENABLED",
+  process.env.STRIPE_MARKETPLACE_ENABLED,
+  Boolean(stripeSecretKey),
+);
+const redisUrl = process.env.REDIS_URL?.trim();
+const refreshCookieName = process.env.REFRESH_COOKIE_NAME?.trim() ?? "proofarena_refresh";
+const refreshCookieSameSite = process.env.REFRESH_COOKIE_SAME_SITE?.trim();
+const queueDriver = process.env.QUEUE_DRIVER?.trim() ?? (redisUrl ? "bullmq" : "memory");
 const queueConcurrency = parsePositiveInteger(
   "QUEUE_CONCURRENCY",
   process.env.QUEUE_CONCURRENCY,
   "2",
 );
-const cloudinaryCloudName = process.env.CLOUDINARY_CLOUD_NAME;
-const cloudinaryApiKey = process.env.CLOUDINARY_API_KEY;
-const cloudinaryApiSecret = process.env.CLOUDINARY_API_SECRET;
-const cloudinaryFolder = process.env.CLOUDINARY_FOLDER ?? "scaleops";
-const cloudinaryEnabled =
-  Boolean(cloudinaryCloudName && cloudinaryApiKey && cloudinaryApiSecret);
-const allowVercelPreviewOrigins = process.env.VERCEL_PREVIEW_ORIGINS_ENABLED === "true";
+const cloudinaryCloudName = process.env.CLOUDINARY_CLOUD_NAME?.trim();
+const cloudinaryApiKey = process.env.CLOUDINARY_API_KEY?.trim();
+const cloudinaryApiSecret = process.env.CLOUDINARY_API_SECRET?.trim();
+const cloudinaryFolder = process.env.CLOUDINARY_FOLDER?.trim() ?? "scaleops";
+const cloudinaryValues = [cloudinaryCloudName, cloudinaryApiKey, cloudinaryApiSecret];
+const cloudinaryEnabled = cloudinaryValues.every(Boolean);
+const uploadDir = process.env.UPLOAD_DIR?.trim();
+const isVercel = Boolean(process.env.VERCEL);
+const allowVercelPreviewOrigins = parseBoolean(
+  "VERCEL_PREVIEW_ORIGINS_ENABLED",
+  process.env.VERCEL_PREVIEW_ORIGINS_ENABLED,
+);
+
+if (cloudinaryValues.some(Boolean) && !cloudinaryEnabled) {
+  validationErrors.push(
+    "CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET must be provided together",
+  );
+}
 
 if (emailEnabled) {
-  if (!smtpHost) {
-    validationErrors.push("SMTP_HOST is required when email notifications are enabled");
+  if (!emailHost) {
+    validationErrors.push("EMAIL_HOST is required when EMAIL_ENABLED is true");
   }
 
   if (!emailFrom) {
-    validationErrors.push("EMAIL_FROM or SMTP_FROM is required when email notifications are enabled");
+    validationErrors.push("EMAIL_FROM is required when EMAIL_ENABLED is true");
   }
 
   if (!leadNotificationEmail) {
     validationErrors.push(
-      "LEAD_NOTIFICATION_EMAIL or ADMIN_EMAIL is required when email notifications are enabled",
+      "LEAD_NOTIFICATION_EMAIL or ADMIN_EMAIL is required when EMAIL_ENABLED is true",
     );
   }
 
-  if ((smtpUser && !smtpPass) || (!smtpUser && smtpPass)) {
-    validationErrors.push("SMTP_USER and SMTP_PASS must be provided together");
+  if ((emailUser && !emailPass) || (!emailUser && emailPass)) {
+    validationErrors.push("EMAIL_USER and EMAIL_PASS must be provided together");
   }
+}
+
+if (openAiApiKey && !openAiModel) {
+  validationWarnings.push("OPENAI_MODEL is not set while OPENAI_API_KEY is configured");
 }
 
 if (stripeBillingEnabled) {
@@ -170,12 +341,16 @@ if (stripeBillingEnabled) {
   }
 
   if (isProduction && !stripeWebhookSecret) {
-    validationErrors.push("STRIPE_WEBHOOK_SECRET is required in production when Stripe billing is enabled");
+    validationErrors.push(
+      "STRIPE_WEBHOOK_SECRET is required in production when Stripe billing is enabled",
+    );
   }
 }
 
 if (stripeMarketplaceEnabled && !stripeSecretKey) {
-  validationErrors.push("STRIPE_SECRET_KEY is required when Stripe marketplace payments are enabled");
+  validationErrors.push(
+    "STRIPE_SECRET_KEY is required when Stripe marketplace payments are enabled",
+  );
 }
 
 if (!["bullmq", "memory"].includes(queueDriver)) {
@@ -190,10 +365,17 @@ if (validationErrors.length > 0) {
   throw new Error(`Invalid environment configuration: ${validationErrors.join("; ")}`);
 }
 
-export const env = {
+if (validationWarnings.length > 0 && nodeEnv !== "test") {
+  console.warn(
+    `Environment configuration warnings: ${[...new Set(validationWarnings)].join("; ")}`,
+  );
+}
+
+export const env = Object.freeze({
   adminEmail,
   adminPassword,
   allowVercelPreviewOrigins,
+  clientUrl,
   clientUrls,
   cloudinaryApiKey,
   cloudinaryApiSecret,
@@ -203,29 +385,39 @@ export const env = {
   contactRateLimitMax,
   emailEnabled,
   emailFrom,
+  emailHost,
+  emailPass,
+  emailPort,
+  emailSecure,
+  emailUser,
   isProduction,
-  jsonLimit: process.env.JSON_LIMIT ?? "1mb",
+  isVercel,
+  jsonLimit: process.env.JSON_LIMIT?.trim() ?? "1mb",
   jwtAccessExpiresIn,
   jwtAccessSecret,
   jwtExpiresIn: jwtAccessExpiresIn,
   jwtRefreshExpiresIn,
   jwtRefreshSecret,
-  jwtSecret,
+  jwtSecret: jwtLegacySecret,
   leadNotificationEmail,
   mongoUri,
-  nodeEnv: process.env.NODE_ENV ?? "development",
-  port: process.env.PORT ?? 5000,
-  rateLimitWindowMs,
-  refreshCookieName,
-  refreshCookieSameSite,
+  mongodbUri: mongoUri,
+  nodeEnv,
+  openAiApiKey,
+  openAiModel,
+  port,
   queueConcurrency,
   queueDriver,
+  rateLimitWindowMs,
   redisUrl,
-  smtpHost,
-  smtpPass,
-  smtpPort,
-  smtpSecure,
-  smtpUser,
+  refreshCookieName,
+  refreshCookieSameSite,
+  serverUrl,
+  smtpHost: emailHost,
+  smtpPass: emailPass,
+  smtpPort: emailPort,
+  smtpSecure: emailSecure,
+  smtpUser: emailUser,
   stripeAgencyPriceId,
   stripeBillingEnabled,
   stripeConnectCountry,
@@ -234,4 +426,5 @@ export const env = {
   stripeProPriceId,
   stripeSecretKey,
   stripeWebhookSecret,
-};
+  uploadDir,
+});

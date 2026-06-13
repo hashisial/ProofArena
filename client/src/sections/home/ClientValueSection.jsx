@@ -164,7 +164,7 @@ function OutcomePackageCard({ index, pkg, reduceMotion }) {
         </div>
 
         <div className="mt-4 grid gap-3">
-          <div className="rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+          <div className="rounded-2xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
             <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
               Proof required
             </p>
@@ -194,7 +194,7 @@ export function ClientValueSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFBEB_48%,#FEFCE8_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FEFCE8_48%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 -z-0 h-96 bg-[radial-gradient(circle_at_15%_8%,rgba(63, 98, 18, 0.13),transparent_34%),radial-gradient(circle_at_85%_86%,rgba(101, 163, 13, 0.12),transparent_30%)]" />
       <Container className="relative z-10">
         <MotionDiv {...getMotionProps(reduceMotion, 0)}>

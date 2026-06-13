@@ -1,212 +1,394 @@
-import { ROUTES } from "./routes.js";
+import { ADMIN_ROUTES, DASHBOARD_ROUTES, PUBLIC_ROUTES } from "./routes.js";
 
-export const PUBLIC_NAV_LINKS = Object.freeze([
+function createNavigationItem({
+  badge,
+  comingSoon,
+  description,
+  href,
+  iconKey,
+  label,
+  requiredRole,
+}) {
+  const roles = Array.isArray(requiredRole)
+    ? requiredRole
+    : requiredRole
+      ? [requiredRole]
+      : undefined;
+
+  return Object.freeze({
+    ...(badge ? { badge } : {}),
+    ...(comingSoon ? { comingSoon: true } : {}),
+    ...(description ? { description } : {}),
+    href,
+    ...(iconKey ? { iconKey, iconName: iconKey } : {}),
+    label,
+    path: href,
+    ...(requiredRole ? { requiredRole, roles: Object.freeze(roles) } : {}),
+  });
+}
+
+function createNavigationItems(items) {
+  return Object.freeze(items.map(createNavigationItem));
+}
+
+function createNavigationGroup(title, links) {
+  return Object.freeze({
+    links: Object.freeze(links),
+    title,
+  });
+}
+
+function findNavigationItem(items, href) {
+  return items.find((item) => item.href === href);
+}
+
+export const PUBLIC_NAV_LINKS = createNavigationItems([
+  {
+    description: "Return to the ProofArena outcome economy overview.",
+    href: PUBLIC_ROUTES.HOME,
+    iconKey: "Home",
+    label: "Home",
+  },
   {
     description: "See how measurable outcomes move from challenge to verified proof.",
-    iconName: "ListChecks",
-    label: "How it Works",
-    path: ROUTES.HOW_IT_WORKS,
+    href: PUBLIC_ROUTES.HOW_IT_WORKS,
+    iconKey: "ListChecks",
+    label: "How It Works",
   },
   {
     description: "Explore outcome challenges ready for execution plans.",
-    iconName: "Target",
+    href: PUBLIC_ROUTES.CHALLENGES,
+    iconKey: "Target",
     label: "Challenges",
-    path: ROUTES.CHALLENGES,
   },
   {
     description: "Discover providers building proof-based reputation.",
-    iconName: "Users",
+    href: PUBLIC_ROUTES.PROVIDERS,
+    iconKey: "Users",
     label: "Providers",
-    path: ROUTES.PROVIDERS,
   },
   {
-    description: "Review outcome-focused platform pricing.",
-    iconName: "BadgeDollarSign",
-    label: "Pricing",
-    path: ROUTES.PRICING,
+    description: "Review public records of verified outcome execution.",
+    href: PUBLIC_ROUTES.PROOF_LEDGER,
+    iconKey: "FileCheck2",
+    label: "Proof Ledger",
+  },
+  {
+    description: "Explore provider rankings based on verified outcomes.",
+    href: PUBLIC_ROUTES.LEADERBOARD,
+    iconKey: "Medal",
+    label: "Leaderboard",
+  },
+]);
+
+const RESOURCE_NAV_LINKS = createNavigationItems([
+  {
+    description: "Read product, marketplace, and outcome-economy insights.",
+    href: PUBLIC_ROUTES.BLOG,
+    iconKey: "Newspaper",
+    label: "Blog",
   },
   {
     description: "Explore guides, proof workflows, and marketplace resources.",
-    iconName: "BookOpen",
+    href: PUBLIC_ROUTES.RESOURCES,
+    iconKey: "BookOpen",
     label: "Resources",
-    path: ROUTES.RESOURCES,
+  },
+  {
+    description: "Review proof-backed outcome stories.",
+    href: PUBLIC_ROUTES.CASE_STUDIES,
+    iconKey: "Library",
+    label: "Case Studies",
+  },
+  {
+    description: "Find support for clients, providers, and proof workflows.",
+    href: PUBLIC_ROUTES.HELP,
+    iconKey: "LifeBuoy",
+    label: "Help Center",
   },
 ]);
 
-export const DASHBOARD_NAV_LINKS = Object.freeze([
+const COMPANY_NAV_LINKS = createNavigationItems([
+  {
+    description: "Review outcome-focused platform pricing.",
+    href: PUBLIC_ROUTES.PRICING,
+    iconKey: "BadgeDollarSign",
+    label: "Pricing",
+  },
+  {
+    description: "Contact ScaleOps and the ProofArena team.",
+    href: PUBLIC_ROUTES.CONTACT,
+    iconKey: "Mail",
+    label: "Contact",
+  },
+  {
+    description: "Understand ProofArena trust and safety foundations.",
+    href: PUBLIC_ROUTES.TRUST_SAFETY,
+    iconKey: "ShieldCheck",
+    label: "Trust & Safety",
+  },
+  {
+    description: "Review how profile, proof, and account data are handled.",
+    href: PUBLIC_ROUTES.PRIVACY,
+    iconKey: "LockKeyhole",
+    label: "Privacy",
+  },
+  {
+    description: "Review the platform terms of service.",
+    href: PUBLIC_ROUTES.TERMS,
+    iconKey: "ScrollText",
+    label: "Terms",
+  },
+]);
+
+export const FOOTER_NAV_LINKS = Object.freeze([
+  ...RESOURCE_NAV_LINKS,
+  ...COMPANY_NAV_LINKS,
+]);
+
+export const FOOTER_NAV_GROUPS = Object.freeze([
+  createNavigationGroup("Platform", [
+    findNavigationItem(PUBLIC_NAV_LINKS, PUBLIC_ROUTES.HOW_IT_WORKS),
+    findNavigationItem(PUBLIC_NAV_LINKS, PUBLIC_ROUTES.CHALLENGES),
+    findNavigationItem(PUBLIC_NAV_LINKS, PUBLIC_ROUTES.PROVIDERS),
+    findNavigationItem(PUBLIC_NAV_LINKS, PUBLIC_ROUTES.PROOF_LEDGER),
+    findNavigationItem(PUBLIC_NAV_LINKS, PUBLIC_ROUTES.LEADERBOARD),
+  ]),
+  createNavigationGroup("Resources", [
+    ...RESOURCE_NAV_LINKS,
+  ]),
+  createNavigationGroup("Company / Trust", [
+    ...COMPANY_NAV_LINKS,
+  ]),
+]);
+
+export const PUBLIC_NAV_DROPDOWNS = Object.freeze([
+  createNavigationGroup("Company", COMPANY_NAV_LINKS),
+  createNavigationGroup("Resources", RESOURCE_NAV_LINKS),
+]);
+
+export const DASHBOARD_NAV_LINKS = createNavigationItems([
   {
     description: "Your ProofArena workspace overview.",
-    iconName: "LayoutDashboard",
+    href: DASHBOARD_ROUTES.DASHBOARD,
+    iconKey: "LayoutDashboard",
     label: "Dashboard",
-    path: ROUTES.DASHBOARD,
   },
   {
     description: "Monitor active challenges, provider decisions, and next actions.",
-    iconName: "BriefcaseBusiness",
+    href: DASHBOARD_ROUTES.CLIENT_WORKSPACE,
+    iconKey: "BriefcaseBusiness",
     label: "Workspace",
-    path: ROUTES.CLIENT_WORKSPACE,
-    roles: ["client"],
+    requiredRole: "client",
   },
   {
     description: "Create and manage measurable client challenges.",
-    iconName: "Target",
+    href: DASHBOARD_ROUTES.MY_CHALLENGES,
+    iconKey: "Target",
     label: "Challenges",
-    path: ROUTES.MY_CHALLENGES,
-    roles: ["client"],
+    requiredRole: "client",
   },
   {
     description: "Review warm outcome challenges matched to your offers and proof profile.",
-    iconName: "Target",
+    href: DASHBOARD_ROUTES.MATCHED_CHALLENGES,
+    iconKey: "Target",
     label: "Matched Challenges",
-    path: ROUTES.MATCHED_CHALLENGES,
-    roles: ["provider"],
+    requiredRole: "provider",
   },
   {
     description: "Follow the guided path toward your first proof-backed client win.",
-    iconName: "Medal",
+    href: DASHBOARD_ROUTES.FIRST_CLIENT_MODE,
+    iconKey: "Medal",
     label: "First Client Mode",
-    path: ROUTES.FIRST_CLIENT_MODE,
-    roles: ["provider"],
+    requiredRole: "provider",
   },
   {
     description: "Package services into measurable proof-based offers.",
-    iconName: "PackageCheck",
+    href: DASHBOARD_ROUTES.MY_OUTCOME_OFFERS,
+    iconKey: "PackageCheck",
     label: "Outcome Offers",
-    path: ROUTES.MY_OUTCOME_OFFERS,
-    roles: ["provider"],
+    requiredRole: "provider",
   },
   {
     description: "Track structured plans submitted to client challenges.",
-    iconName: "ClipboardList",
+    href: DASHBOARD_ROUTES.MY_EXECUTION_PLANS,
+    iconKey: "ClipboardList",
     label: "Execution Plans",
-    path: ROUTES.MY_EXECUTION_PLANS,
-    roles: ["provider"],
+    requiredRole: "provider",
   },
   {
     description: "Manage matched, applied, shortlisted, won, and lost client opportunities.",
-    iconName: "ClipboardList",
+    href: DASHBOARD_ROUTES.OPPORTUNITY_PIPELINE,
+    iconKey: "ClipboardList",
     label: "Opportunity Pipeline",
-    path: ROUTES.OPPORTUNITY_PIPELINE,
-    roles: ["provider"],
+    requiredRole: "provider",
   },
   {
     description: "Store reusable proof assets for offers and execution plans.",
-    iconName: "FileCheck2",
+    href: DASHBOARD_ROUTES.PROOF_VAULT,
+    iconKey: "FileCheck2",
     label: "Proof Vault",
-    path: ROUTES.PROOF_VAULT,
-    roles: ["provider"],
+    requiredRole: "provider",
   },
   {
     description: "Keep saved and shortlisted providers ready for future challenge invites.",
-    iconName: "Bookmark",
+    href: DASHBOARD_ROUTES.SAVED_PROVIDERS,
+    iconKey: "Bookmark",
     label: "Saved Providers",
-    path: ROUTES.SAVED_PROVIDERS,
-    roles: ["client"],
-  },
-  {
-    description: "Review your submitted proof and verification status.",
-    iconName: "FileCheck2",
-    label: "Proof",
-    path: ROUTES.PROOF,
-  },
-  {
-    description: "Coordinate execution with clients and providers.",
-    iconName: "MessageSquare",
-    label: "Messages",
-    path: ROUTES.MESSAGES,
-  },
-  {
-    description: "Review challenge updates, proof alerts, and message signals.",
-    iconName: "Bell",
-    label: "Notifications",
-    path: ROUTES.NOTIFICATIONS,
+    requiredRole: "client",
   },
   {
     description: "Manage your identity and proof-based reputation.",
-    iconName: "UserCircle",
+    href: DASHBOARD_ROUTES.PROFILE,
+    iconKey: "UserCircle",
     label: "Profile",
-    path: ROUTES.PROFILE,
+  },
+  {
+    description: "Review your submitted proof and verification status.",
+    href: DASHBOARD_ROUTES.PROOF,
+    iconKey: "FileCheck2",
+    label: "Proof",
+  },
+  {
+    description: "Coordinate execution with clients and providers.",
+    href: DASHBOARD_ROUTES.MESSAGES,
+    iconKey: "MessageSquare",
+    label: "Messages",
+  },
+  {
+    description: "Review challenge updates, proof alerts, and message signals.",
+    href: DASHBOARD_ROUTES.NOTIFICATIONS,
+    iconKey: "Bell",
+    label: "Notifications",
   },
   {
     description: "Keep saved providers, challenges, and proof records together.",
-    iconName: "Bookmark",
+    href: DASHBOARD_ROUTES.SAVED,
+    iconKey: "Bookmark",
     label: "Saved",
-    path: ROUTES.SAVED,
-    roles: ["provider"],
   },
   {
     description: "Manage invoices, provider earnings, and future payments.",
-    iconName: "CreditCard",
+    href: DASHBOARD_ROUTES.BILLING,
+    iconKey: "CreditCard",
     label: "Billing",
-    path: ROUTES.BILLING,
   },
   {
     description: "Configure workspace preferences.",
-    iconName: "Settings",
+    href: DASHBOARD_ROUTES.SETTINGS,
+    iconKey: "Settings",
     label: "Settings",
-    path: ROUTES.SETTINGS,
   },
 ]);
 
-export const ADMIN_NAV_LINKS = Object.freeze([
+export const DASHBOARD_FUTURE_NAV_LINKS = createNavigationItems([
+  {
+    comingSoon: true,
+    description: "Review future provider rankings based on verified outcomes.",
+    href: PUBLIC_ROUTES.LEADERBOARD,
+    iconKey: "Medal",
+    label: "Leaderboard",
+  },
+]);
+
+export const ADMIN_NAV_LINKS = createNavigationItems([
   {
     description: "Platform trust and operations overview.",
-    iconName: "LayoutDashboard",
-    label: "Overview",
-    path: ROUTES.ADMIN,
+    href: ADMIN_ROUTES.ADMIN,
+    iconKey: "LayoutDashboard",
+    label: "Admin Overview",
+    requiredRole: "admin",
   },
   {
     description: "Review users and account status.",
-    iconName: "Users",
+    href: ADMIN_ROUTES.ADMIN_USERS,
+    iconKey: "Users",
     label: "Users",
-    path: ROUTES.ADMIN_USERS,
+    requiredRole: "admin",
   },
   {
     description: "Manage provider verification and quality.",
-    iconName: "ShieldCheck",
+    href: ADMIN_ROUTES.ADMIN_PROVIDERS,
+    iconKey: "ShieldCheck",
     label: "Providers",
-    path: ROUTES.ADMIN_PROVIDERS,
+    requiredRole: "admin",
   },
   {
     description: "Moderate outcome challenge quality.",
-    iconName: "Target",
+    href: ADMIN_ROUTES.ADMIN_CHALLENGES,
+    iconKey: "Target",
     label: "Challenges",
-    path: ROUTES.ADMIN_CHALLENGES,
+    requiredRole: "admin",
   },
   {
     description: "Moderate published and draft outcome offers.",
-    iconName: "PackageCheck",
+    href: ADMIN_ROUTES.ADMIN_OFFERS,
+    iconKey: "PackageCheck",
     label: "Outcome Offers",
-    path: ROUTES.ADMIN_OFFERS,
+    requiredRole: "admin",
   },
   {
     description: "Review proof assets and verification signals.",
-    iconName: "FileCheck2",
+    href: ADMIN_ROUTES.ADMIN_PROOF_ASSETS,
+    iconKey: "FileCheck2",
     label: "Proof Assets",
-    path: ROUTES.ADMIN_PROOF_ASSETS,
+    requiredRole: "admin",
+  },
+  {
+    description: "Review submitted proof before outcomes become public reputation.",
+    href: ADMIN_ROUTES.ADMIN_PROOF_REVIEW,
+    iconKey: "FileSearch",
+    label: "Proof Review",
+    requiredRole: "admin",
   },
   {
     description: "Review provider identity and profile verification requests.",
-    iconName: "BadgeCheck",
+    href: ADMIN_ROUTES.ADMIN_VERIFICATION,
+    iconKey: "BadgeCheck",
     label: "Verification",
-    path: ROUTES.ADMIN_VERIFICATION,
+    requiredRole: "admin",
   },
   {
     description: "Inspect platform trust reports.",
-    iconName: "BarChart3",
+    href: ADMIN_ROUTES.ADMIN_REPORTS,
+    iconKey: "BarChart3",
     label: "Reports",
-    path: ROUTES.ADMIN_REPORTS,
+    requiredRole: "admin",
   },
   {
     description: "Handle disputes and trust escalations.",
-    iconName: "AlertTriangle",
+    href: ADMIN_ROUTES.ADMIN_DISPUTES,
+    iconKey: "AlertTriangle",
     label: "Disputes",
-    path: ROUTES.ADMIN_DISPUTES,
+    requiredRole: "admin",
   },
   {
     description: "Configure platform controls.",
-    iconName: "Settings",
+    href: ADMIN_ROUTES.ADMIN_SETTINGS,
+    iconKey: "Settings",
     label: "Settings",
-    path: ROUTES.ADMIN_SETTINGS,
+    requiredRole: "admin",
   },
 ]);
+
+export const NAVIGATION_GROUPS = Object.freeze({
+  ADMIN: ADMIN_NAV_LINKS,
+  DASHBOARD: DASHBOARD_NAV_LINKS,
+  DASHBOARD_FUTURE: DASHBOARD_FUTURE_NAV_LINKS,
+  FOOTER: FOOTER_NAV_LINKS,
+  FOOTER_GROUPS: FOOTER_NAV_GROUPS,
+  PUBLIC: PUBLIC_NAV_LINKS,
+  PUBLIC_DROPDOWNS: PUBLIC_NAV_DROPDOWNS,
+});
+
+export function canAccessNavigationItem(item, role) {
+  if (!item?.requiredRole) {
+    return true;
+  }
+
+  const requiredRoles = Array.isArray(item.requiredRole)
+    ? item.requiredRole
+    : [item.requiredRole];
+
+  return requiredRoles.includes(role);
+}

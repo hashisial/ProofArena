@@ -2,12 +2,14 @@ import { createElement } from "react";
 import { cn } from "../../utils/cn.js";
 
 const variants = {
-  bordered: "border border-[#E7E5E4] bg-white shadow-none",
-  default: "border border-[#E7E5E4] bg-white shadow-[0_16px_50px_rgba(28, 25, 23, 0.06)]",
-  elevated: "border border-[#E7E5E4] bg-white shadow-[0_24px_80px_rgba(28, 25, 23, 0.1)]",
+  bordered: "border border-[var(--color-border)] bg-[var(--color-card)] shadow-none",
+  default: "border border-[var(--color-border)] bg-[var(--color-card)] shadow-[var(--shadow-soft)]",
+  elevated: "border border-[var(--color-border)] bg-[var(--color-card)] shadow-[var(--shadow-elevated)]",
+  hover:
+    "border border-[var(--color-border)] bg-[var(--color-card)] shadow-[var(--shadow-soft)] transition duration-[var(--motion-duration-standard)] hover:-translate-y-1 hover:border-[var(--color-accent)] hover:shadow-[var(--shadow-primary-glow)] motion-reduce:transform-none",
   interactive:
-    "border border-[#E7E5E4] bg-white shadow-[0_16px_50px_rgba(28, 25, 23, 0.06)] transition hover:-translate-y-1 hover:border-[#65A30D] hover:shadow-[0_20px_58px_rgba(63, 98, 18, 0.18)]",
-  muted: "border border-[#E7E5E4] bg-[#FFFBEB] shadow-none",
+    "border border-[var(--color-border)] bg-[var(--color-card)] shadow-[var(--shadow-soft)] transition duration-[var(--motion-duration-standard)] hover:-translate-y-1 hover:border-[var(--color-accent)] hover:shadow-[var(--shadow-primary-glow)] motion-reduce:transform-none",
+  muted: "border border-[var(--color-border)] bg-[var(--color-surface-soft)] shadow-none",
 };
 
 const paddings = {
@@ -46,10 +48,10 @@ export function Card({
     Component,
     {
       className: cn(
-        "min-w-0 break-words overflow-hidden rounded-2xl",
+        "min-w-0 break-words overflow-hidden rounded-[var(--radius-card)]",
         variants[variant] ?? variants.default,
         paddings[padding] ?? paddings.md,
-        onClick && "cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10",
+        onClick && "cursor-pointer focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-ring)]",
         className,
       ),
       onClick,
@@ -70,14 +72,14 @@ export function CardTitle({ as: Component = "h3", children, className = "" }) {
   return createElement(
     Component,
     {
-      className: cn("min-w-0 break-words text-xl font-black tracking-normal text-[#1C1917]", className),
+      className: cn("card-title min-w-0 break-words", className),
     },
     children,
   );
 }
 
 export function CardDescription({ children, className = "" }) {
-  return <p className={cn("min-w-0 break-words text-sm leading-6 text-[#78716C]", className)}>{children}</p>;
+  return <p className={cn("min-w-0 break-words text-sm leading-6 text-[var(--color-text-muted)]", className)}>{children}</p>;
 }
 
 export function CardContent({ children, className = "" }) {

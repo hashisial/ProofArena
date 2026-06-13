@@ -47,7 +47,7 @@ function SavedServiceCard({ item, onRemove, removing }) {
 
   return (
     <article className="group overflow-hidden rounded-[1.7rem] border border-black/10 bg-white shadow-[0_20px_62px_rgba(63, 98, 18, 0.08)] transition duration-300 hover:-translate-y-1 hover:border-[#3F6212]/38 hover:shadow-[0_28px_84px_rgba(63, 98, 18, 0.16)]">
-      <div className="relative aspect-[16/10] overflow-hidden bg-[#1A2E05]">
+      <div className="relative aspect-[16/10] overflow-hidden bg-[#26350F]">
         {service?.coverImage ? (
           <img
             alt=""
@@ -80,7 +80,7 @@ function SavedServiceCard({ item, onRemove, removing }) {
           </p>
         </div>
         {provider ? (
-          <a className="flex items-center gap-3 rounded-2xl border border-black/10 bg-[#fffbeb] p-3" href={provider.publicUrl || "#"}>
+          <a className="flex items-center gap-3 rounded-2xl border border-black/10 bg-[#fefce8] p-3" href={provider.publicUrl || "#"}>
             <ProviderAvatar provider={provider} />
             <span className="min-w-0">
               <span className="block truncate text-sm font-black text-black">{provider.name || provider.fullName}</span>
@@ -137,7 +137,7 @@ function SavedProviderCard({ item, onRemove, removing }) {
           ["Projects", provider?.completedProjects ?? 0],
           ["Rate", provider?.hourlyRate ? `$${provider.hourlyRate}/hr` : "Custom"],
         ].map(([label, value]) => (
-          <div className="rounded-2xl border border-black/10 bg-[#fffbeb] p-3" key={label}>
+          <div className="rounded-2xl border border-black/10 bg-[#fefce8] p-3" key={label}>
             <p className="text-[11px] font-black uppercase tracking-[0.14em] text-black/38">{label}</p>
             <p className="mt-1 truncate text-sm font-black text-black">{value}</p>
           </div>
@@ -189,7 +189,7 @@ export function Saved() {
   return (
     <WorkspaceLayout eyebrow="Client shortlist" title="Saved">
       <div className="grid gap-8">
-        <section className="relative overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[radial-gradient(circle_at_92%_12%,rgba(63, 98, 18, 0.2),transparent_34%),linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] md:p-8">
+        <section className="relative overflow-hidden rounded-[2rem] border border-[#3F6212]/16 bg-[radial-gradient(circle_at_92%_12%,rgba(63, 98, 18, 0.2),transparent_34%),linear-gradient(135deg,#ffffff,#fefce8)] p-6 shadow-[0_28px_90px_rgba(63, 98, 18, 0.1)] md:p-8">
           <div aria-hidden="true" className="absolute -right-16 -top-20 h-56 w-56 rounded-full bg-[#3F6212]/16 blur-3xl" />
           <div className="relative grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <div>

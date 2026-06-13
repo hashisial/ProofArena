@@ -126,7 +126,7 @@ function CellContent({ provider, row, winnerMap }) {
   const highlighted = isWinner(winnerMap, row.key, provider);
 
   return (
-    <div className={highlighted ? "rounded-xl border border-[#BEF264] bg-[#F7FEE7] p-2" : ""}>
+    <div className={highlighted ? "rounded-xl border border-[#D9F99D] bg-[#F7FEE7] p-2" : ""}>
       <div className="text-sm font-semibold leading-6 text-[#44403C]">
         {row.render(provider)}
       </div>
@@ -144,7 +144,7 @@ export function ProviderComparisonTable({ providers = [] }) {
       <div className="hidden overflow-hidden rounded-2xl border border-[#E7E5E4] bg-white lg:block">
         <table className="w-full table-fixed border-collapse text-left">
           <thead>
-            <tr className="border-b border-[#E7E5E4] bg-[#FFFBEB]">
+            <tr className="border-b border-[#E7E5E4] bg-[#FEFCE8]">
               <th className="w-44 px-4 py-3 text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
                 Compare
               </th>
@@ -161,7 +161,7 @@ export function ProviderComparisonTable({ providers = [] }) {
           <tbody>
             {rows.map((row) => (
               <tr className="border-b border-[#E7E5E4] align-top last:border-0" key={row.key}>
-                <th className="bg-[#FFFBEB] px-4 py-3 text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
+                <th className="bg-[#FEFCE8] px-4 py-3 text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">
                   {row.label}
                 </th>
                 {providers.map((provider) => (
@@ -185,7 +185,7 @@ export function ProviderComparisonTable({ providers = [] }) {
             <div className="mt-4 grid gap-3">
               {rows.slice(1).map((row) => (
                 <div
-                  className="grid gap-1 rounded-xl border border-[#E7E5E4] bg-[#FFFBEB] p-3"
+                  className="grid gap-1 rounded-xl border border-[#E7E5E4] bg-[#FEFCE8] p-3"
                   key={`${row.key}-${getProviderId(provider)}`}
                 >
                   <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">

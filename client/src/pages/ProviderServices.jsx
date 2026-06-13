@@ -857,7 +857,7 @@ export function ProviderServices() {
                 ["Pending review", stats.pending],
                 ["Live marketplace", stats.active],
               ].map(([label, value]) => (
-                <div className="flex items-center justify-between rounded-2xl bg-[#fffbeb] px-4 py-3" key={label}>
+                <div className="flex items-center justify-between rounded-2xl bg-[#fefce8] px-4 py-3" key={label}>
                   <span className="text-sm font-semibold text-black/56">{label}</span>
                   <strong className="text-xl text-black">{value}</strong>
                 </div>

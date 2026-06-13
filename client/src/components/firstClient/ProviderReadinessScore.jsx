@@ -39,7 +39,7 @@ export function ProviderReadinessScore({ missingItems = [], score = 0 }) {
             style={{ width: `${value}%` }}
           />
         </div>
-        <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <p className="flex items-center gap-2 text-sm font-black text-[#1C1917]">
             {missingItems.length === 0 ? (
               <CheckCircle2 aria-hidden="true" className="h-4 w-4 text-[#3F6212]" />

@@ -87,10 +87,10 @@ export function ProviderCompare() {
   }
 
   return (
-    <section className="min-w-0 bg-[#FFFBEB] py-8 text-[#1C1917] sm:py-12 lg:py-14">
+    <section className="min-w-0 bg-[#FEFCE8] py-8 text-[#1C1917] sm:py-12 lg:py-14">
       <Container>
         <div className="mx-auto grid max-w-7xl gap-6 pb-20">
-          <section className="rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fffbeb)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
+          <section className="rounded-[2rem] border border-[#3F6212]/16 bg-[linear-gradient(135deg,#ffffff,#fefce8)] p-6 shadow-[0_24px_80px_rgba(28,25,23,0.08)] md:p-8">
             <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
               <div className="min-w-0">
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
@@ -170,7 +170,7 @@ export function ProviderCompare() {
                   <ul className="mt-4 grid gap-3">
                     {summary.map((item) => (
                       <li
-                        className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] px-4 py-3 text-sm font-semibold leading-6 text-[#44403C]"
+                        className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] px-4 py-3 text-sm font-semibold leading-6 text-[#44403C]"
                         key={item}
                       >
                         {item}

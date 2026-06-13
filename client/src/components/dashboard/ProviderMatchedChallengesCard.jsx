@@ -54,7 +54,7 @@ export function ProviderMatchedChallengesCard({
             const challenge = match.challenge ?? {};
 
             return (
-              <article className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={match.id ?? challenge.id}>
+              <article className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={match.id ?? challenge.id}>
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex flex-wrap items-center gap-2">
                     {challenge.category ? <Badge variant="outline">{challenge.category}</Badge> : null}

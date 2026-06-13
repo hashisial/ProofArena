@@ -120,7 +120,7 @@ export function FinalCTASection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FEFCE8_0%,#F7FEE7_52%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#F7FEE7_52%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_50%_0%,rgba(63, 98, 18, 0.18),transparent_36%),radial-gradient(circle_at_90%_80%,rgba(10,10,10,0.06),transparent_30%)]" />
       <Container className="relative z-10">
         <MotionDiv {...getMotionProps(reduceMotion, 0)}>
@@ -150,7 +150,7 @@ export function FinalCTASection() {
         </MotionDiv>
 
         <MotionDiv
-          className="premium-motion-card mt-10 rounded-3xl border border-[#ECFCCB] bg-[#FFFBEB] p-5 sm:p-6"
+          className="premium-motion-card mt-10 rounded-3xl border border-[#ECFCCB] bg-[#FEFCE8] p-5 sm:p-6"
           {...getMotionProps(reduceMotion, 0.08)}
         >
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
@@ -182,13 +182,13 @@ export function FinalCTASection() {
         </div>
 
         <MotionDiv
-          className="premium-tilt premium-motion-card relative mt-12 overflow-hidden rounded-[2rem] border border-[#BEF264]/70 bg-[#365314] p-6 text-white shadow-[0_34px_100px_rgba(63, 98, 18, 0.34)] sm:p-8 lg:p-12"
+          className="premium-tilt premium-motion-card relative mt-12 overflow-hidden rounded-[2rem] border border-[#D9F99D]/70 bg-[#365314] p-6 text-white shadow-[0_34px_100px_rgba(63, 98, 18, 0.34)] sm:p-8 lg:p-12"
           {...getRevealMotionProps(reduceMotion, { delay: 0.18, variant: scaleIn })}
         >
           <BackgroundVideo
             className="rounded-[2rem]"
-            fallbackClassName="bg-[radial-gradient(circle_at_18%_4%,rgba(255,255,255,0.34),transparent_28%),radial-gradient(circle_at_86%_72%,rgba(101, 163, 13, 0.46),transparent_30%),linear-gradient(135deg,#3F6212_0%,#365314_46%,#1A2E05_100%)]"
-            overlayClassName="bg-[#1A2E05]/8"
+            fallbackClassName="bg-[radial-gradient(circle_at_18%_4%,rgba(255,255,255,0.34),transparent_28%),radial-gradient(circle_at_86%_72%,rgba(101, 163, 13, 0.46),transparent_30%),linear-gradient(135deg,#3F6212_0%,#365314_46%,#26350F_100%)]"
+            overlayClassName="bg-[#26350F]/8"
           />
           <div className="relative z-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
             <div className="max-w-3xl">

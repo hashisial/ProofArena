@@ -75,7 +75,7 @@ export function ServicesSection({
 
           return (
             <article
-              className="group rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 transition hover:-translate-y-0.5 hover:border-[#BEF264] hover:shadow-[0_16px_42px_rgba(63, 98, 18, 0.1)]"
+              className="group rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4 transition hover:-translate-y-0.5 hover:border-[#D9F99D] hover:shadow-[0_16px_42px_rgba(63, 98, 18, 0.1)]"
               key={service.id || service._id || `${title}-${index}`}
             >
               <div className="flex min-w-0 items-start gap-3">

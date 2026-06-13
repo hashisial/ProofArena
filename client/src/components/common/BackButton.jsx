@@ -6,6 +6,7 @@ import { cn } from "../../utils/cn.js";
 export function BackButton({
   className = "",
   fallbackPath = ROUTES.DASHBOARD,
+  iconOnly = false,
   label = "Back",
   variant = "default",
 }) {
@@ -24,17 +25,18 @@ export function BackButton({
     <button
       aria-label="Go back"
       className={cn(
-        "inline-flex min-h-10 items-center gap-2 rounded-full border px-4 text-sm font-black transition focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12",
+        "inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border text-sm font-black transition focus:outline-none focus:ring-4 focus:ring-[var(--color-primary-ring)]",
+        iconOnly ? "h-11 w-11 px-0" : "px-4",
         variant === "ghost"
-          ? "border-transparent bg-transparent text-[#44403C] hover:bg-[#F7FEE7] hover:text-[#365314]"
-          : "border-[#E7E5E4] bg-white text-[#44403C] shadow-[0_12px_30px_rgba(28, 25, 23, 0.06)] hover:border-[#3F6212]/30 hover:text-[#365314]",
+          ? "border-transparent bg-transparent text-[var(--color-text-secondary)] hover:bg-[var(--color-accent-soft)] hover:text-[var(--color-primary-hover)]"
+          : "border-[var(--color-border)] bg-white text-[var(--color-text-secondary)] shadow-[var(--shadow-soft)] hover:border-[var(--color-primary-border)] hover:text-[var(--color-primary-hover)]",
         className,
       )}
       onClick={handleBack}
       type="button"
     >
-      <ArrowLeft aria-hidden="true" className="h-4 w-4" />
-      <span>{label}</span>
+      <ArrowLeft aria-hidden="true" className={cn("shrink-0 stroke-[2.75]", iconOnly ? "h-6 w-6" : "h-4 w-4")} />
+      {iconOnly ? null : <span>{label}</span>}
     </button>
   );
 }

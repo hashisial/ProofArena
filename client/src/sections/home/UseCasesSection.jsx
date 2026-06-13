@@ -113,7 +113,7 @@ function UseCaseCard({ index, reduceMotion, useCase }) {
           {useCase.description}
         </p>
 
-        <div className="mt-5 rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+        <div className="mt-5 rounded-2xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
           <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
             Example outcome
           </p>
@@ -150,7 +150,7 @@ export function UseCasesSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFBEB_44%,#F0E7FF_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FEFCE8_44%,#F0E7FF_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_12%_10%,rgba(63, 98, 18, 0.15),transparent_34%),radial-gradient(circle_at_90%_72%,rgba(101, 163, 13, 0.14),transparent_28%)]" />
       <Container className="relative z-10">
         <MotionDiv {...getMotionProps(reduceMotion, 0)}>

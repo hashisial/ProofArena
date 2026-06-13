@@ -12,7 +12,7 @@ export function OpportunityColumn({
   stage,
 }) {
   return (
-    <section className="min-w-0 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+    <section className="min-w-0 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
       <div className="mb-3 flex items-center justify-between gap-3">
         <h2 className="text-sm font-black uppercase tracking-[0.12em] text-[#1C1917]">
           {OPPORTUNITY_STAGE_LABELS[stage] ?? stage}

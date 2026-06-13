@@ -56,10 +56,10 @@ const TABS = [
   { icon: Layers3, label: "Coverage", value: "coverage" },
 ];
 
-export function ProofVault() {
+export function ProofVault({ initialTab = "assets" }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const shouldOpenNewAssetForm = searchParams.get("new") === "1";
-  const requestedTab = searchParams.get("tab") ?? "assets";
+  const requestedTab = searchParams.get("tab") ?? initialTab;
   const activeTab = TABS.some((tab) => tab.value === requestedTab) ? requestedTab : "assets";
   const [filters, setFilters] = useState(defaultFilters);
   const [isFormOpen, setIsFormOpen] = useState(() => shouldOpenNewAssetForm);
@@ -197,7 +197,7 @@ export function ProofVault() {
               aria-controls={`proof-${tab.value}-panel`}
               aria-selected={isActive}
               className={`flex min-h-12 min-w-0 items-center justify-center gap-2 rounded-xl px-3 text-sm font-black transition focus:outline-none focus:ring-4 focus:ring-[#3F6212]/15 ${
-                isActive ? "bg-[#3F6212] text-white" : "bg-[#FFFBEB] text-[#44403C] hover:bg-[#F7FEE7]"
+                isActive ? "bg-[#3F6212] text-white" : "bg-[#FEFCE8] text-[#44403C] hover:bg-[#F7FEE7]"
               }`}
               id={`proof-${tab.value}-tab`}
               key={tab.value}

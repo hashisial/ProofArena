@@ -12,9 +12,9 @@ const healthIcons = {
 };
 
 const healthClasses = {
-  bronze: "border-[#A16207]/20 bg-[#FEF3C7] text-[#A16207]",
+  bronze: "border-[#A16207]/20 bg-[#ECFCCB] text-[#A16207]",
   green: "border-[#65A30D]/20 bg-[#F7FEE7] text-[#3F6212]",
-  neutral: "border-[#E7E5E4] bg-[#FFFBEB] text-[#57534E]",
+  neutral: "border-[#E7E5E4] bg-[#FEFCE8] text-[#57534E]",
   olive: "border-[#3F6212]/20 bg-[#F7FEE7] text-[#3F6212]",
 };
 

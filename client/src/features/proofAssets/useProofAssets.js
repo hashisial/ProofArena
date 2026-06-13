@@ -1,11 +1,9 @@
 import { useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../../constants/queryKeys.js";
 import { proofAssetService } from "./proofAssetService.js";
 
-export const proofAssetKeys = Object.freeze({
-  detail: (id) => ["proofAssets", "detail", id],
-  me: (filters = {}) => ["proofAssets", "me", filters],
-});
+export const proofAssetKeys = queryKeys.proofAssets;
 
 function cleanFilters(filters = {}) {
   return Object.fromEntries(
@@ -16,7 +14,7 @@ function cleanFilters(filters = {}) {
 }
 
 function invalidateProofAssets(queryClient, id) {
-  queryClient.invalidateQueries({ queryKey: ["proofAssets", "me"] });
+  queryClient.invalidateQueries({ queryKey: proofAssetKeys.meRoot });
   if (id) {
     queryClient.invalidateQueries({ queryKey: proofAssetKeys.detail(id) });
   }

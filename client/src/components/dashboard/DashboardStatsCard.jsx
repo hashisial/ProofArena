@@ -3,8 +3,8 @@ import { Card } from "../ui/Card.jsx";
 import { cn } from "../../utils/cn.js";
 
 const toneClasses = {
-  bronze: "bg-[#FEF3C7] text-[#A16207]",
-  neutral: "bg-[#FFFBEB] text-[#44403C]",
+  bronze: "bg-[#ECFCCB] text-[#A16207]",
+  neutral: "bg-[#FEFCE8] text-[#44403C]",
   olive: "bg-[#F7FEE7] text-[#3F6212]",
 };
 

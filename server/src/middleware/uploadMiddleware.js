@@ -1,11 +1,12 @@
 import fs from "fs";
 import path from "path";
 import multer from "multer";
+import { env } from "../config/env.js";
 import { AppError } from "../utils/AppError.js";
 
-const uploadRoot = process.env.UPLOAD_DIR
-  ? path.resolve(process.env.UPLOAD_DIR)
-  : process.env.VERCEL
+const uploadRoot = env.uploadDir
+  ? path.resolve(env.uploadDir)
+  : env.isVercel
     ? path.join("/tmp", "uploads")
     : path.resolve(process.cwd(), "uploads");
 const profileUploadDir = path.join(uploadRoot, "profiles");

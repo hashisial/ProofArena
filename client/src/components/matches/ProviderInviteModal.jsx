@@ -31,7 +31,7 @@ export function ProviderInviteModal({
       title="Invite Provider"
     >
       <div className="grid gap-4">
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <p className="text-sm font-bold leading-6 text-[#44403C]">
             This will invite <span className="font-black text-[#1C1917]">{providerName}</span> to review{" "}
             <span className="font-black text-[#1C1917]">{challengeTitle}</span> and submit an execution plan once the invite workflow is connected.

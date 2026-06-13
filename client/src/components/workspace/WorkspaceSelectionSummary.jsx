@@ -11,7 +11,7 @@ import {
 
 function SummaryMetric({ label, value }) {
   return (
-    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+    <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
       <p className="text-xs font-black uppercase tracking-[0.13em] text-[#78716C]">{label}</p>
       <p className="mt-2 break-words text-base font-black text-[#1C1917]">{value}</p>
     </div>
@@ -30,7 +30,7 @@ export function WorkspaceSelectionSummary({
 
   if (isLoading) {
     return (
-      <Card as="section" className="h-80 animate-pulse bg-[#FFFBEB]" padding="md" variant="bordered" />
+      <Card as="section" className="h-80 animate-pulse bg-[#FEFCE8]" padding="md" variant="bordered" />
     );
   }
 

@@ -7,10 +7,12 @@ The frontend is a Vite React app in `/client`.
 Set this in Vercel or Netlify before production deploy:
 
 ```env
-VITE_API_URL=https://your-backend-domain.com/api/v1
+VITE_API_BASE_URL=https://your-backend-domain.com
 ```
 
-Use the deployed backend `/api/v1` URL, not `localhost`.
+Use the deployed backend origin or an explicit `/api` or `/api/v1` base, not
+`localhost`. When the configured value is an origin without a path, the API
+client appends `/api`.
 
 ## Vercel
 
@@ -29,7 +31,7 @@ CLI flow:
 ```bash
 cd client
 vercel link
-vercel env add VITE_API_URL production
+vercel env add VITE_API_BASE_URL production
 vercel deploy --prod
 ```
 
@@ -50,7 +52,7 @@ CLI flow:
 ```bash
 cd client
 netlify init
-netlify env:set VITE_API_URL https://your-backend-domain.com/api
+netlify env:set VITE_API_BASE_URL https://your-backend-domain.com
 netlify deploy --build --prod
 ```
 

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { ClipboardList, Plus } from "lucide-react";
 import { useMemo, useState } from "react";
 import { PageHeader } from "../components/common/PageHeader.jsx";
@@ -27,6 +27,7 @@ import {
   useCompleteNextAction,
   useCreateOpportunity,
   useMyOpportunities,
+  useOpportunity,
   useOpportunityStats,
   useUpdateNextAction,
   useUpdateOpportunityStage,
@@ -65,14 +66,17 @@ function StatCard({ label, value }) {
 }
 
 export function OpportunityPipeline() {
+  const { opportunityId = "" } = useParams();
+  const navigate = useNavigate();
   const [filters, setFilters] = useState(defaultFilters);
   const [viewMode, setViewMode] = useState("board");
-  const [selectedOpportunity, setSelectedOpportunity] = useState(null);
+  const [selectedOpportunityState, setSelectedOpportunity] = useState(null);
   const [lostTarget, setLostTarget] = useState(null);
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [form, setForm] = useState(defaultForm);
   const [formError, setFormError] = useState("");
   const opportunitiesQuery = useMyOpportunities(filters);
+  const opportunityQuery = useOpportunity(opportunityId);
   const statsQuery = useOpportunityStats();
   const createMutation = useCreateOpportunity();
   const stageMutation = useUpdateOpportunityStage();
@@ -82,6 +86,11 @@ export function OpportunityPipeline() {
   const archiveMutation = useArchiveOpportunity();
   const opportunities = useMemo(() => opportunitiesQuery.data?.items ?? [], [opportunitiesQuery.data?.items]);
   const stats = statsQuery.data ?? {};
+  const selectedOpportunity = opportunityId
+    ? selectedOpportunityState?.id === opportunityId
+      ? selectedOpportunityState
+      : opportunityQuery.data
+    : null;
 
   function resetFilters() {
     setFilters(defaultFilters);
@@ -95,6 +104,18 @@ export function OpportunityPipeline() {
     setForm(defaultForm);
     setFormError("");
     setIsAddOpen(true);
+  }
+
+  function openOpportunity(opportunity) {
+    const id = opportunity?.id || opportunity?._id;
+    if (!id) return;
+    setSelectedOpportunity(opportunity);
+    navigate(ROUTES.OPPORTUNITY_DETAIL(id));
+  }
+
+  function closeOpportunity() {
+    setSelectedOpportunity(null);
+    navigate(ROUTES.OPPORTUNITY_PIPELINE);
   }
 
   async function handleCreateOpportunity(event) {
@@ -201,6 +222,24 @@ export function OpportunityPipeline() {
         title="Opportunity Pipeline"
       />
 
+      {opportunityId && opportunityQuery.isLoading ? (
+        <Card padding="sm" variant="muted">
+          <p className="text-sm font-bold text-[#78716C]">Loading opportunity details...</p>
+        </Card>
+      ) : null}
+
+      {opportunityId && opportunityQuery.isError ? (
+        <Card padding="md" variant="bordered">
+          <Badge variant="red">Opportunity unavailable</Badge>
+          <p className="mt-3 text-sm leading-6 text-[#78716C]">
+            {getOpportunityApiErrorMessage(opportunityQuery.error, "This opportunity may have moved or you may not have access.")}
+          </p>
+          <Button className="mt-5" onClick={closeOpportunity} type="button">
+            Back to Pipeline
+          </Button>
+        </Card>
+      ) : null}
+
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
         <StatCard label="Total opportunities" value={stats.total ?? opportunities.length} />
         <StatCard label="Shortlisted" value={stats.shortlisted ?? 0} />
@@ -255,7 +294,7 @@ export function OpportunityPipeline() {
             isUpdatingStage={stageMutation.isPending}
             onArchive={handleArchive}
             onStageChange={handleStageChange}
-            onView={setSelectedOpportunity}
+            onView={openOpportunity}
             opportunities={opportunities}
           />
         ) : (
@@ -264,7 +303,7 @@ export function OpportunityPipeline() {
             isUpdatingStage={stageMutation.isPending}
             onArchive={handleArchive}
             onStageChange={handleStageChange}
-            onView={setSelectedOpportunity}
+            onView={openOpportunity}
             opportunities={opportunities}
           />
         )
@@ -316,7 +355,7 @@ export function OpportunityPipeline() {
         key={selectedOpportunity?.id ?? "opportunity-detail"}
         onAddNote={handleAddNote}
         onArchive={handleArchive}
-        onClose={() => setSelectedOpportunity(null)}
+        onClose={closeOpportunity}
         onCompleteNextAction={handleCompleteNextAction}
         onStageChange={handleStageChange}
         onUpdateNextAction={handleUpdateNextAction}

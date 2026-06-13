@@ -28,7 +28,7 @@ function formatAvailability(value = "") {
 function MatchedOfferSummary({ offer, provider }) {
   if (!offer) {
     return (
-      <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+      <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
         <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Matched outcome offer</p>
         <p className="mt-2 text-sm font-semibold leading-6 text-[#57534E]">
           No public outcome offer was attached to this match yet.

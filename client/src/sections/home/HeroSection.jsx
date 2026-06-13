@@ -127,7 +127,7 @@ export function HeroSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative isolate overflow-hidden border-b border-[#E7E5E4] bg-[#FEFCE8]">
+    <section className="relative isolate overflow-hidden border-b border-[#E7E5E4] bg-[#FFFFFF]">
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(135deg,#FFFFFF_0%,#F7FEE7_44%,#F7FEE7_100%)]" />
       <div className="absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(circle_at_18%_8%,rgba(63, 98, 18, 0.24),transparent_34%),radial-gradient(circle_at_88%_18%,rgba(10,10,10,0.1),transparent_24%),radial-gradient(circle_at_65%_78%,rgba(101, 163, 13, 0.24),transparent_32%)]" />
       <div className="absolute inset-0 -z-10 opacity-[0.09] [background-image:linear-gradient(rgba(63, 98, 18, .24)_1px,transparent_1px),linear-gradient(90deg,rgba(63, 98, 18, .18)_1px,transparent_1px)] [background-size:72px_72px]" />
@@ -212,7 +212,7 @@ export function HeroSection() {
                 overlayClassName="bg-white/58"
               />
               <div className="relative z-10 rounded-[2rem] border border-white/70 bg-white/84 p-4 backdrop-blur-sm sm:p-5">
-                <div className="rounded-[1.5rem] border border-[#ECFCCB] bg-[#FFFBEB] p-4 sm:p-5">
+                <div className="rounded-[1.5rem] border border-[#ECFCCB] bg-[#FEFCE8] p-4 sm:p-5">
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">

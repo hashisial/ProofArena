@@ -34,7 +34,7 @@ export function WorkspaceActivityTimeline({ events = [] }) {
                   <span className="absolute left-0 top-3 z-10 grid h-10 w-10 place-items-center rounded-2xl border border-[#E7E5E4] bg-white text-[#3F6212]">
                     {createElement(Icon, { "aria-hidden": "true", className: "h-4 w-4" })}
                   </span>
-                  <a className="block min-w-0 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 transition hover:border-[#65A30D] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12" href={event.href}>
+                  <a className="block min-w-0 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4 transition hover:border-[#65A30D] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12" href={event.href}>
                     <div className="flex flex-wrap items-center gap-2">
                       <p className="break-words text-sm font-black text-[#1C1917]">{event.title}</p>
                       <Badge size="sm" variant="gray">{event.label}</Badge>

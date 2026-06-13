@@ -30,7 +30,7 @@ export function ExecutionPlanPreview({ plan }) {
         {text(plan?.summary, "A concise summary of how this plan delivers the outcome.")}
       </p>
       {plan?.whyThisProvider ? (
-        <div className="mt-4 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="mt-4 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">Provider match note</p>
           <p className="mt-2 text-sm leading-6 text-[#44403C]">{plan.whyThisProvider}</p>
         </div>

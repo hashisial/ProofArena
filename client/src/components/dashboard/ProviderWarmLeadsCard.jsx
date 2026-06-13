@@ -68,7 +68,7 @@ export function ProviderWarmLeadsCard({
                 ["Applied matches", stats.applied],
                 ["Best match score", bestScore],
               ].map(([label, value]) => (
-                <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={label}>
+                <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={label}>
                   <p className="text-sm font-bold text-[#78716C]">{label}</p>
                   <p className="mt-2 text-2xl font-black text-[#1C1917]">{value}</p>
                 </div>

@@ -64,11 +64,11 @@ const defensibilitySignals = [
 
 export function ProofArenaTrustFlywheel() {
   return (
-    <section className="bg-[#151B0D] py-20 text-white sm:py-28 lg:py-36">
+    <section className="bg-[#1C1917] py-20 text-white sm:py-28 lg:py-36">
       <Container>
         <div className="grid gap-12 xl:grid-cols-[0.68fr_1.32fr] xl:items-center">
           <div data-story-reveal>
-            <p className="text-xs font-black uppercase text-[#BEF264]">10 / Trust flywheel</p>
+            <p className="text-xs font-black uppercase text-[#D9F99D]">10 / Trust flywheel</p>
             <h2 className="mt-4 max-w-2xl text-4xl font-black leading-[1.03] text-white [text-wrap:balance] sm:text-5xl lg:text-6xl">
               Every verified outcome makes the network more useful.
             </h2>
@@ -82,7 +82,7 @@ export function ProofArenaTrustFlywheel() {
 
                 return (
                   <article className="flex gap-4 border-t border-white/14 pt-4" key={signal.label}>
-                    <span className="grid h-10 w-10 shrink-0 place-items-center border border-[#BEF264]/25 bg-[#BEF264]/10 text-[#BEF264]">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center border border-[#D9F99D]/25 bg-[#D9F99D]/10 text-[#D9F99D]">
                       <Icon aria-hidden="true" className="h-4 w-4" />
                     </span>
                     <div>
@@ -97,7 +97,7 @@ export function ProofArenaTrustFlywheel() {
 
           <div className="trust-flywheel" data-story-reveal>
             <div className="trust-flywheel-core">
-              <Network aria-hidden="true" className="h-6 w-6 text-[#BEF264]" />
+              <Network aria-hidden="true" className="h-6 w-6 text-[#D9F99D]" />
               <p className="mt-3 text-xl font-black text-white">ProofArena</p>
               <p className="mt-1 text-xs font-black uppercase text-white/45">Outcome execution network</p>
             </div>

@@ -1,13 +1,9 @@
 import { useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../../constants/queryKeys.js";
 import { challengeService } from "./challengeService.js";
 
-export const challengeKeys = Object.freeze({
-  detail: (id) => ["challenges", "detail", id],
-  me: (filters = {}) => ["challenges", "me", filters],
-  public: (filters = {}) => ["challenges", "public", filters],
-  publicDetail: (username, slug) => ["challenges", "public", username, slug],
-});
+export const challengeKeys = queryKeys.challenges;
 
 function cleanFilters(filters = {}) {
   return Object.fromEntries(
@@ -18,7 +14,7 @@ function cleanFilters(filters = {}) {
 }
 
 function invalidateMyChallenges(queryClient) {
-  queryClient.invalidateQueries({ queryKey: ["challenges", "me"] });
+  queryClient.invalidateQueries({ queryKey: challengeKeys.meRoot });
 }
 
 export function useMyChallenges(filters = {}, options = {}) {

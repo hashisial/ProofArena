@@ -1,9 +1,11 @@
 import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
+import {
+  ACCOUNT_STATUS_VALUES,
+  USER_ROLE_VALUES,
+} from "../constants/index.js";
 
 const saltRounds = 12;
-const roleValues = ["client", "provider", "admin"];
-const accountStatusValues = ["active", "pending", "suspended", "deleted"];
 const legacyRoleMap = {
   user: "client",
 };
@@ -90,13 +92,13 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: roleValues,
+      enum: USER_ROLE_VALUES,
       default: "client",
       index: true,
     },
     accountStatus: {
       type: String,
-      enum: accountStatusValues,
+      enum: ACCOUNT_STATUS_VALUES,
       default: "active",
       index: true,
     },

@@ -1,14 +1,10 @@
 import { useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../../constants/queryKeys.js";
 import { challengeKeys } from "../challenges/useChallenges.js";
 import { executionPlanService } from "./executionPlanService.js";
 
-export const executionPlanKeys = Object.freeze({
-  challenge: (challengeId, filters = {}) => ["executionPlans", "challenge", challengeId, filters],
-  clientDetail: (id) => ["executionPlans", "client", id],
-  me: (filters = {}) => ["executionPlans", "me", filters],
-  providerDetail: (id) => ["executionPlans", "provider", id],
-});
+export const executionPlanKeys = queryKeys.executionPlans;
 
 function cleanFilters(filters = {}) {
   return Object.fromEntries(
@@ -19,16 +15,16 @@ function cleanFilters(filters = {}) {
 }
 
 function invalidateProviderPlans(queryClient, id) {
-  queryClient.invalidateQueries({ queryKey: ["executionPlans", "me"] });
+  queryClient.invalidateQueries({ queryKey: executionPlanKeys.meRoot });
   if (id) {
     queryClient.invalidateQueries({ queryKey: executionPlanKeys.providerDetail(id) });
   }
 }
 
 function invalidateChallengePlans(queryClient, challengeId, planId) {
-  queryClient.invalidateQueries({ queryKey: ["executionPlans", "challenge"] });
-  queryClient.invalidateQueries({ queryKey: ["challenges", "me"] });
-  queryClient.invalidateQueries({ queryKey: ["challenges", "detail"] });
+  queryClient.invalidateQueries({ queryKey: executionPlanKeys.challengeRoot });
+  queryClient.invalidateQueries({ queryKey: challengeKeys.meRoot });
+  queryClient.invalidateQueries({ queryKey: challengeKeys.details });
   if (challengeId) {
     queryClient.invalidateQueries({ queryKey: challengeKeys.detail(challengeId) });
   }
@@ -89,11 +85,11 @@ export function useSubmitExecutionPlan() {
   return useMutation({
     mutationFn: executionPlanService.submitExecutionPlan,
     onSuccess: (_data, variables) => {
-      queryClient.invalidateQueries({ queryKey: ["executionPlans", "me"] });
-      queryClient.invalidateQueries({ queryKey: ["challenges", "public"] });
-      queryClient.invalidateQueries({ queryKey: ["challenges", "detail"] });
-      queryClient.invalidateQueries({ queryKey: ["challenges", "me"] });
-      queryClient.invalidateQueries({ queryKey: ["matches", "provider"] });
+      queryClient.invalidateQueries({ queryKey: executionPlanKeys.meRoot });
+      queryClient.invalidateQueries({ queryKey: challengeKeys.publicRoot });
+      queryClient.invalidateQueries({ queryKey: challengeKeys.details });
+      queryClient.invalidateQueries({ queryKey: challengeKeys.meRoot });
+      queryClient.invalidateQueries({ queryKey: queryKeys.matches.providerRoot });
       if (variables?.challengeId) {
         queryClient.invalidateQueries({ queryKey: challengeKeys.detail(variables.challengeId) });
       }

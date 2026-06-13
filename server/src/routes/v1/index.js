@@ -33,36 +33,42 @@ import userRoutes from "./user.routes.js";
 
 const router = Router();
 
-router.use("/health", healthRoutes);
-router.use("/auth", authRoutes);
-router.use("/users", userRoutes);
-router.use("/account", accountRoutes);
-router.use("/admin", adminRoutes);
-router.use("/analytics", analyticsRoutes);
-router.use("/billing", billingRoutes);
-router.use("/blogs", blogRoutes);
-router.use("/challenges", challengeRoutes);
-router.use("/connections", connectionRoutes);
-router.use("/conversations", conversationRoutes);
-router.use("/contact", contactRoutes);
-router.use("/execution-plans", executionPlanRoutes);
-router.use("/first-client", firstClientRoutes);
-router.use("/follows", followRoutes);
-router.use("/leads", leadRoutes);
-router.use("/messages", messageRoutes);
-router.use("/marketplace", marketplacePaymentRoutes);
-router.use("/matches", matchRoutes);
-router.use("/network", networkRoutes);
-router.use("/notifications", notificationRoutes);
-router.use("/opportunities", opportunityPipelineRoutes);
-router.use("/outcome-offers", outcomeOfferRoutes);
-router.use("/portfolio", portfolioRoutes);
-router.use("/proof-assets", proofAssetRoutes);
-router.use("/providers", providerRoutes);
-router.use("/profile", profileRoutes);
-router.use("/reviews", reviewRoutes);
-router.use("/saved-providers", savedProviderRoutes);
-router.use("/saved", savedItemRoutes);
-router.use("/services", serviceRoutes);
+export const V1_ROUTE_REGISTRY = Object.freeze([
+  ["/health", healthRoutes],
+  ["/auth", authRoutes],
+  ["/users", userRoutes],
+  ["/account", accountRoutes],
+  ["/admin", adminRoutes],
+  ["/analytics", analyticsRoutes],
+  ["/billing", billingRoutes],
+  ["/blogs", blogRoutes],
+  ["/challenges", challengeRoutes],
+  ["/connections", connectionRoutes],
+  ["/conversations", conversationRoutes],
+  ["/contact", contactRoutes],
+  ["/execution-plans", executionPlanRoutes],
+  ["/first-client", firstClientRoutes],
+  ["/follows", followRoutes],
+  ["/leads", leadRoutes],
+  ["/messages", messageRoutes],
+  ["/marketplace", marketplacePaymentRoutes],
+  ["/matches", matchRoutes],
+  ["/network", networkRoutes],
+  ["/notifications", notificationRoutes],
+  ["/opportunities", opportunityPipelineRoutes],
+  ["/outcome-offers", outcomeOfferRoutes],
+  ["/portfolio", portfolioRoutes],
+  ["/proof-assets", proofAssetRoutes],
+  ["/providers", providerRoutes],
+  ["/profile", profileRoutes],
+  ["/reviews", reviewRoutes],
+  ["/saved-providers", savedProviderRoutes],
+  ["/saved", savedItemRoutes],
+  ["/services", serviceRoutes],
+]);
+
+V1_ROUTE_REGISTRY.forEach(([prefix, routes]) => {
+  router.use(prefix, routes);
+});
 
 export default router;

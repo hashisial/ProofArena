@@ -79,7 +79,7 @@ function ProofRecordCard({ index, record, reduceMotion }) {
           </p>
         </div>
 
-        <div className="mt-4 flex items-start gap-3 rounded-2xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+        <div className="mt-4 flex items-start gap-3 rounded-2xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
           <ShieldCheck aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#3F6212]" />
           <p className="text-sm font-black leading-6 text-[#365314]">
             {record.scoreImpact}
@@ -94,7 +94,7 @@ export function ProofLedgerPreview() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FFFBEB_46%,#F7FEE7_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#FEFCE8_46%,#F7FEE7_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_18%_12%,rgba(63, 98, 18, 0.14),transparent_34%),radial-gradient(circle_at_86%_66%,rgba(101, 163, 13, 0.12),transparent_30%)]" />
       <Container className="relative z-10">
         <MotionDiv {...getMotionProps(reduceMotion, 0)}>

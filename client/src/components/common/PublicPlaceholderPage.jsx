@@ -26,7 +26,7 @@ export function PublicPlaceholderPage({
   return (
     <section
       className={cn(
-        "relative overflow-hidden bg-[#FEFCE8] px-4 py-16 text-[#1C1917] sm:px-6 sm:py-20 lg:px-8 lg:py-24",
+        "relative overflow-hidden bg-[#FFFFFF] px-4 py-16 text-[#1C1917] sm:px-6 sm:py-20 lg:px-8 lg:py-24",
         className,
       )}
     >
@@ -37,7 +37,7 @@ export function PublicPlaceholderPage({
 
       <div className="relative mx-auto grid w-full max-w-7xl gap-8">
         <Card
-          className="relative rounded-[2rem] border-[#E7E5E4] bg-[linear-gradient(135deg,#ffffff,#FFFBEB)] shadow-[0_28px_90px_rgba(28,25,23,0.08)]"
+          className="relative rounded-[2rem] border-[#E7E5E4] bg-[linear-gradient(135deg,#ffffff,#FEFCE8)] shadow-[0_28px_90px_rgba(28,25,23,0.08)]"
           padding="lg"
           variant="elevated"
         >
@@ -100,7 +100,7 @@ export function PublicPlaceholderPage({
             <CardContent className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {features.map((feature) => (
                 <div
-                  className="min-w-0 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4"
+                  className="min-w-0 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4"
                   key={feature}
                 >
                   <CheckCircle2 aria-hidden="true" className="h-5 w-5 text-[#3F6212]" />

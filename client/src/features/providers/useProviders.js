@@ -1,16 +1,10 @@
 import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { queryKeys } from "../../constants/queryKeys.js";
 import { providerService } from "./providerService.js";
 import { usePublicProfile } from "../profile/useProfile.js";
 
-export const providerKeys = Object.freeze({
-  all: ["providers"],
-  compare: (providerIds = []) => ["providers", "compare", providerIds],
-  filters: ["providers", "filters"],
-  public: (filters) => ["providers", "public", filters],
-  profile: (username) => ["providers", "profile", username],
-  search: (filters) => ["providers", "search", filters],
-});
+export const providerKeys = queryKeys.providers;
 
 function cleanFilters(filters = {}) {
   return Object.fromEntries(

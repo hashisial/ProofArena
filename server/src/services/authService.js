@@ -1,4 +1,5 @@
 import { randomBytes, timingSafeEqual } from "crypto";
+import { USER_ROLES, USER_ROLE_VALUES } from "../constants/index.js";
 import { env } from "../config/env.js";
 import { User } from "../models/User.js";
 import { AppError } from "../utils/AppError.js";
@@ -14,7 +15,7 @@ import { ensureDatabaseConnection } from "./databaseService.js";
 import { sendEmailVerificationEmail, sendPasswordResetEmail } from "./emailService.js";
 import { ensureUserSubscription } from "./subscriptionService.js";
 
-const validRoles = new Set(["client", "provider", "admin"]);
+const validRoles = new Set(USER_ROLE_VALUES);
 const validAccountTypes = new Set(["individual", "agency"]);
 const validVerificationStatuses = new Set(["pending", "verified", "rejected"]);
 const passwordResetTtlMs = 30 * 60 * 1000;
@@ -45,7 +46,7 @@ function normalizeUsername(username) {
 }
 
 function normalizeRole(role) {
-  return role === "user" ? "client" : role;
+  return role === USER_ROLES.USER ? USER_ROLES.CLIENT : role;
 }
 
 function hasVerifiedEmailStatus(user = {}) {
@@ -92,7 +93,7 @@ function hashRefreshToken(token) {
 }
 
 function getClientBaseUrl(clientBaseUrl) {
-  return clientBaseUrl ?? env.clientUrls[0] ?? "http://localhost:5173";
+  return clientBaseUrl ?? env.clientUrl;
 }
 
 function getResetUrl(token, clientBaseUrl) {

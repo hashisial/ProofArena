@@ -8,17 +8,21 @@ Set these in the hosting provider dashboard:
 
 ```env
 NODE_ENV=production
-MONGO_URI=mongodb+srv://<username>:<password>@<cluster>/<database>?retryWrites=true&w=majority
+PORT=5000
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>/<database>?retryWrites=true&w=majority
 CLIENT_URL=https://your-frontend-domain.com
+SERVER_URL=https://your-backend-domain.com
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=<strong-password>
-JWT_SECRET=<long-random-secret>
-JWT_EXPIRES_IN=1d
+JWT_ACCESS_SECRET=<long-independent-random-secret>
+JWT_REFRESH_SECRET=<different-long-independent-random-secret>
+JWT_ACCESS_EXPIRES_IN=15m
+JWT_REFRESH_EXPIRES_IN=7d
 JSON_LIMIT=1mb
 ```
 
-`PORT` is usually provided by the host. Keep the app reading `process.env.PORT`;
-only set `PORT` manually if your provider requires it.
+`PORT` is usually provided by the host. The centralized environment validator
+requires it in production and reads it before the server starts.
 
 ## Railway
 

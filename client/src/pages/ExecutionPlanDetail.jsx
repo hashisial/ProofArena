@@ -31,7 +31,7 @@ function DetailList({ empty = "Nothing added yet.", items = [], title, type }) {
       </CardHeader>
       <CardContent className="grid gap-3">
         {items.length > 0 ? items.map((item, index) => (
-          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={`${item.title || item.risk}-${index}`}>
+          <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={`${item.title || item.risk}-${index}`}>
             <p className="font-black text-[#1C1917]">{item.title || item.risk}</p>
             {item.description || item.mitigation ? (
               <p className="mt-1 text-sm leading-6 text-[#78716C]">{item.description || item.mitigation}</p>
@@ -144,7 +144,7 @@ export function ExecutionPlanDetail() {
             <p className="text-xs font-black uppercase tracking-[0.16em] text-[#3F6212]">Approach</p>
             <p className="mt-3 text-sm leading-7 text-[#44403C]">{plan.approach}</p>
             {plan.whyThisProvider ? (
-              <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <div className="mt-5 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                 <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Why this provider</p>
                 <p className="mt-2 text-sm leading-6 text-[#44403C]">{plan.whyThisProvider}</p>
               </div>

@@ -96,15 +96,15 @@ export function OpportunityDetailDrawer({
               {opportunity.summary || opportunity.challenge?.shortSummary || "No summary added yet."}
             </p>
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
                 <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">Value</p>
                 <p className="mt-1 font-black text-[#1C1917]">{formatOpportunityValue(opportunity.value)}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
                 <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">Match</p>
                 <p className="mt-1 font-black text-[#1C1917]">{opportunity.matchScore ? `${Math.round(opportunity.matchScore)}%` : "No score"}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
                 <p className="text-xs font-black uppercase tracking-[0.12em] text-[#78716C]">Last activity</p>
                 <p className="mt-1 font-black text-[#1C1917]">{formatDate(opportunity.lastActivityAt)}</p>
               </div>
@@ -117,7 +117,7 @@ export function OpportunityDetailDrawer({
               <CardDescription>Public-safe client, challenge, plan, and match context.</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4">
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                 <p className="text-sm font-black text-[#1C1917]">Challenge</p>
                 <p className="mt-1 text-sm leading-6 text-[#78716C]">{opportunity.challenge?.title || "No challenge linked"}</p>
                 {opportunity.challengeId ? (
@@ -127,11 +127,11 @@ export function OpportunityDetailDrawer({
                   </Button>
                 ) : null}
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                 <p className="text-sm font-black text-[#1C1917]">Client</p>
                 <p className="mt-1 text-sm leading-6 text-[#78716C]">{opportunity.client?.fullName || "No client linked"}</p>
               </div>
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
                 <p className="text-sm font-black text-[#1C1917]">Execution plan</p>
                 <p className="mt-1 text-sm leading-6 text-[#78716C]">{opportunity.executionPlan?.title || "No execution plan linked"}</p>
                 {opportunity.executionPlanId ? (
@@ -173,7 +173,7 @@ export function OpportunityDetailDrawer({
               </form>
               <div className="grid gap-3">
                 {(opportunity.notes ?? []).length > 0 ? [...opportunity.notes].reverse().map((item, index) => (
-                  <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3" key={`${item.createdAt}-${index}`}>
+                  <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3" key={`${item.createdAt}-${index}`}>
                     <p className="text-sm leading-6 text-[#44403C]">{item.body}</p>
                     <p className="mt-2 text-xs font-bold text-[#78716C]">{formatDate(item.createdAt)}</p>
                   </div>

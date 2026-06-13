@@ -7,7 +7,7 @@ const nodes = [
   { color: "#A16207", position: [2.2, 1.15, -0.2], scale: [1.05, 0.62, 0.14] },
   { color: "#3F6212", position: [-1.75, -1.45, -0.1], scale: [0.95, 0.62, 0.14] },
   { color: "#ECFCCB", position: [2.25, -1.25, 0.25], scale: [0.9, 0.58, 0.14] },
-  { color: "#BEF264", position: [0, 2.1, -0.35], scale: [0.72, 0.5, 0.12] },
+  { color: "#D9F99D", position: [0, 2.1, -0.35], scale: [0.72, 0.5, 0.12] },
 ];
 
 function Ecosystem() {
@@ -50,7 +50,7 @@ function Ecosystem() {
         </mesh>
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[1.15, 0.018, 8, 96]} />
-          <meshBasicMaterial color="#BEF264" transparent opacity={0.62} />
+          <meshBasicMaterial color="#D9F99D" transparent opacity={0.62} />
         </mesh>
       </group>
 

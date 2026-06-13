@@ -62,7 +62,7 @@ export function ClientPlanReviewPanel({
         </div>
       </div>
 
-      <div className="mt-5 rounded-2xl border border-[#A16207]/25 bg-[#FFFBEB] p-4">
+      <div className="mt-5 rounded-2xl border border-[#A16207]/25 bg-[#FEFCE8] p-4">
         <div className="flex items-start gap-3">
           <ShieldAlert aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#A16207]" />
           <p className="text-sm leading-6 text-[#57534E]">
@@ -89,7 +89,7 @@ export function ClientPlanReviewPanel({
           </Button>
         </div>
       ) : (
-        <div className="mt-6 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 text-sm leading-6 text-[#78716C]">
+        <div className="mt-6 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4 text-sm leading-6 text-[#78716C]">
           This plan already has a decision. You can still review the details and compare the decision history.
         </div>
       )}

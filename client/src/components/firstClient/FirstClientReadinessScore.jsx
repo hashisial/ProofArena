@@ -58,7 +58,7 @@ export function FirstClientReadinessScore({ checks = [], score = 0 }) {
             const Icon = check.complete ? CheckCircle2 : CircleAlert;
 
             return (
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={check.key}>
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={check.key}>
                 <div className="flex items-start gap-3">
                   <Icon
                     aria-hidden="true"

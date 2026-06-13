@@ -238,7 +238,7 @@ export function Auth() {
         : "Access your outcome workspace and continue tracking verified execution.";
 
   return (
-    <section className="relative isolate min-h-[calc(100vh-4rem)] overflow-hidden bg-[radial-gradient(circle_at_12%_8%,rgba(63, 98, 18, 0.18),transparent_32rem),linear-gradient(180deg,#ffffff,#fefce8)] py-10 sm:py-16">
+    <section className="relative isolate min-h-[calc(100vh-4rem)] overflow-hidden bg-[radial-gradient(circle_at_12%_8%,rgba(63, 98, 18, 0.18),transparent_32rem),linear-gradient(180deg,#ffffff,#ffffff)] py-10 sm:py-16">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute right-[8%] top-14 h-80 w-80 rounded-full bg-[#3F6212]/12 blur-3xl" />
         <div className="absolute left-[10%] bottom-10 h-44 w-44 rotate-12 rounded-[2.5rem] border border-[#3F6212]/16 bg-[#3F6212]/6" />
@@ -259,7 +259,7 @@ export function Auth() {
             </p>
             <div className="relative mt-10 grid gap-3">
               {["HTTP-only refresh session", "Role-aware workspace access", "Rate-limited auth routes"].map((item) => (
-                <div className="rounded-2xl border border-[#3F6212]/14 bg-[#FFFBEB] px-4 py-3 text-sm font-bold text-black" key={item}>
+                <div className="rounded-2xl border border-[#3F6212]/14 bg-[#FEFCE8] px-4 py-3 text-sm font-bold text-black" key={item}>
                   {item}
                 </div>
               ))}

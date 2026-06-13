@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { getMyActivityFeed } from "../services/api.js";
+import { queryKeys } from "../constants/queryKeys.js";
+import { dashboardService } from "../features/dashboard/dashboardService.js";
 import {
   profileKeys,
   profileService,
@@ -9,8 +10,8 @@ import {
 export function useMyActivityFeed(enabled = true) {
   const query = useQuery({
     enabled,
-    queryFn: getMyActivityFeed,
-    queryKey: ["account", "activity-feed"],
+    queryFn: dashboardService.getMyActivityFeed,
+    queryKey: queryKeys.dashboard.activityFeed,
     staleTime: 15_000,
   });
 
@@ -40,10 +41,10 @@ export function useUpdateMyProfile() {
     mutationFn: profileService.updateMyProfile,
     onSuccess: (data) => {
       queryClient.setQueryData(profileKeys.me, data);
-      queryClient.setQueryData(["account", "profile"], data);
+      queryClient.setQueryData(queryKeys.dashboard.profile, data);
       queryClient.invalidateQueries({ queryKey: profileKeys.me });
-      queryClient.invalidateQueries({ queryKey: ["account", "activity-feed"] });
-      queryClient.invalidateQueries({ queryKey: ["account", "dashboard"] });
+      queryClient.invalidateQueries({ queryKey: queryKeys.dashboard.activityFeed });
+      queryClient.invalidateQueries({ queryKey: queryKeys.dashboard.overview });
     },
   });
 }
@@ -62,10 +63,10 @@ export function useUploadMyProfileMedia() {
     },
     onSuccess: (data) => {
       queryClient.setQueryData(profileKeys.me, data);
-      queryClient.setQueryData(["account", "profile"], data);
+      queryClient.setQueryData(queryKeys.dashboard.profile, data);
       queryClient.invalidateQueries({ queryKey: profileKeys.me });
-      queryClient.invalidateQueries({ queryKey: ["account", "activity-feed"] });
-      queryClient.invalidateQueries({ queryKey: ["account", "dashboard"] });
+      queryClient.invalidateQueries({ queryKey: queryKeys.dashboard.activityFeed });
+      queryClient.invalidateQueries({ queryKey: queryKeys.dashboard.overview });
     },
   });
 }

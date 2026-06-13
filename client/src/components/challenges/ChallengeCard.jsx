@@ -58,7 +58,7 @@ export function ChallengeCard({
         <CardDescription>{challenge?.shortSummary || "Add a clear summary so providers understand the result."}</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <div className="flex items-start gap-3">
             <Target aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#3F6212]" />
             <p className="text-sm font-semibold leading-6 text-[#44403C]">{targetOutcome}</p>
@@ -84,21 +84,21 @@ export function ChallengeCard({
         </div>
         {variant === "owner" ? (
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
               <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
                 <ClipboardList aria-hidden="true" className="h-3.5 w-3.5" />
                 Plans
               </p>
               <p className="mt-1 text-sm font-black text-[#1C1917]">{plansCount} received</p>
             </div>
-            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
               <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
                 <UsersRound aria-hidden="true" className="h-3.5 w-3.5" />
                 Matches
               </p>
               <p className="mt-1 text-sm font-black text-[#1C1917]">{recommendedCount} recommended</p>
             </div>
-            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-3">
+            <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-3">
               <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">Next action</p>
               <p className="mt-1 text-sm font-black text-[#1C1917]">{nextAction.label}</p>
             </div>

@@ -38,7 +38,7 @@ export function ProfileOwnerControls() {
       <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {controls.map((item) => (
           <button
-            className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4 text-left transition hover:-translate-y-0.5 hover:border-[#3F6212]/35 hover:bg-white hover:shadow-[0_18px_48px_rgba(63, 98, 18, 0.12)] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10"
+            className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4 text-left transition hover:-translate-y-0.5 hover:border-[#3F6212]/35 hover:bg-white hover:shadow-[0_18px_48px_rgba(63, 98, 18, 0.12)] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/10"
             key={item.label}
             type="button"
           >

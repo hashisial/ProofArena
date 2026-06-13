@@ -1,12 +1,9 @@
 import { useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../../constants/queryKeys.js";
 import { firstClientService } from "./firstClientService.js";
 
-export const firstClientKeys = Object.freeze({
-  badges: () => ["firstClient", "badges"],
-  starterChallenges: (filters = {}) => ["firstClient", "starterChallenges", filters],
-  status: () => ["firstClient", "status"],
-});
+export const firstClientKeys = queryKeys.firstClient;
 
 function cleanFilters(filters = {}) {
   return Object.fromEntries(
@@ -17,10 +14,10 @@ function cleanFilters(filters = {}) {
 }
 
 function invalidateFirstClient(queryClient) {
-  queryClient.invalidateQueries({ queryKey: ["firstClient"] });
+  queryClient.invalidateQueries({ queryKey: firstClientKeys.all });
   queryClient.invalidateQueries({ queryKey: firstClientKeys.status() });
   queryClient.invalidateQueries({ queryKey: firstClientKeys.badges() });
-  queryClient.invalidateQueries({ queryKey: ["firstClient", "starterChallenges"] });
+  queryClient.invalidateQueries({ queryKey: firstClientKeys.starterChallengesRoot });
 }
 
 export function useFirstClientStatus(options = {}) {

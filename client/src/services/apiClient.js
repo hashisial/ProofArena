@@ -1,19 +1,46 @@
 import axios from "axios";
+import { clientEnv } from "../config/env.js";
+import { AUTH_API } from "../constants/apiEndpoints.js";
 import { useAuthStore } from "../store/useAuthStore.js";
+import { unwrapApiResponse } from "./apiContracts.js";
+import { ApiError, normalizeApiError } from "./apiErrors.js";
 
-function normalizeApiBaseUrl(value) {
+const LOOPBACK_HOSTS = new Set(["127.0.0.1", "::1", "localhost"]);
+let unauthorizedHandler = null;
+
+export function normalizeApiBaseUrl(value) {
   const trimmedValue = String(value ?? "").trim();
 
   if (!trimmedValue) {
     return "";
   }
 
-  return trimmedValue.replace(/\/+$/, "");
+  const normalizedValue = trimmedValue.replace(/\/+$/, "");
+
+  if (/^https?:\/\/[^/]+$/i.test(normalizedValue) || normalizedValue === "") {
+    return `${normalizedValue}/api`;
+  }
+
+  if (normalizedValue === "/") {
+    return "/api";
+  }
+
+  return normalizedValue;
+}
+
+function isLoopbackApiBaseUrl(value) {
+  try {
+    const fallbackOrigin =
+      typeof window === "undefined" ? "http://localhost" : window.location.origin;
+    return LOOPBACK_HOSTS.has(new URL(value, fallbackOrigin).hostname);
+  } catch {
+    return false;
+  }
 }
 
 function getLocalApiBaseUrl() {
   if (typeof window === "undefined") {
-    return "http://127.0.0.1:5000/api";
+    return "/api";
   }
 
   const { hostname } = window.location;
@@ -22,14 +49,14 @@ function getLocalApiBaseUrl() {
   return `http://${apiHost}:5000/api`;
 }
 
-function resolveApiBaseUrl() {
-  const configuredUrl = normalizeApiBaseUrl(import.meta.env.VITE_API_URL);
+export function resolveApiBaseUrl() {
+  const configuredUrl = normalizeApiBaseUrl(clientEnv.apiBaseUrl);
 
-  if (configuredUrl) {
+  if (configuredUrl && (!clientEnv.isProduction || !isLoopbackApiBaseUrl(configuredUrl))) {
     return configuredUrl;
   }
 
-  if (import.meta.env.DEV) {
+  if (clientEnv.isDevelopment) {
     return getLocalApiBaseUrl();
   }
 
@@ -37,17 +64,17 @@ function resolveApiBaseUrl() {
 }
 
 export const API_BASE_URL = resolveApiBaseUrl();
-const API_TIMEOUT_MS = 15000;
+export const API_TIMEOUT_MS = 15000;
 const publicAuthPaths = [
-  "/auth/forgot-password",
-  "/auth/login",
-  "/auth/logout",
-  "/auth/refresh",
-  "/auth/refresh-token",
-  "/auth/register",
-  "/auth/resend-verification",
-  "/auth/reset-password",
-  "/auth/verify-email",
+  AUTH_API.FORGOT_PASSWORD,
+  AUTH_API.LOGIN,
+  AUTH_API.LOGOUT,
+  AUTH_API.REFRESH_ALIAS,
+  AUTH_API.REFRESH_TOKEN,
+  AUTH_API.REGISTER,
+  AUTH_API.RESEND_VERIFICATION,
+  AUTH_API.RESET_PASSWORD,
+  AUTH_API.VERIFY_EMAIL,
 ];
 
 function isPublicAuthPath(url = "") {
@@ -67,19 +94,20 @@ function shouldClearStaleAuth(status, message = "", url = "") {
   return status === 403 && /suspended|not available|deleted|no longer/i.test(message);
 }
 
-export class ApiError extends Error {
-  constructor(message, options = {}) {
-    super(message);
-    this.name = "ApiError";
-    this.errors = options.errors ?? [];
-    this.status = options.status ?? 500;
-    this.statusCode = options.statusCode ?? this.status;
-  }
+export function registerUnauthorizedHandler(handler) {
+  unauthorizedHandler = typeof handler === "function" ? handler : null;
+
+  return () => {
+    if (unauthorizedHandler === handler) {
+      unauthorizedHandler = null;
+    }
+  };
 }
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
+    Accept: "application/json",
     "Content-Type": "application/json",
   },
   timeout: API_TIMEOUT_MS,
@@ -87,7 +115,7 @@ export const apiClient = axios.create({
 });
 
 export function getRealtimeBaseUrl() {
-  const configuredRealtimeUrl = normalizeApiBaseUrl(import.meta.env.VITE_REALTIME_URL);
+  const configuredRealtimeUrl = normalizeApiBaseUrl(clientEnv.realtimeUrl);
 
   if (configuredRealtimeUrl) {
     return configuredRealtimeUrl;
@@ -130,17 +158,17 @@ apiClient.interceptors.response.use(
     const canAttemptRefresh =
       error.response?.status === 401 &&
       !originalRequest._retry &&
-      !requestUrl.includes("/auth/login") &&
-      !requestUrl.includes("/auth/register") &&
-      !requestUrl.includes("/auth/refresh") &&
-      !requestUrl.includes("/auth/refresh-token") &&
-      !requestUrl.includes("/auth/logout");
+      !requestUrl.includes(AUTH_API.LOGIN) &&
+      !requestUrl.includes(AUTH_API.REGISTER) &&
+      !requestUrl.includes(AUTH_API.REFRESH_ALIAS) &&
+      !requestUrl.includes(AUTH_API.REFRESH_TOKEN) &&
+      !requestUrl.includes(AUTH_API.LOGOUT);
 
     if (canAttemptRefresh) {
       originalRequest._retry = true;
 
       try {
-        const refreshResponse = await apiClient.post("/auth/refresh-token", {});
+        const refreshResponse = await apiClient.post(AUTH_API.REFRESH_TOKEN, {});
         const authPayload = refreshResponse.data?.data ?? refreshResponse.data;
         const nextToken =
           authPayload?.accessToken ??
@@ -168,39 +196,22 @@ apiClient.interceptors.response.use(
     const message =
       responseData?.message ??
       (isNetworkError
-        ? "API server is unreachable. Check that the backend is deployed and VITE_API_URL points to its /api URL."
+        ? "API server is unreachable. Check that the backend is deployed and VITE_API_BASE_URL points to its origin or API base URL."
         : error.message) ??
       "Unable to complete the request";
     const status = error.response?.status ?? (isNetworkError ? 503 : 500);
+    const normalizedError = normalizeApiError(error, message);
 
     if (shouldClearStaleAuth(status, message, requestUrl)) {
       useAuthStore.getState().clearAuth();
+      unauthorizedHandler?.(normalizedError);
     }
 
-    return Promise.reject(normalizeApiError(error, message));
+    return Promise.reject(normalizedError);
   },
 );
 
-export function normalizeApiError(error, fallbackMessage) {
-  const responseData = error.response?.data;
-  const isNetworkError = error.message === "Network Error" || error.code === "ERR_NETWORK";
-  const isTimeout = error.code === "ECONNABORTED";
-  const statusCode = error.response?.status ?? (isNetworkError ? 503 : 500);
-  const message =
-    fallbackMessage ??
-    responseData?.message ??
-    (isTimeout
-      ? "Request timed out. Please try again."
-      : isNetworkError
-        ? "No response from server. Please check your connection."
-        : "Something went wrong. Please try again.");
-
-  return new ApiError(message, {
-    errors: responseData?.errors ?? [],
-    status: statusCode,
-    statusCode,
-  });
-}
+export { ApiError, normalizeApiError };
 
 function getAuthHeaders(token) {
   if (!token) {
@@ -212,51 +223,43 @@ function getAuthHeaders(token) {
   };
 }
 
-function unwrapResponse(response) {
-  return response.data?.data ?? response.data;
-}
-
 export async function apiGet(path, config = {}) {
   const response = await apiClient.get(path, config);
-  return unwrapResponse(response);
+  return unwrapApiResponse(response);
 }
 
 export async function apiPost(path, data, config = {}) {
   const response = await apiClient.post(path, data, config);
-  return unwrapResponse(response);
+  return unwrapApiResponse(response);
 }
 
 export async function apiPostForm(path, formData, config = {}) {
   const response = await apiClient.post(path, formData, config);
-  return unwrapResponse(response);
+  return unwrapApiResponse(response);
 }
 
 export async function apiPatch(path, data, config = {}) {
   const response = await apiClient.patch(path, data, config);
-  return unwrapResponse(response);
+  return unwrapApiResponse(response);
 }
 
 export async function apiPut(path, data, config = {}) {
   const response = await apiClient.put(path, data, config);
-  return unwrapResponse(response);
+  return unwrapApiResponse(response);
 }
 
 export async function apiDelete(path, config = {}) {
   const response = await apiClient.delete(path, config);
-  return unwrapResponse(response);
+  return unwrapApiResponse(response);
 }
 
 export async function upload(path, formData, onUploadProgress, config = {}) {
   const response = await apiClient.post(path, formData, {
     ...config,
-    headers: {
-      ...config.headers,
-      "Content-Type": "multipart/form-data",
-    },
     onUploadProgress,
   });
 
-  return unwrapResponse(response);
+  return unwrapApiResponse(response);
 }
 
 export const api = {

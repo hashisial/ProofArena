@@ -115,7 +115,7 @@ function ProofRecordCard({ index, record, reduceMotion }) {
           <Badge variant="primary">{record.category}</Badge>
         </div>
 
-        <div className="mt-6 rounded-3xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+        <div className="mt-6 rounded-3xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
           <p className="text-xs font-black uppercase tracking-[0.14em] text-[#78716C]">
             Outcome
           </p>
@@ -150,7 +150,7 @@ function ProofRecordCard({ index, record, reduceMotion }) {
           </div>
         </div>
 
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <Badge leftIcon={<BadgeCheck className="h-4 w-4" />} variant="green">
             {record.status}
           </Badge>
@@ -201,7 +201,7 @@ function ProofWorkflowPanel({ reduceMotion }) {
 
             return (
               <MotionLi
-                className="premium-motion-row flex min-w-0 items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4"
+                className="premium-motion-row flex min-w-0 items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4"
                 key={step.title}
                 {...getMotionProps(reduceMotion, 0.2 + index * 0.04)}
               >
@@ -232,7 +232,7 @@ function ScoreImpactPanel({ reduceMotion }) {
   return (
     <MotionDiv {...getMotionProps(reduceMotion, 0.22)}>
       <Card
-        className="premium-motion-card h-full rounded-[2rem] overflow-hidden border-[#E7E5E4] bg-[linear-gradient(135deg,#FFFFFF_0%,#FFFBEB_58%,#F7FEE7_100%)]"
+        className="premium-motion-card h-full rounded-[2rem] overflow-hidden border-[#E7E5E4] bg-[linear-gradient(135deg,#FFFFFF_0%,#FEFCE8_58%,#F7FEE7_100%)]"
         padding="lg"
         variant="elevated"
       >
@@ -257,7 +257,7 @@ function ScoreImpactPanel({ reduceMotion }) {
           </div>
         </div>
 
-        <div className="mt-5 rounded-2xl border border-[#A16207]/20 bg-[#FEF3C7] p-4">
+        <div className="mt-5 rounded-2xl border border-[#A16207]/20 bg-[#ECFCCB] p-4">
           <p className="text-xs font-black uppercase tracking-[0.14em] text-[#A16207]">
             Reason
           </p>
@@ -279,7 +279,7 @@ export function ProofLedgerShowcase() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFBEB_0%,#FEFCE8_46%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FEFCE8_0%,#FFFFFF_46%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_15%_12%,rgba(63,98,18,0.14),transparent_32%),radial-gradient(circle_at_88%_64%,rgba(161,98,7,0.1),transparent_28%)]" />
       <Container className="relative z-10">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
@@ -340,7 +340,7 @@ export function ProofLedgerShowcase() {
         </div>
 
         <MotionDiv
-          className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-5"
+          className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FEFCE8] p-5"
           {...getMotionProps(reduceMotion, 0.28)}
         >
           <CheckCircle2 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#3F6212]" />

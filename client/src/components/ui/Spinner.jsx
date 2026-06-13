@@ -7,17 +7,24 @@ const sizes = {
 };
 
 const variants = {
-  dark: "text-[#1C1917]",
+  dark: "text-[var(--color-foreground)]",
   light: "text-white",
-  primary: "text-[#3F6212]",
+  primary: "text-[var(--color-primary)]",
 };
 
-export function Spinner({ className = "", label = "Loading", size = "md", variant = "primary" }) {
+export function Spinner({
+  className = "",
+  label = "Loading",
+  size = "md",
+  variant = "primary",
+  ...props
+}) {
   return (
     <span
-      aria-label={label}
+      aria-label={label || undefined}
       className={cn("inline-block animate-spin rounded-full border-current border-t-transparent", sizes[size] ?? sizes.md, variants[variant] ?? variants.primary, className)}
-      role="status"
+      role={label ? "status" : undefined}
+      {...props}
     />
   );
 }

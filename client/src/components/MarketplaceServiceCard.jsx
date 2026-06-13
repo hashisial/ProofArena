@@ -126,7 +126,7 @@ export function MarketplaceServiceCard({
       <div className={isWide ? "grid h-full lg:grid-cols-[0.9fr_1.1fr]" : "grid h-full"}>
         <a
           aria-label={`View ${service.title}`}
-          className={`relative block overflow-hidden bg-[#1A2E05] ${isWide ? "min-h-72" : "aspect-[16/10]"}`}
+          className={`relative block overflow-hidden bg-[#26350F] ${isWide ? "min-h-72" : "aspect-[16/10]"}`}
           href={serviceUrl}
         >
           {image ? (
@@ -207,7 +207,7 @@ export function MarketplaceServiceCard({
           </div>
 
           <div className="mt-auto pt-6">
-            <div className="grid gap-3 rounded-[1.15rem] border border-black/10 bg-[#fffbeb] p-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+            <div className="grid gap-3 rounded-[1.15rem] border border-black/10 bg-[#fefce8] p-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
               <a className="flex min-w-0 items-center gap-3" href={providerUrl}>
                 <ProviderAvatar avatar={service.provider?.avatar} name={providerName} />
                 <span className="min-w-0">

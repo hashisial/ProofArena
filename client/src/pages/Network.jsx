@@ -54,7 +54,7 @@ function SharedPost({ post }) {
   }
 
   return (
-    <div className="mt-4 rounded-[1.35rem] border border-[#3F6212]/14 bg-[#fffbeb] p-4">
+    <div className="mt-4 rounded-[1.35rem] border border-[#3F6212]/14 bg-[#fefce8] p-4">
       <div className="flex items-center gap-3">
         <AuthorAvatar author={post.author} />
         <div>
@@ -91,7 +91,7 @@ function CommentList({ comments }) {
     <div className="mt-4 grid gap-3">
       {comments.map((comment) => (
         <div
-          className="rounded-2xl border border-black/10 bg-[#fffbeb] p-3"
+          className="rounded-2xl border border-black/10 bg-[#fefce8] p-3"
           key={comment._id}
         >
           <p className="text-sm font-bold text-black">{getAuthorName(comment.author)}</p>
@@ -137,7 +137,7 @@ function PostCard({
       ) : null}
 
       {post.work?.title || post.work?.url ? (
-        <div className="mt-5 rounded-[1.5rem] border border-[#3F6212]/14 bg-[radial-gradient(circle_at_top_right,rgba(63, 98, 18, 0.12),transparent_30%),#fffbeb] p-4">
+        <div className="mt-5 rounded-[1.5rem] border border-[#3F6212]/14 bg-[radial-gradient(circle_at_top_right,rgba(63, 98, 18, 0.12),transparent_30%),#fefce8] p-4">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#3F6212]">
             Work shared
           </p>
@@ -164,7 +164,7 @@ function PostCard({
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
           {post.media.map((item) => (
             <a
-              className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-bold text-black transition hover:border-[#3F6212]/35 hover:text-[#365314]"
+              className="rounded-2xl border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-bold text-black transition hover:border-[#3F6212]/35 hover:text-[#365314]"
               href={item.url}
               key={item.url}
               rel="noreferrer"
@@ -214,7 +214,7 @@ function PostCard({
         }}
       >
         <input
-          className="min-h-12 flex-1 rounded-full border border-black/10 bg-[#fffbeb] px-4 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+          className="min-h-12 flex-1 rounded-full border border-black/10 bg-[#fefce8] px-4 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
           onChange={(event) => onCommentDraftChange(post._id, event.target.value)}
           placeholder="Write a comment..."
           value={commentDraft ?? ""}
@@ -382,7 +382,7 @@ export function Network() {
                 ))}
               </div>
               <textarea
-                className="min-h-28 resize-none rounded-[1.4rem] border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                className="min-h-28 resize-none rounded-[1.4rem] border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                 name="content"
                 onChange={updateForm}
                 placeholder="What are you building, learning, launching, or looking for?"
@@ -392,21 +392,21 @@ export function Network() {
               {form.type === "work" ? (
                 <div className="grid gap-3 md:grid-cols-2">
                   <input
-                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                    className="rounded-2xl border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                     name="workTitle"
                     onChange={updateForm}
                     placeholder="Work title"
                     value={form.workTitle}
                   />
                   <input
-                    className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                    className="rounded-2xl border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                     name="workUrl"
                     onChange={updateForm}
                     placeholder="Work URL"
                     value={form.workUrl}
                   />
                   <textarea
-                    className="min-h-20 rounded-[1.25rem] border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10 md:col-span-2"
+                    className="min-h-20 rounded-[1.25rem] border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10 md:col-span-2"
                     name="workDescription"
                     onChange={updateForm}
                     placeholder="Short work description"
@@ -417,14 +417,14 @@ export function Network() {
 
               <div className="grid gap-3 md:grid-cols-[1fr_150px_1fr]">
                 <input
-                  className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                  className="rounded-2xl border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                   name="mediaUrl"
                   onChange={updateForm}
                   placeholder="Optional media or link URL"
                   value={form.mediaUrl}
                 />
                 <select
-                  className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-bold text-black outline-none transition focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                  className="rounded-2xl border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-bold text-black outline-none transition focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                   name="mediaType"
                   onChange={updateForm}
                   value={form.mediaType}
@@ -435,7 +435,7 @@ export function Network() {
                   <option value="document">Document</option>
                 </select>
                 <input
-                  className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                  className="rounded-2xl border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                   name="mediaName"
                   onChange={updateForm}
                   placeholder="Media label"
@@ -494,7 +494,7 @@ export function Network() {
             </p>
             <form className="mt-4 grid gap-3" onSubmit={submitSearch}>
               <input
-                className="rounded-2xl border border-black/10 bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
+                className="rounded-2xl border border-black/10 bg-[#fefce8] px-4 py-3 text-sm font-semibold text-black outline-none transition placeholder:text-black/32 focus:border-[#3F6212]/45 focus:ring-4 focus:ring-[#3F6212]/10"
                 onChange={(event) => setSearch(event.target.value)}
                 placeholder="Search posts or work"
                 value={search}
@@ -526,7 +526,7 @@ export function Network() {
                 ["Comments", feedStats.comments],
                 ["Shares", feedStats.shares],
               ].map(([label, value]) => (
-                <div className="flex items-center justify-between rounded-2xl bg-[#fffbeb] px-4 py-3" key={label}>
+                <div className="flex items-center justify-between rounded-2xl bg-[#fefce8] px-4 py-3" key={label}>
                   <span className="text-sm font-semibold text-black/56">{label}</span>
                   <strong className="text-lg text-black">{value}</strong>
                 </div>

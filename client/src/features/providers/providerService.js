@@ -1,27 +1,7 @@
 import { API_ENDPOINTS } from "../../constants/index.js";
 import { api } from "../../services/apiClient.js";
+import { buildQueryString } from "../../services/shared/index.js";
 import { profileService } from "../profile/profileService.js";
-
-function buildQuery(params = {}) {
-  const query = new URLSearchParams();
-
-  Object.entries(params).forEach(([key, value]) => {
-    if (value === undefined || value === null || value === "") {
-      return;
-    }
-
-    if (Array.isArray(value)) {
-      if (value.length > 0) {
-        query.set(key, value.join(","));
-      }
-      return;
-    }
-
-    query.set(key, String(value));
-  });
-
-  return query.toString();
-}
 
 export const providerService = Object.freeze({
   async getProviderComparison(providerIds = []) {
@@ -38,7 +18,7 @@ export const providerService = Object.freeze({
     });
   },
   async getPublicProviders(params = {}) {
-    const query = buildQuery(params);
+    const query = buildQueryString(params);
 
     return api.get(`${API_ENDPOINTS.PROVIDERS.BASE}${query ? `?${query}` : ""}`, {
       skipUserAuth: true,

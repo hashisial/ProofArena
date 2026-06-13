@@ -97,7 +97,7 @@ function ChallengeStat({ icon, label, value, tone = "olive" }) {
 
   return (
     <div className="flex min-w-0 items-start gap-3 rounded-2xl border border-[#E7E5E4] bg-white p-3">
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#FFFBEB]">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#FEFCE8]">
         <Icon aria-hidden="true" className={`h-4 w-4 ${iconColor}`} />
       </span>
       <div className="min-w-0">
@@ -145,7 +145,7 @@ function ChallengeCard({ challenge, index, reduceMotion }) {
           {challenge.summary}
         </p>
 
-        <div className="mt-5 rounded-3xl border border-[#ECFCCB] bg-[#FFFBEB] p-4">
+        <div className="mt-5 rounded-3xl border border-[#ECFCCB] bg-[#FEFCE8] p-4">
           <div className="flex items-center gap-2">
             <Target aria-hidden="true" className="h-5 w-5 shrink-0 text-[#3F6212]" />
             <p className="text-xs font-black uppercase tracking-[0.14em] text-[#3F6212]">
@@ -164,7 +164,7 @@ function ChallengeCard({ challenge, index, reduceMotion }) {
           <ChallengeStat icon={Layers3} label="Milestones" tone="bronze" value={challenge.milestones} />
         </div>
 
-        <div className="mt-5 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+        <div className="mt-5 rounded-3xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
           <div className="flex items-center gap-2">
             <FileCheck2 aria-hidden="true" className="h-5 w-5 shrink-0 text-[#A16207]" />
             <p className="text-xs font-black uppercase tracking-[0.14em] text-[#A16207]">
@@ -184,7 +184,7 @@ function ChallengeCard({ challenge, index, reduceMotion }) {
         </div>
 
         <div className="mt-auto pt-5">
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
             <Badge leftIcon={<CheckCircle2 className="h-4 w-4" />} variant="green">
               {challenge.status}
             </Badge>
@@ -203,7 +203,7 @@ export function FeaturedChallengesSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FFFBEB_0%,#FEFCE8_52%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#FEFCE8_0%,#FFFFFF_52%,#FFFFFF_100%)] py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_16%_18%,rgba(63,98,18,0.12),transparent_32%),radial-gradient(circle_at_86%_44%,rgba(161,98,7,0.09),transparent_28%)]" />
       <Container className="relative z-10">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
@@ -268,7 +268,7 @@ export function FeaturedChallengesSection() {
         </div>
 
         <MotionDiv
-          className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FFFBEB] p-5"
+          className="mt-8 flex items-start gap-3 rounded-3xl border border-[#E7E5E4] bg-[#FEFCE8] p-5"
           {...getMotionProps(reduceMotion, 0.28)}
         >
           <CheckCircle2 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#3F6212]" />

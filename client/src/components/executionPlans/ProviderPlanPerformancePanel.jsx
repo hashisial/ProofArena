@@ -67,8 +67,8 @@ export function ProviderPlanPerformancePanel({ plan }) {
         </div>
       </div>
       {feedback ? (
-        <div className="mt-6 rounded-2xl border border-[#A16207]/20 bg-[#FFFBEB] p-4">
-          <p className="flex items-center gap-2 text-sm font-black text-[#854D0E]">
+        <div className="mt-6 rounded-2xl border border-[#A16207]/20 bg-[#FEFCE8] p-4">
+          <p className="flex items-center gap-2 text-sm font-black text-[#365314]">
             <MessageSquareText aria-hidden="true" className="h-4 w-4" />
             {feedbackLabel}
           </p>

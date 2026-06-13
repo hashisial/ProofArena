@@ -8,7 +8,7 @@ export function MicroWinBadge({ badge, earnedBadge }) {
   return (
     <div className={earned ? "rounded-2xl border border-[#65A30D]/25 bg-[#F7FEE7] p-4" : "rounded-2xl border border-[#E7E5E4] bg-white p-4"}>
       <div className="flex items-start gap-3">
-        <span className={earned ? "grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#3F6212] text-white" : "grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#FFFBEB] text-[#78716C]"}>
+        <span className={earned ? "grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#3F6212] text-white" : "grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#FEFCE8] text-[#78716C]"}>
           {earned ? <Award aria-hidden="true" className="h-5 w-5" /> : <LockKeyhole aria-hidden="true" className="h-5 w-5" />}
         </span>
         <div className="min-w-0">

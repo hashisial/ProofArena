@@ -1,13 +1,9 @@
 import { useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "../../constants/queryKeys.js";
 import { opportunityService } from "./opportunityService.js";
 
-export const opportunityKeys = Object.freeze({
-  all: ["opportunities"],
-  detail: (id) => ["opportunities", "detail", id],
-  list: (filters = {}) => ["opportunities", "list", filters],
-  stats: ["opportunities", "stats"],
-});
+export const opportunityKeys = queryKeys.opportunities;
 
 function cleanFilters(filters = {}) {
   return Object.fromEntries(

@@ -62,7 +62,7 @@ export function Challenges() {
   }
 
   return (
-    <section className="bg-[#FEFCE8] py-8 text-[#1C1917] sm:py-12">
+    <section className="bg-[#FFFFFF] py-8 text-[#1C1917] sm:py-12">
       <Container>
         <div className="mx-auto grid max-w-7xl gap-6">
           <Card className="rounded-3xl" padding="lg" variant="elevated">

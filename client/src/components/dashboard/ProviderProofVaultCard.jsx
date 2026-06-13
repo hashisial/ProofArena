@@ -38,7 +38,7 @@ export function ProviderProofVaultCard({ assets = [], isError = false, isLoading
               ["Public assets", Number(usage.public ?? 0)],
               ["Unused assets", Number(usage.unused ?? 0)],
             ].map(([label, value]) => (
-              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4" key={label}>
+              <div className="rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4" key={label}>
                 <p className="text-sm font-bold text-[#78716C]">{label}</p>
                 <p className="mt-2 text-2xl font-black text-[#1C1917]">{value}</p>
               </div>
@@ -46,8 +46,8 @@ export function ProviderProofVaultCard({ assets = [], isError = false, isLoading
           </div>
         )}
         {!isLoading && !isError ? (
-          <div className="mt-4 rounded-2xl border border-[#A16207]/20 bg-[#FEF3C7] p-4">
-            <p className="text-xs font-black uppercase tracking-[0.12em] text-[#854D0E]">Top proof gap</p>
+          <div className="mt-4 rounded-2xl border border-[#A16207]/20 bg-[#ECFCCB] p-4">
+            <p className="text-xs font-black uppercase tracking-[0.12em] text-[#365314]">Top proof gap</p>
             <p className="mt-2 text-sm font-black leading-6 text-[#1C1917]">{topGap}</p>
           </div>
         ) : null}
@@ -57,6 +57,7 @@ export function ProviderProofVaultCard({ assets = [], isError = false, isLoading
           <FileCheck2 aria-hidden="true" className="mr-2 h-4 w-4" />
           Open Proof Vault
         </Button>
+        <Button as="a" className="w-full sm:w-auto" href={ROUTES.PROOF_READINESS} variant="outline">Review Readiness</Button>
         <Button as="a" className="w-full sm:w-auto" href={`${ROUTES.PROOF_VAULT}?new=1`} variant="outline">Add Proof Asset</Button>
       </CardFooter>
     </Card>

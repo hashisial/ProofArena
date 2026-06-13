@@ -24,7 +24,7 @@ export function DashboardActionCard({
   title,
 }) {
   return (
-    <article className="h-full rounded-2xl border border-[#E7E5E4] bg-[#FFFBEB] p-4">
+    <article className="h-full rounded-2xl border border-[#E7E5E4] bg-[#FEFCE8] p-4">
       <div className="flex min-w-0 items-start gap-3">
         {Icon ? (
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#F7FEE7] text-[#3F6212]">
