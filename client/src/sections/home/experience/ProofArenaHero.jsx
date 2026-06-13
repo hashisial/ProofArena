@@ -132,6 +132,19 @@ function EcosystemCards() {
 export function ProofArenaHero() {
   const reduceMotion = useReducedMotion();
   const [showScene, setShowScene] = useState(false);
+  const getHeroRevealProps = (options) => {
+    const props = getRevealMotionProps(reduceMotion, options);
+
+    if (reduceMotion) {
+      return props;
+    }
+
+    return {
+      ...props,
+      animate: "visible",
+      whileInView: undefined,
+    };
+  };
 
   useEffect(() => {
     const query = window.matchMedia("(min-width: 1024px)");
@@ -158,7 +171,7 @@ export function ProofArenaHero() {
       <div aria-hidden="true" className="proof-hero-grid absolute inset-0" />
       <Container className="relative z-10 grid min-h-[calc(100svh-4rem)] gap-10 py-14 sm:py-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:py-16">
         <div className="max-w-3xl">
-          <MotionDiv {...getRevealMotionProps(reduceMotion)}>
+          <MotionDiv {...getHeroRevealProps()}>
             <Badge className="border-white/15 bg-white/10 text-[#ECFCCB]" variant="outline">
               Proof-based outcome economy
             </Badge>
@@ -166,14 +179,14 @@ export function ProofArenaHero() {
           <MotionH1
             className="mt-6 text-[2.8rem] font-black leading-[0.98] text-white [text-wrap:balance] sm:text-6xl lg:text-7xl xl:text-[5.4rem]"
             id="proofarena-home-title"
-            {...getRevealMotionProps(reduceMotion, { delay: 0.07 })}
+            {...getHeroRevealProps({ delay: 0.07 })}
           >
             Launch measurable outcomes.
             <span className="mt-2 block text-[#D9F99D]">Verify execution.</span>
           </MotionH1>
           <MotionP
             className="mt-6 max-w-2xl text-base font-semibold leading-8 text-white/68 sm:text-lg"
-            {...getRevealMotionProps(reduceMotion, { delay: 0.14 })}
+            {...getHeroRevealProps({ delay: 0.14 })}
           >
             ProofArena is a verified execution platform where clients define measurable
             outcomes, providers compete through execution plans, and trust is earned from
@@ -181,7 +194,7 @@ export function ProofArenaHero() {
           </MotionP>
           <MotionDiv
             className="mt-8 grid gap-3 sm:max-w-xl sm:grid-cols-2"
-            {...getRevealMotionProps(reduceMotion, { delay: 0.2 })}
+            {...getHeroRevealProps({ delay: 0.2 })}
           >
             <div className="min-w-0">
               <Button
@@ -212,7 +225,7 @@ export function ProofArenaHero() {
           </MotionDiv>
           <MotionUl
             className="mt-8 grid gap-3 sm:grid-cols-3"
-            {...getRevealMotionProps(reduceMotion, { delay: 0.26 })}
+            {...getHeroRevealProps({ delay: 0.26 })}
           >
             {trustSignals.map((signal) => {
               const Icon = signal.icon;
@@ -228,7 +241,7 @@ export function ProofArenaHero() {
 
         <MotionDiv
           className="relative min-h-[25rem] lg:min-h-[39rem]"
-          {...getRevealMotionProps(reduceMotion, { delay: 0.2 })}
+          {...getHeroRevealProps({ delay: 0.2 })}
         >
           <EcosystemCards />
         </MotionDiv>
