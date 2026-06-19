@@ -1,1 +1,2 @@
-export { default } from "./v1/auth.routes.js";
+// Compatibility export for the unversioned `/api/auth` mount.
+export { authRoutes as default } from "../modules/auth/index.js";

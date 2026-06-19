@@ -1,4 +1,3 @@
-// Compatibility export. Auth HTTP ownership now lives in modules/auth.
 export {
   authStatus,
   changePassword,
@@ -13,4 +12,5 @@ export {
   resetPassword,
   updatePasswordFromReset,
   verifyEmail,
-} from "../modules/auth/index.js";
+} from "./auth.controller.js";
+export { default as authRoutes } from "./auth.routes.js";

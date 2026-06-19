@@ -1,9 +1,11 @@
 import { env } from "./env.js";
 
 export const corsOptions = {
-  allowedHeaders: ["Authorization", "Content-Type"],
+  allowedHeaders: ["Authorization", "Content-Type", "X-Requested-With"],
   credentials: true,
+  maxAge: env.isProduction ? 86400 : 0,
   methods: ["DELETE", "GET", "PATCH", "POST", "PUT", "OPTIONS"],
+  optionsSuccessStatus: 204,
   origin(origin, callback) {
     if (!origin || env.clientUrls.includes(origin)) {
       callback(null, true);

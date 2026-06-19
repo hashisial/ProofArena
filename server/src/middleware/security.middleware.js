@@ -11,7 +11,31 @@ export function applySecurityMiddleware(app, options = {}) {
   const { beforeBodyParsers } = options;
 
   app.disable("x-powered-by");
-  app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
+  app.use(
+    helmet({
+      contentSecurityPolicy: env.isProduction
+        ? {
+            useDefaults: true,
+            directives: {
+              "default-src": ["'self'"],
+              "frame-ancestors": ["'none'"],
+              "object-src": ["'none'"],
+            },
+          }
+        : false,
+      crossOriginEmbedderPolicy: false,
+      crossOriginOpenerPolicy: { policy: "same-origin" },
+      crossOriginResourcePolicy: { policy: "cross-origin" },
+      hsts: env.isProduction
+        ? {
+            includeSubDomains: true,
+            maxAge: 15552000,
+            preload: false,
+          }
+        : false,
+      referrerPolicy: { policy: "no-referrer" },
+    }),
+  );
   app.use(cors(corsOptions));
   if (typeof beforeBodyParsers === "function") {
     beforeBodyParsers(app);

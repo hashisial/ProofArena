@@ -1,4 +1,8 @@
-export { AUTH_STATUSES, getAuthAccessToken, useAuthStore } from "./useAuthStore.js";
+export {
+  AUTH_STATUSES,
+  getAuthAccessToken,
+  useAuthStore,
+} from "./useAuthStore.js";
 export {
   NOTIFICATION_TONES,
   useNotificationStore,
@@ -9,4 +13,3 @@ export {
 } from "./useProofArenaStore.js";
 export { useSocketStore } from "./useSocketStore.js";
 export { THEME_PREFERENCES, useUIStore } from "./useUIStore.js";
-

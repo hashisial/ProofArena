@@ -3,6 +3,8 @@ import { AUTH_COOKIE_NAMES } from "../constants/index.js";
 
 export const accessCookieName = AUTH_COOKIE_NAMES.ACCESS_TOKEN;
 export const refreshCookieName = env.refreshCookieName || AUTH_COOKIE_NAMES.REFRESH_TOKEN;
+export const refreshCookiePath = "/api/auth/refresh";
+const legacyRefreshCookiePath = "/";
 
 const durationPattern = /^(\d+)(ms|s|m|h|d)$/i;
 const durationMultipliers = Object.freeze({
@@ -11,6 +13,8 @@ const durationMultipliers = Object.freeze({
   m: 60 * 1000,
   ms: 1,
   s: 1000,
+  w: 7 * 24 * 60 * 60 * 1000,
+  y: 365 * 24 * 60 * 60 * 1000,
 });
 
 function parseDurationMs(value, fallbackMs) {
@@ -37,7 +41,7 @@ function getSameSite() {
     return configuredSameSite;
   }
 
-  return env.isProduction ? "none" : "lax";
+  return "lax";
 }
 
 export function getAccessTokenMaxAgeMs() {
@@ -48,12 +52,12 @@ export function getRefreshTokenMaxAgeMs() {
   return parseDurationMs(env.jwtRefreshExpiresIn, 7 * 24 * 60 * 60 * 1000);
 }
 
-function getBaseCookieOptions() {
+function getBaseCookieOptions({ path = "/" } = {}) {
   const sameSite = getSameSite();
 
   return {
     httpOnly: true,
-    path: "/",
+    path,
     sameSite,
     secure: env.isProduction || sameSite === "none",
   };
@@ -68,7 +72,14 @@ export function getAccessCookieOptions() {
 
 export function getRefreshCookieOptions() {
   return {
-    ...getBaseCookieOptions(),
+    ...getBaseCookieOptions({ path: refreshCookiePath }),
+    maxAge: getRefreshTokenMaxAgeMs(),
+  };
+}
+
+function getLegacyRefreshCookieOptions() {
+  return {
+    ...getBaseCookieOptions({ path: legacyRefreshCookiePath }),
     maxAge: getRefreshTokenMaxAgeMs(),
   };
 }
@@ -115,11 +126,22 @@ export function setRefreshTokenCookie(response, refreshToken) {
 
 export function clearRefreshTokenCookie(response) {
   response.clearCookie(refreshCookieName, getClearCookieOptions(getRefreshCookieOptions));
+  response.clearCookie(refreshCookieName, getClearCookieOptions(getLegacyRefreshCookieOptions));
 }
 
 export function getRefreshTokenFromCookie(request) {
   return getRequestCookie(request, refreshCookieName);
 }
+
+export function getRefreshTokenFromRequest(request) {
+  return (
+    getRefreshTokenFromCookie(request) ||
+    String(request?.body?.refreshToken ?? request?.headers?.["x-refresh-token"] ?? "").trim()
+  );
+}
+
+export const setRefreshCookie = setRefreshTokenCookie;
+export const clearRefreshCookie = clearRefreshTokenCookie;
 
 export function setAuthCookies(response, { accessToken, refreshToken }) {
   if (accessToken) {

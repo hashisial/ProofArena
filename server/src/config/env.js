@@ -115,6 +115,31 @@ function validateDuration(name, value) {
   return value;
 }
 
+function validateDurationRange(name, value, { maxMs, minMs }) {
+  const match = /^(\d+)(ms|s|m|h|d|w|y)$/i.exec(String(value ?? ""));
+
+  if (!match) {
+    return value;
+  }
+
+  const multipliers = {
+    d: 24 * 60 * 60 * 1000,
+    h: 60 * 60 * 1000,
+    m: 60 * 1000,
+    ms: 1,
+    s: 1000,
+    w: 7 * 24 * 60 * 60 * 1000,
+    y: 365 * 24 * 60 * 60 * 1000,
+  };
+  const durationMs = Number.parseInt(match[1], 10) * multipliers[match[2].toLowerCase()];
+
+  if (durationMs < minMs || durationMs > maxMs) {
+    validationErrors.push(`${name} must be between 7d and 30d`);
+  }
+
+  return value;
+}
+
 function validateProductionSecret(name, value) {
   if (isProduction && value && value.length < 32) {
     validationErrors.push(`${name} must be at least 32 characters in production`);
@@ -197,12 +222,19 @@ const jwtAccessExpiresIn = validateDuration(
     process.env.JWT_ACCESS_EXPIRES_IN?.trim() || (isProduction ? undefined : "15m"),
   ),
 );
-const jwtRefreshExpiresIn = validateDuration(
+const jwtRefreshExpiresIn = validateDurationRange(
   "JWT_REFRESH_EXPIRES_IN",
-  requireInProduction(
+  validateDuration(
     "JWT_REFRESH_EXPIRES_IN",
-    process.env.JWT_REFRESH_EXPIRES_IN?.trim() || (isProduction ? undefined : "7d"),
+    requireInProduction(
+      "JWT_REFRESH_EXPIRES_IN",
+      process.env.JWT_REFRESH_EXPIRES_IN?.trim() || (isProduction ? undefined : "7d"),
+    ),
   ),
+  {
+    maxMs: 30 * 24 * 60 * 60 * 1000,
+    minMs: 7 * 24 * 60 * 60 * 1000,
+  },
 );
 
 if (jwtLegacySecret && (!process.env.JWT_ACCESS_SECRET || !process.env.JWT_REFRESH_SECRET)) {
@@ -245,14 +277,14 @@ const emailUser = readWithAliases("EMAIL_USER", ["SMTP_USER"]);
 const emailEnabled = parseBoolean(
   "EMAIL_ENABLED",
   process.env.EMAIL_ENABLED,
-  Boolean(emailHost && (process.env.LEAD_NOTIFICATION_EMAIL ?? adminEmail)),
+  Boolean(emailHost && emailFrom),
 );
 const emailSecure = parseBoolean(
   "EMAIL_SECURE",
   readWithAliases("EMAIL_SECURE", ["SMTP_SECURE"]),
   emailPort === 465,
 );
-const leadNotificationEmail = process.env.LEAD_NOTIFICATION_EMAIL?.trim() ?? adminEmail;
+const leadNotificationEmail = process.env.LEAD_NOTIFICATION_EMAIL?.trim() || adminEmail;
 const openAiApiKey = process.env.OPENAI_API_KEY?.trim();
 const openAiModel = process.env.OPENAI_MODEL?.trim();
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY?.trim();
@@ -310,12 +342,6 @@ if (emailEnabled) {
 
   if (!emailFrom) {
     validationErrors.push("EMAIL_FROM is required when EMAIL_ENABLED is true");
-  }
-
-  if (!leadNotificationEmail) {
-    validationErrors.push(
-      "LEAD_NOTIFICATION_EMAIL or ADMIN_EMAIL is required when EMAIL_ENABLED is true",
-    );
   }
 
   if ((emailUser && !emailPass) || (!emailUser && emailPass)) {

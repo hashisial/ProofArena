@@ -25,6 +25,10 @@ function assertActiveAccount(user) {
   if (accountStatus === "suspended" || user?.isSuspended) {
     throw new AppError("Account is suspended", 403);
   }
+
+  if (accountStatus !== "active") {
+    throw new AppError("Account is not active", 403);
+  }
 }
 
 function hasVerifiedEmailStatus(user = {}) {
@@ -140,6 +144,9 @@ export async function optionalAuthenticate(request, _response, next) {
   next();
 }
 
+export const protect = authenticate;
+export const optionalAuth = optionalAuthenticate;
+
 export function requireActiveAccount(request, _response, next) {
   try {
     assertActiveAccount(request.user);
@@ -155,7 +162,7 @@ export function requireVerifiedEmail(request, _response, next) {
     return;
   }
 
-  if (!request.user.isEmailVerified) {
+  if (!hasVerifiedEmailStatus(request.user)) {
     next(new AppError("Please verify your email first", 403));
     return;
   }

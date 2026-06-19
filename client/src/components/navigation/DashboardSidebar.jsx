@@ -25,6 +25,7 @@ import {
 } from "../../constants/index.js";
 import { useAuth } from "../../features/auth/useAuth.js";
 import { useRoutePath } from "../../hooks/useRoutePath.js";
+import { getDefaultAuthenticatedRoute } from "../../routes/authRouteUtils.js";
 import { useUIStore } from "../../store/useUIStore.js";
 import { cn } from "../../utils/cn.js";
 
@@ -44,12 +45,19 @@ const iconMap = {
   UserCircle,
 };
 
+const dashboardHomeRoutes = new Set([
+  ROUTES.DASHBOARD,
+  ROUTES.CLIENT_DASHBOARD,
+  ROUTES.PROVIDER_DASHBOARD,
+  ROUTES.SUPPORT_DASHBOARD,
+]);
+
 function SidebarLink({ collapsed = false, href, icon: Icon, label }) {
   const path = useRoutePath();
   const closeMobileMenu = useUIStore((state) => state.closeMobileMenu);
   const isActive =
     path === href ||
-    (href === ROUTES.DASHBOARD && path === ROUTES.PROVIDER_DASHBOARD) ||
+    (dashboardHomeRoutes.has(href) && dashboardHomeRoutes.has(path)) ||
     (href !== ROUTES.DASHBOARD && path.startsWith(`${href}/`));
 
   return (
@@ -87,10 +95,11 @@ export function DashboardSidebar() {
   const closeMobileMenu = useUIStore((state) => state.closeMobileMenu);
   const { role, user } = useAuth();
   const currentRole = role || user?.role;
+  const dashboardHref = getDefaultAuthenticatedRoute(user ?? { role: currentRole });
   const primaryLinks = DASHBOARD_NAV_LINKS
     .filter((item) => canAccessNavigationItem(item, currentRole))
     .map((item) => ({
-      href: item.href,
+      href: item.href === ROUTES.DASHBOARD ? dashboardHref : item.href,
       icon: iconMap[item.iconKey],
       label: item.label,
     }));
@@ -111,7 +120,7 @@ export function DashboardSidebar() {
       id="dashboard-sidebar"
     >
       <div className="flex items-start justify-between gap-3">
-        <a className="min-w-0 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12" href={ROUTES.DASHBOARD}>
+        <a className="min-w-0 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12" href={dashboardHref}>
           <span className="flex items-center gap-3">
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#3F6212] text-white shadow-[0_18px_44px_rgba(63, 98, 18, 0.28)]">
               <CheckCircle2 aria-hidden="true" className="h-5 w-5" />

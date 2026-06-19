@@ -1,11 +1,14 @@
-import { createHash } from "crypto";
+import { createHash, randomBytes, timingSafeEqual } from "crypto";
 import jwt from "jsonwebtoken";
 import { env } from "../config/env.js";
 import { TOKEN_TYPES } from "../constants/index.js";
 import { AppError } from "./AppError.js";
 
-function getTokenSecret(type) {
-  const secret = type === TOKEN_TYPES.REFRESH ? env.jwtRefreshSecret : env.jwtAccessSecret;
+const refreshTokenBytes = 48;
+const refreshTokenPattern = /^[A-Za-z0-9_-]{64}$/;
+
+function getAccessTokenSecret() {
+  const secret = env.jwtAccessSecret;
 
   if (!secret) {
     throw new AppError("JWT authentication is not configured", 503);
@@ -14,8 +17,45 @@ function getTokenSecret(type) {
   return secret;
 }
 
+function getRefreshTokenSecret() {
+  const secret = env.jwtRefreshSecret;
+
+  if (!secret) {
+    throw new AppError("Refresh-token migration is not configured", 503);
+  }
+
+  return secret;
+}
+
 export function hashToken(token) {
   return createHash("sha256").update(String(token ?? "")).digest("hex");
+}
+
+export function hashRefreshToken(token) {
+  return hashToken(verifyRefreshToken(token));
+}
+
+export function compareRefreshToken(token, storedHash) {
+  if (!storedHash) {
+    return false;
+  }
+
+  let incomingHash;
+
+  try {
+    incomingHash = hashRefreshToken(token);
+  } catch {
+    return false;
+  }
+
+  const incomingBuffer = Buffer.from(incomingHash);
+  const storedBuffer = Buffer.from(String(storedHash));
+
+  if (incomingBuffer.length !== storedBuffer.length) {
+    return false;
+  }
+
+  return timingSafeEqual(incomingBuffer, storedBuffer);
 }
 
 function getUserId(user) {
@@ -49,31 +89,22 @@ export function generateAccessToken(user) {
 
   return jwt.sign(
     {
+      accountStatus: user.accountStatus ?? (user.isSuspended ? "suspended" : "active"),
+      role: user.role ?? "client",
+      tokenType: TOKEN_TYPES.ACCESS,
       userId,
-      role: user.role,
     },
-    getTokenSecret(TOKEN_TYPES.ACCESS),
+    getAccessTokenSecret(),
     {
+      algorithm: "HS256",
       expiresIn: env.jwtAccessExpiresIn,
       subject: userId,
     },
   );
 }
 
-export function generateRefreshToken(user) {
-  const userId = getUserId(user);
-
-  return jwt.sign(
-    {
-      userId,
-      tokenVersion: Number(user.refreshTokenVersion ?? 0),
-    },
-    getTokenSecret(TOKEN_TYPES.REFRESH),
-    {
-      expiresIn: env.jwtRefreshExpiresIn,
-      subject: userId,
-    },
-  );
+export function generateRefreshToken() {
+  return randomBytes(refreshTokenBytes).toString("base64url");
 }
 
 export function generateAuthTokens(user) {
@@ -85,9 +116,16 @@ export function generateAuthTokens(user) {
 
 export function verifyAccessToken(token) {
   try {
-    const decoded = normalizeDecodedToken(jwt.verify(token, getTokenSecret(TOKEN_TYPES.ACCESS)));
+    const decoded = normalizeDecodedToken(
+      jwt.verify(token, getAccessTokenSecret(), { algorithms: ["HS256"] }),
+    );
 
-    if (decoded.tokenType && decoded.tokenType !== TOKEN_TYPES.ACCESS) {
+    if (
+      decoded.tokenType !== TOKEN_TYPES.ACCESS
+      || !decoded.userId
+      || !decoded.role
+      || !decoded.accountStatus
+    ) {
       throw new AppError("Invalid token", 401);
     }
 
@@ -102,21 +140,33 @@ export function verifyAccessToken(token) {
 }
 
 export function verifyRefreshToken(token) {
-  try {
-    const decoded = normalizeDecodedToken(jwt.verify(token, getTokenSecret(TOKEN_TYPES.REFRESH)));
+  const normalizedToken = String(token ?? "").trim();
 
-    if ((decoded.tokenType && decoded.tokenType !== TOKEN_TYPES.REFRESH) || !decoded.userId) {
-      throw new AppError("Invalid token", 401);
-    }
-
-    return decoded;
-  } catch (error) {
-    if (error instanceof AppError) {
-      throw error;
-    }
-
-    throw normalizeJwtError(error);
+  if (refreshTokenPattern.test(normalizedToken)) {
+    return normalizedToken;
   }
+
+  // Existing signed refresh tokens are accepted only for migration. Successful
+  // refresh rotates them into the opaque random-token format.
+  if (normalizedToken.split(".").length === 3) {
+    try {
+      const decoded = normalizeDecodedToken(
+        jwt.verify(normalizedToken, getRefreshTokenSecret(), { algorithms: ["HS256"] }),
+      );
+
+      if (!decoded.userId) {
+        throw new AppError("Invalid or expired refresh token", 401);
+      }
+
+      return normalizedToken;
+    } catch (error) {
+      if (error instanceof AppError) {
+        throw error;
+      }
+    }
+  }
+
+  throw new AppError("Invalid or expired refresh token", 401);
 }
 
 export function getTokenFromHeader(request) {

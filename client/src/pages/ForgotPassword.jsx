@@ -4,19 +4,13 @@ import { Button } from "../components/ui/Button.jsx";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/Card.jsx";
 import { Input } from "../components/ui/Input.jsx";
 import { ROUTES } from "../constants/index.js";
+import { getAuthErrorMessage } from "../features/auth/authFormUtils.js";
 import { useAuth } from "../features/auth/useAuth.js";
+import { getDefaultAuthenticatedRoute } from "../routes/authRouteUtils.js";
 import { isRequired, isValidEmail } from "../utils/index.js";
 
 const successMessage =
   "If an account exists with this email, password reset instructions will be sent.";
-
-function getAuthError(error, fallback) {
-  if (Array.isArray(error?.errors) && error.errors.length > 0) {
-    return error.errors[0]?.message ?? fallback;
-  }
-
-  return error?.message ?? fallback;
-}
 
 export function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -24,7 +18,7 @@ export function ForgotPassword() {
   const [formError, setFormError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { forgotPassword, isAuthenticated, isAuthChecking } = useAuth();
+  const { forgotPassword, isAuthenticated, isAuthChecking, user } = useAuth();
 
   function updateEmail(event) {
     setEmail(event.target.value);
@@ -62,14 +56,14 @@ export function ForgotPassword() {
       await forgotPassword({ email: email.trim() });
       setIsSubmitted(true);
     } catch (error) {
-      setFormError(getAuthError(error, "Unable to send reset instructions. Please try again."));
+      setFormError(getAuthErrorMessage(error, "Unable to send reset instructions. Please try again."));
     } finally {
       setIsSubmitting(false);
     }
   }
 
   if (!isAuthChecking && isAuthenticated) {
-    return <Navigate replace to={ROUTES.DASHBOARD} />;
+    return <Navigate replace to={getDefaultAuthenticatedRoute(user)} />;
   }
 
   return (

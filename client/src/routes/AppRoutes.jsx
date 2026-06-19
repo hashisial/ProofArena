@@ -6,8 +6,11 @@ import { AdminLayout } from "../layouts/AdminLayout.jsx";
 import { AuthLayout } from "../layouts/AuthLayout.jsx";
 import { DashboardLayout } from "../layouts/DashboardLayout.jsx";
 import { PublicLayout } from "../layouts/PublicLayout.jsx";
+import { AuthHydration } from "./AuthHydration.jsx";
+import { EmailVerifiedRoute } from "./EmailVerifiedRoute.jsx";
 import { ProtectedRoute } from "./ProtectedRoute.jsx";
-import { RoleRoute } from "./RoleRoute.jsx";
+import { PublicOnlyRoute } from "./PublicOnlyRoute.jsx";
+import { RoleProtectedRoute, RoleRoute } from "./RoleRoute.jsx";
 
 function lazyNamed(importer, exportName) {
   return lazy(() =>
@@ -77,7 +80,9 @@ const ServerError = lazyNamed(() => import("../pages/ServerError.jsx"), "ServerE
 const Services = lazyNamed(() => import("../pages/Services.jsx"), "Services");
 const Settings = lazyNamed(() => import("../pages/Settings.jsx"), "Settings");
 const StarterChallenges = lazyNamed(() => import("../pages/StarterChallenges.jsx"), "StarterChallenges");
+const SupportDashboard = lazyNamed(() => import("../pages/SupportDashboard.jsx"), "SupportDashboard");
 const VerifyEmail = lazyNamed(() => import("../pages/VerifyEmail.jsx"), "VerifyEmail");
+const ResendVerification = lazyNamed(() => import("../pages/VerifyEmail.jsx"), "ResendVerification");
 
 const AdminDisputes = lazyNamed(routeShells, "AdminDisputes");
 const AdminProofReview = lazyNamed(routeShells, "AdminProofReview");
@@ -148,25 +153,43 @@ export function AppRoutes() {
         </Route>
 
         <Route element={<AuthLayout />}>
-          <Route element={<Login />} path={routeSegment(ROUTES.LOGIN)} />
-          <Route element={<Register />} path={routeSegment(ROUTES.REGISTER)} />
+          <Route
+            element={<PublicOnlyRoute><Login /></PublicOnlyRoute>}
+            path={routeSegment(ROUTES.LOGIN)}
+          />
+          <Route
+            element={<PublicOnlyRoute><Register /></PublicOnlyRoute>}
+            path={routeSegment(ROUTES.REGISTER)}
+          />
           <Route element={<ForgotPassword />} path={routeSegment(ROUTES.FORGOT_PASSWORD)} />
           <Route element={<ResetPassword />} path={routeSegment(ROUTES.RESET_PASSWORD)} />
           <Route element={<VerifyEmail />} path={routeSegment(ROUTES.VERIFY_EMAIL)} />
-          <Route element={<VerifyEmail />} path={routeSegment(ROUTES.RESEND_VERIFICATION)} />
+          <Route element={<ResendVerification />} path={routeSegment(ROUTES.RESEND_VERIFICATION)} />
         </Route>
 
         <Route
           element={
-            <ProtectedRoute>
-              <DashboardLayout />
-            </ProtectedRoute>
+            <AuthHydration>
+              <ProtectedRoute>
+                <EmailVerifiedRoute>
+                  <DashboardLayout />
+                </EmailVerifiedRoute>
+              </ProtectedRoute>
+            </AuthHydration>
           }
         >
           <Route element={<Dashboard />} path={routeSegment(ROUTES.DASHBOARD)} />
           <Route
-            element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><Dashboard /></RoleRoute>}
+            element={<RoleProtectedRoute allowedRoles={[USER_ROLES.CLIENT]}><Dashboard /></RoleProtectedRoute>}
+            path={routeSegment(ROUTES.CLIENT_DASHBOARD)}
+          />
+          <Route
+            element={<RoleProtectedRoute allowedRoles={[USER_ROLES.PROVIDER]}><Dashboard /></RoleProtectedRoute>}
             path={routeSegment(ROUTES.PROVIDER_DASHBOARD)}
+          />
+          <Route
+            element={<RoleProtectedRoute allowedRoles={[USER_ROLES.SUPPORT]}><SupportDashboard /></RoleProtectedRoute>}
+            path={routeSegment(ROUTES.SUPPORT_DASHBOARD)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT]}><ClientWorkspace /></RoleRoute>}
@@ -307,9 +330,13 @@ export function AppRoutes() {
 
         <Route
           element={
-            <RoleRoute allowedRoles={[USER_ROLES.ADMIN]}>
-              <AdminLayout />
-            </RoleRoute>
+            <AuthHydration>
+              <RoleRoute allowedRoles={[USER_ROLES.ADMIN]}>
+                <EmailVerifiedRoute>
+                  <AdminLayout />
+                </EmailVerifiedRoute>
+              </RoleRoute>
+            </AuthHydration>
           }
         >
           <Route element={<AdminDashboard />} path={routeSegment(ROUTES.ADMIN)} />

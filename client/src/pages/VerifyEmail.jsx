@@ -4,22 +4,16 @@ import { Button } from "../components/ui/Button.jsx";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/Card.jsx";
 import { Input } from "../components/ui/Input.jsx";
 import { ROUTES } from "../constants/index.js";
+import { getAuthErrorMessage } from "../features/auth/authFormUtils.js";
 import { useAuth } from "../features/auth/useAuth.js";
+import { getDefaultAuthenticatedRoute } from "../routes/authRouteUtils.js";
 import { isRequired, isValidEmail } from "../utils/index.js";
 
 const resendSuccessMessage =
   "If an unverified account exists with this email, verification instructions will be sent.";
 
-function getAuthError(error, fallback) {
-  if (Array.isArray(error?.errors) && error.errors.length > 0) {
-    return error.errors[0]?.message ?? fallback;
-  }
-
-  return error?.message ?? fallback;
-}
-
-function ResendVerificationForm() {
-  const [email, setEmail] = useState("");
+function ResendVerificationForm({ initialEmail = "" }) {
+  const [email, setEmail] = useState(initialEmail);
   const [emailError, setEmailError] = useState("");
   const [formError, setFormError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -62,7 +56,7 @@ function ResendVerificationForm() {
       await resendVerification({ email: email.trim() });
       setSuccessMessage(resendSuccessMessage);
     } catch (error) {
-      setFormError(getAuthError(error, "Unable to send verification instructions. Please try again."));
+      setFormError(getAuthErrorMessage(error, "Unable to send verification instructions. Please try again."));
     } finally {
       setIsSubmitting(false);
     }
@@ -107,16 +101,16 @@ function ResendVerificationForm() {
   );
 }
 
-export function VerifyEmail() {
+export function VerifyEmail({ forceResend = false }) {
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token")?.trim() ?? "";
-  const isResendRoute = location.pathname === ROUTES.RESEND_VERIFICATION;
+  const isResendRoute = forceResend || location.pathname === ROUTES.RESEND_VERIFICATION;
   const hasRequestedVerificationRef = useRef(false);
   const [status, setStatus] = useState(token && !isResendRoute ? "loading" : "missing");
   const [message, setMessage] = useState("");
   const [showResendForm, setShowResendForm] = useState(isResendRoute);
-  const { isAuthenticated, verifyEmail } = useAuth();
+  const { isAuthenticated, user, verifyEmail } = useAuth();
 
   useEffect(() => {
     if (isResendRoute || !token || hasRequestedVerificationRef.current) {
@@ -132,7 +126,7 @@ export function VerifyEmail() {
         setMessage("");
       } catch (error) {
         setStatus("error");
-        setMessage(getAuthError(error, "Verification link is invalid or expired."));
+        setMessage(getAuthErrorMessage(error, "Verification link is invalid or expired."));
       }
     }
 
@@ -207,7 +201,11 @@ export function VerifyEmail() {
 
         {isSuccess ? (
           <div className="grid gap-3 sm:grid-cols-2">
-            <Button as="a" className="w-full" href={ROUTES.DASHBOARD}>
+            <Button
+              as="a"
+              className="w-full"
+              href={getDefaultAuthenticatedRoute(user)}
+            >
               Go to Dashboard
             </Button>
             <Button as="a" className="w-full" href={ROUTES.LOGIN} variant="outline">
@@ -229,7 +227,7 @@ export function VerifyEmail() {
                 Request new link
               </Button>
             ) : null}
-            {showResendForm ? <ResendVerificationForm /> : null}
+            {showResendForm ? <ResendVerificationForm initialEmail={user?.email} /> : null}
             <Link className="text-center text-sm font-semibold text-[#365314] transition hover:text-[#3F6212] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" to={ROUTES.LOGIN}>
               Back to Login
             </Link>
@@ -244,4 +242,8 @@ export function VerifyEmail() {
       </CardContent>
     </Card>
   );
+}
+
+export function ResendVerification() {
+  return <VerifyEmail forceResend />;
 }

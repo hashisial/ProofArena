@@ -5,7 +5,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../co
 import { Input } from "../components/ui/Input.jsx";
 import { Select } from "../components/ui/Select.jsx";
 import { ROUTES, USER_ROLES } from "../constants/index.js";
+import { getAuthErrorMessage } from "../features/auth/authFormUtils.js";
 import { useAuth } from "../features/auth/useAuth.js";
+import {
+  getDefaultAuthenticatedRoute,
+  getIntendedDestination,
+} from "../routes/authRouteUtils.js";
 import {
   getPasswordStrengthError,
   isRequired,
@@ -34,23 +39,14 @@ const roleOptions = [
   },
 ];
 
-function getAuthError(error, fallback) {
-  if (Array.isArray(error?.errors) && error.errors.length > 0) {
-    return error.errors[0]?.message ?? fallback;
-  }
-
-  return error?.message ?? fallback;
-}
-
 export function Register() {
   const [form, setForm] = useState(initialForm);
   const [fieldErrors, setFieldErrors] = useState({});
   const [formError, setFormError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { authError, clearAuthError, isAuthenticated, isAuthChecking, register } = useAuth();
+  const { authError, clearAuthError, isAuthenticated, isAuthChecking, register, user } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const redirectTo = location.state?.from?.pathname ?? ROUTES.DASHBOARD;
 
   const generalError = formError || authError?.message || "";
 
@@ -133,23 +129,29 @@ export function Register() {
     clearAuthError();
 
     try {
-      await register({
+      const authData = await register({
         email: form.email.trim(),
         fullName: form.fullName.trim(),
         password: form.password,
         role: form.role,
         username: form.username.trim().toLowerCase(),
       });
-      navigate(redirectTo, { replace: true });
+      navigate(
+        getIntendedDestination(
+          location.state,
+          getDefaultAuthenticatedRoute(authData.user),
+        ),
+        { replace: true },
+      );
     } catch (error) {
-      setFormError(getAuthError(error, "Unable to create account. Please try again."));
+      setFormError(getAuthErrorMessage(error, "Unable to create account. Please try again."));
     } finally {
       setIsSubmitting(false);
     }
   }
 
   if (!isAuthChecking && isAuthenticated) {
-    return <Navigate replace to={ROUTES.DASHBOARD} />;
+    return <Navigate replace to={getDefaultAuthenticatedRoute(user)} />;
   }
 
   return (

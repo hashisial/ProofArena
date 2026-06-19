@@ -1,14 +1,16 @@
 export const USER_ROLES = Object.freeze({
+  ADMIN: "admin",
   CLIENT: "client",
   PROVIDER: "provider",
-  ADMIN: "admin",
+  SUPPORT: "support",
 });
 
 export const ACCOUNT_STATUS = Object.freeze({
   ACTIVE: "active",
+  BANNED: "banned",
+  DELETED: "deleted",
   PENDING: "pending",
   SUSPENDED: "suspended",
-  DELETED: "deleted",
 });
 
 export const CHALLENGE_STATUS = Object.freeze({

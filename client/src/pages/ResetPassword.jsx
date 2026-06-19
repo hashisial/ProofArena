@@ -4,21 +4,15 @@ import { Button } from "../components/ui/Button.jsx";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/Card.jsx";
 import { Input } from "../components/ui/Input.jsx";
 import { ROUTES } from "../constants/index.js";
+import { getAuthErrorMessage } from "../features/auth/authFormUtils.js";
 import { useAuth } from "../features/auth/useAuth.js";
+import { getDefaultAuthenticatedRoute } from "../routes/authRouteUtils.js";
 import { getPasswordStrengthError, isRequired, isStrongPassword } from "../utils/index.js";
 
 const initialForm = {
   confirmPassword: "",
   password: "",
 };
-
-function getAuthError(error, fallback) {
-  if (Array.isArray(error?.errors) && error.errors.length > 0) {
-    return error.errors[0]?.message ?? fallback;
-  }
-
-  return error?.message ?? fallback;
-}
 
 export function ResetPassword() {
   const [searchParams] = useSearchParams();
@@ -28,7 +22,7 @@ export function ResetPassword() {
   const [formError, setFormError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const { isAuthenticated, isAuthChecking, resetPassword } = useAuth();
+  const { isAuthenticated, isAuthChecking, resetPassword, user } = useAuth();
 
   function updateField(event) {
     const { name, value } = event.target;
@@ -80,14 +74,14 @@ export function ResetPassword() {
       setForm(initialForm);
       setIsSuccess(true);
     } catch (error) {
-      setFormError(getAuthError(error, "Unable to reset password. Please request a new link."));
+      setFormError(getAuthErrorMessage(error, "Unable to reset password. Please request a new link."));
     } finally {
       setIsSubmitting(false);
     }
   }
 
   if (!isAuthChecking && isAuthenticated) {
-    return <Navigate replace to={ROUTES.DASHBOARD} />;
+    return <Navigate replace to={getDefaultAuthenticatedRoute(user)} />;
   }
 
   if (!token) {

@@ -8,8 +8,10 @@ import {
   generateAccessToken,
   generateRefreshToken,
   generateAuthTokens,
+  compareRefreshToken,
+  hashRefreshToken,
   hashToken,
-  verifyRefreshToken as verifyJwtRefreshToken,
+  verifyRefreshToken,
 } from "../utils/token.utils.js";
 import { ensureDatabaseConnection } from "./databaseService.js";
 import { sendEmailVerificationEmail, sendPasswordResetEmail } from "./emailService.js";
@@ -20,10 +22,11 @@ const validAccountTypes = new Set(["individual", "agency"]);
 const validVerificationStatuses = new Set(["pending", "verified", "rejected"]);
 const passwordResetTtlMs = 30 * 60 * 1000;
 const emailVerificationTtlMs = 24 * 60 * 60 * 1000;
+const invalidRefreshSessionMessage = "Refresh session is invalid or expired";
 
 function secureCompare(value, expectedValue) {
-  const valueBuffer = Buffer.from(value);
-  const expectedBuffer = Buffer.from(expectedValue);
+  const valueBuffer = Buffer.from(String(value ?? ""));
+  const expectedBuffer = Buffer.from(String(expectedValue ?? ""));
 
   if (valueBuffer.length !== expectedBuffer.length) {
     return false;
@@ -88,10 +91,6 @@ function hashResetToken(token) {
   return hashToken(token);
 }
 
-function hashRefreshToken(token) {
-  return hashToken(token);
-}
-
 function getClientBaseUrl(clientBaseUrl) {
   return clientBaseUrl ?? env.clientUrl;
 }
@@ -104,6 +103,22 @@ function getResetUrl(token, clientBaseUrl) {
 function getVerificationUrl(token, clientBaseUrl) {
   const baseUrl = getClientBaseUrl(clientBaseUrl).replace(/\/$/, "");
   return `${baseUrl}/verify-email?token=${encodeURIComponent(token)}`;
+}
+
+async function deliverEmailVerification(user, clientBaseUrl) {
+  const tokenResult = await generateEmailVerificationToken(user._id ?? user.id);
+
+  if (!tokenResult?.token) {
+    return { skipped: true };
+  }
+
+  const verificationUrl = getVerificationUrl(tokenResult.token, clientBaseUrl);
+
+  return sendEmailVerificationEmail({
+    email: tokenResult.user.email,
+    name: tokenResult.user.fullName ?? tokenResult.user.name,
+    verificationUrl,
+  });
 }
 
 export async function ensureEnvironmentAdmin() {
@@ -247,18 +262,6 @@ async function createAuthSession(user) {
   };
 }
 
-function verifyRefreshToken(refreshToken) {
-  try {
-    return verifyJwtRefreshToken(refreshToken);
-  } catch (error) {
-    if (error instanceof AppError) {
-      throw error;
-    }
-
-    throw new AppError("Invalid or expired refresh token", 401);
-  }
-}
-
 function assertAccountCanAuthenticate(user) {
   const accountStatus = user.accountStatus ?? (user.isSuspended ? "suspended" : "active");
 
@@ -288,36 +291,38 @@ function assertPublicRegistrationRole(role) {
 async function findRefreshTokenUser(refreshToken) {
   ensureDatabaseConnection();
 
-  const decoded = verifyRefreshToken(refreshToken);
-  const user = await User.findById(decoded.userId ?? decoded.id).select(
+  let refreshTokenHash;
+
+  try {
+    verifyRefreshToken(refreshToken);
+    refreshTokenHash = hashRefreshToken(refreshToken);
+  } catch {
+    throw new AppError(invalidRefreshSessionMessage, 401);
+  }
+
+  const user = await User.findOne({ refreshTokenHash }).select(
     "+refreshTokenExpiresAt +refreshTokenHash +refreshTokenVersion",
   );
 
   if (!user) {
-    throw new AppError("User account not found", 401);
+    throw new AppError(invalidRefreshSessionMessage, 401);
   }
 
   assertAccountCanAuthenticate(user);
 
   if (!user.refreshTokenHash || !user.refreshTokenExpiresAt) {
-    throw new AppError("Refresh session has expired", 401);
-  }
-
-  if (Number(user.refreshTokenVersion ?? 0) !== Number(decoded.tokenVersion ?? 0)) {
-    throw new AppError("Refresh session is invalid", 401);
+    throw new AppError(invalidRefreshSessionMessage, 401);
   }
 
   if (user.refreshTokenExpiresAt.getTime() <= Date.now()) {
     user.refreshTokenHash = "";
     user.refreshTokenExpiresAt = null;
     await user.save();
-    throw new AppError("Refresh session has expired", 401);
+    throw new AppError(invalidRefreshSessionMessage, 401);
   }
 
-  const incomingHash = hashRefreshToken(refreshToken);
-
-  if (!secureCompare(incomingHash, user.refreshTokenHash)) {
-    throw new AppError("Refresh session is invalid", 401);
+  if (!compareRefreshToken(refreshToken, user.refreshTokenHash)) {
+    throw new AppError(invalidRefreshSessionMessage, 401);
   }
 
   return user;
@@ -325,7 +330,7 @@ async function findRefreshTokenUser(refreshToken) {
 
 export async function refreshAuthSession(refreshToken) {
   if (!refreshToken) {
-    throw new AppError("Refresh token is required", 401);
+    throw new AppError(invalidRefreshSessionMessage, 401);
   }
 
   const user = await findRefreshTokenUser(refreshToken);
@@ -347,6 +352,25 @@ export async function revokeRefreshSession(refreshToken) {
   } catch {
     // Logout should be idempotent even when the refresh token is already invalid.
   }
+}
+
+export async function revokeUserRefreshSession(userId) {
+  if (!userId) {
+    return;
+  }
+
+  ensureDatabaseConnection();
+
+  await User.updateOne(
+    { _id: userId },
+    {
+      $inc: { refreshTokenVersion: 1 },
+      $set: {
+        refreshTokenExpiresAt: null,
+        refreshTokenHash: "",
+      },
+    },
+  );
 }
 
 export async function authenticateAdmin({ email, password }) {
@@ -375,7 +399,7 @@ export async function authenticateAdmin({ email, password }) {
 
 export async function registerUser(
   { accountType, email, fullName, name, password, role, username },
-  { allowRole = false } = {},
+  { allowRole = false, clientBaseUrl } = {},
 ) {
   ensureDatabaseConnection();
 
@@ -441,6 +465,8 @@ export async function registerUser(
     user.subscriptionId = subscription._id;
     await user.save();
   }
+
+  await deliverEmailVerification(user, clientBaseUrl);
 
   return createAuthSession(user);
 }
@@ -515,16 +541,13 @@ export async function requestPasswordReset({ clientBaseUrl, email }) {
 
   const resetUrl = getResetUrl(tokenResult.token, clientBaseUrl);
 
-  const emailResult = await sendPasswordResetEmail({
+  await sendPasswordResetEmail({
     email: tokenResult.user.email,
     name: tokenResult.user.fullName ?? tokenResult.user.name,
     resetUrl,
   });
 
-  return {
-    ...genericResponse,
-    resetUrl: emailResult.skipped ? resetUrl : undefined,
-  };
+  return genericResponse;
 }
 
 export async function resetPassword({ password, token }) {
@@ -577,7 +600,10 @@ export async function resetPasswordWithToken(token, newPassword) {
   const user = await User.findOne({
     passwordResetExpires: { $gt: new Date() },
     passwordResetToken: hashResetToken(token),
-  }).select("+password +passwordResetExpires +passwordResetToken +refreshTokenVersion");
+  }).select(
+    "+password +passwordResetExpires +passwordResetToken +refreshTokenExpiresAt "
+      + "+refreshTokenHash +refreshTokenVersion",
+  );
 
   if (!user) {
     throw new AppError("Password reset token is invalid or expired", 400);
@@ -586,6 +612,8 @@ export async function resetPasswordWithToken(token, newPassword) {
   user.password = newPassword;
   user.passwordResetToken = "";
   user.passwordResetExpires = null;
+  user.refreshTokenHash = "";
+  user.refreshTokenExpiresAt = null;
   user.refreshTokenVersion = Number(user.refreshTokenVersion ?? 0) + 1;
   await user.save();
 
@@ -688,17 +716,13 @@ export async function requestEmailVerification({ clientBaseUrl, email }) {
   }
 
   const verificationUrl = getVerificationUrl(tokenResult.token, clientBaseUrl);
-  const emailResult = await sendEmailVerificationEmail({
+  await sendEmailVerificationEmail({
     email: tokenResult.user.email,
     name: tokenResult.user.fullName,
     verificationUrl,
   });
 
-  return {
-    ...genericResponse,
-    verificationToken: tokenResult.token,
-    verificationUrl: emailResult.skipped ? verificationUrl : undefined,
-  };
+  return genericResponse;
 }
 
 export async function verifyEmailToken({ token } = {}) {
@@ -713,7 +737,9 @@ export async function verifyEmailToken({ token } = {}) {
 export async function changePassword(userId, { currentPassword, newPassword }) {
   ensureDatabaseConnection();
 
-  const user = await User.findById(userId).select("+password +refreshTokenVersion");
+  const user = await User.findById(userId).select(
+    "+password +refreshTokenExpiresAt +refreshTokenHash +refreshTokenVersion",
+  );
 
   if (!user) {
     throw new AppError("User not found", 404);
@@ -726,6 +752,8 @@ export async function changePassword(userId, { currentPassword, newPassword }) {
   }
 
   user.password = newPassword;
+  user.refreshTokenHash = "";
+  user.refreshTokenExpiresAt = null;
   user.refreshTokenVersion = Number(user.refreshTokenVersion ?? 0) + 1;
   await user.save();
 
@@ -766,7 +794,7 @@ export async function getCurrentUser(userId) {
 
 export async function refreshUserToken(refreshToken) {
   if (!refreshToken) {
-    throw new AppError("Refresh token missing", 401);
+    throw new AppError(invalidRefreshSessionMessage, 401);
   }
 
   const session = await refreshAuthSession(refreshToken);
@@ -780,13 +808,17 @@ export async function refreshUserToken(refreshToken) {
 export async function incrementRefreshTokenVersion(userId) {
   ensureDatabaseConnection();
 
-  const user = await User.findById(userId).select("+refreshTokenVersion");
+  const user = await User.findById(userId).select(
+    "+refreshTokenExpiresAt +refreshTokenHash +refreshTokenVersion",
+  );
 
   if (!user) {
     throw new AppError("User not found", 404);
   }
 
   user.refreshTokenVersion = Number(user.refreshTokenVersion ?? 0) + 1;
+  user.refreshTokenHash = "";
+  user.refreshTokenExpiresAt = null;
   await user.save();
 
   return true;
@@ -798,3 +830,27 @@ export {
   validRoles,
   validVerificationStatuses,
 };
+
+export async function logoutUser(refreshToken, userId) {
+  if (userId) {
+    await revokeUserRefreshSession(userId);
+  } else {
+    await revokeRefreshSession(refreshToken);
+  }
+
+  return {
+    message: "Logged out successfully.",
+  };
+}
+
+export async function refreshAccessToken(refreshToken) {
+  return refreshUserToken(refreshToken);
+}
+
+export async function verifyEmail(payload) {
+  return verifyEmailToken(payload);
+}
+
+export async function resendVerificationEmail(payload) {
+  return requestEmailVerification(payload);
+}

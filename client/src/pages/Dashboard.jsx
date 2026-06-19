@@ -16,5 +16,9 @@ export function Dashboard() {
     return <ProviderDashboard />;
   }
 
+  if (currentRole === USER_ROLES.SUPPORT) {
+    return <Navigate replace to={ROUTES.SUPPORT_DASHBOARD} />;
+  }
+
   return <Navigate replace to={currentRole === USER_ROLES.ADMIN ? ROUTES.ADMIN : ROUTES.FORBIDDEN} />;
 }

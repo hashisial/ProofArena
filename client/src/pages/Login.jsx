@@ -4,7 +4,12 @@ import { Button } from "../components/ui/Button.jsx";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/Card.jsx";
 import { Input } from "../components/ui/Input.jsx";
 import { ROUTES } from "../constants/index.js";
+import { getAuthErrorMessage } from "../features/auth/authFormUtils.js";
 import { useAuth } from "../features/auth/useAuth.js";
+import {
+  getDefaultAuthenticatedRoute,
+  getIntendedDestination,
+} from "../routes/authRouteUtils.js";
 import { isRequired, isValidEmail } from "../utils/index.js";
 
 const initialForm = {
@@ -12,23 +17,14 @@ const initialForm = {
   password: "",
 };
 
-function getAuthError(error, fallback) {
-  if (Array.isArray(error?.errors) && error.errors.length > 0) {
-    return error.errors[0]?.message ?? fallback;
-  }
-
-  return error?.message ?? fallback;
-}
-
 export function Login() {
   const [form, setForm] = useState(initialForm);
   const [fieldErrors, setFieldErrors] = useState({});
   const [formError, setFormError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { authError, clearAuthError, isAuthenticated, isAuthChecking, login } = useAuth();
+  const { authError, clearAuthError, isAuthenticated, isAuthChecking, login, user } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const redirectTo = location.state?.from?.pathname ?? ROUTES.DASHBOARD;
 
   const generalError = formError || authError?.message || "";
 
@@ -80,20 +76,26 @@ export function Login() {
     clearAuthError();
 
     try {
-      await login({
+      const authData = await login({
         email: form.email.trim(),
         password: form.password,
       });
-      navigate(redirectTo, { replace: true });
+      navigate(
+        getIntendedDestination(
+          location.state,
+          getDefaultAuthenticatedRoute(authData.user),
+        ),
+        { replace: true },
+      );
     } catch (error) {
-      setFormError(getAuthError(error, "Unable to log in. Please try again."));
+      setFormError(getAuthErrorMessage(error, "Unable to log in. Please try again."));
     } finally {
       setIsSubmitting(false);
     }
   }
 
   if (!isAuthChecking && isAuthenticated) {
-    return <Navigate replace to={ROUTES.DASHBOARD} />;
+    return <Navigate replace to={getDefaultAuthenticatedRoute(user)} />;
   }
 
   return (

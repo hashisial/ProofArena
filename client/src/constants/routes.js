@@ -78,7 +78,9 @@ export const AUTH_ROUTES = Object.freeze({
 
 export const DASHBOARD_ROUTES = Object.freeze({
   DASHBOARD: "/dashboard",
+  CLIENT_DASHBOARD: "/dashboard/client",
   PROVIDER_DASHBOARD: "/dashboard/provider",
+  SUPPORT_DASHBOARD: "/dashboard/support",
   CLIENT_WORKSPACE: "/dashboard/workspace",
   MY_CHALLENGES: "/dashboard/challenges",
   NEW_CHALLENGE: "/dashboard/challenges/new",

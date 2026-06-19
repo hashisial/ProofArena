@@ -1,5 +1,31 @@
-import { API_ENDPOINTS } from "../../constants/index.js";
+import { AUTH_API } from "../../constants/index.js";
+import { normalizeApiError } from "../../services/apiClient.js";
 import { api } from "../../services/apiClient.js";
+
+const safeAuthUserFields = Object.freeze([
+  "accountStatus",
+  "accountType",
+  "avatar",
+  "createdAt",
+  "email",
+  "emailVerified",
+  "fullName",
+  "id",
+  "isEmailVerified",
+  "isSuspended",
+  "isVerified",
+  "lastLogin",
+  "lastLoginAt",
+  "name",
+  "onboardingCompleted",
+  "permissions",
+  "profileId",
+  "role",
+  "subscriptionId",
+  "updatedAt",
+  "username",
+  "verificationStatus",
+]);
 
 function normalizeRegisterPayload(payload = {}) {
   return {
@@ -25,55 +51,118 @@ function normalizeTokenPayload(payload) {
   return payload ?? {};
 }
 
-async function withTokenAlias(request) {
-  const response = await request;
-
-  if (response?.accessToken && !response.token) {
-    return {
-      ...response,
-      token: response.accessToken,
-    };
+export function mapAuthUser(user) {
+  if (!user || typeof user !== "object") {
+    return null;
   }
 
-  return response;
+  return safeAuthUserFields.reduce((safeUser, field) => {
+    if (user[field] !== undefined) {
+      safeUser[field] = user[field];
+    }
+
+    return safeUser;
+  }, {});
+}
+
+export function mapAuthResponse(response = {}) {
+  const source = response ?? {};
+  const accessToken = source.accessToken ?? source.token ?? "";
+
+  return {
+    accessToken,
+    token: accessToken,
+    user: mapAuthUser(source.user),
+  };
+}
+
+function mapCurrentUserResponse(response = {}) {
+  const source = response ?? {};
+
+  return {
+    user: mapAuthUser(source.user ?? source),
+  };
+}
+
+function mapActionResponse(response = {}) {
+  const source = response ?? {};
+
+  return {
+    data: source.data ?? null,
+    message: source.message ?? "",
+    success: source.success ?? true,
+  };
+}
+
+async function executeAuthRequest(request, mapper = (response) => response) {
+  try {
+    return mapper(await request);
+  } catch (error) {
+    throw normalizeApiError(error);
+  }
+}
+
+function requestAccessTokenRefresh() {
+  return executeAuthRequest(api.post(AUTH_API.REFRESH, {}), mapAuthResponse);
 }
 
 export const authService = Object.freeze({
   changePassword(payload = {}) {
-    return api.post(API_ENDPOINTS.CHANGE_PASSWORD, {
-      ...payload,
-      confirmNewPassword: payload.confirmNewPassword ?? payload.newPassword,
-    });
+    return executeAuthRequest(
+      api.post(AUTH_API.CHANGE_PASSWORD, {
+        ...payload,
+        confirmNewPassword: payload.confirmNewPassword ?? payload.newPassword,
+      }),
+      mapActionResponse,
+    );
   },
   forgotPassword(payload) {
-    return api.post(API_ENDPOINTS.FORGOT_PASSWORD, normalizeEmailPayload(payload));
+    return executeAuthRequest(
+      api.post(AUTH_API.FORGOT_PASSWORD, normalizeEmailPayload(payload)),
+      mapActionResponse,
+    );
   },
   getCurrentUser() {
-    return api.get(API_ENDPOINTS.ME);
+    return executeAuthRequest(api.get(AUTH_API.ME), mapCurrentUserResponse);
   },
   login(credentials) {
-    return withTokenAlias(api.post(API_ENDPOINTS.LOGIN, credentials));
+    return executeAuthRequest(api.post(AUTH_API.LOGIN, credentials), mapAuthResponse);
   },
   logout() {
-    return api.post(API_ENDPOINTS.LOGOUT, {});
+    return executeAuthRequest(api.post(AUTH_API.LOGOUT, {}), mapActionResponse);
+  },
+  refreshAccessToken() {
+    return requestAccessTokenRefresh();
   },
   refreshToken() {
-    return withTokenAlias(api.post(API_ENDPOINTS.REFRESH_TOKEN, {}));
+    return requestAccessTokenRefresh();
   },
   register(accountData) {
-    return withTokenAlias(api.post(API_ENDPOINTS.REGISTER, normalizeRegisterPayload(accountData)));
-  },
-  resetPassword(payload = {}) {
-    return api.post(API_ENDPOINTS.RESET_PASSWORD, {
-      ...payload,
-      confirmPassword: payload.confirmPassword ?? payload.password,
-    });
+    return executeAuthRequest(
+      api.post(AUTH_API.REGISTER, normalizeRegisterPayload(accountData)),
+      mapAuthResponse,
+    );
   },
   resendVerification(payload) {
-    return api.post(API_ENDPOINTS.RESEND_VERIFICATION, normalizeEmailPayload(payload));
+    return executeAuthRequest(
+      api.post(AUTH_API.RESEND_VERIFICATION, normalizeEmailPayload(payload)),
+      mapActionResponse,
+    );
+  },
+  resetPassword(payload = {}) {
+    return executeAuthRequest(
+      api.post(AUTH_API.RESET_PASSWORD, {
+        ...payload,
+        confirmPassword: payload.confirmPassword ?? payload.password,
+      }),
+      mapActionResponse,
+    );
   },
   verifyEmail(payload) {
-    return api.post(API_ENDPOINTS.VERIFY_EMAIL, normalizeTokenPayload(payload));
+    return executeAuthRequest(
+      api.post(AUTH_API.VERIFY_EMAIL, normalizeTokenPayload(payload)),
+      mapCurrentUserResponse,
+    );
   },
 });
 
@@ -82,6 +171,7 @@ export const forgotPassword = authService.forgotPassword;
 export const getCurrentUser = authService.getCurrentUser;
 export const login = authService.login;
 export const logout = authService.logout;
+export const refreshAccessToken = authService.refreshAccessToken;
 export const refreshToken = authService.refreshToken;
 export const register = authService.register;
 export const resetPassword = authService.resetPassword;

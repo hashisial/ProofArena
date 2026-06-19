@@ -2,6 +2,7 @@ export const APP_ROLES = Object.freeze({
   admin: "admin",
   client: "client",
   provider: "provider",
+  support: "support",
 });
 
 export const WORKSPACE_ROLES = Object.freeze([APP_ROLES.client, APP_ROLES.provider]);

@@ -3,7 +3,7 @@ import { PageLoader } from "../components/ui/PageLoader.jsx";
 import { ROUTES } from "../constants/index.js";
 import { useAuthStore } from "../store/useAuthStore.js";
 
-export function RoleRoute({ allowedRoles = [], children }) {
+export function RoleProtectedRoute({ allowedRoles = [], children }) {
   const location = useLocation();
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const isAuthChecking = useAuthStore((state) => state.isAuthChecking);
@@ -33,3 +33,5 @@ export function RoleRoute({ allowedRoles = [], children }) {
 
   return children ?? <Outlet />;
 }
+
+export const RoleRoute = RoleProtectedRoute;

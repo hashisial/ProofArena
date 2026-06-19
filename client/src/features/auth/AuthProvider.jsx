@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
-import { useAuthStore } from "../../store/useAuthStore.js";
+import {
+  subscribeToAuthSessionEvents,
+  useAuthStore,
+} from "../../store/useAuthStore.js";
 import { authService } from "./authService.js";
 import { AuthContext } from "./useAuth.js";
 import { getRolePermissions, hasPermission, hasRole } from "./roleAccess.js";
@@ -43,13 +46,14 @@ export function AuthProvider({ children }) {
     async (accessToken) => {
       const response = await authService.getCurrentUser();
       const nextUser = response.user ?? response;
+      const currentAccessToken = useAuthStore.getState().accessToken ?? accessToken;
 
-      if (!nextUser) {
+      if (!nextUser || !currentAccessToken) {
         clearAuth();
         return null;
       }
 
-      setAuth({ accessToken, user: nextUser });
+      setAuth({ accessToken: currentAccessToken, user: nextUser });
       return nextUser;
     },
     [clearAuth, setAuth],
@@ -59,7 +63,13 @@ export function AuthProvider({ children }) {
     setAuthChecking(true);
 
     try {
-      const authData = await authService.refreshToken();
+      const currentAccessToken = useAuthStore.getState().accessToken;
+
+      if (currentAccessToken) {
+        return await syncCurrentUser(currentAccessToken);
+      }
+
+      const authData = await authService.refreshAccessToken();
       const nextSession = getAuthPayload(authData);
 
       if (nextSession.user && nextSession.accessToken) {
@@ -85,6 +95,16 @@ export function AuthProvider({ children }) {
     hasInitializedRef.current = true;
     initializeAuth();
   }, [initializeAuth]);
+
+  useEffect(
+    () =>
+      subscribeToAuthSessionEvents((event) => {
+        if (event?.type === "logout") {
+          useAuthStore.getState().logoutLocal();
+        }
+      }),
+    [],
+  );
 
   const clearSession = useCallback(async () => {
     try {
@@ -129,7 +149,7 @@ export function AuthProvider({ children }) {
   );
 
   const refreshSession = useCallback(async () => {
-    const authData = await authService.refreshToken();
+    const authData = await authService.refreshAccessToken();
     const nextSession = getAuthPayload(authData);
 
     applySession(authData);

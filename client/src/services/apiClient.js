@@ -7,6 +7,7 @@ import { ApiError, normalizeApiError } from "./apiErrors.js";
 
 const LOOPBACK_HOSTS = new Set(["127.0.0.1", "::1", "localhost"]);
 let unauthorizedHandler = null;
+let refreshPromise = null;
 
 export function normalizeApiBaseUrl(value) {
   const trimmedValue = String(value ?? "").trim();
@@ -69,6 +70,7 @@ const publicAuthPaths = [
   AUTH_API.FORGOT_PASSWORD,
   AUTH_API.LOGIN,
   AUTH_API.LOGOUT,
+  AUTH_API.REFRESH,
   AUTH_API.REFRESH_ALIAS,
   AUTH_API.REFRESH_TOKEN,
   AUTH_API.REGISTER,
@@ -80,6 +82,11 @@ const publicAuthPaths = [
 function isPublicAuthPath(url = "") {
   const path = String(url);
   return publicAuthPaths.some((authPath) => path.includes(authPath));
+}
+
+function isRefreshRequest(url = "") {
+  const path = String(url);
+  return path.includes(AUTH_API.REFRESH) || path.includes(AUTH_API.REFRESH_TOKEN);
 }
 
 function shouldClearStaleAuth(status, message = "", url = "") {
@@ -102,6 +109,47 @@ export function registerUnauthorizedHandler(handler) {
       unauthorizedHandler = null;
     }
   };
+}
+
+async function refreshAccessTokenOnce() {
+  if (!refreshPromise) {
+    refreshPromise = apiClient
+      .post(
+        AUTH_API.REFRESH,
+        {},
+        {
+          _skipAuthRefresh: true,
+          skipUserAuth: true,
+        },
+      )
+      .then((refreshResponse) => {
+        const authPayload = refreshResponse.data?.data ?? refreshResponse.data;
+        const nextToken = authPayload?.accessToken ?? authPayload?.token;
+
+        if (!nextToken) {
+          throw new ApiError("Session refresh failed.", {
+            code: "AUTH_REFRESH_FAILED",
+            status: 401,
+          });
+        }
+
+        if (authPayload?.user) {
+          useAuthStore.getState().setAuth({
+            accessToken: nextToken,
+            user: authPayload.user,
+          });
+        } else {
+          useAuthStore.getState().setAccessToken(nextToken);
+        }
+
+        return nextToken;
+      })
+      .finally(() => {
+        refreshPromise = null;
+      });
+  }
+
+  return refreshPromise;
 }
 
 export const apiClient = axios.create({
@@ -156,38 +204,24 @@ apiClient.interceptors.response.use(
     const canAttemptRefresh =
       error.response?.status === 401 &&
       !originalRequest._retry &&
+      !originalRequest._skipAuthRefresh &&
       !requestUrl.includes(AUTH_API.LOGIN) &&
       !requestUrl.includes(AUTH_API.REGISTER) &&
-      !requestUrl.includes(AUTH_API.REFRESH_ALIAS) &&
-      !requestUrl.includes(AUTH_API.REFRESH_TOKEN) &&
+      !isRefreshRequest(requestUrl) &&
       !requestUrl.includes(AUTH_API.LOGOUT);
 
     if (canAttemptRefresh) {
       originalRequest._retry = true;
 
       try {
-        const refreshResponse = await apiClient.post(AUTH_API.REFRESH_TOKEN, {});
-        const authPayload = refreshResponse.data?.data ?? refreshResponse.data;
-        const nextToken =
-          authPayload?.accessToken ??
-          authPayload?.token;
-
-        if (nextToken) {
-          if (authPayload?.user) {
-            useAuthStore.getState().setAuth({
-              accessToken: nextToken,
-              user: authPayload.user,
-            });
-          } else {
-            useAuthStore.getState().setAccessToken(nextToken);
-          }
-          originalRequest.headers = originalRequest.headers ?? {};
-          originalRequest.headers.Authorization = `Bearer ${nextToken}`;
-        }
+        const nextToken = await refreshAccessTokenOnce();
+        originalRequest.headers = originalRequest.headers ?? {};
+        originalRequest.headers.Authorization = `Bearer ${nextToken}`;
 
         return apiClient(originalRequest);
-      } catch {
+      } catch (refreshError) {
         useAuthStore.getState().clearAuth();
+        unauthorizedHandler?.(normalizeApiError(refreshError));
       }
     }
 

@@ -31,7 +31,7 @@ ScaleOps already has a functional authentication foundation:
 - public registration for client and provider accounts;
 - login and logout;
 - short-lived access JWTs;
-- rotating refresh JWTs stored in an httpOnly cookie;
+- rotating opaque refresh tokens stored in an httpOnly cookie;
 - password reset and email verification tokens stored as hashes;
 - frontend session bootstrapping through the refresh cookie;
 - protected and role-restricted frontend routes;
@@ -109,7 +109,7 @@ Current auth endpoints:
   - held in frontend Zustand memory;
   - sent using `Authorization: Bearer <token>`.
 - Refresh token:
-  - JWT;
+  - opaque secure random token;
   - default expiry `7d`;
   - stored in an httpOnly cookie;
   - stored server-side only as a SHA-256 hash;
@@ -344,8 +344,8 @@ Also add:
 POST refresh
   -> validate allowed origin/CSRF policy
   -> read httpOnly refresh cookie
-  -> verify JWT issuer/audience/type/algorithm/expiry
-  -> locate hashed AuthSession
+  -> validate the opaque token format
+  -> locate the session by its token hash and verify expiry
   -> detect reuse or revoked family
   -> rotate refresh token atomically
   -> issue new access token
@@ -477,8 +477,7 @@ Support should not receive:
 - Store only in frontend memory.
 - Send only through the Authorization header.
 - Add and verify:
-  - `iss`;
-  - `aud`;
+  - `iss` and `aud` when deployment identifiers are finalized;
   - `sub`;
   - `tokenType: access`;
   - explicit HS256/RS256 algorithm policy;
@@ -524,7 +523,7 @@ Support should not receive:
 
 - Use independent, strong access and refresh secrets.
 - Remove deprecated `JWT_SECRET` after migration.
-- Rotate secrets through a documented procedure.
+- Rotate access-token secrets through a documented procedure.
 - Provision admin/support through an explicit audited command.
 - Add authentication/security event logging with redaction.
 - Require MFA or step-up authentication for privileged accounts before
