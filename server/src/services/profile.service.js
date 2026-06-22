@@ -9,7 +9,9 @@ import {
   getOwnerAnalyticsForUser,
   getPrivacySettingsForUser,
   getPublicActivityForUsername,
+  getPublicProfilePreviewForUser,
   getPublicProfileByUsername,
+  getPublishedPublicProfileByIdentifier,
   getUserProfileForUser,
   getVerificationStatusForUser,
   requestVerificationForUser,
@@ -17,6 +19,9 @@ import {
   updateEducationForUser,
   updateExperienceForUser,
   updateOpenToForUser,
+  updateOnboardingProgressForUser,
+  updateProfilePublishStateForUser,
+  updateProfileSectionForUser,
   updateServiceForUser,
   updateUserProfileAboutForUser,
   updateUserProfileForUser,
@@ -26,6 +31,26 @@ import {
 
 export function getOwnerProfile(userId) {
   return getUserProfileForUser(userId);
+}
+
+export function updateProfileSection(userId, sectionKey, payload = {}) {
+  return updateProfileSectionForUser(userId, sectionKey, payload);
+}
+
+export function updateOnboardingProgress(userId, payload = {}) {
+  return updateOnboardingProgressForUser(userId, payload);
+}
+
+export function getPublicProfilePreview(userId) {
+  return getPublicProfilePreviewForUser(userId);
+}
+
+export function updateProfilePublishState(userId, payload = {}) {
+  return updateProfilePublishStateForUser(userId, payload);
+}
+
+export function getPublishedPublicProfile(identifier) {
+  return getPublishedPublicProfileByIdentifier(identifier);
 }
 
 export function updateBasicProfile(userId, payload = {}) {

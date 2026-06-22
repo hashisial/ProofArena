@@ -20,5 +20,5 @@ export function Dashboard() {
     return <Navigate replace to={ROUTES.SUPPORT_DASHBOARD} />;
   }
 
-  return <Navigate replace to={currentRole === USER_ROLES.ADMIN ? ROUTES.ADMIN : ROUTES.FORBIDDEN} />;
+  return <Navigate replace to={currentRole === USER_ROLES.ADMIN ? ROUTES.ADMIN : ROUTES.SYSTEM.NOT_AUTHORIZED} />;
 }

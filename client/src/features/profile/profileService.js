@@ -150,6 +150,29 @@ export const profileService = Object.freeze({
       }),
     );
   },
+  async getPublishedPublicProfile(identifier) {
+    return api.get(API_ENDPOINTS.PROFILE_PUBLISHED_PUBLIC(identifier), {
+      skipUserAuth: true,
+    });
+  },
+  async getMyPublicProfilePreview() {
+    return api.get(API_ENDPOINTS.PROFILE_PUBLIC_PREVIEW);
+  },
+  async updateProfileSection({ sectionKey, payload }) {
+    return normalizeProfileData(
+      await api.patch(API_ENDPOINTS.PROFILE_SECTION(sectionKey), payload),
+    );
+  },
+  async updateOnboardingProgress(payload) {
+    return normalizeProfileData(
+      await api.patch(API_ENDPOINTS.PROFILE_ONBOARDING_PROGRESS, payload),
+    );
+  },
+  async updateProfilePublishState(payload) {
+    return normalizeProfileData(
+      await api.patch(API_ENDPOINTS.PROFILE_PUBLISH_STATE, payload),
+    );
+  },
   async getMyProfileAnalytics() {
     return api.get(API_ENDPOINTS.PROFILE_ANALYTICS);
   },
@@ -260,6 +283,11 @@ export const profileService = Object.freeze({
 export const getMyProfile = profileService.getMyProfile;
 export const getOwnerProfile = profileService.getOwnerProfile;
 export const getPublicProfile = profileService.getPublicProfile;
+export const getPublishedPublicProfile = profileService.getPublishedPublicProfile;
+export const getMyPublicProfilePreview = profileService.getMyPublicProfilePreview;
+export const updateProfileSection = profileService.updateProfileSection;
+export const updateOnboardingProgress = profileService.updateOnboardingProgress;
+export const updateProfilePublishState = profileService.updateProfilePublishState;
 export const getMyProfileAnalytics = profileService.getMyProfileAnalytics;
 export const getPublicProfileActivity = profileService.getPublicProfileActivity;
 export const getVerificationStatus = profileService.getVerificationStatus;

@@ -1,5 +1,5 @@
 import { Inbox } from "lucide-react";
-import { createElement, isValidElement } from "react";
+import { createElement, isValidElement, useId } from "react";
 import { Button } from "./Button.jsx";
 import { cn } from "../../utils/cn.js";
 
@@ -31,6 +31,7 @@ export function EmptyState({
   title,
   variant = "default",
 }) {
+  const titleId = useId();
   const iconContent = Icon
     ? isValidElement(Icon)
       ? Icon
@@ -38,13 +39,16 @@ export function EmptyState({
     : null;
 
   return (
-    <section className={cn("grid justify-items-center rounded-[var(--radius-card)] text-center", variants[variant] ?? variants.default, sizes[size] ?? sizes.md, className)}>
+    <section
+      aria-labelledby={titleId}
+      className={cn("grid justify-items-center rounded-[var(--radius-card)] text-center", variants[variant] ?? variants.default, sizes[size] ?? sizes.md, className)}
+    >
       {iconContent ? (
         <div aria-hidden="true" className="grid h-12 w-12 place-items-center rounded-[var(--radius-card)] border border-[var(--color-primary-border)] bg-[var(--color-accent-soft)] text-[var(--color-primary)]">
           {iconContent}
         </div>
       ) : null}
-      <h2 className="mt-5 text-2xl font-black tracking-normal text-[var(--color-foreground)]">{title}</h2>
+      <h2 className="mt-5 text-2xl font-black tracking-normal text-[var(--color-foreground)]" id={titleId}>{title}</h2>
       {description ? <p className="mt-3 max-w-md text-sm leading-6 text-[var(--color-text-muted)]">{description}</p> : null}
       {(action || actionText || secondaryAction || secondaryActionText) ? (
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -54,7 +58,7 @@ export function EmptyState({
             </Button>
           ) : null)}
           {secondaryAction ?? (secondaryActionText ? (
-            <Button as="a" className="w-full sm:w-auto" href={secondaryActionHref} variant="outline">
+            <Button as={secondaryActionHref ? "a" : "button"} className="w-full sm:w-auto" href={secondaryActionHref || undefined} variant="outline">
               {secondaryActionText}
             </Button>
           ) : null)}

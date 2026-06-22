@@ -17,6 +17,7 @@
 /.chrome-*
 /responsive-shots
 /uploads
+/server/tmp
 
 # next.js
 /.next/

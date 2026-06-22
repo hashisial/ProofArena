@@ -1,4 +1,4 @@
-import { createElement } from "react";
+import { createElement, useId } from "react";
 import { Badge } from "./Badge.jsx";
 import { Button } from "./Button.jsx";
 import { Card } from "./Card.jsx";
@@ -24,8 +24,11 @@ export function ErrorState({
   title,
   variant = "spotlight",
 }) {
+  const titleId = useId();
+
   return (
     <section
+      aria-labelledby={titleId}
       className={cn(
         "grid min-h-[calc(100vh-8rem)] place-items-center overflow-hidden px-4 py-16 sm:px-6 lg:px-8",
         variants[variant] ?? variants.spotlight,
@@ -53,7 +56,10 @@ export function ErrorState({
             </Badge>
           ) : null}
 
-          <h1 className="mt-5 max-w-2xl text-4xl font-black tracking-normal text-[var(--color-foreground)] sm:text-5xl">
+          <h1
+            className="mt-5 max-w-2xl text-4xl font-black tracking-normal text-[var(--color-foreground)] sm:text-5xl"
+            id={titleId}
+          >
             {title}
           </h1>
           <p className="mt-4 max-w-xl text-base leading-8 text-[var(--color-text-secondary)]">
@@ -76,7 +82,7 @@ export function ErrorState({
                 <Button
                   as={secondaryActionHref ? "a" : "button"}
                   className="w-full sm:w-auto"
-                  href={secondaryActionHref}
+                  href={secondaryActionHref || undefined}
                   onClick={onSecondaryAction}
                   variant="outline"
                 >

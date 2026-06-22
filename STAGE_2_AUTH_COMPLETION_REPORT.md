@@ -2,230 +2,168 @@
 
 ## Scope
 
-Stage 2 completed the authentication, role, session, email, and abuse-hardening foundation for the existing ScaleOps MERN project. ProofArena remains a flagship module inside ScaleOps; no separate ProofArena project or duplicate auth app was created.
+Stage 2 completed the authentication, roles, session security, email verification, password reset, and auth hardening foundation for ScaleOps with ProofArena remaining a module inside the existing platform.
 
-This report records the final QA review for Stage 2 Prompts 1-11 and the status after the Stage 2 completion pass.
+No separate ProofArena project was created.
 
 ## Completed Features
 
-- Backend user model foundation with role, account status, password hash, email verification, password reset, and refresh-session fields.
-- Auth validators for register, login, logout, refresh, forgot password, reset password, verify email, resend verification, and change password.
+- Canonical `User` model with hashed passwords, safe public JSON mapping, role/status fields, email verification fields, password reset fields, and hashed refresh-token session fields.
+- Auth validation schemas for register, login, logout, refresh, forgot password, reset password, verify email, resend verification, and change password.
 - JWT access token generation and verification.
-- Opaque refresh token generation, hashing, persistence, rotation, and revocation.
-- Cookie-based refresh token transport with httpOnly refresh cookie.
-- Backend auth service layer for register, login, logout, refresh, password reset, email verification, resend verification, and current-user lookup.
-- Thin auth controllers mounted through module-owned auth routes.
-- Compatibility route exports for legacy `/api/auth` and v1 `/api/v1/auth`.
-- Protected backend middleware: `protect`, `optionalAuth`, active-account checks, verified-email checks, and role authorization.
-- Frontend auth service using the centralized API client and endpoint constants.
-- Frontend auth store for user, access token, auth status, loading/error state, and multi-tab logout sync.
-- Auth pages for login, register, forgot password, reset password, verify email, and resend verification.
-- Frontend protected route, public-only route, role-protected route, email-verified route, and auth hydration.
-- Session hardening with refresh retry, failed-refresh logout, and logout state clearing.
-- Email delivery foundation for verification and password reset using env-based SMTP config.
-- Auth abuse hardening with Helmet, CORS, request limits, auth rate limits, and safe abuse logs.
+- Opaque refresh token generation, hashing, comparison, persistence, and rotation.
+- Cookie-based refresh-token transport using an httpOnly refresh cookie.
+- Auth controllers and routes mounted through the existing route registry:
+  - `/api/auth/*`
+  - `/api/v1/auth/*`
+- Backend auth middleware:
+  - `protect`
+  - `optionalAuth`
+  - `requireVerifiedEmail`
+  - role authorization middleware
+- Frontend auth service, auth store, auth provider, route guards, and auth pages.
+- Frontend API client refresh retry flow with one retry and session clearing on failed refresh.
+- Multi-tab logout sync through a localStorage session event.
+- Email delivery foundation for verification and password reset.
+- Auth abuse hardening with Helmet, CORS, request-size limits, auth rate limits, and safe audit logging.
 
-## Files and Areas Reviewed
+## Backend Auth Endpoints
 
-### Backend
+| Endpoint | Status | Notes |
+| --- | --- | --- |
+| `GET /api/auth/status` | Verified | Returns auth module readiness without DB access. |
+| `GET /api/v1/auth/status` | Verified | Versioned compatibility route works. |
+| `POST /api/auth/register` | Code-reviewed | Requires DB-backed manual QA with local/test MongoDB. |
+| `POST /api/auth/login` | Code-reviewed | Requires DB-backed manual QA with seeded users. |
+| `POST /api/auth/logout` | Code-reviewed | Clears refresh cookie and revokes stored refresh hash when session exists. |
+| `POST /api/auth/refresh` | Verified negative path | Missing cookie returns safe `401`. DB-backed success path requires MongoDB. |
+| `POST /api/auth/refresh-token` | Code-reviewed | Alias to refresh controller. |
+| `GET /api/auth/me` | Verified negative path | Missing Bearer token returns safe `401`. Success path requires valid token/user. |
+| `POST /api/auth/forgot-password` | Code-reviewed | Generic response and hashed reset token storage. Requires DB/email provider for full QA. |
+| `POST /api/auth/reset-password` | Code-reviewed | Hashed token lookup, password update, session invalidation. Requires DB-backed manual QA. |
+| `POST /api/auth/verify-email` | Code-reviewed | Hashed token lookup and verified status update. Requires DB-backed manual QA. |
+| `POST /api/auth/resend-verification` | Code-reviewed | Generic response and verification email delivery. Requires DB/email provider for full QA. |
+| `POST /api/auth/change-password` | Code-reviewed | Protected route, password compare, session invalidation. Requires valid token/user. |
 
-- `server/src/app.js`
-- `server/src/config/cors.js`
-- `server/src/config/env.js`
-- `server/src/constants/index.js`
-- `server/src/constants/roles.js`
-- `server/src/errors/AppError.js`
-- `server/src/errors/errorHandler.js`
-- `server/src/middleware/auth.middleware.js`
-- `server/src/middleware/rateLimit.middleware.js`
-- `server/src/middleware/rateLimitMiddleware.js`
-- `server/src/middleware/role.middleware.js`
-- `server/src/middleware/security.middleware.js`
-- `server/src/middleware/validate.middleware.js`
-- `server/src/models/User.js`
-- `server/src/modules/auth/auth.controller.js`
-- `server/src/modules/auth/auth.routes.js`
-- `server/src/modules/auth/auth.service.js`
-- `server/src/modules/auth/auth.utils.js`
-- `server/src/modules/auth/index.js`
-- `server/src/routes/authRoutes.js`
-- `server/src/routes/v1/auth.routes.js`
-- `server/src/routes/v1/index.js`
-- `server/src/services/authService.js`
-- `server/src/services/email/email.service.js`
-- `server/src/services/email/email.templates.js`
-- `server/src/utils/apiResponse.js`
-- `server/src/utils/cookie.utils.js`
-- `server/src/utils/logger.js`
-- `server/src/utils/token.utils.js`
-- `server/src/validators/auth.validator.js`
+## Frontend Auth Pages
 
-### Frontend
-
-- `client/src/App.jsx`
-- `client/src/constants/apiEndpoints.js`
-- `client/src/constants/routes.js`
-- `client/src/features/auth/AuthProvider.jsx`
-- `client/src/features/auth/authFormUtils.js`
-- `client/src/features/auth/authService.js`
-- `client/src/features/auth/roleAccess.js`
-- `client/src/pages/ForgotPassword.jsx`
-- `client/src/pages/Login.jsx`
-- `client/src/pages/Register.jsx`
-- `client/src/pages/ResetPassword.jsx`
-- `client/src/pages/VerifyEmail.jsx`
-- `client/src/routes/AppRoutes.jsx`
-- `client/src/routes/AuthHydration.jsx`
-- `client/src/routes/EmailVerifiedRoute.jsx`
-- `client/src/routes/ProtectedRoute.jsx`
-- `client/src/routes/PublicOnlyRoute.jsx`
-- `client/src/routes/RoleRoute.jsx`
-- `client/src/routes/authRouteUtils.js`
-- `client/src/services/apiClient.js`
-- `client/src/store/useAuthStore.js`
-- `client/src/types/auth.js`
-
-## Auth Endpoints Reviewed
-
-Canonical module routes are mounted under both:
-
-- `/api/auth`
-- `/api/v1/auth`
-
-Reviewed endpoints:
-
-- `GET /api/auth/status`
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `POST /api/auth/logout`
-- `POST /api/auth/refresh`
-- `POST /api/auth/refresh-token`
-- `GET /api/auth/me`
-- `POST /api/auth/forgot-password`
-- `POST /api/auth/reset-password`
-- `POST /api/auth/verify-email`
-- `POST /api/auth/resend-verification`
-- `POST /api/auth/change-password`
-- `GET /api/auth/protected-status`
-- `GET /api/auth/admin-status`
-
-Live endpoint execution requires local MongoDB and configured environment variables. This pass verified importability, route ownership, middleware wiring, validators, and build/runtime syntax. Full HTTP behavior should be manually confirmed with local `.env`, MongoDB, and optional SMTP configured.
-
-## Frontend Auth Pages Reviewed
-
-- `/login`
-- `/register`
-- `/forgot-password`
-- `/reset-password?token=...`
-- `/verify-email?token=...`
-- `/resend-verification`
-
-Observed behavior from code review:
-
-- Forms use the shared auth service and centralized API client.
-- Forms validate required fields and email/password shape before submit.
-- Login/register redirect authenticated users to the role-aware dashboard target.
-- Password reset and verification pages read tokens from URL query params.
-- User-facing error messages are normalized through auth form helpers.
-- Password fields use the shared `Input` component password behavior.
+| Page | Route | Status |
+| --- | --- | --- |
+| Login | `/login` | Build/lint verified; form uses auth service and intended redirect logic. |
+| Register | `/register` | Build/lint verified; client/provider roles only. |
+| Forgot Password | `/forgot-password` | Build/lint verified; generic safe success messaging. |
+| Reset Password | `/reset-password?token=...` | Build/lint verified; token and password validation. |
+| Verify Email | `/verify-email?token=...` | Build/lint verified; token verification and resend fallback. |
+| Resend Verification | `/resend-verification` | Build/lint verified; email resend form. |
 
 ## Security Checks Passed
 
-- Passwords are stored with bcrypt hashing through the `User` model pre-save hook.
-- Password fields are `select: false`.
-- Auth-safe user mapping excludes password, refresh-token hash, reset token, and verification token fields.
-- Refresh tokens are opaque random values and stored only as hashes.
-- Refresh cookies are httpOnly.
-- Refresh cookie uses secure mode in production.
-- Refresh cookie sameSite defaults to `lax` unless configured.
-- Access tokens are short-lived and env-configured.
-- Refresh sessions rotate on refresh and old refresh hashes are replaced.
-- Logout clears refresh-token storage and refresh cookie.
-- Password reset clears existing refresh session state.
-- Password reset and email verification tokens are crypto-random and stored hashed.
-- Forgot-password and resend-verification responses are generic.
-- Raw tokens, passwords, reset tokens, and verification tokens are not logged.
-- Failed login, password reset request, and suspicious refresh failures use safe audit logging.
-- Production error responses hide stack traces for internal errors.
-- CORS is env-based and supports credentials.
-- Auth routes have general and strict rate limits.
-- Role middleware uses backend-loaded user role, not frontend claims.
-- Email verification middleware blocks unverified users where applied.
-- Frontend API client retries one refresh attempt on eligible `401` responses and clears auth on refresh failure.
-- Multi-tab logout sync exists through a localStorage session event.
+- Passwords are hashed with bcrypt before save.
+- Password field uses `select: false`.
+- Passwords, reset tokens, verification tokens, refresh-token hashes, and JWT secrets are not returned in auth responses.
+- Refresh tokens are opaque random values.
+- Refresh tokens are hashed before database storage.
+- Refresh token cookie is httpOnly.
+- Refresh cookie uses secure transport in production.
+- Refresh cookie SameSite defaults to `lax` and can be configured.
+- Refresh token rotation is implemented on refresh.
+- Logout clears the refresh cookie and invalidates the stored refresh session.
+- Password reset clears reset token fields and invalidates existing refresh sessions.
+- Email verification and password reset tokens are hashed in storage.
+- Forgot password and resend verification use generic public responses.
+- Production error responses omit stack traces.
+- CORS uses configured client origins and credentials support.
+- Helmet security headers are configured.
+- JSON/body size limit is configured.
+- Auth general and strict rate limits are active.
+- Login, forgot password, resend verification, reset password, verify email, and change password have stricter route limits.
+- Failed login, password reset request, and suspicious refresh failures are logged without raw secrets.
+- Role middleware rejects unauthorized roles.
+- Unverified email route guard exists on the frontend and backend middleware exists for backend routes that require it.
 
 ## Verification Commands Run
 
+From `server/`:
+
 ```bash
-node -e "import('./server/src/app.js').then(() => console.log('app import ok'))"
-node -e "import('./server/src/modules/auth/index.js').then((m) => console.log('auth module exports', Object.keys(m).sort().join(',')))"
-cd server && npm run check:boundaries
-cd client && npm run check:boundaries
-cd client && npm run lint
-cd client && npm run build
-git diff --check
+node --check src/modules/auth/auth.controller.js
+node --check src/modules/auth/auth.routes.js
+node --check src/services/authService.js
+node --check src/utils/token.utils.js
+node --check src/middleware/auth.middleware.js
+node --check src/middleware/rateLimitMiddleware.js
+node --check src/services/emailService.js
+node --check src/services/email/email.service.js
+node --check src/services/email/email.templates.js
+npm run check:boundaries
+node -e "import('./src/app.js').then(() => console.log('server app import ok'))"
 ```
 
-Results:
+From `client/`:
 
-- Server app import passed.
-- Auth module import passed.
-- Server module boundary check passed with existing non-auth admin controller warnings.
-- Client module boundary check passed.
-- Client lint passed.
-- Client build passed.
-- `git diff --check` reported line-ending warnings only.
+```bash
+npm run lint
+npm run check:boundaries
+npm run build
+```
+
+Additional smoke checks:
+
+- `GET /api/auth/status` returned `200`.
+- `GET /api/v1/auth/status` returned `200`.
+- `GET /api/auth/me` without a token returned `401`.
+- `POST /api/auth/refresh` without a refresh cookie returned `401`.
+- Production-mode `/api/auth/me` error response returned no stack trace.
+- Production env validation fails fast when required production credentials are weak or missing.
 
 ## Known Risks
 
-- Full HTTP auth flow was not executed in this pass because the local shell did not have a usable `.env`/MongoDB session. Configure MongoDB and run the manual endpoint checklist before production.
-- SMTP delivery is env-driven. Verification and reset email delivery must be tested against Mailtrap/Ethereal or a production SMTP provider.
-- `/api/v1/auth/refresh` exists for compatibility, but the browser refresh cookie path is optimized for `/api/auth/refresh`. Prefer the unversioned auth endpoints from the frontend unless the cookie path is widened intentionally.
-- Rate limiting is IP-based. Add persistent email/user-based throttling for login, password reset, and resend verification in a later security stage.
-- Existing module boundary warnings remain in `server/src/controllers/adminController.js`; they are non-auth and should be handled during an admin vertical migration.
-- The client production build still warns about a large `ProofEcosystemScene` chunk. This is not auth-related.
+- Full DB-backed auth QA was not executed because local MongoDB was not reachable on `127.0.0.1:27017`.
+- Email delivery requires configured SMTP credentials or a test provider such as Mailtrap/Ethereal.
+- Rate limiting is currently IP-based; user/email-based persistent throttling is still a future hardening item.
+- Some legacy unversioned route files remain as compatibility exports. They are intentionally not deleted because existing app routes still import them.
+- Existing non-auth module boundary warnings remain in `server/src/controllers/adminController.js`; they are unrelated to Stage 2 auth.
+- Client production build still reports a large chunk warning for `ProofEcosystemScene`; this is unrelated to auth.
 
 ## Manual Production Checklist
 
-- Set `NODE_ENV=production`.
-- Set `CLIENT_URL` or `CLIENT_URLS` to exact production origins.
-- Set strong independent `JWT_ACCESS_SECRET` and `JWT_REFRESH_SECRET`.
-- Set `JWT_ACCESS_EXPIRES_IN=15m`.
-- Set `JWT_REFRESH_EXPIRES_IN` between `7d` and `30d`.
-- Configure MongoDB through `MONGODB_URI`.
-- Configure SMTP through `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_USER`, `EMAIL_PASS`, `EMAIL_FROM`, and `EMAIL_ENABLED=true`.
-- Confirm refresh cookie attributes in browser devtools: `HttpOnly`, `Secure`, expected `SameSite`, expected path.
-- Confirm CORS rejects unapproved origins in production.
-- Confirm auth rate limits return `429` on repeated login and password reset attempts.
-- Confirm server logs do not contain raw passwords or token values.
-
-## Manual Endpoint Test Matrix
-
-Use Postman, Thunder Client, or browser devtools after configuring local `.env` and MongoDB.
-
-1. Register a client account.
-2. Register a provider account.
-3. Confirm register response contains safe user data and access token, but no refresh token in JSON.
-4. Confirm refresh cookie is set.
-5. Login with invalid credentials and verify generic failure.
-6. Login with valid credentials and verify access token plus safe user data.
-7. Call `/api/auth/me` with `Authorization: Bearer <accessToken>`.
-8. Call `/api/auth/refresh` without access token and confirm access token rotates.
-9. Reuse an old refresh token after rotation and confirm it fails.
-10. Logout and confirm refresh cookie is cleared and `/api/auth/refresh` fails.
-11. Request password reset and verify generic response.
-12. Reset password with token and confirm old session is invalidated.
-13. Verify email with token and confirm user email status changes.
-14. Resend verification and verify generic response.
-15. Confirm client, provider, support, and admin route guards redirect correctly.
+- Set strong production values for:
+  - `JWT_ACCESS_SECRET`
+  - `JWT_REFRESH_SECRET`
+  - `ADMIN_EMAIL`
+  - `ADMIN_PASSWORD`
+  - `MONGODB_URI`
+  - `CLIENT_URL` or `CLIENT_URLS`
+  - `SERVER_URL`
+- Configure SMTP:
+  - `EMAIL_ENABLED=true`
+  - `EMAIL_HOST`
+  - `EMAIL_PORT`
+  - `EMAIL_USER`
+  - `EMAIL_PASS`
+  - `EMAIL_FROM`
+- Confirm refresh cookie behavior in the deployed frontend/backend topology.
+- Confirm CORS allows only intended production origins.
+- Confirm `/api/auth/register`, `/api/auth/login`, `/api/auth/refresh`, `/api/auth/logout`, and `/api/auth/me` with a real test user.
+- Confirm reset-password and verify-email links work with deployed `CLIENT_URL`.
+- Confirm admin/client/provider/support users route to the correct dashboard.
+- Confirm rate-limit responses under load.
 
 ## Stage 3 Readiness
 
-Stage 2 is ready to hand off to Stage 3 after live Mongo-backed auth endpoint testing is completed. The foundation is sufficient for profile, dashboard, and role-aware feature work:
+Stage 3 can begin after one DB-backed auth smoke test is completed in a configured local or staging environment.
+
+Recommended next stage:
+
+- Stage 3 Profile System and role-aware onboarding, using the existing auth user, role, verification, and protected-route foundations.
+
+## Final Checklist
 
 - ScaleOps remains the parent project.
 - ProofArena remains a module inside ScaleOps.
-- Auth supports `admin`, `client`, `provider`, and `support` roles.
-- Backend route/controller/service/model boundaries are preserved for auth.
-- Frontend API client, auth store, route guards, and auth pages are in place.
-
+- No duplicate auth app was created.
+- Auth routes are centralized through compatibility exports and module ownership.
+- Frontend auth uses centralized API client and endpoint constants.
+- Backend auth uses controller to service to model flow.
+- Passwords and tokens are not exposed in responses.
+- App import, client lint, client build, and module boundary checks pass.

@@ -716,13 +716,23 @@ export async function requestEmailVerification({ clientBaseUrl, email }) {
   }
 
   const verificationUrl = getVerificationUrl(tokenResult.token, clientBaseUrl);
-  await sendEmailVerificationEmail({
+  const delivery = await sendEmailVerificationEmail({
     email: tokenResult.user.email,
     name: tokenResult.user.fullName,
     verificationUrl,
   });
 
-  return genericResponse;
+  return {
+    ...genericResponse,
+    ...(delivery?.developmentPreviewUrl
+      ? {
+          developmentEmail: {
+            outboxPath: delivery.developmentOutboxPath,
+            previewUrl: delivery.developmentPreviewUrl,
+          },
+        }
+      : {}),
+  };
 }
 
 export async function verifyEmailToken({ token } = {}) {

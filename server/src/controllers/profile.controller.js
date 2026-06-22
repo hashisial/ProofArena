@@ -8,11 +8,16 @@ import {
   getOwnerProfile,
   getOwnerAnalytics,
   getPrivacySettings,
+  getPublicProfilePreview,
   getPublicActivityByUsername,
+  getPublishedPublicProfile,
   getPublicProfile,
   getVerificationStatus,
   requestVerification as requestProfileVerification,
+  updateOnboardingProgress as updateProfileOnboardingProgress,
   updatePrivacySettings as updateProfilePrivacySettings,
+  updateProfilePublishState as updateOwnerProfilePublishState,
+  updateProfileSection as updateOwnerProfileSection,
   updateEducation as updateProfileEducation,
   updateExperience as updateProfileExperience,
   updateOpenTo as updateProfileOpenTo,
@@ -30,6 +35,35 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 export const getMyProfile = asyncHandler(async (request, response) => {
   const profile = await getOwnerProfile(request.user.id);
   return successResponse(response, 200, "Owner profile fetched successfully", profile);
+});
+
+export const updateMyProfileSection = asyncHandler(async (request, response) => {
+  const profile = await updateOwnerProfileSection(
+    request.user.id,
+    request.params.sectionKey,
+    request.body ?? {},
+  );
+  return successResponse(response, 200, "Profile section saved successfully", profile);
+});
+
+export const updateMyOnboardingProgress = asyncHandler(async (request, response) => {
+  const profile = await updateProfileOnboardingProgress(request.user.id, request.body ?? {});
+  return successResponse(response, 200, "Profile onboarding progress saved successfully", profile);
+});
+
+export const getMyPublicProfilePreview = asyncHandler(async (request, response) => {
+  const profile = await getPublicProfilePreview(request.user.id);
+  return successResponse(response, 200, "Public profile preview fetched successfully", profile);
+});
+
+export const updateMyProfilePublishState = asyncHandler(async (request, response) => {
+  const profile = await updateOwnerProfilePublishState(request.user.id, request.body ?? {});
+  return successResponse(response, 200, "Profile publish state saved successfully", profile);
+});
+
+export const getPublishedPublicProfileController = asyncHandler(async (request, response) => {
+  const profile = await getPublishedPublicProfile(request.params.identifier);
+  return successResponse(response, 200, "Public profile fetched successfully", profile);
 });
 
 export const getMyProfileAnalytics = asyncHandler(async (request, response) => {

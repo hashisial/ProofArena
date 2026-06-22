@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { env } from "../../config/env.js";
+import { AppError } from "../../errors/AppError.js";
 import { logInfo, logWarning } from "../../utils/logger.js";
 import {
   buildLeadEmail,
@@ -7,6 +8,7 @@ import {
   buildVerificationEmail,
   toBasicHtml,
 } from "./email.templates.js";
+import { writeDevelopmentEmail } from "./devEmailOutbox.js";
 
 let transporter;
 
@@ -39,12 +41,48 @@ function hasRecipient(to) {
   return Array.isArray(to) ? to.length > 0 : Boolean(String(to ?? "").trim());
 }
 
-export async function sendEmail({ html, replyTo, subject, text, to }) {
+function isDevelopmentEmailFallbackEnabled() {
+  return !env.isProduction && !env.emailEnabled;
+}
+
+export async function sendEmail({
+  developmentPreviewUrl,
+  html,
+  replyTo,
+  subject,
+  text,
+  to,
+}) {
   const mailer = getTransporter();
 
   if (!mailer) {
-    logInfo("Email skipped because SMTP is not configured", { subject });
-    return { skipped: true };
+    if (!isDevelopmentEmailFallbackEnabled()) {
+      throw new AppError(
+        "Email delivery is not configured.",
+        503,
+        [{ field: "email", message: "Configure EMAIL_HOST and EMAIL_FROM on the server." }],
+        "EMAIL_NOT_CONFIGURED",
+      );
+    }
+
+    const outbox = await writeDevelopmentEmail({
+      html,
+      subject,
+      text,
+      to,
+    });
+
+    logInfo("Development email written to local outbox because SMTP is not configured", {
+      htmlPath: outbox.htmlPath,
+      subject,
+    });
+
+    return {
+      developmentOutboxPath: outbox.htmlPath,
+      developmentPreviewUrl,
+      sent: false,
+      skipped: true,
+    };
   }
 
   if (!hasRecipient(to)) {
@@ -53,7 +91,7 @@ export async function sendEmail({ html, replyTo, subject, text, to }) {
   }
 
   try {
-    await mailer.sendMail({
+    const delivery = await mailer.sendMail({
       from: env.emailFrom,
       html,
       replyTo,
@@ -62,14 +100,19 @@ export async function sendEmail({ html, replyTo, subject, text, to }) {
       to,
     });
 
-    return { sent: true };
+    return { messageId: delivery?.messageId, sent: true };
   } catch (error) {
     logWarning("Email delivery failed", {
       message: error.message,
       subject,
     });
 
-    return { failed: true, skipped: true };
+    throw new AppError(
+      "Email delivery failed. Please try again.",
+      502,
+      [{ field: "email", message: "The email provider rejected the message." }],
+      "EMAIL_DELIVERY_FAILED",
+    );
   }
 }
 
@@ -81,6 +124,7 @@ export async function sendVerificationEmail({ email, name, verificationUrl }) {
   });
 
   return sendEmail({
+    developmentPreviewUrl: verificationUrl,
     html: template.html,
     subject: template.subject,
     text: template.text,
@@ -96,6 +140,7 @@ export async function sendPasswordResetEmail({ email, name, resetUrl }) {
   });
 
   return sendEmail({
+    developmentPreviewUrl: resetUrl,
     html: template.html,
     subject: template.subject,
     text: template.text,
@@ -132,4 +177,3 @@ export async function sendOutboundEmail({ html, replyTo, subject, text, to }) {
 
 export const sendEmailVerificationEmail = sendVerificationEmail;
 export { toBasicHtml };
-

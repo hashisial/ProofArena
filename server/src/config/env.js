@@ -5,6 +5,11 @@ const validationErrors = [];
 const validationWarnings = [];
 const nodeEnv = String(process.env.NODE_ENV ?? "development").trim();
 const isProduction = nodeEnv === "production";
+const isVercel = Boolean(process.env.VERCEL);
+const allowVercelPreviewOrigins = parseBoolean(
+  "VERCEL_PREVIEW_ORIGINS_ENABLED",
+  process.env.VERCEL_PREVIEW_ORIGINS_ENABLED,
+);
 
 function splitCsv(value) {
   return String(value ?? "")
@@ -156,7 +161,7 @@ if (!process.env.NODE_ENV) {
   recommendInDevelopment("NODE_ENV", process.env.NODE_ENV);
 }
 
-if (isProduction && !process.env.PORT) {
+if (isProduction && !isVercel && !process.env.PORT) {
   validationErrors.push("PORT is required in production");
 }
 
@@ -176,7 +181,7 @@ const configuredClientUrls = [
 ].filter(Boolean);
 const clientUrls = [...new Set([...configuredClientUrls, ...defaultClientUrls])];
 
-if (isProduction && configuredClientUrls.length === 0) {
+if (isProduction && configuredClientUrls.length === 0 && !allowVercelPreviewOrigins) {
   validationErrors.push("CLIENT_URL or CLIENT_URLS is required in production");
 }
 
@@ -190,7 +195,12 @@ const serverUrl = validateUrl(
   "SERVER_URL",
   requireInProduction(
     "SERVER_URL",
-    process.env.SERVER_URL?.trim() || (isProduction ? undefined : `http://localhost:${port}`),
+    process.env.SERVER_URL?.trim() ||
+      (isProduction && isVercel && process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : isProduction
+          ? undefined
+          : `http://localhost:${port}`),
   ),
 );
 const mongoUri = validateMongoUri(
@@ -250,11 +260,12 @@ recommendInDevelopment("JWT_REFRESH_SECRET", jwtRefreshSecret);
 recommendInDevelopment("JWT_ACCESS_EXPIRES_IN", process.env.JWT_ACCESS_EXPIRES_IN);
 recommendInDevelopment("JWT_REFRESH_EXPIRES_IN", process.env.JWT_REFRESH_EXPIRES_IN);
 
-const adminEmail = requireInProduction("ADMIN_EMAIL", process.env.ADMIN_EMAIL?.trim());
-const adminPassword = validateProductionSecret(
-  "ADMIN_PASSWORD",
-  requireInProduction("ADMIN_PASSWORD", process.env.ADMIN_PASSWORD),
-);
+const adminEmail = process.env.ADMIN_EMAIL?.trim();
+const adminPassword = validateProductionSecret("ADMIN_PASSWORD", process.env.ADMIN_PASSWORD);
+
+if ((adminEmail && !adminPassword) || (!adminEmail && adminPassword)) {
+  validationErrors.push("ADMIN_EMAIL and ADMIN_PASSWORD must be provided together");
+}
 const contactRateLimitMax = parsePositiveInteger(
   "CONTACT_RATE_LIMIT_MAX",
   process.env.CONTACT_RATE_LIMIT_MAX,
@@ -323,11 +334,6 @@ const cloudinaryFolder = process.env.CLOUDINARY_FOLDER?.trim() ?? "scaleops";
 const cloudinaryValues = [cloudinaryCloudName, cloudinaryApiKey, cloudinaryApiSecret];
 const cloudinaryEnabled = cloudinaryValues.every(Boolean);
 const uploadDir = process.env.UPLOAD_DIR?.trim();
-const isVercel = Boolean(process.env.VERCEL);
-const allowVercelPreviewOrigins = parseBoolean(
-  "VERCEL_PREVIEW_ORIGINS_ENABLED",
-  process.env.VERCEL_PREVIEW_ORIGINS_ENABLED,
-);
 
 if (cloudinaryValues.some(Boolean) && !cloudinaryEnabled) {
   validationErrors.push(

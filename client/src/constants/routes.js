@@ -1,37 +1,8 @@
-function encodeRouteValue(value) {
-  return encodeURIComponent(value);
-}
-
-function buildRoute(pattern, params) {
-  return Object.entries(params).reduce(
-    (route, [key, value]) => route.replace(`:${key}`, encodeRouteValue(value)),
-    pattern,
-  );
-}
-
-function normalizePathname(pathname) {
-  if (typeof pathname !== "string" || pathname.length === 0) {
-    return "";
-  }
-
-  const normalized = pathname.split(/[?#]/, 1)[0] || "/";
-  const withLeadingSlash = normalized.startsWith("/") ? normalized : `/${normalized}`;
-
-  return withLeadingSlash.length > 1 ? withLeadingSlash.replace(/\/+$/, "") : withLeadingSlash;
-}
-
-function matchesRoutePattern(pathname, pattern) {
-  const pathSegments = normalizePathname(pathname).split("/").filter(Boolean);
-  const patternSegments = normalizePathname(pattern).split("/").filter(Boolean);
-
-  if (pathSegments.length !== patternSegments.length) {
-    return false;
-  }
-
-  return patternSegments.every(
-    (segment, index) => segment.startsWith(":") || segment === pathSegments[index],
-  );
-}
+import {
+  buildRoute,
+  matchesRoutePattern,
+  normalizePathname,
+} from "../utils/routeHelpers.js";
 
 function matchesStaticRoute(pathname, routes) {
   const normalized = normalizePathname(pathname);
@@ -44,6 +15,7 @@ function matchesDynamicRoute(pathname, patterns) {
 
 export const PUBLIC_ROUTES = Object.freeze({
   HOME: "/",
+  ABOUT: "/about",
   HOW_IT_WORKS: "/how-it-works",
   CHALLENGES: "/challenges",
   PROVIDERS: "/providers",
@@ -100,6 +72,7 @@ export const DASHBOARD_ROUTES = Object.freeze({
   PROFILE: "/profile",
   MESSAGES: "/messages",
   SETTINGS: "/settings",
+  PROVIDER_SETTINGS: "/dashboard/settings",
   NOTIFICATIONS: "/notifications",
   PROOF: "/proof",
   SAVED: "/saved",
@@ -120,12 +93,40 @@ export const ADMIN_ROUTES = Object.freeze({
   ADMIN_PROVIDERS: "/admin/providers",
   ADMIN_CHALLENGES: "/admin/challenges",
   ADMIN_OFFERS: "/admin/offers",
+  ADMIN_PROOFS: "/admin/proofs",
   ADMIN_PROOF_ASSETS: "/admin/proof-assets",
   ADMIN_PROOF_REVIEW: "/admin/proof-review",
   ADMIN_REPORTS: "/admin/reports",
   ADMIN_VERIFICATION: "/admin/verification",
   ADMIN_DISPUTES: "/admin/disputes",
   ADMIN_SETTINGS: "/admin/settings",
+});
+
+export const PROVIDER_ROUTES = Object.freeze({
+  DASHBOARD: DASHBOARD_ROUTES.DASHBOARD,
+  PROFILE: "/dashboard/profile",
+  PROFILE_ONBOARDING: "/dashboard/profile/onboarding",
+  PROFILE_ONBOARDING_STEP: "/dashboard/profile/onboarding/:stepSegment",
+  OFFERS: DASHBOARD_ROUTES.MY_OUTCOME_OFFERS,
+  CHALLENGES: DASHBOARD_ROUTES.MY_CHALLENGES,
+  PROOF_VAULT: DASHBOARD_ROUTES.PROOF_VAULT,
+  OPPORTUNITIES: DASHBOARD_ROUTES.OPPORTUNITY_PIPELINE,
+  SETTINGS: DASHBOARD_ROUTES.PROVIDER_SETTINGS,
+});
+
+export const CLIENT_ROUTES = Object.freeze({
+  DASHBOARD: "/client",
+  CHALLENGES: "/client/challenges",
+  PROVIDERS: "/client/providers",
+  ACTIVE: "/client/active",
+  SETTINGS: "/client/settings",
+});
+
+export const SYSTEM_ROUTES = Object.freeze({
+  NOT_AUTHORIZED: "/not-authorized",
+  NOT_FOUND: "/not-found",
+  LEGACY_FORBIDDEN: PUBLIC_ROUTES.FORBIDDEN,
+  SERVER_ERROR: PUBLIC_ROUTES.SERVER_ERROR,
 });
 
 export const DYNAMIC_ROUTES = Object.freeze({
@@ -150,6 +151,7 @@ export const DYNAMIC_ROUTES = Object.freeze({
   EDIT_EXECUTION_PLAN: "/dashboard/plans/:planId/edit",
   OPPORTUNITY_DETAIL: "/dashboard/opportunities/:opportunityId",
   PROOF_ASSET_DETAIL: "/dashboard/proof-vault/:assetId",
+  PROFILE_ONBOARDING_STEP: PROVIDER_ROUTES.PROFILE_ONBOARDING_STEP,
 });
 
 const PUBLIC_DYNAMIC_PATTERNS = Object.freeze([
@@ -177,15 +179,21 @@ const DASHBOARD_DYNAMIC_PATTERNS = Object.freeze([
   DYNAMIC_ROUTES.EDIT_EXECUTION_PLAN,
   DYNAMIC_ROUTES.OPPORTUNITY_DETAIL,
   DYNAMIC_ROUTES.PROOF_ASSET_DETAIL,
+  DYNAMIC_ROUTES.PROFILE_ONBOARDING_STEP,
 ]);
 
 export const ROUTE_GROUPS = Object.freeze({
   PUBLIC: PUBLIC_ROUTES,
   AUTH: AUTH_ROUTES,
   DASHBOARD: DASHBOARD_ROUTES,
+  PROVIDER: PROVIDER_ROUTES,
+  CLIENT: CLIENT_ROUTES,
   ADMIN: ADMIN_ROUTES,
+  SYSTEM: SYSTEM_ROUTES,
   DYNAMIC: DYNAMIC_ROUTES,
 });
+
+export const ROUTE_TREE = ROUTE_GROUPS;
 
 export function getProfileRoute(username) {
   return buildRoute(DYNAMIC_ROUTES.PUBLIC_PROFILE, { username });
@@ -217,6 +225,13 @@ export function isPublicRoute(pathname) {
 }
 
 export const ROUTES = Object.freeze({
+  PUBLIC: PUBLIC_ROUTES,
+  AUTH: AUTH_ROUTES,
+  DASHBOARD_GROUP: DASHBOARD_ROUTES,
+  PROVIDER: PROVIDER_ROUTES,
+  CLIENT: CLIENT_ROUTES,
+  ADMIN_GROUP: ADMIN_ROUTES,
+  SYSTEM: SYSTEM_ROUTES,
   ...PUBLIC_ROUTES,
   ...AUTH_ROUTES,
   ...DASHBOARD_ROUTES,
@@ -246,4 +261,6 @@ export const ROUTES = Object.freeze({
   OPPORTUNITY_DETAIL: (opportunityId) =>
     buildRoute(DYNAMIC_ROUTES.OPPORTUNITY_DETAIL, { opportunityId }),
   PROOF_ASSET_DETAIL: (assetId) => buildRoute(DYNAMIC_ROUTES.PROOF_ASSET_DETAIL, { assetId }),
+  PROFILE_ONBOARDING_STEP: (stepSegment) =>
+    buildRoute(DYNAMIC_ROUTES.PROFILE_ONBOARDING_STEP, { stepSegment }),
 });

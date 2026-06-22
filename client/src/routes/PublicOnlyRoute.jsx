@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { PageLoader } from "../components/ui/PageLoader.jsx";
 import { useAuthStore } from "../store/useAuthStore.js";
+import { isAuthenticated as hasAuthenticatedUser } from "../utils/accessPolicy.js";
 import { getDefaultAuthenticatedRoute } from "./authRouteUtils.js";
 
 export function PublicOnlyRoute({ children }) {
@@ -17,7 +18,7 @@ export function PublicOnlyRoute({ children }) {
     );
   }
 
-  if (isAuthenticated && user) {
+  if (isAuthenticated && hasAuthenticatedUser(user)) {
     return <Navigate replace to={getDefaultAuthenticatedRoute(user)} />;
   }
 

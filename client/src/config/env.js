@@ -60,6 +60,17 @@ if (!apiBaseUrl) {
   }
 }
 
+if (runtimeEnv.PROD && apiBaseUrl) {
+  try {
+    const parsedApiBaseUrl = new URL(apiBaseUrl, "https://scaleops.local");
+    if (["localhost", "127.0.0.1", "::1"].includes(parsedApiBaseUrl.hostname)) {
+      validationErrors.push("VITE_API_BASE_URL cannot point to localhost in production");
+    }
+  } catch {
+    // validateUrl already records malformed URL errors.
+  }
+}
+
 if (validationErrors.length > 0) {
   throw new Error(`Invalid client environment configuration: ${validationErrors.join("; ")}`);
 }

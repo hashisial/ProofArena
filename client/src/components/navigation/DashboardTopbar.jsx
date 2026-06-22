@@ -1,11 +1,12 @@
-import { Bell, Menu, PanelLeftClose, PanelLeftOpen, Search } from "lucide-react";
+import { Bell, Menu, PanelLeftClose, PanelLeftOpen, PlusCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "../ui/Badge.jsx";
+import { Button } from "../ui/Button.jsx";
 import { ROUTES } from "../../constants/index.js";
 import { useAuth } from "../../features/auth/useAuth.js";
+import { useSidebarState } from "../../hooks/useSidebarState.js";
 import { useNotificationStore } from "../../store/useNotificationStore.js";
-import { useUIStore } from "../../store/useUIStore.js";
 import { getInitials } from "../../utils/index.js";
 
 function getRoleLabel(role) {
@@ -24,19 +25,27 @@ function getAvatarUrl(user) {
   return typeof user?.avatar === "string" ? user.avatar : user?.avatar?.url ?? "";
 }
 
-export function DashboardTopbar({ title = "Dashboard" }) {
+export function DashboardTopbar({
+  description = "ProofArena workspace command center.",
+  title = "Dashboard",
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
+  const menuButtonRef = useRef(null);
   const unreadCount = useNotificationStore((state) => state.unreadCount);
-  const isMobileMenuOpen = useUIStore((state) => state.isMobileMenuOpen);
-  const isSidebarCollapsed = useUIStore((state) => state.isSidebarCollapsed);
-  const toggleMobileMenu = useUIStore((state) => state.toggleMobileMenu);
-  const toggleSidebar = useUIStore((state) => state.toggleSidebar);
+  const {
+    isCollapsed,
+    isMobileOpen,
+    toggleMobileSidebar,
+    toggleSidebar,
+  } = useSidebarState();
   const { logout, role, user } = useAuth();
   const navigate = useNavigate();
   const userName = getUserName(user);
   const roleLabel = getRoleLabel(role || user?.role);
   const avatarUrl = getAvatarUrl(user);
+  const accountMenuId = "provider-account-menu";
+  const accountMenuButtonId = "provider-account-menu-button";
 
   useEffect(() => {
     if (!menuOpen) {
@@ -52,6 +61,7 @@ export function DashboardTopbar({ title = "Dashboard" }) {
     function handleKeyDown(event) {
       if (event.key === "Escape") {
         setMenuOpen(false);
+        menuButtonRef.current?.focus({ preventScroll: true });
       }
     }
 
@@ -70,26 +80,28 @@ export function DashboardTopbar({ title = "Dashboard" }) {
   }
 
   return (
-    <header className="sticky top-0 z-30 border-b border-[#E7E5E4] bg-white/94 px-4 py-3 backdrop-blur-xl sm:px-6 lg:px-8">
+    <header className="dashboard-topbar sticky top-0 z-30 px-4 py-3 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl items-center gap-3">
         <button
           aria-controls="dashboard-sidebar"
-          aria-expanded={isMobileMenuOpen}
-          aria-label={isMobileMenuOpen ? "Close dashboard sidebar" : "Open dashboard sidebar"}
-          className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E7E5E4] bg-white text-[#44403C] shadow-[0_12px_30px_rgba(28, 25, 23, 0.06)] transition hover:border-[#3F6212]/25 hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12 lg:hidden"
-          onClick={toggleMobileMenu}
+          aria-expanded={isMobileOpen}
+          aria-label={isMobileOpen ? "Close dashboard sidebar" : "Open dashboard sidebar"}
+          className="topbar-icon-button grid h-11 w-11 place-items-center lg:hidden"
+          onClick={toggleMobileSidebar}
           type="button"
         >
           <Menu aria-hidden="true" className="h-5 w-5" />
         </button>
 
         <button
-          aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-          className="hidden h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E7E5E4] bg-white text-[#44403C] shadow-[0_12px_30px_rgba(28, 25, 23, 0.06)] transition hover:border-[#3F6212]/25 hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12 lg:grid"
+          aria-controls="dashboard-sidebar"
+          aria-expanded={!isCollapsed}
+          aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          className="topbar-icon-button hidden h-11 w-11 place-items-center lg:grid"
           onClick={toggleSidebar}
           type="button"
         >
-          {isSidebarCollapsed ? (
+          {isCollapsed ? (
             <PanelLeftOpen aria-hidden="true" className="h-5 w-5" />
           ) : (
             <PanelLeftClose aria-hidden="true" className="h-5 w-5" />
@@ -97,80 +109,89 @@ export function DashboardTopbar({ title = "Dashboard" }) {
         </button>
 
         <div className="min-w-0 flex-1">
-          <p className="hidden text-xs font-black uppercase tracking-[0.18em] text-[#3F6212] sm:block">
+          <p className="hidden text-xs font-black uppercase tracking-[0.16em] text-[var(--color-primary)] sm:block">
             ProofArena by ScaleOps
           </p>
-          <h1 className="truncate text-xl font-black tracking-[-0.04em] text-[#1C1917] sm:mt-1 sm:text-2xl">
+          <h1 className="truncate text-xl font-black tracking-normal text-[var(--color-foreground)] sm:mt-1 sm:text-2xl">
             {title}
           </h1>
+          <p className="mt-1 hidden max-w-2xl truncate text-xs font-semibold text-[var(--color-text-muted)] md:block">
+            {description}
+          </p>
         </div>
 
-        <label className="relative hidden min-w-[18rem] max-w-sm flex-1 lg:block">
-          <span className="sr-only">Search dashboard</span>
-          <Search
-            aria-hidden="true"
-            className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#A8A29E]"
-          />
-          <input
-            aria-label="Search challenges, proof, providers"
-            className="h-11 w-full rounded-2xl border border-[#E7E5E4] bg-[#FAFAFA] pl-11 pr-4 text-sm font-medium text-[#1C1917] outline-none transition placeholder:text-[#A8A29E] focus:border-[#3F6212]/45 focus:bg-white focus:ring-4 focus:ring-[#3F6212]/10"
-            placeholder="Search challenges, proof, providers..."
-            type="search"
-          />
-        </label>
+        <Button
+          className="hidden min-h-11 shrink-0 px-4 py-2.5 lg:inline-flex"
+          disabled
+          iconLeft={<PlusCircle className="h-4 w-4" />}
+          title="Create Outcome Offer will be wired to the provider offer workflow in a later stage."
+          variant="outline"
+        >
+          <span>Create Outcome Offer</span>
+          <Badge size="sm" variant="warning">
+            Soon
+          </Badge>
+        </Button>
 
         <a
           aria-label="Open notifications"
-          className="relative grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E7E5E4] bg-white text-[#44403C] shadow-[0_12px_30px_rgba(28, 25, 23, 0.06)] transition hover:border-[#3F6212]/25 hover:text-[#365314] focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12"
+          className="topbar-icon-button relative grid h-11 w-11 place-items-center"
           href={ROUTES.NOTIFICATIONS}
         >
           <Bell aria-hidden="true" className="h-5 w-5" />
-          <span className="absolute right-2.5 top-2.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#3F6212]" />
           {unreadCount > 0 ? (
-            <span className="sr-only">{unreadCount} unread notifications</span>
+            <>
+              <span aria-hidden="true" className="absolute right-2.5 top-2.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-[var(--color-primary)]" />
+              <span className="sr-only">{unreadCount} unread notifications</span>
+            </>
           ) : null}
         </a>
 
         <div className="relative shrink-0" ref={menuRef}>
           <button
+            aria-controls={accountMenuId}
             aria-expanded={menuOpen}
-            aria-haspopup="menu"
+            aria-haspopup="true"
             aria-label={`Open account menu for ${userName}`}
-            className="flex shrink-0 items-center gap-3 rounded-2xl border border-[#E7E5E4] bg-white px-2.5 py-2 shadow-[0_12px_30px_rgba(28, 25, 23, 0.06)] transition hover:border-[#3F6212]/25 focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12"
+            className="topbar-account-button flex shrink-0 items-center gap-3 px-2.5 py-2 focus:outline-none focus-visible:ring-4 focus-visible:ring-[var(--color-primary-ring)]"
+            id={accountMenuButtonId}
             onClick={() => setMenuOpen((current) => !current)}
+            ref={menuButtonRef}
             type="button"
           >
             {avatarUrl ? (
               <img alt="" className="h-9 w-9 rounded-xl object-cover" src={avatarUrl} />
             ) : (
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#1C1917] text-xs font-black text-white">
+              <span className="grid h-9 w-9 place-items-center rounded-[var(--radius-md)] bg-[var(--color-foreground)] text-xs font-black text-white">
                 {getInitials(userName)}
               </span>
             )}
             <span className="hidden min-w-0 pr-2 text-left sm:block">
-              <span className="block max-w-40 truncate text-sm font-black text-[#1C1917]">{userName}</span>
-              <span className="block text-xs font-bold text-[#78716C]">{roleLabel}</span>
+              <span className="block max-w-40 truncate text-sm font-black text-[var(--color-foreground)]">{userName}</span>
+              <span className="block text-xs font-bold text-[var(--color-text-muted)]">{roleLabel}</span>
             </span>
           </button>
 
           {menuOpen ? (
             <div
-              className="absolute right-0 top-[calc(100%+0.75rem)] z-50 w-64 rounded-2xl border border-[#E7E5E4] bg-white p-2 shadow-[0_24px_70px_rgba(28, 25, 23, 0.14)]"
-              role="menu"
+              aria-labelledby={accountMenuButtonId}
+              className="topbar-menu-surface absolute right-0 top-[calc(100%+0.75rem)] z-50 w-64 p-2"
+              id={accountMenuId}
+              role="group"
             >
               <div className="px-3 py-2">
-                <p className="truncate text-sm font-black text-[#1C1917]">{userName}</p>
+                <p className="truncate text-sm font-black text-[var(--color-foreground)]">{userName}</p>
                 <Badge className="mt-2" size="sm" variant="primary">
                   {roleLabel}
                 </Badge>
               </div>
-              <a className="block rounded-xl px-3 py-2 text-sm font-bold text-[#44403C] transition hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" href={ROUTES.PROFILE} role="menuitem">
+              <a className="block rounded-[var(--radius-lg)] px-3 py-2 text-sm font-bold text-[var(--color-text-secondary)] transition hover:bg-[var(--color-surface-soft)] hover:text-[var(--color-primary-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" href={ROUTES.PROFILE}>
                 Profile
               </a>
-              <a className="block rounded-xl px-3 py-2 text-sm font-bold text-[#44403C] transition hover:bg-[#F7FEE7] hover:text-[#365314] focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" href={ROUTES.SETTINGS} role="menuitem">
+              <a className="block rounded-[var(--radius-lg)] px-3 py-2 text-sm font-bold text-[var(--color-text-secondary)] transition hover:bg-[var(--color-surface-soft)] hover:text-[var(--color-primary-hover)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" href={ROUTES.SETTINGS}>
                 Settings
               </a>
-              <button className="w-full rounded-xl px-3 py-2 text-left text-sm font-bold text-[#DC2626] transition hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-[#65A30D]/70" onClick={handleLogout} role="menuitem" type="button">
+              <button className="w-full rounded-[var(--radius-lg)] px-3 py-2 text-left text-sm font-bold text-[var(--color-danger)] transition hover:bg-[var(--color-danger-soft)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" onClick={handleLogout} type="button">
                 Logout
               </button>
             </div>

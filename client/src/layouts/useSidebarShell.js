@@ -1,35 +1,35 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useUIStore } from "../store/useUIStore.js";
+import { useSidebarState } from "../hooks/useSidebarState.js";
 
 export function useSidebarShell() {
   const pathname = useLocation().pathname;
-  const isMobileMenuOpen = useUIStore((state) => state.isMobileMenuOpen);
-  const isSidebarCollapsed = useUIStore((state) => state.isSidebarCollapsed);
-  const closeMobileMenu = useUIStore((state) => state.closeMobileMenu);
+  const sidebarState = useSidebarState();
+  const { closeMobileSidebar, isCollapsed, isMobileOpen } = sidebarState;
 
   useEffect(() => {
-    closeMobileMenu();
-  }, [closeMobileMenu, pathname]);
+    closeMobileSidebar();
+  }, [closeMobileSidebar, pathname]);
 
   useEffect(() => {
-    if (!isMobileMenuOpen) {
+    if (!isMobileOpen) {
       return undefined;
     }
 
     function handleKeyDown(event) {
       if (event.key === "Escape") {
-        closeMobileMenu();
+        closeMobileSidebar();
       }
     }
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [closeMobileMenu, isMobileMenuOpen]);
+  }, [closeMobileSidebar, isMobileOpen]);
 
   return {
-    closeMobileMenu,
-    isMobileMenuOpen,
-    isSidebarCollapsed,
+    ...sidebarState,
+    closeMobileMenu: closeMobileSidebar,
+    isMobileMenuOpen: isMobileOpen,
+    isSidebarCollapsed: isCollapsed,
   };
 }

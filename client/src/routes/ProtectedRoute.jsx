@@ -2,6 +2,7 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { PageLoader } from "../components/ui/PageLoader.jsx";
 import { ROUTES } from "../constants/index.js";
 import { useAuthStore } from "../store/useAuthStore.js";
+import { isAuthenticated as hasAuthenticatedUser } from "../utils/accessPolicy.js";
 
 export function ProtectedRoute({ children }) {
   const location = useLocation();
@@ -18,7 +19,7 @@ export function ProtectedRoute({ children }) {
     );
   }
 
-  if (!isAuthenticated || !user) {
+  if (!isAuthenticated || !hasAuthenticatedUser(user)) {
     return <Navigate replace state={{ from: location }} to={ROUTES.LOGIN} />;
   }
 

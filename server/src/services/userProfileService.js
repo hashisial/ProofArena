@@ -3,6 +3,15 @@ import {
   OUTCOME_OFFER_STATUS,
   OUTCOME_OFFER_VISIBILITY,
 } from "../constants/index.js";
+import {
+  PROFILE_ONBOARDING_STEP_ID_SET,
+  PROFILE_OWNER_TYPE,
+  PROFILE_RESTRICTED_CLIENT_FIELDS,
+  PROFILE_SECTION_KEY,
+  PROFILE_SECTION_KEYS,
+  PROFILE_STATUS,
+  PROFILE_VISIBILITY,
+} from "../constants/profile.constants.js";
 import { OutcomeOffer } from "../models/OutcomeOffer.model.js";
 import { User } from "../models/User.js";
 import { Portfolio } from "../models/Portfolio.js";
@@ -13,6 +22,9 @@ import { UserMedia } from "../models/UserMedia.js";
 import { UserProfile } from "../models/UserProfile.js";
 import { UserSettings } from "../models/UserSettings.js";
 import { AppError } from "../utils/AppError.js";
+import {
+  buildPublicProfileProjection,
+} from "../utils/profileProjection.js";
 import { deleteProfileAsset, uploadProfileAsset } from "./cloudinaryService.js";
 import { ensureDatabaseConnection } from "./databaseService.js";
 
@@ -31,14 +43,20 @@ const serviceDeliveryTypes = [
 
 const defaultPrivacySettings = Object.freeze({
   allowDiscovery: true,
+  allowClientInvites: false,
   allowProviderListing: true,
   allowSearchIndexing: false,
   showActivity: true,
+  showAvailability: false,
+  showCaseStudies: false,
+  showCertifications: false,
   showEducation: true,
   showEmail: false,
   showExperience: true,
+  showLocation: false,
   showOpenTo: true,
   showPhone: false,
+  showProofHighlights: false,
   showProofScore: true,
   showServices: true,
   showSocialLinks: true,
@@ -231,6 +249,348 @@ function normalizeStringList(values, maxItems = 24, maxLength = 80) {
         .filter(Boolean),
     ),
   ).slice(0, maxItems);
+}
+
+function isPlainObject(value) {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function hasOwnValue(source, key) {
+  return Object.prototype.hasOwnProperty.call(source ?? {}, key);
+}
+
+function compactExplicitSectionUpdate(source, update) {
+  return Object.entries(update).reduce((result, [key, value]) => {
+    if (hasOwnValue(source, key)) {
+      result[key] = value;
+    }
+
+    return result;
+  }, {});
+}
+
+function normalizePublicItemList(values, maxItems = 24) {
+  if (!Array.isArray(values)) {
+    return [];
+  }
+
+  return values
+    .map((item) => {
+      if (typeof item === "string") {
+        return {
+          title: trimString(item, 160),
+          description: "",
+          url: "",
+          isPublic: false,
+        };
+      }
+
+      return {
+        assetId: item?.assetId ?? null,
+        description: trimString(item?.description, 1200),
+        isPublic: item?.isPublic === true,
+        title: trimString(item?.title ?? item?.name, 160),
+        url: trimString(item?.url, 500),
+      };
+    })
+    .filter((item) => item.title)
+    .slice(0, maxItems);
+}
+
+function normalizeStage4TagList(values, maxItems = 40) {
+  if (!Array.isArray(values)) {
+    return [];
+  }
+
+  return values
+    .map((item) => {
+      if (typeof item === "string") {
+        return {
+          isPublic: true,
+          level: "",
+          name: trimString(item, 120),
+          source: "owner",
+        };
+      }
+
+      return {
+        isPublic: item?.isPublic !== false,
+        level: trimString(item?.level, 80),
+        name: trimString(item?.name, 120),
+        source: ["owner", "system", "admin", "verification", "proof"].includes(item?.source)
+          ? item.source
+          : "owner",
+      };
+    })
+    .filter((item) => item.name)
+    .slice(0, maxItems);
+}
+
+const stage4SectionStorageKeyMap = Object.freeze({
+  [PROFILE_SECTION_KEY.BUSINESS_READINESS]: "businessReadiness",
+  [PROFILE_SECTION_KEY.GROWTH_INTELLIGENCE]: "growthIntelligence",
+  [PROFILE_SECTION_KEY.IDENTITY]: "identity",
+  [PROFILE_SECTION_KEY.MATCHING_PREFERENCES]: "matchingPreferences",
+  [PROFILE_SECTION_KEY.PROFESSIONAL_IDENTITY]: "professionalIdentity",
+  [PROFILE_SECTION_KEY.PROOF]: "proofProfile",
+  [PROFILE_SECTION_KEY.REVIEW_PUBLISH]: "publishState",
+  [PROFILE_SECTION_KEY.SERVICES]: "servicesProfile",
+  [PROFILE_SECTION_KEY.SKILLS]: "skillsProfile",
+  [PROFILE_SECTION_KEY.TRUST_VERIFICATION]: "trustVerification",
+});
+
+function getSectionStorageKey(sectionKey) {
+  if (!PROFILE_SECTION_KEYS.includes(sectionKey)) {
+    throw new AppError("Invalid profile section", 400);
+  }
+
+  return stage4SectionStorageKeyMap[sectionKey];
+}
+
+function getSectionPayload(payload = {}) {
+  if (isPlainObject(payload.data)) {
+    return payload.data;
+  }
+
+  const {
+    currentStepId: _currentStepId,
+    data: _data,
+    onboardingProgress: _onboardingProgress,
+    ...sectionPayload
+  } = payload ?? {};
+
+  return sectionPayload;
+}
+
+function flattenObjectPaths(value, prefix = "") {
+  if (!isPlainObject(value)) {
+    return [];
+  }
+
+  return Object.entries(value).flatMap(([key, childValue]) => {
+    const path = prefix ? `${prefix}.${key}` : key;
+
+    if (isPlainObject(childValue)) {
+      return [path, ...flattenObjectPaths(childValue, path)];
+    }
+
+    return [path];
+  });
+}
+
+function assertNoRestrictedProfileFields(sectionKey, payload = {}) {
+  const storageKey = getSectionStorageKey(sectionKey);
+  const flattenedPaths = flattenObjectPaths(payload);
+  const candidatePaths = [
+    ...flattenedPaths,
+    ...flattenedPaths.map((path) => `${storageKey}.${path}`),
+    storageKey,
+  ];
+
+  const restrictedPath = PROFILE_RESTRICTED_CLIENT_FIELDS.find((path) =>
+    candidatePaths.some(
+      (candidatePath) =>
+        candidatePath === path ||
+        candidatePath.startsWith(`${path}.`) ||
+        path.startsWith(`${candidatePath}.`),
+    ),
+  );
+
+  if (restrictedPath) {
+    throw new AppError("This profile field is system-managed and cannot be updated directly", 400);
+  }
+}
+
+function normalizeProfileSectionPayload(sectionKey, payload = {}) {
+  assertNoRestrictedProfileFields(sectionKey, payload);
+
+  switch (sectionKey) {
+    case PROFILE_SECTION_KEY.IDENTITY:
+      return compactExplicitSectionUpdate(payload, {
+        accountType: trimString(payload.accountType, 80),
+        avatarAssetId: trimString(payload.avatarAssetId, 240),
+        avatarUrl: trimString(payload.avatarUrl, 500),
+        contactEmail: trimString(payload.contactEmail, 180).toLowerCase(),
+        contactPhone: trimString(payload.contactPhone, 40),
+        coverAssetId: trimString(payload.coverAssetId, 240),
+        coverUrl: trimString(payload.coverUrl, 500),
+        displayName: trimString(payload.displayName, 120),
+        firstName: trimString(payload.firstName, 80),
+        language: trimString(payload.language || "en", 20),
+        lastName: trimString(payload.lastName, 80),
+        location: normalizeLocation(payload.location),
+        timezone: trimString(payload.timezone, 100),
+        username: trimString(payload.username, 40).toLowerCase(),
+      });
+    case PROFILE_SECTION_KEY.PROFESSIONAL_IDENTITY:
+      return compactExplicitSectionUpdate(payload, {
+        availabilityStatus: trimString(payload.availabilityStatus, 80),
+        bio: trimString(payload.bio, 2400),
+        experienceLevel: trimString(payload.experienceLevel, 80),
+        headline: trimString(payload.headline, 180),
+        industry: trimString(payload.industry, 120),
+        niche: trimString(payload.niche, 120),
+        openTo: normalizeStringList(payload.openTo, 20, 120),
+        targetClient: trimString(payload.targetClient, 240),
+        yearsOfExperience:
+          payload.yearsOfExperience === null || payload.yearsOfExperience === undefined
+            ? null
+            : Math.max(0, Math.min(80, Number(payload.yearsOfExperience) || 0)),
+      });
+    case PROFILE_SECTION_KEY.SKILLS:
+      return compactExplicitSectionUpdate(payload, {
+        platforms: normalizeStage4TagList(payload.platforms, 40),
+        serviceCategories: normalizeStringList(payload.serviceCategories, 24, 120),
+        skillLevels: normalizeStage4TagList(payload.skillLevels, 40),
+        skills: normalizeStage4TagList(payload.skills, 60),
+        tools: normalizeStage4TagList(payload.tools, 60),
+      });
+    case PROFILE_SECTION_KEY.SERVICES:
+      return compactExplicitSectionUpdate(payload, {
+        deliveryTimelines: normalizeStringList(payload.deliveryTimelines, 20, 120),
+        preferredProjectTypes: normalizeStringList(payload.preferredProjectTypes, 20, 120),
+        pricingModels: normalizeStringList(payload.pricingModels, 20, 120),
+        revisionPolicies: normalizeStringList(payload.revisionPolicies, 20, 240),
+        services: normalizePublicItemList(payload.services, 30),
+      });
+    case PROFILE_SECTION_KEY.PROOF:
+      return compactExplicitSectionUpdate(payload, {
+        achievements: normalizePublicItemList(payload.achievements, 30),
+        caseStudies: normalizePublicItemList(payload.caseStudies, 30),
+        certifications: normalizePublicItemList(payload.certifications, 30),
+        portfolioItems: normalizePublicItemList(payload.portfolioItems, 30),
+        publicProofHighlights: normalizePublicItemList(payload.publicProofHighlights, 12),
+      });
+    case PROFILE_SECTION_KEY.BUSINESS_READINESS:
+      return compactExplicitSectionUpdate(payload, {
+        availability: trimString(payload.availability, 120),
+        capacity: trimString(payload.capacity, 120),
+        invoiceSettings: isPlainObject(payload.invoiceSettings) ? payload.invoiceSettings : {},
+        paymentMethods: normalizeStringList(payload.paymentMethods, 12, 120),
+        preferredBudgetRange: trimString(payload.preferredBudgetRange, 120),
+        preferredClientType: trimString(payload.preferredClientType, 120),
+        preferredProjectLength: trimString(payload.preferredProjectLength, 120),
+        taxReadiness: trimString(payload.taxReadiness || "not_started", 80),
+      });
+    case PROFILE_SECTION_KEY.TRUST_VERIFICATION:
+      return compactExplicitSectionUpdate(payload, {
+        socialVerification: {
+          status: "not_started",
+        },
+      });
+    case PROFILE_SECTION_KEY.MATCHING_PREFERENCES:
+      return compactExplicitSectionUpdate(payload, {
+        excludedCategories: normalizeStringList(payload.excludedCategories, 30, 120),
+        preferredBudgets: normalizeStringList(payload.preferredBudgets, 20, 120),
+        preferredChallengeTypes: normalizeStringList(payload.preferredChallengeTypes, 30, 120),
+        preferredClientTypes: normalizeStringList(payload.preferredClientTypes, 20, 120),
+        preferredIndustries: normalizeStringList(payload.preferredIndustries, 30, 120),
+        preferredProjectLengths: normalizeStringList(payload.preferredProjectLengths, 20, 120),
+        responsePreference: trimString(payload.responsePreference, 120),
+        timezonePreference: trimString(payload.timezonePreference, 120),
+      });
+    case PROFILE_SECTION_KEY.GROWTH_INTELLIGENCE:
+      return compactExplicitSectionUpdate(payload, {
+        missingRequirements: normalizeStringList(payload.missingRequirements, 45, 120),
+        readinessChecklist: normalizeStringList(payload.readinessChecklist, 45, 120),
+      });
+    case PROFILE_SECTION_KEY.REVIEW_PUBLISH:
+      return {
+        lastPublishAttemptAt: new Date(),
+        publishBlockedReasons: normalizeStringList(payload.publishBlockedReasons, 20, 240),
+        publishReadinessStatus: ["not_evaluated", "blocked", "needs_review", "ready"].includes(
+          payload.publishReadinessStatus,
+        )
+          ? payload.publishReadinessStatus
+          : "not_evaluated",
+      };
+    default:
+      throw new AppError("Invalid profile section", 400);
+  }
+}
+
+function validateOnboardingStepIds(stepIds = []) {
+  const invalidStepId = stepIds.find((stepId) => !PROFILE_ONBOARDING_STEP_ID_SET.has(stepId));
+
+  if (invalidStepId) {
+    throw new AppError("Invalid onboarding step id", 400);
+  }
+
+  return Array.from(new Set(stepIds));
+}
+
+function normalizeOnboardingProgressPayload(payload = {}) {
+  const normalizedProgress = {
+    updatedAt: new Date(),
+  };
+
+  if (hasOwnValue(payload, "currentStepId")) {
+    const currentStepId = trimString(payload.currentStepId, 120);
+
+    if (currentStepId && !PROFILE_ONBOARDING_STEP_ID_SET.has(currentStepId)) {
+      throw new AppError("Invalid current onboarding step", 400);
+    }
+
+    normalizedProgress.currentStepId = currentStepId;
+  }
+
+  if (hasOwnValue(payload, "lastCompletedStepId")) {
+    const lastCompletedStepId = trimString(payload.lastCompletedStepId, 120);
+
+    if (lastCompletedStepId && !PROFILE_ONBOARDING_STEP_ID_SET.has(lastCompletedStepId)) {
+      throw new AppError("Invalid completed onboarding step", 400);
+    }
+
+    normalizedProgress.lastCompletedStepId = lastCompletedStepId;
+  }
+
+  if (hasOwnValue(payload, "lastEditedSection")) {
+    normalizedProgress.lastEditedSection = PROFILE_SECTION_KEYS.includes(payload.lastEditedSection)
+      ? payload.lastEditedSection
+      : "";
+  }
+
+  if (hasOwnValue(payload, "completedStepIds")) {
+    normalizedProgress.completedStepIds = validateOnboardingStepIds(payload.completedStepIds ?? []);
+  }
+
+  if (hasOwnValue(payload, "skippedStepIds")) {
+    normalizedProgress.skippedStepIds = validateOnboardingStepIds(payload.skippedStepIds ?? []);
+  }
+
+  if (hasOwnValue(payload, "sectionProgress")) {
+    normalizedProgress.sectionProgress = Array.isArray(payload.sectionProgress)
+      ? payload.sectionProgress
+        .filter((item) => PROFILE_SECTION_KEYS.includes(item?.sectionKey))
+        .map((item) => ({
+          completedStepIds: validateOnboardingStepIds(item.completedStepIds ?? []),
+          percent: Math.max(0, Math.min(100, Number(item.percent ?? 0) || 0)),
+          sectionKey: item.sectionKey,
+          updatedAt: new Date(),
+        }))
+      : [];
+  }
+
+  if (hasOwnValue(payload, "startedAt")) {
+    normalizedProgress.startedAt = normalizeDate(payload.startedAt) ?? new Date();
+  }
+
+  if (hasOwnValue(payload, "completedAt")) {
+    normalizedProgress.completedAt = normalizeDate(payload.completedAt);
+  }
+
+  return normalizedProgress;
+}
+
+function mergeSectionValue(currentValue = {}, nextValue = {}) {
+  const current = typeof currentValue?.toObject === "function"
+    ? currentValue.toObject()
+    : { ...(currentValue ?? {}) };
+
+  return {
+    ...current,
+    ...nextValue,
+  };
 }
 
 function normalizeSocialLinks(socialLinks = {}) {
@@ -712,6 +1072,25 @@ function serializeProfile(profile, settings = null, options = {}) {
     profileViews: analytics.profileViews,
     profileVisibility,
     privacySettings,
+    ...(options.includePrivateProfileFields === false
+      ? {}
+      : {
+          businessReadiness: profile.businessReadiness ?? {},
+          growthIntelligence: profile.growthIntelligence ?? {},
+          identity: profile.identity ?? {},
+          matchingPreferences: profile.matchingPreferences ?? {},
+          onboardingProgress: profile.onboardingProgress ?? {},
+          ownerType: profile.ownerType ?? PROFILE_OWNER_TYPE.PROVIDER,
+          professionalIdentity: profile.professionalIdentity ?? {},
+          proofProfile: profile.proofProfile ?? {},
+          publishState: profile.publishState ?? {},
+          servicesProfile: profile.servicesProfile ?? {},
+          skillsProfile: profile.skillsProfile ?? {},
+          status: profile.status ?? PROFILE_STATUS.DRAFT,
+          systemMeta: profile.systemMeta ?? {},
+          trustVerification: profile.trustVerification ?? {},
+          visibility: profile.visibility ?? PROFILE_VISIBILITY.PRIVATE,
+        }),
     searchAppearances: analytics.searchAppearances,
     services: options.includeInactiveServices === false
       ? services.filter((service) => service.isActive !== false)
@@ -1055,12 +1434,22 @@ function buildPublicUploadUrl(file, baseUrl = "") {
 
 async function ensureProfile(user) {
   let profile = await UserProfile.findOne({ userId: user._id });
+  const normalizedRole = normalizeRole(user.role);
+  const ownerType =
+    normalizedRole === "provider"
+      ? PROFILE_OWNER_TYPE.PROVIDER
+      : normalizedRole === "client"
+        ? PROFILE_OWNER_TYPE.CLIENT
+        : PROFILE_OWNER_TYPE.ADMIN_MANAGED;
 
   if (!profile) {
     profile = await UserProfile.create({
       headline: "",
       profileVisibility: "public",
+      ownerType,
+      status: PROFILE_STATUS.DRAFT,
       userId: user._id,
+      visibility: PROFILE_VISIBILITY.PRIVATE,
     });
   }
 
@@ -1070,6 +1459,37 @@ async function ensureProfile(user) {
   }
 
   let needsSectionIdSave = false;
+  let needsStage4DefaultSave = false;
+
+  if (!profile.ownerType) {
+    profile.ownerType = ownerType;
+    needsStage4DefaultSave = true;
+  }
+
+  if (!profile.status) {
+    profile.status = PROFILE_STATUS.DRAFT;
+    needsStage4DefaultSave = true;
+  }
+
+  if (!profile.visibility) {
+    profile.visibility = PROFILE_VISIBILITY.PRIVATE;
+    needsStage4DefaultSave = true;
+  }
+
+  const identityUpdates = {
+    accountType: user.accountType ?? profile.identity?.accountType,
+    avatarUrl: normalizeMedia(user.avatar).url || profile.identity?.avatarUrl,
+    contactEmail: user.email ?? profile.identity?.contactEmail,
+    displayName: user.fullName ?? user.name ?? profile.identity?.displayName,
+    username: user.username ?? profile.identity?.username,
+  };
+
+  Object.entries(identityUpdates).forEach(([key, value]) => {
+    if (value && !profile.identity?.[key]) {
+      profile.set(`identity.${key}`, value);
+      needsStage4DefaultSave = true;
+    }
+  });
 
   if (Array.isArray(profile.experience)) {
     profile.experience.forEach((item) => {
@@ -1098,7 +1518,7 @@ async function ensureProfile(user) {
     });
   }
 
-  if (needsSectionIdSave) {
+  if (needsSectionIdSave || needsStage4DefaultSave) {
     await profile.save();
   }
 
@@ -1210,6 +1630,7 @@ async function buildProfileResponse({
 
   const serializedProfile = serializeProfile(profile, settings, {
     includePrivateActivity: includePrivateSettings,
+    includePrivateProfileFields: includePrivateSettings,
     includeInactiveServices: includePrivateSettings,
     includePrivateVerification: includePrivateSettings,
     publicVerification: getPublicVerificationDisplay(profile, providerProfile),
@@ -1343,6 +1764,296 @@ export async function getUserProfileForUser(userId) {
   const settings = await ensureSettings(user._id);
 
   return buildProfileResponse({ profile, settings, user });
+}
+
+function assertProviderProfileOwner(user) {
+  if (normalizeRole(user.role) !== "provider") {
+    throw new AppError("Provider profile access required", 403);
+  }
+}
+
+async function updateUserIdentityFromProfileSection(user, sectionPayload = {}) {
+  const userUpdates = {};
+
+  if (sectionPayload.displayName !== undefined) {
+    const displayName = trimString(sectionPayload.displayName, 120);
+
+    if (displayName && displayName.length < 2) {
+      throw new AppError("Display name must be at least 2 characters", 400);
+    }
+
+    if (displayName) {
+      userUpdates.fullName = displayName;
+      userUpdates.name = displayName;
+    }
+  }
+
+  if (sectionPayload.username !== undefined) {
+    const username = trimString(sectionPayload.username, 40).toLowerCase();
+
+    if (username && username.length < 3) {
+      throw new AppError("Username must be at least 3 characters", 400);
+    }
+
+    if (username) {
+      const usernameOwner = await User.findOne({
+        _id: { $ne: user._id },
+        username,
+      }).lean();
+
+      if (usernameOwner) {
+        throw new AppError("This username is already taken", 409);
+      }
+
+      userUpdates.username = username;
+    }
+  }
+
+  if (Object.keys(userUpdates).length > 0) {
+    Object.assign(user, userUpdates);
+    await user.save();
+  }
+}
+
+function syncLegacyProfileFields(profile, sectionKey, sectionPayload = {}) {
+  if (sectionKey === PROFILE_SECTION_KEY.PROFESSIONAL_IDENTITY) {
+    if (sectionPayload.headline !== undefined) {
+      profile.headline = sectionPayload.headline;
+    }
+
+    if (sectionPayload.bio !== undefined) {
+      profile.bio = sectionPayload.bio;
+    }
+
+    if (sectionPayload.industry !== undefined) {
+      profile.industry = sectionPayload.industry;
+    }
+
+    if (sectionPayload.availabilityStatus !== undefined) {
+      profile.availabilityStatus =
+        sectionPayload.availabilityStatus === "available"
+          ? "available"
+          : sectionPayload.availabilityStatus === "busy"
+            ? "busy"
+            : "unavailable";
+    }
+  }
+
+  if (sectionKey === PROFILE_SECTION_KEY.SKILLS && sectionPayload.skills !== undefined) {
+    profile.skills = normalizeProfileSkills(sectionPayload.skills);
+  }
+}
+
+function applyOnboardingProgress(profile, onboardingProgress = {}) {
+  const normalizedProgress = normalizeOnboardingProgressPayload(onboardingProgress);
+  const currentProgress = profile.onboardingProgress?.toObject?.() ?? profile.onboardingProgress ?? {};
+  profile.onboardingProgress = {
+    ...currentProgress,
+    ...normalizedProgress,
+  };
+
+  if (normalizedProgress.lastEditedSection) {
+    profile.systemMeta = {
+      ...(profile.systemMeta?.toObject?.() ?? profile.systemMeta ?? {}),
+      lastCompletedStepId: normalizedProgress.lastCompletedStepId,
+      lastEditedSection: normalizedProgress.lastEditedSection,
+      lastSectionSavedAt: new Date(),
+    };
+  }
+}
+
+export async function updateProfileSectionForUser(userId, sectionKey, payload = {}) {
+  ensureDatabaseConnection();
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    throw new AppError("User account not found", 404);
+  }
+
+  assertProfileAccountAvailable(user);
+  assertProviderProfileOwner(user);
+
+  const profile = await ensureProfile(user);
+  const settings = await ensureSettings(user._id);
+  const storageKey = getSectionStorageKey(sectionKey);
+  const sectionPayload = getSectionPayload(payload);
+  const normalizedSection = normalizeProfileSectionPayload(sectionKey, sectionPayload);
+
+  if (sectionKey === PROFILE_SECTION_KEY.IDENTITY) {
+    await updateUserIdentityFromProfileSection(user, normalizedSection);
+  }
+
+  if (Object.keys(normalizedSection).length > 0) {
+    profile.set(storageKey, mergeSectionValue(profile[storageKey], normalizedSection));
+    syncLegacyProfileFields(profile, sectionKey, normalizedSection);
+  }
+
+  if (payload.onboardingProgress || payload.currentStepId) {
+    applyOnboardingProgress(profile, {
+      ...(payload.onboardingProgress ?? {}),
+      currentStepId: payload.currentStepId ?? payload.onboardingProgress?.currentStepId,
+      lastEditedSection: sectionKey,
+    });
+  }
+
+  profile.status =
+    profile.status === PROFILE_STATUS.PUBLISHED
+      ? PROFILE_STATUS.PUBLISHED
+      : PROFILE_STATUS.INCOMPLETE;
+  profile.systemMeta = {
+    ...(profile.systemMeta?.toObject?.() ?? profile.systemMeta ?? {}),
+    lastEditedSection: sectionKey,
+    lastSectionSavedAt: new Date(),
+  };
+
+  await profile.save();
+
+  await UserActivity.create({
+    description: `Updated enhanced profile section: ${sectionKey}`,
+    type: "profile_updated",
+    userId,
+  });
+
+  return buildProfileResponse({ profile, settings, user });
+}
+
+export async function updateOnboardingProgressForUser(userId, payload = {}) {
+  ensureDatabaseConnection();
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    throw new AppError("User account not found", 404);
+  }
+
+  assertProfileAccountAvailable(user);
+  assertProviderProfileOwner(user);
+
+  const profile = await ensureProfile(user);
+  const settings = await ensureSettings(user._id);
+
+  applyOnboardingProgress(profile, payload);
+  profile.systemMeta = {
+    ...(profile.systemMeta?.toObject?.() ?? profile.systemMeta ?? {}),
+    lastCompletedStepId: payload.lastCompletedStepId ?? profile.systemMeta?.lastCompletedStepId ?? "",
+    lastEditedSection: payload.lastEditedSection ?? profile.systemMeta?.lastEditedSection ?? "",
+  };
+
+  await profile.save();
+
+  return buildProfileResponse({ profile, settings, user });
+}
+
+export async function getPublicProfilePreviewForUser(userId) {
+  ensureDatabaseConnection();
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    throw new AppError("User account not found", 404);
+  }
+
+  assertProfileAccountAvailable(user);
+  assertProviderProfileOwner(user);
+
+  const profile = await ensureProfile(user);
+  const projection = buildPublicProfileProjection(profile, { user });
+
+  profile.systemMeta = {
+    ...(profile.systemMeta?.toObject?.() ?? profile.systemMeta ?? {}),
+    lastPublicPreviewAt: new Date(),
+  };
+  await profile.save();
+
+  return {
+    profile: projection,
+  };
+}
+
+export async function updateProfilePublishStateForUser(userId, payload = {}) {
+  ensureDatabaseConnection();
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    throw new AppError("User account not found", 404);
+  }
+
+  assertProfileAccountAvailable(user);
+  assertProviderProfileOwner(user);
+
+  const profile = await ensureProfile(user);
+  const settings = await ensureSettings(user._id);
+  const currentPublishState =
+    profile.publishState?.toObject?.() ?? profile.publishState ?? {};
+  const action = payload.action ?? "save_readiness";
+  const nextPublishState = {
+    ...currentPublishState,
+    lastPublishAttemptAt: new Date(),
+    publishBlockedReasons: normalizeStringList(payload.publishBlockedReasons, 20, 240),
+    publishReadinessStatus: ["not_evaluated", "blocked", "needs_review", "ready"].includes(
+      payload.publishReadinessStatus,
+    )
+      ? payload.publishReadinessStatus
+      : currentPublishState.publishReadinessStatus ?? "not_evaluated",
+  };
+
+  if (action === "request_publish_review") {
+    profile.status = PROFILE_STATUS.REVIEW_READY;
+    nextPublishState.publishReadinessStatus =
+      nextPublishState.publishReadinessStatus === "not_evaluated"
+        ? "needs_review"
+        : nextPublishState.publishReadinessStatus;
+  }
+
+  if (action === "unpublish") {
+    profile.status = PROFILE_STATUS.DRAFT;
+    profile.visibility = PROFILE_VISIBILITY.PRIVATE;
+    nextPublishState.isPublished = false;
+    nextPublishState.publishedAt = null;
+    nextPublishState.unpublishedAt = new Date();
+    nextPublishState.publishReadinessStatus = "not_evaluated";
+  }
+
+  profile.publishState = nextPublishState;
+  await profile.save();
+
+  return buildProfileResponse({ profile, settings, user });
+}
+
+export async function getPublishedPublicProfileByIdentifier(identifier) {
+  ensureDatabaseConnection();
+
+  const normalizedIdentifier = String(identifier ?? "").trim().toLowerCase();
+
+  if (!normalizedIdentifier) {
+    throw new AppError("Profile identifier is required", 400);
+  }
+
+  const user = await User.findOne({
+    accountStatus: { $nin: ["suspended", "deleted", "banned"] },
+    isSuspended: { $ne: true },
+    username: normalizedIdentifier,
+  });
+
+  if (!user) {
+    throw new AppError("Profile not found", 404);
+  }
+
+  const profile = await UserProfile.findOne({
+    userId: user._id,
+    visibility: PROFILE_VISIBILITY.PUBLIC,
+    "publishState.isPublished": true,
+  });
+
+  if (!profile) {
+    throw new AppError("Profile not found", 404);
+  }
+
+  return {
+    profile: buildPublicProfileProjection(profile, { user }),
+  };
 }
 
 export async function getPublicProfileByUsername(username, viewerId = null) {

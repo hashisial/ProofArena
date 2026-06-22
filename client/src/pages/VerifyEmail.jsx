@@ -17,6 +17,7 @@ function ResendVerificationForm({ initialEmail = "" }) {
   const [emailError, setEmailError] = useState("");
   const [formError, setFormError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [developmentEmail, setDevelopmentEmail] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const { resendVerification } = useAuth();
 
@@ -24,6 +25,7 @@ function ResendVerificationForm({ initialEmail = "" }) {
     setEmail(event.target.value);
     setEmailError("");
     setFormError("");
+    setDevelopmentEmail(null);
     setSuccessMessage("");
   }
 
@@ -49,12 +51,14 @@ function ResendVerificationForm({ initialEmail = "" }) {
     }
 
     setIsSubmitting(true);
+    setDevelopmentEmail(null);
     setFormError("");
     setSuccessMessage("");
 
     try {
-      await resendVerification({ email: email.trim() });
-      setSuccessMessage(resendSuccessMessage);
+      const response = await resendVerification({ email: email.trim() });
+      setDevelopmentEmail(response.developmentEmail ?? response.data?.developmentEmail ?? null);
+      setSuccessMessage(response.message || resendSuccessMessage);
     } catch (error) {
       setFormError(getAuthErrorMessage(error, "Unable to send verification instructions. Please try again."));
     } finally {
@@ -86,6 +90,23 @@ function ResendVerificationForm({ initialEmail = "" }) {
         <p className="rounded-2xl border border-[#3F6212]/20 bg-[#F7FEE7] px-4 py-3 text-sm font-semibold text-[#365314]">
           {successMessage}
         </p>
+      ) : null}
+
+      {developmentEmail?.previewUrl ? (
+        <div className="rounded-2xl border border-[#A16207]/25 bg-[#FFFBEB] px-4 py-3 text-sm leading-6 text-[#57534E]">
+          <p className="font-black text-[#1C1917]">Development email fallback active.</p>
+          <p className="mt-1">
+            SMTP is not configured, so the verification email was written to the local server outbox.
+          </p>
+          {developmentEmail.outboxPath ? (
+            <p className="mt-2 break-all text-xs font-semibold text-[#78716C]">
+              Outbox: {developmentEmail.outboxPath}
+            </p>
+          ) : null}
+          <Button as="a" className="mt-3 w-full" href={developmentEmail.previewUrl} variant="outline">
+            Open development verification link
+          </Button>
+        </div>
       ) : null}
 
       <Button

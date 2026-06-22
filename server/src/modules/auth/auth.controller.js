@@ -176,7 +176,7 @@ export const verifyEmail = asyncHandler(async (request, response) => {
 export const resendVerificationEmail = asyncHandler(async (request, response) => {
   // TODO(email-provider): replace skipped-development delivery with a
   // production email provider. Raw verification tokens are never returned.
-  await resendVerificationEmailService({
+  const result = await resendVerificationEmailService({
     clientBaseUrl: getAllowedClientBaseUrl(request),
     email: request.body.email,
   });
@@ -184,8 +184,9 @@ export const resendVerificationEmail = asyncHandler(async (request, response) =>
   return successResponse(
     response,
     200,
-    "If an unverified account exists with this email, verification instructions will be sent.",
-    null,
+    result?.message ??
+      "If an unverified account exists with this email, verification instructions will be sent.",
+    result?.developmentEmail ? { developmentEmail: result.developmentEmail } : null,
   );
 });
 

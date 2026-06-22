@@ -22,6 +22,7 @@
   --color-accent: var(--color-accent-green);
   --color-accent-hover: var(--color-olive);
   --color-accent-soft: #f7fee7;
+  --color-accent-border: rgba(101, 163, 13, 0.2);
 
   --color-background: var(--color-cream);
   --color-foreground: #1c1917;
@@ -36,7 +37,10 @@
   --color-muted: var(--color-olive-muted);
   --color-muted-surface: var(--color-soft-cream);
   --color-border: #e7e5e4;
+  --color-border-strong: #d6d3d1;
+  --color-surface-warm: #fffdf4;
   --color-overlay: rgba(28, 25, 23, 0.45);
+  --color-overlay-soft: rgba(28, 25, 23, 0.2);
 
   --color-success: #15803d;
   --color-success-strong: #166534;
@@ -44,9 +48,11 @@
   --color-warning: var(--color-bronze);
   --color-warning-strong: #854d0e;
   --color-warning-soft: #fef3c7;
+  --color-warning-border: rgba(161, 98, 7, 0.2);
   --color-danger: #dc2626;
   --color-danger-strong: #b91c1c;
   --color-danger-soft: #fee2e2;
+  --color-danger-border: rgba(220, 38, 38, 0.2);
   --color-error: var(--color-danger);
   --color-info: #0f766e;
   --color-info-soft: #ccfbf1;
@@ -104,6 +110,8 @@
   --shadow-accent: rgba(101, 163, 13, 0.18);
   --shadow-soft: 0 1px 2px rgba(28, 25, 23, 0.04), 0 10px 28px rgba(28, 25, 23, 0.06);
   --shadow-card: 0 1px 3px rgba(28, 25, 23, 0.06), 0 18px 44px rgba(28, 25, 23, 0.08);
+  --shadow-control: 0 10px 26px rgba(28, 25, 23, 0.06);
+  --shadow-floating: 0 18px 48px rgba(28, 25, 23, 0.1);
   --shadow-premium: 0 24px 64px rgba(28, 25, 23, 0.12);
   --shadow-elevated: var(--shadow-premium);
   --shadow-primary-glow: 0 18px 44px rgba(63, 98, 18, 0.18);

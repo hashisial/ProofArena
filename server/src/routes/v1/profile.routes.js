@@ -8,11 +8,16 @@ import {
   deleteService,
   getMyProfile,
   getMyProfileAnalytics,
+  getMyPublicProfilePreview,
   getMyPrivacySettings,
   getMyVerificationStatus,
+  getPublishedPublicProfileController,
   getProfileByUsername,
   getPublicProfileActivity,
   requestVerification,
+  updateMyOnboardingProgress,
+  updateMyProfilePublishState,
+  updateMyProfileSection,
   updateAvatar,
   updateCoverImage,
   updateAbout,
@@ -44,12 +49,17 @@ import {
   educationSchema,
   experienceSchema,
   openToSchema,
+  onboardingProgressSchema,
+  profileSectionKeyParamSchema,
   profileItemIdSchema,
+  publicProfileIdentifierParamSchema,
   profileUsernameParamSchema,
   requestVerificationSchema,
   serviceSchema,
   updateAboutSchema,
   updateIntroSchema,
+  updateProfilePublishStateSchema,
+  updateProfileSectionSchema,
   updatePrivacySettingsSchema,
   updateProfileSchema,
   updateSkillsSchema,
@@ -59,6 +69,10 @@ const router = Router();
 const ownerAccess = [
   protectUser,
   requireRole(roles.client, roles.provider),
+];
+const providerProfileOwnerAccess = [
+  protectUser,
+  requireRole(roles.provider),
 ];
 
 router
@@ -76,6 +90,38 @@ router.get(
   ...ownerAccess,
   requirePermission(permissions.PROFILE_READ),
   getMyProfileAnalytics,
+);
+
+router.patch(
+  "/me/section/:sectionKey",
+  ...providerProfileOwnerAccess,
+  requirePermission(permissions.PROFILE_UPDATE),
+  validateParams(profileSectionKeyParamSchema),
+  validateBody(updateProfileSectionSchema),
+  updateMyProfileSection,
+);
+
+router.patch(
+  "/me/onboarding-progress",
+  ...providerProfileOwnerAccess,
+  requirePermission(permissions.PROFILE_UPDATE),
+  validateBody(onboardingProgressSchema.partial()),
+  updateMyOnboardingProgress,
+);
+
+router.get(
+  "/me/public-preview",
+  ...providerProfileOwnerAccess,
+  requirePermission(permissions.PROFILE_READ),
+  getMyPublicProfilePreview,
+);
+
+router.patch(
+  "/me/publish-state",
+  ...providerProfileOwnerAccess,
+  requirePermission(permissions.PROFILE_UPDATE),
+  validateBody(updateProfilePublishStateSchema),
+  updateMyProfilePublishState,
 );
 
 router
@@ -256,6 +302,12 @@ router.post(
   uploadRateLimiter,
   uploadCoverImage,
   uploadCover,
+);
+
+router.get(
+  "/public/:identifier",
+  validateParams(publicProfileIdentifierParamSchema),
+  getPublishedPublicProfileController,
 );
 
 router.get(

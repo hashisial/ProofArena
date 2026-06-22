@@ -16,6 +16,18 @@ import { Marketplace } from "./Marketplace.jsx";
 import { ServiceDetail } from "./ServiceDetail.jsx";
 
 const publicPages = {
+  about: {
+    badge: "Company route ready",
+    description:
+      "ScaleOps is the parent platform behind ProofArena, built around measurable outcomes, proof-backed execution, and trust-first marketplace workflows.",
+    eyebrow: "About",
+    features: ["ScaleOps platform", "ProofArena module", "Outcome economy", "Trust infrastructure"],
+    primaryActionLabel: "Explore Providers",
+    primaryActionTo: ROUTES.PROVIDERS,
+    secondaryActionLabel: "Contact Us",
+    secondaryActionTo: ROUTES.CONTACT,
+    title: "About ScaleOps and ProofArena",
+  },
   blog: {
     description:
       "Insights on outcome-based work, provider reputation, execution plans, proof workflows, and client acquisition.",
@@ -213,13 +225,13 @@ const dashboardPages = {
 };
 
 const adminPages = {
-  users: ["Users", "Review user accounts, account status, role assignments, and trust signals.", Users],
-  providers: ["Providers", "Manage provider verification, quality review, proof score checks, and platform readiness.", ShieldCheck],
-  challenges: ["Challenges", "Moderate outcome challenge quality, scope, visibility, and platform fit.", Target],
-  proofReview: ["Proof Review", "Review submitted proof before outcomes become visible reputation.", FileCheck2],
-  reports: ["Reports", "Inspect platform trust, proof approval, dispute, and operational signals.", BarChart3],
-  disputes: ["Disputes", "Handle client-provider disputes and trust escalations with a clear review trail.", LifeBuoy],
-  settings: ["Admin Settings", "Configure platform controls, moderation defaults, and ScaleOps admin preferences.", ShieldCheck],
+  users: ["users", "Users", "Review user accounts, account status, role assignments, and trust signals.", Users],
+  providers: ["providers", "Providers", "Manage provider verification, quality review, proof score checks, and platform readiness.", ShieldCheck],
+  challenges: ["challenges", "Challenges", "Moderate outcome challenge quality, scope, visibility, and platform fit.", Target],
+  proofReview: ["proofs", "Proof Review", "Review submitted proof before outcomes become visible reputation.", FileCheck2],
+  reports: ["reports", "Reports", "Inspect platform trust, proof approval, dispute, and operational signals.", BarChart3],
+  disputes: ["disputes", "Disputes", "Handle client-provider disputes and trust escalations with a clear review trail.", LifeBuoy],
+  settings: ["settings", "Admin Settings", "Configure platform controls, moderation defaults, and ScaleOps admin preferences.", ShieldCheck],
 };
 
 function Page({ config }) {
@@ -227,13 +239,15 @@ function Page({ config }) {
 }
 
 function AdminPage({ config }) {
-  const [title, description, icon] = config;
+  const [moduleKey, title, description, icon] = config;
   return (
     <ModulePlaceholder
       badge="Admin module placeholder"
       description={description}
       highlights={["Queue management", "Status review", "Admin notes", "Audit trail"]}
       icon={icon}
+      moduleKey={moduleKey}
+      moduleScope="admin"
       primaryActionHref={ROUTES.ADMIN}
       primaryActionText="Admin Overview"
       secondaryActionHref={ROUTES.ADMIN_REPORTS}
@@ -245,6 +259,7 @@ function AdminPage({ config }) {
 }
 
 export const Blog = () => <Page config={publicPages.blog} />;
+export const About = () => <Page config={publicPages.about} />;
 export const HowItWorks = () => <Page config={publicPages.howItWorks} />;
 export const Challenges = () => <Page config={publicPages.challenges} />;
 export const ChallengeDetailRoute = () => <Page config={publicPages.challengeDetail} />;

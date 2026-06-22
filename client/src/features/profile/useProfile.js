@@ -27,6 +27,26 @@ export function usePublicProfile(username) {
   });
 }
 
+export function usePublishedPublicProfile(identifier) {
+  const normalizedIdentifier = String(identifier ?? "").trim().toLowerCase();
+
+  return useQuery({
+    enabled: Boolean(normalizedIdentifier),
+    queryFn: () => profileService.getPublishedPublicProfile(normalizedIdentifier),
+    queryKey: profileKeys.publishedPublic(normalizedIdentifier),
+    staleTime: 60_000,
+  });
+}
+
+export function usePublicProfilePreview(enabled = true) {
+  return useQuery({
+    enabled,
+    queryFn: profileService.getMyPublicProfilePreview,
+    queryKey: profileKeys.publicPreview,
+    staleTime: 30_000,
+  });
+}
+
 export function useMyProfileAnalytics(enabled = true) {
   return useQuery({
     enabled,
@@ -99,6 +119,51 @@ export function useUpdateProfile() {
 }
 
 export const useUpdateOwnerProfile = useUpdateProfile;
+
+export function useUpdateProfileSection() {
+  const queryClient = useQueryClient();
+  const { updateUser } = useAuth();
+
+  return useMutation({
+    mutationFn: profileService.updateProfileSection,
+    onSuccess: (profileData) => {
+      updateProfileQueries(queryClient, profileData);
+      queryClient.invalidateQueries({ queryKey: profileKeys.publicPreview });
+      if (profileData?.user) {
+        updateUser(profileData.user);
+      }
+    },
+  });
+}
+
+export function useUpdateOnboardingProgress() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: profileService.updateOnboardingProgress,
+    onSuccess: (profileData) => {
+      updateProfileQueries(queryClient, profileData);
+      queryClient.invalidateQueries({ queryKey: profileKeys.onboardingProgress });
+    },
+  });
+}
+
+export function useUpdateProfilePublishState() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: profileService.updateProfilePublishState,
+    onSuccess: (profileData) => {
+      updateProfileQueries(queryClient, profileData);
+      queryClient.invalidateQueries({ queryKey: profileKeys.publicPreview });
+      if (profileData?.user?.username) {
+        queryClient.invalidateQueries({
+          queryKey: profileKeys.publishedPublic(profileData.user.username),
+        });
+      }
+    },
+  });
+}
 
 export function useUpdateIntro() {
   const queryClient = useQueryClient();

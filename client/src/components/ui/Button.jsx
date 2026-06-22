@@ -64,7 +64,7 @@ export function Button({
       {...elementProps}
       aria-busy={isLoading ? "true" : undefined}
       className={cn(
-        "group relative inline-flex min-w-0 max-w-full items-center justify-center gap-2 overflow-hidden rounded-[var(--radius-button)] text-center font-bold leading-5 tracking-normal whitespace-normal transition duration-[var(--motion-duration-standard)] [overflow-wrap:anywhere] hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 motion-reduce:transform-none disabled:cursor-not-allowed disabled:opacity-55",
+        "group relative inline-flex min-w-0 max-w-full items-center justify-center gap-2 overflow-hidden rounded-[var(--radius-button)] text-center font-bold leading-5 tracking-normal whitespace-normal transition duration-[var(--motion-duration-standard)] [overflow-wrap:anywhere] hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none disabled:cursor-not-allowed disabled:opacity-55",
         sizeClasses[size] ?? sizeClasses.md,
         variantClasses[variant] ?? variantClasses.primary,
         isDisabled && "pointer-events-none opacity-60",

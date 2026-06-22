@@ -4,6 +4,7 @@ import { PageLoader } from "../components/ui/PageLoader.jsx";
 import { DYNAMIC_ROUTES, ROUTES, USER_ROLES } from "../constants/index.js";
 import { AdminLayout } from "../layouts/AdminLayout.jsx";
 import { AuthLayout } from "../layouts/AuthLayout.jsx";
+import { ClientLayout } from "../layouts/ClientLayout.jsx";
 import { DashboardLayout } from "../layouts/DashboardLayout.jsx";
 import { PublicLayout } from "../layouts/PublicLayout.jsx";
 import { AuthHydration } from "./AuthHydration.jsx";
@@ -37,8 +38,14 @@ const ChallengePlans = lazyNamed(() => import("../pages/ChallengePlans.jsx"), "C
 const Challenges = lazyNamed(() => import("../pages/Challenges.jsx"), "Challenges");
 const ClientExecutionPlanDetail = lazyNamed(() => import("../pages/ClientExecutionPlanDetail.jsx"), "ClientExecutionPlanDetail");
 const ClientWorkspace = lazyNamed(() => import("../pages/ClientWorkspace.jsx"), "ClientWorkspace");
+const ClientActiveWork = lazyNamed(() => import("../pages/client/ClientActiveWork.jsx"), "ClientActiveWork");
+const ClientChallenges = lazyNamed(() => import("../pages/client/ClientChallenges.jsx"), "ClientChallenges");
+const ClientOverview = lazyNamed(() => import("../pages/client/ClientOverview.jsx"), "ClientOverview");
+const ClientProviders = lazyNamed(() => import("../pages/client/ClientProviders.jsx"), "ClientProviders");
+const ClientSettings = lazyNamed(() => import("../pages/client/ClientSettings.jsx"), "ClientSettings");
 const Connections = lazyNamed(() => import("../pages/Connections.jsx"), "Connections");
 const Dashboard = lazyNamed(() => import("../pages/Dashboard.jsx"), "Dashboard");
+const DashboardChallenges = lazyNamed(() => import("../pages/DashboardChallenges.jsx"), "DashboardChallenges");
 const ExecutionPlanBuilder = lazyNamed(() => import("../pages/ExecutionPlanBuilder.jsx"), "ExecutionPlanBuilder");
 const ExecutionPlanDetail = lazyNamed(() => import("../pages/ExecutionPlanDetail.jsx"), "ExecutionPlanDetail");
 const ExecutionPlans = lazyNamed(() => import("../pages/ExecutionPlans.jsx"), "ExecutionPlans");
@@ -53,6 +60,7 @@ const MatchedChallenges = lazyNamed(() => import("../pages/MatchedChallenges.jsx
 const Messages = lazyNamed(() => import("../pages/Messages.jsx"), "Messages");
 const MyChallenges = lazyNamed(() => import("../pages/MyChallenges.jsx"), "MyChallenges");
 const Network = lazyNamed(() => import("../pages/Network.jsx"), "Network");
+const NotAuthorized = lazyNamed(() => import("../pages/NotAuthorized.jsx"), "NotAuthorized");
 const NotFound = lazyNamed(() => import("../pages/NotFound.jsx"), "NotFound");
 const Notifications = lazyNamed(() => import("../pages/Notifications.jsx"), "Notifications");
 const OutcomeOfferBuilder = lazyNamed(() => import("../pages/OutcomeOfferBuilder.jsx"), "OutcomeOfferBuilder");
@@ -62,10 +70,14 @@ const OpportunityPipeline = lazyNamed(() => import("../pages/OpportunityPipeline
 const Payments = lazyNamed(() => import("../pages/Payments.jsx"), "Payments");
 const Portfolio = lazyNamed(() => import("../pages/Portfolio.jsx"), "Portfolio");
 const Profile = lazyNamed(() => import("../pages/Profile.jsx"), "Profile");
+const ProfileHubPage = lazyNamed(() => import("../pages/profile/ProfileHubPage.jsx"), "ProfileHubPage");
+const ProfileOnboardingPage = lazyNamed(() => import("../pages/profile/ProfileOnboardingPage.jsx"), "ProfileOnboardingPage");
+const ProfileOnboardingStepPage = lazyNamed(() => import("../pages/profile/ProfileOnboardingStepPage.jsx"), "ProfileOnboardingStepPage");
 const ProofAssetDetail = lazyNamed(() => import("../pages/ProofAssetDetail.jsx"), "ProofAssetDetail");
 const ProofVault = lazyNamed(() => import("../pages/ProofVault.jsx"), "ProofVault");
 const Projects = lazyNamed(() => import("../pages/Projects.jsx"), "Projects");
 const ProviderServices = lazyNamed(() => import("../pages/ProviderServices.jsx"), "ProviderServices");
+const ProviderSettingsPlaceholder = lazyNamed(() => import("../pages/ProviderSettingsPlaceholder.jsx"), "ProviderSettingsPlaceholder");
 const ProviderCompare = lazyNamed(() => import("../pages/ProviderCompare.jsx"), "ProviderCompare");
 const Providers = lazyNamed(() => import("../pages/Providers.jsx"), "Providers");
 const PublicChallenge = lazyNamed(() => import("../pages/PublicChallenge.jsx"), "PublicChallenge");
@@ -87,6 +99,7 @@ const ResendVerification = lazyNamed(() => import("../pages/VerifyEmail.jsx"), "
 const AdminDisputes = lazyNamed(routeShells, "AdminDisputes");
 const AdminProofReview = lazyNamed(routeShells, "AdminProofReview");
 const AdminSettings = lazyNamed(routeShells, "AdminSettings");
+const About = lazyNamed(routeShells, "About");
 const Billing = lazyNamed(routeShells, "Billing");
 const Blog = lazyNamed(routeShells, "Blog");
 const CaseStudies = lazyNamed(routeShells, "CaseStudies");
@@ -123,6 +136,7 @@ export function AppRoutes() {
       <Routes>
         <Route element={<PublicLayout />}>
           <Route element={<Home />} index />
+          <Route element={<About />} path={routeSegment(ROUTES.ABOUT)} />
           <Route element={<HowItWorks />} path={routeSegment(ROUTES.HOW_IT_WORKS)} />
           <Route element={<Challenges />} path={routeSegment(ROUTES.CHALLENGES)} />
           <Route element={<PublicChallenge />} path={routeSegment(DYNAMIC_ROUTES.PUBLIC_CHALLENGE)} />
@@ -149,6 +163,8 @@ export function AppRoutes() {
           <Route element={<Portfolio />} path={routeSegment(ROUTES.PORTFOLIO)} />
           <Route element={<Services />} path={routeSegment(ROUTES.SERVICES)} />
           <Route element={<Forbidden />} path={routeSegment(ROUTES.FORBIDDEN)} />
+          <Route element={<NotAuthorized />} path={routeSegment(ROUTES.SYSTEM.NOT_AUTHORIZED)} />
+          <Route element={<NotFound />} path={routeSegment(ROUTES.SYSTEM.NOT_FOUND)} />
           <Route element={<ServerError />} path={routeSegment(ROUTES.SERVER_ERROR)} />
         </Route>
 
@@ -165,6 +181,24 @@ export function AppRoutes() {
           <Route element={<ResetPassword />} path={routeSegment(ROUTES.RESET_PASSWORD)} />
           <Route element={<VerifyEmail />} path={routeSegment(ROUTES.VERIFY_EMAIL)} />
           <Route element={<ResendVerification />} path={routeSegment(ROUTES.RESEND_VERIFICATION)} />
+        </Route>
+
+        <Route
+          element={
+            <AuthHydration>
+              <RoleRoute allowedRoles={[USER_ROLES.CLIENT]}>
+                <EmailVerifiedRoute>
+                  <ClientLayout />
+                </EmailVerifiedRoute>
+              </RoleRoute>
+            </AuthHydration>
+          }
+        >
+          <Route element={<ClientOverview />} path={routeSegment(ROUTES.CLIENT.DASHBOARD)} />
+          <Route element={<ClientChallenges />} path={routeSegment(ROUTES.CLIENT.CHALLENGES)} />
+          <Route element={<ClientProviders />} path={routeSegment(ROUTES.CLIENT.PROVIDERS)} />
+          <Route element={<ClientActiveWork />} path={routeSegment(ROUTES.CLIENT.ACTIVE)} />
+          <Route element={<ClientSettings />} path={routeSegment(ROUTES.CLIENT.SETTINGS)} />
         </Route>
 
         <Route
@@ -202,7 +236,7 @@ export function AppRoutes() {
           <Route element={<Network />} path={routeSegment(ROUTES.NETWORK)} />
           <Route element={<Notifications />} path={routeSegment(ROUTES.NOTIFICATIONS)} />
           <Route
-            element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT]}><MyChallenges /></RoleRoute>}
+            element={<RoleRoute allowedRoles={[USER_ROLES.CLIENT, USER_ROLES.PROVIDER]}><DashboardChallenges /></RoleRoute>}
             path={routeSegment(ROUTES.MY_CHALLENGES)}
           />
           <Route
@@ -256,6 +290,18 @@ export function AppRoutes() {
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><MatchedChallenges key="all-matches" /></RoleRoute>}
             path={routeSegment(ROUTES.MATCHED_CHALLENGES)}
+          />
+          <Route
+            element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><ProfileHubPage /></RoleRoute>}
+            path={routeSegment(ROUTES.PROVIDER.PROFILE)}
+          />
+          <Route
+            element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><ProfileOnboardingPage /></RoleRoute>}
+            path={routeSegment(ROUTES.PROVIDER.PROFILE_ONBOARDING)}
+          />
+          <Route
+            element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><ProfileOnboardingStepPage /></RoleRoute>}
+            path={routeSegment(ROUTES.PROVIDER.PROFILE_ONBOARDING_STEP)}
           />
           <Route
             element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><FirstClientMode /></RoleRoute>}
@@ -325,6 +371,10 @@ export function AppRoutes() {
           <Route element={<Saved />} path={routeSegment(ROUTES.SAVED)} />
           <Route element={<Scraper />} path={routeSegment(ROUTES.SCRAPER)} />
           <Route element={<Settings />} path={routeSegment(ROUTES.SETTINGS)} />
+          <Route
+            element={<RoleRoute allowedRoles={[USER_ROLES.PROVIDER]}><ProviderSettingsPlaceholder /></RoleRoute>}
+            path={routeSegment(ROUTES.PROVIDER_SETTINGS)}
+          />
           <Route element={<Billing />} path={routeSegment(ROUTES.BILLING)} />
         </Route>
 
@@ -345,6 +395,7 @@ export function AppRoutes() {
           <Route element={<AdminChallenges />} path={routeSegment(ROUTES.ADMIN_CHALLENGES)} />
           <Route element={<AdminOffers />} path={routeSegment(ROUTES.ADMIN_OFFERS)} />
           <Route element={<AdminProofAssets />} path={routeSegment(ROUTES.ADMIN_PROOF_ASSETS)} />
+          <Route element={<AdminProofReview />} path={routeSegment(ROUTES.ADMIN_PROOFS)} />
           <Route element={<AdminProofReview />} path={routeSegment(ROUTES.ADMIN_PROOF_REVIEW)} />
           <Route element={<AdminReports />} path={routeSegment(ROUTES.ADMIN_REPORTS)} />
           <Route element={<AdminVerification />} path={routeSegment(ROUTES.ADMIN_VERIFICATION)} />

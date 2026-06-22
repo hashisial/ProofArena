@@ -1,23 +1,11 @@
-import { ROUTES, USER_ROLES } from "../constants/index.js";
+import { ROUTES } from "../constants/index.js";
+import { getPrimaryDashboardPath } from "../utils/accessPolicy.js";
 
 export function getDefaultAuthenticatedRoute(user) {
-  if (user?.role === USER_ROLES.ADMIN) {
-    return ROUTES.ADMIN;
-  }
-
-  if (user?.role === USER_ROLES.CLIENT) {
-    return ROUTES.CLIENT_DASHBOARD;
-  }
-
-  if (user?.role === USER_ROLES.PROVIDER) {
-    return ROUTES.PROVIDER_DASHBOARD;
-  }
-
-  if (user?.role === USER_ROLES.SUPPORT) {
-    return ROUTES.SUPPORT_DASHBOARD;
-  }
-
-  return ROUTES.DASHBOARD;
+  return getPrimaryDashboardPath(user, {
+    guestFallback: ROUTES.LOGIN,
+    unknownFallback: ROUTES.DASHBOARD,
+  });
 }
 
 export function getIntendedDestination(state, fallback = ROUTES.DASHBOARD) {

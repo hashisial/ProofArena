@@ -38,10 +38,13 @@ export const queryKeys = Object.freeze({
     all: profileRoot,
     analytics: [...profileRoot, "me", "analytics"],
     me: [...profileRoot, "me"],
+    onboardingProgress: [...profileRoot, "me", "onboarding-progress"],
     owner: [...profileRoot, "me"],
     privacy: [...profileRoot, "me", "privacy"],
+    publicPreview: [...profileRoot, "me", "public-preview"],
     publicActivity: (username) => [...profileRoot, "public", username, "activity"],
     public: (username) => [...profileRoot, "public", username],
+    publishedPublic: (identifier) => [...profileRoot, "published-public", identifier],
     verification: [...profileRoot, "me", "verification"],
   }),
   challenges: Object.freeze({

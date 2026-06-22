@@ -1,6 +1,22 @@
-import { Outlet } from "react-router-dom";
+import { useMemo } from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { DashboardContentShell } from "../components/dashboard/DashboardContentShell.jsx";
+import { MobileDashboardSidebar } from "../components/dashboard/MobileDashboardSidebar.jsx";
 import { DashboardSidebar } from "../components/navigation/DashboardSidebar.jsx";
 import { DashboardTopbar } from "../components/navigation/DashboardTopbar.jsx";
+import { PageLoadingState } from "../components/states/PageLoadingState.jsx";
+import {
+  PROVIDER_NAV_LINKS,
+  USER_ROLES,
+  getRouteMetadataByPath,
+} from "../constants/index.js";
+import { useAuth } from "../features/auth/useAuth.js";
+import { useRoutePath } from "../hooks/useRoutePath.js";
+import {
+  canAccessRoute,
+  getUnauthorizedFallback,
+  isAuthenticated as hasAuthenticatedUser,
+} from "../utils/accessPolicy.js";
 import { cn } from "../utils/cn.js";
 import { useSidebarShell } from "./useSidebarShell.js";
 
@@ -8,52 +24,82 @@ export function DashboardLayout({
   children,
   className = "",
   contentClassName = "",
+  contentMaxWidth = "7xl",
   mainClassName = "",
-  title = "Dashboard",
+  title,
 }) {
-  const { closeMobileMenu, isMobileMenuOpen, isSidebarCollapsed } = useSidebarShell();
+  const { isCollapsed } = useSidebarShell();
+  const path = useRoutePath();
+  const { isAuthenticated, isAuthChecking, role, user } = useAuth();
+  const currentRole = role || user?.role;
+  const routeMetadata = useMemo(() => getRouteMetadataByPath(path), [path]);
+  const providerNavMatch = useMemo(
+    () =>
+      currentRole === USER_ROLES.PROVIDER
+        ? PROVIDER_NAV_LINKS.find((item) => path === item.href || (item.href !== "/" && path.startsWith(`${item.href}/`)))
+        : null,
+    [currentRole, path],
+  );
+  const topbarTitle = title ?? providerNavMatch?.label ?? routeMetadata?.label ?? "Dashboard";
+  const topbarDescription =
+    providerNavMatch?.description ?? routeMetadata?.description ?? "ProofArena workspace command center.";
+
+  if (isAuthChecking) {
+    return (
+      <PageLoadingState
+        className="min-h-screen max-w-full overflow-x-hidden bg-white p-5 sm:p-8"
+        description="Verifying your secure dashboard access before rendering the provider workspace."
+        skeletonType="dashboard"
+        title="Preparing your dashboard"
+      />
+    );
+  }
+
+  if (!isAuthenticated || !hasAuthenticatedUser(user)) {
+    return <Navigate replace to={getUnauthorizedFallback(user, path)} />;
+  }
+
+  if (routeMetadata?.isProtected && !canAccessRoute(routeMetadata, user)) {
+    return <Navigate replace to={getUnauthorizedFallback(user, path)} />;
+  }
 
   return (
     <div
-      className={cn("h-svh min-w-0 overflow-hidden bg-[#FFFFFF] text-[#1C1917]", className)}
+      className={cn("dashboard-shell-root h-svh w-full max-w-full min-w-0 overflow-hidden", className)}
       data-layout="dashboard"
+      style={{
+        "--sidebar-collapsed-width": "5.25rem",
+        "--sidebar-current-width": isCollapsed
+          ? "var(--sidebar-collapsed-width)"
+          : "var(--sidebar-expanded-width)",
+        "--sidebar-expanded-width": "18rem",
+      }}
     >
       <a
-        className="fixed left-4 top-4 z-[70] -translate-y-24 rounded-xl bg-[#3F6212] px-4 py-2 text-sm font-bold text-white shadow-lg transition focus:translate-y-0"
+        className="shell-skip-link"
         href="#main-content"
       >
         Skip to content
       </a>
-      {isMobileMenuOpen ? (
-        <button
-          aria-controls="dashboard-sidebar"
-          aria-label="Close dashboard sidebar"
-          className="fixed inset-0 z-40 bg-[#1C1917]/28 backdrop-blur-sm lg:hidden"
-          onClick={closeMobileMenu}
-          type="button"
-        />
-      ) : null}
+      <MobileDashboardSidebar />
 
       <div
-        className={cn(
-          "grid h-svh min-h-0 min-w-0 transition-[grid-template-columns] duration-300 lg:grid-cols-[18rem_minmax(0,1fr)]",
-          isSidebarCollapsed && "lg:grid-cols-[5.25rem_minmax(0,1fr)]",
-        )}
+        className="grid h-svh w-full max-w-full min-h-0 min-w-0 transition-[grid-template-columns] duration-300 motion-reduce:transition-none lg:grid-cols-[var(--sidebar-current-width)_minmax(0,1fr)]"
       >
-        <DashboardSidebar />
-        <div className="flex h-svh min-h-0 min-w-0 flex-col overflow-hidden">
-          <DashboardTopbar title={title} />
+        <DashboardSidebar isCollapsed={isCollapsed} variant="desktop" />
+        <div className="flex h-svh w-full max-w-full min-h-0 min-w-0 flex-col overflow-hidden">
+          <DashboardTopbar description={topbarDescription} title={topbarTitle} />
           <main
             className={cn(
-              "min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-hidden px-3 py-5 overscroll-contain sm:px-6 lg:px-8 lg:py-8",
+              "min-h-0 w-full max-w-full min-w-0 flex-1 overflow-y-auto overflow-x-hidden px-3 py-5 overscroll-contain sm:px-6 lg:px-8 lg:py-8",
               mainClassName,
             )}
             id="main-content"
             tabIndex={-1}
           >
-            <div className={cn("mx-auto w-full max-w-7xl", contentClassName)}>
+            <DashboardContentShell className={contentClassName} maxWidth={contentMaxWidth}>
               {children ?? <Outlet />}
-            </div>
+            </DashboardContentShell>
           </main>
         </div>
       </div>

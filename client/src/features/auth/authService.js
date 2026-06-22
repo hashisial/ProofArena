@@ -89,6 +89,7 @@ function mapActionResponse(response = {}) {
 
   return {
     data: source.data ?? null,
+    developmentEmail: source.data?.developmentEmail ?? source.developmentEmail ?? null,
     message: source.message ?? "",
     success: source.success ?? true,
   };

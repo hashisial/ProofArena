@@ -1,4 +1,8 @@
 import { z } from "zod";
+import {
+  PROFILE_ONBOARDING_STEP_IDS,
+  PROFILE_SECTION_KEYS,
+} from "../constants/profile.constants.js";
 
 const mongoObjectIdSchema = z
   .string()
@@ -322,5 +326,68 @@ export const updateAboutSchema = z
 export const updateSkillsSchema = z
   .object({
     skills: z.array(skillSchema).max(30),
+  })
+  .strict();
+
+const onboardingStepIdSchema = z.enum(PROFILE_ONBOARDING_STEP_IDS);
+const sectionKeySchema = z.enum(PROFILE_SECTION_KEYS);
+
+const stringListSchema = (maxItems = 50, maxLength = 120) =>
+  z
+    .array(z.string().trim().min(1).max(maxLength))
+    .max(maxItems)
+    .optional()
+    .transform((items) =>
+      Array.from(new Set((items ?? []).map((item) => item.trim()).filter(Boolean))),
+    );
+
+const stage4SectionProgressSchema = z
+  .object({
+    completedStepIds: stringListSchema(45, 120),
+    percent: z.coerce.number().min(0).max(100).optional(),
+    sectionKey: sectionKeySchema,
+  })
+  .strict();
+
+export const profileSectionKeyParamSchema = z.object({
+  sectionKey: sectionKeySchema,
+});
+
+export const publicProfileIdentifierParamSchema = z.object({
+  identifier: z
+    .string()
+    .trim()
+    .toLowerCase()
+    .regex(/^[a-z0-9._-]{3,40}$/, "Invalid public profile identifier"),
+});
+
+export const onboardingProgressSchema = z
+  .object({
+    completedAt: nullableDateSchema,
+    completedStepIds: z.array(onboardingStepIdSchema).max(45).optional(),
+    currentStepId: onboardingStepIdSchema.optional().or(z.literal("")),
+    lastCompletedStepId: onboardingStepIdSchema.optional().or(z.literal("")),
+    lastEditedSection: sectionKeySchema.optional().or(z.literal("")),
+    sectionProgress: z.array(stage4SectionProgressSchema).max(12).optional(),
+    skippedStepIds: z.array(onboardingStepIdSchema).max(45).optional(),
+    startedAt: nullableDateSchema,
+  })
+  .strict();
+
+export const updateProfileSectionSchema = z
+  .object({
+    currentStepId: onboardingStepIdSchema.optional().or(z.literal("")),
+    data: z.record(z.string(), z.unknown()).optional(),
+    onboardingProgress: onboardingProgressSchema.partial().optional(),
+  })
+  .catchall(z.unknown());
+
+export const updateProfilePublishStateSchema = z
+  .object({
+    action: z.enum(["save_readiness", "request_publish_review", "unpublish"]).optional(),
+    publishBlockedReasons: stringListSchema(20, 240),
+    publishReadinessStatus: z
+      .enum(["not_evaluated", "blocked", "needs_review", "ready"])
+      .optional(),
   })
   .strict();

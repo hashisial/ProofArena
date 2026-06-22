@@ -1,5 +1,6 @@
 export { BackgroundVideo } from "./BackgroundVideo.jsx";
 export { Badge } from "./Badge.jsx";
+export { Breadcrumbs } from "./Breadcrumbs.jsx";
 export { Button } from "./Button.jsx";
 export {
   Card,
@@ -27,3 +28,5 @@ export { Skeleton } from "./Skeleton.jsx";
 export { Spinner } from "./Spinner.jsx";
 export { TableSkeleton } from "./TableSkeleton.jsx";
 export { Textarea } from "./Textarea.jsx";
+export { Tooltip } from "./Tooltip.jsx";
+export { UniversalBackButton } from "./UniversalBackButton.jsx";

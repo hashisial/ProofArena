@@ -8,7 +8,7 @@ export const ERROR_MESSAGES = Object.freeze({
   INVALID_ID: "The requested item could not be identified.",
   INVALID_JSON: "The request could not be processed.",
   INVALID_TOKEN: "Your session is invalid. Please sign in again.",
-  NETWORK_ERROR: "No response from the server. Check your connection and try again.",
+  NETWORK_ERROR: "Cannot reach the API server. Start the backend and check VITE_API_BASE_URL, then try again.",
   NOT_FOUND: "The requested item could not be found.",
   RATE_LIMITED: "Too many requests. Please wait a moment and try again.",
   REQUEST_TIMEOUT: "The request took too long. Please try again.",
@@ -34,4 +34,3 @@ const STATUS_MESSAGES = Object.freeze({
 export function getDefaultErrorMessage(code, status = 500) {
   return ERROR_MESSAGES[code] ?? STATUS_MESSAGES[status] ?? ERROR_MESSAGES.INTERNAL_ERROR;
 }
-

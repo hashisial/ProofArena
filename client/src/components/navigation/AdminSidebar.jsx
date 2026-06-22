@@ -14,11 +14,12 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { createElement } from "react";
 import { ADMIN_NAV_LINKS, APP_BRAND, ROUTES } from "../../constants/index.js";
+import { useAuth } from "../../features/auth/useAuth.js";
 import { useRoutePath } from "../../hooks/useRoutePath.js";
 import { useUIStore } from "../../store/useUIStore.js";
 import { cn } from "../../utils/cn.js";
+import { SidebarCore } from "./sidebar/SidebarCore.jsx";
 
 const iconMap = {
   AlertTriangle,
@@ -34,117 +35,96 @@ const iconMap = {
   Users,
 };
 
-const adminLinks = ADMIN_NAV_LINKS.map((item) => ({
-  href: item.href,
-  icon: iconMap[item.iconKey],
-  label: item.label,
-}));
-
-function isActiveAdminPath(path, href) {
-  if (href === ROUTES.ADMIN) {
-    return path === ROUTES.ADMIN;
-  }
-
-  return path === href || path.startsWith(`${href}/`);
-}
-
-function AdminSidebarLink({ collapsed = false, href, icon, label }) {
-  const path = useRoutePath();
-  const closeMobileMenu = useUIStore((state) => state.closeMobileMenu);
-  const isActive = isActiveAdminPath(path, href);
-
-  return (
-    <a
-      aria-current={isActive ? "page" : undefined}
-      aria-label={collapsed ? label : undefined}
-      className={cn(
-        "group flex min-h-11 items-center rounded-2xl border px-3 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12",
-        collapsed ? "gap-3 lg:justify-center lg:gap-0 lg:px-0" : "gap-3",
-        isActive
-          ? "border-[#3F6212]/25 bg-[#F7FEE7] text-[#365314] shadow-[0_14px_36px_rgba(63, 98, 18, 0.12)]"
-          : "border-transparent text-[#44403C] hover:border-[#E7E5E4] hover:bg-white hover:text-[#1C1917]",
-      )}
-      href={href}
-      onClick={closeMobileMenu}
-      title={collapsed ? label : undefined}
-    >
-      <span
-        className={cn(
-          "grid h-8 w-8 shrink-0 place-items-center rounded-xl transition",
-          isActive ? "bg-[#3F6212] text-white" : "bg-[#FEFCE8] text-[#78716C] group-hover:text-[#3F6212]",
-        )}
-      >
-        {createElement(icon, { "aria-hidden": "true", className: "h-4 w-4" })}
-      </span>
-      <span className={cn("min-w-0 truncate", collapsed && "lg:hidden")}>{label}</span>
-      {isActive && !collapsed ? <span className="ml-auto h-2 w-2 rounded-full bg-[#3F6212]" /> : null}
-    </a>
-  );
-}
+const adminSections = Object.freeze([
+  Object.freeze({
+    id: "admin-platform-controls",
+    links: ADMIN_NAV_LINKS.map((item) =>
+      Object.freeze({
+        ...item,
+        exactMatch: item.href === ROUTES.ADMIN,
+        id: item.id ?? item.routeId ?? item.href,
+        showInMobile: item.showInMobile ?? true,
+        showInSidebar: item.showInSidebar ?? true,
+        type: item.type ?? "link",
+      }),
+    ),
+    title: "Platform controls",
+  }),
+]);
 
 export function AdminSidebar() {
   const isMobileMenuOpen = useUIStore((state) => state.isMobileMenuOpen);
   const isSidebarCollapsed = useUIStore((state) => state.isSidebarCollapsed);
   const closeMobileMenu = useUIStore((state) => state.closeMobileMenu);
+  const { role, user } = useAuth();
+  const currentPath = useRoutePath();
+  const currentRole = role || user?.role;
 
   return (
-    <aside
-      aria-label="Admin sidebar"
-      className={cn(
-        "fixed inset-y-0 left-0 z-50 flex w-[min(18rem,calc(100vw-1.5rem))] min-w-0 flex-col overflow-y-auto border-r border-[#E7E5E4] bg-white px-4 py-5 shadow-[0_24px_80px_rgba(28, 25, 23, 0.14)] transition-[transform,width,padding] duration-300 lg:visible lg:sticky lg:top-0 lg:h-svh lg:translate-x-0 lg:shadow-none",
-        isSidebarCollapsed ? "lg:w-[5.25rem] lg:px-3" : "lg:w-[18rem]",
-        isMobileMenuOpen ? "visible translate-x-0" : "invisible -translate-x-full",
-      )}
-      id="admin-sidebar"
-    >
-      <div className="flex items-start justify-between gap-3">
-        <a className="min-w-0 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#3F6212]/12" href={ROUTES.ADMIN}>
-          <span className="flex items-center gap-3">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-[#1C1917] text-white shadow-[0_18px_44px_rgba(10,10,10,0.18)]">
-              <Flag aria-hidden="true" className="h-5 w-5" />
-            </span>
-            <span className={cn("min-w-0", isSidebarCollapsed && "lg:hidden")}>
-              <span className="block truncate text-lg font-black tracking-[-0.04em] text-[#1C1917]">
-                {APP_BRAND.PRODUCT_NAME}
-              </span>
-              <span className="block truncate text-xs font-bold text-[#78716C]">admin by {APP_BRAND.COMPANY_NAME}</span>
-            </span>
-          </span>
-        </a>
-        <button
-          aria-label="Close admin sidebar"
-          className="grid h-9 w-9 place-items-center rounded-xl border border-[#E7E5E4] text-[#78716C] transition hover:border-[#3F6212]/25 hover:text-[#365314] lg:hidden"
-          onClick={closeMobileMenu}
-          type="button"
-        >
-          <X aria-hidden="true" className="h-4 w-4" />
-        </button>
-      </div>
-
-      <div className={cn("mt-6 rounded-2xl border border-[#3F6212]/16 bg-[#FEFCE8] p-4", isSidebarCollapsed && "lg:hidden")}>
-        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#3F6212]">
-          Platform controls
-        </p>
-        <p className="mt-2 text-sm leading-6 text-[#44403C]">
-          Manage challenge quality, provider verification, proof review, and trust systems.
-        </p>
-      </div>
-
-      <nav className="mt-5 grid gap-1.5" aria-label="Admin navigation">
-        {adminLinks.map((item) => (
-          <AdminSidebarLink collapsed={isSidebarCollapsed} key={item.href} {...item} />
-        ))}
-      </nav>
-
-      <div className={cn("mt-auto rounded-2xl border border-[#E7E5E4] bg-white p-4 shadow-[0_16px_44px_rgba(28, 25, 23, 0.06)]", isSidebarCollapsed && "lg:hidden")}>
-        <div className="flex items-center gap-2">
-          <CheckCircle2 aria-hidden="true" className="h-4 w-4 text-[#65A30D]" />
-          <p className="text-sm font-black text-[#1C1917]">Trust layer</p>
+    <SidebarCore
+      ariaLabel="Admin dashboard sidebar"
+      collapsed={isSidebarCollapsed}
+      currentPath={currentPath}
+      footerSlot={
+        <div className="sidebar-note-card p-4">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 aria-hidden="true" className="h-4 w-4 text-[var(--color-accent)]" />
+            <p className="text-sm font-black text-[var(--color-foreground)]">Trust layer</p>
+          </div>
+          <p className="mt-2 text-xs leading-5 text-[var(--color-text-muted)]">
+            Admin decisions will shape provider quality, proof integrity, and platform reputation.
+          </p>
         </div>
-        <p className="mt-2 text-xs leading-5 text-[#78716C]">
-          Admin decisions will shape provider quality, proof integrity, and platform reputation.
-        </p>
-      </div>
-    </aside>
+      }
+      headerSlot={
+        <div className="flex items-start justify-between gap-3">
+          <a
+            className="min-w-0 rounded-[var(--radius-lg)] focus:outline-none focus-visible:ring-4 focus-visible:ring-[var(--color-primary-ring)]"
+            href={ROUTES.ADMIN}
+          >
+            <span className="flex items-center gap-3">
+              <span className="sidebar-brand-mark bg-[var(--color-foreground)] shadow-[var(--shadow-control)]">
+                <Flag aria-hidden="true" className="h-5 w-5" />
+              </span>
+              <span className={cn("min-w-0", isSidebarCollapsed && "lg:hidden")}>
+                <span className="block truncate text-lg font-black tracking-normal text-[var(--color-foreground)]">
+                  {APP_BRAND.PRODUCT_NAME}
+                </span>
+                <span className="block truncate text-xs font-bold text-[var(--color-text-muted)]">
+                  admin by {APP_BRAND.COMPANY_NAME}
+                </span>
+              </span>
+            </span>
+          </a>
+          <button
+            aria-label="Close admin sidebar"
+            className="topbar-icon-button grid h-9 w-9 place-items-center lg:hidden"
+            onClick={closeMobileMenu}
+            type="button"
+          >
+            <X aria-hidden="true" className="h-4 w-4" />
+          </button>
+        </div>
+      }
+      iconMap={iconMap}
+      id="admin-sidebar"
+      introSlot={
+        <div className="sidebar-intro-card p-4">
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--color-primary)]">
+            Platform controls
+          </p>
+          <p className="mt-2 text-sm leading-6 text-[var(--color-text-secondary)]">
+            Manage challenge quality, provider verification, proof review, and trust systems.
+          </p>
+        </div>
+      }
+      isMobileOpen={isMobileMenuOpen}
+      onNavigate={closeMobileMenu}
+      role={currentRole}
+      sections={adminSections}
+      surface="adminSidebar"
+      user={user}
+      variant="responsive"
+    />
   );
 }
