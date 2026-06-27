@@ -1,0 +1,27 @@
+# Stage 1.1 ADR Candidates
+
+Generated: 2026-06-27T16:22:15.6507021+05:00
+
+These are decision candidates for Stage 1.3, not approved decisions. Current compatibility behavior remains authoritative until an ADR is accepted and migrated.
+
+| ID | Decision title | Current problem | Current evidence | Options to consider | Risk if undecided | Stage | Related files/docs |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ADR-C01 | ScaleOps parent and ProofArena module boundary | Future work could create a parallel app or let product composition own shared infrastructure. | ProofArena client/server READMEs; EV-F0561 | Keep product module; separate deployable; shared package plus modules | Duplicate auth/router/API/deployment systems | 1.3 / 2 | `modules/proofarena/`; Architecture Invariants |
+| ADR-C02 | Frontend route governance | `AppRoutes.jsx`, route constants, metadata, aliases, and 34 metadata gaps require one ownership rule. | EV-F0464, EV-F0291, EV-X010 | Router-first registry; metadata-generated routes; typed route manifest | Broken links, stale metadata, guard drift | 1.3 / 4 | Route Inventory; Route Dependency Map |
+| ADR-C03 | Backend API version policy | 233 operations are mounted under both `/api` and `/api/v1`. | EV-X005, EV-X006 | Keep compatibility indefinitely; v1 canonical with deprecation; gateway rewrite | Permanent duplicate contracts and uncertain callers | 1.3 / 5 | API Inventory; Backend Flow Map |
+| ADR-C04 | Frontend API client standardization | Shared `apiClient.js` coexists with large legacy `api.js` and feature services. | EV-X007, EV-X008 | Feature services over apiClient; generated client; retain facade with deprecation | Hidden fallback data and inconsistent errors | 1.3 / 5 | Reusable Code Map; Duplicate Radar |
+| ADR-C05 | Dashboard shell ownership | Public/provider/client/admin/workspace layouts and compatibility wrappers overlap. | EV-F0373–EV-F0379 | Separate role shells over shared primitives; one generic shell; current model | Repeated state/access logic or over-generic component | 1.3 / 36 | Critical File List; Route Map |
+| ADR-C06 | Universal navigation ownership | Configs, constants, public header, SidebarCore, filters, and metadata all influence navigation. | EV-F0140, EV-F0277–EV-F0280, EV-F0548 | Navigation schema as authority; metadata-derived nav; current explicit configs | Role visibility and active-state divergence | 1.3 / 22 / 26 | Do-Not-Duplicate Registry |
+| ADR-C07 | Authentication implementation canonicalization | Modular and legacy auth controllers/services/middleware coexist. | EV-F0299, EV-F0618, EV-F0619, EV-F0686, EV-F0688 | Modular auth canonical; compatibility adapter; phased route migration | Login/refresh/verification regressions | 1.3 / 23 | Boundary Report; Backend Flow Map |
+| ADR-C08 | Role and permission strategy | Frontend access policy and two backend role middleware generations must agree. | EV-F0534, EV-F0627, EV-F0628 | Fixed roles; permission claims; policy service | UI/backend mismatch and admin leakage | 1.3 / 26 | Route Matrix; Access critical files |
+| ADR-C09 | Backend layering and module migration | Layer-oriented routes/controllers/services/models coexist with target feature modules. | ProofArena backend README; dependency graph | Keep layers; vertical modules; hybrid public-module APIs | Cycles, duplicated services, unclear ownership | 1.3 / 3 | Architecture Diagrams; Boundary Report |
+| ADR-C10 | Model alias and domain ownership | User/Profile/Challenge/Settings aliases or overlaps lack canonical ownership evidence. | EV-M006, EV-M024, EV-M039, EV-M043, EV-M047, EV-M049 | Compatibility aliases; collection migration; domain aggregate redesign | Split data truth and destructive cleanup | 1.3 / data stages | Model Usage Map; Duplicate Radar |
+| ADR-C11 | Environment and deployment configuration | Client/server Vercel configs, Vite aliases, env loaders, and dual deploy surfaces need an ownership model. | EV-C001–EV-C006, EV-F0560, EV-F0566, EV-F0567 | Monorepo services; separate projects; platform gateway | Base URL and runtime drift | 1.3 / 6 | Repo Inventory; Critical File List |
+| ADR-C12 | Design token and shared UI strategy | Canonical UI primitives coexist with compatibility wrappers and older state components. | EV-X011, EV-F0246, EV-F0257, EV-F0234 | Canonical UI barrel; wrapper deprecation; scoped design system package | Visual/accessibility fragmentation | 1.3 / 7 / 8 | Duplicate Radar; Reusable Code Map |
+| ADR-C13 | Placeholder and fallback retirement policy | Forty-eight placeholder/mock/temporary items include business-looking fallback data. | Placeholder Mock Report; EV-X008 | Explicit preview fixtures; honest empty/error states; staged real contracts | API failures can look like successful business data | 1.3 / owning stages | Placeholder Mock Report |
+| ADR-C14 | Admin and role-dashboard boundary | Admin, provider, and client shells share engine code but require strict visibility and different operations. | EV-F0373, EV-F0375, EV-F0376, EV-F0534 | Shared shell primitives plus role policies; separate shells; workspace abstraction | Admin details/actions can leak or shells can duplicate | 1.3 / 26 / 36 | Route Dependency Map; Critical File List |
+
+## ADR Preparation Rule
+
+Each ADR must include current callers, compatibility requirements, rejected options, migration order, rollback, test requirements, and documentation updates. No candidate above authorizes production changes.
+

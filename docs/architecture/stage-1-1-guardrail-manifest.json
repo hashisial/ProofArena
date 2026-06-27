@@ -1,0 +1,2207 @@
+{
+  "projectName": "ScaleOps / ProofArena",
+  "parentProduct": "ScaleOps",
+  "flagshipModule": "ProofArena",
+  "auditStage": "1.1",
+  "manifestType": "architecture-guardrails",
+  "generatedAt": "2026-06-27T16:22:15.6507021+05:00",
+  "productionCodeModified": false,
+  "architectureInvariants": [
+    {
+      "id": "INV-P01",
+      "rule": "ScaleOps remains the parent SaaS application; ProofArena remains a module inside the existing client and server.",
+      "sourceFiles": [
+        "client/src/modules/proofarena/README.md",
+        "server/src/modules/proofarena/README.md"
+      ],
+      "riskIfViolated": "A second app would duplicate auth, routing, deployment, and persistence boundaries.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 2 boundary ADR plus migration plan"
+    },
+    {
+      "id": "INV-P02",
+      "rule": "ProofArena composes existing challenge, offer, execution-plan, proof, matching, provider, and opportunity domains instead of copying them.",
+      "sourceFiles": [
+        "docs/architecture/STAGE_1_1_REUSABLE_CODE_MAP.md"
+      ],
+      "riskIfViolated": "Parallel implementations would create incompatible contracts and data ownership.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 3 module-boundary work after tests"
+    },
+    {
+      "id": "INV-P03",
+      "rule": "Code outside the frontend ProofArena module uses its public entry point; feature domains must not depend on product composition.",
+      "sourceFiles": [
+        "client/src/modules/proofarena/index.js",
+        "scripts/check-module-boundaries.mjs"
+      ],
+      "riskIfViolated": "Private imports would make migration order and ownership unstable.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 3 with boundary-check updates"
+    },
+    {
+      "id": "INV-F01",
+      "rule": "client/src/main.jsx remains the browser entry and mounts the query client and router.",
+      "sourceFiles": [
+        "client/src/main.jsx"
+      ],
+      "riskIfViolated": "Provider ordering or router initialization can fail globally.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Framework/bootstrap change with app smoke tests"
+    },
+    {
+      "id": "INV-F02",
+      "rule": "client/src/App.jsx owns top-level provider composition.",
+      "sourceFiles": [
+        "client/src/App.jsx"
+      ],
+      "riskIfViolated": "Auth and route hydration can render in the wrong order.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Auth/platform ADR plus integration tests"
+    },
+    {
+      "id": "INV-F03",
+      "rule": "client/src/routes/AppRoutes.jsx remains the frontend route registration authority.",
+      "sourceFiles": [
+        "docs/architecture/STAGE_1_1_TRACEABILITY_MATRIX.md"
+      ],
+      "riskIfViolated": "Duplicate routers or route drift can create inaccessible pages and guard bypasses.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 4 route governance"
+    },
+    {
+      "id": "INV-F04",
+      "rule": "client/src/constants/routes.js remains the route-path constant source used by features and navigation.",
+      "sourceFiles": [
+        "client/src/constants/routes.js"
+      ],
+      "riskIfViolated": "Scattered path strings would break aliases, breadcrumbs, and role fallbacks.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 4 route governance with import migration"
+    },
+    {
+      "id": "INV-F05",
+      "rule": "client/src/config/routeMetadata.js remains metadata, not a second router; its 34 known coverage gaps must not be treated as absent routes.",
+      "sourceFiles": [
+        "client/src/config/routeMetadata.js"
+      ],
+      "riskIfViolated": "Consumers can incorrectly hide or reject active routes.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 4 metadata completion"
+    },
+    {
+      "id": "INV-F06",
+      "rule": "client/src/layouts/PublicLayout.jsx owns the active public shell; RootLayout.jsx remains a compatibility concern until proven removable.",
+      "sourceFiles": [
+        "client/src/layouts/PublicLayout.jsx",
+        "client/src/layouts/RootLayout.jsx"
+      ],
+      "riskIfViolated": "Public header/footer nesting and auth pages can regress.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 1.2 investigation plus route tests"
+    },
+    {
+      "id": "INV-F07",
+      "rule": "client/src/layouts/DashboardLayout.jsx owns the provider/shared dashboard shell.",
+      "sourceFiles": [
+        "client/src/layouts/DashboardLayout.jsx"
+      ],
+      "riskIfViolated": "Sidebar sizing, auth loading, and provider content can break.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 36 provider dashboard work after shell tests"
+    },
+    {
+      "id": "INV-F08",
+      "rule": "client/src/layouts/ClientLayout.jsx and AdminLayout.jsx retain distinct role-specific shells.",
+      "sourceFiles": [
+        "client/src/layouts/ClientLayout.jsx",
+        "client/src/layouts/AdminLayout.jsx"
+      ],
+      "riskIfViolated": "Client/admin navigation or access boundaries can leak across roles.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Explicit role-dashboard migration with tests"
+    },
+    {
+      "id": "INV-F09",
+      "rule": "client/src/layouts/useSidebarShell.js and client/src/hooks/useSidebarState.js coordinate dashboard shell state; mobile state is not a second persistent desktop state.",
+      "sourceFiles": [
+        "client/src/layouts/useSidebarShell.js",
+        "client/src/hooks/useSidebarState.js"
+      ],
+      "riskIfViolated": "Empty layout gaps, stale drawers, or localStorage regressions can occur.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Dashboard shell refactor after responsive tests"
+    },
+    {
+      "id": "INV-F10",
+      "rule": "SidebarCore.jsx remains the shared sidebar renderer used by provider, client, and admin wrappers.",
+      "sourceFiles": [
+        "client/src/components/navigation/sidebar/SidebarCore.jsx"
+      ],
+      "riskIfViolated": "Manual sidebar copies would diverge in active-state, filtering, and accessibility behavior.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Shared navigation ADR"
+    },
+    {
+      "id": "INV-F11",
+      "rule": "Public, provider, client, and admin navigation remain configuration-driven from client/src/config/navigation/.",
+      "sourceFiles": [
+        "client/src/config/navigation/adminNavigation.js",
+        "client/src/config/navigation/publicNavigation.js"
+      ],
+      "riskIfViolated": "Hardcoded navigation would bypass route/access helpers.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 22 or role-navigation migration"
+    },
+    {
+      "id": "INV-F12",
+      "rule": "AuthProvider.jsx, useAuthStore.js, and the route-guard suite remain the current frontend auth/session boundary.",
+      "sourceFiles": [
+        "client/src/features/auth/AuthProvider.jsx",
+        "client/src/store/useAuthStore.js",
+        "client/src/routes/AuthHydration.jsx",
+        "client/src/routes/RoleRoute.jsx"
+      ],
+      "riskIfViolated": "Protected content can flash, redirect loops can form, or roles can leak.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 23 auth/security with regression coverage"
+    },
+    {
+      "id": "INV-F13",
+      "rule": "client/src/services/apiClient.js remains the shared HTTP transport boundary; components should not create another Axios/fetch client.",
+      "sourceFiles": [
+        "client/src/services/apiClient.js"
+      ],
+      "riskIfViolated": "Token refresh, credentials, error translation, and base URL behavior would diverge.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 5 API-contract standardization"
+    },
+    {
+      "id": "INV-F14",
+      "rule": "Button.jsx, PageHeader.jsx, and AppStateShell.jsx are shared UI foundations; compatibility wrappers must be audited before removal.",
+      "sourceFiles": [
+        "client/src/components/ui/Button.jsx",
+        "client/src/components/ui/PageHeader.jsx",
+        "client/src/components/states/AppStateShell.jsx"
+      ],
+      "riskIfViolated": "Visual, semantic, and accessibility behavior would fragment.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 7 shared UI consolidation"
+    },
+    {
+      "id": "INV-F15",
+      "rule": "accessPolicy.js, navigationFilter.js, navigationActive.js, and routeValidation.js remain centralized policy/helpers rather than duplicated component logic.",
+      "sourceFiles": [
+        "client/src/utils/accessPolicy.js",
+        "client/src/utils/navigationFilter.js",
+        "client/src/utils/navigationActive.js",
+        "client/src/utils/routeValidation.js"
+      ],
+      "riskIfViolated": "Role checks, active states, and route safety would become inconsistent.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stages 4, 23, and 26 with tests"
+    },
+    {
+      "id": "INV-B01",
+      "rule": "server/src/server.js remains the process entry for database, HTTP, sockets, and workers.",
+      "sourceFiles": [
+        "server/src/server.js"
+      ],
+      "riskIfViolated": "Startup order and process lifecycle can fail.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Runtime architecture ADR"
+    },
+    {
+      "id": "INV-B02",
+      "rule": "server/src/app.js remains the Express composition root for global middleware, webhooks, routes, and errors.",
+      "sourceFiles": [
+        "server/src/app.js"
+      ],
+      "riskIfViolated": "Middleware ordering, webhook parsing, and error responses can break.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 5 or 6 with endpoint tests"
+    },
+    {
+      "id": "INV-B03",
+      "rule": "Both server/src/routes/index.js and server/src/routes/v1/index.js are active; their 233 dual-mounted operations cannot be removed casually.",
+      "sourceFiles": [
+        "server/src/routes/index.js",
+        "server/src/routes/v1/index.js"
+      ],
+      "riskIfViolated": "Existing clients can receive 404s or different middleware behavior.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 1.3 API-version ADR and migration telemetry"
+    },
+    {
+      "id": "INV-B04",
+      "rule": "The normal backend dependency direction remains route to controller to service to model; known inline and partial flows are exceptions documented in the traceability matrix.",
+      "sourceFiles": [
+        "docs/architecture/STAGE_1_1_BACKEND_FLOW_MAP.md",
+        "docs/architecture/STAGE_1_1_TRACEABILITY_MATRIX.md"
+      ],
+      "riskIfViolated": "Business logic can become untestable or bypass validation/security.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 3 module migration one vertical slice at a time"
+    },
+    {
+      "id": "INV-B05",
+      "rule": "server/src/modules/auth/ is an active auth implementation, but legacy auth controller/service generations remain compatibility risks, not deletion candidates.",
+      "sourceFiles": [
+        "docs/architecture/STAGE_1_1_DUPLICATE_OVERLAP_RADAR.md"
+      ],
+      "riskIfViolated": "Removing the wrong generation can break login, refresh, or verification flows.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 23 after caller and endpoint contract tests"
+    },
+    {
+      "id": "INV-B06",
+      "rule": "Both auth and role middleware naming generations remain active until route-by-route migration proves otherwise.",
+      "sourceFiles": [
+        "server/src/middleware/auth.middleware.js",
+        "server/src/middleware/authMiddleware.js",
+        "server/src/middleware/role.middleware.js",
+        "server/src/middleware/roleMiddleware.js"
+      ],
+      "riskIfViolated": "Authorization can weaken or legitimate requests can be rejected.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stages 23/26 with route permission matrix"
+    },
+    {
+      "id": "INV-B07",
+      "rule": "apiResponse.js, AppError.js, asyncHandler.js, and global error middleware define response/error behavior.",
+      "sourceFiles": [
+        "server/src/utils/apiResponse.js",
+        "server/src/utils/AppError.js",
+        "server/src/utils/asyncHandler.js",
+        "server/src/middleware/error.middleware.js",
+        "server/src/middleware/errorMiddleware.js"
+      ],
+      "riskIfViolated": "Frontend contracts can receive inconsistent status and payload shapes.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 5 error-contract ADR"
+    },
+    {
+      "id": "INV-B08",
+      "rule": "server/src/config/db.js owns database connection initialization and model registration side effects.",
+      "sourceFiles": [
+        "server/src/config/db.js"
+      ],
+      "riskIfViolated": "Startup, indexes, or registered models can change unexpectedly.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Database migration with rollback and model tests"
+    },
+    {
+      "id": "INV-B09",
+      "rule": "loadEnv.js and env.js own server environment loading/validation; secrets remain outside documentation and source.",
+      "sourceFiles": [
+        "server/src/config/loadEnv.js",
+        "server/src/config/env.js"
+      ],
+      "riskIfViolated": "Deployments can start with missing or unsafe configuration.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 6 environment/config layer"
+    },
+    {
+      "id": "INV-B10",
+      "rule": "Request validation remains route-bound through existing validators and validation middleware; duplicate validators must be mapped before consolidation.",
+      "sourceFiles": [
+        "server/src/validators/"
+      ],
+      "riskIfViolated": "Invalid or unauthorized payloads can reach business logic.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 5 contract layer after endpoint tests"
+    },
+    {
+      "id": "INV-D01",
+      "rule": "server/src/models/User.js is security-critical identity persistence used by auth, admin, and user services.",
+      "sourceFiles": [
+        "server/src/models/User.js"
+      ],
+      "riskIfViolated": "Schema changes can invalidate credentials, roles, sessions, and user ownership.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 23 with migration and rollback plan"
+    },
+    {
+      "id": "INV-D02",
+      "rule": "UserProfile.js and ProviderProfile.js are active profile persistence; model aliases and the unresolved VerifiedOutcome reference must be preserved until ownership is decided.",
+      "sourceFiles": [
+        "server/src/models/UserProfile.js",
+        "server/src/models/ProviderProfile.js"
+      ],
+      "riskIfViolated": "Profile reads/population can fail or data can split across collections.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Profile stage after model/ref audit and tests"
+    },
+    {
+      "id": "INV-D03",
+      "rule": "MarketplaceTransaction.js, Invoice.js, and Subscription.js are financial records and must not change without contract, migration, and webhook tests.",
+      "sourceFiles": [
+        "server/src/models/MarketplaceTransaction.js",
+        "server/src/models/Invoice.js",
+        "server/src/models/Subscription.js"
+      ],
+      "riskIfViolated": "Money, invoices, subscriptions, and reconciliation can be corrupted.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Payments stage with Stripe regression suite"
+    },
+    {
+      "id": "INV-D04",
+      "rule": "Challenge.model.js and OutcomeChallenge.model.js are overlapping concepts; neither is canonical by audit evidence alone.",
+      "sourceFiles": [
+        "server/src/models/Challenge.model.js",
+        "server/src/models/OutcomeChallenge.model.js"
+      ],
+      "riskIfViolated": "Premature merging can orphan data or break service queries.",
+      "confidence": "medium",
+      "futureStageAllowedToChange": "Stage 1.3 ADR plus data inspection"
+    },
+    {
+      "id": "INV-D05",
+      "rule": "OutcomeOffer.model.js, ExecutionPlan.model.js, ProofAsset.model.js, and MatchRecord.model.js form connected ProofArena workflows.",
+      "sourceFiles": [
+        "server/src/models/OutcomeOffer.model.js",
+        "server/src/models/ExecutionPlan.model.js",
+        "server/src/models/ProofAsset.model.js",
+        "server/src/models/MatchRecord.model.js"
+      ],
+      "riskIfViolated": "Cross-domain lifecycle and ownership references can break.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Feature-stage vertical migrations with tests"
+    },
+    {
+      "id": "INV-D06",
+      "rule": "Settings.js and UserSettings.js overlap; collection ownership and read/write callers must be established before consolidation.",
+      "sourceFiles": [
+        "server/src/models/Settings.js",
+        "server/src/models/UserSettings.js"
+      ],
+      "riskIfViolated": "Settings can diverge or be silently lost.",
+      "confidence": "medium",
+      "futureStageAllowedToChange": "Stage 1.3 ownership ADR and migration"
+    },
+    {
+      "id": "INV-S01",
+      "rule": "scripts/check-module-boundaries.mjs is the executable boundary policy for client/server module dependency direction.",
+      "sourceFiles": [
+        "scripts/check-module-boundaries.mjs"
+      ],
+      "riskIfViolated": "Shared foundations can start importing product modules and create cycles.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 3 boundary ADR with script updates"
+    },
+    {
+      "id": "INV-S02",
+      "rule": "client/src/styles/tokens.css remains the shared design-token source.",
+      "sourceFiles": [
+        "client/src/styles/tokens.css"
+      ],
+      "riskIfViolated": "Hardcoded values and incompatible themes can spread across layouts.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 7 token migration"
+    },
+    {
+      "id": "INV-S03",
+      "rule": "Shared config, constants, errors, stores, and utilities must not depend on feature/page/route implementations.",
+      "sourceFiles": [
+        "scripts/check-module-boundaries.mjs",
+        "docs/architecture/STAGE_1_1_BOUNDARY_VIOLATION_REPORT.md"
+      ],
+      "riskIfViolated": "Dependency inversion and circular ownership can result.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Stage 3 module-boundary work"
+    },
+    {
+      "id": "INV-S04",
+      "rule": "Frontend and backend source remain physically and import-wise separated; no source-level cross-boundary import was found.",
+      "sourceFiles": [
+        "docs/architecture/STAGE_1_1_DEPENDENCY_MAP.md",
+        "docs/architecture/STAGE_1_1_CONSISTENCY_CHECK.md"
+      ],
+      "riskIfViolated": "Browser/server bundling and secret boundaries would be compromised.",
+      "confidence": "high",
+      "futureStageAllowedToChange": "Only through an explicit shared-contract package ADR"
+    }
+  ],
+  "doNotDuplicateRegistry": [
+    {
+      "id": "DND-001",
+      "systemName": "Route constants",
+      "existingFiles": [
+        "client/src/constants/routes.js"
+      ],
+      "reuseRule": "Import existing constants",
+      "riskIfDuplicated": "Broken links and fallback drift",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-002",
+      "systemName": "Route metadata",
+      "existingFiles": [
+        "client/src/config/routeMetadata.js"
+      ],
+      "reuseRule": "Extend the existing metadata map",
+      "riskIfDuplicated": "Conflicting route interpretation",
+      "status": "partial"
+    },
+    {
+      "id": "DND-003",
+      "systemName": "Frontend router",
+      "existingFiles": [
+        "client/src/routes/AppRoutes.jsx"
+      ],
+      "reuseRule": "Add routes through current router ownership",
+      "riskIfDuplicated": "Guard bypass and 404 conflicts",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-004",
+      "systemName": "Public shell",
+      "existingFiles": [
+        "client/src/layouts/PublicLayout.jsx",
+        "client/src/layouts/RootLayout.jsx"
+      ],
+      "reuseRule": "Reuse active shell; investigate overlap first",
+      "riskIfDuplicated": "Header/footer and auth-shell divergence",
+      "status": "partial"
+    },
+    {
+      "id": "DND-005",
+      "systemName": "Provider dashboard shell",
+      "existingFiles": [
+        "client/src/layouts/DashboardLayout.jsx"
+      ],
+      "reuseRule": "Compose within existing shell",
+      "riskIfDuplicated": "Collapse and auth behavior divergence",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-006",
+      "systemName": "Client dashboard shell",
+      "existingFiles": [
+        "client/src/layouts/ClientLayout.jsx"
+      ],
+      "reuseRule": "Reuse for client routes",
+      "riskIfDuplicated": "Wrong-role navigation and duplicated state",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-007",
+      "systemName": "Admin dashboard shell",
+      "existingFiles": [
+        "client/src/layouts/AdminLayout.jsx"
+      ],
+      "reuseRule": "Reuse for admin routes",
+      "riskIfDuplicated": "Access and navigation leakage",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-008",
+      "systemName": "Workspace compatibility layout",
+      "existingFiles": [
+        "client/src/layouts/WorkspaceLayout.jsx"
+      ],
+      "reuseRule": "Audit callers before reuse or retirement",
+      "riskIfDuplicated": "Unclear shell ownership",
+      "status": "partial"
+    },
+    {
+      "id": "DND-009",
+      "systemName": "Universal sidebar engine",
+      "existingFiles": [
+        "client/src/components/navigation/sidebar/SidebarCore.jsx"
+      ],
+      "reuseRule": "Use thin role wrappers and navigation config",
+      "riskIfDuplicated": "Accessibility and active-state drift",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-010",
+      "systemName": "Sidebar state",
+      "existingFiles": [
+        "client/src/hooks/useSidebarState.js",
+        "client/src/layouts/useSidebarShell.js"
+      ],
+      "reuseRule": "Use current hook/shell contract",
+      "riskIfDuplicated": "Empty gaps and conflicting state",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-011",
+      "systemName": "Navigation configuration",
+      "existingFiles": [
+        "client/src/config/navigation/publicNavigation.js",
+        "client/src/config/navigation/providerNavigation.js",
+        "client/src/config/navigation/clientNavigation.js",
+        "client/src/config/navigation/adminNavigation.js"
+      ],
+      "reuseRule": "Extend the correct config",
+      "riskIfDuplicated": "Visibility and path drift",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-012",
+      "systemName": "Public navigation rendering",
+      "existingFiles": [
+        "client/src/components/Header.jsx",
+        "client/src/components/navigation/PublicNavbar.jsx"
+      ],
+      "reuseRule": "Reuse current config and header ownership",
+      "riskIfDuplicated": "Duplicate menus and auth CTA logic",
+      "status": "partial"
+    },
+    {
+      "id": "DND-013",
+      "systemName": "Frontend auth provider",
+      "existingFiles": [
+        "client/src/features/auth/AuthProvider.jsx"
+      ],
+      "reuseRule": "Consume the existing provider/hook",
+      "riskIfDuplicated": "Conflicting session state",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-014",
+      "systemName": "Auth session store",
+      "existingFiles": [
+        "client/src/store/useAuthStore.js",
+        "client/src/store/authSession.js"
+      ],
+      "reuseRule": "Use canonical store APIs; audit compatibility helper",
+      "riskIfDuplicated": "Stale roles and token state",
+      "status": "partial"
+    },
+    {
+      "id": "DND-015",
+      "systemName": "Route guards",
+      "existingFiles": [
+        "client/src/routes/AuthHydration.jsx",
+        "client/src/routes/ProtectedRoute.jsx",
+        "client/src/routes/PublicOnlyRoute.jsx",
+        "client/src/routes/RoleRoute.jsx",
+        "client/src/routes/EmailVerifiedRoute.jsx"
+      ],
+      "reuseRule": "Compose existing guards",
+      "riskIfDuplicated": "Protected-content flash or bypass",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-016",
+      "systemName": "Frontend role/access policy",
+      "existingFiles": [
+        "client/src/utils/accessPolicy.js",
+        "client/src/features/auth/roleAccess.js"
+      ],
+      "reuseRule": "Extend centralized policy only after role audit",
+      "riskIfDuplicated": "Inconsistent authorization UX",
+      "status": "partial"
+    },
+    {
+      "id": "DND-017",
+      "systemName": "HTTP client",
+      "existingFiles": [
+        "client/src/services/apiClient.js"
+      ],
+      "reuseRule": "Route all HTTP through this boundary or mapped feature services",
+      "riskIfDuplicated": "Auth and error-contract divergence",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-018",
+      "systemName": "API contracts and errors",
+      "existingFiles": [
+        "client/src/services/apiContracts.js",
+        "client/src/services/apiErrors.js"
+      ],
+      "reuseRule": "Reuse/export established helpers",
+      "riskIfDuplicated": "Silent contract mismatch",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-019",
+      "systemName": "Query client",
+      "existingFiles": [
+        "client/src/services/queryClient.js"
+      ],
+      "reuseRule": "Use the mounted singleton",
+      "riskIfDuplicated": "Cache fragmentation",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-020",
+      "systemName": "Backend API registries",
+      "existingFiles": [
+        "server/src/routes/index.js",
+        "server/src/routes/v1/index.js"
+      ],
+      "reuseRule": "Add only through an explicit versioning decision",
+      "riskIfDuplicated": "Endpoint duplication and middleware drift",
+      "status": "partial"
+    },
+    {
+      "id": "DND-021",
+      "systemName": "Backend auth module",
+      "existingFiles": [
+        "server/src/modules/auth/"
+      ],
+      "reuseRule": "Reuse current module; map legacy callers before consolidation",
+      "riskIfDuplicated": "Login/refresh/verification fragmentation",
+      "status": "partial"
+    },
+    {
+      "id": "DND-022",
+      "systemName": "Authentication middleware",
+      "existingFiles": [
+        "server/src/middleware/auth.middleware.js",
+        "server/src/middleware/authMiddleware.js"
+      ],
+      "reuseRule": "Use existing route-specific imports until migration",
+      "riskIfDuplicated": "Security behavior divergence",
+      "status": "partial"
+    },
+    {
+      "id": "DND-023",
+      "systemName": "Role middleware",
+      "existingFiles": [
+        "server/src/middleware/role.middleware.js",
+        "server/src/middleware/roleMiddleware.js"
+      ],
+      "reuseRule": "Reuse mapped middleware; do not hardcode route checks",
+      "riskIfDuplicated": "Permission gaps",
+      "status": "partial"
+    },
+    {
+      "id": "DND-024",
+      "systemName": "Request validation",
+      "existingFiles": [
+        "server/src/middleware/validate.middleware.js",
+        "server/src/middleware/validateRequest.js",
+        "server/src/validators/"
+      ],
+      "reuseRule": "Extend owning validator and mapped middleware",
+      "riskIfDuplicated": "Contract inconsistency",
+      "status": "partial"
+    },
+    {
+      "id": "DND-025",
+      "systemName": "Response/error utilities",
+      "existingFiles": [
+        "server/src/utils/apiResponse.js",
+        "server/src/utils/AppError.js",
+        "server/src/utils/asyncHandler.js"
+      ],
+      "reuseRule": "Reuse existing helpers",
+      "riskIfDuplicated": "Frontend parsing failures",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-026",
+      "systemName": "Global error middleware",
+      "existingFiles": [
+        "server/src/middleware/error.middleware.js",
+        "server/src/middleware/errorMiddleware.js"
+      ],
+      "reuseRule": "Preserve current app ordering; investigate overlap",
+      "riskIfDuplicated": "Leaked errors or double responses",
+      "status": "partial"
+    },
+    {
+      "id": "DND-027",
+      "systemName": "Database configuration",
+      "existingFiles": [
+        "server/src/config/db.js"
+      ],
+      "reuseRule": "Use current startup boundary",
+      "riskIfDuplicated": "Split connections and model registries",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-028",
+      "systemName": "Environment loading",
+      "existingFiles": [
+        "server/src/config/loadEnv.js",
+        "server/src/config/env.js",
+        "client/src/config/env.js"
+      ],
+      "reuseRule": "Extend existing config without copying secrets",
+      "riskIfDuplicated": "Deployment inconsistency",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-029",
+      "systemName": "Identity/profile models",
+      "existingFiles": [
+        "server/src/models/User.js",
+        "server/src/models/UserProfile.js",
+        "server/src/models/ProviderProfile.js"
+      ],
+      "reuseRule": "Reuse registered models; do not create lookalikes",
+      "riskIfDuplicated": "Split user/profile truth",
+      "status": "partial"
+    },
+    {
+      "id": "DND-030",
+      "systemName": "Financial persistence/services",
+      "existingFiles": [
+        "server/src/models/MarketplaceTransaction.js",
+        "server/src/models/Invoice.js",
+        "server/src/models/Subscription.js",
+        "server/src/services/stripeService.js",
+        "server/src/services/marketplacePaymentService.js"
+      ],
+      "reuseRule": "Extend tested flows only",
+      "riskIfDuplicated": "Financial inconsistency",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-031",
+      "systemName": "ProofArena domain services",
+      "existingFiles": [
+        "server/src/services/challenge.service.js",
+        "server/src/services/executionPlan.service.js",
+        "server/src/services/match.service.js",
+        "server/src/services/outcomeOffer.service.js",
+        "server/src/services/proofAsset.service.js"
+      ],
+      "reuseRule": "Keep service ownership until vertical migration",
+      "riskIfDuplicated": "Parallel domain logic",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-032",
+      "systemName": "Shared UI foundations",
+      "existingFiles": [
+        "client/src/components/ui/Button.jsx",
+        "client/src/components/ui/PageHeader.jsx",
+        "client/src/components/ui/Badge.jsx",
+        "client/src/components/ui/Card.jsx"
+      ],
+      "reuseRule": "Reuse primitives; audit wrappers",
+      "riskIfDuplicated": "Visual and accessibility drift",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-033",
+      "systemName": "Shared page-state system",
+      "existingFiles": [
+        "client/src/components/states/AppStateShell.jsx"
+      ],
+      "reuseRule": "Compose existing state components",
+      "riskIfDuplicated": "Inconsistent route and accessibility behavior",
+      "status": "confirmed"
+    },
+    {
+      "id": "DND-034",
+      "systemName": "Design tokens and boundaries",
+      "existingFiles": [
+        "client/src/styles/tokens.css",
+        "scripts/check-module-boundaries.mjs"
+      ],
+      "reuseRule": "Use tokens and pass boundary checks",
+      "riskIfDuplicated": "Design and architecture fragmentation",
+      "status": "confirmed"
+    }
+  ],
+  "criticalFiles": [
+    {
+      "filePath": "client/src/routes/AppRoutes.jsx",
+      "category": "route",
+      "reason": "Owns 108 registered frontend routes and guard/layout composition.",
+      "knownDependents": [
+        "client/src/App.jsx"
+      ],
+      "requiredPreChecks": [
+        "Route inventory",
+        "route matrix",
+        "guards",
+        "aliases",
+        "catch-all"
+      ]
+    },
+    {
+      "filePath": "client/src/constants/routes.js",
+      "category": "route",
+      "reason": "Supplies route constants to at least 13 direct importers.",
+      "knownDependents": [
+        "Navigation",
+        "workspace",
+        "challenge components"
+      ],
+      "requiredPreChecks": [
+        "Import graph",
+        "metadata",
+        "hardcoded-path scan"
+      ]
+    },
+    {
+      "filePath": "client/src/config/routeMetadata.js",
+      "category": "route",
+      "reason": "Drives navigation/breadcrumb/access metadata and has 34 known gaps.",
+      "knownDependents": [
+        "Four navigation configs and route helpers"
+      ],
+      "requiredPreChecks": [
+        "Route inventory",
+        "missing-metadata list",
+        "breadcrumb tests"
+      ]
+    },
+    {
+      "filePath": "server/src/routes/index.js",
+      "category": "route",
+      "reason": "Active unversioned API registry.",
+      "knownDependents": [
+        "server/src/app.js"
+      ],
+      "requiredPreChecks": [
+        "API inventory",
+        "mount matrix",
+        "client callers"
+      ]
+    },
+    {
+      "filePath": "server/src/routes/v1/index.js",
+      "category": "route",
+      "reason": "Active versioned registry and ProofArena route surface.",
+      "knownDependents": [
+        "server/src/app.js"
+      ],
+      "requiredPreChecks": [
+        "233 dual mounts",
+        "endpoint tests",
+        "migration telemetry"
+      ]
+    },
+    {
+      "filePath": "client/src/config/navigation/publicNavigation.js",
+      "category": "route",
+      "reason": "Public navigation source consumed through constants/header rendering.",
+      "knownDependents": [
+        "client/src/constants/navigation.js"
+      ],
+      "requiredPreChecks": [
+        "Public routes",
+        "disabled links",
+        "auth CTA behavior"
+      ]
+    },
+    {
+      "filePath": "client/src/App.jsx",
+      "category": "auth",
+      "reason": "Composes auth and application providers before routes.",
+      "knownDependents": [
+        "client/src/main.jsx"
+      ],
+      "requiredPreChecks": [
+        "Provider order",
+        "hydration",
+        "error boundaries"
+      ]
+    },
+    {
+      "filePath": "client/src/features/auth/AuthProvider.jsx",
+      "category": "auth",
+      "reason": "Hydrates and exposes frontend auth state.",
+      "knownDependents": [
+        "client/src/App.jsx"
+      ],
+      "requiredPreChecks": [
+        "Login/logout/refresh/verification flows"
+      ]
+    },
+    {
+      "filePath": "client/src/features/auth/authService.js",
+      "category": "auth",
+      "reason": "Frontend auth API behavior used by provider and legacy facade.",
+      "knownDependents": [
+        "AuthProvider.jsx",
+        "services/api.js"
+      ],
+      "requiredPreChecks": [
+        "Endpoint contracts",
+        "token/cookie behavior"
+      ]
+    },
+    {
+      "filePath": "client/src/store/useAuthStore.js",
+      "category": "auth",
+      "reason": "Shared auth state used by guards and system pages.",
+      "knownDependents": [
+        "Ten direct importers"
+      ],
+      "requiredPreChecks": [
+        "Store selectors",
+        "hydration flags",
+        "role normalization"
+      ]
+    },
+    {
+      "filePath": "client/src/routes/AuthHydration.jsx",
+      "category": "auth",
+      "reason": "Prevents guard decisions before session hydration.",
+      "knownDependents": [
+        "AppRoutes.jsx"
+      ],
+      "requiredPreChecks": [
+        "Loading state",
+        "refresh",
+        "redirect loops"
+      ]
+    },
+    {
+      "filePath": "client/src/routes/ProtectedRoute.jsx",
+      "category": "auth",
+      "reason": "Blocks guest access to protected routes.",
+      "knownDependents": [
+        "AppRoutes.jsx"
+      ],
+      "requiredPreChecks": [
+        "Guest/provider/client/admin cases"
+      ]
+    },
+    {
+      "filePath": "client/src/routes/RoleRoute.jsx",
+      "category": "auth",
+      "reason": "Enforces role-specific route access.",
+      "knownDependents": [
+        "AppRoutes.jsx"
+      ],
+      "requiredPreChecks": [
+        "Allowed roles",
+        "admin override",
+        "unknown role"
+      ]
+    },
+    {
+      "filePath": "server/src/modules/auth/auth.routes.js",
+      "category": "auth",
+      "reason": "Registers current modular auth endpoints and middleware.",
+      "knownDependents": [
+        "server/src/modules/auth/index.js"
+      ],
+      "requiredPreChecks": [
+        "Route inventory",
+        "validation",
+        "rate limits"
+      ]
+    },
+    {
+      "filePath": "server/src/modules/auth/auth.service.js",
+      "category": "auth",
+      "reason": "Implements current modular login/session/verification behavior.",
+      "knownDependents": [
+        "auth.controller.js"
+      ],
+      "requiredPreChecks": [
+        "Legacy service callers",
+        "email/token behavior"
+      ]
+    },
+    {
+      "filePath": "server/src/middleware/auth.middleware.js",
+      "category": "auth",
+      "reason": "Authenticates modular/v1 and compatibility routes.",
+      "knownDependents": [
+        "Eleven direct importers"
+      ],
+      "requiredPreChecks": [
+        "Token sources",
+        "request user shape",
+        "error codes"
+      ]
+    },
+    {
+      "filePath": "server/src/middleware/authMiddleware.js",
+      "category": "auth",
+      "reason": "Active compatibility authentication middleware.",
+      "knownDependents": [
+        "Ten route importers"
+      ],
+      "requiredPreChecks": [
+        "All route imports and compatibility exports"
+      ]
+    },
+    {
+      "filePath": "server/src/middleware/role.middleware.js",
+      "category": "auth",
+      "reason": "Role enforcement used directly and through aliases.",
+      "knownDependents": [
+        "Nine direct importers"
+      ],
+      "requiredPreChecks": [
+        "Role names",
+        "admin/moderator policy"
+      ]
+    },
+    {
+      "filePath": "server/src/middleware/roleMiddleware.js",
+      "category": "auth",
+      "reason": "Active compatibility role middleware.",
+      "knownDependents": [
+        "Twelve route importers"
+      ],
+      "requiredPreChecks": [
+        "Permission matrix and route imports"
+      ]
+    },
+    {
+      "filePath": "client/src/services/apiClient.js",
+      "category": "api",
+      "reason": "Shared HTTP transport with 27 direct importers, credentials, refresh, and error translation.",
+      "knownDependents": [
+        "Feature services",
+        "profile UI",
+        "admin services"
+      ],
+      "requiredPreChecks": [
+        "Base URL",
+        "interceptors",
+        "retry/refresh",
+        "cookies"
+      ]
+    },
+    {
+      "filePath": "client/src/services/apiContracts.js",
+      "category": "api",
+      "reason": "Shared API payload/contract interpretation.",
+      "knownDependents": [
+        "apiClient.js",
+        "service barrel"
+      ],
+      "requiredPreChecks": [
+        "Existing response shapes and errors"
+      ]
+    },
+    {
+      "filePath": "client/src/services/apiErrors.js",
+      "category": "api",
+      "reason": "Normalizes transport/server errors.",
+      "knownDependents": [
+        "apiClient.js",
+        "service barrel"
+      ],
+      "requiredPreChecks": [
+        "User-safe messages and status mapping"
+      ]
+    },
+    {
+      "filePath": "server/src/app.js",
+      "category": "api",
+      "reason": "Orders middleware, raw webhook parsing, API mounts, and terminal errors.",
+      "knownDependents": [
+        "server/src/server.js"
+      ],
+      "requiredPreChecks": [
+        "Middleware order",
+        "CORS",
+        "webhook body handling"
+      ]
+    },
+    {
+      "filePath": "server/src/utils/apiResponse.js",
+      "category": "api",
+      "reason": "Shared response helper imported by 36 files.",
+      "knownDependents": [
+        "Controllers",
+        "app",
+        "middleware"
+      ],
+      "requiredPreChecks": [
+        "Payload envelope",
+        "status semantics"
+      ]
+    },
+    {
+      "filePath": "server/src/utils/asyncHandler.js",
+      "category": "api",
+      "reason": "Async error propagation imported by 33 controllers/routes.",
+      "knownDependents": [
+        "Controllers and routes"
+      ],
+      "requiredPreChecks": [
+        "Express 5 behavior and error middleware"
+      ]
+    },
+    {
+      "filePath": "server/src/config/db.js",
+      "category": "database",
+      "reason": "Initializes MongoDB and imports/registers models.",
+      "knownDependents": [
+        "server/src/server.js"
+      ],
+      "requiredPreChecks": [
+        "Startup",
+        "connection lifecycle",
+        "model registration"
+      ]
+    },
+    {
+      "filePath": "server/src/models/User.js",
+      "category": "database",
+      "reason": "Identity, credentials, roles, verification, and ownership.",
+      "knownDependents": [
+        "25 middleware/service/model importers"
+      ],
+      "requiredPreChecks": [
+        "Sensitive fields",
+        "indexes",
+        "auth callers"
+      ]
+    },
+    {
+      "filePath": "server/src/models/UserProfile.js",
+      "category": "database",
+      "reason": "Main user profile persistence used across 17 importers.",
+      "knownDependents": [
+        "Admin",
+        "challenge",
+        "connection",
+        "profile services"
+      ],
+      "requiredPreChecks": [
+        "References",
+        "projections",
+        "privacy fields"
+      ]
+    },
+    {
+      "filePath": "server/src/models/ProviderProfile.js",
+      "category": "database",
+      "reason": "Provider persistence with unresolved VerifiedOutcome reference.",
+      "knownDependents": [
+        "17 config/model/service importers"
+      ],
+      "requiredPreChecks": [
+        "Collection",
+        "aliases",
+        "unresolved ref",
+        "public projection"
+      ]
+    },
+    {
+      "filePath": "server/src/models/Challenge.model.js",
+      "category": "database",
+      "reason": "Active challenge persistence used by eight services.",
+      "knownDependents": [
+        "Challenge",
+        "admin",
+        "execution-plan",
+        "matching flows"
+      ],
+      "requiredPreChecks": [
+        "OutcomeChallenge overlap and data inspection"
+      ]
+    },
+    {
+      "filePath": "server/src/models/OutcomeChallenge.model.js",
+      "category": "database",
+      "reason": "Overlapping challenge concept with no discovered service importer.",
+      "knownDependents": [
+        "Unknown"
+      ],
+      "requiredPreChecks": [
+        "Collection existence and historical data"
+      ]
+    },
+    {
+      "filePath": "server/src/models/OutcomeOffer.model.js",
+      "category": "database",
+      "reason": "Offer lifecycle feeds execution plans, matches, and admin.",
+      "knownDependents": [
+        "Ten service/model importers"
+      ],
+      "requiredPreChecks": [
+        "Status transitions",
+        "references",
+        "indexes"
+      ]
+    },
+    {
+      "filePath": "server/src/models/ExecutionPlan.model.js",
+      "category": "database",
+      "reason": "Plan workflow across first-client, matching, and pipeline services.",
+      "knownDependents": [
+        "Five service importers"
+      ],
+      "requiredPreChecks": [
+        "State machine and ownership references"
+      ]
+    },
+    {
+      "filePath": "server/src/models/ProofAsset.model.js",
+      "category": "database",
+      "reason": "Stores proof visibility, review, and ownership data.",
+      "knownDependents": [
+        "Admin",
+        "first-client",
+        "proof services"
+      ],
+      "requiredPreChecks": [
+        "Access control",
+        "storage metadata",
+        "references"
+      ]
+    },
+    {
+      "filePath": "server/src/models/MatchRecord.model.js",
+      "category": "database",
+      "reason": "Persists matching outcomes used by matching/pipeline.",
+      "knownDependents": [
+        "Three service importers"
+      ],
+      "requiredPreChecks": [
+        "Scores",
+        "state",
+        "user/challenge refs"
+      ]
+    },
+    {
+      "filePath": "server/src/models/MarketplaceTransaction.js",
+      "category": "database",
+      "reason": "Marketplace financial ledger.",
+      "knownDependents": [
+        "Payment and user services"
+      ],
+      "requiredPreChecks": [
+        "Amounts",
+        "currencies",
+        "provider/customer IDs"
+      ]
+    },
+    {
+      "filePath": "server/src/models/Invoice.js",
+      "category": "database",
+      "reason": "Invoice persistence.",
+      "knownDependents": [
+        "Subscription and user services"
+      ],
+      "requiredPreChecks": [
+        "Amount/status/customer references"
+      ]
+    },
+    {
+      "filePath": "server/src/models/Subscription.js",
+      "category": "database",
+      "reason": "Subscription state and billing linkage.",
+      "knownDependents": [
+        "Subscription and user services"
+      ],
+      "requiredPreChecks": [
+        "Plan/status/provider IDs and indexes"
+      ]
+    },
+    {
+      "filePath": "server/src/models/Settings.js",
+      "category": "database",
+      "reason": "One settings model generation.",
+      "knownDependents": [
+        "userService.js"
+      ],
+      "requiredPreChecks": [
+        "UserSettings overlap and collection contents"
+      ]
+    },
+    {
+      "filePath": "server/src/models/UserSettings.js",
+      "category": "database",
+      "reason": "Active settings/preferences used by eight services.",
+      "knownDependents": [
+        "Challenge",
+        "plan",
+        "matching",
+        "first-client services"
+      ],
+      "requiredPreChecks": [
+        "Availability/preferences and Settings overlap"
+      ]
+    },
+    {
+      "filePath": "client/src/layouts/DashboardLayout.jsx",
+      "category": "dashboard",
+      "reason": "Provider/shared protected shell and responsive grid.",
+      "knownDependents": [
+        "AppRoutes.jsx"
+      ],
+      "requiredPreChecks": [
+        "Auth loading",
+        "collapse",
+        "mobile",
+        "overflow"
+      ]
+    },
+    {
+      "filePath": "client/src/layouts/ClientLayout.jsx",
+      "category": "dashboard",
+      "reason": "Client protected shell.",
+      "knownDependents": [
+        "AppRoutes.jsx"
+      ],
+      "requiredPreChecks": [
+        "Sidebar",
+        "topbar",
+        "drawer",
+        "wrong-role behavior"
+      ]
+    },
+    {
+      "filePath": "client/src/layouts/AdminLayout.jsx",
+      "category": "dashboard",
+      "reason": "Admin protected shell.",
+      "knownDependents": [
+        "AppRoutes.jsx",
+        "layout barrel"
+      ],
+      "requiredPreChecks": [
+        "Admin roles",
+        "content flash",
+        "drawer"
+      ]
+    },
+    {
+      "filePath": "client/src/layouts/WorkspaceLayout.jsx",
+      "category": "dashboard",
+      "reason": "Compatibility workspace shell still used by saved/workspace views.",
+      "knownDependents": [
+        "pages/Saved.jsx",
+        "layout barrel"
+      ],
+      "requiredPreChecks": [
+        "Direct callers and route ownership"
+      ]
+    },
+    {
+      "filePath": "client/src/layouts/useSidebarShell.js",
+      "category": "dashboard",
+      "reason": "Shared layout state bridge across three dashboards.",
+      "knownDependents": [
+        "Admin",
+        "Client",
+        "Dashboard layouts"
+      ],
+      "requiredPreChecks": [
+        "State lifecycle",
+        "breakpoints",
+        "callbacks"
+      ]
+    },
+    {
+      "filePath": "client/src/components/navigation/sidebar/SidebarCore.jsx",
+      "category": "dashboard",
+      "reason": "Universal sidebar rendering and filtering.",
+      "knownDependents": [
+        "Provider",
+        "client",
+        "admin sidebar wrappers"
+      ],
+      "requiredPreChecks": [
+        "Nav schema",
+        "filters",
+        "tooltips",
+        "groups"
+      ]
+    },
+    {
+      "filePath": "client/src/hooks/useSidebarState.js",
+      "category": "dashboard",
+      "reason": "Collapse persistence and mobile open state used by eight components.",
+      "knownDependents": [
+        "Sidebars",
+        "topbars",
+        "mobile drawers"
+      ],
+      "requiredPreChecks": [
+        "SSR safety",
+        "localStorage",
+        "mobile independence"
+      ]
+    },
+    {
+      "filePath": "client/src/config/navigation/providerNavigation.js",
+      "category": "dashboard",
+      "reason": "Provider acquisition workflow navigation.",
+      "knownDependents": [
+        "Navigation constants/sidebar"
+      ],
+      "requiredPreChecks": [
+        "Paths",
+        "order",
+        "roles",
+        "future items"
+      ]
+    },
+    {
+      "filePath": "client/src/config/navigation/clientNavigation.js",
+      "category": "dashboard",
+      "reason": "Buyer workflow navigation.",
+      "knownDependents": [
+        "Navigation constants/sidebar"
+      ],
+      "requiredPreChecks": [
+        "Paths",
+        "order",
+        "roles",
+        "future items"
+      ]
+    },
+    {
+      "filePath": "client/src/config/navigation/adminNavigation.js",
+      "category": "dashboard",
+      "reason": "Admin operational navigation.",
+      "knownDependents": [
+        "Navigation constants/sidebar"
+      ],
+      "requiredPreChecks": [
+        "Admin/moderator visibility and routes"
+      ]
+    },
+    {
+      "filePath": "client/package.json",
+      "category": "config",
+      "reason": "Defines frontend dependencies and scripts.",
+      "knownDependents": [
+        "Build/deploy/CI"
+      ],
+      "requiredPreChecks": [
+        "Lockfile",
+        "build",
+        "lint",
+        "browser smoke test"
+      ]
+    },
+    {
+      "filePath": "server/package.json",
+      "category": "config",
+      "reason": "Defines backend dependencies and scripts.",
+      "knownDependents": [
+        "Runtime/deploy/CI"
+      ],
+      "requiredPreChecks": [
+        "Lockfile",
+        "startup",
+        "API smoke test"
+      ]
+    },
+    {
+      "filePath": "client/vite.config.js",
+      "category": "config",
+      "reason": "Controls Vite aliases/build/dev behavior.",
+      "knownDependents": [
+        "Frontend toolchain"
+      ],
+      "requiredPreChecks": [
+        "Aliases",
+        "proxy",
+        "output",
+        "ProofArena alias"
+      ]
+    },
+    {
+      "filePath": "client/jsconfig.json",
+      "category": "config",
+      "reason": "Defines editor/module path resolution.",
+      "knownDependents": [
+        "Frontend imports/tooling"
+      ],
+      "requiredPreChecks": [
+        "Alias consistency with Vite"
+      ]
+    },
+    {
+      "filePath": "client/vercel.json",
+      "category": "config",
+      "reason": "Frontend deployment routing/configuration.",
+      "knownDependents": [
+        "Vercel deployment"
+      ],
+      "requiredPreChecks": [
+        "SPA rewrites",
+        "project root",
+        "environment"
+      ]
+    },
+    {
+      "filePath": "server/vercel.json",
+      "category": "config",
+      "reason": "Backend deployment/runtime configuration.",
+      "knownDependents": [
+        "Vercel deployment"
+      ],
+      "requiredPreChecks": [
+        "Function runtime",
+        "route mapping",
+        "limits"
+      ]
+    },
+    {
+      "filePath": "server/src/config/env.js",
+      "category": "config",
+      "reason": "Validates and exposes server environment to 23 importers.",
+      "knownDependents": [
+        "App",
+        "DB",
+        "CORS",
+        "services"
+      ],
+      "requiredPreChecks": [
+        "Required variables",
+        "defaults",
+        "secrecy"
+      ]
+    },
+    {
+      "filePath": "server/src/config/loadEnv.js",
+      "category": "config",
+      "reason": "Loads environment before validation.",
+      "knownDependents": [
+        "env.js"
+      ],
+      "requiredPreChecks": [
+        "Load order and environment precedence"
+      ]
+    },
+    {
+      "filePath": "client/src/components/ui/Button.jsx",
+      "category": "shared",
+      "reason": "Shared command/navigation styling used by 155 direct importers.",
+      "knownDependents": [
+        "UI across all domains"
+      ],
+      "requiredPreChecks": [
+        "Variants",
+        "link behavior",
+        "disabled state"
+      ]
+    },
+    {
+      "filePath": "client/src/components/ui/PageHeader.jsx",
+      "category": "shared",
+      "reason": "Shared page title/actions composition.",
+      "knownDependents": [
+        "Admin",
+        "client",
+        "common placeholder wrappers"
+      ],
+      "requiredPreChecks": [
+        "Heading hierarchy",
+        "action wrapping",
+        "breadcrumbs"
+      ]
+    },
+    {
+      "filePath": "client/src/components/states/AppStateShell.jsx",
+      "category": "shared",
+      "reason": "Base for loading/empty/error/coming-soon states.",
+      "knownDependents": [
+        "Six state components/exports"
+      ],
+      "requiredPreChecks": [
+        "ARIA",
+        "actions",
+        "route validation"
+      ]
+    },
+    {
+      "filePath": "client/src/styles/tokens.css",
+      "category": "shared",
+      "reason": "Shared visual/accessibility token source.",
+      "knownDependents": [
+        "Global CSS cascade"
+      ],
+      "requiredPreChecks": [
+        "Contrast",
+        "focus",
+        "theme",
+        "responsive snapshots"
+      ]
+    },
+    {
+      "filePath": "client/src/utils/accessPolicy.js",
+      "category": "shared",
+      "reason": "Central route/nav visibility and dashboard fallback policy.",
+      "knownDependents": [
+        "Fourteen layouts/navigation/system consumers"
+      ],
+      "requiredPreChecks": [
+        "Guest/provider/client/admin/unknown matrix"
+      ]
+    },
+    {
+      "filePath": "client/src/utils/navigationFilter.js",
+      "category": "shared",
+      "reason": "Filters public/footer/sidebar navigation by context.",
+      "knownDependents": [
+        "Header",
+        "Footer",
+        "SidebarCore"
+      ],
+      "requiredPreChecks": [
+        "Hidden/disabled/future behavior"
+      ]
+    },
+    {
+      "filePath": "client/src/utils/routeValidation.js",
+      "category": "shared",
+      "reason": "Route safety used by system/state pages.",
+      "knownDependents": [
+        "AppStateShell.jsx",
+        "NotFound.jsx"
+      ],
+      "requiredPreChecks": [
+        "Known patterns",
+        "fallbacks",
+        "dynamic routes"
+      ]
+    },
+    {
+      "filePath": "scripts/check-module-boundaries.mjs",
+      "category": "shared",
+      "reason": "Enforces module dependency direction for client/server.",
+      "knownDependents": [
+        "Governance/CI command"
+      ],
+      "requiredPreChecks": [
+        "Existing rules",
+        "false positives",
+        "both scopes"
+      ]
+    }
+  ],
+  "forbiddenActions": [
+    {
+      "id": "FA-001",
+      "action": "Create a separate ProofArena app, repository, router, or deployment.",
+      "whyForbidden": "It duplicates the verified ScaleOps platform boundary.",
+      "saferAlternative": "Extend the existing ProofArena module boundary",
+      "allowedOnlyAfter": "Stage 2 ADR explicitly changes product boundary"
+    },
+    {
+      "id": "FA-002",
+      "action": "Create another route-constant registry.",
+      "whyForbidden": "routes.js already owns centralized paths.",
+      "saferAlternative": "Add to the existing constants",
+      "allowedOnlyAfter": "Stage 4 route migration with all importers updated"
+    },
+    {
+      "id": "FA-003",
+      "action": "Create another frontend router or hidden nested route stack.",
+      "whyForbidden": "AppRoutes.jsx owns route and guard composition.",
+      "saferAlternative": "Register through current router",
+      "allowedOnlyAfter": "Route-governance ADR and migration tests"
+    },
+    {
+      "id": "FA-004",
+      "action": "Create another public/provider/client/admin layout for the same surface.",
+      "whyForbidden": "Current shells and compatibility layouts already overlap.",
+      "saferAlternative": "Reuse the owning layout",
+      "allowedOnlyAfter": "Stage 1.2 ownership decision and browser tests"
+    },
+    {
+      "id": "FA-005",
+      "action": "Create another sidebar engine or manually duplicate nav rendering.",
+      "whyForbidden": "SidebarCore already handles rendering, active state, filtering, and accessibility.",
+      "saferAlternative": "Add a thin wrapper/config",
+      "allowedOnlyAfter": "Shared-navigation ADR"
+    },
+    {
+      "id": "FA-006",
+      "action": "Create another auth provider, user store, or route-guard family.",
+      "whyForbidden": "Current auth state and compatibility layers are already complex.",
+      "saferAlternative": "Reuse existing provider/store/guards",
+      "allowedOnlyAfter": "Stage 23 canonical-auth migration"
+    },
+    {
+      "id": "FA-007",
+      "action": "Bypass route guards or render protected content before auth resolves.",
+      "whyForbidden": "It creates security UX leaks and redirect instability.",
+      "saferAlternative": "Preserve hydration and role guards",
+      "allowedOnlyAfter": "Never without approved security design"
+    },
+    {
+      "id": "FA-008",
+      "action": "Hardcode role or permission logic in arbitrary UI components.",
+      "whyForbidden": "Central access policy and backend middleware already exist.",
+      "saferAlternative": "Extend centralized policy and backend enforcement",
+      "allowedOnlyAfter": "Stage 26 permission model"
+    },
+    {
+      "id": "FA-009",
+      "action": "Create another Axios/fetch client or make raw component requests.",
+      "whyForbidden": "apiClient.js owns credentials, refresh, and errors.",
+      "saferAlternative": "Add/reuse a feature service using apiClient",
+      "allowedOnlyAfter": "Stage 5 client migration"
+    },
+    {
+      "id": "FA-010",
+      "action": "Add a third backend API registry or silently change mount prefixes.",
+      "whyForbidden": "Two active registries already expose 233 dual mounts.",
+      "saferAlternative": "Extend the approved registry deliberately",
+      "allowedOnlyAfter": "API-version ADR and compatibility telemetry"
+    },
+    {
+      "id": "FA-011",
+      "action": "Put substantial business logic in route files.",
+      "whyForbidden": "The verified normal flow is route-controller-service-model.",
+      "saferAlternative": "Add to the owning controller/service",
+      "allowedOnlyAfter": "Explicit exception with tests"
+    },
+    {
+      "id": "FA-012",
+      "action": "Add another auth, role, validation, error, rate-limit, or sanitization middleware generation.",
+      "whyForbidden": "Parallel generations already create governance risk.",
+      "saferAlternative": "Reuse the mapped route middleware",
+      "allowedOnlyAfter": "Stage 23/26 consolidation plan"
+    },
+    {
+      "id": "FA-013",
+      "action": "Edit or merge models without reading the model usage map.",
+      "whyForbidden": "Aliases, overlaps, references, and sensitive fields are active.",
+      "saferAlternative": "Preserve schema; document proposed migration",
+      "allowedOnlyAfter": "Data migration, rollback, and tests"
+    },
+    {
+      "id": "FA-014",
+      "action": "Delete files because they appear unused.",
+      "whyForbidden": "Dynamic imports, aliases, compatibility exports, or runtime registration may not be obvious.",
+      "saferAlternative": "Mark candidate in duplicate radar",
+      "allowedOnlyAfter": "Zero-caller proof plus runtime tests"
+    },
+    {
+      "id": "FA-015",
+      "action": "Merge overlapping Challenge, Settings, User, Profile, or middleware files immediately.",
+      "whyForbidden": "Canonical ownership is not established.",
+      "saferAlternative": "Retain compatibility and investigate",
+      "allowedOnlyAfter": "Stage 1.3 ADR and data/caller evidence"
+    },
+    {
+      "id": "FA-016",
+      "action": "Modify package, lock, environment, build, or deployment files casually.",
+      "whyForbidden": "These files control runtime and deployment topology.",
+      "saferAlternative": "Document required change first",
+      "allowedOnlyAfter": "Stage 6/config approval with validation"
+    },
+    {
+      "id": "FA-017",
+      "action": "Copy secrets or real environment values into code or documentation.",
+      "whyForbidden": "It exposes credentials and violates audit boundaries.",
+      "saferAlternative": "Refer only to variable names and secret-management docs",
+      "allowedOnlyAfter": "Never"
+    },
+    {
+      "id": "FA-018",
+      "action": "Add dependencies without explicit stage approval.",
+      "whyForbidden": "It changes build/runtime risk outside the audited architecture.",
+      "saferAlternative": "Use existing dependencies or document the need",
+      "allowedOnlyAfter": "Approved implementation stage and dependency review"
+    },
+    {
+      "id": "FA-019",
+      "action": "Convert placeholders or preview data into fake production behavior.",
+      "whyForbidden": "Business-looking fallbacks can hide API failures and mislead users.",
+      "saferAlternative": "Keep clearly labeled placeholder or use honest empty/error state",
+      "allowedOnlyAfter": "Owning feature stage with real contract/data"
+    },
+    {
+      "id": "FA-020",
+      "action": "Move code across module/shared boundaries without checking imports.",
+      "whyForbidden": "Shared-to-feature dependencies and cycles can result.",
+      "saferAlternative": "Move one tested vertical slice with public exports",
+      "allowedOnlyAfter": "Stage 3 boundary plan and passing boundary checker"
+    }
+  ],
+  "futureStageImpact": [
+    {
+      "stage": "1.2",
+      "stageName": "Duplicate systems and placeholders",
+      "relevantFindings": [
+        "28 overlap candidates",
+        "48 placeholder/mock items",
+        "compatibility generations"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/layouts/",
+        "client/src/features/auth/",
+        "client/src/services/api.js",
+        "client/src/pages/RouteShells.jsx",
+        "server/src/models/",
+        "server/src/middleware/"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_DUPLICATE_OVERLAP_RADAR.md",
+        "docs/architecture/STAGE_1_1_PLACEHOLDER_MOCK_SYSTEM_REPORT.md",
+        "docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md"
+      ]
+    },
+    {
+      "stage": "1.3",
+      "stageName": "Architecture decision records",
+      "relevantFindings": [
+        "Fourteen unresolved governance decisions"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/routes/AppRoutes.jsx",
+        "client/src/services/apiClient.js",
+        "client/src/layouts/",
+        "server/src/routes/",
+        "server/src/modules/auth/",
+        "server/src/models/"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_ADR_CANDIDATES.md",
+        "docs/architecture/STAGE_1_1_ARCHITECTURE_INVARIANTS.md",
+        "docs/architecture/STAGE_1_1_SOURCE_OF_TRUTH_SUMMARY.md"
+      ]
+    },
+    {
+      "stage": "2",
+      "stageName": "ScaleOps parent boundary",
+      "relevantFindings": [
+        "ProofArena already exists as an internal module and composes established domains"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/modules/proofarena/",
+        "server/src/modules/proofarena/",
+        "scripts/check-module-boundaries.mjs"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_ARCHITECTURE_INVARIANTS.md",
+        "docs/architecture/STAGE_1_1_DO_NOT_DUPLICATE_REGISTRY.md"
+      ]
+    },
+    {
+      "stage": "3",
+      "stageName": "Feature module boundary",
+      "relevantFindings": [
+        "Layer-oriented backend and feature-oriented frontend need vertical migration rules"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/features/",
+        "server/src/routes/",
+        "server/src/controllers/",
+        "server/src/services/",
+        "server/src/models/"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_BOUNDARY_VIOLATION_REPORT.md",
+        "docs/architecture/STAGE_1_1_DEPENDENCY_MAP.md",
+        "docs/architecture/STAGE_1_1_ADR_CANDIDATES.md"
+      ]
+    },
+    {
+      "stage": "4",
+      "stageName": "Route governance",
+      "relevantFindings": [
+        "108 routes",
+        "central constants",
+        "34 metadata gaps",
+        "aliases and layouts"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/routes/AppRoutes.jsx",
+        "client/src/constants/routes.js",
+        "client/src/config/routeMetadata.js"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_ROUTE_INVENTORY.md",
+        "docs/architecture/STAGE_1_1_ROUTE_DEPENDENCY_MAP.md",
+        "docs/architecture/STAGE_1_1_ARCHITECTURE_INVARIANTS.md"
+      ]
+    },
+    {
+      "stage": "5",
+      "stageName": "API contract layer",
+      "relevantFindings": [
+        "304 operations/537 variants",
+        "436 strict full-chain mappings",
+        "legacy frontend facade"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/services/apiClient.js",
+        "client/src/services/apiContracts.js",
+        "server/src/routes/index.js",
+        "server/src/routes/v1/index.js",
+        "server/src/utils/apiResponse.js"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_API_INVENTORY.md",
+        "docs/architecture/STAGE_1_1_TRACEABILITY_MATRIX.md",
+        "docs/architecture/STAGE_1_1_BACKEND_FLOW_MAP.md"
+      ]
+    },
+    {
+      "stage": "6",
+      "stageName": "Environment/config layer",
+      "relevantFindings": [
+        "Separate client/server packages",
+        "deployment configs",
+        "Vite aliases",
+        "env loaders"
+      ],
+      "likelyAffectedFiles": [
+        "client/package.json",
+        "server/package.json",
+        "client/vite.config.js",
+        "client/jsconfig.json",
+        "client/vercel.json",
+        "server/vercel.json",
+        "server/src/config/env.js",
+        "server/src/config/loadEnv.js"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_REPO_INVENTORY.md",
+        "docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md"
+      ]
+    },
+    {
+      "stage": "7",
+      "stageName": "Design tokens/shared UI base",
+      "relevantFindings": [
+        "tokens.css and high-fan-in UI primitives coexist with wrappers"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/styles/tokens.css",
+        "client/src/components/ui/",
+        "client/src/components/common/",
+        "client/src/components/Button.jsx"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_REUSABLE_CODE_MAP.md",
+        "docs/architecture/STAGE_1_1_DUPLICATE_OVERLAP_RADAR.md",
+        "docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md"
+      ]
+    },
+    {
+      "stage": "8",
+      "stageName": "Error/loading/empty states",
+      "relevantFindings": [
+        "Shared state system coexists with legacy state components and placeholders"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/components/states/",
+        "client/src/components/ui/EmptyState.jsx",
+        "client/src/components/ui/ErrorState.jsx",
+        "client/src/pages/NotFound.jsx",
+        "client/src/pages/NotAuthorized.jsx"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_PLACEHOLDER_MOCK_SYSTEM_REPORT.md",
+        "docs/architecture/STAGE_1_1_REUSABLE_CODE_MAP.md"
+      ]
+    },
+    {
+      "stage": "9",
+      "stageName": "Performance baseline",
+      "relevantFindings": [
+        "High fan-in shared UI",
+        "route filtering",
+        "shell state",
+        "API interceptors",
+        "no maintained tests"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/components/ui/Button.jsx",
+        "client/src/components/navigation/sidebar/",
+        "client/src/layouts/",
+        "client/src/services/apiClient.js"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_DEPENDENCY_MAP.md",
+        "docs/architecture/STAGE_1_1_AUDIT_COVERAGE_REPORT.md",
+        "docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md"
+      ]
+    },
+    {
+      "stage": "10",
+      "stageName": "Technical documentation",
+      "relevantFindings": [
+        "36 Stage 1.1 docs after this guardrail pack need a maintained index/order"
+      ],
+      "likelyAffectedFiles": [
+        "docs/architecture/"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_FINAL_DOC_INDEX.md",
+        "docs/architecture/STAGE_1_1_CONSISTENCY_CHECK.md"
+      ]
+    },
+    {
+      "stage": "22",
+      "stageName": "Public navigation",
+      "relevantFindings": [
+        "Config-driven public nav",
+        "header rendering",
+        "metadata",
+        "auth CTA policy"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/config/navigation/publicNavigation.js",
+        "client/src/components/Header.jsx",
+        "client/src/components/navigation/PublicNavbar.jsx",
+        "client/src/config/routeMetadata.js",
+        "client/src/utils/accessPolicy.js"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_ROUTE_DEPENDENCY_MAP.md",
+        "docs/architecture/STAGE_1_1_DO_NOT_DUPLICATE_REGISTRY.md",
+        "docs/architecture/STAGE_1_1_FUTURE_PROMPT_PREFLIGHT_CHECKLIST.md"
+      ]
+    },
+    {
+      "stage": "23",
+      "stageName": "Authentication/roles/security",
+      "relevantFindings": [
+        "Frontend provider/store/guards and multiple backend auth generations"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/features/auth/AuthProvider.jsx",
+        "client/src/store/useAuthStore.js",
+        "client/src/routes/",
+        "server/src/modules/auth/",
+        "server/src/middleware/auth.middleware.js",
+        "server/src/middleware/authMiddleware.js"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md",
+        "docs/architecture/STAGE_1_1_BACKEND_FLOW_MAP.md",
+        "docs/architecture/STAGE_1_1_DUPLICATE_OVERLAP_RADAR.md"
+      ]
+    },
+    {
+      "stage": "26",
+      "stageName": "Role permission matrix",
+      "relevantFindings": [
+        "Central frontend policy and parallel backend role middleware"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/utils/accessPolicy.js",
+        "client/src/features/auth/roleAccess.js",
+        "client/src/config/routeMetadata.js",
+        "server/src/middleware/role.middleware.js",
+        "server/src/middleware/roleMiddleware.js"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_ROUTE_DEPENDENCY_MAP.md",
+        "docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md",
+        "docs/architecture/STAGE_1_1_ADR_CANDIDATES.md"
+      ]
+    },
+    {
+      "stage": "36",
+      "stageName": "Provider dashboard",
+      "relevantFindings": [
+        "Real shared shell/sidebar plus provider navigation and placeholders"
+      ],
+      "likelyAffectedFiles": [
+        "client/src/layouts/DashboardLayout.jsx",
+        "client/src/components/navigation/sidebar/SidebarCore.jsx",
+        "client/src/config/navigation/providerNavigation.js",
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md",
+        "docs/architecture/STAGE_1_1_ROUTE_DEPENDENCY_MAP.md",
+        "docs/architecture/STAGE_1_1_PLACEHOLDER_MOCK_SYSTEM_REPORT.md"
+      ]
+    },
+    {
+      "stage": "37",
+      "stageName": "Provider discovery/marketplace",
+      "relevantFindings": [
+        "Provider search/public services",
+        "profile models",
+        "client provider routes"
+      ],
+      "likelyAffectedFiles": [
+        "server/src/services/providerSearchService.js",
+        "server/src/services/providerPublicService.js",
+        "server/src/controllers/providerSearchController.js",
+        "server/src/models/ProviderProfile.js",
+        "server/src/models/UserProfile.js",
+        "client/src/features/providers/"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_API_INVENTORY.md",
+        "docs/architecture/STAGE_1_1_MODEL_USAGE_MAP.md",
+        "docs/architecture/STAGE_1_1_TRACEABILITY_MATRIX.md"
+      ]
+    },
+    {
+      "stage": "44",
+      "stageName": "Opportunity pipeline",
+      "relevantFindings": [
+        "Opportunity",
+        "matching",
+        "execution-plan",
+        "offer",
+        "and proof domains are connected"
+      ],
+      "likelyAffectedFiles": [
+        "server/src/services/opportunityPipeline.service.js",
+        "server/src/controllers/opportunityPipeline.controller.js",
+        "server/src/models/OpportunityPipelineItem.model.js",
+        "server/src/models/MatchRecord.model.js",
+        "server/src/models/ExecutionPlan.model.js",
+        "server/src/models/OutcomeOffer.model.js",
+        "server/src/models/ProofAsset.model.js"
+      ],
+      "requiredDocsBeforeStart": [
+        "docs/architecture/STAGE_1_1_BACKEND_FLOW_MAP.md",
+        "docs/architecture/STAGE_1_1_MODEL_USAGE_MAP.md",
+        "docs/architecture/STAGE_1_1_ARCHITECTURE_INVARIANTS.md"
+      ]
+    }
+  ],
+  "unknowns": [
+    {
+      "item": "VerifiedOutcome model",
+      "reason": "ProviderProfile references it but no registered model exists.",
+      "status": "UNKNOWN"
+    },
+    {
+      "item": "Runtime route/API correctness",
+      "reason": "No maintained automated test suite exists.",
+      "status": "BLOCKED"
+    },
+    {
+      "item": "Database index adequacy",
+      "reason": "Requires production-like query plans and cardinality.",
+      "status": "UNKNOWN"
+    },
+    {
+      "item": "Seven unmapped page files",
+      "reason": "May be legacy, indirect, or dead; source evidence cannot prove intent.",
+      "status": "UNKNOWN"
+    },
+    {
+      "item": "Six controller-file-level service flows",
+      "reason": "Static handler isolation cannot prove the exact service symbol.",
+      "status": "PARTIAL"
+    },
+    {
+      "item": "Four inline endpoint operations",
+      "reason": "No controller/service boundary exists by design.",
+      "status": "PARTIAL"
+    },
+    {
+      "item": "Thirty-four route metadata gaps",
+      "reason": "Router declarations have no matching metadata record.",
+      "status": "KNOWN GAP"
+    },
+    {
+      "item": "Production model/index ownership",
+      "reason": "Static schemas do not prove deployed collection/index state.",
+      "status": "UNKNOWN"
+    }
+  ],
+  "docsCreated": [
+    "STAGE_1_1_ARCHITECTURE_INVARIANTS.md",
+    "STAGE_1_1_DO_NOT_DUPLICATE_REGISTRY.md",
+    "STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md",
+    "STAGE_1_1_FUTURE_PROMPT_PREFLIGHT_CHECKLIST.md",
+    "STAGE_1_1_FORBIDDEN_ACTIONS_MANIFEST.md",
+    "STAGE_1_1_ADR_CANDIDATES.md",
+    "STAGE_1_1_FUTURE_STAGE_IMPACT_MAP.md",
+    "stage-1-1-guardrail-manifest.json",
+    "STAGE_1_1_COMPLETION_READINESS_REVIEW.md",
+    "STAGE_1_1_FINAL_DOC_INDEX.md"
+  ],
+  "docsUpdated": []
+}

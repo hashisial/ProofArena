@@ -1,0 +1,3126 @@
+{
+  "projectName": "ScaleOps / ProofArena",
+  "parentProduct": "ScaleOps",
+  "flagshipModule": "ProofArena",
+  "stage": "1.2",
+  "promptNumber": 7,
+  "purpose": "Create surgical cleanup specification and future execution blueprint for duplicate layouts, route constants, API clients, and placeholders",
+  "generatedAt": "2026-06-27T12:30:00Z",
+  "productionCodeModified": false,
+  "cleanupCandidates": [
+    {
+      "id": "CLN-LAY-001",
+      "category": "layout",
+      "files": [
+        "client/src/layouts/PublicLayout.jsx",
+        "client/src/layouts/RootLayout.jsx",
+        "client/src/components/Layout.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Existing role layout owner; shared primitive only after tests",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding LAY-001"
+      ],
+      "affectedRoutes": [
+        "Role/public routes owned by listed layout"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-LAY-002",
+      "category": "layout",
+      "files": [
+        "client/src/components/Header.jsx",
+        "client/src/components/navigation/PublicNavbar.jsx",
+        "client/src/components/Footer.jsx",
+        "client/src/components/common/Footer.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "Existing role layout owner; shared primitive only after tests",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding LAY-002"
+      ],
+      "affectedRoutes": [
+        "Role/public routes owned by listed layout"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-LAY-003",
+      "category": "dashboard-shell",
+      "files": [
+        "client/src/layouts/DashboardLayout.jsx",
+        "client/src/layouts/ClientLayout.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Existing role layout owner; shared primitive only after tests",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding LAY-003"
+      ],
+      "affectedRoutes": [
+        "Role/public routes owned by listed layout"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-LAY-004",
+      "category": "dashboard-shell",
+      "files": [
+        "client/src/layouts/AdminLayout.jsx",
+        "client/src/layouts/DashboardLayout.jsx",
+        "client/src/layouts/ClientLayout.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Existing role layout owner; shared primitive only after tests",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding LAY-004"
+      ],
+      "affectedRoutes": [
+        "Role/public routes owned by listed layout"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-LAY-005",
+      "category": "layout",
+      "files": [
+        "client/src/components/dashboard/DashboardContentShell.jsx",
+        "client/src/components/client/ClientContentShell.jsx",
+        "client/src/layouts/AdminLayout.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Existing role layout owner; shared primitive only after tests",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding LAY-005"
+      ],
+      "affectedRoutes": [
+        "Role/public routes owned by listed layout"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-LAY-006",
+      "category": "layout",
+      "files": [
+        "client/src/components/dashboard/MobileDashboardSidebar.jsx",
+        "client/src/components/client/MobileClientSidebar.jsx",
+        "client/src/layouts/AdminLayout.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Existing role layout owner; shared primitive only after tests",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding LAY-006"
+      ],
+      "affectedRoutes": [
+        "Role/public routes owned by listed layout"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-LAY-007",
+      "category": "layout",
+      "files": [
+        "client/src/components/navigation/DashboardTopbar.jsx",
+        "client/src/components/client/ClientTopbar.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Existing role layout owner; shared primitive only after tests",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding LAY-007"
+      ],
+      "affectedRoutes": [
+        "Role/public routes owned by listed layout"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-LAY-008",
+      "category": "layout",
+      "files": [
+        "client/src/components/navigation/AdminTopbar.jsx",
+        "client/src/components/navigation/DashboardTopbar.jsx",
+        "client/src/components/client/ClientTopbar.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Existing role layout owner; shared primitive only after tests",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding LAY-008"
+      ],
+      "affectedRoutes": [
+        "Role/public routes owned by listed layout"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-LAY-009",
+      "category": "layout",
+      "files": [
+        "client/src/components/navigation/DashboardSidebar.jsx",
+        "client/src/components/client/ClientSidebar.jsx",
+        "client/src/components/navigation/AdminSidebar.jsx",
+        "client/src/components/navigation/sidebar/SidebarCore.jsx"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "client/src/components/navigation/sidebar/SidebarCore.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding LAY-009"
+      ],
+      "affectedRoutes": [
+        "Role/public routes owned by listed layout"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-LAY-010",
+      "category": "layout",
+      "files": [
+        "client/src/layouts/WorkspaceLayout.jsx",
+        "client/src/components/SaaSLayout.jsx",
+        "client/src/layouts/DashboardLayout.jsx"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "Existing role layout owner; shared primitive only after tests",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding LAY-010"
+      ],
+      "affectedRoutes": [
+        "Role/public routes owned by listed layout"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-001",
+      "category": "route-constant",
+      "files": [
+        "client/src/constants/routes.js"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-001"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-002",
+      "category": "hardcoded-path",
+      "files": [
+        "client/src/components/Layout.jsx",
+        "client/src/constants/routes.js",
+        "client/src/routes/AppRoutes.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-002"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-003",
+      "category": "route-constant",
+      "files": [
+        "client/src/pages/Blogs.jsx",
+        "client/src/pages/Services.jsx",
+        "client/src/sections/CTASection.jsx",
+        "client/src/sections/PortfolioPreview.jsx",
+        "client/src/sections/MarketplacePreview.jsx",
+        "client/src/constants/routes.js"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-003"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-004",
+      "category": "route-constant",
+      "files": [
+        "client/src/pages/Auth.jsx",
+        "client/src/pages/Account.jsx",
+        "client/src/utils/routeValidation.js",
+        "client/src/constants/routes.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-004"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-005",
+      "category": "route-constant",
+      "files": [
+        "client/src/pages/Marketplace.jsx",
+        "client/src/sections/MarketplacePreview.jsx",
+        "client/src/constants/routes.js"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-005"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-006",
+      "category": "route-constant",
+      "files": [
+        "client/src/pages/Admin.jsx",
+        "client/src/constants/routes.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-006"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-007",
+      "category": "route-constant",
+      "files": [
+        "client/src/components/SaaSLayout.jsx",
+        "client/src/pages/Auth.jsx",
+        "client/src/pages/Profile.jsx",
+        "client/src/constants/routes.js"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-007"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-008",
+      "category": "route-constant",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/components/providers/ProviderComparisonModal.jsx",
+        "client/src/components/providers/SavedProviderCard.jsx",
+        "client/src/features/providers/ProviderComparisonProvider.jsx",
+        "client/src/features/providers/providerComparisonUtils.js",
+        "client/src/pages/PublicProfile.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-008"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-009",
+      "category": "route-constant",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/components/challenges/ChallengeCard.jsx",
+        "client/src/features/firstClient/firstClientUtils.js",
+        "client/src/features/matches/matchUtils.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-009"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-010",
+      "category": "route-constant",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/pages/Marketplace.jsx",
+        "client/src/pages/Saved.jsx",
+        "client/src/sections/MarketplacePreview.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-010"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-011",
+      "category": "route-constant",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/config/navigation/clientNavigation.js",
+        "client/src/routes/AppRoutes.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-011"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-012",
+      "category": "route-constant",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/routes/AppRoutes.jsx",
+        "client/src/config/navigation/adminNavigation.js",
+        "client/src/pages/Admin.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-012"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-013",
+      "category": "route-constant",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/constants/apiEndpoints.js",
+        "client/src/services/api.js"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-013"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-014",
+      "category": "route-constant",
+      "files": [
+        "client/src/features/challenges/challengeUtils.js",
+        "client/src/features/executionPlans/executionPlanUtils.js",
+        "client/src/features/firstClient/firstClientUtils.js",
+        "client/src/features/matches/matchUtils.js",
+        "client/src/features/opportunities/opportunityUtils.js",
+        "client/src/features/outcomeOffers/outcomeOfferUtils.js",
+        "client/src/features/proofAssets/proofAssetUtils.js"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/constants/apiEndpoints.js after API-version decision",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-014"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [
+        "See STAGE_1_1_API_INVENTORY.md"
+      ],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-015",
+      "category": "navigation",
+      "files": [
+        "client/src/components/Header.jsx",
+        "client/src/utils/navigationActive.js",
+        "client/src/utils/routeHelpers.js"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-015"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-016",
+      "category": "route-constant",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/utils/routeValidation.js",
+        "client/src/utils/routeMetadata.js",
+        "client/src/utils/accessPolicy.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-016"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-017",
+      "category": "route-constant",
+      "files": [
+        "client/src/utils/getDashboardPathForRole.js",
+        "client/src/utils/accessPolicy.js"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-017"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-018",
+      "category": "route-constant",
+      "files": [
+        "client/src/constants/apiEndpoints.js",
+        "client/src/services/api.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/constants/apiEndpoints.js after API-version decision",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-018"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [
+        "See STAGE_1_1_API_INVENTORY.md"
+      ],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-019",
+      "category": "route-constant",
+      "files": [
+        "client/src/routes/AppRoutes.jsx",
+        "client/src/config/routeMetadata.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-019"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-RTE-020",
+      "category": "route-constant",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/config/navigation/publicNavigation.js",
+        "client/src/routes/AppRoutes.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/constants/routes.js and client/src/routes/AppRoutes.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding RTE-020"
+      ],
+      "affectedRoutes": [
+        "See STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md"
+      ],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-API-001",
+      "category": "api-client",
+      "files": [
+        "client/src/services/apiClient.js",
+        "client/src/services/api.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/services/apiClient.js plus domain services",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding API-001"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [
+        "See STAGE_1_1_API_INVENTORY.md"
+      ],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-API-002",
+      "category": "service",
+      "files": [
+        "client/src/services/api.js",
+        "client/src/features/auth/authService.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/services/apiClient.js plus domain services",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding API-002"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [
+        "See STAGE_1_1_API_INVENTORY.md"
+      ],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-API-003",
+      "category": "service",
+      "files": [
+        "client/src/services/api.js",
+        "client/src/features/profile/profileService.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/services/apiClient.js plus domain services",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding API-003"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [
+        "See STAGE_1_1_API_INVENTORY.md"
+      ],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-API-004",
+      "category": "service",
+      "files": [
+        "client/src/services/api.js",
+        "client/src/features/dashboard/dashboardService.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/services/apiClient.js plus domain services",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding API-004"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [
+        "See STAGE_1_1_API_INVENTORY.md"
+      ],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-API-005",
+      "category": "api-client",
+      "files": [
+        "client/src/constants/apiEndpoints.js",
+        "client/src/services/api.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/services/apiClient.js plus domain services",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding API-005"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [
+        "See STAGE_1_1_API_INVENTORY.md"
+      ],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-API-006",
+      "category": "api-client",
+      "files": [
+        "client/src/features/challenges/challengeUtils.js",
+        "client/src/features/executionPlans/executionPlanUtils.js",
+        "client/src/features/firstClient/firstClientUtils.js",
+        "client/src/features/matches/matchUtils.js",
+        "client/src/features/opportunities/opportunityUtils.js",
+        "client/src/features/outcomeOffers/outcomeOfferUtils.js",
+        "client/src/features/proofAssets/proofAssetUtils.js"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/services/apiClient.js plus domain services",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding API-006"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [
+        "See STAGE_1_1_API_INVENTORY.md"
+      ],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-API-007",
+      "category": "utility",
+      "files": [
+        "client/src/features/challenges/challengeUtils.js",
+        "client/src/features/executionPlans/executionPlanUtils.js",
+        "client/src/features/firstClient/firstClientUtils.js",
+        "client/src/features/matches/matchUtils.js",
+        "client/src/features/opportunities/opportunityUtils.js",
+        "client/src/features/outcomeOffers/outcomeOfferUtils.js",
+        "client/src/features/proofAssets/proofAssetUtils.js"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/services/apiClient.js plus domain services",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding API-007"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [
+        "See STAGE_1_1_API_INVENTORY.md"
+      ],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-API-008",
+      "category": "api-client",
+      "files": [
+        "client/src/components/profile/CoverPhotoModal.jsx",
+        "client/src/components/profile/ProfileHeader.jsx",
+        "client/src/components/profile/ProfilePhotoModal.jsx",
+        "client/src/services/apiClient.js",
+        "client/src/features/profile/profileService.js"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "client/src/services/apiClient.js plus domain services",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding API-008"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [
+        "See STAGE_1_1_API_INVENTORY.md"
+      ],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-API-009",
+      "category": "api-client",
+      "files": [
+        "client/src/services/messagingSocket.js",
+        "client/src/services/apiClient.js"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "Keep distinct transport",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding API-009"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [
+        "See STAGE_1_1_API_INVENTORY.md"
+      ],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-API-010",
+      "category": "api-client",
+      "files": [
+        "server/src/services/leadScraperService.js",
+        "client/src/services/apiClient.js"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "Keep distinct transport",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding API-010"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [
+        "See STAGE_1_1_API_INVENTORY.md"
+      ],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-001",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "client/src/pages/RouteShells.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-001"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-002",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/pages/RouteShells.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-002"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-003",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "client/src/pages/RouteShells.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-003"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-004",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Proof",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-004"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-005",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Reputation",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-005"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-006",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "client/src/pages/RouteShells.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-006"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-007",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "Proof/content",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-007"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-008",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/pages/RouteShells.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-008"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-009",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Pricing",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-009"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-010",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/pages/RouteShells.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-010"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-011",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Legal",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-011"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-012",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Legal",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-012"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-013",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/pages/RouteShells.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-013"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-014",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Proof",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-014"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-015",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Payments",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-015"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-016",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Admin proof",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-016"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-017",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Disputes",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-017"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-018",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Admin config",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-018"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-019",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/client/ClientOverview.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Client dashboard",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-019"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-020",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/client/ClientChallenges.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Challenges",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-020"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-021",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/client/ClientProviders.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Provider discovery",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-021"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-022",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/client/ClientActiveWork.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Active work",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-022"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-023",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/client/ClientSettings.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Client settings",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-023"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-024",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/ProviderSettingsPlaceholder.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Provider settings",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-024"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-025",
+      "category": "mock-data",
+      "files": [
+        "client/src/pages/Admin.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Admin cleanup",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-025"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-026",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/profile/ProfileOnboardingStepPage.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/pages/profile/ProfileOnboardingStepPage.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-026"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-027",
+      "category": "placeholder",
+      "files": [
+        "server/src/routes/v1/user.routes.js"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "User module",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-027"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-028",
+      "category": "placeholder",
+      "files": [
+        "client/src/utils/constants.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "API migration",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-028"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-029",
+      "category": "placeholder",
+      "files": [
+        "client/src/utils/constants.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "API migration",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-029"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-030",
+      "category": "placeholder",
+      "files": [
+        "client/src/sections/ReviewsSection.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Public proof",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-030"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-031",
+      "category": "placeholder",
+      "files": [
+        "client/src/sections/home/FeaturedProvidersSection.jsx"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "client/src/sections/home/FeaturedProvidersSection.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-031"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-032",
+      "category": "placeholder",
+      "files": [
+        "client/src/sections/home/FeaturedChallengesSection.jsx"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "client/src/sections/home/FeaturedChallengesSection.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-032"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-033",
+      "category": "placeholder",
+      "files": [
+        "client/src/sections/home/ProofLedgerPreview.jsx"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "client/src/sections/home/ProofLedgerPreview.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-033"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-034",
+      "category": "placeholder",
+      "files": [
+        "client/src/sections/home/ProofLedgerShowcase.jsx"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "client/src/sections/home/ProofLedgerShowcase.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-034"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-035",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/VerifyEmail.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Auth/email",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-035"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-036",
+      "category": "placeholder",
+      "files": [
+        "server/src/modules/auth/auth.routes.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Security",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-036"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-037",
+      "category": "placeholder",
+      "files": [
+        "server/src/modules/auth/auth.controller.js"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Email operations",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-037"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-038",
+      "category": "placeholder",
+      "files": [
+        ".next and client/dist"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": ".next and client/dist",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-038"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-039",
+      "category": "placeholder",
+      "files": [
+        ".chrome-* and responsive-shots"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": ".chrome-* and responsive-shots",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-039"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-040",
+      "category": "placeholder",
+      "files": [
+        "uploads and server/uploads"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Storage",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-040"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-041",
+      "category": "placeholder",
+      "files": [
+        "server/tmp"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "server/tmp",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-041"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-042",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/Auth.jsx"
+      ],
+      "severity": "UNKNOWN",
+      "cleanupReadiness": "unknown",
+      "sourceOfTruthCandidate": "Auth cleanup",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-042"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Human/runtime ownership verification prompt"
+    },
+    {
+      "id": "CLN-WPH-043",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/Blogs.jsx"
+      ],
+      "severity": "UNKNOWN",
+      "cleanupReadiness": "unknown",
+      "sourceOfTruthCandidate": "Content cleanup",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-043"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Human/runtime ownership verification prompt"
+    },
+    {
+      "id": "CLN-WPH-044",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/Contact.jsx"
+      ],
+      "severity": "UNKNOWN",
+      "cleanupReadiness": "unknown",
+      "sourceOfTruthCandidate": "Public cleanup",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-044"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Human/runtime ownership verification prompt"
+    },
+    {
+      "id": "CLN-WPH-045",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/MyChallenges.jsx"
+      ],
+      "severity": "UNKNOWN",
+      "cleanupReadiness": "unknown",
+      "sourceOfTruthCandidate": "Challenge cleanup",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-045"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Human/runtime ownership verification prompt"
+    },
+    {
+      "id": "CLN-WPH-046",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/PublicProfile.jsx"
+      ],
+      "severity": "UNKNOWN",
+      "cleanupReadiness": "unknown",
+      "sourceOfTruthCandidate": "Stage 4",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-046"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Human/runtime ownership verification prompt"
+    },
+    {
+      "id": "CLN-WPH-047",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/ServiceDetail.jsx"
+      ],
+      "severity": "UNKNOWN",
+      "cleanupReadiness": "unknown",
+      "sourceOfTruthCandidate": "Marketplace cleanup",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-047"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Human/runtime ownership verification prompt"
+    },
+    {
+      "id": "CLN-WPH-048",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/Admin.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Admin cleanup",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-048"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-049",
+      "category": "placeholder",
+      "files": [
+        "client/src/utils/challengeNextAction.js"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/utils/challengeNextAction.js",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-049"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-050",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/ChallengeDetail.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "Milestones/proof review",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-050"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-051",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/ClientExecutionPlanDetail.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "Milestones/payments/messaging/proof",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-051"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-052",
+      "category": "placeholder",
+      "files": [
+        "client/src/components/matches/ProviderInviteModal.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Matching/invitations",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-052"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-053",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/ChallengeBuilder.jsx"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "client/src/pages/ChallengeBuilder.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-053"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-054",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/OutcomeOfferBuilder.jsx"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "client/src/pages/OutcomeOfferBuilder.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-054"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-055",
+      "category": "placeholder",
+      "files": [
+        "client/src/pages/SupportDashboard.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Support/admin operations",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-055"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-056",
+      "category": "placeholder",
+      "files": [
+        "client/src/components/navigation/AdminTopbar.jsx"
+      ],
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "sourceOfTruthCandidate": "Admin search",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-056"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Dedicated test-and-migration prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-057",
+      "category": "placeholder",
+      "files": [
+        "client/src/utils/profile/profileReadinessTypes.js"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "client/src/utils/profile/profileReadinessTypes.js",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-057"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-058",
+      "category": "placeholder",
+      "files": [
+        "client/src/components/dashboard/ClientDashboard.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "Proof review",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-058"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-059",
+      "category": "placeholder",
+      "files": [
+        "client/src/sections/home/FinalCTASection.jsx"
+      ],
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "sourceOfTruthCandidate": "Pricing/payments",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-059"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    },
+    {
+      "id": "CLN-WPH-060",
+      "category": "placeholder",
+      "files": [
+        "client/src/sections/home/HeroSection.jsx; client/src/sections/home/HowItWorksSection.jsx; client/src/sections/home/HomeHowItWorksSection.jsx"
+      ],
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "sourceOfTruthCandidate": "client/src/sections/home/HeroSection.jsx; client/src/sections/home/HowItWorksSection.jsx; client/src/sections/home/HomeHowItWorksSection.jsx",
+      "dependencies": [
+        "Stage 1.1 dependency/route/API maps",
+        "Prompt 5 finding WPH-060"
+      ],
+      "affectedRoutes": [],
+      "affectedApis": [],
+      "requiredPreChecks": [
+        "Import/route/caller search",
+        "Target-specific regression evidence",
+        "Rollback plan"
+      ],
+      "requiredPostChecks": [
+        "Available lint/build/boundary commands",
+        "Affected manual QA matrix"
+      ],
+      "rollbackNotes": "Restore the isolated file, alias, adapter, or facade surface; no destructive migration.",
+      "futurePromptRecommendation": "Low-scope cleanup prompt after Prompt 8 closure"
+    }
+  ],
+  "sourceOfTruthDecisions": {
+    "layouts": [
+      {
+        "system": "public",
+        "candidate": "client/src/layouts/PublicLayout.jsx"
+      },
+      {
+        "system": "auth",
+        "candidate": "client/src/layouts/AuthLayout.jsx"
+      },
+      {
+        "system": "provider",
+        "candidate": "client/src/layouts/DashboardLayout.jsx"
+      },
+      {
+        "system": "client",
+        "candidate": "client/src/layouts/ClientLayout.jsx"
+      },
+      {
+        "system": "admin",
+        "candidate": "client/src/layouts/AdminLayout.jsx"
+      },
+      {
+        "system": "sidebar-renderer",
+        "candidate": "client/src/components/navigation/sidebar/SidebarCore.jsx"
+      }
+    ],
+    "routeConstants": [
+      {
+        "system": "declarations",
+        "candidate": "client/src/routes/AppRoutes.jsx"
+      },
+      {
+        "system": "browser-paths",
+        "candidate": "client/src/constants/routes.js"
+      },
+      {
+        "system": "metadata",
+        "candidate": "client/src/config/routeMetadata.js"
+      },
+      {
+        "system": "fallback-policy",
+        "candidate": "client/src/utils/accessPolicy.js"
+      }
+    ],
+    "apiClients": [
+      {
+        "system": "http-transport",
+        "candidate": "client/src/services/apiClient.js"
+      },
+      {
+        "system": "endpoints",
+        "candidate": "client/src/constants/apiEndpoints.js"
+      },
+      {
+        "system": "domain-requests",
+        "candidate": "client/src/features/*/*Service.js"
+      },
+      {
+        "system": "legacy-compatibility",
+        "candidate": "client/src/services/api.js temporarily"
+      }
+    ],
+    "placeholders": [
+      {
+        "system": "shared-state-components",
+        "candidate": "client/src/components/states/* and common placeholder components"
+      },
+      {
+        "system": "marketing-previews",
+        "candidate": "Current explicitly disclosed preview files"
+      },
+      {
+        "system": "business-fallbacks",
+        "candidate": "Replace later with real empty/error states"
+      },
+      {
+        "system": "unknown-pages",
+        "candidate": "Human decision required"
+      }
+    ]
+  },
+  "cleanupSequence": [
+    "Documentation confirmation",
+    "Harmless labeling",
+    "Route policy",
+    "Navigation alignment",
+    "Layout primitives",
+    "Dashboard shell primitives",
+    "API client standardization",
+    "Direct request migration",
+    "Fake fallback retirement",
+    "Separate safe-delete verification"
+  ],
+  "executionContracts": [
+    "C-ROUTE",
+    "C-NAV",
+    "C-LAYOUT",
+    "C-DASHBOARD",
+    "C-API",
+    "C-RAW",
+    "C-PLACEHOLDER",
+    "C-AUTH",
+    "C-UTILITY",
+    "C-DELETE"
+  ],
+  "qaMatrix": [
+    "QA-R01..R07",
+    "QA-L01..L06",
+    "QA-A01..A12",
+    "QA-P01..P07",
+    "QA-D01..D03"
+  ],
+  "testGaps": [
+    "No test/spec files found",
+    "No test script",
+    "No typecheck script",
+    "Missing route/role matrix",
+    "Missing layout/mobile browser tests",
+    "Missing apiClient contracts",
+    "Missing auth delivery/rate-limit tests",
+    "Missing safe-delete runtime proof"
+  ],
+  "safeDeletePolicy": {
+    "approvedCandidates": [],
+    "unknownBlocksDeletion": true,
+    "separatePromptRequired": true,
+    "humanApprovalForHighRisk": true,
+    "requiredChecks": [
+      "imports",
+      "routes",
+      "config",
+      "docs",
+      "runtime",
+      "replacement",
+      "rollback",
+      "commands",
+      "manual QA"
+    ]
+  },
+  "riskRegister": [
+    "CR-01 separate product architecture",
+    "CR-02 route alias removal",
+    "CR-03 legacy wrapper ownership",
+    "CR-04 role wrapper over-consolidation",
+    "CR-05 drawer/focus regression",
+    "CR-06 topbar role leakage",
+    "CR-07 API auth bypass",
+    "CR-08 facade premature removal",
+    "CR-09 API version drift",
+    "CR-10 upload regression",
+    "CR-11 fake fallback data",
+    "CR-12 auth security placeholders",
+    "CR-13 unknown page ownership",
+    "CR-14 wrong metadata aliases",
+    "CR-15 route/API namespace merge",
+    "CR-16 disclosed preview removal",
+    "CR-17 config scope creep",
+    "CR-18 missing tests"
+  ],
+  "blockedItems": [
+    "CLN-LAY-001",
+    "CLN-LAY-003",
+    "CLN-LAY-004",
+    "CLN-LAY-005",
+    "CLN-LAY-006",
+    "CLN-LAY-007",
+    "CLN-LAY-008",
+    "CLN-RTE-002",
+    "CLN-RTE-004",
+    "CLN-RTE-006",
+    "CLN-RTE-008",
+    "CLN-RTE-009",
+    "CLN-RTE-011",
+    "CLN-RTE-012",
+    "CLN-RTE-014",
+    "CLN-RTE-016",
+    "CLN-RTE-018",
+    "CLN-RTE-019",
+    "CLN-API-001",
+    "CLN-API-002",
+    "CLN-API-003",
+    "CLN-API-004",
+    "CLN-API-005",
+    "CLN-API-006",
+    "CLN-API-008",
+    "CLN-WPH-004",
+    "CLN-WPH-005",
+    "CLN-WPH-009",
+    "CLN-WPH-011",
+    "CLN-WPH-012",
+    "CLN-WPH-014",
+    "CLN-WPH-015",
+    "CLN-WPH-016",
+    "CLN-WPH-017",
+    "CLN-WPH-018",
+    "CLN-WPH-019",
+    "CLN-WPH-020",
+    "CLN-WPH-021",
+    "CLN-WPH-022",
+    "CLN-WPH-023",
+    "CLN-WPH-024",
+    "CLN-WPH-025",
+    "CLN-WPH-027",
+    "CLN-WPH-028",
+    "CLN-WPH-029",
+    "CLN-WPH-030",
+    "CLN-WPH-035",
+    "CLN-WPH-036",
+    "CLN-WPH-037",
+    "CLN-WPH-040",
+    "CLN-WPH-042",
+    "CLN-WPH-043",
+    "CLN-WPH-044",
+    "CLN-WPH-045",
+    "CLN-WPH-046",
+    "CLN-WPH-047",
+    "CLN-WPH-048",
+    "CLN-WPH-052",
+    "CLN-WPH-055",
+    "CLN-WPH-056"
+  ],
+  "docsCreated": [
+    "STAGE_1_2_CLEANUP_CANDIDATE_LEDGER.md",
+    "STAGE_1_2_SOURCE_OF_TRUTH_DECISION_TABLES.md",
+    "STAGE_1_2_ZERO_BREAK_CLEANUP_SEQUENCE.md",
+    "STAGE_1_2_FUTURE_PROMPT_EXECUTION_CONTRACTS.md",
+    "STAGE_1_2_VALIDATION_QA_MATRIX.md",
+    "STAGE_1_2_TEST_GAP_REPORT.md",
+    "STAGE_1_2_SAFE_DELETE_CANDIDATE_POLICY.md",
+    "STAGE_1_2_CLEANUP_RISK_REGISTER.md",
+    "stage-1-2-cleanup-blueprint.json"
+  ],
+  "docsUpdated": [
+    "STAGE_1_2_MASTER_TRACKER.md"
+  ]
+}
+

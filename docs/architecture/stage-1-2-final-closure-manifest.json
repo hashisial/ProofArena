@@ -1,0 +1,1610 @@
+{
+  "projectName": "ScaleOps / ProofArena",
+  "parentProduct": "ScaleOps",
+  "flagshipModule": "ProofArena",
+  "stage": "1.2",
+  "promptNumber": 8,
+  "purpose": "Final closure package for duplicate layouts, duplicate route constants, duplicate API clients and weak placeholders",
+  "generatedAt": "2026-06-27T13:00:00Z",
+  "productionCodeModified": false,
+  "finalFindings": [
+    {
+      "id": "FIN-LAY-001",
+      "originalIds": [
+        "LAY-001"
+      ],
+      "classification": "layout-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/layouts/PublicLayout.jsx",
+        "client/src/layouts/RootLayout.jsx",
+        "client/src/components/Layout.jsx"
+      ]
+    },
+    {
+      "id": "FIN-LAY-002",
+      "originalIds": [
+        "LAY-002"
+      ],
+      "classification": "layout-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/components/Header.jsx",
+        "client/src/components/navigation/PublicNavbar.jsx",
+        "client/src/components/Footer.jsx",
+        "client/src/components/common/Footer.jsx"
+      ]
+    },
+    {
+      "id": "FIN-LAY-003",
+      "originalIds": [
+        "LAY-003"
+      ],
+      "classification": "confirmed-layout-duplication",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/layouts/DashboardLayout.jsx",
+        "client/src/layouts/ClientLayout.jsx"
+      ]
+    },
+    {
+      "id": "FIN-LAY-004",
+      "originalIds": [
+        "LAY-004"
+      ],
+      "classification": "confirmed-layout-duplication",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/layouts/AdminLayout.jsx",
+        "client/src/layouts/DashboardLayout.jsx",
+        "client/src/layouts/ClientLayout.jsx"
+      ]
+    },
+    {
+      "id": "FIN-LAY-005",
+      "originalIds": [
+        "LAY-005"
+      ],
+      "classification": "confirmed-layout-duplication",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/components/dashboard/DashboardContentShell.jsx",
+        "client/src/components/client/ClientContentShell.jsx",
+        "client/src/layouts/AdminLayout.jsx"
+      ]
+    },
+    {
+      "id": "FIN-LAY-006",
+      "originalIds": [
+        "LAY-006"
+      ],
+      "classification": "confirmed-layout-duplication",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/components/dashboard/MobileDashboardSidebar.jsx",
+        "client/src/components/client/MobileClientSidebar.jsx",
+        "client/src/layouts/AdminLayout.jsx"
+      ]
+    },
+    {
+      "id": "FIN-LAY-007",
+      "originalIds": [
+        "LAY-007"
+      ],
+      "classification": "confirmed-layout-duplication",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/components/navigation/DashboardTopbar.jsx",
+        "client/src/components/client/ClientTopbar.jsx"
+      ]
+    },
+    {
+      "id": "FIN-LAY-008",
+      "originalIds": [
+        "LAY-008"
+      ],
+      "classification": "confirmed-layout-duplication",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/components/navigation/AdminTopbar.jsx",
+        "client/src/components/navigation/DashboardTopbar.jsx",
+        "client/src/components/client/ClientTopbar.jsx"
+      ]
+    },
+    {
+      "id": "FIN-LAY-009",
+      "originalIds": [
+        "LAY-009"
+      ],
+      "classification": "layout-overlap",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/components/navigation/DashboardSidebar.jsx",
+        "client/src/components/client/ClientSidebar.jsx",
+        "client/src/components/navigation/AdminSidebar.jsx",
+        "client/src/components/navigation/sidebar/SidebarCore.jsx"
+      ]
+    },
+    {
+      "id": "FIN-LAY-010",
+      "originalIds": [
+        "LAY-010"
+      ],
+      "classification": "layout-overlap",
+      "severity": "S3",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/layouts/WorkspaceLayout.jsx",
+        "client/src/components/SaaSLayout.jsx",
+        "client/src/layouts/DashboardLayout.jsx"
+      ]
+    },
+    {
+      "id": "FIN-RTE-001",
+      "originalIds": [
+        "RTE-001"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/constants/routes.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-002",
+      "originalIds": [
+        "RTE-002"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/components/Layout.jsx",
+        "client/src/constants/routes.js",
+        "client/src/routes/AppRoutes.jsx"
+      ]
+    },
+    {
+      "id": "FIN-RTE-003",
+      "originalIds": [
+        "RTE-003"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/pages/Blogs.jsx",
+        "client/src/pages/Services.jsx",
+        "client/src/sections/CTASection.jsx",
+        "client/src/sections/PortfolioPreview.jsx",
+        "client/src/sections/MarketplacePreview.jsx",
+        "client/src/constants/routes.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-004",
+      "originalIds": [
+        "RTE-004"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/Auth.jsx",
+        "client/src/pages/Account.jsx",
+        "client/src/utils/routeValidation.js",
+        "client/src/constants/routes.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-005",
+      "originalIds": [
+        "RTE-005"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/pages/Marketplace.jsx",
+        "client/src/sections/MarketplacePreview.jsx",
+        "client/src/constants/routes.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-006",
+      "originalIds": [
+        "RTE-006"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/Admin.jsx",
+        "client/src/constants/routes.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-007",
+      "originalIds": [
+        "RTE-007"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/components/SaaSLayout.jsx",
+        "client/src/pages/Auth.jsx",
+        "client/src/pages/Profile.jsx",
+        "client/src/constants/routes.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-008",
+      "originalIds": [
+        "RTE-008"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/components/providers/ProviderComparisonModal.jsx",
+        "client/src/components/providers/SavedProviderCard.jsx",
+        "client/src/features/providers/ProviderComparisonProvider.jsx",
+        "client/src/features/providers/providerComparisonUtils.js",
+        "client/src/pages/PublicProfile.jsx"
+      ]
+    },
+    {
+      "id": "FIN-RTE-009",
+      "originalIds": [
+        "RTE-009"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/components/challenges/ChallengeCard.jsx",
+        "client/src/features/firstClient/firstClientUtils.js",
+        "client/src/features/matches/matchUtils.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-010",
+      "originalIds": [
+        "RTE-010"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/pages/Marketplace.jsx",
+        "client/src/pages/Saved.jsx",
+        "client/src/sections/MarketplacePreview.jsx"
+      ]
+    },
+    {
+      "id": "FIN-RTE-011",
+      "originalIds": [
+        "RTE-011"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/config/navigation/clientNavigation.js",
+        "client/src/routes/AppRoutes.jsx"
+      ]
+    },
+    {
+      "id": "FIN-RTE-012",
+      "originalIds": [
+        "RTE-012"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/routes/AppRoutes.jsx",
+        "client/src/config/navigation/adminNavigation.js",
+        "client/src/pages/Admin.jsx"
+      ]
+    },
+    {
+      "id": "FIN-RTE-013",
+      "originalIds": [
+        "RTE-013"
+      ],
+      "classification": "route-possible-overlap",
+      "severity": "S3",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/constants/apiEndpoints.js",
+        "client/src/services/api.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-014",
+      "originalIds": [
+        "RTE-014"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/features/challenges/challengeUtils.js",
+        "client/src/features/executionPlans/executionPlanUtils.js",
+        "client/src/features/firstClient/firstClientUtils.js",
+        "client/src/features/matches/matchUtils.js",
+        "client/src/features/opportunities/opportunityUtils.js",
+        "client/src/features/outcomeOffers/outcomeOfferUtils.js",
+        "client/src/features/proofAssets/proofAssetUtils.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-015",
+      "originalIds": [
+        "RTE-015"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/components/Header.jsx",
+        "client/src/utils/navigationActive.js",
+        "client/src/utils/routeHelpers.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-016",
+      "originalIds": [
+        "RTE-016"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/utils/routeValidation.js",
+        "client/src/utils/routeMetadata.js",
+        "client/src/utils/accessPolicy.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-017",
+      "originalIds": [
+        "RTE-017"
+      ],
+      "classification": "route-possible-overlap",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/utils/getDashboardPathForRole.js",
+        "client/src/utils/accessPolicy.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-018",
+      "originalIds": [
+        "RTE-018"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/constants/apiEndpoints.js",
+        "client/src/services/api.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-019",
+      "originalIds": [
+        "RTE-019"
+      ],
+      "classification": "confirmed-route-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/routes/AppRoutes.jsx",
+        "client/src/config/routeMetadata.js"
+      ]
+    },
+    {
+      "id": "FIN-RTE-020",
+      "originalIds": [
+        "RTE-020"
+      ],
+      "classification": "route-possible-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/config/navigation/publicNavigation.js",
+        "client/src/routes/AppRoutes.jsx"
+      ]
+    },
+    {
+      "id": "FIN-API-001",
+      "originalIds": [
+        "API-001"
+      ],
+      "classification": "confirmed-api-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/services/apiClient.js",
+        "client/src/services/api.js"
+      ]
+    },
+    {
+      "id": "FIN-API-002",
+      "originalIds": [
+        "API-002"
+      ],
+      "classification": "confirmed-api-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/services/api.js",
+        "client/src/features/auth/authService.js"
+      ]
+    },
+    {
+      "id": "FIN-API-003",
+      "originalIds": [
+        "API-003"
+      ],
+      "classification": "confirmed-api-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/services/api.js",
+        "client/src/features/profile/profileService.js"
+      ]
+    },
+    {
+      "id": "FIN-API-004",
+      "originalIds": [
+        "API-004"
+      ],
+      "classification": "confirmed-api-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/services/api.js",
+        "client/src/features/dashboard/dashboardService.js"
+      ]
+    },
+    {
+      "id": "FIN-API-005",
+      "originalIds": [
+        "API-005"
+      ],
+      "classification": "confirmed-api-overlap",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/constants/apiEndpoints.js",
+        "client/src/services/api.js"
+      ]
+    },
+    {
+      "id": "FIN-API-006",
+      "originalIds": [
+        "API-006"
+      ],
+      "classification": "confirmed-api-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/features/challenges/challengeUtils.js",
+        "client/src/features/executionPlans/executionPlanUtils.js",
+        "client/src/features/firstClient/firstClientUtils.js",
+        "client/src/features/matches/matchUtils.js",
+        "client/src/features/opportunities/opportunityUtils.js",
+        "client/src/features/outcomeOffers/outcomeOfferUtils.js",
+        "client/src/features/proofAssets/proofAssetUtils.js"
+      ]
+    },
+    {
+      "id": "FIN-API-007",
+      "originalIds": [
+        "API-007"
+      ],
+      "classification": "confirmed-api-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/features/challenges/challengeUtils.js",
+        "client/src/features/executionPlans/executionPlanUtils.js",
+        "client/src/features/firstClient/firstClientUtils.js",
+        "client/src/features/matches/matchUtils.js",
+        "client/src/features/opportunities/opportunityUtils.js",
+        "client/src/features/outcomeOffers/outcomeOfferUtils.js",
+        "client/src/features/proofAssets/proofAssetUtils.js"
+      ]
+    },
+    {
+      "id": "FIN-API-008",
+      "originalIds": [
+        "API-008"
+      ],
+      "classification": "confirmed-api-overlap",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/components/profile/CoverPhotoModal.jsx",
+        "client/src/components/profile/ProfileHeader.jsx",
+        "client/src/components/profile/ProfilePhotoModal.jsx",
+        "client/src/services/apiClient.js",
+        "client/src/features/profile/profileService.js"
+      ]
+    },
+    {
+      "id": "FIN-API-009",
+      "originalIds": [
+        "API-009"
+      ],
+      "classification": "distinct-request-system",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/services/messagingSocket.js",
+        "client/src/services/apiClient.js"
+      ]
+    },
+    {
+      "id": "FIN-API-010",
+      "originalIds": [
+        "API-010"
+      ],
+      "classification": "distinct-request-system",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "server/src/services/leadScraperService.js",
+        "client/src/services/apiClient.js"
+      ]
+    },
+    {
+      "id": "FIN-WPH-001",
+      "originalIds": [
+        "WPH-001"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-002",
+      "originalIds": [
+        "WPH-002"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-003",
+      "originalIds": [
+        "WPH-003"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-004",
+      "originalIds": [
+        "WPH-004"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-005",
+      "originalIds": [
+        "WPH-005"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-006",
+      "originalIds": [
+        "WPH-006"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-007",
+      "originalIds": [
+        "WPH-007"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-008",
+      "originalIds": [
+        "WPH-008"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-009",
+      "originalIds": [
+        "WPH-009"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-010",
+      "originalIds": [
+        "WPH-010"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-011",
+      "originalIds": [
+        "WPH-011"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-012",
+      "originalIds": [
+        "WPH-012"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-013",
+      "originalIds": [
+        "WPH-013"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-014",
+      "originalIds": [
+        "WPH-014"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-015",
+      "originalIds": [
+        "WPH-015"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-016",
+      "originalIds": [
+        "WPH-016"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-017",
+      "originalIds": [
+        "WPH-017"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-018",
+      "originalIds": [
+        "WPH-018"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/RouteShells.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-019",
+      "originalIds": [
+        "WPH-019"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/client/ClientOverview.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-020",
+      "originalIds": [
+        "WPH-020"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/client/ClientChallenges.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-021",
+      "originalIds": [
+        "WPH-021"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/client/ClientProviders.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-022",
+      "originalIds": [
+        "WPH-022"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/client/ClientActiveWork.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-023",
+      "originalIds": [
+        "WPH-023"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/client/ClientSettings.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-024",
+      "originalIds": [
+        "WPH-024"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/ProviderSettingsPlaceholder.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-025",
+      "originalIds": [
+        "WPH-025"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/Admin.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-026",
+      "originalIds": [
+        "WPH-026"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/pages/profile/ProfileOnboardingStepPage.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-027",
+      "originalIds": [
+        "WPH-027"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "server/src/routes/v1/user.routes.js"
+      ]
+    },
+    {
+      "id": "FIN-WPH-028",
+      "originalIds": [
+        "WPH-028"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/utils/constants.js"
+      ]
+    },
+    {
+      "id": "FIN-WPH-029",
+      "originalIds": [
+        "WPH-029"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/utils/constants.js"
+      ]
+    },
+    {
+      "id": "FIN-WPH-030",
+      "originalIds": [
+        "WPH-030"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/sections/ReviewsSection.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-031",
+      "originalIds": [
+        "WPH-031"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/sections/home/FeaturedProvidersSection.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-032",
+      "originalIds": [
+        "WPH-032"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/sections/home/FeaturedChallengesSection.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-033",
+      "originalIds": [
+        "WPH-033"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/sections/home/ProofLedgerPreview.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-034",
+      "originalIds": [
+        "WPH-034"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/sections/home/ProofLedgerShowcase.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-035",
+      "originalIds": [
+        "WPH-035"
+      ],
+      "classification": "security-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/VerifyEmail.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-036",
+      "originalIds": [
+        "WPH-036"
+      ],
+      "classification": "security-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "server/src/modules/auth/auth.routes.js"
+      ]
+    },
+    {
+      "id": "FIN-WPH-037",
+      "originalIds": [
+        "WPH-037"
+      ],
+      "classification": "security-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "server/src/modules/auth/auth.controller.js"
+      ]
+    },
+    {
+      "id": "FIN-WPH-038",
+      "originalIds": [
+        "WPH-038"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        ".next and client/dist"
+      ]
+    },
+    {
+      "id": "FIN-WPH-039",
+      "originalIds": [
+        "WPH-039"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        ".chrome-* and responsive-shots"
+      ]
+    },
+    {
+      "id": "FIN-WPH-040",
+      "originalIds": [
+        "WPH-040"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "uploads and server/uploads"
+      ]
+    },
+    {
+      "id": "FIN-WPH-041",
+      "originalIds": [
+        "WPH-041"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "server/tmp"
+      ]
+    },
+    {
+      "id": "FIN-WPH-042",
+      "originalIds": [
+        "WPH-042"
+      ],
+      "classification": "unknown",
+      "severity": "UNKNOWN",
+      "cleanupReadiness": "human-review-required",
+      "files": [
+        "client/src/pages/Auth.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-043",
+      "originalIds": [
+        "WPH-043"
+      ],
+      "classification": "unknown",
+      "severity": "UNKNOWN",
+      "cleanupReadiness": "human-review-required",
+      "files": [
+        "client/src/pages/Blogs.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-044",
+      "originalIds": [
+        "WPH-044"
+      ],
+      "classification": "unknown",
+      "severity": "UNKNOWN",
+      "cleanupReadiness": "human-review-required",
+      "files": [
+        "client/src/pages/Contact.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-045",
+      "originalIds": [
+        "WPH-045"
+      ],
+      "classification": "unknown",
+      "severity": "UNKNOWN",
+      "cleanupReadiness": "human-review-required",
+      "files": [
+        "client/src/pages/MyChallenges.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-046",
+      "originalIds": [
+        "WPH-046"
+      ],
+      "classification": "unknown",
+      "severity": "UNKNOWN",
+      "cleanupReadiness": "human-review-required",
+      "files": [
+        "client/src/pages/PublicProfile.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-047",
+      "originalIds": [
+        "WPH-047"
+      ],
+      "classification": "unknown",
+      "severity": "UNKNOWN",
+      "cleanupReadiness": "human-review-required",
+      "files": [
+        "client/src/pages/ServiceDetail.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-048",
+      "originalIds": [
+        "WPH-048"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/Admin.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-049",
+      "originalIds": [
+        "WPH-049"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/utils/challengeNextAction.js"
+      ]
+    },
+    {
+      "id": "FIN-WPH-050",
+      "originalIds": [
+        "WPH-050"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/pages/ChallengeDetail.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-051",
+      "originalIds": [
+        "WPH-051"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/pages/ClientExecutionPlanDetail.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-052",
+      "originalIds": [
+        "WPH-052"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/components/matches/ProviderInviteModal.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-053",
+      "originalIds": [
+        "WPH-053"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/pages/ChallengeBuilder.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-054",
+      "originalIds": [
+        "WPH-054"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/pages/OutcomeOfferBuilder.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-055",
+      "originalIds": [
+        "WPH-055"
+      ],
+      "classification": "architecture-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/pages/SupportDashboard.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-056",
+      "originalIds": [
+        "WPH-056"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S1",
+      "cleanupReadiness": "blocked",
+      "files": [
+        "client/src/components/navigation/AdminTopbar.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-057",
+      "originalIds": [
+        "WPH-057"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/utils/profile/profileReadinessTypes.js"
+      ]
+    },
+    {
+      "id": "FIN-WPH-058",
+      "originalIds": [
+        "WPH-058"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/components/dashboard/ClientDashboard.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-059",
+      "originalIds": [
+        "WPH-059"
+      ],
+      "classification": "product-risk-placeholder",
+      "severity": "S2",
+      "cleanupReadiness": "ready-with-caution",
+      "files": [
+        "client/src/sections/home/FinalCTASection.jsx"
+      ]
+    },
+    {
+      "id": "FIN-WPH-060",
+      "originalIds": [
+        "WPH-060"
+      ],
+      "classification": "acceptable-placeholder",
+      "severity": "S3",
+      "cleanupReadiness": "ready",
+      "files": [
+        "client/src/sections/home/HeroSection.jsx; client/src/sections/home/HowItWorksSection.jsx; client/src/sections/home/HomeHowItWorksSection.jsx"
+      ]
+    }
+  ],
+  "sourceOfTruthLocks": {
+    "layouts": [
+      {
+        "category": "public",
+        "source": "client/src/layouts/PublicLayout.jsx"
+      },
+      {
+        "category": "auth",
+        "source": "client/src/layouts/AuthLayout.jsx"
+      },
+      {
+        "category": "provider",
+        "source": "client/src/layouts/DashboardLayout.jsx"
+      },
+      {
+        "category": "client",
+        "source": "client/src/layouts/ClientLayout.jsx"
+      },
+      {
+        "category": "admin",
+        "source": "client/src/layouts/AdminLayout.jsx"
+      },
+      {
+        "category": "sidebar",
+        "source": "client/src/components/navigation/sidebar/SidebarCore.jsx plus role wrappers"
+      }
+    ],
+    "routes": [
+      {
+        "category": "declarations",
+        "source": "client/src/routes/AppRoutes.jsx"
+      },
+      {
+        "category": "browser-paths",
+        "source": "client/src/constants/routes.js grouped exports"
+      },
+      {
+        "category": "metadata",
+        "source": "client/src/config/routeMetadata.js"
+      },
+      {
+        "category": "fallback-policy",
+        "source": "client/src/utils/accessPolicy.js"
+      }
+    ],
+    "apiClients": [
+      {
+        "category": "transport",
+        "source": "client/src/services/apiClient.js"
+      },
+      {
+        "category": "endpoints",
+        "source": "client/src/constants/apiEndpoints.js"
+      },
+      {
+        "category": "domain-requests",
+        "source": "client/src/features/*/*Service.js"
+      },
+      {
+        "category": "legacy",
+        "source": "client/src/services/api.js temporary compatibility"
+      }
+    ],
+    "placeholders": [
+      {
+        "category": "planned-ui",
+        "source": "shared placeholder/state components"
+      },
+      {
+        "category": "marketing",
+        "source": "explicitly disclosed preview files"
+      },
+      {
+        "category": "business-fallback",
+        "source": "not accepted as production truth"
+      },
+      {
+        "category": "unknown-pages",
+        "source": "human decision required"
+      }
+    ]
+  },
+  "cleanupBacklog": {
+    "P0_doNotTouchUntilVerified": [
+      "LAY-003",
+      "LAY-004",
+      "RTE-004",
+      "RTE-011",
+      "RTE-012",
+      "RTE-016",
+      "API-001",
+      "API-002",
+      "WPH-035",
+      "WPH-036",
+      "WPH-037"
+    ],
+    "P1_highRiskCleanupPlanning": [
+      "LAY-001",
+      "LAY-005",
+      "LAY-006",
+      "LAY-007",
+      "LAY-008",
+      "RTE-002",
+      "RTE-006",
+      "RTE-008",
+      "RTE-009",
+      "RTE-014",
+      "RTE-018",
+      "RTE-019",
+      "API-003",
+      "API-004",
+      "API-005",
+      "API-006",
+      "API-008",
+      "WPH-004",
+      "WPH-005",
+      "WPH-009",
+      "WPH-011",
+      "WPH-012",
+      "WPH-014",
+      "WPH-015",
+      "WPH-016",
+      "WPH-017",
+      "WPH-018",
+      "WPH-019",
+      "WPH-020",
+      "WPH-021",
+      "WPH-022",
+      "WPH-023",
+      "WPH-024",
+      "WPH-025",
+      "WPH-027",
+      "WPH-028",
+      "WPH-029",
+      "WPH-030",
+      "WPH-040",
+      "WPH-048",
+      "WPH-052",
+      "WPH-055",
+      "WPH-056"
+    ],
+    "P2_safeWithCaution": [
+      "LAY-002",
+      "LAY-010",
+      "RTE-001",
+      "RTE-003",
+      "RTE-005",
+      "RTE-007",
+      "RTE-010",
+      "RTE-013",
+      "RTE-015",
+      "RTE-020",
+      "API-007",
+      "WPH-002",
+      "WPH-007",
+      "WPH-008",
+      "WPH-010",
+      "WPH-013",
+      "WPH-026",
+      "WPH-049",
+      "WPH-050",
+      "WPH-051",
+      "WPH-057",
+      "WPH-058",
+      "WPH-059"
+    ],
+    "P3_lowRisk": [
+      "RTE-017",
+      "WPH-038",
+      "WPH-039",
+      "WPH-041"
+    ],
+    "parked": [
+      "LAY-009",
+      "API-009",
+      "API-010",
+      "WPH-001",
+      "WPH-003",
+      "WPH-006",
+      "WPH-031",
+      "WPH-032",
+      "WPH-033",
+      "WPH-034",
+      "WPH-053",
+      "WPH-054",
+      "WPH-060"
+    ],
+    "humanReview": [
+      "WPH-042",
+      "WPH-043",
+      "WPH-044",
+      "WPH-045",
+      "WPH-046",
+      "WPH-047"
+    ]
+  },
+  "blockers": [
+    {
+      "id": "B-01",
+      "description": "No maintained tests or test script"
+    },
+    {
+      "id": "B-02",
+      "description": "RootLayout/Layout runtime ownership unknown"
+    },
+    {
+      "id": "B-03",
+      "description": "Six page owners unknown"
+    },
+    {
+      "id": "B-04",
+      "description": "Client alias policy undecided"
+    },
+    {
+      "id": "B-05",
+      "description": "Admin proof route ownership undecided"
+    },
+    {
+      "id": "B-06",
+      "description": "API version policy undecided"
+    },
+    {
+      "id": "B-07",
+      "description": "api.js method-level caller map missing"
+    },
+    {
+      "id": "B-08",
+      "description": "Auth ownership generations require dedicated review"
+    },
+    {
+      "id": "B-09",
+      "description": "Production email provider not completed"
+    },
+    {
+      "id": "B-10",
+      "description": "User/email auth throttling incomplete"
+    },
+    {
+      "id": "B-11",
+      "description": "Fallback replacement UX not approved"
+    },
+    {
+      "id": "B-12",
+      "description": "Compatibility telemetry/deprecation windows absent"
+    }
+  ],
+  "riskAcceptance": [
+    "Disclosed previews accepted temporarily",
+    "Development email notice accepted only in development",
+    "Business fallbacks not accepted as production truth",
+    "Separate ProofArena architecture not accepted",
+    "Auth bypass or second HTTP client not accepted",
+    "Client/admin/API canonical choices require human approval"
+  ],
+  "validationCommands": [
+    "cd client && npm ci",
+    "cd server && npm ci",
+    "cd client && npm run lint",
+    "cd client && npm run build",
+    "cd client && npm run check:boundaries",
+    "cd server && npm run check:boundaries",
+    "No test command found",
+    "No typecheck command found"
+  ],
+  "humanReviewQuestions": [
+    "Confirm unified ScaleOps/ProofArena boundary",
+    "Select canonical client route",
+    "Select canonical admin proof route",
+    "Select canonical API version",
+    "Approve apiClient/domain-service/facade policy",
+    "Approve protected shell primitive scope",
+    "Determine legacy layout/page ownership",
+    "Approve fallback empty/error behavior",
+    "Approve email/throttling controls",
+    "Approve minimum test baseline"
+  ],
+  "stage12Readiness": {
+    "readyForCleanupExecution": false,
+    "readyForStage13ADR": true,
+    "readinessScore": 82,
+    "reason": "The audit and governance package is complete enough for one ADR, but 12 blockers and missing regression tests prevent cleanup execution."
+  },
+  "docsCreated": [
+    "STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md",
+    "STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md",
+    "STAGE_1_2_FINAL_CLEANUP_EXECUTION_BACKLOG.md",
+    "STAGE_1_2_FINAL_BLOCKER_REGISTER.md",
+    "STAGE_1_2_RISK_ACCEPTANCE_TABLE.md",
+    "STAGE_1_2_FINAL_VALIDATION_COMMAND_CHECKLIST.md",
+    "STAGE_1_2_HUMAN_REVIEW_PACK.md",
+    "stage-1-2-final-closure-manifest.json",
+    "STAGE_1_2_TO_STAGE_1_3_HANDOFF_BRIEF.md"
+  ],
+  "docsUpdated": [
+    "STAGE_1_2_MASTER_TRACKER.md"
+  ],
+  "unknowns": [
+    "RootLayout external/runtime ownership",
+    "Six unmapped page owners",
+    "Client canonical route",
+    "Admin proof canonical route",
+    "Canonical API version",
+    "Production consumer telemetry"
+  ]
+}
+

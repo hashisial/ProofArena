@@ -1,0 +1,2712 @@
+{
+  "projectName": "ScaleOps / ProofArena",
+  "parentProduct": "ScaleOps",
+  "flagshipModule": "ProofArena",
+  "stage": "1.2",
+  "promptNumber": 5,
+  "purpose": "Identify duplicate layouts, duplicate route constants, duplicate API clients and weak placeholders",
+  "generatedAt": "2026-06-27T16:22:15.6507021+05:00",
+  "productionCodeModified": false,
+  "duplicateLayouts": [
+    {
+      "id": "LAY-001",
+      "files": [
+        "client/src/layouts/PublicLayout.jsx",
+        "client/src/layouts/RootLayout.jsx",
+        "client/src/components/Layout.jsx"
+      ],
+      "similarityReason": "Both compose public header/main/footer behavior, but RootLayout delegates to legacy Layout.",
+      "riskLevel": "S1",
+      "recommendation": "Investigate; keep until RootLayout has zero runtime ownership proof."
+    },
+    {
+      "id": "LAY-002",
+      "files": [
+        "client/src/components/Header.jsx",
+        "client/src/components/navigation/PublicNavbar.jsx",
+        "client/src/components/Footer.jsx",
+        "client/src/components/common/Footer.jsx"
+      ],
+      "similarityReason": "PublicNavbar and common/Footer are pure re-export adapters over Header and Footer.",
+      "riskLevel": "S2",
+      "recommendation": "Keep as compatibility adapters until Stage 1.2 proves and migrates callers."
+    },
+    {
+      "id": "LAY-003",
+      "files": [
+        "client/src/layouts/DashboardLayout.jsx",
+        "client/src/layouts/ClientLayout.jsx"
+      ],
+      "similarityReason": "Normalized source similarity is 0.766; auth checks, grid variables, skip links, topbar/content structure, and shell state are repeated.",
+      "riskLevel": "S1",
+      "recommendation": "Consolidate shared primitives later, preserve role wrappers and policy."
+    },
+    {
+      "id": "LAY-004",
+      "files": [
+        "client/src/layouts/AdminLayout.jsx",
+        "client/src/layouts/DashboardLayout.jsx",
+        "client/src/layouts/ClientLayout.jsx"
+      ],
+      "similarityReason": "Admin repeats grid, auth loading, access redirects, skip link, sidebar widths, topbar/main layout.",
+      "riskLevel": "S1",
+      "recommendation": "Investigate a tested shared shell primitive; do not merge role policy."
+    },
+    {
+      "id": "LAY-005",
+      "files": [
+        "client/src/components/dashboard/DashboardContentShell.jsx",
+        "client/src/components/client/ClientContentShell.jsx",
+        "client/src/layouts/AdminLayout.jsx"
+      ],
+      "similarityReason": "Provider/client shell similarity is 0.981 and only component/data attribute names differ.",
+      "riskLevel": "S2",
+      "recommendation": "Consolidate later after browser/layout tests."
+    },
+    {
+      "id": "LAY-006",
+      "files": [
+        "client/src/components/dashboard/MobileDashboardSidebar.jsx",
+        "client/src/components/client/MobileClientSidebar.jsx",
+        "client/src/layouts/AdminLayout.jsx"
+      ],
+      "similarityReason": "Provider/client drawers have normalized similarity 0.965; admin repeats the lifecycle inline.",
+      "riskLevel": "S2",
+      "recommendation": "Extract only after keyboard/browser regression tests."
+    },
+    {
+      "id": "LAY-007",
+      "files": [
+        "client/src/components/navigation/DashboardTopbar.jsx",
+        "client/src/components/client/ClientTopbar.jsx"
+      ],
+      "similarityReason": "Normalized source similarity is 0.845 with repeated menu lifecycle and account helpers.",
+      "riskLevel": "S2",
+      "recommendation": "Share account/menu primitives later; retain role-specific action slots."
+    },
+    {
+      "id": "LAY-008",
+      "files": [
+        "client/src/components/navigation/AdminTopbar.jsx",
+        "client/src/components/navigation/DashboardTopbar.jsx",
+        "client/src/components/client/ClientTopbar.jsx"
+      ],
+      "similarityReason": "Normalized similarity is 0.778 against provider topbar; menu lifecycle and identity helpers repeat.",
+      "riskLevel": "S1",
+      "recommendation": "Investigate shared topbar primitives; separately classify search as placeholder."
+    },
+    {
+      "id": "LAY-009",
+      "files": [
+        "client/src/components/navigation/DashboardSidebar.jsx",
+        "client/src/components/client/ClientSidebar.jsx",
+        "client/src/components/navigation/AdminSidebar.jsx",
+        "client/src/components/navigation/sidebar/SidebarCore.jsx"
+      ],
+      "similarityReason": "All are thin wrappers around the same SidebarCore contract.",
+      "riskLevel": "S3",
+      "recommendation": "Keep thin wrappers; consolidate only truly generic footer/brand helpers."
+    },
+    {
+      "id": "LAY-010",
+      "files": [
+        "client/src/layouts/WorkspaceLayout.jsx",
+        "client/src/components/SaaSLayout.jsx",
+        "client/src/layouts/DashboardLayout.jsx"
+      ],
+      "similarityReason": "WorkspaceLayout is a re-export, while SaaSLayout supplies PageHeader and content wrapper inside DashboardLayout.",
+      "riskLevel": "S2",
+      "recommendation": "Investigate import normalization only; keep semantic distinction from DashboardLayout."
+    }
+  ],
+  "duplicateRouteConstants": [
+    {
+      "id": "RTE-001",
+      "pathOrConstant": "ROUTES / ROUTE_GROUPS / flattened aliases",
+      "files": [
+        "client/src/constants/routes.js"
+      ],
+      "usageTypes": [
+        "constant registry",
+        "grouped aliases",
+        "flattened aliases"
+      ],
+      "sourceOfTruth": "client/src/constants/routes.js",
+      "riskLevel": "S2",
+      "recommendation": "Keep compatibility; document canonical names before alias cleanup."
+    },
+    {
+      "id": "RTE-002",
+      "pathOrConstant": "Local appRoutes protected-shell set",
+      "files": [
+        "client/src/components/Layout.jsx",
+        "client/src/constants/routes.js",
+        "client/src/routes/AppRoutes.jsx"
+      ],
+      "usageTypes": [
+        "layout classification",
+        "route declarations",
+        "route constants"
+      ],
+      "sourceOfTruth": "AppRoutes plus route constants/metadata",
+      "riskLevel": "S1",
+      "recommendation": "Investigate RootLayout ownership and replace only after route-shell tests."
+    },
+    {
+      "id": "RTE-003",
+      "pathOrConstant": "/contact, /services, /portfolio, /marketplace",
+      "files": [
+        "client/src/pages/Blogs.jsx",
+        "client/src/pages/Services.jsx",
+        "client/src/sections/CTASection.jsx",
+        "client/src/sections/PortfolioPreview.jsx",
+        "client/src/sections/MarketplacePreview.jsx",
+        "client/src/constants/routes.js"
+      ],
+      "usageTypes": [
+        "CTA href",
+        "public navigation",
+        "constant"
+      ],
+      "sourceOfTruth": "PUBLIC_ROUTES in client/src/constants/routes.js",
+      "riskLevel": "S2",
+      "recommendation": "Migrate later to route constants; do not redesign CTAs in this audit."
+    },
+    {
+      "id": "RTE-004",
+      "pathOrConstant": "/, /login, /register, /forgot-password, /reset-password",
+      "files": [
+        "client/src/pages/Auth.jsx",
+        "client/src/pages/Account.jsx",
+        "client/src/utils/routeValidation.js",
+        "client/src/constants/routes.js"
+      ],
+      "usageTypes": [
+        "auth href",
+        "redirect/fallback",
+        "route validation",
+        "constant"
+      ],
+      "sourceOfTruth": "AUTH_ROUTES and PUBLIC_ROUTES",
+      "riskLevel": "S1",
+      "recommendation": "Map active Auth versus Login/Register pages before consolidating literals."
+    },
+    {
+      "id": "RTE-005",
+      "pathOrConstant": "/marketplace, /provider-services, /projects, /login",
+      "files": [
+        "client/src/pages/Marketplace.jsx",
+        "client/src/sections/MarketplacePreview.jsx",
+        "client/src/constants/routes.js"
+      ],
+      "usageTypes": [
+        "CTA href",
+        "conditional href",
+        "constant"
+      ],
+      "sourceOfTruth": "PUBLIC_ROUTES and DASHBOARD_ROUTES",
+      "riskLevel": "S2",
+      "recommendation": "Use constants and access-policy helper during a later tested route cleanup."
+    },
+    {
+      "id": "RTE-006",
+      "pathOrConstant": "/admin/providers and /admin/proof-review",
+      "files": [
+        "client/src/pages/Admin.jsx",
+        "client/src/constants/routes.js"
+      ],
+      "usageTypes": [
+        "legacy admin CTA",
+        "constant"
+      ],
+      "sourceOfTruth": "ADMIN_ROUTES",
+      "riskLevel": "S1",
+      "recommendation": "Keep page unmapped; determine ownership before deletion or reuse."
+    },
+    {
+      "id": "RTE-007",
+      "pathOrConstant": "/dashboard",
+      "files": [
+        "client/src/components/SaaSLayout.jsx",
+        "client/src/pages/Auth.jsx",
+        "client/src/pages/Profile.jsx",
+        "client/src/constants/routes.js"
+      ],
+      "usageTypes": [
+        "back fallback",
+        "post-auth destination",
+        "CTA",
+        "constant"
+      ],
+      "sourceOfTruth": "ROUTES.DASHBOARD plus getPrimaryDashboardPath for role-aware cases",
+      "riskLevel": "S2",
+      "recommendation": "Classify each fallback context before replacing with role-aware helper."
+    },
+    {
+      "id": "RTE-008",
+      "pathOrConstant": "/profile/:username and constructed /profile/${...}",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/components/providers/ProviderComparisonModal.jsx",
+        "client/src/components/providers/SavedProviderCard.jsx",
+        "client/src/features/providers/ProviderComparisonProvider.jsx",
+        "client/src/features/providers/providerComparisonUtils.js",
+        "client/src/pages/PublicProfile.jsx"
+      ],
+      "usageTypes": [
+        "dynamic constant",
+        "href builder",
+        "public URL"
+      ],
+      "sourceOfTruth": "DYNAMIC_ROUTES.PUBLIC_PROFILE and getProfileRoute",
+      "riskLevel": "S1",
+      "recommendation": "Inventory callers and migrate to one route builder later."
+    },
+    {
+      "id": "RTE-009",
+      "pathOrConstant": "/challenges/:username/:slug and constructed variants",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/components/challenges/ChallengeCard.jsx",
+        "client/src/features/firstClient/firstClientUtils.js",
+        "client/src/features/matches/matchUtils.js"
+      ],
+      "usageTypes": [
+        "dynamic constant",
+        "card href",
+        "feature URL builder"
+      ],
+      "sourceOfTruth": "DYNAMIC_ROUTES.PUBLIC_CHALLENGE",
+      "riskLevel": "S1",
+      "recommendation": "Add a canonical challenge route builder before migration."
+    },
+    {
+      "id": "RTE-010",
+      "pathOrConstant": "/marketplace/category/:slug and /marketplace/service/:id",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/pages/Marketplace.jsx",
+        "client/src/pages/Saved.jsx",
+        "client/src/sections/MarketplacePreview.jsx"
+      ],
+      "usageTypes": [
+        "dynamic constant",
+        "href interpolation"
+      ],
+      "sourceOfTruth": "DYNAMIC_ROUTES.MARKETPLACE_CATEGORY and MARKETPLACE_SERVICE",
+      "riskLevel": "S2",
+      "recommendation": "Use buildRoute helpers after verifying slug versus serviceId contracts."
+    },
+    {
+      "id": "RTE-011",
+      "pathOrConstant": "/client, /dashboard/client, /dashboard/workspace",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/config/navigation/clientNavigation.js",
+        "client/src/routes/AppRoutes.jsx"
+      ],
+      "usageTypes": [
+        "client shell route",
+        "dashboard aliases",
+        "navigation"
+      ],
+      "sourceOfTruth": "CLIENT_ROUTES.DASHBOARD is current client-shell root; compatibility intent of dashboard aliases is unresolved.",
+      "riskLevel": "S1",
+      "recommendation": "Decide alias policy in route ADR; do not delete paths without usage/runtime evidence."
+    },
+    {
+      "id": "RTE-012",
+      "pathOrConstant": "/admin/proofs, /admin/proof-assets, /admin/proof-review",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/routes/AppRoutes.jsx",
+        "client/src/config/navigation/adminNavigation.js",
+        "client/src/pages/Admin.jsx"
+      ],
+      "usageTypes": [
+        "route declaration",
+        "navigation",
+        "legacy CTA",
+        "constants"
+      ],
+      "sourceOfTruth": "AppRoutes is runtime authority; product ownership is unresolved.",
+      "riskLevel": "S1",
+      "recommendation": "Map endpoint/page ownership before selecting a canonical route."
+    },
+    {
+      "id": "RTE-013",
+      "pathOrConstant": "Shared UI paths also used as API-relative paths",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/constants/apiEndpoints.js",
+        "client/src/services/api.js"
+      ],
+      "usageTypes": [
+        "frontend route",
+        "API endpoint",
+        "legacy service literal"
+      ],
+      "sourceOfTruth": "Route constants for browser paths; apiEndpoints for HTTP paths",
+      "riskLevel": "S2",
+      "recommendation": "Preserve separate typed namespaces and remove API literals later."
+    },
+    {
+      "id": "RTE-014",
+      "pathOrConstant": "Conditional /v1 prefix builders",
+      "files": [
+        "client/src/features/challenges/challengeUtils.js",
+        "client/src/features/executionPlans/executionPlanUtils.js",
+        "client/src/features/firstClient/firstClientUtils.js",
+        "client/src/features/matches/matchUtils.js",
+        "client/src/features/opportunities/opportunityUtils.js",
+        "client/src/features/outcomeOffers/outcomeOfferUtils.js",
+        "client/src/features/proofAssets/proofAssetUtils.js"
+      ],
+      "usageTypes": [
+        "API path builder",
+        "version prefix normalization"
+      ],
+      "sourceOfTruth": "No single canonical version-builder exists; apiClient owns base URL only.",
+      "riskLevel": "S2",
+      "recommendation": "Stage 5 should define version ownership before consolidation."
+    },
+    {
+      "id": "RTE-015",
+      "pathOrConstant": "Navigation active-route matching",
+      "files": [
+        "client/src/components/Header.jsx",
+        "client/src/utils/navigationActive.js",
+        "client/src/utils/routeHelpers.js"
+      ],
+      "usageTypes": [
+        "public active state",
+        "sidebar active state",
+        "pattern matching"
+      ],
+      "sourceOfTruth": "navigationActive.js is the universal sidebar helper; public ownership is not unified.",
+      "riskLevel": "S2",
+      "recommendation": "Compare behavior tests before reusing shared helper in Header."
+    },
+    {
+      "id": "RTE-016",
+      "pathOrConstant": "Route group and fallback determination",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/utils/routeValidation.js",
+        "client/src/utils/routeMetadata.js",
+        "client/src/utils/accessPolicy.js"
+      ],
+      "usageTypes": [
+        "route classification",
+        "safe fallback",
+        "role dashboard routing"
+      ],
+      "sourceOfTruth": "No single source fully covers dynamic, metadata-gap, and role fallback cases.",
+      "riskLevel": "S1",
+      "recommendation": "Stage 4 ADR/tests must establish precedence before consolidation."
+    },
+    {
+      "id": "RTE-017",
+      "pathOrConstant": "getDashboardPathForRole wrapper",
+      "files": [
+        "client/src/utils/getDashboardPathForRole.js",
+        "client/src/utils/accessPolicy.js"
+      ],
+      "usageTypes": [
+        "compatibility helper",
+        "role dashboard routing"
+      ],
+      "sourceOfTruth": "accessPolicy.js contains implementation.",
+      "riskLevel": "S3",
+      "recommendation": "Keep compatibility until imports are mapped; delete only after proof."
+    },
+    {
+      "id": "RTE-018",
+      "pathOrConstant": "API endpoint constants versus legacy literals",
+      "files": [
+        "client/src/constants/apiEndpoints.js",
+        "client/src/services/api.js"
+      ],
+      "usageTypes": [
+        "API constant",
+        "hardcoded API-relative path"
+      ],
+      "sourceOfTruth": "apiEndpoints.js where a contract exists; backend API inventory for actual mounts",
+      "riskLevel": "S1",
+      "recommendation": "Create a method-level migration map in Prompt 6; do not bulk-replace."
+    },
+    {
+      "id": "RTE-019",
+      "pathOrConstant": "Route metadata coverage",
+      "files": [
+        "client/src/routes/AppRoutes.jsx",
+        "client/src/config/routeMetadata.js"
+      ],
+      "usageTypes": [
+        "route declaration",
+        "route metadata"
+      ],
+      "sourceOfTruth": "AppRoutes is runtime authority; routeMetadata is incomplete supporting registry.",
+      "riskLevel": "S1",
+      "recommendation": "Complete metadata only after route alias policy is decided."
+    },
+    {
+      "id": "RTE-020",
+      "pathOrConstant": "/offers",
+      "files": [
+        "client/src/constants/routes.js",
+        "client/src/config/navigation/publicNavigation.js",
+        "client/src/routes/AppRoutes.jsx"
+      ],
+      "usageTypes": [
+        "public constant",
+        "future disabled navigation",
+        "missing route declaration"
+      ],
+      "sourceOfTruth": "AppRoutes is runtime authority; public navigation marks future availability.",
+      "riskLevel": "S2",
+      "recommendation": "Keep future navigation disabled; decide route ownership before enabling."
+    }
+  ],
+  "duplicateApiClients": [
+    {
+      "id": "API-001",
+      "files": [
+        "client/src/services/apiClient.js",
+        "client/src/services/api.js"
+      ],
+      "mechanism": "axios",
+      "authHandling": "apiClient injects useAuthStore token, credentials, and refresh; api.js also delegates auth calls to authService.",
+      "baseUrlHandling": "apiClient resolves clientEnv VITE_API_BASE_URL aliases and local/prod fallback; api.js delegates to apiClient.",
+      "riskLevel": "S1",
+      "recommendation": "Retain apiClient; create method-level facade migration evidence before changing api.js."
+    },
+    {
+      "id": "API-002",
+      "files": [
+        "client/src/services/api.js",
+        "client/src/features/auth/authService.js"
+      ],
+      "mechanism": "custom",
+      "authHandling": "authService owns login/register/refresh/logout; api.js re-exports similarly named wrapper functions.",
+      "baseUrlHandling": "Both use canonical apiClient indirectly/directly.",
+      "riskLevel": "S1",
+      "recommendation": "Map method callers and preserve compatibility until all auth flows are tested."
+    },
+    {
+      "id": "API-003",
+      "files": [
+        "client/src/services/api.js",
+        "client/src/features/profile/profileService.js"
+      ],
+      "mechanism": "custom",
+      "authHandling": "Canonical client token/credentials.",
+      "baseUrlHandling": "Both use apiClient.",
+      "riskLevel": "S1",
+      "recommendation": "Build caller-by-method map before deprecating facade exports."
+    },
+    {
+      "id": "API-004",
+      "files": [
+        "client/src/services/api.js",
+        "client/src/features/dashboard/dashboardService.js"
+      ],
+      "mechanism": "custom",
+      "authHandling": "Canonical client token/credentials.",
+      "baseUrlHandling": "Both use apiClient.",
+      "riskLevel": "S1",
+      "recommendation": "Keep both until importer migration and dashboard response tests exist."
+    },
+    {
+      "id": "API-005",
+      "files": [
+        "client/src/constants/apiEndpoints.js",
+        "client/src/services/api.js"
+      ],
+      "mechanism": "custom",
+      "authHandling": "Per-call skipUserAuth flags and canonical interceptor.",
+      "baseUrlHandling": "Both ultimately use apiClient base URL.",
+      "riskLevel": "S1",
+      "recommendation": "Prompt 6 should compare every facade method with endpoint constants/backend mounts."
+    },
+    {
+      "id": "API-006",
+      "files": [
+        "client/src/features/challenges/challengeUtils.js",
+        "client/src/features/executionPlans/executionPlanUtils.js",
+        "client/src/features/firstClient/firstClientUtils.js",
+        "client/src/features/matches/matchUtils.js",
+        "client/src/features/opportunities/opportunityUtils.js",
+        "client/src/features/outcomeOffers/outcomeOfferUtils.js",
+        "client/src/features/proofAssets/proofAssetUtils.js"
+      ],
+      "mechanism": "custom",
+      "authHandling": "Requests later use canonical apiClient.",
+      "baseUrlHandling": "Each reads API_BASE_URL and conditionally prepends /v1.",
+      "riskLevel": "S2",
+      "recommendation": "Define version ownership in API ADR before extracting a shared helper."
+    },
+    {
+      "id": "API-007",
+      "files": [
+        "client/src/features/challenges/challengeUtils.js",
+        "client/src/features/executionPlans/executionPlanUtils.js",
+        "client/src/features/firstClient/firstClientUtils.js",
+        "client/src/features/matches/matchUtils.js",
+        "client/src/features/opportunities/opportunityUtils.js",
+        "client/src/features/outcomeOffers/outcomeOfferUtils.js",
+        "client/src/features/proofAssets/proofAssetUtils.js"
+      ],
+      "mechanism": "custom",
+      "authHandling": "Not applicable.",
+      "baseUrlHandling": "Not applicable.",
+      "riskLevel": "S2",
+      "recommendation": "Verify shape differences before sharing a helper."
+    },
+    {
+      "id": "API-008",
+      "files": [
+        "client/src/components/profile/CoverPhotoModal.jsx",
+        "client/src/components/profile/ProfileHeader.jsx",
+        "client/src/components/profile/ProfilePhotoModal.jsx",
+        "client/src/services/apiClient.js",
+        "client/src/features/profile/profileService.js"
+      ],
+      "mechanism": "axios",
+      "authHandling": "Canonical interceptor.",
+      "baseUrlHandling": "Canonical apiClient.",
+      "riskLevel": "S2",
+      "recommendation": "Prompt 6 should determine whether upload/header calls belong in profileService; do not move without tests."
+    },
+    {
+      "id": "API-009",
+      "files": [
+        "client/src/services/messagingSocket.js",
+        "client/src/services/apiClient.js"
+      ],
+      "mechanism": "custom",
+      "authHandling": "Socket connection receives current auth/session behavior separately from HTTP interceptors.",
+      "baseUrlHandling": "messagingSocket derives realtime base URL from apiClient/client env.",
+      "riskLevel": "S3",
+      "recommendation": "Keep separate; document shared environment/auth contract."
+    },
+    {
+      "id": "API-010",
+      "files": [
+        "server/src/services/leadScraperService.js",
+        "client/src/services/apiClient.js"
+      ],
+      "mechanism": "fetch",
+      "authHandling": "External fetch options differ; no frontend session interceptor.",
+      "baseUrlHandling": "leadScraper fetches caller-provided/external URLs; frontend apiClient targets ScaleOps API.",
+      "riskLevel": "S3",
+      "recommendation": "Keep distinct; security-review outbound URL validation separately."
+    }
+  ],
+  "weakPlaceholders": [
+    {
+      "id": "WPH-001",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: About",
+      "currentBehavior": "Static PublicPlaceholderPage copy",
+      "productRisk": "Low while clearly labeled and isolated from production truth.",
+      "futureStage": "Public content",
+      "riskLevel": "S3"
+    },
+    {
+      "id": "WPH-002",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: Blog",
+      "currentBehavior": "No real blog feed",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Content",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-003",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: How It Works",
+      "currentBehavior": "Workflow preview only",
+      "productRisk": "Low while clearly labeled and isolated from production truth.",
+      "futureStage": "Public content",
+      "riskLevel": "S3"
+    },
+    {
+      "id": "WPH-004",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: Proof Ledger",
+      "currentBehavior": "No live proof-ledger API contract",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Proof",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-005",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: Leaderboard",
+      "currentBehavior": "No live leaderboard API contract",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Reputation",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-006",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: Resources",
+      "currentBehavior": "Static library preview",
+      "productRisk": "Low while clearly labeled and isolated from production truth.",
+      "futureStage": "Content",
+      "riskLevel": "S3"
+    },
+    {
+      "id": "WPH-007",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: Case Studies",
+      "currentBehavior": "No verified case-study records",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Proof/content",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-008",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: Help Center",
+      "currentBehavior": "Support foundation copy",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Support",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-009",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: Pricing",
+      "currentBehavior": "No final commercial contract",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Pricing",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-010",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: Trust Safety",
+      "currentBehavior": "Trust workflow preview",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Trust",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-011",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: Privacy",
+      "currentBehavior": "Explicit pre-production legal placeholder",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Legal",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-012",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: Terms",
+      "currentBehavior": "Explicit pre-production legal placeholder",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Legal",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-013",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Public placeholder: Contact",
+      "currentBehavior": "Static route without submission flow",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Contact",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-014",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Dashboard placeholder: My Proof",
+      "currentBehavior": "ModulePlaceholder only",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Proof",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-015",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Dashboard placeholder: Billing",
+      "currentBehavior": "ModulePlaceholder only",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Payments",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-016",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Admin placeholder: Proof Review",
+      "currentBehavior": "ModulePlaceholder only",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Admin proof",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-017",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Admin placeholder: Disputes",
+      "currentBehavior": "ModulePlaceholder only",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Disputes",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-018",
+      "file": "client/src/pages/RouteShells.jsx",
+      "placeholderType": "Admin placeholder: Settings",
+      "currentBehavior": "ModulePlaceholder only",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Admin config",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-019",
+      "file": "client/src/pages/client/ClientOverview.jsx",
+      "placeholderType": "Client placeholder",
+      "currentBehavior": "ClientPagePlaceholder only",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Client dashboard",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-020",
+      "file": "client/src/pages/client/ClientChallenges.jsx",
+      "placeholderType": "Client placeholder",
+      "currentBehavior": "ClientPagePlaceholder only",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Challenges",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-021",
+      "file": "client/src/pages/client/ClientProviders.jsx",
+      "placeholderType": "Client placeholder",
+      "currentBehavior": "ClientPagePlaceholder only",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Provider discovery",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-022",
+      "file": "client/src/pages/client/ClientActiveWork.jsx",
+      "placeholderType": "Client placeholder",
+      "currentBehavior": "ClientPagePlaceholder only",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Active work",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-023",
+      "file": "client/src/pages/client/ClientSettings.jsx",
+      "placeholderType": "Client placeholder",
+      "currentBehavior": "ClientPagePlaceholder only",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Client settings",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-024",
+      "file": "client/src/pages/ProviderSettingsPlaceholder.jsx",
+      "placeholderType": "Provider placeholder",
+      "currentBehavior": "DashboardPagePlaceholder only",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Provider settings",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-025",
+      "file": "client/src/pages/Admin.jsx",
+      "placeholderType": "Legacy admin mock page",
+      "currentBehavior": "Static adminStats/adminActions and placeholder values",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Admin cleanup",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-026",
+      "file": "client/src/pages/profile/ProfileOnboardingStepPage.jsx",
+      "placeholderType": "Future onboarding steps",
+      "currentBehavior": "Route-safe unavailable workflows",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Stage 4+",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-027",
+      "file": "server/src/routes/v1/user.routes.js",
+      "placeholderType": "Backend planned endpoint",
+      "currentBehavior": "Returns planned module status",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "User module",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-028",
+      "file": "client/src/utils/constants.js",
+      "placeholderType": "Fallback services",
+      "currentBehavior": "FALLBACK_SERVICES after empty/error response",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "API migration",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-029",
+      "file": "client/src/utils/constants.js",
+      "placeholderType": "Fallback portfolio",
+      "currentBehavior": "FALLBACK_PORTFOLIO after empty/error response",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "API migration",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-030",
+      "file": "client/src/sections/ReviewsSection.jsx",
+      "placeholderType": "Fallback reviews",
+      "currentBehavior": "Three testimonial-like records when API is empty",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Public proof",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-031",
+      "file": "client/src/sections/home/FeaturedProvidersSection.jsx",
+      "placeholderType": "Provider previews",
+      "currentBehavior": "Four hardcoded provider metric examples",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Provider discovery",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-032",
+      "file": "client/src/sections/home/FeaturedChallengesSection.jsx",
+      "placeholderType": "Challenge previews",
+      "currentBehavior": "Four hardcoded challenge examples",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Challenge discovery",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-033",
+      "file": "client/src/sections/home/ProofLedgerPreview.jsx",
+      "placeholderType": "Proof previews",
+      "currentBehavior": "Static proof records and pipeline",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Proof",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-034",
+      "file": "client/src/sections/home/ProofLedgerShowcase.jsx",
+      "placeholderType": "Proof showcase",
+      "currentBehavior": "Static proof records and workflow",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Proof",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-035",
+      "file": "client/src/pages/VerifyEmail.jsx",
+      "placeholderType": "Development email fallback",
+      "currentBehavior": "Development outbox notice",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Auth/email",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-036",
+      "file": "server/src/modules/auth/auth.routes.js",
+      "placeholderType": "Auth rate-limit TODOs",
+      "currentBehavior": "Login/recovery throttling TODOs",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Security",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-037",
+      "file": "server/src/modules/auth/auth.controller.js",
+      "placeholderType": "Email provider TODOs",
+      "currentBehavior": "Production delivery TODOs",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Email operations",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-038",
+      "file": ".next and client/dist",
+      "placeholderType": "Generated builds",
+      "currentBehavior": "Generated output beside source",
+      "productRisk": "Low while clearly labeled and isolated from production truth.",
+      "futureStage": "Repository hygiene",
+      "riskLevel": "S3"
+    },
+    {
+      "id": "WPH-039",
+      "file": ".chrome-* and responsive-shots",
+      "placeholderType": "Browser artifacts",
+      "currentBehavior": "Temporary verification output",
+      "productRisk": "Low while clearly labeled and isolated from production truth.",
+      "futureStage": "Repository hygiene",
+      "riskLevel": "S3"
+    },
+    {
+      "id": "WPH-040",
+      "file": "uploads and server/uploads",
+      "placeholderType": "Runtime uploads",
+      "currentBehavior": "Mutable local file data",
+      "productRisk": "Ownership or feature completeness remains partial and can affect roadmap decisions.",
+      "futureStage": "Storage",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-041",
+      "file": "server/tmp",
+      "placeholderType": "Runtime temporary files",
+      "currentBehavior": "Mutable temp directory",
+      "productRisk": "Low while clearly labeled and isolated from production truth.",
+      "futureStage": "Repository hygiene",
+      "riskLevel": "S3"
+    },
+    {
+      "id": "WPH-042",
+      "file": "client/src/pages/Auth.jsx",
+      "placeholderType": "Unmapped legacy page",
+      "currentBehavior": "No direct AppRoutes ownership",
+      "productRisk": "Current ownership or runtime exposure cannot be proven statically.",
+      "futureStage": "Auth cleanup",
+      "riskLevel": "UNKNOWN"
+    },
+    {
+      "id": "WPH-043",
+      "file": "client/src/pages/Blogs.jsx",
+      "placeholderType": "Unmapped legacy page",
+      "currentBehavior": "No direct AppRoutes ownership",
+      "productRisk": "Current ownership or runtime exposure cannot be proven statically.",
+      "futureStage": "Content cleanup",
+      "riskLevel": "UNKNOWN"
+    },
+    {
+      "id": "WPH-044",
+      "file": "client/src/pages/Contact.jsx",
+      "placeholderType": "Unmapped legacy page",
+      "currentBehavior": "No direct AppRoutes ownership",
+      "productRisk": "Current ownership or runtime exposure cannot be proven statically.",
+      "futureStage": "Public cleanup",
+      "riskLevel": "UNKNOWN"
+    },
+    {
+      "id": "WPH-045",
+      "file": "client/src/pages/MyChallenges.jsx",
+      "placeholderType": "Unmapped alternate page",
+      "currentBehavior": "No direct AppRoutes ownership",
+      "productRisk": "Current ownership or runtime exposure cannot be proven statically.",
+      "futureStage": "Challenge cleanup",
+      "riskLevel": "UNKNOWN"
+    },
+    {
+      "id": "WPH-046",
+      "file": "client/src/pages/PublicProfile.jsx",
+      "placeholderType": "Unmapped direct page",
+      "currentBehavior": "RouteShell proxy owns route",
+      "productRisk": "Current ownership or runtime exposure cannot be proven statically.",
+      "futureStage": "Stage 4",
+      "riskLevel": "UNKNOWN"
+    },
+    {
+      "id": "WPH-047",
+      "file": "client/src/pages/ServiceDetail.jsx",
+      "placeholderType": "Unmapped direct page",
+      "currentBehavior": "RouteShell proxy owns route",
+      "productRisk": "Current ownership or runtime exposure cannot be proven statically.",
+      "futureStage": "Marketplace cleanup",
+      "riskLevel": "UNKNOWN"
+    },
+    {
+      "id": "WPH-048",
+      "file": "client/src/pages/Admin.jsx",
+      "placeholderType": "Unmapped legacy page",
+      "currentBehavior": "No direct AppRoutes ownership",
+      "productRisk": "Production-critical, trust, legal, security, financial, or business truth can be incomplete or misleading.",
+      "futureStage": "Admin cleanup",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-049",
+      "file": "client/src/utils/challengeNextAction.js",
+      "placeholderType": "Future workflow actions",
+      "currentBehavior": "Returns disabled next actions for milestone tracking and outcome proof.",
+      "productRisk": "Challenge lifecycle is only partially connected.",
+      "futureStage": "Milestones/proof",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-050",
+      "file": "client/src/pages/ChallengeDetail.jsx",
+      "placeholderType": "Visible workflow placeholder",
+      "currentBehavior": "Renders activity/proof-review future-state UI without enabling the workflow.",
+      "productRisk": "Challenge workspace is incomplete.",
+      "futureStage": "Milestones/proof review",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-051",
+      "file": "client/src/pages/ClientExecutionPlanDetail.jsx",
+      "placeholderType": "Deferred connected workflows",
+      "currentBehavior": "Records plan decision while several downstream workflows remain unconnected.",
+      "productRisk": "Accepted plan lifecycle is incomplete.",
+      "futureStage": "Milestones/payments/messaging/proof",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-052",
+      "file": "client/src/components/matches/ProviderInviteModal.jsx",
+      "placeholderType": "Disabled unsupported mutation",
+      "currentBehavior": "Shows invite modal with permanently disabled action.",
+      "productRisk": "Provider invitation capability appears present but cannot execute.",
+      "futureStage": "Matching/invitations",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-053",
+      "file": "client/src/pages/ChallengeBuilder.jsx",
+      "placeholderType": "Disabled AI placeholder",
+      "currentBehavior": "Rule-based builder shows disabled future AI action.",
+      "productRisk": "No current AI workflow.",
+      "futureStage": "AI challenge quality",
+      "riskLevel": "S3"
+    },
+    {
+      "id": "WPH-054",
+      "file": "client/src/pages/OutcomeOfferBuilder.jsx",
+      "placeholderType": "Disabled AI placeholder",
+      "currentBehavior": "Rule-based builder shows disabled future AI action.",
+      "productRisk": "No current AI workflow.",
+      "futureStage": "AI offer quality",
+      "riskLevel": "S3"
+    },
+    {
+      "id": "WPH-055",
+      "file": "client/src/pages/SupportDashboard.jsx",
+      "placeholderType": "Future operational dashboard",
+      "currentBehavior": "Displays safe explanatory state without operational data.",
+      "productRisk": "Support operations are not implemented.",
+      "futureStage": "Support/admin operations",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-056",
+      "file": "client/src/components/navigation/AdminTopbar.jsx",
+      "placeholderType": "Nonfunctional visible control",
+      "currentBehavior": "Renders search input without value, onChange, submit, or search handler.",
+      "productRisk": "Admin global search is not implemented.",
+      "futureStage": "Admin search",
+      "riskLevel": "S1"
+    },
+    {
+      "id": "WPH-057",
+      "file": "client/src/utils/profile/profileReadinessTypes.js",
+      "placeholderType": "Explicit non-fake score placeholders",
+      "currentBehavior": "Returns not-calculated placeholder objects without inventing scores.",
+      "productRisk": "Readiness engines are not complete.",
+      "futureStage": "Profile scoring/trust",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-058",
+      "file": "client/src/components/dashboard/ClientDashboard.jsx",
+      "placeholderType": "Partial proof-review dashboard data",
+      "currentBehavior": "Shows known proof-review-related challenges without full review workflow.",
+      "productRisk": "Client overview cannot complete proof review.",
+      "futureStage": "Proof review",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-059",
+      "file": "client/src/sections/home/FinalCTASection.jsx",
+      "placeholderType": "Commercial preview",
+      "currentBehavior": "Explains pricing/product model without live paid plans.",
+      "productRisk": "Commercial terms and payment workflow are not final.",
+      "futureStage": "Pricing/payments",
+      "riskLevel": "S2"
+    },
+    {
+      "id": "WPH-060",
+      "file": "client/src/sections/home/HeroSection.jsx; client/src/sections/home/HowItWorksSection.jsx; client/src/sections/home/HomeHowItWorksSection.jsx",
+      "placeholderType": "Static marketing preview datasets",
+      "currentBehavior": "Renders fixed illustrative metrics/workflow rows.",
+      "productRisk": "Marketing examples are not platform analytics.",
+      "futureStage": "Public content",
+      "riskLevel": "S3"
+    }
+  ],
+  "topRisks": [
+    "LAY-001: active PublicLayout coexists with RootLayout/Layout compatibility shell policy.",
+    "LAY-003: provider and client protected shells repeat auth/grid/state behavior and can drift.",
+    "LAY-004: admin shell forks mobile/state/content behavior from provider/client shells.",
+    "RTE-011: /client, /dashboard/client, and /dashboard/workspace have unresolved alias ownership.",
+    "RTE-012: three admin proof route concepts can point users to different placeholder/operational surfaces.",
+    "RTE-016: route classification and fallback policy spans constants, metadata, validation, and access policy.",
+    "RTE-018: legacy API facade embeds endpoint strings beside the endpoint constant registry.",
+    "API-001: 29-importer legacy facade overlaps the canonical 27-importer Axios client and feature services.",
+    "WPH-028/WPH-029/WPH-030: business-looking service, portfolio, and testimonial fallback records can mask empty/error states.",
+    "WPH-036/WPH-037: auth throttling and production email-provider TODOs remain operational security gaps."
+  ],
+  "unknowns": [
+    "Runtime ownership of six unmapped/indirect page files is not proven.",
+    "Canonical client dashboard entry among /client, /dashboard/client, and /dashboard/workspace is undecided.",
+    "Canonical admin proof route among /admin/proofs, /admin/proof-assets, and /admin/proof-review is undecided.",
+    "Canonical long-term API version between /api and /api/v1 is undecided.",
+    "Method-level runtime usage of every export in the 29-importer legacy API facade requires Prompt 6 verification.",
+    "RootLayout may be compatibility-only by static imports, but runtime/dynamic use must be proven before removal."
+  ],
+  "docsCreated": [
+    "STAGE_1_2_DUPLICATE_LAYOUT_AUDIT.md",
+    "STAGE_1_2_DUPLICATE_ROUTE_CONSTANTS_AUDIT.md",
+    "STAGE_1_2_DUPLICATE_API_CLIENT_AUDIT.md",
+    "STAGE_1_2_WEAK_PLACEHOLDER_AUDIT.md",
+    "STAGE_1_2_DUPLICATE_SYSTEM_SEVERITY_MATRIX.md",
+    "stage-1-2-duplicate-audit-manifest.json",
+    "STAGE_1_2_MASTER_TRACKER.md"
+  ],
+  "docsUpdated": [],
+  "verifiedFindings": [
+      {
+        "id": "LAY-001",
+        "status": "partially-verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S2",
+        "correction": "Compatibility-export ownership candidate, not a confirmed active duplicate shell."
+      },
+      {
+        "id": "LAY-002",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "LAY-003",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "LAY-004",
+        "status": "partially-verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": "All protected shells share useSidebarShell; AdminLayout still duplicates shell markup and embeds drawer lifecycle."
+      },
+      {
+        "id": "LAY-005",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "LAY-006",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "LAY-007",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "LAY-008",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "LAY-009",
+        "status": "verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": null
+      },
+      {
+        "id": "LAY-010",
+        "status": "partially-verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S3",
+        "correction": "WorkspaceLayout is an import alias over an inner page wrapper, not a competing protected shell."
+      },
+      {
+        "id": "RTE-001",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "RTE-002",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "RTE-003",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "RTE-004",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "RTE-005",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "RTE-006",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "RTE-007",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "RTE-008",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "RTE-009",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "RTE-010",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "RTE-011",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "RTE-012",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "RTE-013",
+        "status": "partially-verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S3",
+        "correction": "Browser and API-relative paths are separate namespaces; this is naming/contract collision risk."
+      },
+      {
+        "id": "RTE-014",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "RTE-015",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "RTE-016",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "RTE-017",
+        "status": "verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": null
+      },
+      {
+        "id": "RTE-018",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "RTE-019",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "RTE-020",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "API-001",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "API-002",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "API-003",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "API-004",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "API-005",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "API-006",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "API-007",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "API-008",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "API-009",
+        "status": "verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": null
+      },
+      {
+        "id": "API-010",
+        "status": "verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": null
+      },
+      {
+        "id": "WPH-001",
+        "status": "verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": null
+      },
+      {
+        "id": "WPH-002",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-003",
+        "status": "verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": null
+      },
+      {
+        "id": "WPH-004",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-005",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-006",
+        "status": "verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": null
+      },
+      {
+        "id": "WPH-007",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-008",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-009",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-010",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-011",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-012",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-013",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-014",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-015",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-016",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-017",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-018",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-019",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-020",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-021",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-022",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-023",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-024",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-025",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-026",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-027",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-028",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-029",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-030",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-031",
+        "status": "partially-verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S3",
+        "correction": "Explicitly disclosed provider marketing preview."
+      },
+      {
+        "id": "WPH-032",
+        "status": "partially-verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S3",
+        "correction": "Explicitly disclosed challenge marketing preview."
+      },
+      {
+        "id": "WPH-033",
+        "status": "partially-verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S3",
+        "correction": "Explicitly disclosed proof marketing preview."
+      },
+      {
+        "id": "WPH-034",
+        "status": "partially-verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S3",
+        "correction": "Explicitly disclosed proof marketing showcase."
+      },
+      {
+        "id": "WPH-035",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-036",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-037",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-038",
+        "status": "partially-verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": "Generated build outputs, not application placeholder behavior."
+      },
+      {
+        "id": "WPH-039",
+        "status": "partially-verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": "Browser verification artifacts, not application placeholder behavior."
+      },
+      {
+        "id": "WPH-040",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-041",
+        "status": "verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": null
+      },
+      {
+        "id": "WPH-042",
+        "status": "unknown",
+        "originalRisk": "UNKNOWN",
+        "verifiedRisk": "UNKNOWN",
+        "correction": null
+      },
+      {
+        "id": "WPH-043",
+        "status": "unknown",
+        "originalRisk": "UNKNOWN",
+        "verifiedRisk": "UNKNOWN",
+        "correction": null
+      },
+      {
+        "id": "WPH-044",
+        "status": "unknown",
+        "originalRisk": "UNKNOWN",
+        "verifiedRisk": "UNKNOWN",
+        "correction": null
+      },
+      {
+        "id": "WPH-045",
+        "status": "unknown",
+        "originalRisk": "UNKNOWN",
+        "verifiedRisk": "UNKNOWN",
+        "correction": null
+      },
+      {
+        "id": "WPH-046",
+        "status": "unknown",
+        "originalRisk": "UNKNOWN",
+        "verifiedRisk": "UNKNOWN",
+        "correction": null
+      },
+      {
+        "id": "WPH-047",
+        "status": "unknown",
+        "originalRisk": "UNKNOWN",
+        "verifiedRisk": "UNKNOWN",
+        "correction": null
+      },
+      {
+        "id": "WPH-048",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-049",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-050",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-051",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-052",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-053",
+        "status": "verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": null
+      },
+      {
+        "id": "WPH-054",
+        "status": "verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": null
+      },
+      {
+        "id": "WPH-055",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-056",
+        "status": "verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": null
+      },
+      {
+        "id": "WPH-057",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-058",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-059",
+        "status": "verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S2",
+        "correction": null
+      },
+      {
+        "id": "WPH-060",
+        "status": "verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": null
+      }
+    ],
+    "correctedFindings": [
+      {
+        "id": "LAY-001",
+        "status": "partially-verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S2",
+        "correction": "Compatibility-export ownership candidate, not a confirmed active duplicate shell."
+      },
+      {
+        "id": "LAY-004",
+        "status": "partially-verified",
+        "originalRisk": "S1",
+        "verifiedRisk": "S1",
+        "correction": "All protected shells share useSidebarShell; AdminLayout still duplicates shell markup and embeds drawer lifecycle."
+      },
+      {
+        "id": "LAY-010",
+        "status": "partially-verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S3",
+        "correction": "WorkspaceLayout is an import alias over an inner page wrapper, not a competing protected shell."
+      },
+      {
+        "id": "RTE-013",
+        "status": "partially-verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S3",
+        "correction": "Browser and API-relative paths are separate namespaces; this is naming/contract collision risk."
+      },
+      {
+        "id": "WPH-031",
+        "status": "partially-verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S3",
+        "correction": "Explicitly disclosed provider marketing preview."
+      },
+      {
+        "id": "WPH-032",
+        "status": "partially-verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S3",
+        "correction": "Explicitly disclosed challenge marketing preview."
+      },
+      {
+        "id": "WPH-033",
+        "status": "partially-verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S3",
+        "correction": "Explicitly disclosed proof marketing preview."
+      },
+      {
+        "id": "WPH-034",
+        "status": "partially-verified",
+        "originalRisk": "S2",
+        "verifiedRisk": "S3",
+        "correction": "Explicitly disclosed proof marketing showcase."
+      },
+      {
+        "id": "WPH-038",
+        "status": "partially-verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": "Generated build outputs, not application placeholder behavior."
+      },
+      {
+        "id": "WPH-039",
+        "status": "partially-verified",
+        "originalRisk": "S3",
+        "verifiedRisk": "S3",
+        "correction": "Browser verification artifacts, not application placeholder behavior."
+      }
+    ],
+    "routeSourceOfTruthCandidates": [
+      {
+        "id": "ROUTE-SOT-01",
+        "system": "Executable route tree",
+        "candidate": "client/src/routes/AppRoutes.jsx",
+        "confidence": "high"
+      },
+      {
+        "id": "ROUTE-SOT-02",
+        "system": "Browser path constants",
+        "candidate": "client/src/constants/routes.js grouped exports",
+        "confidence": "high"
+      },
+      {
+        "id": "ROUTE-SOT-03",
+        "system": "Route metadata",
+        "candidate": "client/src/config/routeMetadata.js",
+        "confidence": "high-with-coverage-gap"
+      },
+      {
+        "id": "ROUTE-SOT-04",
+        "system": "Role/dashboard fallback",
+        "candidate": "client/src/utils/accessPolicy.js",
+        "confidence": "high"
+      },
+      {
+        "id": "ROUTE-SOT-05",
+        "system": "Route validation/grouping",
+        "candidate": "ADR required before consolidation",
+        "confidence": "medium"
+      }
+    ],
+    "layoutOwnershipCandidates": [
+      {
+        "id": "LAY-SOT-01",
+        "system": "Public shell",
+        "candidate": "client/src/layouts/PublicLayout.jsx",
+        "confidence": "high"
+      },
+      {
+        "id": "LAY-SOT-02",
+        "system": "Auth shell",
+        "candidate": "client/src/layouts/AuthLayout.jsx",
+        "confidence": "high"
+      },
+      {
+        "id": "LAY-SOT-03",
+        "system": "Provider/shared shell",
+        "candidate": "client/src/layouts/DashboardLayout.jsx",
+        "confidence": "high"
+      },
+      {
+        "id": "LAY-SOT-04",
+        "system": "Client shell",
+        "candidate": "client/src/layouts/ClientLayout.jsx",
+        "confidence": "high"
+      },
+      {
+        "id": "LAY-SOT-05",
+        "system": "Admin shell",
+        "candidate": "client/src/layouts/AdminLayout.jsx",
+        "confidence": "high"
+      },
+      {
+        "id": "LAY-SOT-06",
+        "system": "Sidebar engine",
+        "candidate": "client/src/components/navigation/sidebar/SidebarCore.jsx",
+        "confidence": "high"
+      },
+      {
+        "id": "LAY-SOT-07",
+        "system": "Legacy public wrapper",
+        "candidate": "UNKNOWN pending RootLayout runtime ownership",
+        "confidence": "low"
+      }
+    ],
+    "apiClientSourceOfTruthCandidates": [
+      {
+        "id": "API-SOT-01",
+        "system": "HTTP transport",
+        "candidate": "client/src/services/apiClient.js",
+        "confidence": "high"
+      },
+      {
+        "id": "API-SOT-02",
+        "system": "Endpoint registry",
+        "candidate": "client/src/constants/apiEndpoints.js",
+        "confidence": "high-with-contract-gaps"
+      },
+      {
+        "id": "API-SOT-03",
+        "system": "Domain requests",
+        "candidate": "client/src/features/*/*Service.js",
+        "confidence": "high"
+      },
+      {
+        "id": "API-SOT-04",
+        "system": "Legacy aggregate facade",
+        "candidate": "client/src/services/api.js as temporary compatibility surface",
+        "confidence": "high"
+      },
+      {
+        "id": "API-SOT-05",
+        "system": "API version",
+        "candidate": "UNKNOWN pending /api versus /api/v1 ADR",
+        "confidence": "low"
+      }
+    ],
+    "placeholderRiskClassification": [
+      {
+        "id": "WPH-001",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-002",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-003",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-004",
+        "class": "product-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-005",
+        "class": "product-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-006",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-007",
+        "class": "product-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-008",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-009",
+        "class": "product-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-010",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-011",
+        "class": "product-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-012",
+        "class": "product-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-013",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-014",
+        "class": "architecture-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-015",
+        "class": "architecture-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-016",
+        "class": "architecture-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-017",
+        "class": "architecture-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-018",
+        "class": "architecture-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/RouteShells.jsx"
+      },
+      {
+        "id": "WPH-019",
+        "class": "architecture-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/client/ClientOverview.jsx"
+      },
+      {
+        "id": "WPH-020",
+        "class": "architecture-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/client/ClientChallenges.jsx"
+      },
+      {
+        "id": "WPH-021",
+        "class": "architecture-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/client/ClientProviders.jsx"
+      },
+      {
+        "id": "WPH-022",
+        "class": "architecture-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/client/ClientActiveWork.jsx"
+      },
+      {
+        "id": "WPH-023",
+        "class": "architecture-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/client/ClientSettings.jsx"
+      },
+      {
+        "id": "WPH-024",
+        "class": "architecture-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/ProviderSettingsPlaceholder.jsx"
+      },
+      {
+        "id": "WPH-025",
+        "class": "product-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/pages/Admin.jsx"
+      },
+      {
+        "id": "WPH-026",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/profile/ProfileOnboardingStepPage.jsx"
+      },
+      {
+        "id": "WPH-027",
+        "class": "architecture-risk",
+        "verifiedRisk": "S2",
+        "file": "server/src/routes/v1/user.routes.js"
+      },
+      {
+        "id": "WPH-028",
+        "class": "product-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/utils/constants.js"
+      },
+      {
+        "id": "WPH-029",
+        "class": "product-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/utils/constants.js"
+      },
+      {
+        "id": "WPH-030",
+        "class": "product-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/sections/ReviewsSection.jsx"
+      },
+      {
+        "id": "WPH-031",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": "client/src/sections/home/FeaturedProvidersSection.jsx"
+      },
+      {
+        "id": "WPH-032",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": "client/src/sections/home/FeaturedChallengesSection.jsx"
+      },
+      {
+        "id": "WPH-033",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": "client/src/sections/home/ProofLedgerPreview.jsx"
+      },
+      {
+        "id": "WPH-034",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": "client/src/sections/home/ProofLedgerShowcase.jsx"
+      },
+      {
+        "id": "WPH-035",
+        "class": "security-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/pages/VerifyEmail.jsx"
+      },
+      {
+        "id": "WPH-036",
+        "class": "security-risk",
+        "verifiedRisk": "S1",
+        "file": "server/src/modules/auth/auth.routes.js"
+      },
+      {
+        "id": "WPH-037",
+        "class": "security-risk",
+        "verifiedRisk": "S1",
+        "file": "server/src/modules/auth/auth.controller.js"
+      },
+      {
+        "id": "WPH-038",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": ".next and client/dist"
+      },
+      {
+        "id": "WPH-039",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": ".chrome-* and responsive-shots"
+      },
+      {
+        "id": "WPH-040",
+        "class": "architecture-risk",
+        "verifiedRisk": "S2",
+        "file": "uploads and server/uploads"
+      },
+      {
+        "id": "WPH-041",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": "server/tmp"
+      },
+      {
+        "id": "WPH-042",
+        "class": "unknown",
+        "verifiedRisk": "UNKNOWN",
+        "file": "client/src/pages/Auth.jsx"
+      },
+      {
+        "id": "WPH-043",
+        "class": "unknown",
+        "verifiedRisk": "UNKNOWN",
+        "file": "client/src/pages/Blogs.jsx"
+      },
+      {
+        "id": "WPH-044",
+        "class": "unknown",
+        "verifiedRisk": "UNKNOWN",
+        "file": "client/src/pages/Contact.jsx"
+      },
+      {
+        "id": "WPH-045",
+        "class": "unknown",
+        "verifiedRisk": "UNKNOWN",
+        "file": "client/src/pages/MyChallenges.jsx"
+      },
+      {
+        "id": "WPH-046",
+        "class": "unknown",
+        "verifiedRisk": "UNKNOWN",
+        "file": "client/src/pages/PublicProfile.jsx"
+      },
+      {
+        "id": "WPH-047",
+        "class": "unknown",
+        "verifiedRisk": "UNKNOWN",
+        "file": "client/src/pages/ServiceDetail.jsx"
+      },
+      {
+        "id": "WPH-048",
+        "class": "product-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/pages/Admin.jsx"
+      },
+      {
+        "id": "WPH-049",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S2",
+        "file": "client/src/utils/challengeNextAction.js"
+      },
+      {
+        "id": "WPH-050",
+        "class": "product-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/ChallengeDetail.jsx"
+      },
+      {
+        "id": "WPH-051",
+        "class": "product-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/ClientExecutionPlanDetail.jsx"
+      },
+      {
+        "id": "WPH-052",
+        "class": "product-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/components/matches/ProviderInviteModal.jsx"
+      },
+      {
+        "id": "WPH-053",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": "client/src/pages/ChallengeBuilder.jsx"
+      },
+      {
+        "id": "WPH-054",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": "client/src/pages/OutcomeOfferBuilder.jsx"
+      },
+      {
+        "id": "WPH-055",
+        "class": "architecture-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/pages/SupportDashboard.jsx"
+      },
+      {
+        "id": "WPH-056",
+        "class": "product-risk",
+        "verifiedRisk": "S1",
+        "file": "client/src/components/navigation/AdminTopbar.jsx"
+      },
+      {
+        "id": "WPH-057",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S2",
+        "file": "client/src/utils/profile/profileReadinessTypes.js"
+      },
+      {
+        "id": "WPH-058",
+        "class": "product-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/components/dashboard/ClientDashboard.jsx"
+      },
+      {
+        "id": "WPH-059",
+        "class": "product-risk",
+        "verifiedRisk": "S2",
+        "file": "client/src/sections/home/FinalCTASection.jsx"
+      },
+      {
+        "id": "WPH-060",
+        "class": "acceptable-temporary",
+        "verifiedRisk": "S3",
+        "file": "client/src/sections/home/HeroSection.jsx; client/src/sections/home/HowItWorksSection.jsx; client/src/sections/home/HomeHowItWorksSection.jsx"
+      }
+    ],
+    "cleanupDependencyOrder": [
+      {
+        "order": 0,
+        "target": "Regression baseline",
+        "status": "blocked-by-missing-tests"
+      },
+      {
+        "order": 1,
+        "target": "Route source and alias policy",
+        "status": "planning-ready"
+      },
+      {
+        "order": 2,
+        "target": "Auth guard and role fallback verification",
+        "status": "blocked"
+      },
+      {
+        "order": 3,
+        "target": "Layout ownership and shared shell primitives",
+        "status": "blocked"
+      },
+      {
+        "order": 4,
+        "target": "API transport/facade/version ownership",
+        "status": "blocked"
+      },
+      {
+        "order": 5,
+        "target": "Placeholder and fallback retirement",
+        "status": "ready-with-caution"
+      },
+      {
+        "order": 6,
+        "target": "Backend mount/service cleanup",
+        "status": "blocked"
+      },
+      {
+        "order": 7,
+        "target": "Model usage verification",
+        "status": "blocked"
+      },
+      {
+        "order": 8,
+        "target": "Shared utility/import normalization",
+        "status": "ready-with-caution"
+      }
+    ],
+    "blastRadiusItems": [
+      {
+        "id": "LAY-003",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "LAY-004",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "LAY-008",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "RTE-002",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "RTE-004",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "RTE-006",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "RTE-008",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "RTE-009",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "RTE-011",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "RTE-012",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "RTE-016",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "RTE-018",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "RTE-019",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "API-001",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "API-002",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "API-003",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "API-004",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "API-005",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-004",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-005",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-009",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-011",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-012",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-015",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-016",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-017",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-025",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-028",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-029",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-030",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-035",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-036",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-037",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-048",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-052",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      },
+      {
+        "id": "WPH-056",
+        "risk": "S1",
+        "requires": "Target-specific regression tests, runtime ownership proof, and rollback plan before edit."
+      }
+    ],
+    "cleanupReadinessScores": [
+      {
+        "category": "layouts",
+        "score": 58,
+        "safeNow": "no"
+      },
+      {
+        "category": "routeConstants",
+        "score": 62,
+        "safeNow": "with-caution"
+      },
+      {
+        "category": "apiClient",
+        "score": 54,
+        "safeNow": "no"
+      },
+      {
+        "category": "placeholders",
+        "score": 78,
+        "safeNow": "with-caution"
+      },
+      {
+        "category": "auth",
+        "score": 35,
+        "safeNow": "no"
+      },
+      {
+        "category": "dashboardShell",
+        "score": 48,
+        "safeNow": "no"
+      },
+      {
+        "category": "publicNavigation",
+        "score": 72,
+        "safeNow": "with-caution"
+      },
+      {
+        "category": "backendServicesApi",
+        "score": 46,
+        "safeNow": "no"
+      },
+      {
+        "category": "sharedUtilities",
+        "score": 68,
+        "safeNow": "with-caution"
+      }
+    ],
+    "prompt6DocsCreated": [
+      "STAGE_1_2_PROMPT_5_FINDINGS_VERIFICATION.md",
+      "STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md",
+      "STAGE_1_2_LAYOUT_OWNERSHIP_ANALYSIS.md",
+      "STAGE_1_2_API_CLIENT_SOURCE_OF_TRUTH_ANALYSIS.md",
+      "STAGE_1_2_PLACEHOLDER_RISK_CLASSIFICATION.md",
+      "STAGE_1_2_CLEANUP_DEPENDENCY_ORDER.md",
+      "STAGE_1_2_DUPLICATE_BLAST_RADIUS_REPORT.md",
+      "STAGE_1_2_CLEANUP_READINESS_SCORECARD.md"
+    ],
+    "prompt6DocsUpdated": [
+      "stage-1-2-duplicate-audit-manifest.json",
+      "STAGE_1_2_MASTER_TRACKER.md"
+    ]
+}

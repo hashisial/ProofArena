@@ -1,0 +1,195 @@
+{
+  "projectName": "ScaleOps / ProofArena",
+  "parentProduct": "ScaleOps",
+  "flagshipModule": "ProofArena",
+  "stage": "1",
+  "promptNumber": 13,
+  "purpose": "Cross-stage consistency check across Stage 1.1, Stage 1.2, and Stage 1.3",
+  "generatedAt": "2026-06-27T15:00:00Z",
+  "productionCodeModified": false,
+  "docExistenceAudit": [
+    {
+      "scope": "Stage 1.1 primary docs",
+      "status": "present",
+      "authority": "primary"
+    },
+    {
+      "scope": "Stage 1.2 final closure docs",
+      "status": "present",
+      "authority": "primary"
+    },
+    {
+      "scope": "Stage 1.3 ADR and closeout docs",
+      "status": "present",
+      "authority": "primary"
+    },
+    {
+      "scope": "Prompt 13 artifact set",
+      "status": "created",
+      "authority": "supporting"
+    }
+  ],
+  "claimConsistency": [
+    {
+      "claim": "ScaleOps remains the parent and ProofArena remains inside it",
+      "status": "consistent"
+    },
+    {
+      "claim": "No separate ProofArena app/repo/router stack exists",
+      "status": "consistent"
+    },
+    {
+      "claim": "Route, layout, API, and auth governance remain centralized",
+      "status": "consistent"
+    },
+    {
+      "claim": "Stage 2 is not ready yet",
+      "status": "consistent"
+    },
+    {
+      "claim": "No production code was modified",
+      "status": "consistent"
+    }
+  ],
+  "contradictions": [
+    {
+      "id": "C-01",
+      "item": "Canonical client route remains unresolved",
+      "status": "open-gap"
+    },
+    {
+      "id": "C-02",
+      "item": "Canonical admin proof route remains unresolved",
+      "status": "open-gap"
+    },
+    {
+      "id": "C-03",
+      "item": "Canonical API version/facade window remains unresolved",
+      "status": "open-gap"
+    },
+    {
+      "id": "C-04",
+      "item": "Human approval for ADR-0001 is not recorded",
+      "status": "open-gap"
+    },
+    {
+      "id": "C-05",
+      "item": "Compatibility telemetry is missing",
+      "status": "open-gap"
+    },
+    {
+      "id": "C-06",
+      "item": "Automated regression baseline is missing",
+      "status": "open-gap"
+    }
+  ],
+  "staleOrSupersededDocs": [
+    {
+      "group": "Stage 1.1 prompt-level docs",
+      "status": "historical-supporting"
+    },
+    {
+      "group": "Stage 1.2 prompt-level docs",
+      "status": "historical-supporting"
+    },
+    {
+      "group": "Stage 1.3 prompt-level docs",
+      "status": "historical-supporting"
+    }
+  ],
+  "manifestAudit": [
+    {
+      "manifest": "stage-1-1-source-of-truth-manifest.json",
+      "status": "parseable"
+    },
+    {
+      "manifest": "stage-1-2-final-closure-manifest.json",
+      "status": "parseable"
+    },
+    {
+      "manifest": "stage-1-3-final-closeout-manifest.json",
+      "status": "parseable"
+    },
+    {
+      "manifest": "adr/adr-0001-manifest.json",
+      "status": "parseable"
+    }
+  ],
+  "metricReconciliation": [
+    {
+      "metric": "Stage 1.1 scan totals",
+      "status": "reconciled"
+    },
+    {
+      "metric": "Stage 1.2 final findings and readiness counts",
+      "status": "reconciled"
+    },
+    {
+      "metric": "Stage 1.3 closeout and pre-readiness scores",
+      "status": "reconciled"
+    }
+  ],
+  "sourceOfTruthConsolidation": [
+    {
+      "result": "Stage 1.3 official source map remains the operational closeout authority",
+      "status": "confirmed"
+    }
+  ],
+  "adrAlignment": [
+    {
+      "decision": "ADR-0001 remains proposed",
+      "status": "aligned"
+    }
+  ],
+  "stage2ReadinessClaimAudit": {
+    "conclusion": "not-ready",
+    "conditions": [
+      "Complete Prompts 14 and 15",
+      "Record boundary approval or explicit deferral",
+      "Identify Stage 2 target/tests/rollback",
+      "Preserve all no-duplicate controls"
+    ],
+    "blockers": [
+      "Human approval not recorded",
+      "Canonical route decisions still unresolved",
+      "Regression baseline still incomplete"
+    ],
+    "humanApprovalRequired": true
+  },
+  "correctionPlan": [
+    {
+      "item": "Publish Prompt 13 cross-stage consistency docs",
+      "status": "complete"
+    },
+    {
+      "item": "Pass control to Prompt 14 repository safety verification",
+      "status": "ready"
+    }
+  ],
+  "docsCreated": [
+    "STAGE_1_PROMPT_13_DOC_EXISTENCE_AUTHORITY_AUDIT.md",
+    "STAGE_1_CROSS_STAGE_CLAIM_CONSISTENCY_MATRIX.md",
+    "STAGE_1_CONTRADICTION_REGISTER.md",
+    "STAGE_1_STALE_SUPERSEDED_DOC_REPORT.md",
+    "STAGE_1_MANIFEST_CONSISTENCY_AUDIT.md",
+    "STAGE_1_COUNT_METRIC_RECONCILIATION.md",
+    "STAGE_1_SOURCE_OF_TRUTH_CONSOLIDATION_CHECK.md",
+    "STAGE_1_ADR_ALIGNMENT_CHECK.md",
+    "STAGE_2_READINESS_CLAIM_AUDIT.md",
+    "STAGE_1_PROMPT_13_CORRECTION_PLAN.md",
+    "stage-1-prompt-13-consistency-manifest.json",
+    "STAGE_1_PROMPT_14_HANDOFF.md"
+  ],
+  "docsUpdated": [
+    "STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+    "STAGE_1_REMAINING_RISK_REGISTER.md",
+    "STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md"
+  ],
+  "unknowns": [
+    "Canonical client route",
+    "Canonical admin proof route",
+    "Canonical API version/facade window",
+    "Human approval record"
+  ]
+}
+

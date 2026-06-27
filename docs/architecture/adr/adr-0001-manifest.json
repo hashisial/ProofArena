@@ -1,0 +1,511 @@
+{
+  "adrNumber": "ADR-0001",
+  "title": "ScaleOps / ProofArena Architecture Boundary and Refactor Governance",
+  "status": "proposed",
+  "roadmapStage": "1.3",
+  "generatedAt": "2026-06-27T13:15:00Z",
+  "productionCodeModified": false,
+  "productBoundary": {
+    "parentProduct": "ScaleOps",
+    "flagshipModule": "ProofArena",
+    "separateProofArenaAppAllowed": false
+  },
+  "decisions": [
+    {
+      "id": "D-01",
+      "category": "product-boundary",
+      "decision": "ScaleOps remains parent; ProofArena remains flagship module inside ScaleOps.",
+      "status": "proposed",
+      "confidence": "high",
+      "supportingDocs": [
+        "Stage 1.1 source summary",
+        "Stage 1.2 handoff"
+      ],
+      "affectedSystems": [
+        "product"
+      ],
+      "futureStages": [
+        "2",
+        "3"
+      ],
+      "risks": [
+        "product fragmentation"
+      ]
+    },
+    {
+      "id": "D-02",
+      "category": "repository-boundary",
+      "decision": "Existing repository remains source; no separate ProofArena app/repo without superseding ADR.",
+      "status": "proposed",
+      "confidence": "high",
+      "supportingDocs": [
+        "Stage 1.1 repo inventory"
+      ],
+      "affectedSystems": [
+        "repository",
+        "deployment"
+      ],
+      "futureStages": [
+        "2"
+      ],
+      "risks": [
+        "duplicate platform"
+      ]
+    },
+    {
+      "id": "D-03",
+      "category": "routing",
+      "decision": "Reuse AppRoutes/routes.js/metadata; no parallel route tree or constants.",
+      "status": "proposed",
+      "confidence": "high",
+      "supportingDocs": [
+        "Route inventory",
+        "Stage 1.2 route lock"
+      ],
+      "affectedSystems": [
+        "routes",
+        "navigation"
+      ],
+      "futureStages": [
+        "4",
+        "22"
+      ],
+      "risks": [
+        "route breakage"
+      ]
+    },
+    {
+      "id": "D-04",
+      "category": "layout-dashboard",
+      "decision": "Preserve role layouts and SidebarCore; share only tested non-policy primitives.",
+      "status": "proposed",
+      "confidence": "high",
+      "supportingDocs": [
+        "Layout ownership",
+        "Stage 1.2 lock"
+      ],
+      "affectedSystems": [
+        "layouts",
+        "dashboard"
+      ],
+      "futureStages": [
+        "3",
+        "36"
+      ],
+      "risks": [
+        "role leakage"
+      ]
+    },
+    {
+      "id": "D-05",
+      "category": "api-client",
+      "decision": "Use apiClient transport, apiEndpoints registry, feature services; api.js temporary compatibility.",
+      "status": "proposed",
+      "confidence": "high",
+      "supportingDocs": [
+        "API inventory",
+        "API lock"
+      ],
+      "affectedSystems": [
+        "client API",
+        "backend contracts"
+      ],
+      "futureStages": [
+        "5"
+      ],
+      "risks": [
+        "session/API breakage"
+      ]
+    },
+    {
+      "id": "D-06",
+      "category": "auth-role",
+      "decision": "Reuse frontend guards and backend middleware; backend authorization remains authoritative.",
+      "status": "proposed",
+      "confidence": "high",
+      "supportingDocs": [
+        "Critical list",
+        "Backend flow"
+      ],
+      "affectedSystems": [
+        "auth",
+        "roles"
+      ],
+      "futureStages": [
+        "23",
+        "26"
+      ],
+      "risks": [
+        "security regression"
+      ]
+    },
+    {
+      "id": "D-07",
+      "category": "module-ownership",
+      "decision": "Keep feature logic module-owned and use defined module groups.",
+      "status": "proposed",
+      "confidence": "medium",
+      "supportingDocs": [
+        "Ownership maps"
+      ],
+      "affectedSystems": [
+        "features",
+        "backend modules"
+      ],
+      "futureStages": [
+        "3"
+      ],
+      "risks": [
+        "scattered ownership"
+      ]
+    },
+    {
+      "id": "D-08",
+      "category": "shared-code",
+      "decision": "Share only stable cross-module contracts; retain compatibility exports until proven.",
+      "status": "proposed",
+      "confidence": "high",
+      "supportingDocs": [
+        "Reusable code map"
+      ],
+      "affectedSystems": [
+        "shared UI",
+        "utilities"
+      ],
+      "futureStages": [
+        "7",
+        "8"
+      ],
+      "risks": [
+        "over-abstraction"
+      ]
+    },
+    {
+      "id": "D-09",
+      "category": "placeholder",
+      "decision": "Classify placeholders; disclosed previews temporary; fake business/security truth prohibited.",
+      "status": "proposed",
+      "confidence": "high",
+      "supportingDocs": [
+        "Placeholder classification"
+      ],
+      "affectedSystems": [
+        "public",
+        "dashboards",
+        "auth"
+      ],
+      "futureStages": [
+        "8"
+      ],
+      "risks": [
+        "misleading behavior"
+      ]
+    },
+    {
+      "id": "D-10",
+      "category": "refactor-governance",
+      "decision": "Require preflight, tests, isolated changes, validation, rollback, and safe-delete policy.",
+      "status": "proposed",
+      "confidence": "high",
+      "supportingDocs": [
+        "Guardrails",
+        "Cleanup blueprint"
+      ],
+      "affectedSystems": [
+        "all critical systems"
+      ],
+      "futureStages": [
+        "1.2 onward"
+      ],
+      "risks": [
+        "unsafe refactor"
+      ]
+    }
+  ],
+  "acceptedRules": [
+    "No separate ProofArena app/repo/router/shell/API/auth/nav",
+    "Reuse existing route/constants system",
+    "Reuse apiClient and feature services",
+    "Preserve role layouts and SidebarCore",
+    "Do not bypass auth/backend authorization",
+    "Use defined module ownership",
+    "Share only cross-module contracts",
+    "Classify placeholders before replacement",
+    "Use safe-delete policy",
+    "Read Stage 1.1/1.2 docs before risky edits",
+    "No config/package/env changes without approval",
+    "Audit prompts are docs-only",
+    "Unknown blocks destructive action",
+    "Report validation and rollback"
+  ],
+  "forbiddenActions": [
+    "Separate ProofArena system",
+    "Parallel route tree/constants",
+    "Second browser HTTP client",
+    "Duplicate dashboard shell",
+    "Auth/role bypass",
+    "UI-only security",
+    "Unsafe deletion",
+    "Fake production data/workflow",
+    "Browser/API namespace merge",
+    "Premature alias/facade removal",
+    "Unapproved dependency/config/env change",
+    "Production edits in audit prompt"
+  ],
+  "humanReviewQuestions": [
+    "Unified boundary confirmation",
+    "Canonical client route",
+    "Canonical admin proof route",
+    "Canonical API version",
+    "api.js compatibility window",
+    "Protected shell abstraction scope",
+    "Legacy layout/page ownership",
+    "Fallback retirement UX",
+    "Email/throttling controls",
+    "Minimum test baseline"
+  ],
+  "unknowns": [
+    "Client canonical route",
+    "Admin proof canonical route",
+    "API version",
+    "RootLayout runtime ownership",
+    "Six page owners",
+    "Compatibility telemetry",
+    "Production email/rate limits",
+    "Production model/index behavior"
+  ],
+  "sourceDocuments": [
+    "Stage 1.1 source summary and manifests",
+    "Stage 1.1 guardrails",
+    "Stage 1.2 final findings/lock/backlog/blockers/risk/QA/handoff/manifest"
+  ],
+  "docsCreated": [
+    "ADR_INDEX.md",
+    "ADR-0001-scaleops-proofarena-architecture-boundary.md",
+    "ADR-0001-evidence-map.md",
+    "ADR-0001-future-codex-rules.md",
+    "ADR-0001-risk-mitigation-table.md",
+    "adr-0001-manifest.json",
+    "STAGE_1_3_MASTER_TRACKER.md",
+    "STAGE_1_3_PROMPT_10_HANDOFF.md"
+  ],
+  "docsUpdated": [
+    "ADR_INDEX.md"
+  ],
+  "prompt10Validation": {
+      "validated": 10,
+      "confirmed": 6,
+      "revisedOrConditional": 4,
+      "fullyBlocked": 0,
+      "humanReviewItems": 7,
+      "contradictionsOrTensions": 5,
+      "gaps": 10
+    },
+    "decisionValidationResults": [
+      "D-01 confirmed",
+      "D-02 confirmed",
+      "D-03 conditional",
+      "D-04 conditional",
+      "D-05 conditional",
+      "D-06 confirmed principle",
+      "D-07 revised",
+      "D-08 confirmed principle",
+      "D-09 confirmed",
+      "D-10 confirmed"
+    ],
+    "contradictions": [
+      "Central route governance versus literals/aliases/gaps",
+      "One HTTP transport versus facade/builders/dual mounts",
+      "Shared sidebar versus repeated protected shell primitives",
+      "Allowed disclosed previews versus rejected fake production data",
+      "Deep static evidence versus missing runtime tests"
+    ],
+    "gaps": [
+      "Canonical client route",
+      "Canonical admin proof route",
+      "Canonical API version",
+      "api.js export-level use",
+      "RootLayout runtime ownership",
+      "Six page owners",
+      "Email/throttling completion",
+      "Automated tests",
+      "Compatibility telemetry",
+      "Production model/index evidence"
+    ],
+    "sourceOfTruthConfidence": {
+      "high": [
+        "AppRoutes",
+        "routes.js grouped paths",
+        "Current role layouts",
+        "SidebarCore",
+        "apiClient",
+        "Placeholder classification"
+      ],
+      "medium": [
+        "routeMetadata completeness",
+        "feature/module ownership",
+        "backend auth implementation"
+      ],
+      "low": [
+        "API version",
+        "legacy runtime ownership",
+        "production compatibility usage"
+      ]
+    },
+    "humanApprovalItems": [
+      "Product/repository ratification",
+      "Client route policy",
+      "Admin proof route policy",
+      "API version/deprecation",
+      "Facade window",
+      "Shell abstraction scope",
+      "Legacy ownership",
+      "Fallback UX",
+      "Email/throttling",
+      "Test baseline"
+    ],
+    "acceptanceReadinessScore": 78,
+    "recommendedStatus": "keep-proposed-pending-human-approval",
+    "prompt10DocsCreated": [
+      "ADR-0001-decision-validation-report.md",
+      "ADR-0001-contradiction-gap-analysis.md",
+      "ADR-0001-source-of-truth-confidence-matrix.md",
+      "ADR-0001-codex-enforcement-checklist.md",
+      "ADR-0001-human-approval-dossier.md",
+      "ADR-0001-acceptance-readiness-score.md",
+      "STAGE_1_3_PROMPT_11_HANDOFF.md"
+    ],
+    "prompt10DocsUpdated": [
+      "ADR-0001-scaleops-proofarena-architecture-boundary.md",
+      "adr-0001-manifest.json",
+      "ADR_INDEX.md",
+      "STAGE_1_3_MASTER_TRACKER.md"
+    ],
+    "prompt11Finalization": {
+        "decisionsReviewed": 14,
+        "readyToAccept": 6,
+        "acceptWithCaution": 2,
+        "keepProposed": 4,
+        "humanReviewRequired": 2,
+        "blockedSubDecisions": 5
+      },
+      "finalDecisionReview": "ADR-0001-final-decision-review.md",
+      "acceptanceGate": {
+        "pass": 7,
+        "conditional": 4,
+        "fail": 1,
+        "recommendation": "keep-proposed-until-human-approval"
+      },
+      "finalCodexGovernanceRules": {
+        "file": "ADR-0001-final-codex-governance-rulebook.md",
+        "ruleCount": 20
+      },
+      "futureStageGovernanceMap": {
+        "file": "ADR-0001-future-stage-governance-map.md",
+        "stagesMapped": 14
+      },
+      "violationResponsePlan": {
+        "file": "ADR-0001-violation-response-plan.md",
+        "violationTypes": 10
+      },
+      "finalHumanApprovalBrief": "ADR-0001-final-human-approval-brief.md",
+      "finalRecommendedStatus": "keep-proposed-until-human-approval",
+      "prompt11DocsCreated": [
+        "ADR-0001-final-decision-review.md",
+        "ADR-0001-acceptance-gate.md",
+        "ADR-0001-final-codex-governance-rulebook.md",
+        "ADR-0001-future-stage-governance-map.md",
+        "ADR-0001-violation-response-plan.md",
+        "ADR-0001-final-human-approval-brief.md",
+        "STAGE_1_3_PROMPT_12_HANDOFF.md"
+      ],
+      "prompt11DocsUpdated": [
+        "ADR-0001-scaleops-proofarena-architecture-boundary.md",
+        "adr-0001-manifest.json",
+        "ADR_INDEX.md",
+        "STAGE_1_3_MASTER_TRACKER.md"
+      ],
+      "prompt12Closeout": {
+          "stage13CloseoutScore": 88,
+          "stage13CloseoutStatus": "ready-with-caution",
+          "stage2PreReadinessScore": 74,
+          "stage2Ready": false,
+          "remainingStage1RiskCount": 18
+        },
+        "finalStatusDecisionReport": "ADR-0001-final-status-decision-report.md",
+        "adoptionPackage": "ADR-0001-adoption-package.md",
+        "officialSourceOfTruthDocMap": "../STAGE_1_3_OFFICIAL_SOURCE_OF_TRUTH_DOC_MAP.md",
+        "stage13CloseoutReport": "../STAGE_1_3_FINAL_CLOSEOUT_REPORT.md",
+        "architectureControlBoard": "../STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+        "remainingStage1Risks": "../STAGE_1_REMAINING_RISK_REGISTER.md",
+        "prompts13To15Plan": "../STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md",
+        "stage2PreReadinessSnapshot": "../STAGE_2_PRE_READINESS_SNAPSHOT.md",
+        "recommendedFinalStatus": "keep-proposed-until-human-approval",
+        "prompt12DocsCreated": [
+          "ADR-0001-final-status-decision-report.md",
+          "ADR-0001-adoption-package.md",
+          "STAGE_1_3_OFFICIAL_SOURCE_OF_TRUTH_DOC_MAP.md",
+          "STAGE_1_3_FINAL_CLOSEOUT_REPORT.md",
+          "STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+          "STAGE_1_REMAINING_RISK_REGISTER.md",
+          "STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md",
+          "STAGE_2_PRE_READINESS_SNAPSHOT.md",
+          "stage-1-3-final-closeout-manifest.json"
+        ],
+      "prompt12DocsUpdated": [
+        "adr-0001-manifest.json",
+        "ADR_INDEX.md",
+        "STAGE_1_3_MASTER_TRACKER.md"
+      ],
+      "stage1FinalCloseout": {
+        "decision": "complete-with-caution",
+        "stage2Recommendation": "start with caution after mandatory preflight and human boundary approval or explicit deferral",
+        "score": 92,
+        "stage2Ready": false
+      },
+      "finalStage1CompletionDecision": "complete-with-caution",
+      "stage2StartRecommendation": "start with caution after mandatory preflight and human boundary approval or explicit deferral",
+      "stage2MandatoryPreflightChecklist": [
+        "STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
+        "STAGE_2_START_CONDITIONS.md"
+      ],
+      "stage2StartConditions": {
+        "requiredDocs": [
+          "STAGE_1_FINAL_COMPLETION_DECISION.md",
+          "STAGE_1_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
+          "STAGE_1_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_TABLE.md",
+          "STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md"
+        ],
+        "requiredApprovals": [
+          "ADR-0001 boundary approval or explicit deferral"
+        ],
+        "blockingConditions": [
+          "Human approval not recorded",
+          "Canonical route decisions still unresolved",
+          "Regression baseline incomplete"
+        ],
+        "startWithCautionConditions": [
+          "Prompt 15 documentation completed",
+          "No separate ProofArena app proposed",
+          "Remaining risks acknowledged"
+        ]
+      },
+      "prompt15DocsCreated": [
+        "STAGE_1_FINAL_COMPLETION_DECISION.md",
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "STAGE_1_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
+        "STAGE_1_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_TABLE.md",
+        "STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md",
+        "STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
+        "STAGE_2_START_CONDITIONS.md",
+        "stage-1-final-completion-manifest.json"
+      ],
+      "prompt15DocsUpdated": [
+        "STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+        "STAGE_1_REMAINING_RISK_REGISTER.md",
+        "STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md",
+        "ADR_INDEX.md",
+        "adr-0001-manifest.json"
+      ],
+      "finalNoProductionCodeModificationProof": "STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md"
+}
