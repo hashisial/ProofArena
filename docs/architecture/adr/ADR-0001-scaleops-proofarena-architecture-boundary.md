@@ -106,7 +106,31 @@ Stages 2/3 enforce product/module boundaries; 4 governs routes; 5 governs API co
 
 ## Source Documents
 
-All mandatory Stage 1.1 documents and Stage 1.2 final closure documents were found and read. Primary sources are the Stage 1.1 source summary/manifests and the Stage 1.2 final findings, lock table, blocker register, closure manifest, and handoff brief.
+All mandatory Prompt 9 source documents were found and read.
+
+| Source document | Status | Use in this ADR |
+| --- | --- | --- |
+| `docs/architecture/STAGE_1_1_SOURCE_OF_TRUTH_SUMMARY.md` | Found | Repository and product-boundary baseline |
+| `docs/architecture/STAGE_1_1_FINAL_DOC_INDEX.md` | Found | Stage 1.1 authority and document routing |
+| `docs/architecture/STAGE_1_1_ARCHITECTURE_INVARIANTS.md` | Found | Product, route, auth, API, data, and shared-code invariants |
+| `docs/architecture/STAGE_1_1_DO_NOT_DUPLICATE_REGISTRY.md` | Found | Existing systems future work must reuse |
+| `docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md` | Found | High-risk files and required pre-checks |
+| `docs/architecture/STAGE_1_1_FORBIDDEN_ACTIONS_MANIFEST.md` | Found | Prohibited architecture and refactor actions |
+| `docs/architecture/STAGE_1_1_FUTURE_PROMPT_PREFLIGHT_CHECKLIST.md` | Found | Mandatory future-prompt checks |
+| `docs/architecture/STAGE_1_1_ADR_CANDIDATES.md` | Found | Decision candidates considered for Stage 1.3 |
+| `docs/architecture/STAGE_1_1_FUTURE_STAGE_IMPACT_MAP.md` | Found | Roadmap impact and ownership expectations |
+| `docs/architecture/stage-1-1-source-of-truth-manifest.json` | Found | Machine-readable inventory and evidence counts |
+| `docs/architecture/stage-1-1-guardrail-manifest.json` | Found | Machine-readable architecture controls |
+| `docs/architecture/STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md` | Found | Final duplicate and placeholder classifications |
+| `docs/architecture/STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md` | Found | Current route, layout, API, and placeholder ownership locks |
+| `docs/architecture/STAGE_1_2_FINAL_CLEANUP_EXECUTION_BACKLOG.md` | Found | Ordered future cleanup candidates |
+| `docs/architecture/STAGE_1_2_FINAL_BLOCKER_REGISTER.md` | Found | Twelve blockers preventing cleanup execution |
+| `docs/architecture/STAGE_1_2_RISK_ACCEPTANCE_TABLE.md` | Found | Accepted, rejected, and human-review risks |
+| `docs/architecture/STAGE_1_2_FINAL_VALIDATION_COMMAND_CHECKLIST.md` | Found | Available automated checks and missing test commands |
+| `docs/architecture/STAGE_1_2_HUMAN_REVIEW_PACK.md` | Found | Owner decisions required before consolidation |
+| `docs/architecture/STAGE_1_2_TO_STAGE_1_3_HANDOFF_BRIEF.md` | Found | ADR scope, constraints, and unresolved decisions |
+| `docs/architecture/STAGE_1_2_MASTER_TRACKER.md` | Found | Stage 1.2 audit history and frozen counts |
+| `docs/architecture/stage-1-2-final-closure-manifest.json` | Found | Machine-readable final findings, locks, backlog, and readiness |
 
 ## Unknowns
 
@@ -141,4 +165,3 @@ Final rules: preserve one product/repository; reuse current router, role layouts
 Source confidence is high for current owners, medium for consolidation direction, and low for production compatibility/version decisions. Stages 2 through 36 must use the governance map.
 
 ProofArena must remain inside ScaleOps unless a future ADR formally reverses this decision.
-

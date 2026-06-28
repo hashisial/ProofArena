@@ -1,19 +1,19 @@
 # ADR-0001 Violation Response Plan
 
 Generated: 2026-06-27
+Revalidated: 2026-06-28
 
-| Violation | Detection | Immediate action | Documentation/rollback | Human review | Prevention |
-| --- | --- | --- | --- | --- | --- |
-| V-01 Separate ProofArena app | New repo/app/router/shell/client/auth/nav | Stop work | Record files/reason; remove/revert after approval | Required | G-01 preflight |
-| V-02 Duplicate route constants/tree | New registry or parallel router | Stop route edits | Compare route lock; revert duplicate | Route owner | G-03 |
-| V-03 Duplicate dashboard shell | New protected shell/sidebar state | Stop | Restore existing wrapper/SidebarCore use | Required if migration intended | G-05/06 |
-| V-04 Duplicate HTTP client | New Axios instance/browser fetch wrapper | Stop requests | Revert and map to apiClient/service | API owner | G-07 |
-| V-05 Auth/role bypass | UI-only access or middleware removal | Disable/stop immediately | Security incident note; revert atomic diff | Required | G-09 |
-| V-06 Fake production logic | Placeholder becomes invented data/status/mutation | Disable state | Restore honest placeholder/empty state | Product/security | G-12 |
-| V-07 Critical file without preflight | Diff touches protected file with no checks | Stop commit | Add preflight/tests or revert | As protection list states | G-18 |
-| V-08 Unapproved config/package/env | Diff/lock/env change | Stop deployment | Revert; document approval need; never expose secret | Required | G-14/15 |
-| V-09 Unsafe deletion | File removed without full proof | Restore immediately | Complete safe-delete checklist | Required for high risk | G-13 |
-| V-10 Frontend/backend boundary violation | Cross-source import or security moved client-side | Stop | Restore boundary; document intended contract | Architecture/security | G-02/09/10 |
+| Violation ID | Description | Detection method | Immediate stop action | Documentation required | Rollback recommendation | Human review | Future prevention rule |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| V-01 | A separate ProofArena app, repository, router, shell, API client, auth, or navigation stack is created. | Repository, package, route, and architecture scan | Stop all work on the parallel system. | Record files, intent, dependencies, and ADR conflict. | Revert/remove only after scoped review; restore existing owners. | Required | G-01, G-02 |
+| V-02 | Duplicate route constants or a parallel route tree is introduced. | Compare new declarations/strings with AppRoutes, routes.js, metadata, and route inventory. | Stop route edits. | Record duplicate paths, callers, aliases, and intended behavior. | Revert duplicate registry/tree and restore central callers. | Route owner for migration intent | G-03, G-04 |
+| V-03 | A duplicate dashboard shell, sidebar, drawer, or shell-state engine is created. | Layout/sidebar import and structural comparison | Stop layout work. | Record affected roles, routes, lifecycle, and accessibility behavior. | Restore existing role wrapper and SidebarCore contracts. | Required if migration was intended | G-05, G-06 |
+| V-04 | A second browser HTTP client or raw request wrapper bypasses apiClient. | Search Axios instances, browser fetch wrappers, interceptors, and direct requests. | Stop request-layer edits. | Record endpoint, auth, base URL, error, response, and caller needs. | Revert to apiClient plus the mapped feature service/facade. | API owner | G-07, G-08 |
+| V-05 | Existing auth or role guards/middleware are bypassed. | Role/API matrix, middleware chain review, and UI/API comparison | Disable or stop the unsafe path immediately. | Create a security-impact note with routes, endpoints, roles, and exposed data. | Revert atomically and restore backend authorization. | Required | G-09 |
+| V-06 | A placeholder becomes fake production data, status, payment, verification, admin state, or mutation. | Compare target with WPH classification and real API ownership. | Disable the misleading state or action. | Record source, displayed claim, data path, and affected users. | Restore an honest planned, empty, error, or disclosed-preview state. | Product/security/legal as applicable | G-12 |
+| V-07 | A critical file is edited without required preflight. | Git diff against the Critical File Protection List. | Stop commit/release. | Record file category, dependents, missing checks, and intended change. | Revert or complete approved prechecks/tests before continuing. | As protection list requires | G-13, G-18 |
+| V-08 | Source, package, config, environment, or build files change without approval. | Git status/diff, lockfile, env, and config review | Stop deployment and prevent secret disclosure. | Record exact files, reason, approval status, and possible runtime impact. | Revert atomically; rotate any exposed secret through approved process. | Required | G-14, G-15, G-17 |
+| V-09 | A file is deleted without safe-delete proof. | Git deletion list compared with safe-delete checklist. | Restore the file immediately. | Complete import, route, config, docs, runtime, replacement, test, and rollback evidence. | Restore exact file, export, alias, and references. | Required for high-risk/unknown files | G-13 |
+| V-10 | Frontend/backend ownership is crossed or security/business logic moves to the wrong layer. | Boundary check, import graph, API flow, and security review | Stop the cross-boundary change. | Record current owner, proposed owner, contract, and security impact. | Restore the original boundary and compatibility contract. | Architecture/security | G-02, G-09, G-10, G-11 |
 
-Every violation response records detection, affected files, commands/QA, rollback status, and whether production behavior may have changed.
-
+Every response records detection evidence, affected files and users, commands/QA, rollback status, whether production behavior may have changed, and the rule preventing recurrence.

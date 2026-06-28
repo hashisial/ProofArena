@@ -1,25 +1,32 @@
 # ADR-0001 Final Decision Review
 
 Generated: 2026-06-27
+Revalidated: 2026-06-28
 
-| Decision | Category | Final statement | Prior result | Evidence | Human approval | Recommendation | Reason / future impact / enforcement |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| F-01 | Product boundary | ScaleOps parent; ProofArena in-product flagship | Confirmed | High | Yes | Human-review-required | Stage 2 depends on owner ratification; no separate product architecture. |
-| F-02 | Repository boundary | Existing repository is current source | Confirmed | High | Yes | Accept-with-caution | External org context aside, source ownership is clear. |
-| F-03 | No separate app | No separate ProofArena app/repo/router/shell/client/auth/nav | Confirmed | High | Yes | Human-review-required | Critical invariant; future ADR required to reverse. |
-| F-04 | Route governance | AppRoutes/routes.js govern current routes; aliases conditional | Conditional | High/medium | Yes for aliases | Keep-proposed | Stage 4 must decide deprecation with tests/telemetry. |
-| F-05 | Layout/dashboard | Preserve role wrappers/SidebarCore; only tested primitives may be shared | Conditional | High/medium | Yes for consolidation | Keep-proposed | Stages 3/36; role policy cannot merge. |
-| F-06 | API governance | apiClient transport, apiEndpoints paths, feature services; facade temporary | Conditional | High/low version | Yes | Keep-proposed | Stage 5 must decide version/window. |
-| F-07 | Auth/role | Reuse guards/middleware; backend authorization authoritative | Confirmed principle | High | Yes for changes | Accept-with-caution | Stages 23/26; not a claim that email/throttle gaps are closed. |
-| F-08 | Module ownership | Use mapped modules; legacy exceptions remain mapped | Revised | Medium | Yes | Keep-proposed | Stage 3 must formalize exceptions. |
-| F-09 | Shared code | Share stable cross-module contracts only | Confirmed | High | No | Accept | Enforce dependency/equivalence checks. |
-| F-10 | Placeholder/mock | Disclosed previews allowed; fake production truth prohibited | Confirmed | High | Product/security replacement only | Accept | Stage 8/features use classification. |
-| F-11 | Refactor governance | Preflight, tests, isolation, validation, rollback mandatory | Confirmed | High | No | Accept | All future stages. |
-| F-12 | Safe deletion | No deletion without the safe-delete policy and approval | Confirmed | High | Yes for high risk | Accept | Unknown blocks deletion. |
-| F-13 | Critical files | Protection list/prechecks mandatory | Confirmed | High | As listed | Accept | Prevent route/auth/API/data breakage. |
-| F-14 | Future Codex preflight | Read official sources and enforce no-duplicate checks | Confirmed | High | No | Accept | Every future prompt must stop on failure. |
+| Decision ID | Category | Final decision statement | Previous validation | Evidence strength | Human approval | Final status | Reason | Future-stage impact | Risk if ignored | Enforcement rule |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| F-01 | Product boundary | ScaleOps remains the parent SaaS; ProofArena remains its in-product flagship module. | Confirmed | High | Yes | Human-review-required | Repository evidence is consistent, but product intent requires owner ratification. | Stage 2 boundary and every later module stage | Product fragmentation and conflicting ownership | No separate product architecture without a superseding ADR. |
+| F-02 | Repository boundary | The existing repository remains the current source of truth. | Confirmed | High | Yes | Accept-with-caution | Current ownership is clear; external organizational/deployment context is not static evidence. | Stages 2-10 and release governance | Competing repositories, deployments, and contracts | Future work starts from this repository and documents any proposed split. |
+| F-03 | No separate ProofArena app | No separate ProofArena app, repository, router, shell, API client, auth system, or navigation stack may be created. | Confirmed | High | Yes | Human-review-required | This is the critical product/repository invariant and needs explicit owner adoption. | All future stages | Duplicate architecture across every boundary | Stop any parallel system and require a superseding ADR. |
+| F-04 | Route governance | `AppRoutes.jsx` and grouped `routes.js` govern current behavior; aliases stay conditional. | Conditional | High for owners; medium for policy | Yes for aliases | Keep-proposed | Client/admin canonical choices and telemetry are unresolved. | Stage 4 and Stage 22 | Broken bookmarks, redirects, guards, or duplicate route trees | Preserve aliases and run route/role matrices before migration. |
+| F-05 | Layout/dashboard | Preserve Public/Auth/provider/client/admin wrappers and SidebarCore; share only tested non-policy primitives. | Conditional | High for owners; medium for consolidation | Yes | Keep-proposed | Shared primitive scope lacks regression evidence. | Stages 3, 22, and 36 | Protected-content exposure, focus/drawer regressions, duplicate shells | Never merge role policy; validate desktop/mobile/accessibility behavior. |
+| F-06 | API client governance | `apiClient` is browser transport; `apiEndpoints` and feature services are direction; `api.js` remains compatible temporarily. | Conditional | High transport; low version policy | Yes | Keep-proposed | API version and facade support window are unresolved. | Stage 5 and auth-dependent stages | Session loops, endpoint drift, or 29-importer breakage | No second client; map methods/contracts before facade or version changes. |
+| F-07 | Auth/role governance | Reuse frontend guards for UX and backend middleware for authoritative security. | Confirmed principle | High principle; medium implementation | Yes for changes | Accept-with-caution | Governance is clear, but email/throttle/auth-generation gaps remain. | Stages 23 and 26 | Authorization bypass or false security claims | Backend authorization remains mandatory; run full auth/role E2E. |
+| F-08 | Module ownership | New work uses mapped modules; legacy/unassigned files remain explicit exceptions until proven. | Revised | Medium | Yes | Keep-proposed | Some legacy page and service ownership is unknown. | Stage 3 and feature stages | Blind moves, circular dependencies, or duplicated feature logic | Declare owner and exception before moving or creating feature code. |
+| F-09 | Shared code ownership | Share only stable cross-module contracts; keep feature semantics module-owned. | Confirmed | High principle | No | Accept | Evidence supports a reuse boundary with per-change equivalence proof. | Stage 7 and all feature stages | Shared dumping ground, semantic loss, circular imports | Require importer, equivalence, build, and boundary checks. |
+| F-10 | Placeholder/mock governance | Disclosed previews may remain; fake production truth and unsafe claims are prohibited. | Confirmed | High | Only for replacements | Accept | Sixty findings are classified and governed by risk. | Stage 8 and owning product/security stages | Misleading users or fake security/commercial behavior | Check classification and real contract before replacement. |
+| F-11 | Refactor governance | Preflight, tests, isolation, validation, and rollback are mandatory. | Confirmed | High | No | Accept | Stage 1.1/1.2 provide enforceable controls and candidate IDs. | Every production-editing stage | Unbounded regressions and unverifiable cleanup | Stop when evidence, tests, scope, or rollback is missing. |
+| F-12 | Safe deletion | No file is deleted without safe-delete proof and required approval. | Confirmed | High | Yes for high-risk files | Accept | Unknown runtime ownership blocks deletion. | Cleanup and migration stages | Hidden consumer failure or irreversible loss | Separate deletion prompt; all proof fields known; restore plan recorded. |
+| F-13 | Critical-file protection | Protected files require the critical-file preflight and category-specific checks. | Confirmed | High | As protection list requires | Accept | Route, auth, API, model, dashboard, config, and shared files have broad blast radius. | Every high-risk stage | Route/auth/API/data/build failure | Read protection docs and run required checks before editing. |
+| F-14 | Future Codex preflight | Every future prompt reads official sources and enforces no-duplicate checks. | Confirmed | High | No | Accept | Governance only works when applied before edits. | All future prompts | Repeated discovery, contradictory decisions, and duplicate systems | Fail any preflight check, stop, and escalate or redesign. |
 
-Ready to accept as governance rules: F-09 through F-14 plus the conservative portions of F-02/F-07. Boundary ratification and conditional route/layout/API/module decisions remain proposed.
+## Final Counts
 
-Ignoring these decisions risks product fragmentation, protected-data exposure, session/API breakage, misleading production behavior, and destructive cleanup.
+- Decisions reviewed: 14.
+- Ready to accept: 6 (`F-09` through `F-14`).
+- Accept with caution: 2 (`F-02`, `F-07`).
+- Keep proposed: 4 (`F-04`, `F-05`, `F-06`, `F-08`).
+- Human review required: 2 (`F-01`, `F-03`).
+- Blocked sub-decisions: canonical client route, canonical admin proof route, API version/facade window, legacy file disposition, and cleanup execution.
 
+ADR-0001 must remain Proposed until the product/repository boundary is approved and all other human questions are answered or explicitly deferred. Conservative no-duplicate, backend-authorization, placeholder, preflight, critical-file, and safe-delete rules are enforceable now.

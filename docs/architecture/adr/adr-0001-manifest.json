@@ -275,9 +275,27 @@
     "Production model/index behavior"
   ],
   "sourceDocuments": [
-    "Stage 1.1 source summary and manifests",
-    "Stage 1.1 guardrails",
-    "Stage 1.2 final findings/lock/backlog/blockers/risk/QA/handoff/manifest"
+    "docs/architecture/STAGE_1_1_SOURCE_OF_TRUTH_SUMMARY.md",
+    "docs/architecture/STAGE_1_1_FINAL_DOC_INDEX.md",
+    "docs/architecture/STAGE_1_1_ARCHITECTURE_INVARIANTS.md",
+    "docs/architecture/STAGE_1_1_DO_NOT_DUPLICATE_REGISTRY.md",
+    "docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md",
+    "docs/architecture/STAGE_1_1_FORBIDDEN_ACTIONS_MANIFEST.md",
+    "docs/architecture/STAGE_1_1_FUTURE_PROMPT_PREFLIGHT_CHECKLIST.md",
+    "docs/architecture/STAGE_1_1_ADR_CANDIDATES.md",
+    "docs/architecture/STAGE_1_1_FUTURE_STAGE_IMPACT_MAP.md",
+    "docs/architecture/stage-1-1-source-of-truth-manifest.json",
+    "docs/architecture/stage-1-1-guardrail-manifest.json",
+    "docs/architecture/STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md",
+    "docs/architecture/STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md",
+    "docs/architecture/STAGE_1_2_FINAL_CLEANUP_EXECUTION_BACKLOG.md",
+    "docs/architecture/STAGE_1_2_FINAL_BLOCKER_REGISTER.md",
+    "docs/architecture/STAGE_1_2_RISK_ACCEPTANCE_TABLE.md",
+    "docs/architecture/STAGE_1_2_FINAL_VALIDATION_COMMAND_CHECKLIST.md",
+    "docs/architecture/STAGE_1_2_HUMAN_REVIEW_PACK.md",
+    "docs/architecture/STAGE_1_2_TO_STAGE_1_3_HANDOFF_BRIEF.md",
+    "docs/architecture/STAGE_1_2_MASTER_TRACKER.md",
+    "docs/architecture/stage-1-2-final-closure-manifest.json"
   ],
   "docsCreated": [
     "ADR_INDEX.md",
@@ -290,7 +308,11 @@
     "STAGE_1_3_PROMPT_10_HANDOFF.md"
   ],
   "docsUpdated": [
-    "ADR_INDEX.md"
+    "ADR_INDEX.md",
+    "ADR-0001-scaleops-proofarena-architecture-boundary.md",
+    "ADR-0001-risk-mitigation-table.md",
+    "adr-0001-manifest.json",
+    "STAGE_1_3_MASTER_TRACKER.md"
   ],
   "prompt10Validation": {
       "validated": 10,
@@ -381,6 +403,28 @@
       "ADR_INDEX.md",
       "STAGE_1_3_MASTER_TRACKER.md"
     ],
+    "prompt10Revalidation": {
+      "date": "2026-06-28",
+      "status": "verified-and-hardened",
+      "decisionsValidated": 10,
+      "confirmed": 6,
+      "revisedOrConditional": 4,
+      "fullyBlocked": 0,
+      "materialHumanReviewDependencies": 7,
+      "contradictionsOrTensions": 5,
+      "gaps": 10,
+      "acceptanceReadinessScore": 78,
+      "recommendedStatus": "keep-proposed-pending-human-approval",
+      "docsHardened": [
+        "ADR-0001-decision-validation-report.md",
+        "ADR-0001-contradiction-gap-analysis.md",
+        "ADR-0001-source-of-truth-confidence-matrix.md",
+        "ADR-0001-codex-enforcement-checklist.md",
+        "ADR-0001-human-approval-dossier.md",
+        "STAGE_1_3_MASTER_TRACKER.md"
+      ],
+      "productionCodeModified": false
+    },
     "prompt11Finalization": {
         "decisionsReviewed": 14,
         "readyToAccept": 6,
@@ -425,6 +469,36 @@
         "ADR_INDEX.md",
         "STAGE_1_3_MASTER_TRACKER.md"
       ],
+      "prompt11Revalidation": {
+        "date": "2026-06-28",
+        "status": "verified-and-finalized",
+        "decisionsReviewed": 14,
+        "readyToAccept": 6,
+        "acceptWithCaution": 2,
+        "keepProposed": 4,
+        "humanReviewRequired": 2,
+        "blockedSubDecisions": 5,
+        "acceptanceGate": {
+          "pass": 7,
+          "conditional": 4,
+          "fail": 1,
+          "recommendation": "keep-proposed-until-human-approval"
+        },
+        "governanceRuleCount": 20,
+        "governanceSectionCount": 13,
+        "futureStageGroupsMapped": 14,
+        "violationTypes": 10,
+        "docsHardened": [
+          "ADR-0001-final-decision-review.md",
+          "ADR-0001-acceptance-gate.md",
+          "ADR-0001-final-codex-governance-rulebook.md",
+          "ADR-0001-future-stage-governance-map.md",
+          "ADR-0001-violation-response-plan.md",
+          "ADR-0001-final-human-approval-brief.md",
+          "STAGE_1_3_MASTER_TRACKER.md"
+        ],
+        "productionCodeModified": false
+      },
       "prompt12Closeout": {
           "stage13CloseoutScore": 88,
           "stage13CloseoutStatus": "ready-with-caution",
@@ -457,55 +531,107 @@
         "ADR_INDEX.md",
         "STAGE_1_3_MASTER_TRACKER.md"
       ],
+      "prompt12Revalidation": {
+        "date": "2026-06-28",
+        "status": "verified-and-closed-with-caution",
+        "adrCurrentStatus": "proposed",
+        "recommendedFinalStatus": "keep-proposed-until-human-approval",
+        "acceptanceGateResult": "7-pass-4-conditional-1-fail",
+        "humanApprovalRequired": true,
+        "adoptionPackagePresent": true,
+        "officialSourceOfTruthMapPresent": true,
+        "architectureControlCount": 11,
+        "remainingRiskCount": 18,
+        "stage13CloseoutScore": 88,
+        "stage13CloseoutStatus": "ready-with-caution",
+        "stage2PreReadinessScore": 74,
+        "stage2Ready": false,
+        "docsHardened": [
+          "ADR-0001-final-status-decision-report.md",
+          "ADR-0001-adoption-package.md",
+          "STAGE_1_3_OFFICIAL_SOURCE_OF_TRUTH_DOC_MAP.md",
+          "STAGE_1_3_FINAL_CLOSEOUT_REPORT.md",
+          "STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+          "STAGE_1_REMAINING_RISK_REGISTER.md",
+          "STAGE_1_3_MASTER_TRACKER.md"
+        ],
+        "productionCodeModified": false
+      },
       "stage1FinalCloseout": {
         "decision": "complete-with-caution",
-        "stage2Recommendation": "start with caution after mandatory preflight and human boundary approval or explicit deferral",
+        "stage2Recommendation": "human-approval-required; start-with-caution only after approval or explicit deferral and full preflight",
         "score": 92,
         "stage2Ready": false
       },
       "finalStage1CompletionDecision": "complete-with-caution",
-      "stage2StartRecommendation": "start with caution after mandatory preflight and human boundary approval or explicit deferral",
+      "stage2StartRecommendation": "human-approval-required",
       "stage2MandatoryPreflightChecklist": [
-        "STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
-        "STAGE_2_START_CONDITIONS.md"
+        "../STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
+        "../STAGE_2_START_CONDITIONS.md",
+        "../STAGE_1_FINAL_HANDOFF_PACKAGE.md"
       ],
       "stage2StartConditions": {
         "requiredDocs": [
-          "STAGE_1_FINAL_COMPLETION_DECISION.md",
-          "STAGE_1_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
-          "STAGE_1_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_TABLE.md",
-          "STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md"
+          "../STAGE_1_FINAL_COMPLETION_DECISION.md",
+          "../STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+          "../STAGE_1_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
+          "../STAGE_1_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_TABLE.md",
+          "../STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md",
+          "../STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+          "../STAGE_1_REMAINING_RISK_REGISTER.md"
         ],
         "requiredApprovals": [
-          "ADR-0001 boundary approval or explicit deferral"
+          "Architecture-owner ADR-0001 boundary approval or explicit deferral preserving mandatory controls"
         ],
         "blockingConditions": [
           "Human approval not recorded",
-          "Canonical route decisions still unresolved",
-          "Regression baseline incomplete"
+          "Mandatory preflight failure",
+          "Separate ProofArena or duplicate architecture proposed",
+          "First Stage 2 prompt attempts production changes",
+          "Blocked Stage 1.2 cleanup imported without tests and telemetry"
         ],
         "startWithCautionConditions": [
-          "Prompt 15 documentation completed",
-          "No separate ProofArena app proposed",
-          "Remaining risks acknowledged"
+          "Human approval or explicit owner deferral recorded",
+          "All 15 Stage 2 preflight checks pass",
+          "First Stage 2 prompt remains documentation-only",
+          "Exact scope, risks, tests, rollback, and stop conditions are documented",
+          "No separate ProofArena app or duplicate architecture is proposed"
         ]
       },
-      "prompt15DocsCreated": [
-        "STAGE_1_FINAL_COMPLETION_DECISION.md",
-        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
-        "STAGE_1_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
-        "STAGE_1_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_TABLE.md",
-        "STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md",
-        "STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
-        "STAGE_2_START_CONDITIONS.md",
-        "stage-1-final-completion-manifest.json"
-      ],
+      "prompt15DocsCreated": [],
       "prompt15DocsUpdated": [
-        "STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
-        "STAGE_1_REMAINING_RISK_REGISTER.md",
-        "STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md",
+        "../STAGE_1_FINAL_COMPLETION_DECISION.md",
+        "../STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "../STAGE_1_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
+        "../STAGE_1_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_TABLE.md",
+        "../STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md",
+        "../STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
+        "../STAGE_2_START_CONDITIONS.md",
+        "../stage-1-final-completion-manifest.json",
+        "../STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+        "../STAGE_1_REMAINING_RISK_REGISTER.md",
+        "../STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md",
         "ADR_INDEX.md",
         "adr-0001-manifest.json"
       ],
-      "finalNoProductionCodeModificationProof": "STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md"
+      "finalNoProductionCodeModificationProof": "../STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md",
+      "prompt15Finalization": {
+        "date": "2026-06-28",
+        "stage1Decision": "complete-with-caution",
+        "adrStatus": "proposed",
+        "stage2CurrentRecommendation": "human-approval-required",
+        "stage2ConditionalRecommendation": "start-with-caution",
+        "humanApprovalRequired": true,
+        "remainingRiskCount": 18,
+        "riskDispositionCounts": {
+          "acceptedTemporarily": 3,
+          "deferredToStage2": 3,
+          "deferredToLaterStage": 4,
+          "humanReviewRequired": 5,
+          "blocked": 3,
+          "unknown": 0
+        },
+        "mandatoryPreflightCheckCount": 15,
+        "productionCodeModified": false
+      }
 }

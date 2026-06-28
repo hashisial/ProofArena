@@ -6,172 +6,512 @@
   "stageName": "Architecture Refactor Audit",
   "promptNumber": 15,
   "purpose": "Final Stage 1 completion and Stage 2 handoff",
-  "generatedAt": "2026-06-27T15:20:00Z",
+  "generatedAt": "2026-06-28T08:40:56.467Z",
   "productionCodeModified": false,
   "finalCompletionDecision": "complete-with-caution",
-  "stage2StartRecommendation": "start with caution after mandatory preflight and human boundary approval or explicit deferral",
+  "stage2StartRecommendation": "human-approval-required",
   "humanApprovalRequired": true,
   "stageSummaries": {
-    "stage1_1": "Mapped the repository, routes, APIs, models, hooks, utilities, risks, and guardrails.",
-    "stage1_2": "Verified duplicate layouts, route/path systems, API/request systems, and weak placeholders.",
-    "stage1_3": "Created ADR-0001, validated it, and closed Stage 1.3 with caution.",
-    "prompts13To15": "Completed cross-stage consistency, repository safety, and final Stage 1 handoff docs."
+    "stage1_1": "Mapped repository architecture, routes, APIs, models, services, hooks, utilities, dependencies, risks, and guardrails.",
+    "stage1_2": "Verified duplicate and overlap systems, classified 60 placeholders, recorded 100 cleanup candidates and 12 blockers without cleanup.",
+    "stage1_3": "Created and hardened ADR-0001; status remains Proposed pending human approval or explicit owner deferral.",
+    "prompts13To15": "Reconciled 96 baseline docs, checked 119 Prompt 14 documents, locked final authority/metrics/risks, and created the Stage 2 handoff gate."
   },
   "officialSourceOfTruthDocs": [
-    "STAGE_1_1_SOURCE_OF_TRUTH_SUMMARY.md",
-    "stage-1-1-source-of-truth-manifest.json",
-    "STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md",
-    "STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md",
-    "STAGE_1_FINAL_COMPLETION_DECISION.md",
-    "STAGE_1_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
-    "adr/ADR-0001-scaleops-proofarena-architecture-boundary.md",
-    "adr/ADR-0001-final-codex-governance-rulebook.md",
-    "STAGE_1_3_OFFICIAL_SOURCE_OF_TRUTH_DOC_MAP.md",
-    "stage-1-3-final-closeout-manifest.json"
+    "docs/architecture/STAGE_1_FINAL_COMPLETION_DECISION.md",
+    "docs/architecture/STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+    "docs/architecture/STAGE_1_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
+    "docs/architecture/STAGE_1_1_SOURCE_OF_TRUTH_SUMMARY.md",
+    "docs/architecture/STAGE_1_1_ARCHITECTURE_INVARIANTS.md",
+    "docs/architecture/STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md",
+    "docs/architecture/STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md",
+    "docs/architecture/STAGE_1_PROMPT_14_SOURCE_OF_TRUTH_AUTHORITY_LOCK.md",
+    "docs/architecture/STAGE_1_PROMPT_14_COUNT_METRIC_LOCK.md",
+    "docs/architecture/STAGE_1_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_TABLE.md",
+    "docs/architecture/STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md",
+    "docs/architecture/STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
+    "docs/architecture/STAGE_2_START_CONDITIONS.md"
   ],
   "supportingEvidenceDocs": [
-    "STAGE_1_1_ROUTE_DEPENDENCY_MAP.md",
-    "STAGE_1_1_BACKEND_FLOW_MAP.md",
-    "STAGE_1_2_PROMPT_5_FINDINGS_VERIFICATION.md",
-    "STAGE_1_3_FINAL_CLOSEOUT_REPORT.md",
-    "STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md"
+    "docs/architecture/STAGE_1_1_REPO_INVENTORY.md",
+    "docs/architecture/STAGE_1_1_ROUTE_INVENTORY.md",
+    "docs/architecture/STAGE_1_1_API_INVENTORY.md",
+    "docs/architecture/STAGE_1_1_MODEL_USAGE_MAP.md",
+    "docs/architecture/STAGE_1_1_REUSABLE_CODE_MAP.md",
+    "docs/architecture/STAGE_1_1_ROUTE_DEPENDENCY_MAP.md",
+    "docs/architecture/STAGE_1_1_BACKEND_FLOW_MAP.md",
+    "docs/architecture/STAGE_1_1_TRACEABILITY_MATRIX.md",
+    "docs/architecture/STAGE_1_2_PROMPT_5_FINDINGS_VERIFICATION.md",
+    "docs/architecture/STAGE_1_2_LAYOUT_OWNERSHIP_ANALYSIS.md",
+    "docs/architecture/STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md",
+    "docs/architecture/STAGE_1_2_API_CLIENT_SOURCE_OF_TRUTH_ANALYSIS.md",
+    "docs/architecture/STAGE_1_CROSS_STAGE_CLAIM_CONSISTENCY_MATRIX.md",
+    "docs/architecture/STAGE_1_ADR_ALIGNMENT_CHECK.md",
+    "docs/architecture/STAGE_1_PROMPT_14_MANIFEST_VERIFICATION.md"
   ],
   "riskAndControlDocs": [
-    "STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
-    "STAGE_1_REMAINING_RISK_REGISTER.md",
-    "STAGE_1_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_TABLE.md",
-    "STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md",
-    "STAGE_1_1_FORBIDDEN_ACTIONS_MANIFEST.md",
-    "STAGE_1_2_FINAL_BLOCKER_REGISTER.md",
-    "STAGE_1_2_RISK_ACCEPTANCE_TABLE.md"
+    "docs/architecture/STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+    "docs/architecture/STAGE_1_REMAINING_RISK_REGISTER.md",
+    "docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md",
+    "docs/architecture/STAGE_1_1_DO_NOT_DUPLICATE_REGISTRY.md",
+    "docs/architecture/STAGE_1_1_FORBIDDEN_ACTIONS_MANIFEST.md",
+    "docs/architecture/STAGE_1_1_BOUNDARY_VIOLATION_REPORT.md",
+    "docs/architecture/STAGE_1_2_FINAL_BLOCKER_REGISTER.md",
+    "docs/architecture/STAGE_1_2_CLEANUP_RISK_REGISTER.md",
+    "docs/architecture/STAGE_1_2_SAFE_DELETE_CANDIDATE_POLICY.md",
+    "docs/architecture/STAGE_1_PROMPT_14_CONTRADICTION_RESOLUTION_STATUS.md"
   ],
   "executionChecklistDocs": [
-    "STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md",
-    "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
-    "STAGE_1_FINAL_COMPLETION_DECISION.md",
-    "STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
-    "STAGE_2_START_CONDITIONS.md"
+    "docs/architecture/STAGE_1_1_FUTURE_PROMPT_PREFLIGHT_CHECKLIST.md",
+    "docs/architecture/STAGE_1_2_FINAL_VALIDATION_COMMAND_CHECKLIST.md",
+    "docs/architecture/STAGE_1_2_VALIDATION_QA_MATRIX.md",
+    "docs/architecture/STAGE_1_2_ZERO_BREAK_CLEANUP_SEQUENCE.md",
+    "docs/architecture/STAGE_1_2_FUTURE_PROMPT_EXECUTION_CONTRACTS.md",
+    "docs/architecture/STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md",
+    "docs/architecture/STAGE_1_PROMPT_15_ACTION_LIST.md",
+    "docs/architecture/STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
+    "docs/architecture/STAGE_2_START_CONDITIONS.md"
   ],
   "adrDocs": [
-    "adr/ADR-0001-adoption-package.md",
-    "adr/ADR-0001-final-status-decision-report.md",
-    "adr/ADR-0001-final-codex-governance-rulebook.md",
-    "adr/ADR-0001-final-human-approval-brief.md"
+    "docs/architecture/adr/ADR-0001-scaleops-proofarena-architecture-boundary.md",
+    "docs/architecture/adr/ADR-0001-adoption-package.md",
+    "docs/architecture/adr/ADR-0001-final-codex-governance-rulebook.md",
+    "docs/architecture/adr/ADR-0001-final-status-decision-report.md",
+    "docs/architecture/adr/ADR-0001-acceptance-gate.md",
+    "docs/architecture/adr/ADR-0001-final-decision-review.md",
+    "docs/architecture/adr/ADR-0001-violation-response-plan.md",
+    "docs/architecture/adr/ADR_INDEX.md"
   ],
   "machineReadableManifests": [
-    "stage-1-1-inventory.json",
-    "stage-1-1-architecture-graph.json",
-    "stage-1-1-source-of-truth-manifest.json",
-    "stage-1-1-guardrail-manifest.json",
-    "stage-1-2-duplicate-audit-manifest.json",
-    "stage-1-2-cleanup-blueprint.json",
-    "stage-1-2-final-closure-manifest.json",
-    "adr/adr-0001-manifest.json",
-    "stage-1-3-final-closeout-manifest.json",
-    "stage-1-prompt-13-consistency-manifest.json",
-    "stage-1-prompt-14-safety-manifest.json"
+    "docs/architecture/stage-1-1-inventory.json",
+    "docs/architecture/stage-1-1-architecture-graph.json",
+    "docs/architecture/stage-1-1-source-of-truth-manifest.json",
+    "docs/architecture/stage-1-1-guardrail-manifest.json",
+    "docs/architecture/stage-1-2-duplicate-audit-manifest.json",
+    "docs/architecture/stage-1-2-cleanup-blueprint.json",
+    "docs/architecture/stage-1-2-final-closure-manifest.json",
+    "docs/architecture/adr/adr-0001-manifest.json",
+    "docs/architecture/stage-1-3-final-closeout-manifest.json",
+    "docs/architecture/stage-1-prompt-13-consistency-manifest.json",
+    "docs/architecture/stage-1-prompt-14-safety-manifest.json",
+    "docs/architecture/stage-1-final-completion-manifest.json"
   ],
   "humanReviewDocs": [
-    "STAGE_1_2_HUMAN_REVIEW_PACK.md",
-    "adr/ADR-0001-human-approval-dossier.md",
-    "adr/ADR-0001-final-human-approval-brief.md"
+    "docs/architecture/STAGE_1_2_HUMAN_REVIEW_PACK.md",
+    "docs/architecture/adr/ADR-0001-human-approval-dossier.md",
+    "docs/architecture/adr/ADR-0001-final-human-approval-brief.md",
+    "docs/architecture/adr/ADR-0001-final-status-decision-report.md"
   ],
   "supersededOrStaleDocs": [
-    "Prompt-level Stage 1.1, Stage 1.2, and Stage 1.3 evidence docs retained for history",
-    "Earlier closeout summaries retained as supporting evidence"
+    "docs/architecture/STAGE_1_1_DUPLICATE_OVERLAP_RADAR.md",
+    "docs/architecture/STAGE_1_1_PLACEHOLDER_MOCK_SYSTEM_REPORT.md",
+    "docs/architecture/STAGE_1_2_DUPLICATE_LAYOUT_AUDIT.md",
+    "docs/architecture/STAGE_1_2_DUPLICATE_ROUTE_CONSTANTS_AUDIT.md",
+    "docs/architecture/STAGE_1_2_DUPLICATE_API_CLIENT_AUDIT.md",
+    "docs/architecture/STAGE_1_2_WEAK_PLACEHOLDER_AUDIT.md",
+    "docs/architecture/STAGE_1_2_SOURCE_OF_TRUTH_DECISION_TABLES.md",
+    "docs/architecture/adr/ADR-0001-future-codex-rules.md",
+    "docs/architecture/adr/ADR-0001-acceptance-readiness-score.md",
+    "docs/architecture/STAGE_2_PRE_READINESS_SNAPSHOT.md"
   ],
   "remainingRisks": [
-    "SR-01",
-    "SR-02",
-    "SR-03",
-    "SR-04",
-    "SR-05",
-    "SR-06",
-    "SR-07",
-    "SR-08",
-    "SR-09",
-    "SR-10",
-    "SR-11",
-    "SR-12",
-    "SR-13",
-    "SR-14",
-    "SR-15",
-    "SR-16",
-    "SR-17",
-    "SR-18"
+    {
+      "id": "SR-01",
+      "title": "Boundary not ratified",
+      "status": "human-review-required",
+      "owner": "Architecture owner",
+      "blocksStage2Authorization": true
+    },
+    {
+      "id": "SR-02",
+      "title": "Client alias undecided",
+      "status": "deferred-later",
+      "owner": "Stage 4 + product owner",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-03",
+      "title": "Admin proof alias undecided",
+      "status": "deferred-later",
+      "owner": "Admin / Stage 4",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-04",
+      "title": "API version undecided",
+      "status": "deferred-later",
+      "owner": "Stage 5 + architecture owner",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-05",
+      "title": "Legacy API facade remains broad",
+      "status": "accepted-temporarily",
+      "owner": "Stage 5",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-06",
+      "title": "Protected shell repetition",
+      "status": "deferred-stage2-analysis",
+      "owner": "Stage 2; Stages 3/36 implementation",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-07",
+      "title": "RootLayout ownership unknown",
+      "status": "human-review-required",
+      "owner": "Architecture owner / Stage 4",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-08",
+      "title": "Six page owners unknown",
+      "status": "human-review-required",
+      "owner": "Feature owners",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-09",
+      "title": "Maintained regression tests missing",
+      "status": "blocked",
+      "owner": "Stage 9 + affected owner",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-10",
+      "title": "Compatibility telemetry absent",
+      "status": "deferred-stage2-analysis",
+      "owner": "Stage 2; Stages 4/5 implementation",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-11",
+      "title": "Production email delivery incomplete",
+      "status": "blocked",
+      "owner": "Stage 23",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-12",
+      "title": "Auth throttling incomplete",
+      "status": "blocked",
+      "owner": "Stage 23",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-13",
+      "title": "Auth generations overlap",
+      "status": "deferred-later",
+      "owner": "Stage 23",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-14",
+      "title": "Business-looking fallback data",
+      "status": "accepted-temporarily",
+      "owner": "Stage 8 / feature owners",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-15",
+      "title": "Route metadata gaps",
+      "status": "deferred-stage2-analysis",
+      "owner": "Stage 2; Stage 4 implementation",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-16",
+      "title": "Production model/index behavior unknown",
+      "status": "human-review-required",
+      "owner": "Data owner",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-17",
+      "title": "Config/deployment drift",
+      "status": "accepted-temporarily",
+      "owner": "Stage 6 / release owner",
+      "blocksStage2Authorization": false
+    },
+    {
+      "id": "SR-18",
+      "title": "ADR human gate pending",
+      "status": "human-review-required",
+      "owner": "Architecture owner",
+      "blocksStage2Authorization": true
+    }
   ],
   "riskAcceptanceAndDeferment": [
     {
-      "status": "accepted temporarily",
-      "count": 3
+      "riskId": "SR-01",
+      "disposition": "human-review-required",
+      "owner": "Architecture owner",
+      "blocksStage2Authorization": true
     },
     {
-      "status": "deferred to Stage 2",
-      "count": 3
+      "riskId": "SR-02",
+      "disposition": "deferred-later",
+      "owner": "Stage 4 + product owner",
+      "blocksStage2Authorization": false
     },
     {
-      "status": "deferred to later stage",
-      "count": 4
+      "riskId": "SR-03",
+      "disposition": "deferred-later",
+      "owner": "Admin / Stage 4",
+      "blocksStage2Authorization": false
     },
     {
-      "status": "human review required",
-      "count": 5
+      "riskId": "SR-04",
+      "disposition": "deferred-later",
+      "owner": "Stage 5 + architecture owner",
+      "blocksStage2Authorization": false
     },
     {
-      "status": "blocked",
-      "count": 3
+      "riskId": "SR-05",
+      "disposition": "accepted-temporarily",
+      "owner": "Stage 5",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-06",
+      "disposition": "deferred-stage2-analysis",
+      "owner": "Stage 2; Stages 3/36 implementation",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-07",
+      "disposition": "human-review-required",
+      "owner": "Architecture owner / Stage 4",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-08",
+      "disposition": "human-review-required",
+      "owner": "Feature owners",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-09",
+      "disposition": "blocked",
+      "owner": "Stage 9 + affected owner",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-10",
+      "disposition": "deferred-stage2-analysis",
+      "owner": "Stage 2; Stages 4/5 implementation",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-11",
+      "disposition": "blocked",
+      "owner": "Stage 23",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-12",
+      "disposition": "blocked",
+      "owner": "Stage 23",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-13",
+      "disposition": "deferred-later",
+      "owner": "Stage 23",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-14",
+      "disposition": "accepted-temporarily",
+      "owner": "Stage 8 / feature owners",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-15",
+      "disposition": "deferred-stage2-analysis",
+      "owner": "Stage 2; Stage 4 implementation",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-16",
+      "disposition": "human-review-required",
+      "owner": "Data owner",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-17",
+      "disposition": "accepted-temporarily",
+      "owner": "Stage 6 / release owner",
+      "blocksStage2Authorization": false
+    },
+    {
+      "riskId": "SR-18",
+      "disposition": "human-review-required",
+      "owner": "Architecture owner",
+      "blocksStage2Authorization": true
     }
   ],
   "stage2MandatoryPreflight": [
-    "STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
-    "STAGE_2_START_CONDITIONS.md",
-    "STAGE_1_FINAL_HANDOFF_PACKAGE.md"
+    {
+      "id": "S2-PF-01",
+      "action": "Read ADR-0001 adoption package",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-02",
+      "action": "Read final Stage 1 handoff",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-03",
+      "action": "Read final authority index",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-04",
+      "action": "Read architecture control board",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-05",
+      "action": "Read remaining risk register",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-06",
+      "action": "Read final risk disposition",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-07",
+      "action": "Confirm ScaleOps parent boundary",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-08",
+      "action": "Confirm ProofArena module boundary",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-09",
+      "action": "Confirm no parallel app, repository, or route tree",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-10",
+      "action": "Confirm no duplicate navigation, dashboard, API, or auth system",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-11",
+      "action": "Inspect current repository before editing",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-12",
+      "action": "Check critical-file protection",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-13",
+      "action": "Check do-not-duplicate registry",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-14",
+      "action": "Check authority lock",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    },
+    {
+      "id": "S2-PF-15",
+      "action": "Keep first Stage 2 prompt documentation-only",
+      "required": true,
+      "status": "pending-stage2-execution",
+      "stopOnFailure": true
+    }
   ],
   "stage2StartConditions": {
     "requiredDocs": [
-      "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
-      "STAGE_1_FINAL_COMPLETION_DECISION.md",
-      "STAGE_1_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
-      "STAGE_1_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_TABLE.md",
-      "STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md",
-      "STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
-      "STAGE_2_START_CONDITIONS.md"
+      "docs/architecture/STAGE_1_FINAL_COMPLETION_DECISION.md",
+      "docs/architecture/STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+      "docs/architecture/STAGE_1_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
+      "docs/architecture/STAGE_1_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_TABLE.md",
+      "docs/architecture/STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md",
+      "docs/architecture/STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+      "docs/architecture/STAGE_1_REMAINING_RISK_REGISTER.md",
+      "docs/architecture/STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
+      "docs/architecture/STAGE_2_START_CONDITIONS.md",
+      "docs/architecture/adr/ADR-0001-adoption-package.md",
+      "docs/architecture/adr/ADR-0001-final-codex-governance-rulebook.md"
     ],
     "requiredApprovals": [
-      "ADR-0001 boundary approval or explicit deferral"
+      "Architecture-owner ADR-0001 product/repository boundary approval or explicit deferral preserving mandatory controls"
     ],
     "blockingConditions": [
-      "Human approval not recorded",
-      "Canonical route decisions still unresolved",
-      "Regression baseline incomplete"
+      "Human boundary approval or explicit deferral absent",
+      "Any Stage 2 preflight failure",
+      "Separate ProofArena or duplicate architecture proposed",
+      "First Stage 2 prompt attempts production edits",
+      "Blocked cleanup imported without tests/telemetry"
     ],
     "startWithCautionConditions": [
-      "Prompt 15 documentation completed",
-      "Remaining risks acknowledged",
-      "No separate ProofArena app or duplicate stack proposed"
+      "Human gate recorded",
+      "All 15 preflight checks pass",
+      "First Stage 2 prompt is documentation-only",
+      "Exact scope, risks, checks, rollback, and stops documented",
+      "Unified repository boundary preserved"
     ]
   },
-  "docsCreated": [
-    "STAGE_1_FINAL_COMPLETION_DECISION.md",
-    "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
-    "STAGE_1_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
-    "STAGE_1_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_TABLE.md",
-    "STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md",
-    "STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
-    "STAGE_2_START_CONDITIONS.md",
-    "stage-1-final-completion-manifest.json"
-  ],
+  "docsCreated": [],
   "docsUpdated": [
-    "STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
-    "STAGE_1_REMAINING_RISK_REGISTER.md",
-    "STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md",
-    "adr/ADR_INDEX.md",
-    "adr/adr-0001-manifest.json"
+    "docs/architecture/STAGE_1_FINAL_COMPLETION_DECISION.md",
+    "docs/architecture/STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+    "docs/architecture/STAGE_1_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
+    "docs/architecture/STAGE_1_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_TABLE.md",
+    "docs/architecture/STAGE_1_FINAL_NO_PRODUCTION_CODE_MODIFICATION_PROOF.md",
+    "docs/architecture/STAGE_2_MANDATORY_PREFLIGHT_CHECKLIST.md",
+    "docs/architecture/STAGE_2_START_CONDITIONS.md",
+    "docs/architecture/stage-1-final-completion-manifest.json",
+    "docs/architecture/STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+    "docs/architecture/STAGE_1_REMAINING_RISK_REGISTER.md",
+    "docs/architecture/STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md",
+    "docs/architecture/adr/ADR_INDEX.md",
+    "docs/architecture/adr/adr-0001-manifest.json"
   ],
   "unknowns": [
-    "Canonical client route",
-    "Canonical admin proof route",
-    "Canonical API version/facade window",
-    "Human approval record"
+    "ADR-0001 human approval or explicit owner deferral has not been recorded.",
+    "Deployed runtime, external telemetry, production database, and maintained regression-suite behavior were not validated by this documentation-only prompt.",
+    "RootLayout ownership, six page owners, and production model/index behavior remain human-review unknowns.",
+    "Canonical client/admin routes and API version/facade retirement remain deferred decisions.",
+    "Blocked auth delivery/throttling and regression-test gaps remain outside Stage 2 boundary documentation scope."
   ]
 }

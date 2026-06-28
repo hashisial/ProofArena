@@ -1,27 +1,28 @@
 # ADR-0001 Decision Validation Report
 
 Generated: 2026-06-27
+Revalidated: 2026-06-28
 
-| Decision | Validation | Evidence strength | Confirmed portion | Revision/condition | Blocker/human review | Recommendation |
-| --- | --- | --- | --- | --- | --- | --- |
-| D-01 Product boundary | Confirmed | High | One ScaleOps ecosystem; ProofArena in-product flagship | Human owner should ratify wording | Human approval | Ready with approval |
-| D-02 Repository boundary | Confirmed | High | One client/server repository is current source | External org/deployment context not statically proven | Human approval | Ready with approval |
-| D-03 Routing | Partially confirmed | High current owners; medium policy | AppRoutes declares; routes.js holds paths; metadata describes | Do not call client/admin aliases canonical yet | Alias/telemetry decision | Keep conditional |
-| D-04 Layout/dashboard | Partially confirmed | High current owners; medium consolidation | Five role layouts and SidebarCore ownership | Shared primitive scope requires tests | Role/browser baseline | Keep conditional |
-| D-05 API client | Partially confirmed | High transport; low version | apiClient sole Axios transport; apiEndpoints/feature services direction | api.js window and /api-v1 policy unresolved | Human/API decision | Keep conditional |
-| D-06 Auth/role | Confirmed principle | High boundary; medium implementation | Frontend UX guards plus backend security middleware | Auth generations/email/throttling require later work | Security review | Ready as governance, not implementation claim |
-| D-07 Module ownership | Revised | Medium | Existing feature and backend domains support module ownership | Treat legacy/unassigned files as exceptions pending map, not forced moves | Human/feature ownership | Keep proposed |
-| D-08 Shared code | Confirmed principle | High | Shared systems and role adapters are mapped | Equivalence required before extraction | Tests per change | Ready as rule |
-| D-09 Placeholder | Confirmed | High | 60 items classified; fake business/security truth prohibited | Product/legal/security replacement approval still required | Human approvals | Ready as governance |
-| D-10 Refactor governance | Confirmed | High | Guardrails, candidate ledger, QA, safe-delete policy exist | Cleanup remains blocked by missing tests | Test baseline | Ready as rule |
+| Decision ID | Category | Decision statement | Stage 1.1 evidence | Stage 1.2 evidence | Repository file evidence | Strength | Risk if accepted | Risk if rejected | Human approval | Result | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| D-01 | Product boundary | ScaleOps remains the parent SaaS and ProofArena remains its in-product flagship module. | Source summary; invariants; guardrail manifest | Final handoff and human-review pack preserve one-product scope | One `client/` and one `server/` tree; no second ProofArena app tree | Strong | Static evidence cannot prove owner intent by itself | Product fragmentation and duplicate systems | Yes | Keep | Owner ratification is required; technical evidence is consistent. |
+| D-02 | Repository boundary | The existing repository remains the source of truth; no separate ProofArena app/repository is permitted without a superseding ADR. | Repository inventory; do-not-duplicate registry; forbidden actions | Final source locks and closure manifest | Existing root, `client/`, `server/`, and shared architecture docs | Strong | External deployment or organizational context may be omitted | Competing repositories, deployments, auth, and contracts | Yes | Keep | No repository-local evidence supports a second app. |
+| D-03 | Routing | Existing route declarations and constants govern future routing; aliases stay conditional until policy and telemetry exist. | Route inventory, dependency map, critical-file list | RTE-001..020; route lock table; blockers B-04/B-05/B-12 | `client/src/routes/AppRoutes.jsx`; `client/src/constants/routes.js`; `client/src/config/routeMetadata.js` | Strong for current owners; moderate for policy | Premature canonical wording could break aliases/bookmarks | Parallel route trees and continued drift | Yes | Revise | Keep AppRoutes/routes.js direction; do not select client/admin aliases yet. |
+| D-04 | Layout/dashboard | Preserve role layouts and SidebarCore; share only tested non-policy primitives. | Layout inventory, dependency map, critical-file list | LAY-001..010; layout lock; protected-shell backlog | Public/Auth/Dashboard/Client/Admin layouts; `SidebarCore.jsx` | Strong for ownership; moderate for consolidation | Over-sharing can merge role, focus, or drawer policy | Duplicate shell work continues | Yes | Revise | Consolidation requires role/browser/mobile regression evidence. |
+| D-05 | API client | Standardize on apiClient transport, apiEndpoints, and feature services while retaining api.js compatibility until mapped. | API inventory, backend flow, reusable-code map | API-001..010; API lock; blockers B-06/B-07/B-12 | `apiClient.js`; `apiEndpoints.js`; `api.js`; feature `*Service.js`; server route indexes | Strong for transport; weak for version/deprecation | Wrong version/facade decision can break auth and 29 importers | A second transport and endpoint drift may emerge | Yes | Revise | `/api` versus `/api/v1` and facade lifetime remain unresolved. |
+| D-06 | Auth/role | Preserve frontend UX guards and backend authorization; frontend role visibility never replaces backend enforcement. | Auth flow, critical files, backend middleware map | Auth blockers; WPH-035..037; risk register | Auth provider/store/guards; backend auth middleware/services/routes | Strong principle; moderate implementation | Existing generations and delivery/throttle gaps could be mistaken as complete | Security boundary can be bypassed or duplicated | Yes | Keep | Governance is confirmed; implementation readiness is not. |
+| D-07 | Module ownership | New code follows mapped feature ownership while legacy/unassigned files remain explicit exceptions. | Frontend ownership, boundary report, reusable map | Final findings and unknown ownership blockers | `client/src/features/`; server modules/services; six unmapped pages | Moderate | Forced moves can break unknown consumers | Ownership remains scattered | Yes | Revise | Do not force legacy files into modules before ownership proof. |
+| D-08 | Shared code | Shared locations contain stable cross-module contracts only; feature behavior remains feature-owned. | Dependency graph, reusable map, do-not-duplicate registry | LAY-009; API-007; cleanup contracts | Shared UI/utilities, state components, SidebarCore, role adapters | Strong principle | Over-abstraction can erase semantics or create cycles | Duplicate helpers continue indefinitely | No | Keep | Every extraction still needs importer and equivalence evidence. |
+| D-09 | Placeholder | Keep classified disclosed previews/planned states; reject fake production truth and unsafe security/commercial claims. | Placeholder report and architecture invariants | WPH-001..060; risk acceptance table | `RouteShells.jsx`; shared states; fallback constants/reviews; auth TODO locations | Strong | Teams may misread temporary acceptance as production readiness | Blanket removal can destroy useful disclosed previews | No for governance | Keep | Individual legal, product, and security replacements need owner approval. |
+| D-10 | Refactor governance | Risky edits require preflight, candidate IDs, tests, isolation, validation, rollback, and safe-delete proof. | Preflight checklist, protection list, forbidden actions | Candidate ledger, QA matrix, test-gap report, safe-delete policy | Package scripts and documented absence of maintained tests | Strong | Governance can slow work and retain duplicates temporarily | Unsafe cleanup can break routes, auth, APIs, or data | No | Keep | This decision governs execution but does not authorize cleanup. |
 
 ## Totals
 
 - Decisions validated: 10.
-- Confirmed without material revision: 6 (D-01, D-02, D-06, D-08, D-09, D-10).
-- Revised/conditional: 4 (D-03, D-04, D-05, D-07).
-- Fully blocked decisions: 0; blocked sub-decisions: route aliases, API version, compatibility deletion, and cleanup execution.
-- Human-review decisions: 7 material questions.
+- Confirmed without material revision: 6 (`D-01`, `D-02`, `D-06`, `D-08`, `D-09`, `D-10`).
+- Revised or conditional: 4 (`D-03`, `D-04`, `D-05`, `D-07`).
+- Fully blocked decisions: 0.
+- Blocked sub-decisions: route aliases, API version, compatibility-facade removal, legacy deletion, and cleanup execution.
+- Decisions with material human-review dependencies: 7.
 
-ADR status recommendation: **keep proposed pending human approval**, while future prompts may already enforce the non-duplication and preflight rules.
-
+ADR status recommendation: **keep proposed pending human approval**. The no-duplicate, backend-authorization, placeholder-classification, preflight, and safe-delete rules may be enforced conservatively before formal acceptance.

@@ -2,18 +2,17 @@
 
 Generated: 2026-06-27
 
-| Risk | Decision | Files/docs | Severity | Likelihood | Mitigation/detection | Rollback/fallback | Future owner |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Separate ProofArena architecture | D-01/D-02 | Invariants, ADR | Critical | Low | Preflight/repository scan | Stop/revert duplicate system | Architecture |
-| Duplicate route tree/constants | D-03 | AppRoutes/routes.js/route docs | High | Medium | Route source lock and matrix | Restore central callers/aliases | Stage 4 |
-| Role-shell policy merge | D-04 | Three layouts/SidebarCore | High | Medium | Preserve wrappers; role/browser tests | Revert primitive extraction | Stage 3/36 |
-| Second/bypassed API transport | D-05 | apiClient/api.js/services | Critical | Medium | One-client rule; interceptor tests | Restore apiClient/facade shim | Stage 5 |
-| API version drift | D-05 | Server indexes/feature utils | High | High | ADR, telemetry, contract tests | Restore mounts/builders | Stage 5 |
-| Auth/role bypass | D-06 | Guards/middleware/services | Critical | Medium | Backend authorization tests | Revert and disable unsafe path | Stage 23/26 |
-| Business fallback shown as truth | D-09 | constants/api.js/reviews | High | High | Empty/error tests and disclosure | Explicit planned/empty state | Stage 8/features |
-| Email/throttling incomplete | D-06/D-09 | auth routes/controller | High | High | Security gate/E2E | Disable affected production flow | Stage 23 |
-| Unsafe deletion | D-10 | Legacy wrappers/pages/facades | High | Medium | Safe-delete proof/human approval | Restore exact file/export/alias | Cleanup stage |
-| Missing regression baseline | D-10 | Package/test gap docs | High | High | Add target tests before edit | Do not execute cleanup | Stage 9 |
-| Shared-code overreach | D-07/D-08 | Utilities/components | Medium | Medium | Dependency/equivalence tests | Restore feature ownership | Stage 7 |
-| Frontend/backend contract drift | D-05/D-07 | Endpoints/routes/services/models | High | Medium | Method/path/schema contract map | Preserve compatibility contract | Stage 5 |
-
+| Risk ID | Risk description | Decision | Related files/docs | Severity | Likelihood | Mitigation | Detection method | Rollback/fallback | Future stage owner |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| AR-01 | Separate ProofArena architecture is introduced | D-01/D-02 | Architecture invariants and ADR | Critical | Low | Enforce one-repository and no-duplicate-system preflight | Repository and route-tree scan | Stop work and revert the duplicate system | Architecture governance |
+| AR-02 | A duplicate route tree or constants registry is introduced | D-03 | `AppRoutes.jsx`, `routes.js`, route governance docs | High | Medium | Require route source locks and compatibility policy | Route inventory, direct-load, redirect, and role matrix | Restore central callers and compatibility aliases | Stage 4 |
+| AR-03 | Shared layout extraction absorbs role-shell policy | D-04 | Dashboard, Client, Admin layouts and `SidebarCore.jsx` | High | Medium | Preserve role wrappers and extract only tested non-policy primitives | Role/browser/mobile/focus regression tests | Revert the isolated primitive extraction | Stages 3 and 36 |
+| AR-04 | A second or bypassed browser API transport breaks auth behavior | D-05 | `apiClient.js`, `api.js`, feature services | Critical | Medium | Enforce one-client rule and preserve the compatibility facade during migration | Interceptor, refresh, credentials, error, and envelope tests | Restore `apiClient` usage and facade shim | Stage 5 |
+| AR-05 | API version cleanup changes `/api` or `/api/v1` behavior | D-05 | Server route indexes and feature endpoint builders | High | High | Require an API-version decision, telemetry, and contract tests | Method/path contract matrix and request telemetry | Restore mounts and endpoint builders | Stage 5 |
+| AR-06 | Frontend visibility checks replace backend authorization | D-06 | Frontend guards and backend middleware/services | Critical | Medium | Keep backend middleware authoritative and test every role | Guest/provider/client/admin/unknown access matrix | Revert the unsafe path and disable access | Stages 23 and 26 |
+| AR-07 | Business fallback records are shown as production truth | D-09 | `constants.js`, `api.js`, `ReviewsSection.jsx` | High | High | Replace only with approved empty/error contracts and explicit disclosure | Empty, network, and server-error simulations | Restore an honest planned or empty state | Stage 8 and owning features |
+| AR-08 | Email delivery or throttling placeholders are treated as production-ready | D-06/D-09 | Auth routes, controller, provider configuration | High | High | Enforce security release gates and provider/rate-limit approval | Verification, recovery, resend, and abuse E2E tests | Disable the affected production flow safely | Stage 23 |
+| AR-09 | A legacy wrapper, page, alias, or facade is deleted without proof | D-10 | Safe-delete policy and protected legacy files | High | Medium | Require import, route, config, docs, runtime, replacement, and human checks | Build plus affected runtime route/action QA | Restore the exact file, export, alias, or adapter | Cleanup execution stage |
+| AR-10 | Cleanup begins without a regression baseline | D-10 | Package scripts, test-gap report, QA matrix | High | High | Add target-specific tests before risky edits | Required test, lint, build, boundary, and manual QA results | Stop cleanup and revert the isolated change | Stage 9 |
+| AR-11 | Shared-code extraction erases feature semantics or creates circular imports | D-07/D-08 | Shared utilities/components and reusable-code map | Medium | Medium | Require dependency and behavior-equivalence proof | Unit/equivalence tests, build, and boundary check | Restore feature ownership and compatibility export | Stage 7 |
+| AR-12 | Frontend and backend endpoint or schema contracts drift | D-05/D-07 | Endpoint registry, routes, services, controllers, models | High | Medium | Maintain method/path/envelope/schema traceability | Contract tests and backend-flow comparison | Preserve or restore the compatibility contract | Stage 5 |

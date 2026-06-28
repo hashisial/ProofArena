@@ -1,0 +1,974 @@
+{
+  "projectName": "ScaleOps / ProofArena",
+  "parentProduct": "ScaleOps",
+  "flagshipModule": "ProofArena",
+  "stage": "2",
+  "subStage": "2.1",
+  "promptNumber": 1,
+  "purpose": "Verify ScaleOps remains the parent SaaS ecosystem",
+  "generatedAt": "2026-06-28T08:52:49.718Z",
+  "productionCodeModified": false,
+  "separateProofArenaAppAllowed": false,
+  "boundaryAuditFindings": [
+    {
+      "id": "PB-01",
+      "filePath": "ARCHITECTURE.md",
+      "evidenceSummary": "ScaleOps is parent platform; ProofArena is flagship module.",
+      "boundaryInterpretation": "supports-scaleops-parent",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-02",
+      "filePath": "PROJECT_STRUCTURE.md",
+      "evidenceSummary": "One client/server pair; no standalone ProofArena root.",
+      "boundaryInterpretation": "supports-scaleops-parent",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-03",
+      "filePath": "MODULE_BOUNDARIES.md",
+      "evidenceSummary": "ScaleOps owns platform composition; ProofArena owns cross-feature module composition.",
+      "boundaryInterpretation": "supports-proofarena-module",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-04",
+      "filePath": "client/src/modules/proofarena/README.md",
+      "evidenceSummary": "Frontend module explicitly rejects separate router/client/layout/UI system.",
+      "boundaryInterpretation": "supports-proofarena-module",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-05",
+      "filePath": "server/src/modules/proofarena/README.md",
+      "evidenceSummary": "Backend module explicitly rejects separate server and duplicate backend layers.",
+      "boundaryInterpretation": "supports-proofarena-module",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-06",
+      "filePath": "client/src/modules/proofarena/hooks/useProofArenaModule.js",
+      "evidenceSummary": "Module descriptor identifies parentPlatform scaleops.",
+      "boundaryInterpretation": "supports-proofarena-module",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-07",
+      "filePath": "client/src/constants/index.js",
+      "evidenceSummary": "Company and product names are separated and combined as ProofArena by ScaleOps.",
+      "boundaryInterpretation": "supports-proofarena-module",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-08",
+      "filePath": "README.md",
+      "evidenceSummary": "Repository introduction is product-first: ProofArena by ScaleOps.",
+      "boundaryInterpretation": "ambiguous",
+      "riskLevel": "medium",
+      "requiredFutureAction": "Resolve in owner-approved documentation before related production change.",
+      "humanReviewNeeded": true
+    },
+    {
+      "id": "PB-09",
+      "filePath": "repository folder name",
+      "evidenceSummary": "Local folder is Scaleops by Proofarena.",
+      "boundaryInterpretation": "ambiguous",
+      "riskLevel": "low",
+      "requiredFutureAction": "Resolve in owner-approved documentation before related production change.",
+      "humanReviewNeeded": true
+    },
+    {
+      "id": "PB-10",
+      "filePath": "client/package.json",
+      "evidenceSummary": "Generic package name mern-client.",
+      "boundaryInterpretation": "ambiguous",
+      "riskLevel": "medium",
+      "requiredFutureAction": "Resolve in owner-approved documentation before related production change.",
+      "humanReviewNeeded": true
+    },
+    {
+      "id": "PB-11",
+      "filePath": "server/package.json",
+      "evidenceSummary": "Generic package name mern-server.",
+      "boundaryInterpretation": "ambiguous",
+      "riskLevel": "medium",
+      "requiredFutureAction": "Resolve in owner-approved documentation before related production change.",
+      "humanReviewNeeded": true
+    },
+    {
+      "id": "PB-12",
+      "filePath": "client/index.html",
+      "evidenceSummary": "Application metadata uses ProofArena by ScaleOps.",
+      "boundaryInterpretation": "supports-proofarena-module",
+      "riskLevel": "low",
+      "requiredFutureAction": "Resolve in owner-approved documentation before related production change.",
+      "humanReviewNeeded": true
+    },
+    {
+      "id": "PB-13",
+      "filePath": "server/src/server.js",
+      "evidenceSummary": "Product runtime label uses ProofArena by ScaleOps.",
+      "boundaryInterpretation": "supports-proofarena-module",
+      "riskLevel": "low",
+      "requiredFutureAction": "Resolve in owner-approved documentation before related production change.",
+      "humanReviewNeeded": true
+    },
+    {
+      "id": "PB-14",
+      "filePath": "server/src/app.js",
+      "evidenceSummary": "Health metadata uses ProofArena API.",
+      "boundaryInterpretation": "ambiguous",
+      "riskLevel": "medium",
+      "requiredFutureAction": "Resolve in owner-approved documentation before related production change.",
+      "humanReviewNeeded": true
+    },
+    {
+      "id": "PB-15",
+      "filePath": "client/src/routes/AppRoutes.jsx",
+      "evidenceSummary": "One shared route tree composes all layouts/guards.",
+      "boundaryInterpretation": "supports-scaleops-parent",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-16",
+      "filePath": "client/src/services/apiClient.js",
+      "evidenceSummary": "One canonical frontend HTTP transport.",
+      "boundaryInterpretation": "supports-scaleops-parent",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-17",
+      "filePath": "client/src/features/auth/AuthProvider.jsx",
+      "evidenceSummary": "One shared frontend auth provider.",
+      "boundaryInterpretation": "supports-scaleops-parent",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-18",
+      "filePath": "server/src/app.js",
+      "evidenceSummary": "One Express app mounts legacy and v1 route registries.",
+      "boundaryInterpretation": "supports-scaleops-parent",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-19",
+      "filePath": "client/jsconfig.json; client/vite.config.js",
+      "evidenceSummary": "ProofArena alias resolves inside client module.",
+      "boundaryInterpretation": "supports-proofarena-module",
+      "riskLevel": "medium",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-20",
+      "filePath": "client/jsconfig.json; client/vite.config.js",
+      "evidenceSummary": "Wildcard alias permits private module path resolution.",
+      "boundaryInterpretation": "ambiguous",
+      "riskLevel": "high",
+      "requiredFutureAction": "Resolve in owner-approved documentation before related production change.",
+      "humanReviewNeeded": true
+    },
+    {
+      "id": "PB-21",
+      "filePath": "client/package.json; server/package.json",
+      "evidenceSummary": "No ProofArena package exists.",
+      "boundaryInterpretation": "supports-scaleops-parent",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-22",
+      "filePath": "client/src/modules/proofarena; server/src/modules/proofarena",
+      "evidenceSummary": "Only two module directories exist outside generated/vendor paths.",
+      "boundaryInterpretation": "supports-proofarena-module",
+      "riskLevel": "low",
+      "requiredFutureAction": "Preserve and revalidate before related edits.",
+      "humanReviewNeeded": false
+    },
+    {
+      "id": "PB-23",
+      "filePath": "client/vercel.json; server/vercel.json",
+      "evidenceSummary": "Configs represent client/server tiers, not a ProofArena app.",
+      "boundaryInterpretation": "supports-scaleops-parent",
+      "riskLevel": "medium",
+      "requiredFutureAction": "Resolve in owner-approved documentation before related production change.",
+      "humanReviewNeeded": true
+    },
+    {
+      "id": "PB-24",
+      "filePath": "docs/architecture/adr/ADR-0001-scaleops-proofarena-architecture-boundary.md",
+      "evidenceSummary": "ADR forbids separate ProofArena architecture but remains Proposed.",
+      "boundaryInterpretation": "supports-scaleops-parent",
+      "riskLevel": "high",
+      "requiredFutureAction": "Resolve in owner-approved documentation before related production change.",
+      "humanReviewNeeded": true
+    }
+  ],
+  "repositoryBoundaryChecks": [
+    {
+      "id": "RB-01",
+      "checked": "Git/repository root",
+      "evidencePath": ".git; client; server; docs; scripts",
+      "result": "unified",
+      "risk": "low",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-02",
+      "checked": "Frontend/backend workspace",
+      "evidencePath": "client/package.json; server/package.json",
+      "result": "unified",
+      "risk": "medium",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-03",
+      "checked": "Root workspace metadata",
+      "evidencePath": "No root package.json",
+      "result": "ambiguous",
+      "risk": "medium",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-04",
+      "checked": "Separate ProofArena app folders",
+      "evidencePath": "Recursive directory scan",
+      "result": "unified",
+      "risk": "low",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-05",
+      "checked": "ProofArena module folders",
+      "evidencePath": "client/src/modules/proofarena; server/src/modules/proofarena",
+      "result": "unified",
+      "risk": "low",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-06",
+      "checked": "ProofArena package metadata",
+      "evidencePath": "No package file under modules",
+      "result": "unified",
+      "risk": "low",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-07",
+      "checked": "Separate ProofArena route tree",
+      "evidencePath": "AppRoutes.jsx; module file list",
+      "result": "unified",
+      "risk": "low",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-08",
+      "checked": "Separate dashboard shell",
+      "evidencePath": "client/src/layouts; module file list",
+      "result": "unified",
+      "risk": "low",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-09",
+      "checked": "Separate API client",
+      "evidencePath": "client/src/services/apiClient.js; module file list",
+      "result": "unified",
+      "risk": "low",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-10",
+      "checked": "Separate auth system",
+      "evidencePath": "AuthProvider/guards/middleware; module file list",
+      "result": "unified",
+      "risk": "low",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-11",
+      "checked": "Separate backend server",
+      "evidencePath": "server/src/app.js; server ProofArena module README only",
+      "result": "unified",
+      "risk": "low",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-12",
+      "checked": "Server route composition",
+      "evidencePath": "server/src/routes/index.js; server/src/routes/v1/index.js",
+      "result": "unified",
+      "risk": "medium",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-13",
+      "checked": "Client route composition",
+      "evidencePath": "client/src/routes/AppRoutes.jsx",
+      "result": "unified",
+      "risk": "low",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-14",
+      "checked": "Navigation ownership",
+      "evidencePath": "client/src/config/navigation; shared navigation components",
+      "result": "unified",
+      "risk": "low",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-15",
+      "checked": "Deployment config",
+      "evidencePath": "client/vercel.json; server/vercel.json",
+      "result": "unified",
+      "risk": "medium",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-16",
+      "checked": "Module public API",
+      "evidencePath": "client module index/hook; backend README",
+      "result": "unified",
+      "risk": "medium",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    },
+    {
+      "id": "RB-17",
+      "checked": "Private module alias",
+      "evidencePath": "@proofarena/* paths",
+      "result": "duplicate-risk",
+      "risk": "high",
+      "requiredFutureAction": "Define public import enforcement in Prompt 2."
+    },
+    {
+      "id": "RB-18",
+      "checked": "Automated checks",
+      "evidencePath": "client/server npm run check:boundaries",
+      "result": "unified",
+      "risk": "medium",
+      "requiredFutureAction": "Preserve and revalidate before structural work."
+    }
+  ],
+  "parentSaasRules": [
+    {
+      "id": "SOP-01",
+      "rule": "ScaleOps is the parent SaaS ecosystem.",
+      "reason": "Preserve one governed SaaS architecture.",
+      "requiredDocs": [
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "ADR-0001-adoption-package.md",
+        "STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md"
+      ],
+      "forbiddenAction": "Do not treat ProofArena as parent.",
+      "requiredValidation": "Confirm company/product and repository composition.",
+      "stopCondition": "Stop when do not treat proofarena as parent."
+    },
+    {
+      "id": "SOP-02",
+      "rule": "ProofArena is a flagship module, not a standalone project.",
+      "reason": "Preserve one governed SaaS architecture.",
+      "requiredDocs": [
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "ADR-0001-adoption-package.md",
+        "STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md"
+      ],
+      "forbiddenAction": "Do not create ProofArena app, repo, server, or package.",
+      "requiredValidation": "Verify target remains inside current client/server.",
+      "stopCondition": "Stop when do not create proofarena app, repo, server, or package."
+    },
+    {
+      "id": "SOP-03",
+      "rule": "The existing repository remains source of truth.",
+      "reason": "Preserve one governed SaaS architecture.",
+      "requiredDocs": [
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "ADR-0001-adoption-package.md",
+        "STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md"
+      ],
+      "forbiddenAction": "Do not scaffold a replacement root.",
+      "requiredValidation": "Inspect Git root and live paths first.",
+      "stopCondition": "Stop when do not scaffold a replacement root."
+    },
+    {
+      "id": "SOP-04",
+      "rule": "ProofArena uses ScaleOps routing, auth, layout, API, dashboard, and navigation governance.",
+      "reason": "Preserve one governed SaaS architecture.",
+      "requiredDocs": [
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "ADR-0001-adoption-package.md",
+        "STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md"
+      ],
+      "forbiddenAction": "Do not add platform substitutes.",
+      "requiredValidation": "Map existing owners and dependencies.",
+      "stopCondition": "Stop when do not add platform substitutes."
+    },
+    {
+      "id": "SOP-05",
+      "rule": "No ProofArena route tree exists outside central route governance.",
+      "reason": "Preserve one governed SaaS architecture.",
+      "requiredDocs": [
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "ADR-0001-adoption-package.md",
+        "STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md"
+      ],
+      "forbiddenAction": "Do not add module router or duplicate constants.",
+      "requiredValidation": "Validate routes, guards, aliases, and navigation.",
+      "stopCondition": "Stop when do not add module router or duplicate constants."
+    },
+    {
+      "id": "SOP-06",
+      "rule": "No ProofArena dashboard/layout shell bypasses role layouts.",
+      "reason": "Preserve one governed SaaS architecture.",
+      "requiredDocs": [
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "ADR-0001-adoption-package.md",
+        "STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md"
+      ],
+      "forbiddenAction": "Do not add parallel role shell.",
+      "requiredValidation": "Validate shell/sidebar/mobile/focus ownership.",
+      "stopCondition": "Stop when do not add parallel role shell."
+    },
+    {
+      "id": "SOP-07",
+      "rule": "No ProofArena navigation/sidebar stack may be created.",
+      "reason": "Preserve one governed SaaS architecture.",
+      "requiredDocs": [
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "ADR-0001-adoption-package.md",
+        "STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md"
+      ],
+      "forbiddenAction": "Do not add module primary navigation.",
+      "requiredValidation": "Validate central config and role filtering.",
+      "stopCondition": "Stop when do not add module primary navigation."
+    },
+    {
+      "id": "SOP-08",
+      "rule": "No ProofArena API client may be created.",
+      "reason": "Preserve one governed SaaS architecture.",
+      "requiredDocs": [
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "ADR-0001-adoption-package.md",
+        "STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md"
+      ],
+      "forbiddenAction": "Do not add transport/token/error stack.",
+      "requiredValidation": "Validate central client, endpoints, services, contracts.",
+      "stopCondition": "Stop when do not add transport/token/error stack."
+    },
+    {
+      "id": "SOP-09",
+      "rule": "No ProofArena auth/role system may be created.",
+      "reason": "Preserve one governed SaaS architecture.",
+      "requiredDocs": [
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "ADR-0001-adoption-package.md",
+        "STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md"
+      ],
+      "forbiddenAction": "Do not add provider, token store, guard, or middleware bypass.",
+      "requiredValidation": "Validate shared session and backend authorization.",
+      "stopCondition": "Stop when do not add provider, token store, guard, or middleware bypass."
+    },
+    {
+      "id": "SOP-10",
+      "rule": "Shared UI/utilities follow ScaleOps ownership.",
+      "reason": "Preserve one governed SaaS architecture.",
+      "requiredDocs": [
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "ADR-0001-adoption-package.md",
+        "STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md"
+      ],
+      "forbiddenAction": "Do not move product logic into shared foundations.",
+      "requiredValidation": "Validate import direction and semantic equivalence.",
+      "stopCondition": "Stop when do not move product logic into shared foundations."
+    },
+    {
+      "id": "SOP-11",
+      "rule": "External consumers use the ProofArena public module surface.",
+      "reason": "Preserve one governed SaaS architecture.",
+      "requiredDocs": [
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "ADR-0001-adoption-package.md",
+        "STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md"
+      ],
+      "forbiddenAction": "Do not import private module files.",
+      "requiredValidation": "Search imports and run boundary checker.",
+      "stopCondition": "Stop when do not import private module files."
+    },
+    {
+      "id": "SOP-12",
+      "rule": "Boundary reversal requires a formal future ADR and human approval.",
+      "reason": "Preserve one governed SaaS architecture.",
+      "requiredDocs": [
+        "STAGE_1_FINAL_HANDOFF_PACKAGE.md",
+        "ADR-0001-adoption-package.md",
+        "STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md"
+      ],
+      "forbiddenAction": "Do not reverse through feature prompt.",
+      "requiredValidation": "Require ADR, impact analysis, migration, rollback, approval.",
+      "stopCondition": "Stop when do not reverse through feature prompt."
+    }
+  ],
+  "boundaryRisks": [
+    {
+      "id": "BR-01",
+      "description": "Separate ProofArena app/repository",
+      "severity": "critical",
+      "likelihood": "medium",
+      "blastRadius": "Cross-cutting product boundary and affected platform systems.",
+      "preventiveAction": "Apply Stage 2.1 rules and mandatory preflight.",
+      "detectionMethod": "Repository/import/naming/config/doc scan and boundary checks.",
+      "futureOwner": "Relevant Stage 2 or later architecture owner",
+      "status": "mitigated-open"
+    },
+    {
+      "id": "BR-02",
+      "description": "Duplicate ProofArena route tree/constants",
+      "severity": "high",
+      "likelihood": "medium",
+      "blastRadius": "Cross-cutting product boundary and affected platform systems.",
+      "preventiveAction": "Apply Stage 2.1 rules and mandatory preflight.",
+      "detectionMethod": "Repository/import/naming/config/doc scan and boundary checks.",
+      "futureOwner": "Relevant Stage 2 or later architecture owner",
+      "status": "mitigated-open"
+    },
+    {
+      "id": "BR-03",
+      "description": "Duplicate dashboard/layout shell",
+      "severity": "high",
+      "likelihood": "medium",
+      "blastRadius": "Cross-cutting product boundary and affected platform systems.",
+      "preventiveAction": "Apply Stage 2.1 rules and mandatory preflight.",
+      "detectionMethod": "Repository/import/naming/config/doc scan and boundary checks.",
+      "futureOwner": "Relevant Stage 2 or later architecture owner",
+      "status": "mitigated-open"
+    },
+    {
+      "id": "BR-04",
+      "description": "Duplicate navigation/sidebar source",
+      "severity": "high",
+      "likelihood": "medium",
+      "blastRadius": "Cross-cutting product boundary and affected platform systems.",
+      "preventiveAction": "Apply Stage 2.1 rules and mandatory preflight.",
+      "detectionMethod": "Repository/import/naming/config/doc scan and boundary checks.",
+      "futureOwner": "Relevant Stage 2 or later architecture owner",
+      "status": "mitigated-open"
+    },
+    {
+      "id": "BR-05",
+      "description": "Duplicate API client",
+      "severity": "high",
+      "likelihood": "medium",
+      "blastRadius": "Cross-cutting product boundary and affected platform systems.",
+      "preventiveAction": "Apply Stage 2.1 rules and mandatory preflight.",
+      "detectionMethod": "Repository/import/naming/config/doc scan and boundary checks.",
+      "futureOwner": "Relevant Stage 2 or later architecture owner",
+      "status": "mitigated-open"
+    },
+    {
+      "id": "BR-06",
+      "description": "Duplicate auth/role system",
+      "severity": "critical",
+      "likelihood": "medium",
+      "blastRadius": "Cross-cutting product boundary and affected platform systems.",
+      "preventiveAction": "Apply Stage 2.1 rules and mandatory preflight.",
+      "detectionMethod": "Repository/import/naming/config/doc scan and boundary checks.",
+      "futureOwner": "Relevant Stage 2 or later architecture owner",
+      "status": "mitigated-open"
+    },
+    {
+      "id": "BR-07",
+      "description": "Inconsistent or ambiguous naming",
+      "severity": "medium",
+      "likelihood": "high",
+      "blastRadius": "Cross-cutting product boundary and affected platform systems.",
+      "preventiveAction": "Apply Stage 2.1 rules and mandatory preflight.",
+      "detectionMethod": "Repository/import/naming/config/doc scan and boundary checks.",
+      "futureOwner": "Relevant Stage 2 or later architecture owner",
+      "status": "open-human-review"
+    },
+    {
+      "id": "BR-08",
+      "description": "Older docs contradict final authority",
+      "severity": "high",
+      "likelihood": "low",
+      "blastRadius": "Cross-cutting product boundary and affected platform systems.",
+      "preventiveAction": "Apply Stage 2.1 rules and mandatory preflight.",
+      "detectionMethod": "Repository/import/naming/config/doc scan and boundary checks.",
+      "futureOwner": "Relevant Stage 2 or later architecture owner",
+      "status": "mitigated-open"
+    },
+    {
+      "id": "BR-09",
+      "description": "Future prompt ignores Proposed ADR rules",
+      "severity": "critical",
+      "likelihood": "medium",
+      "blastRadius": "Cross-cutting product boundary and affected platform systems.",
+      "preventiveAction": "Apply Stage 2.1 rules and mandatory preflight.",
+      "detectionMethod": "Repository/import/naming/config/doc scan and boundary checks.",
+      "futureOwner": "Relevant Stage 2 or later architecture owner",
+      "status": "open-human-review"
+    },
+    {
+      "id": "BR-10",
+      "description": "Stage 2 production work proceeds without human approval",
+      "severity": "high",
+      "likelihood": "high",
+      "blastRadius": "Cross-cutting product boundary and affected platform systems.",
+      "preventiveAction": "Apply Stage 2.1 rules and mandatory preflight.",
+      "detectionMethod": "Repository/import/naming/config/doc scan and boundary checks.",
+      "futureOwner": "Architecture owner",
+      "status": "blocking-human-review"
+    },
+    {
+      "id": "BR-11",
+      "description": "Wildcard alias permits private ProofArena imports",
+      "severity": "high",
+      "likelihood": "medium",
+      "blastRadius": "Cross-cutting product boundary and affected platform systems.",
+      "preventiveAction": "Apply Stage 2.1 rules and mandatory preflight.",
+      "detectionMethod": "Repository/import/naming/config/doc scan and boundary checks.",
+      "futureOwner": "Relevant Stage 2 or later architecture owner",
+      "status": "open"
+    },
+    {
+      "id": "BR-12",
+      "description": "External deployment/repository/domain topology unknown",
+      "severity": "high",
+      "likelihood": "unknown",
+      "blastRadius": "Cross-cutting product boundary and affected platform systems.",
+      "preventiveAction": "Apply Stage 2.1 rules and mandatory preflight.",
+      "detectionMethod": "Repository/import/naming/config/doc scan and boundary checks.",
+      "futureOwner": "Architecture owner",
+      "status": "unknown-human-review"
+    }
+  ],
+  "preflightChecklist": [
+    {
+      "id": "S21-PF-01",
+      "requiredAction": "Read final Stage 1 handoff.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-02",
+      "requiredAction": "Read ADR-0001 adoption package.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-03",
+      "requiredAction": "Read final Codex governance rulebook.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-04",
+      "requiredAction": "Run Stage 2 mandatory preflight.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-05",
+      "requiredAction": "Confirm ScaleOps parent boundary.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-06",
+      "requiredAction": "Confirm ProofArena module boundary.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-07",
+      "requiredAction": "Confirm no separate or duplicate platform system.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-08",
+      "requiredAction": "Inspect live repository structure.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-09",
+      "requiredAction": "Read final source-of-truth index.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-10",
+      "requiredAction": "Read do-not-duplicate registry.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-11",
+      "requiredAction": "Read critical-file protection list.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-12",
+      "requiredAction": "Read remaining and final risk registers.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-13",
+      "requiredAction": "Record formal ADR approval or explicit deferral.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-14",
+      "requiredAction": "Run client and server boundary checks.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    },
+    {
+      "id": "S21-PF-15",
+      "requiredAction": "Keep production edits separately approved.",
+      "passCondition": "Required evidence is present and no boundary violation is proposed.",
+      "failCondition": "Evidence is missing, contradicted, or a duplicate system is proposed.",
+      "stopCondition": "Stop before any production edit."
+    }
+  ],
+  "missingStage1Docs": [],
+  "humanReviewItems": [
+    "Record architecture-owner acceptance or explicit deferral for ADR-0001.",
+    "Decide whether repository, README, and runtime naming should become ScaleOps-first.",
+    "Decide whether generic mern-client and mern-server package names require later governance.",
+    "Decide whether @proofarena/* should be restricted to enforce public-index imports.",
+    "Verify external deployment, repository, and domain topology preserves the parent/module boundary."
+  ],
+  "unknowns": [
+    "External repositories, Vercel project identities, and production domains were not inspected.",
+    "Runtime telemetry cannot prove how external consumers classify ProofArena.",
+    "Package-name intent is undocumented.",
+    "Formal ADR-0001 acceptance or explicit owner deferral remains unrecorded."
+  ],
+  "docsCreated": [
+    "docs/architecture/stage-2/STAGE_2_MASTER_TRACKER.md",
+    "docs/architecture/stage-2/STAGE_2_1_PARENT_PRODUCT_BOUNDARY_AUDIT.md",
+    "docs/architecture/stage-2/STAGE_2_1_REPOSITORY_BOUNDARY_VERIFICATION.md",
+    "docs/architecture/stage-2/STAGE_2_1_SCALEOPS_PARENT_SAAS_RULES.md",
+    "docs/architecture/stage-2/STAGE_2_1_BOUNDARY_RISK_REGISTER.md",
+    "docs/architecture/stage-2/STAGE_2_1_PREFLIGHT_CHECKLIST.md",
+    "docs/architecture/stage-2/stage-2-1-parent-boundary-manifest.json",
+    "docs/architecture/stage-2/STAGE_2_PROMPT_2_HANDOFF.md"
+  ],
+  "docsUpdated": [],
+  "prompt2VerificationResults": {
+    "total": 42,
+    "verified": 39,
+    "partiallyVerified": 3,
+    "contradicted": 0,
+    "unknown": 0,
+    "verifiedIds": [
+      "PB-01", "PB-02", "PB-03", "PB-04", "PB-05", "PB-06", "PB-07", "PB-08", "PB-09", "PB-10", "PB-11", "PB-12", "PB-13", "PB-14", "PB-15", "PB-16", "PB-17", "PB-18", "PB-19", "PB-21", "PB-22", "PB-24",
+      "RB-01", "RB-02", "RB-03", "RB-04", "RB-05", "RB-06", "RB-07", "RB-08", "RB-09", "RB-10", "RB-11", "RB-12", "RB-13", "RB-14", "RB-15", "RB-16", "RB-18"
+    ],
+    "partiallyVerifiedIds": ["PB-20", "PB-23", "RB-17"],
+    "corrections": [
+      "Wildcard alias resolves private paths, but the boundary checker rejects external private imports and no violation exists.",
+      "Local client/server deployment config supports unity; external project/domain identity remains unknown."
+    ],
+    "source": "STAGE_2_1_PROMPT_1_FINDINGS_VERIFICATION.md"
+  },
+  "productBoundaryDriftItems": [
+    {"id": "DR-01", "type": "standalone-app", "risk": "low", "unified": "yes"},
+    {"id": "DR-02", "type": "package-boundary", "risk": "low", "unified": "yes"},
+    {"id": "DR-03", "type": "router-drift", "risk": "low", "unified": "yes"},
+    {"id": "DR-04", "type": "module-router", "risk": "low", "unified": "yes"},
+    {"id": "DR-05", "type": "layout-drift", "risk": "low", "unified": "yes"},
+    {"id": "DR-06", "type": "auth-drift", "risk": "low", "unified": "yes"},
+    {"id": "DR-07", "type": "api-drift", "risk": "low", "unified": "yes"},
+    {"id": "DR-08", "type": "backend-drift", "risk": "low", "unified": "yes"},
+    {"id": "DR-09", "type": "deployment-drift", "risk": "medium", "unified": "partial"},
+    {"id": "DR-10", "type": "documentation-drift", "risk": "low", "unified": "yes"},
+    {"id": "DR-11", "type": "readme-naming", "risk": "medium", "unified": "partial"},
+    {"id": "DR-12", "type": "folder-naming", "risk": "low", "unified": "partial"},
+    {"id": "DR-13", "type": "package-naming", "risk": "medium", "unified": "partial"},
+    {"id": "DR-14", "type": "api-naming", "risk": "medium", "unified": "partial"},
+    {"id": "DR-15", "type": "runtime-branding", "risk": "low", "unified": "yes"},
+    {"id": "DR-16", "type": "alias-enforcement", "risk": "medium", "unified": "yes"},
+    {"id": "DR-17", "type": "private-imports", "risk": "low", "unified": "yes"},
+    {"id": "DR-18", "type": "governance-drift", "risk": "high", "unified": "partial", "blocksProductionStage22": true},
+    {"id": "DR-19", "type": "deployment-brand-todos", "risk": "medium", "unified": "partial"},
+    {"id": "DR-20", "type": "ui-product-labels", "risk": "low", "unified": "yes"}
+  ],
+  "namingOwnershipAudit": [
+    {"id": "NO-01", "path": "ARCHITECTURE.md", "interpretation": "scaleops-first"},
+    {"id": "NO-02", "path": "PROJECT_STRUCTURE.md", "interpretation": "proofarena-module"},
+    {"id": "NO-03", "path": "MODULE_BOUNDARIES.md", "interpretation": "scaleops-first"},
+    {"id": "NO-04", "path": "README.md", "interpretation": "proofarena-module"},
+    {"id": "NO-05", "path": "workspace-folder", "interpretation": "ambiguous"},
+    {"id": "NO-06", "path": "client/package.json", "interpretation": "ambiguous"},
+    {"id": "NO-07", "path": "server/package.json", "interpretation": "ambiguous"},
+    {"id": "NO-08", "path": "client/src/constants/index.js", "interpretation": "scaleops-first"},
+    {"id": "NO-09", "path": "client/index.html", "interpretation": "proofarena-module"},
+    {"id": "NO-10", "path": "server/src/server.js", "interpretation": "proofarena-module"},
+    {"id": "NO-11", "path": "server/src/app.js", "interpretation": "ambiguous"},
+    {"id": "NO-12", "path": "client/src/modules/proofarena", "interpretation": "proofarena-module"},
+    {"id": "NO-13", "path": "server/src/modules/proofarena", "interpretation": "proofarena-module"},
+    {"id": "NO-14", "path": "client-alias-config", "interpretation": "proofarena-module"},
+    {"id": "NO-15", "path": "client/src/constants/apiEndpoints.js", "interpretation": "proofarena-module"},
+    {"id": "NO-16", "path": "client/src/routes/AppRoutes.jsx", "interpretation": "scaleops-first"},
+    {"id": "NO-17", "path": "client/src/config/navigation", "interpretation": "scaleops-first"},
+    {"id": "NO-18", "path": "client/src/layouts", "interpretation": "scaleops-first"},
+    {"id": "NO-19", "path": "client-server-vercel-config", "interpretation": "ambiguous"},
+    {"id": "NO-20", "path": "stage-1-and-stage-2-docs", "interpretation": "scaleops-first"},
+    {"id": "NO-21", "path": "auth-loading-labels", "interpretation": "proofarena-module"},
+    {"id": "NO-22", "path": "public-navigation-text", "interpretation": "proofarena-module"},
+    {"id": "NO-23", "path": "legacy-root-docs", "interpretation": "ambiguous"},
+    {"id": "NO-24", "path": "useProofArenaModule.js", "interpretation": "scaleops-first"}
+  ],
+  "boundarySensitiveSystems": [
+    "BS-01 root repository/workspace", "BS-02 frontend app entry", "BS-03 backend app entry", "BS-04 router", "BS-05 route constants",
+    "BS-06 public navigation", "BS-07 dashboard shell", "BS-08 sidebar", "BS-09 layouts", "BS-10 auth provider/context",
+    "BS-11 protected route guards", "BS-12 role guards/middleware", "BS-13 API client", "BS-14 API endpoints/services", "BS-15 backend layering",
+    "BS-16 shared UI", "BS-17 shared utilities", "BS-18 config/env", "BS-19 deployment/build", "BS-20 documentation authority"
+  ],
+  "boundaryEnforcementRules": [
+    "BE-01", "BE-02", "BE-03", "BE-04", "BE-05", "BE-06", "BE-07", "BE-08", "BE-09", "BE-10",
+    "BE-11", "BE-12", "BE-13", "BE-14", "BE-15", "BE-16", "BE-17", "BE-18", "BE-19", "BE-20"
+  ],
+  "boundaryViolationResponsePlan": [
+    "BV-01 separate app/repository/package", "BV-02 duplicate router", "BV-03 duplicate dashboard shell",
+    "BV-04 duplicate API client", "BV-05 duplicate auth system", "BV-06 separated backend",
+    "BV-07 config/deployment split", "BV-08 contradictory docs", "BV-09 standalone naming"
+  ],
+  "humanReviewQuestions": [
+    "HQ-01 ADR status/deferral", "HQ-02 repository/README naming", "HQ-03 public UI naming matrix",
+    "HQ-04 API label ownership", "HQ-05 package-name intent", "HQ-06 official boundary docs",
+    "HQ-07 ProofArena module-folder approval", "HQ-08 wildcard alias policy", "HQ-09 external deployment topology",
+    "HQ-10 approvals before production work"
+  ],
+  "boundaryConfidenceScore": {
+    "overall": 91,
+    "rating": "strong-boundary-confidence",
+    "productionChangesAuthorized": false,
+    "categories": {
+      "scaleOpsParentClarity": 96,
+      "proofArenaModuleClarity": 97,
+      "repositoryUnityClarity": 95,
+      "routeBoundaryClarity": 96,
+      "dashboardLayoutBoundaryClarity": 94,
+      "apiClientBoundaryClarity": 94,
+      "authRoleBoundaryClarity": 95,
+      "namingConsistency": 72,
+      "documentationConsistency": 95,
+      "humanReviewClarity": 82
+    }
+  },
+  "prompt2DocsCreated": [
+    "docs/architecture/stage-2/STAGE_2_1_PROMPT_1_FINDINGS_VERIFICATION.md",
+    "docs/architecture/stage-2/STAGE_2_1_PRODUCT_BOUNDARY_DRIFT_DETECTION_REPORT.md",
+    "docs/architecture/stage-2/STAGE_2_1_SCALEOPS_FIRST_NAMING_OWNERSHIP_AUDIT.md",
+    "docs/architecture/stage-2/STAGE_2_1_BOUNDARY_SENSITIVE_SYSTEM_MAP.md",
+    "docs/architecture/stage-2/STAGE_2_1_BOUNDARY_ENFORCEMENT_RULEBOOK.md",
+    "docs/architecture/stage-2/STAGE_2_1_BOUNDARY_VIOLATION_RESPONSE_PLAN.md",
+    "docs/architecture/stage-2/STAGE_2_1_HUMAN_REVIEW_QUESTIONS.md",
+    "docs/architecture/stage-2/STAGE_2_1_BOUNDARY_CONFIDENCE_SCORE.md",
+    "docs/architecture/stage-2/STAGE_2_PROMPT_3_HANDOFF.md"
+  ],
+  "prompt2DocsUpdated": [
+    "docs/architecture/stage-2/STAGE_2_MASTER_TRACKER.md",
+    "docs/architecture/stage-2/stage-2-1-parent-boundary-manifest.json"
+  ],
+  "prompt3Closeout": {
+    "decision": "close-with-caution",
+    "stage22StartRecommendation": "start-with-caution-documentation-only",
+    "productionChangesAuthorized": false,
+    "finalConfidenceScore": 92,
+    "missingDocs": 0,
+    "remainingHumanGates": ["ADR approval or explicit deferral", "system-owner approval before production edits"],
+    "remainingUnknowns": ["external deployment/repository/domain topology"]
+  },
+  "finalBoundaryCloseoutReport": "STAGE_2_1_FINAL_BOUNDARY_CLOSEOUT_REPORT.md",
+  "parentAuthorityLock": "STAGE_2_1_SCALEOPS_PARENT_AUTHORITY_LOCK.md",
+  "finalBoundaryRiskAcceptance": {
+    "file": "STAGE_2_1_FINAL_BOUNDARY_RISK_ACCEPTANCE_TABLE.md",
+    "acceptedTemporarily": 7,
+    "deferredToStage22": 2,
+    "humanApprovalOrProductionBlock": 2,
+    "unknown": 1
+  },
+  "finalBoundarySensitiveSystemProtection": {
+    "file": "STAGE_2_1_FINAL_BOUNDARY_SENSITIVE_SYSTEM_PROTECTION_TABLE.md",
+    "systemsProtected": 19
+  },
+  "finalComplianceChecklist": {
+    "file": "STAGE_2_1_FINAL_COMPLIANCE_CHECKLIST.md",
+    "checkCount": 12
+  },
+  "finalHumanDecisionLog": {
+    "file": "STAGE_2_1_FINAL_HUMAN_DECISION_LOG.md",
+    "answered": 2,
+    "deferred": 5,
+    "requiredBeforeProductionEdit": 2,
+    "unknown": 1
+  },
+  "finalConfidenceAndReadinessScore": {
+    "file": "STAGE_2_1_FINAL_CONFIDENCE_AND_READINESS_SCORE.md",
+    "score": 92,
+    "rating": "close-with-caution"
+  },
+  "stage22HandoffBrief": "STAGE_2_1_TO_STAGE_2_2_HANDOFF_BRIEF.md",
+  "finalStage21Decision": "close-with-caution",
+  "stage22StartRecommendation": "start-with-caution-documentation-only; human-approval-required-for-production",
+  "prompt3DocsCreated": [
+    "STAGE_2_1_FINAL_BOUNDARY_CLOSEOUT_REPORT.md",
+    "STAGE_2_1_SCALEOPS_PARENT_AUTHORITY_LOCK.md",
+    "STAGE_2_1_FINAL_BOUNDARY_RISK_ACCEPTANCE_TABLE.md",
+    "STAGE_2_1_FINAL_BOUNDARY_SENSITIVE_SYSTEM_PROTECTION_TABLE.md",
+    "STAGE_2_1_FINAL_COMPLIANCE_CHECKLIST.md",
+    "STAGE_2_1_FINAL_HUMAN_DECISION_LOG.md",
+    "STAGE_2_1_FINAL_CONFIDENCE_AND_READINESS_SCORE.md",
+    "STAGE_2_1_TO_STAGE_2_2_HANDOFF_BRIEF.md",
+    "STAGE_2_2_PROMPT_1_HANDOFF.md"
+  ],
+  "prompt3DocsUpdated": [
+    "STAGE_2_MASTER_TRACKER.md",
+    "stage-2-1-parent-boundary-manifest.json"
+  ]
+}

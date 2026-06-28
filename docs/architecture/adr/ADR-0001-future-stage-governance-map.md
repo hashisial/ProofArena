@@ -1,23 +1,23 @@
 # ADR-0001 Future Stage Governance Map
 
 Generated: 2026-06-27
+Revalidated: 2026-06-28
 
-| Stage | Name | ADR rules | Required sources | Likely systems | Forbidden shortcut | Validation / first behavior |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2 | ScaleOps parent boundary | G-01/02 | ADR, Stage 1.1 summary | Product/repo/module docs | Separate ProofArena app | Confirm boundary before edits |
-| 3 | Feature module boundary | G-02/10/11 | Ownership/dependency maps | client features/server modules | Move legacy code blindly | Define owners/exceptions first |
-| 4 | Route governance | G-03/04/09 | Route inventory/lock/blockers | AppRoutes/routes/metadata/guards | Delete aliases/rewrite router | Route/role baseline first |
-| 5 | API contract layer | G-07/08/09 | API inventory/flow/lock | apiClient/apiEndpoints/services/server routes | New client/bulk facade removal | Method/version contract map |
-| 6 | Environment/config | G-14/15 | Critical config/forbidden actions | env/Vite/server config | Expose secrets/casual change | Environment matrix/approval |
-| 7 | Design tokens/shared UI | G-10/11 | Reusable/dependency maps | UI/tokens/shared helpers | Premature shared abstraction | Import/equivalence/visual QA |
-| 8 | Error/loading/empty states | G-12 | Placeholder/risk acceptance | State components/fallback callers | Fake success/data | Empty/error/accessibility tests |
-| 9 | Performance baseline | G-18/20 | Test gap/QA/command docs | Bundles/rendering/API | Optimize without baseline | Measure before/after |
-| 10 | Technical docs | G-16/20 | Official doc map/manifests | Architecture docs | Erase history | Link/JSON consistency |
-| 22 | Public navigation | G-03/05/06 | Route/nav/layout docs | Header/nav/footer | New nav stack | Keyboard/mobile/active QA |
-| 23 | Auth/roles/security | G-07/09/14/15 | Critical/backend auth docs | Auth provider/guards/middleware/email | UI-only security/auth rewrite | Full auth/security E2E |
-| 26 | Permission matrix | G-09/10 | Role/access/backend flow | AccessPolicy/middleware | Frontend-only permissions | Role/API matrix |
-| 36 | Provider dashboard | G-05/06/10 | Layout/sidebar/route locks | DashboardLayout/SidebarCore/features | Duplicate shell | Role/mobile/collapse QA |
-| Other features | Profile/offers/challenges/proof/matching/messages/payments/admin | G-02/07..13 | Ownership/API/model/critical docs | Existing module owners | Parallel service/model/shell | Preflight candidate/contract checks |
+| Stage | Stage name | ADR rules | Required Stage 1.1 docs | Required Stage 1.2 docs | Required ADR docs | Likely files/systems | Forbidden shortcuts | Validation before production edits | Recommended first prompt behavior |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2 | ScaleOps parent boundary | G-01, G-02, G-16 | Source summary; invariants; do-not-duplicate registry | Final findings; source locks | ADR; final review; acceptance gate | Product/repository/module documentation | Separate ProofArena app or ownership claim | Repository/source-map consistency and owner approval | Confirm or explicitly defer the boundary before edits. |
+| 3 | Feature module boundary | G-02, G-10, G-11 | Ownership/dependency/boundary maps | Final findings; blocker register | ADR; rulebook; confidence matrix | `client/src/features`, server modules/services, legacy exceptions | Blindly move legacy files or create duplicate modules | Import graph, owner map, boundary checks | Define target owner and mapped exceptions first. |
+| 4 | Route governance | G-03, G-04, G-09 | Route inventory; critical-file list | Route locks; blockers; QA matrix | ADR; acceptance gate; rulebook | `AppRoutes.jsx`, `routes.js`, metadata, guards, navigation | Rewrite router or delete aliases | Route, redirect, role, direct-load, catch-all, telemetry checks | Establish route/alias baseline and decision scope. |
+| 5 | API contract layer | G-07, G-08, G-09 | API inventory; backend flow; model usage | API locks; blockers; command/QA docs | ADR; confidence matrix; risk table | apiClient, apiEndpoints, api.js, feature services, server routes | New client, bulk facade removal, silent version change | Method/path/auth/error/envelope/version contract suite | Map one method family end-to-end before migration. |
+| 6 | Environment/config layer | G-14, G-15 | Critical-file list; forbidden actions | Validation command checklist | ADR; rulebook | `.env*`, Vite/server config, package/build files | Expose secrets or casually change config | Environment matrix, build/startup/deployment validation | Inventory current variables and obtain explicit approval. |
+| 7 | Design tokens/shared UI | G-10, G-11 | Reusable/dependency maps | Findings and source locks | ADR; rulebook; confidence matrix | Shared UI, tokens, state components, utilities | Premature abstraction or design-system replacement | Import/equivalence/accessibility/visual/build checks | Identify exact consumers and duplicated semantics. |
+| 8 | Error/loading/empty states | G-12 | Placeholder and reusable-code maps | Placeholder classifications; risk acceptance | ADR; rulebook | State components, fallback callers, planned routes | Fake success, fake records, or unsupported workflow | Empty/network/error/disclosure/accessibility tests | Classify the target WPH item and approve replacement contract. |
+| 9 | Performance baseline | G-18, G-20 | Critical-file and dependency maps | Test-gap report; QA/command docs | Rulebook; risk table | Bundles, rendering, layouts, API behavior | Optimize without baseline or mix refactors | Measured before/after, build, route/shell/API regression | Capture reproducible baseline and budget first. |
+| 10 | Technical documentation | G-16, G-20 | Final doc index; source summary | Final closure manifest and tracker | ADR index; manifest; official source map | Architecture docs and manifests | Erase history or create conflicting source-of-truth docs | Link, JSON, count, authority, and contradiction checks | Identify governing document and update in place. |
+| 22 | Public navigation system | G-03, G-05, G-06 | Route/layout/navigation maps | Route/layout locks; QA matrix | ADR; rulebook; stage map | Header, dropdowns, mobile nav, footer, route configs | New navigation stack or broken future links | Keyboard/mobile/active/disabled/role/link QA | Reconcile every visible item with route policy first. |
+| 23 | Authentication, roles, security | G-07, G-09, G-14, G-15 | Auth flow; backend flow; critical files | Security blockers and validation docs | ADR; acceptance gate; risk table | Auth provider/store/guards, middleware, email, rate limits | Auth rewrite, UI-only security, raw tokens | Full auth/session/recovery/verification/abuse/role E2E | Map existing generations and security gaps before change. |
+| 26 | Role permission matrix | G-09, G-10 | Access/role and backend flow maps | Route/layout blockers and QA | ADR; rulebook | accessPolicy, navigation filters, route/backend middleware | Frontend-only permission enforcement | Guest/provider/client/admin/unknown UI and API matrix | Define backend-authoritative policy and exceptions. |
+| 36 | Provider dashboard | G-05, G-06, G-10 | Layout/navigation/route maps | Layout locks; blast radius; QA | ADR; final review; rulebook | DashboardLayout, SidebarCore, provider features | Duplicate shell/sidebar or merge role policy | Role/direct-load/mobile/collapse/focus/overflow QA | Reuse current shell and identify one feature owner. |
+| Other | Profile, offers, challenges, proof, matching, messages, payments, admin | G-02, G-07 through G-13 | Ownership/API/model/critical maps | Final findings; locks; blockers | ADR; rulebook; violation plan | Existing feature, service, model, route, and state owners | Parallel service/model/shell or fake workflow | Candidate-specific contract, role, API, state, and rollback checks | Run preflight and select one mapped owner/candidate ID. |
 
-Each stage must cite the exact Stage 1.1/1.2/ADR docs it used and stop if the target is unknown or blocked.
-
+Every stage must cite the exact Stage 1.1, Stage 1.2, and ADR files it used. Unknown or blocked ownership is a stop condition, not permission to create a replacement system.

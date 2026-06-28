@@ -1,34 +1,122 @@
 # Stage 1 Prompt 13 Document Existence and Authority Audit
 
 Generated: 2026-06-27
+Revalidated: 2026-06-28
 
 ## Result
-- The Stage 1.1, Stage 1.2, and Stage 1.3 source documents that define architecture authority are present.
-- Prompt 13 creates the cross-stage consistency package and its manifest.
+
+- Expected documents audited: **96**.
+- Missing expected documents: **0**.
+- Stage 1.1 documents: 35; Stage 1.2 documents: 33; Stage 1.3 documents: 28.
+- Authority is assigned per file; historical prompt evidence is not promoted above final source-of-truth records.
 - No production code was modified.
+
+## File-Level Audit
+
+| File path | Exists | Stage | Authority level | Current status | Depends on | Future stages | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `docs/architecture/STAGE_1_1_REPO_INVENTORY.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_ROUTE_INVENTORY.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_API_INVENTORY.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_MODEL_SERVICE_HOOK_UTILITY_INVENTORY.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_RISK_MAP.md` | Yes | 1.1 | risk/control | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_ROUTE_DEPENDENCY_MAP.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_FRONTEND_OWNERSHIP_MAP.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_BACKEND_FLOW_MAP.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_MODEL_USAGE_MAP.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_REUSABLE_CODE_MAP.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_BOUNDARY_VIOLATION_REPORT.md` | Yes | 1.1 | risk/control | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_ARCHITECTURE_DIAGRAMS.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_VERIFICATION_CHECKLIST.md` | Yes | 1.1 | checklist/execution | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_EVIDENCE_INDEX.md` | Yes | 1.1 | tracker | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_TRACEABILITY_MATRIX.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_AUDIT_COVERAGE_REPORT.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_SAFE_REFACTOR_READINESS_MAP.md` | Yes | 1.1 | risk/control | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_DUPLICATE_OVERLAP_RADAR.md` | Yes | 1.1 | risk/control | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_PLACEHOLDER_MOCK_SYSTEM_REPORT.md` | Yes | 1.1 | risk/control | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_SOURCE_OF_TRUTH_SUMMARY.md` | Yes | 1.1 | primary source-of-truth | current | Repository source, imports, routes, APIs, models, and configs | All affected later stages | Use as current authority within its stated scope. |
+| `docs/architecture/STAGE_1_1_CONSISTENCY_CHECK.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_NO_PRODUCTION_CODE_CHANGE_CONFIRMATION.md` | Yes | 1.1 | checklist/execution | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_ARCHITECTURE_INVARIANTS.md` | Yes | 1.1 | primary source-of-truth | current | Repository source, imports, routes, APIs, models, and configs | All affected later stages | Use as current authority within its stated scope. |
+| `docs/architecture/STAGE_1_1_DO_NOT_DUPLICATE_REGISTRY.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md` | Yes | 1.1 | risk/control | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_FUTURE_PROMPT_PREFLIGHT_CHECKLIST.md` | Yes | 1.1 | checklist/execution | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_FORBIDDEN_ACTIONS_MANIFEST.md` | Yes | 1.1 | risk/control | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_ADR_CANDIDATES.md` | Yes | 1.1 | human-review | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_FUTURE_STAGE_IMPACT_MAP.md` | Yes | 1.1 | supporting evidence | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_COMPLETION_READINESS_REVIEW.md` | Yes | 1.1 | human-review | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_1_FINAL_DOC_INDEX.md` | Yes | 1.1 | tracker | current | Repository source, imports, routes, APIs, models, and configs | Stages 2-10 and domain stages | Retain and read when the target domain requires it. |
+| `docs/architecture/stage-1-1-inventory.json` | Yes | 1.1 | manifest | current | Repository source, imports, routes, APIs, models, and configs | All affected later stages | Machine-readable; JSON validity audited separately. |
+| `docs/architecture/stage-1-1-architecture-graph.json` | Yes | 1.1 | manifest | current | Repository source, imports, routes, APIs, models, and configs | All affected later stages | Machine-readable; JSON validity audited separately. |
+| `docs/architecture/stage-1-1-source-of-truth-manifest.json` | Yes | 1.1 | manifest | current | Repository source, imports, routes, APIs, models, and configs | All affected later stages | Machine-readable; JSON validity audited separately. |
+| `docs/architecture/stage-1-1-guardrail-manifest.json` | Yes | 1.1 | manifest | current | Repository source, imports, routes, APIs, models, and configs | All affected later stages | Machine-readable; JSON validity audited separately. |
+| `docs/architecture/STAGE_1_2_DUPLICATE_LAYOUT_AUDIT.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_DUPLICATE_ROUTE_CONSTANTS_AUDIT.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_DUPLICATE_API_CLIENT_AUDIT.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_WEAK_PLACEHOLDER_AUDIT.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_DUPLICATE_SYSTEM_SEVERITY_MATRIX.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_PROMPT_5_FINDINGS_VERIFICATION.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_LAYOUT_OWNERSHIP_ANALYSIS.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_API_CLIENT_SOURCE_OF_TRUTH_ANALYSIS.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_PLACEHOLDER_RISK_CLASSIFICATION.md` | Yes | 1.2 | risk/control | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_CLEANUP_DEPENDENCY_ORDER.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_DUPLICATE_BLAST_RADIUS_REPORT.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_CLEANUP_READINESS_SCORECARD.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_CLEANUP_CANDIDATE_LEDGER.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_SOURCE_OF_TRUTH_DECISION_TABLES.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_ZERO_BREAK_CLEANUP_SEQUENCE.md` | Yes | 1.2 | checklist/execution | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_FUTURE_PROMPT_EXECUTION_CONTRACTS.md` | Yes | 1.2 | checklist/execution | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_VALIDATION_QA_MATRIX.md` | Yes | 1.2 | checklist/execution | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_TEST_GAP_REPORT.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_SAFE_DELETE_CANDIDATE_POLICY.md` | Yes | 1.2 | checklist/execution | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_CLEANUP_RISK_REGISTER.md` | Yes | 1.2 | risk/control | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md` | Yes | 1.2 | primary source-of-truth | current | Stage 1.1 source summary, inventories, and guardrails | All affected later stages | Use as current authority within its stated scope. |
+| `docs/architecture/STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md` | Yes | 1.2 | primary source-of-truth | current | Stage 1.1 source summary, inventories, and guardrails | All affected later stages | Use as current authority within its stated scope. |
+| `docs/architecture/STAGE_1_2_FINAL_CLEANUP_EXECUTION_BACKLOG.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_2_FINAL_BLOCKER_REGISTER.md` | Yes | 1.2 | risk/control | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_2_RISK_ACCEPTANCE_TABLE.md` | Yes | 1.2 | risk/control | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_FINAL_VALIDATION_COMMAND_CHECKLIST.md` | Yes | 1.2 | checklist/execution | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_2_HUMAN_REVIEW_PACK.md` | Yes | 1.2 | human-review | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_TO_STAGE_1_3_HANDOFF_BRIEF.md` | Yes | 1.2 | supporting evidence | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/STAGE_1_2_MASTER_TRACKER.md` | Yes | 1.2 | tracker | current | Stage 1.1 source summary, inventories, and guardrails | Cleanup, routes, API, dashboard, auth stages | Retain as evidence; final Stage 1.2 classifications take precedence. |
+| `docs/architecture/stage-1-2-duplicate-audit-manifest.json` | Yes | 1.2 | manifest | current | Stage 1.1 source summary, inventories, and guardrails | All affected later stages | Machine-readable; JSON validity audited separately. |
+| `docs/architecture/stage-1-2-cleanup-blueprint.json` | Yes | 1.2 | manifest | current | Stage 1.1 source summary, inventories, and guardrails | All affected later stages | Machine-readable; JSON validity audited separately. |
+| `docs/architecture/stage-1-2-final-closure-manifest.json` | Yes | 1.2 | manifest | current | Stage 1.1 source summary, inventories, and guardrails | All affected later stages | Machine-readable; JSON validity audited separately. |
+| `docs/architecture/adr/ADR_INDEX.md` | Yes | 1.3 | tracker | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/adr/ADR-0001-scaleops-proofarena-architecture-boundary.md` | Yes | 1.3 | primary source-of-truth | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | All affected later stages | Use as current authority within its stated scope. |
+| `docs/architecture/adr/ADR-0001-evidence-map.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/adr/ADR-0001-future-codex-rules.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/adr/ADR-0001-risk-mitigation-table.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/adr/ADR-0001-decision-validation-report.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Supporting governance evidence; ADR and adoption package remain primary. |
+| `docs/architecture/adr/ADR-0001-contradiction-gap-analysis.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Supporting governance evidence; ADR and adoption package remain primary. |
+| `docs/architecture/adr/ADR-0001-source-of-truth-confidence-matrix.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Supporting governance evidence; ADR and adoption package remain primary. |
+| `docs/architecture/adr/ADR-0001-codex-enforcement-checklist.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/adr/ADR-0001-human-approval-dossier.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Supporting governance evidence; ADR and adoption package remain primary. |
+| `docs/architecture/adr/ADR-0001-acceptance-readiness-score.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Supporting governance evidence; ADR and adoption package remain primary. |
+| `docs/architecture/adr/ADR-0001-final-decision-review.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Supporting governance evidence; ADR and adoption package remain primary. |
+| `docs/architecture/adr/ADR-0001-acceptance-gate.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Supporting governance evidence; ADR and adoption package remain primary. |
+| `docs/architecture/adr/ADR-0001-final-codex-governance-rulebook.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/adr/ADR-0001-future-stage-governance-map.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Supporting governance evidence; ADR and adoption package remain primary. |
+| `docs/architecture/adr/ADR-0001-violation-response-plan.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Supporting governance evidence; ADR and adoption package remain primary. |
+| `docs/architecture/adr/ADR-0001-final-human-approval-brief.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Supporting governance evidence; ADR and adoption package remain primary. |
+| `docs/architecture/adr/ADR-0001-final-status-decision-report.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/adr/ADR-0001-adoption-package.md` | Yes | 1.3 | supporting evidence | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/adr/adr-0001-manifest.json` | Yes | 1.3 | manifest | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | All affected later stages | Machine-readable; JSON validity audited separately. |
+| `docs/architecture/STAGE_1_3_MASTER_TRACKER.md` | Yes | 1.3 | tracker | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_3_OFFICIAL_SOURCE_OF_TRUTH_DOC_MAP.md` | Yes | 1.3 | primary source-of-truth | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | All affected later stages | Use as current authority within its stated scope. |
+| `docs/architecture/STAGE_1_3_FINAL_CLOSEOUT_REPORT.md` | Yes | 1.3 | primary source-of-truth | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | All affected later stages | Use as current authority within its stated scope. |
+| `docs/architecture/STAGE_1_ARCHITECTURE_CONTROL_BOARD.md` | Yes | 1.3 | risk/control | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_REMAINING_RISK_REGISTER.md` | Yes | 1.3 | risk/control | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md` | Yes | 1.3 | checklist/execution | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/STAGE_2_PRE_READINESS_SNAPSHOT.md` | Yes | 1.3 | human-review | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | Stages 2-36 | Retain and read when the target domain requires it. |
+| `docs/architecture/stage-1-3-final-closeout-manifest.json` | Yes | 1.3 | manifest | current | Stage 1.1 source/guardrails and Stage 1.2 final closure | All affected later stages | Machine-readable; JSON validity audited separately. |
 
 ## Authority Order
 
-| Rank | Document group | Authority level | Notes |
-| --- | --- | --- | --- |
-| 1 | Stage 1.1 source-of-truth, inventory, invariants, guardrails, and manifests | Primary | Current repository facts, risks, and preserved boundaries. |
-| 2 | Stage 1.2 final findings, lock tables, backlog, blockers, and closure manifest | Primary | Final duplicate/placeholder cleanup authority. |
-| 3 | ADR-0001 package, rulebook, adoption package, final status report, and manifest | Primary | Current refactor governance and boundary decision authority. |
-| 4 | Stage 1.3 official source map, control board, remaining risks, and closeout manifest | Primary | Final Stage 1 closeout authority. |
-| 5 | Prompt 13 cross-stage audit docs | Supporting | Verified consistency and handoff evidence. |
-
-## Document Existence Check
-
-| Scope | Status | What was verified |
-| --- | --- | --- |
-| Stage 1.1 primary docs | Present | Source summary, inventories, dependency maps, risk/guardrail docs, manifests, and readiness review remain in `docs/architecture`. |
-| Stage 1.2 closure docs | Present | Final findings, source-of-truth lock table, closure backlog, blocker register, risk acceptance table, and final closure manifest remain in `docs/architecture`. |
-| Stage 1.3 ADR docs | Present | ADR index, ADR-0001 package, adoption package, rulebook, final status report, and final closeout manifest remain in `docs/architecture/adr` and `docs/architecture`. |
-| Prompt 13 artifacts | Created here | Cross-stage consistency package and prompt 13 manifest are now added. |
-
-## Authority Notes
-
-- The official source-of-truth doc map remains the highest authority for Stage 1 closeout documentation.
-- The ADR remains proposed and requires human approval.
-- Prompt 13 does not replace any earlier evidence; it only cross-checks and consolidates it.
-
+1. Repository facts: Stage 1.1 source summary and source-of-truth manifest.
+2. Preserved boundaries: Stage 1.1 invariants, protection, and guardrails.
+3. Duplicate/placeholder cleanup authority: Stage 1.2 final findings, lock table, blockers, and closure manifest.
+4. Architecture governance: ADR-0001, final rulebook, and adoption package.
+5. Closeout authority: official source map and Stage 1.3 closeout manifest.
+6. Prompt 13-15 documents: verification and handoff evidence; they do not create new architecture.

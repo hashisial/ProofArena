@@ -1,32 +1,40 @@
 # Stage 1 Manifest Consistency Audit
 
 Generated: 2026-06-27
+Revalidated: 2026-06-28
 
-## Summary
-- All required JSON manifests currently parse.
-- `productionCodeModified` remains `false` across the Stage 1 manifests.
-- The metric differences across manifests are expected because they measure different audit layers.
+## Result
 
-| Manifest | Status | Key alignment notes |
-| --- | --- | --- |
-| `stage-1-1-inventory.json` | Parseable | Repository inventory, route counts, endpoint counts, models, hooks, services, utilities, layouts, guards, and API clients align with the Stage 1.1 evidence set. |
-| `stage-1-1-architecture-graph.json` | Parseable | Dependency graph aligns with the Stage 1.1 file-to-file relationships. |
-| `stage-1-1-source-of-truth-manifest.json` | Parseable | Scan totals and route/API/model counts match the recorded inventory. |
-| `stage-1-1-guardrail-manifest.json` | Parseable | Product boundary, duplication, critical-file, and governance rules remain consistent. |
-| `stage-1-2-duplicate-audit-manifest.json` | Parseable | Prompt 5 findings were verified, corrected, and carried into the final closure layers. |
-| `stage-1-2-cleanup-blueprint.json` | Parseable | Cleanup candidates, blocker counts, and QA contracts are consistent with the final closure package. |
-| `stage-1-2-final-closure-manifest.json` | Parseable | Final findings, closure backlog, blockers, and readiness counts match the closeout report. |
-| `adr/adr-0001-manifest.json` | Parseable | ADR-0001 remains proposed and aligned with the final governance decision package. |
-| `stage-1-3-final-closeout-manifest.json` | Parseable | Final ADR adoption status, closeout score, and Stage 2 pre-readiness are internally consistent. |
+- Manifests audited: **9**.
+- Valid JSON: **9**.
+- Semantic contradictions: **0**.
+- Schema-completeness issues: **2 legacy manifests** lack explicit production-scope and document-change fields.
+- Every manifest that defines `productionCodeModified` records `false`.
+- Project identity is consistent; the ADR manifest expresses parent/module identity under `productBoundary` rather than top-level project keys.
 
-## Metric Reconciliation Notes
+| Manifest | Exists | Valid JSON | Missing expected keys or schema note | Inconsistent fields | Contradictory counts | Authority | Required correction | Risk |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `stage-1-1-inventory.json` | Yes | Yes | No `parentProduct`, `flagshipModule`, `productionCodeModified`, `docsCreated`, or `docsUpdated`; legacy Prompt 1 schema | None in represented inventory | None identified | Supporting manifest | Prompt 14 must mark as a legacy schema exception; do not invent historical fields. | Low |
+| `stage-1-1-architecture-graph.json` | Yes | Yes | No parent/module, production-scope, or docs-change fields; graph-specific schema | None in nodes/edges metadata | None identified | Supporting manifest | Prompt 14 must mark as graph schema, not a closeout manifest. | Low |
+| `stage-1-1-source-of-truth-manifest.json` | Yes | Yes | None for its declared schema | None | 817 files, 108 routes, 537/436 endpoints, 50/45 models align | Primary manifest | No correction | Low |
+| `stage-1-1-guardrail-manifest.json` | Yes | Yes | None | None | Invariant/registry/control counts are not inventory totals | Primary control manifest | No correction | Low |
+| `stage-1-2-duplicate-audit-manifest.json` | Yes | Yes | None | Prompt 5 values are historical and followed by verified layers | Early severities differ from final closure by design | Historical/supporting manifest | Keep; final closure controls current classifications. | Medium if read alone |
+| `stage-1-2-cleanup-blueprint.json` | Yes | Yes | No top-level `unknowns` because Prompt 7 schema uses `blockedItems`; allowed schema difference | None | 100 unique candidates and readiness 17/23/54/6 reconcile | Execution manifest | No correction; document schema intent. | Low |
+| `stage-1-2-final-closure-manifest.json` | Yes | Yes | None | None | 100 findings; backlog totals 100; 12 blockers reconcile | Primary manifest | No correction | Low |
+| `adr/adr-0001-manifest.json` | Yes | Yes | ADR-specific schema omits top-level project keys; identity is in ADR title and `productBoundary` | None | 10 core decisions, 14 final decisions, 7/4/1 gate, 88/74 closeout fields reconcile | Primary ADR manifest | Prompt 14 should lock this as an intentional ADR schema. | Low |
+| `stage-1-3-final-closeout-manifest.json` | Yes | Yes | None | None | 11 controls, 18 risks, 3 remaining-prompt plans, 74 Stage 2 score reconcile | Primary closeout manifest | No correction | Low |
 
-| Metric family | Reconciled value | Why it is not a contradiction |
-| --- | --- | --- |
-| Stage 1.1 repository scan | 817 files scanned | This is the baseline repository inventory. |
-| Stage 1.1 route inventory | 108 routes found and mapped | Route inventory is a full coverage count, not a cleanup count. |
-| Stage 1.1 backend inventory | 537 endpoints found, 436 mapped | Some endpoints remain intentionally unresolved for later ownership checks. |
-| Stage 1.2 final findings | 100 findings | This is a duplicate/overlap/placeholder classification count, not a file count. |
-| Stage 1.2 closure backlog | 11 / 43 / 23 / 4 / 13 / 6 | These are cleanup staging buckets, not contradiction signals. |
-| Stage 1.3 closeout | 88 / 74 | These are separate closeout and Stage 2 pre-readiness scores. |
+## Cross-Manifest Identity And Status
 
+| Check | Result |
+| --- | --- |
+| Project name | `ScaleOps / ProofArena` wherever the schema defines `projectName` |
+| Parent product | `ScaleOps`; ADR manifest stores this in `productBoundary.parentProduct` |
+| Flagship module | `ProofArena`; ADR manifest stores this in `productBoundary.flagshipModule` |
+| Stage numbers | 1.1, 1.2, 1.3, and ADR roadmap stage values are consistent |
+| Production modification | False in every manifest that defines the field; legacy inventory/graph omit it |
+| ADR status | Proposed / keep-proposed-until-human-approval across ADR and closeout manifests |
+| Stage 2 readiness | Prompt 12 snapshot is not ready at 74/100; later Prompt 15 owns final handoff wording |
+| Unknown preservation | Unknown arrays or equivalent blocked/unknown records remain present; none were silently discarded |
+
+Prompt 14 must verify these schema exceptions explicitly instead of reporting that every manifest has identical keys.

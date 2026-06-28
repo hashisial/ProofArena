@@ -5,165 +5,1324 @@
   "stage": "1",
   "promptNumber": 13,
   "purpose": "Cross-stage consistency check across Stage 1.1, Stage 1.2, and Stage 1.3",
-  "generatedAt": "2026-06-27T15:00:00Z",
+  "generatedAt": "2026-06-28T03:43:20.038Z",
   "productionCodeModified": false,
   "docExistenceAudit": [
     {
-      "scope": "Stage 1.1 primary docs",
-      "status": "present",
-      "authority": "primary"
+      "file": "docs/architecture/STAGE_1_1_REPO_INVENTORY.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
     },
     {
-      "scope": "Stage 1.2 final closure docs",
-      "status": "present",
-      "authority": "primary"
+      "file": "docs/architecture/STAGE_1_1_ROUTE_INVENTORY.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
     },
     {
-      "scope": "Stage 1.3 ADR and closeout docs",
-      "status": "present",
-      "authority": "primary"
+      "file": "docs/architecture/STAGE_1_1_API_INVENTORY.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
     },
     {
-      "scope": "Prompt 13 artifact set",
-      "status": "created",
-      "authority": "supporting"
+      "file": "docs/architecture/STAGE_1_1_MODEL_SERVICE_HOOK_UTILITY_INVENTORY.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_RISK_MAP.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_ROUTE_DEPENDENCY_MAP.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_FRONTEND_OWNERSHIP_MAP.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_BACKEND_FLOW_MAP.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_MODEL_USAGE_MAP.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_REUSABLE_CODE_MAP.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_BOUNDARY_VIOLATION_REPORT.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_ARCHITECTURE_DIAGRAMS.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_VERIFICATION_CHECKLIST.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "checklist/execution",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_EVIDENCE_INDEX.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "tracker",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_TRACEABILITY_MATRIX.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_AUDIT_COVERAGE_REPORT.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_SAFE_REFACTOR_READINESS_MAP.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_DUPLICATE_OVERLAP_RADAR.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_PLACEHOLDER_MOCK_SYSTEM_REPORT.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_SOURCE_OF_TRUTH_SUMMARY.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "primary source-of-truth",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_CONSISTENCY_CHECK.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_NO_PRODUCTION_CODE_CHANGE_CONFIRMATION.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "checklist/execution",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_ARCHITECTURE_INVARIANTS.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "primary source-of-truth",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_DO_NOT_DUPLICATE_REGISTRY.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_FUTURE_PROMPT_PREFLIGHT_CHECKLIST.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "checklist/execution",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_FORBIDDEN_ACTIONS_MANIFEST.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_ADR_CANDIDATES.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "human-review",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_FUTURE_STAGE_IMPACT_MAP.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_COMPLETION_READINESS_REVIEW.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "human-review",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_FINAL_DOC_INDEX.md",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "tracker",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/stage-1-1-inventory.json",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "manifest",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/stage-1-1-architecture-graph.json",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "manifest",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/stage-1-1-source-of-truth-manifest.json",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "manifest",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/stage-1-1-guardrail-manifest.json",
+      "exists": true,
+      "stage": "1.1",
+      "authority": "manifest",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_DUPLICATE_LAYOUT_AUDIT.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_DUPLICATE_ROUTE_CONSTANTS_AUDIT.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_DUPLICATE_API_CLIENT_AUDIT.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_WEAK_PLACEHOLDER_AUDIT.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_DUPLICATE_SYSTEM_SEVERITY_MATRIX.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_PROMPT_5_FINDINGS_VERIFICATION.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_LAYOUT_OWNERSHIP_ANALYSIS.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_API_CLIENT_SOURCE_OF_TRUTH_ANALYSIS.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_PLACEHOLDER_RISK_CLASSIFICATION.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_CLEANUP_DEPENDENCY_ORDER.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_DUPLICATE_BLAST_RADIUS_REPORT.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_CLEANUP_READINESS_SCORECARD.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_CLEANUP_CANDIDATE_LEDGER.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_SOURCE_OF_TRUTH_DECISION_TABLES.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_ZERO_BREAK_CLEANUP_SEQUENCE.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "checklist/execution",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_FUTURE_PROMPT_EXECUTION_CONTRACTS.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "checklist/execution",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_VALIDATION_QA_MATRIX.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "checklist/execution",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_TEST_GAP_REPORT.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_SAFE_DELETE_CANDIDATE_POLICY.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "checklist/execution",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_CLEANUP_RISK_REGISTER.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "primary source-of-truth",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "primary source-of-truth",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_FINAL_CLEANUP_EXECUTION_BACKLOG.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_FINAL_BLOCKER_REGISTER.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_RISK_ACCEPTANCE_TABLE.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_FINAL_VALIDATION_COMMAND_CHECKLIST.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "checklist/execution",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_HUMAN_REVIEW_PACK.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "human-review",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_TO_STAGE_1_3_HANDOFF_BRIEF.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_MASTER_TRACKER.md",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "tracker",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/stage-1-2-duplicate-audit-manifest.json",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "manifest",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/stage-1-2-cleanup-blueprint.json",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "manifest",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/stage-1-2-final-closure-manifest.json",
+      "exists": true,
+      "stage": "1.2",
+      "authority": "manifest",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR_INDEX.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "tracker",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-scaleops-proofarena-architecture-boundary.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "primary source-of-truth",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-evidence-map.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-future-codex-rules.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-risk-mitigation-table.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-decision-validation-report.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-contradiction-gap-analysis.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-source-of-truth-confidence-matrix.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-codex-enforcement-checklist.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-human-approval-dossier.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-acceptance-readiness-score.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-final-decision-review.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-acceptance-gate.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-final-codex-governance-rulebook.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-future-stage-governance-map.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-violation-response-plan.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-final-human-approval-brief.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-final-status-decision-report.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-adoption-package.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "supporting evidence",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/adr/adr-0001-manifest.json",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "manifest",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_3_MASTER_TRACKER.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "tracker",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_3_OFFICIAL_SOURCE_OF_TRUTH_DOC_MAP.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "primary source-of-truth",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_3_FINAL_CLOSEOUT_REPORT.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "primary source-of-truth",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_REMAINING_RISK_REGISTER.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "risk/control",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "checklist/execution",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/STAGE_2_PRE_READINESS_SNAPSHOT.md",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "human-review",
+      "status": "current"
+    },
+    {
+      "file": "docs/architecture/stage-1-3-final-closeout-manifest.json",
+      "exists": true,
+      "stage": "1.3",
+      "authority": "manifest",
+      "status": "current"
     }
   ],
   "claimConsistency": [
     {
-      "claim": "ScaleOps remains the parent and ProofArena remains inside it",
-      "status": "consistent"
+      "id": "CL-01",
+      "claim": "ScaleOps is the parent SaaS",
+      "status": "consistent",
+      "correctionOwner": "human-review"
     },
     {
-      "claim": "No separate ProofArena app/repo/router stack exists",
-      "status": "consistent"
+      "id": "CL-02",
+      "claim": "ProofArena remains the flagship module inside ScaleOps",
+      "status": "consistent",
+      "correctionOwner": "human-review"
     },
     {
-      "claim": "Route, layout, API, and auth governance remain centralized",
-      "status": "consistent"
+      "id": "CL-03",
+      "claim": "No separate ProofArena app may be created",
+      "status": "consistent",
+      "correctionOwner": "prompt-14"
     },
     {
-      "claim": "Stage 2 is not ready yet",
-      "status": "consistent"
+      "id": "CL-04",
+      "claim": "Existing repository remains source of truth",
+      "status": "consistent",
+      "correctionOwner": "human-review"
     },
     {
-      "claim": "No production code was modified",
-      "status": "consistent"
+      "id": "CL-05",
+      "claim": "Route constants require centralized governance",
+      "status": "consistent",
+      "correctionOwner": "stage-4"
+    },
+    {
+      "id": "CL-06",
+      "claim": "Duplicate route/path systems are classified",
+      "status": "consistent",
+      "correctionOwner": "prompt-14"
+    },
+    {
+      "id": "CL-07",
+      "claim": "Duplicate layouts are classified and role shells preserved",
+      "status": "consistent",
+      "correctionOwner": "stages-3-36"
+    },
+    {
+      "id": "CL-08",
+      "claim": "API overlaps are classified and distinct transports preserved",
+      "status": "consistent",
+      "correctionOwner": "stage-5"
+    },
+    {
+      "id": "CL-09",
+      "claim": "Placeholders are classified before replacement",
+      "status": "consistent",
+      "correctionOwner": "stage-8"
+    },
+    {
+      "id": "CL-10",
+      "claim": "Auth and role guards are not bypassed",
+      "status": "consistent",
+      "correctionOwner": "stages-23-26"
+    },
+    {
+      "id": "CL-11",
+      "claim": "Dashboard shell is not duplicated",
+      "status": "consistent",
+      "correctionOwner": "stages-3-36"
+    },
+    {
+      "id": "CL-12",
+      "claim": "Critical files require preflight",
+      "status": "consistent",
+      "correctionOwner": "prompt-14"
+    },
+    {
+      "id": "CL-13",
+      "claim": "Safe-delete policy precedes deletion",
+      "status": "consistent",
+      "correctionOwner": "all-cleanup"
+    },
+    {
+      "id": "CL-14",
+      "claim": "Future prompts read Stage 1 source docs",
+      "status": "consistent",
+      "correctionOwner": "all-prompts"
+    },
+    {
+      "id": "CL-15",
+      "claim": "Stage 2 starts only after closeout conditions",
+      "status": "incomplete",
+      "correctionOwner": "prompts-14-15"
     }
   ],
   "contradictions": [
     {
-      "id": "C-01",
+      "id": "CR-01",
+      "type": "route-source",
       "item": "Canonical client route remains unresolved",
-      "status": "open-gap"
+      "status": "open-gap-not-hard-contradiction",
+      "severity": "high",
+      "owner": "stage-4"
     },
     {
-      "id": "C-02",
+      "id": "CR-02",
+      "type": "route-source",
       "item": "Canonical admin proof route remains unresolved",
-      "status": "open-gap"
+      "status": "open-gap-not-hard-contradiction",
+      "severity": "high",
+      "owner": "admin-stage-4"
     },
     {
-      "id": "C-03",
-      "item": "Canonical API version/facade window remains unresolved",
-      "status": "open-gap"
+      "id": "CR-03",
+      "type": "api-source",
+      "item": "Canonical API version and facade window remain unresolved",
+      "status": "open-gap-not-hard-contradiction",
+      "severity": "critical",
+      "owner": "stage-5"
     },
     {
-      "id": "C-04",
-      "item": "Human approval for ADR-0001 is not recorded",
-      "status": "open-gap"
+      "id": "CR-04",
+      "type": "adr-status",
+      "item": "ADR governance is enforceable but formal approval is absent",
+      "status": "open-gap-not-hard-contradiction",
+      "severity": "high",
+      "owner": "human-review-prompt-15"
     },
     {
-      "id": "C-05",
-      "item": "Compatibility telemetry is missing",
-      "status": "open-gap"
+      "id": "CR-05",
+      "type": "cleanup-readiness",
+      "item": "Cleanup evidence exists but tests and telemetry are missing",
+      "status": "open-gap-not-hard-contradiction",
+      "severity": "high",
+      "owner": "stage-9"
     },
     {
-      "id": "C-06",
-      "item": "Automated regression baseline is missing",
-      "status": "open-gap"
+      "id": "CR-06",
+      "type": "stage2-readiness",
+      "item": "Prompt 12 snapshot is not the final Prompt 15 handoff",
+      "status": "open-gap-not-hard-contradiction",
+      "severity": "medium",
+      "owner": "prompts-14-15"
     }
   ],
   "staleOrSupersededDocs": [
     {
-      "group": "Stage 1.1 prompt-level docs",
-      "status": "historical-supporting"
+      "file": "docs/architecture/STAGE_1_1_REPO_INVENTORY.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
     },
     {
-      "group": "Stage 1.2 prompt-level docs",
-      "status": "historical-supporting"
+      "file": "docs/architecture/STAGE_1_1_RISK_MAP.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
     },
     {
-      "group": "Stage 1.3 prompt-level docs",
-      "status": "historical-supporting"
+      "file": "docs/architecture/STAGE_1_1_DUPLICATE_OVERLAP_RADAR.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_PLACEHOLDER_MOCK_SYSTEM_REPORT.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/STAGE_1_1_COMPLETION_READINESS_REVIEW.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_DUPLICATE_LAYOUT_AUDIT.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_DUPLICATE_ROUTE_CONSTANTS_AUDIT.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_DUPLICATE_API_CLIENT_AUDIT.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_WEAK_PLACEHOLDER_AUDIT.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_DUPLICATE_SYSTEM_SEVERITY_MATRIX.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/stage-1-2-duplicate-audit-manifest.json",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_CLEANUP_READINESS_SCORECARD.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_CLEANUP_CANDIDATE_LEDGER.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/STAGE_1_2_SOURCE_OF_TRUTH_DECISION_TABLES.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/stage-1-2-cleanup-blueprint.json",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-acceptance-readiness-score.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-human-approval-dossier.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/adr/ADR-0001-final-decision-review.md",
+      "status": "supporting-or-superseded-authority",
+      "keepAsEvidence": true
+    },
+    {
+      "file": "docs/architecture/STAGE_2_PRE_READINESS_SNAPSHOT.md",
+      "status": "stale-risk-after-final-handoff",
+      "keepAsEvidence": true
     }
   ],
   "manifestAudit": [
     {
-      "manifest": "stage-1-1-source-of-truth-manifest.json",
-      "status": "parseable"
+      "file": "stage-1-1-inventory.json",
+      "validJson": true,
+      "authority": "supporting",
+      "issues": [
+        "legacy schema omits parent/module, production scope, docs arrays"
+      ]
     },
     {
-      "manifest": "stage-1-2-final-closure-manifest.json",
-      "status": "parseable"
+      "file": "stage-1-1-architecture-graph.json",
+      "validJson": true,
+      "authority": "supporting",
+      "issues": [
+        "graph schema omits parent/module, production scope, docs arrays"
+      ]
     },
     {
-      "manifest": "stage-1-3-final-closeout-manifest.json",
-      "status": "parseable"
+      "file": "stage-1-1-source-of-truth-manifest.json",
+      "validJson": true,
+      "authority": "primary",
+      "issues": []
     },
     {
-      "manifest": "adr/adr-0001-manifest.json",
-      "status": "parseable"
+      "file": "stage-1-1-guardrail-manifest.json",
+      "validJson": true,
+      "authority": "primary-control",
+      "issues": []
+    },
+    {
+      "file": "stage-1-2-duplicate-audit-manifest.json",
+      "validJson": true,
+      "authority": "historical",
+      "issues": [
+        "early findings superseded by verified/final layers"
+      ]
+    },
+    {
+      "file": "stage-1-2-cleanup-blueprint.json",
+      "validJson": true,
+      "authority": "execution",
+      "issues": [
+        "schema uses blockedItems rather than top-level unknowns"
+      ]
+    },
+    {
+      "file": "stage-1-2-final-closure-manifest.json",
+      "validJson": true,
+      "authority": "primary",
+      "issues": []
+    },
+    {
+      "file": "adr/adr-0001-manifest.json",
+      "validJson": true,
+      "authority": "primary-adr",
+      "issues": [
+        "ADR-specific identity schema"
+      ]
+    },
+    {
+      "file": "stage-1-3-final-closeout-manifest.json",
+      "validJson": true,
+      "authority": "primary",
+      "issues": []
     }
   ],
   "metricReconciliation": [
     {
-      "metric": "Stage 1.1 scan totals",
-      "status": "reconciled"
+      "metric": "frontendRoutes",
+      "canonicalValue": "108 found / 108 mapped",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
     },
     {
-      "metric": "Stage 1.2 final findings and readiness counts",
-      "status": "reconciled"
+      "metric": "backendEndpoints",
+      "canonicalValue": "537 found / 436 mapped",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
     },
     {
-      "metric": "Stage 1.3 closeout and pre-readiness scores",
-      "status": "reconciled"
+      "metric": "models",
+      "canonicalValue": "50 found / 45 mapped",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "services",
+      "canonicalValue": "73",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "hooks",
+      "canonicalValue": "44",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "utilities",
+      "canonicalValue": "79",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "confirmedLayouts",
+      "canonicalValue": "6 confirmed + 4 overlaps",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "routeSystems",
+      "canonicalValue": "17 confirmed + 3 possible",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "apiSystems",
+      "canonicalValue": "8 confirmed + 2 distinct",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "placeholders",
+      "canonicalValue": "60 final; 48 Stage 1.1 baseline",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "cleanupCandidates",
+      "canonicalValue": "100",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "blockers",
+      "canonicalValue": "12",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "highRiskFiles",
+      "canonicalValue": "36",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "remainingRisks",
+      "canonicalValue": "18 unique IDs",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "adrDecisions",
+      "canonicalValue": "10 core; 14 final governance",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "humanReview",
+      "canonicalValue": "10 questions; 7 dependencies; 2 final rows",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
+    },
+    {
+      "metric": "readinessScores",
+      "canonicalValue": "78 validation; 88 closeout; 74 Prompt 12 Stage 2 snapshot",
+      "confidence": "high",
+      "status": "reconciled-with-unit-label"
     }
   ],
   "sourceOfTruthConsolidation": [
     {
-      "result": "Stage 1.3 official source map remains the operational closeout authority",
-      "status": "confirmed"
+      "system": "productBoundary",
+      "authority": "Stage 1.1 invariants + ADR",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "repositoryBoundary",
+      "authority": "Stage 1.1 source summary/manifest + ADR",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "routeDeclarations",
+      "authority": "client/src/routes/AppRoutes.jsx",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "routeConstants",
+      "authority": "client/src/constants/routes.js grouped exports",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "publicNavigation",
+      "authority": "existing navigation config/components",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "dashboardShell",
+      "authority": "role layouts + SidebarCore/useSidebarShell",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "layouts",
+      "authority": "AppRoutes-owned Public/Auth/Dashboard/Client/Admin layouts",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "apiClients",
+      "authority": "apiClient + apiEndpoints + feature services; api.js compatibility",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "authProvidersGuards",
+      "authority": "existing frontend auth owners",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "roleMiddleware",
+      "authority": "existing backend auth/role middleware",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "backendLayers",
+      "authority": "Stage 1.1 mapped routes/controllers/services/models",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "sharedUI",
+      "authority": "existing mapped shared UI/state/navigation",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "sharedUtilities",
+      "authority": "existing mapped shared utilities/config/helpers",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "placeholders",
+      "authority": "Stage 1.2 final WPH classification",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "safeDelete",
+      "authority": "Stage 1.2 Safe Delete Candidate Policy",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "criticalFiles",
+      "authority": "Stage 1.1 Critical File Protection List",
+      "status": "confirmed",
+      "conflict": false
+    },
+    {
+      "system": "futurePreflight",
+      "authority": "Stage 1.1 preflight + ADR rulebook/adoption package",
+      "status": "confirmed",
+      "conflict": false
     }
   ],
   "adrAlignment": [
     {
-      "decision": "ADR-0001 remains proposed",
-      "status": "aligned"
+      "decisionId": "D-01",
+      "status": "aligned",
+      "contradicted": false
+    },
+    {
+      "decisionId": "D-02",
+      "status": "aligned",
+      "contradicted": false
+    },
+    {
+      "decisionId": "D-03",
+      "status": "mostly-aligned",
+      "contradicted": false
+    },
+    {
+      "decisionId": "D-04",
+      "status": "mostly-aligned",
+      "contradicted": false
+    },
+    {
+      "decisionId": "D-05",
+      "status": "mostly-aligned",
+      "contradicted": false
+    },
+    {
+      "decisionId": "D-06",
+      "status": "aligned",
+      "contradicted": false
+    },
+    {
+      "decisionId": "D-07",
+      "status": "mostly-aligned",
+      "contradicted": false
+    },
+    {
+      "decisionId": "D-08",
+      "status": "aligned",
+      "contradicted": false
+    },
+    {
+      "decisionId": "D-09",
+      "status": "aligned",
+      "contradicted": false
+    },
+    {
+      "decisionId": "D-10",
+      "status": "aligned",
+      "contradicted": false
     }
   ],
   "stage2ReadinessClaimAudit": {
-    "conclusion": "not-ready",
+    "conclusion": "not-ready-at-prompt-13",
     "conditions": [
-      "Complete Prompts 14 and 15",
-      "Record boundary approval or explicit deferral",
-      "Identify Stage 2 target/tests/rollback",
-      "Preserve all no-duplicate controls"
+      "Prompt 14 repository/document safety verification",
+      "Prompt 15 final Stage 1 handoff",
+      "Boundary approval or explicit deferral",
+      "Exact Stage 2 target, tests, validation, and rollback",
+      "Preserve no-duplicate controls"
     ],
     "blockers": [
       "Human approval not recorded",
-      "Canonical route decisions still unresolved",
-      "Regression baseline still incomplete"
+      "Canonical route and API policy unresolved",
+      "Regression baseline incomplete",
+      "Compatibility telemetry absent"
     ],
     "humanApprovalRequired": true
   },
   "correctionPlan": [
     {
-      "item": "Publish Prompt 13 cross-stage consistency docs",
-      "status": "complete"
+      "id": "PC-01",
+      "issue": "Lock final Stage 1.2 classification authority",
+      "recommendedPrompt": 14,
+      "type": "authority-update"
     },
     {
-      "item": "Pass control to Prompt 14 repository safety verification",
-      "status": "ready"
+      "id": "PC-02",
+      "issue": "Label 48 baseline versus 60 final placeholders",
+      "recommendedPrompt": 14,
+      "type": "count-reconciliation"
+    },
+    {
+      "id": "PC-03",
+      "issue": "Label human-review units",
+      "recommendedPrompt": 14,
+      "type": "wording-update"
+    },
+    {
+      "id": "PC-04",
+      "issue": "Record legacy manifest schema exceptions",
+      "recommendedPrompt": 14,
+      "type": "manifest-update"
+    },
+    {
+      "id": "PC-05",
+      "issue": "Record ADR-specific manifest schema",
+      "recommendedPrompt": 14,
+      "type": "manifest-update"
+    },
+    {
+      "id": "PC-06",
+      "issue": "Treat 74 as Prompt 12 snapshot",
+      "recommendedPrompt": 15,
+      "type": "status-clarification"
+    },
+    {
+      "id": "PC-07",
+      "issue": "Record boundary approval or deferral",
+      "recommendedPrompt": 15,
+      "type": "human-review"
+    },
+    {
+      "id": "PC-08",
+      "issue": "Keep six items as gaps, not hard contradictions",
+      "recommendedPrompt": 14,
+      "type": "wording-update"
+    },
+    {
+      "id": "PC-09",
+      "issue": "Verify Prompt 13 docs/references/JSON/Git scope",
+      "recommendedPrompt": 14,
+      "type": "checklist-execution"
+    },
+    {
+      "id": "PC-10",
+      "issue": "Require exact Stage 2 scope/tests/rollback",
+      "recommendedPrompt": 15,
+      "type": "status-clarification"
     }
   ],
   "docsCreated": [
@@ -181,6 +1340,17 @@
     "STAGE_1_PROMPT_14_HANDOFF.md"
   ],
   "docsUpdated": [
+    "STAGE_1_PROMPT_13_DOC_EXISTENCE_AUTHORITY_AUDIT.md",
+    "STAGE_1_CROSS_STAGE_CLAIM_CONSISTENCY_MATRIX.md",
+    "STAGE_1_CONTRADICTION_REGISTER.md",
+    "STAGE_1_STALE_SUPERSEDED_DOC_REPORT.md",
+    "STAGE_1_MANIFEST_CONSISTENCY_AUDIT.md",
+    "STAGE_1_COUNT_METRIC_RECONCILIATION.md",
+    "STAGE_1_SOURCE_OF_TRUTH_CONSOLIDATION_CHECK.md",
+    "STAGE_1_ADR_ALIGNMENT_CHECK.md",
+    "STAGE_2_READINESS_CLAIM_AUDIT.md",
+    "STAGE_1_PROMPT_13_CORRECTION_PLAN.md",
+    "STAGE_1_PROMPT_14_HANDOFF.md",
     "STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
     "STAGE_1_REMAINING_RISK_REGISTER.md",
     "STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md"
@@ -188,8 +1358,12 @@
   "unknowns": [
     "Canonical client route",
     "Canonical admin proof route",
-    "Canonical API version/facade window",
-    "Human approval record"
+    "Canonical API version and facade window",
+    "RootLayout runtime/external ownership",
+    "Six unmapped page owners",
+    "Compatibility telemetry",
+    "Production email/throttling completion",
+    "Production model/index behavior"
   ]
 }
 

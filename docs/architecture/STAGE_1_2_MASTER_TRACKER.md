@@ -164,3 +164,35 @@ AppRoutes; grouped routes.js exports; routeMetadata as descriptive metadata; rol
 `STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md`, `STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md`, `STAGE_1_2_FINAL_BLOCKER_REGISTER.md`, `STAGE_1_2_HUMAN_REVIEW_PACK.md`, `STAGE_1_2_TO_STAGE_1_3_HANDOFF_BRIEF.md`, and `stage-1-2-final-closure-manifest.json`.
 
 No production code was modified.
+
+
+## Prompt 7 Revalidation Update (2026-06-28)
+
+The Prompt 7 cleanup blueprint was revalidated against the current repository without regenerating or reordering the historical Stage 1.2 artifacts.
+
+- All nine Prompt 7 deliverables remain present under `docs/architecture`.
+- `stage-1-2-cleanup-blueprint.json` parses successfully and contains 100 unique cleanup candidate IDs.
+- All required candidate fields and allowed category, severity, and readiness values validate successfully.
+- Readiness remains 17 ready, 23 ready with caution, 54 blocked, and 6 unknown.
+- The source-of-truth proposal remains six layout entries, four route entries, four API entries, and four placeholder entries.
+- The required ten-step cleanup sequence and ten future execution contracts remain present.
+- Current package scripts still provide client lint/build/boundary checks and server boundary checks; no maintained test/spec or typecheck script was found.
+- Canonical route, layout, sidebar, access-policy, API transport, endpoint-registry, and state-component paths referenced by the blueprint still exist.
+- No cleanup, deletion, package/config change, or production source edit was performed during revalidation.
+
+Prompt 8 remains responsible for final Stage 1.2 consolidation and closure; the existing Prompt 8 closure package remains authoritative for later-stage handoff.
+
+
+## Prompt 8 Revalidation Update (2026-06-28)
+
+The final Stage 1.2 closure package was revalidated against the Prompt 7 blueprint, prerequisite architecture documents, current package scripts, and canonical repository paths.
+
+- All required Stage 1.1 and Stage 1.2 input documents are present.
+- All nine Prompt 8 closure deliverables are present.
+- The final closure manifest parses successfully and preserves 100 unique findings mapped one-to-one to the 100 Prompt 7 original finding IDs.
+- Final classifications remain 6 confirmed layout duplications, 4 layout overlaps, 17 confirmed route overlaps, 3 possible route overlaps, 8 confirmed API overlaps, 2 distinct request systems, 20 acceptable placeholders, 17 product-risk placeholders, 14 architecture-risk placeholders, 3 security-risk placeholders, and 6 unknown findings.
+- Backlog allocation remains mutually exclusive and complete: P0 11, P1 43, P2 23, P3 4, PARKED 13, and HUMAN REVIEW 6.
+- The 12 blockers and 82/100 Stage 1.3 readiness score remain unchanged; cleanup execution remains blocked while ADR work is ready with caution.
+- Ten broken `undefined: undefined` API behavior summaries in `STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md` were restored from the verified API audit and source-of-truth analysis. This correction changes documentation quality only, not finding IDs, classifications, severities, readiness, or source locks.
+- Current repository tooling still exposes client lint/build/boundary checks and server boundary checks, with no maintained test or typecheck script.
+- No production source, package, config, environment, route, API, model, auth, or dependency behavior was modified.

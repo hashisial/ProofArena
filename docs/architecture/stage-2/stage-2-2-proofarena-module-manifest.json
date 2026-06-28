@@ -1,0 +1,191 @@
+{
+  "projectName": "ScaleOps / ProofArena",
+  "parentProduct": "ScaleOps",
+  "flagshipModule": "ProofArena",
+  "stage": "2",
+  "subStage": "2.2",
+  "promptNumber": 4,
+  "purpose": "Verify ProofArena remains the flagship module inside ScaleOps",
+  "generatedAt": "2026-06-28T00:00:00+05:00",
+  "productionCodeModified": false,
+  "separateProofArenaAppAllowed": false,
+  "proofArenaModuleIdentityFindings": [
+    {"id":"MI-01","path":"client/src/modules/proofarena/README.md","interpretation":"module","risk":"low"},
+    {"id":"MI-02","path":"server/src/modules/proofarena/README.md","interpretation":"module","risk":"low"},
+    {"id":"MI-04","path":"client/src/modules/proofarena/hooks/useProofArenaModule.js","interpretation":"module","risk":"low"},
+    {"id":"MI-06","path":"client/src/routes/AppRoutes.jsx","interpretation":"unified-router","risk":"low"},
+    {"id":"MI-15","path":"server/src/app.js","interpretation":"unified-api","risk":"low"},
+    {"id":"MI-16","path":"server/src/app.js","interpretation":"flagship-branding","risk":"medium"},
+    {"id":"MI-18","path":"client/package.json","interpretation":"ambiguous-package-name","risk":"medium"},
+    {"id":"MI-19","path":"server/package.json","interpretation":"ambiguous-package-name","risk":"medium"},
+    {"id":"MI-20","path":"package-lock.json","interpretation":"parent-module-label","risk":"medium"},
+    {"id":"MI-25","path":"external-topology","interpretation":"unknown","risk":"unknown"}
+  ],
+  "proofArenaFeatureSurfaces": [
+    {"id":"FS-01","type":"public-home","path":"client/src/pages/Home.jsx","data":"mixed"},
+    {"id":"FS-03","type":"providers","path":"client/src/features/providers","data":"api"},
+    {"id":"FS-07","type":"challenges","path":"client/src/features/challenges","data":"api"},
+    {"id":"FS-08","type":"execution-plans","path":"client/src/features/executionPlans","data":"api"},
+    {"id":"FS-10","type":"outcome-offers","path":"client/src/features/outcomeOffers","data":"api"},
+    {"id":"FS-11","type":"opportunities","path":"client/src/features/opportunities","data":"api"},
+    {"id":"FS-12","type":"matching","path":"client/src/features/matches","data":"api"},
+    {"id":"FS-13","type":"proof-assets","path":"client/src/features/proofAssets","data":"api"},
+    {"id":"FS-17","type":"first-client","path":"client/src/features/firstClient","data":"mixed"},
+    {"id":"FS-19","type":"saved-providers","path":"client/src/features/savedProviders","data":"api"},
+    {"id":"FS-20","type":"client-workspace","path":"client/src/pages/client","data":"mixed"},
+    {"id":"FS-21","type":"provider-dashboard","path":"client/src/pages/Dashboard.jsx","data":"mixed"},
+    {"id":"FS-22","type":"admin","path":"client/src/features/admin","data":"mixed"},
+    {"id":"FS-26","type":"public-navigation","path":"client/src/config/navigation/publicNavigation.js","data":"config"},
+    {"id":"FS-29","type":"module-hook","path":"client/src/modules/proofarena/hooks/useProofArenaModule.js","data":"local-state"},
+    {"id":"FS-30","type":"challenge-api","path":"server/src/routes/v1/challenge.routes.js","data":"database"},
+    {"id":"FS-31","type":"plan-api","path":"server/src/routes/v1/executionPlan.routes.js","data":"database"},
+    {"id":"FS-32","type":"match-api","path":"server/src/routes/v1/match.routes.js","data":"database"},
+    {"id":"FS-33","type":"offer-api","path":"server/src/routes/v1/outcomeOffer.routes.js","data":"database"},
+    {"id":"FS-34","type":"proof-api","path":"server/src/routes/v1/proofAsset.routes.js","data":"database"},
+    {"id":"FS-40","type":"placeholder-fallback","path":"client/src/pages/RouteShells.jsx","data":"static-or-unknown"}
+  ],
+  "scaleOpsSystemReuseMap": [
+    {"id":"SR-01","system":"repository","path":["client","server"]},
+    {"id":"SR-02","system":"frontend-entry","path":["client/src/main.jsx","client/src/App.jsx"]},
+    {"id":"SR-03","system":"backend-entry","path":["server/src/server.js","server/src/app.js"]},
+    {"id":"SR-04","system":"router","path":["client/src/routes/AppRoutes.jsx"]},
+    {"id":"SR-08","system":"dashboard-shell","path":["client/src/layouts/DashboardLayout.jsx"]},
+    {"id":"SR-12","system":"auth","path":["client/src/features/auth","client/src/store/useAuthStore.js"]},
+    {"id":"SR-14","system":"api-client","path":["client/src/services/apiClient.js"]},
+    {"id":"SR-16","system":"backend-layers","path":["server/src/routes","server/src/controllers","server/src/services","server/src/models"]},
+    {"id":"SR-20","system":"config-env-deploy","path":["client/vite.config.js","server/src/config/env.js"]}
+  ],
+  "moduleBoundaryRules": ["PM-01","PM-02","PM-03","PM-04","PM-05","PM-06","PM-07","PM-08","PM-09","PM-10","PM-11","PM-12","PM-13","PM-14","PM-15","PM-16","PM-17","PM-18"],
+  "standaloneDriftRisks": ["SD-01","SD-02","SD-03","SD-04","SD-05","SD-06","SD-07","SD-08","SD-09","SD-10","SD-11"],
+  "moduleConfidenceScore": {"overallScore":89,"rating":"good-module-confidence-with-caution","blockers":["human approval before production edits","external deployment topology unknown","partial route-shell and fallback surfaces"]},
+  "missingDocs": [],
+  "humanReviewItems": ["approve product naming hierarchy","approve production edits","verify external deployment topology","select final route/layout/API sources before consolidation"],
+  "unknowns": ["external repository/domain/deployment topology","human-approved commercial naming hierarchy","completion state of partial route-shell surfaces"],
+  "docsCreated": [
+    "STAGE_2_2_MASTER_TRACKER.md",
+    "STAGE_2_2_PROOFARENA_MODULE_IDENTITY_AUDIT.md",
+    "STAGE_2_2_PROOFARENA_FEATURE_SURFACE_MAP.md",
+    "STAGE_2_2_SCALEOPS_SYSTEM_REUSE_MAP_FOR_PROOFARENA.md",
+    "STAGE_2_2_PROOFARENA_MODULE_BOUNDARY_RULEBOOK.md",
+    "STAGE_2_2_STANDALONE_DRIFT_RISK_REGISTER.md",
+    "STAGE_2_2_MODULE_CONFIDENCE_SCORE.md",
+    "stage-2-2-proofarena-module-manifest.json",
+    "STAGE_2_PROMPT_5_HANDOFF.md"
+  ],
+  "docsUpdated": ["STAGE_2_MASTER_TRACKER.md"],
+  "prompt5VerificationResults": {
+    "total": 118,
+    "verified": 116,
+    "partiallyVerified": 1,
+    "contradicted": 0,
+    "unknown": 1,
+    "partialFindingIds": ["SD-09"],
+    "unknownFindingIds": ["MI-25"]
+  },
+  "surfaceDependencyMap": {
+    "surfaceCount": 40,
+    "sourceDoc": "STAGE_2_2_PROOFARENA_SURFACE_DEPENDENCY_MAP.md",
+    "partialOrPlaceholderSurfaces": ["FS-02","FS-04","FS-05","FS-15","FS-16","FS-22","FS-25","FS-40"]
+  },
+  "moduleOwnershipBoundaryTable": {
+    "itemCount": 21,
+    "classes": ["proofarena-product","scaleops-platform","shared-governed","unknown"],
+    "sourceDoc": "STAGE_2_2_MODULE_OWNERSHIP_BOUNDARY_TABLE.md"
+  },
+  "proofArenaIntegrationContract": {
+    "ruleCount": 20,
+    "ruleIds": ["IC-01","IC-02","IC-03","IC-04","IC-05","IC-06","IC-07","IC-08","IC-09","IC-10","IC-11","IC-12","IC-13","IC-14","IC-15","IC-16","IC-17","IC-18","IC-19","IC-20"],
+    "sourceDoc": "STAGE_2_2_PROOFARENA_INTEGRATION_CONTRACT.md"
+  },
+  "standaloneDriftBlastRadius": {
+    "riskCount": 11,
+    "blocksStage23": ["SD-01","SD-02","SD-03","SD-05","SD-06","SD-09","SD-11"],
+    "sourceDoc": "STAGE_2_2_STANDALONE_DRIFT_BLAST_RADIUS_REPORT.md"
+  },
+  "moduleVsPlatformResponsibilityMatrix": {
+    "areaCount": 24,
+    "sourceDoc": "STAGE_2_2_MODULE_VS_PLATFORM_RESPONSIBILITY_MATRIX.md"
+  },
+  "readinessScoreUpdate": {
+    "overallScore": 93,
+    "rating": "ready-to-close-after-prompt-6",
+    "productionEditsAuthorized": false,
+    "sourceDoc": "STAGE_2_2_READINESS_SCORE_UPDATE.md"
+  },
+  "prompt5DocsCreated": [
+    "STAGE_2_2_PROMPT_4_FINDINGS_VERIFICATION.md",
+    "STAGE_2_2_PROOFARENA_SURFACE_DEPENDENCY_MAP.md",
+    "STAGE_2_2_MODULE_OWNERSHIP_BOUNDARY_TABLE.md",
+    "STAGE_2_2_PROOFARENA_INTEGRATION_CONTRACT.md",
+    "STAGE_2_2_STANDALONE_DRIFT_BLAST_RADIUS_REPORT.md",
+    "STAGE_2_2_MODULE_VS_PLATFORM_RESPONSIBILITY_MATRIX.md",
+    "STAGE_2_2_READINESS_SCORE_UPDATE.md",
+    "STAGE_2_PROMPT_6_HANDOFF.md"
+  ],
+  "prompt5DocsUpdated": [
+    "stage-2-2-proofarena-module-manifest.json",
+    "STAGE_2_2_MASTER_TRACKER.md",
+    "STAGE_2_MASTER_TRACKER.md"
+  ],
+  "prompt6Closeout": {
+    "decision": "close-with-caution",
+    "stage23StartRecommendation": "start-with-caution-documentation-only",
+    "productionEditsAuthorized": false,
+    "missingRequiredDocs": []
+  },
+  "finalCloseoutReport": "STAGE_2_2_FINAL_CLOSEOUT_REPORT.md",
+  "proofArenaModuleAuthorityLock": {"areaCount":13,"sourceDoc":"STAGE_2_2_PROOFARENA_MODULE_AUTHORITY_LOCK.md"},
+  "finalSurfaceStatusLock": {
+    "total": 40,
+    "confirmedReal": 30,
+    "partial": 5,
+    "placeholderOrStatic": 3,
+    "docsOnly": 1,
+    "mockBackedOrFallback": 1,
+    "unknown": 0,
+    "sourceDoc": "STAGE_2_2_FINAL_SURFACE_STATUS_LOCK.md"
+  },
+  "finalModuleOwnershipLock": {
+    "classes": ["proofarena-product","scaleops-platform","shared-governed","unknown","human-review"],
+    "sourceDoc": "STAGE_2_2_FINAL_MODULE_OWNERSHIP_LOCK.md"
+  },
+  "finalIntegrationContractLock": {"ruleCount":20,"sourceDoc":"STAGE_2_2_FINAL_INTEGRATION_CONTRACT_LOCK.md"},
+  "finalStandaloneDriftRiskAcceptance": {
+    "total": 11,
+    "acceptedTemporarily": 1,
+    "deferredToStage23": 7,
+    "deferredLater": 2,
+    "humanApprovalOrUnknown": 1,
+    "blocksDocumentationOnlyStage23": 0,
+    "sourceDoc": "STAGE_2_2_FINAL_STANDALONE_DRIFT_RISK_ACCEPTANCE_TABLE.md"
+  },
+  "finalComplianceChecklist": {"checkCount":14,"sourceDoc":"STAGE_2_2_FINAL_COMPLIANCE_CHECKLIST.md"},
+  "finalHumanDecisionLog": {
+    "total": 8,
+    "requiredBeforeProductionEdit": 3,
+    "deferred": 5,
+    "sourceDoc": "STAGE_2_2_FINAL_HUMAN_DECISION_LOG.md"
+  },
+  "finalConfidenceAndReadinessScore": {"overallScore":94,"rating":"close-with-caution","sourceDoc":"STAGE_2_2_FINAL_CONFIDENCE_AND_READINESS_SCORE.md"},
+  "stage23HandoffBrief": "STAGE_2_2_TO_STAGE_2_3_HANDOFF_BRIEF.md",
+  "finalStage22Decision": "close-with-caution",
+  "stage23StartRecommendation": "start-with-caution-documentation-only",
+  "prompt6DocsCreated": [
+    "STAGE_2_2_FINAL_CLOSEOUT_REPORT.md",
+    "STAGE_2_2_PROOFARENA_MODULE_AUTHORITY_LOCK.md",
+    "STAGE_2_2_FINAL_SURFACE_STATUS_LOCK.md",
+    "STAGE_2_2_FINAL_MODULE_OWNERSHIP_LOCK.md",
+    "STAGE_2_2_FINAL_INTEGRATION_CONTRACT_LOCK.md",
+    "STAGE_2_2_FINAL_STANDALONE_DRIFT_RISK_ACCEPTANCE_TABLE.md",
+    "STAGE_2_2_FINAL_COMPLIANCE_CHECKLIST.md",
+    "STAGE_2_2_FINAL_HUMAN_DECISION_LOG.md",
+    "STAGE_2_2_FINAL_CONFIDENCE_AND_READINESS_SCORE.md",
+    "STAGE_2_2_TO_STAGE_2_3_HANDOFF_BRIEF.md",
+    "STAGE_2_3_PROMPT_1_HANDOFF.md"
+  ],
+  "prompt6DocsUpdated": [
+    "stage-2-2-proofarena-module-manifest.json",
+    "STAGE_2_2_MASTER_TRACKER.md",
+    "STAGE_2_MASTER_TRACKER.md"
+  ]
+}

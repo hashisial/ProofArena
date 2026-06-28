@@ -5,160 +5,2193 @@
   "stage": "1",
   "promptNumber": 14,
   "purpose": "Final repository safety checklist before Stage 1 handoff",
-  "generatedAt": "2026-06-27T15:10:00Z",
+  "generatedAt": "2026-06-28T08:28:47.364Z",
   "productionCodeModified": false,
   "productionCodeChangeAudit": [
     {
-      "check": "Production frontend files",
-      "status": "pass"
+      "filePath": "docs/architecture/STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
     },
     {
-      "check": "Production backend files",
-      "status": "pass"
+      "filePath": "docs/architecture/STAGE_1_2_MASTER_TRACKER.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
     },
     {
-      "check": "Shared production files",
-      "status": "pass"
+      "filePath": "docs/architecture/STAGE_1_3_FINAL_CLOSEOUT_REPORT.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
     },
     {
-      "check": "Package/config/env/build files",
-      "status": "pass"
+      "filePath": "docs/architecture/STAGE_1_3_MASTER_TRACKER.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
     },
     {
-      "check": "Dependency installs",
-      "status": "pass"
+      "filePath": "docs/architecture/STAGE_1_3_OFFICIAL_SOURCE_OF_TRUTH_DOC_MAP.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
     },
     {
-      "check": "Moves/renames/deletions",
-      "status": "pass"
+      "filePath": "docs/architecture/STAGE_1_ADR_ALIGNMENT_CHECK.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_CONTRADICTION_REGISTER.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_COUNT_METRIC_RECONCILIATION.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_CROSS_STAGE_CLAIM_CONSISTENCY_MATRIX.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_MANIFEST_CONSISTENCY_AUDIT.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_13_CORRECTION_PLAN.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_13_DOC_EXISTENCE_AUTHORITY_AUDIT.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_CONTRADICTION_RESOLUTION_STATUS.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_COUNT_METRIC_LOCK.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_DOCUMENT_COMPLETENESS_CHECKLIST.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_FINAL_SAFETY_SCORECARD.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_HANDOFF.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_MANIFEST_VERIFICATION.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_PRODUCTION_CODE_CHANGE_AUDIT.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_SOURCE_OF_TRUTH_AUTHORITY_LOCK.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_STAGE_2_PREFLIGHT_READINESS_CHECK.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_15_ACTION_LIST.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_15_HANDOFF.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_REMAINING_RISK_REGISTER.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_SOURCE_OF_TRUTH_CONSOLIDATION_CHECK.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_STALE_SUPERSEDED_DOC_REPORT.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_2_READINESS_CLAIM_AUDIT.md",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-acceptance-gate.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-adoption-package.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-codex-enforcement-checklist.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-contradiction-gap-analysis.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-decision-validation-report.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-final-codex-governance-rulebook.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-final-decision-review.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-final-human-approval-brief.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-final-status-decision-report.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-future-stage-governance-map.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-human-approval-dossier.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-risk-mitigation-table.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-scaleops-proofarena-architecture-boundary.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-source-of-truth-confidence-matrix.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-violation-response-plan.md",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/adr/adr-0001-manifest.json",
+      "changeType": "modified",
+      "area": "docs/adr",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-prompt-13-consistency-manifest.json",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-prompt-14-safety-manifest.json",
+      "changeType": "modified",
+      "area": "docs",
+      "productionCode": false,
+      "allowedByStage1Audit": true,
+      "risk": "low",
+      "requiredAction": "retain-and-validate"
     }
   ],
   "documentCompleteness": [
     {
-      "group": "Stage 1.1 / 1.2 / 1.3 source docs",
-      "status": "complete"
+      "filePath": "docs/architecture/STAGE_1_1_REPO_INVENTORY.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
     },
     {
-      "group": "Prompt 13 cross-stage package",
-      "status": "complete"
+      "filePath": "docs/architecture/STAGE_1_1_ROUTE_INVENTORY.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
     },
     {
-      "group": "Prompt 14 safety package",
-      "status": "complete"
+      "filePath": "docs/architecture/STAGE_1_1_API_INVENTORY.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_MODEL_SERVICE_HOOK_UTILITY_INVENTORY.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_RISK_MAP.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_ROUTE_DEPENDENCY_MAP.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_FRONTEND_OWNERSHIP_MAP.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_BACKEND_FLOW_MAP.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_MODEL_USAGE_MAP.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_REUSABLE_CODE_MAP.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_BOUNDARY_VIOLATION_REPORT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_ARCHITECTURE_DIAGRAMS.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_VERIFICATION_CHECKLIST.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_EVIDENCE_INDEX.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "tracker",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_TRACEABILITY_MATRIX.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_AUDIT_COVERAGE_REPORT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_SAFE_REFACTOR_READINESS_MAP.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_DUPLICATE_OVERLAP_RADAR.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_PLACEHOLDER_MOCK_SYSTEM_REPORT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_SOURCE_OF_TRUTH_SUMMARY.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "primary source-of-truth",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_CONSISTENCY_CHECK.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_NO_PRODUCTION_CODE_CHANGE_CONFIRMATION.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_ARCHITECTURE_INVARIANTS.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "primary source-of-truth",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_DO_NOT_DUPLICATE_REGISTRY.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_FUTURE_PROMPT_PREFLIGHT_CHECKLIST.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_FORBIDDEN_ACTIONS_MANIFEST.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_ADR_CANDIDATES.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "human-review",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_FUTURE_STAGE_IMPACT_MAP.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_COMPLETION_READINESS_REVIEW.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "human-review",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_1_FINAL_DOC_INDEX.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "tracker",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-1-inventory.json",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "manifest",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-1-architecture-graph.json",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "manifest",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-1-source-of-truth-manifest.json",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "manifest",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-1-guardrail-manifest.json",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.1",
+      "authorityLevel": "manifest",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_DUPLICATE_LAYOUT_AUDIT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_DUPLICATE_ROUTE_CONSTANTS_AUDIT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_DUPLICATE_API_CLIENT_AUDIT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_WEAK_PLACEHOLDER_AUDIT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_DUPLICATE_SYSTEM_SEVERITY_MATRIX.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_PROMPT_5_FINDINGS_VERIFICATION.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_ROUTE_SOURCE_OF_TRUTH_ANALYSIS.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_LAYOUT_OWNERSHIP_ANALYSIS.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_API_CLIENT_SOURCE_OF_TRUTH_ANALYSIS.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_PLACEHOLDER_RISK_CLASSIFICATION.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_CLEANUP_DEPENDENCY_ORDER.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_DUPLICATE_BLAST_RADIUS_REPORT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_CLEANUP_READINESS_SCORECARD.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_CLEANUP_CANDIDATE_LEDGER.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_SOURCE_OF_TRUTH_DECISION_TABLES.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_ZERO_BREAK_CLEANUP_SEQUENCE.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_FUTURE_PROMPT_EXECUTION_CONTRACTS.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_VALIDATION_QA_MATRIX.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_TEST_GAP_REPORT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_SAFE_DELETE_CANDIDATE_POLICY.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_CLEANUP_RISK_REGISTER.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "primary source-of-truth",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "primary source-of-truth",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_FINAL_CLEANUP_EXECUTION_BACKLOG.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_FINAL_BLOCKER_REGISTER.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_RISK_ACCEPTANCE_TABLE.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_FINAL_VALIDATION_COMMAND_CHECKLIST.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_HUMAN_REVIEW_PACK.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "human-review",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_TO_STAGE_1_3_HANDOFF_BRIEF.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_2_MASTER_TRACKER.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "tracker",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-2-duplicate-audit-manifest.json",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "manifest",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-2-cleanup-blueprint.json",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "manifest",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-2-final-closure-manifest.json",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.2",
+      "authorityLevel": "manifest",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR_INDEX.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "tracker",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-scaleops-proofarena-architecture-boundary.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "primary source-of-truth",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-evidence-map.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-future-codex-rules.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-risk-mitigation-table.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-decision-validation-report.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-contradiction-gap-analysis.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-source-of-truth-confidence-matrix.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-codex-enforcement-checklist.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-human-approval-dossier.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-acceptance-readiness-score.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-final-decision-review.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-acceptance-gate.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-final-codex-governance-rulebook.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-future-stage-governance-map.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-violation-response-plan.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-final-human-approval-brief.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-final-status-decision-report.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/ADR-0001-adoption-package.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/adr/adr-0001-manifest.json",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "manifest",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_3_MASTER_TRACKER.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "tracker",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_3_OFFICIAL_SOURCE_OF_TRUTH_DOC_MAP.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "primary source-of-truth",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_3_FINAL_CLOSEOUT_REPORT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "primary source-of-truth",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_REMAINING_RISK_REGISTER.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_2_PRE_READINESS_SNAPSHOT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "human-review",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-3-final-closeout-manifest.json",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "1.3",
+      "authorityLevel": "manifest",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_13_DOC_EXISTENCE_AUTHORITY_AUDIT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "cross-stage",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_CROSS_STAGE_CLAIM_CONSISTENCY_MATRIX.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "cross-stage",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_CONTRADICTION_REGISTER.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "cross-stage",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_STALE_SUPERSEDED_DOC_REPORT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "cross-stage",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_MANIFEST_CONSISTENCY_AUDIT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "cross-stage",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_COUNT_METRIC_RECONCILIATION.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "cross-stage",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_SOURCE_OF_TRUTH_CONSOLIDATION_CHECK.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "cross-stage",
+      "authorityLevel": "primary source-of-truth",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_ADR_ALIGNMENT_CHECK.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "cross-stage",
+      "authorityLevel": "supporting evidence",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_2_READINESS_CLAIM_AUDIT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "cross-stage",
+      "authorityLevel": "human-review",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_13_CORRECTION_PLAN.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "cross-stage",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-prompt-13-consistency-manifest.json",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "cross-stage",
+      "authorityLevel": "manifest",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_HANDOFF.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "handoff",
+      "authorityLevel": "tracker",
+      "currentStatus": "supporting",
+      "requiredBeforeStage2": false,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_PRODUCTION_CODE_CHANGE_AUDIT.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "Prompt 14",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_DOCUMENT_COMPLETENESS_CHECKLIST.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "Prompt 14",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_MANIFEST_VERIFICATION.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "Prompt 14",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_SOURCE_OF_TRUTH_AUTHORITY_LOCK.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "Prompt 14",
+      "authorityLevel": "primary source-of-truth",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_CONTRADICTION_RESOLUTION_STATUS.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "Prompt 14",
+      "authorityLevel": "risk/control",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_COUNT_METRIC_LOCK.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "Prompt 14",
+      "authorityLevel": "primary source-of-truth",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_FINAL_SAFETY_SCORECARD.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "Prompt 14",
+      "authorityLevel": "primary source-of-truth",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_14_STAGE_2_PREFLIGHT_READINESS_CHECK.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "Prompt 14",
+      "authorityLevel": "human-review",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_15_ACTION_LIST.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "handoff",
+      "authorityLevel": "checklist/execution",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-prompt-14-safety-manifest.json",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "Prompt 14",
+      "authorityLevel": "manifest",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
+    },
+    {
+      "filePath": "docs/architecture/STAGE_1_PROMPT_15_HANDOFF.md",
+      "exists": true,
+      "required": true,
+      "stageOrGroup": "handoff",
+      "authorityLevel": "tracker",
+      "currentStatus": "current",
+      "requiredBeforeStage2": true,
+      "actionBeforePrompt15": "retain"
     }
   ],
   "manifestVerification": [
     {
-      "group": "Required JSON manifests",
-      "status": "parseable"
+      "filePath": "docs/architecture/stage-1-1-inventory.json",
+      "exists": true,
+      "validJson": true,
+      "schema": "legacy-inventory",
+      "productionCodeModified": "field-absent",
+      "stage": "1.1",
+      "promptNumber": null,
+      "projectBoundary": "partial",
+      "docsFields": "absent-by-schema",
+      "unknownsPreserved": true,
+      "issues": [
+        "legacy closeout fields absent"
+      ],
+      "requiredCorrection": "none-preserve-schema"
     },
     {
-      "group": "productionCodeModified flag",
-      "status": "consistent"
+      "filePath": "docs/architecture/stage-1-1-architecture-graph.json",
+      "exists": true,
+      "validJson": true,
+      "schema": "architecture-graph",
+      "productionCodeModified": "field-absent",
+      "stage": "1.1",
+      "promptNumber": null,
+      "projectBoundary": "partial",
+      "docsFields": "absent-by-schema",
+      "unknownsPreserved": true,
+      "issues": [
+        "artifact-specific closeout fields absent"
+      ],
+      "requiredCorrection": "none-preserve-schema"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-1-source-of-truth-manifest.json",
+      "exists": true,
+      "validJson": true,
+      "schema": "source-of-truth",
+      "productionCodeModified": false,
+      "stage": "1.1",
+      "promptNumber": null,
+      "projectBoundary": "complete",
+      "docsFields": "present",
+      "unknownsPreserved": true,
+      "issues": [],
+      "requiredCorrection": "none"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-1-guardrail-manifest.json",
+      "exists": true,
+      "validJson": true,
+      "schema": "guardrails",
+      "productionCodeModified": false,
+      "stage": "1.1",
+      "promptNumber": null,
+      "projectBoundary": "complete",
+      "docsFields": "present",
+      "unknownsPreserved": true,
+      "issues": [],
+      "requiredCorrection": "none"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-2-duplicate-audit-manifest.json",
+      "exists": true,
+      "validJson": true,
+      "schema": "duplicate-audit-with-verification-layers",
+      "productionCodeModified": false,
+      "stage": "1.2",
+      "promptNumber": 5,
+      "projectBoundary": "complete",
+      "docsFields": "present",
+      "unknownsPreserved": true,
+      "issues": [
+        "prompt number intentionally records origin"
+      ],
+      "requiredCorrection": "none"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-2-cleanup-blueprint.json",
+      "exists": true,
+      "validJson": true,
+      "schema": "cleanup-blueprint",
+      "productionCodeModified": false,
+      "stage": "1.2",
+      "promptNumber": 7,
+      "projectBoundary": "complete",
+      "docsFields": "present",
+      "unknownsPreserved": "represented-by-blockedItems",
+      "issues": [
+        "no top-level unknowns in exact schema"
+      ],
+      "requiredCorrection": "none-preserve-schema"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-2-final-closure-manifest.json",
+      "exists": true,
+      "validJson": true,
+      "schema": "final-closure",
+      "productionCodeModified": false,
+      "stage": "1.2",
+      "promptNumber": 8,
+      "projectBoundary": "complete",
+      "docsFields": "present",
+      "unknownsPreserved": true,
+      "issues": [],
+      "requiredCorrection": "none"
+    },
+    {
+      "filePath": "docs/architecture/adr/adr-0001-manifest.json",
+      "exists": true,
+      "validJson": true,
+      "schema": "adr-specific",
+      "productionCodeModified": false,
+      "stage": "1.3-roadmapStage",
+      "promptNumber": "history-embedded",
+      "projectBoundary": "productBoundary",
+      "docsFields": "prompt-specific",
+      "unknownsPreserved": true,
+      "issues": [
+        "generic project/stage fields not part of ADR schema"
+      ],
+      "requiredCorrection": "none-preserve-schema"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-3-final-closeout-manifest.json",
+      "exists": true,
+      "validJson": true,
+      "schema": "stage-1.3-closeout",
+      "productionCodeModified": false,
+      "stage": "1.3",
+      "promptNumber": 12,
+      "projectBoundary": "complete",
+      "docsFields": "present",
+      "unknownsPreserved": true,
+      "issues": [
+        "stage2 score is historical snapshot"
+      ],
+      "requiredCorrection": "label-snapshot"
+    },
+    {
+      "filePath": "docs/architecture/stage-1-prompt-13-consistency-manifest.json",
+      "exists": true,
+      "validJson": true,
+      "schema": "prompt-13-consistency",
+      "productionCodeModified": false,
+      "stage": "1",
+      "promptNumber": 13,
+      "projectBoundary": "complete",
+      "docsFields": "present",
+      "unknownsPreserved": true,
+      "issues": [],
+      "requiredCorrection": "none"
     }
   ],
   "sourceOfTruthAuthorityLock": [
     {
-      "source": "Stage 1.1 primary docs",
-      "status": "locked"
+      "architectureArea": "product-boundary",
+      "primarySourceOfTruth": "docs/architecture/adr/ADR-0001-scaleops-proofarena-architecture-boundary.md",
+      "confidence": "high",
+      "requiredActionBeforeStage2": "human approval or explicit deferral"
     },
     {
-      "source": "Stage 1.2 final closure docs",
-      "status": "locked"
+      "architectureArea": "repository-boundary",
+      "primarySourceOfTruth": "docs/architecture/adr/ADR-0001-scaleops-proofarena-architecture-boundary.md",
+      "confidence": "high",
+      "requiredActionBeforeStage2": "preserve unified repository"
     },
     {
-      "source": "Stage 1.3 ADR/closeout docs",
-      "status": "locked"
+      "architectureArea": "route-governance",
+      "primarySourceOfTruth": "docs/architecture/STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md",
+      "confidence": "high",
+      "requiredActionBeforeStage2": "preserve aliases"
+    },
+    {
+      "architectureArea": "layout-dashboard-governance",
+      "primarySourceOfTruth": "docs/architecture/STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md",
+      "confidence": "high",
+      "requiredActionBeforeStage2": "preserve role shells"
+    },
+    {
+      "architectureArea": "api-client-governance",
+      "primarySourceOfTruth": "docs/architecture/STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md",
+      "confidence": "high",
+      "requiredActionBeforeStage2": "preserve compatibility layers"
+    },
+    {
+      "architectureArea": "auth-role-governance",
+      "primarySourceOfTruth": "docs/architecture/adr/ADR-0001-final-codex-governance-rulebook.md",
+      "confidence": "high",
+      "requiredActionBeforeStage2": "backend remains security authority"
+    },
+    {
+      "architectureArea": "module-ownership",
+      "primarySourceOfTruth": "docs/architecture/adr/ADR-0001-scaleops-proofarena-architecture-boundary.md",
+      "confidence": "medium",
+      "requiredActionBeforeStage2": "clarify without parallel systems"
+    },
+    {
+      "architectureArea": "shared-code-ownership",
+      "primarySourceOfTruth": "docs/architecture/adr/ADR-0001-final-codex-governance-rulebook.md",
+      "confidence": "medium",
+      "requiredActionBeforeStage2": "dependency proof required"
+    },
+    {
+      "architectureArea": "placeholder-mock-governance",
+      "primarySourceOfTruth": "docs/architecture/STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md",
+      "confidence": "high",
+      "requiredActionBeforeStage2": "use final 60 classification"
+    },
+    {
+      "architectureArea": "critical-file-protection",
+      "primarySourceOfTruth": "docs/architecture/STAGE_1_1_CRITICAL_FILE_PROTECTION_LIST.md",
+      "confidence": "high",
+      "requiredActionBeforeStage2": "run category prechecks"
+    },
+    {
+      "architectureArea": "safe-delete-governance",
+      "primarySourceOfTruth": "docs/architecture/STAGE_1_2_SAFE_DELETE_CANDIDATE_POLICY.md",
+      "confidence": "high",
+      "requiredActionBeforeStage2": "no assumption-based deletion"
+    },
+    {
+      "architectureArea": "future-prompt-governance",
+      "primarySourceOfTruth": "docs/architecture/adr/ADR-0001-final-codex-governance-rulebook.md",
+      "confidence": "high",
+      "requiredActionBeforeStage2": "mandatory read and stop rules"
+    },
+    {
+      "architectureArea": "stage2-preflight-governance",
+      "primarySourceOfTruth": "pending Prompt 15 final checklist/start conditions",
+      "confidence": "medium",
+      "requiredActionBeforeStage2": "publish before Stage 2"
     }
   ],
   "contradictionResolutionStatus": [
     {
-      "item": "Canonical client/admin/API questions",
-      "status": "open-gap"
+      "id": "CR-01",
+      "type": "route-source-of-truth",
+      "severity": "high",
+      "status": "deferred",
+      "mustFixBeforeStage2": false,
+      "assignedTo": "Stage 4 and human review"
     },
     {
-      "item": "Human approval for ADR-0001",
-      "status": "open-gap"
+      "id": "CR-02",
+      "type": "route-source-of-truth",
+      "severity": "high",
+      "status": "deferred",
+      "mustFixBeforeStage2": false,
+      "assignedTo": "Admin and Stage 4"
+    },
+    {
+      "id": "CR-03",
+      "type": "api-source-of-truth",
+      "severity": "critical",
+      "status": "deferred",
+      "mustFixBeforeStage2": false,
+      "assignedTo": "Stage 5 and human review"
+    },
+    {
+      "id": "CR-04",
+      "type": "adr-status-human-gate",
+      "severity": "high",
+      "status": "human-review",
+      "mustFixBeforeStage2": true,
+      "assignedTo": "Prompt 15 and architecture owner"
+    },
+    {
+      "id": "CR-05",
+      "type": "cleanup-readiness-testing",
+      "severity": "high",
+      "status": "blocked",
+      "mustFixBeforeStage2": false,
+      "assignedTo": "Stage 9 and relevant feature stages"
+    },
+    {
+      "id": "CR-06",
+      "type": "stage2-readiness-authority",
+      "severity": "medium",
+      "status": "resolved-for-authority",
+      "mustFixBeforeStage2": true,
+      "assignedTo": "Prompt 15"
     }
   ],
   "countMetricLock": [
     {
-      "family": "Stage 1.1 scan counts",
-      "status": "locked"
+      "metricName": "frontend-routes",
+      "canonicalValue": "108 found / 108 mapped",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
     },
     {
-      "family": "Stage 1.2 closure counts",
-      "status": "locked"
+      "metricName": "backend-endpoints",
+      "canonicalValue": "537 found / 436 mapped",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
     },
     {
-      "family": "Stage 1.3 closeout counts",
-      "status": "locked"
+      "metricName": "models",
+      "canonicalValue": "50 found / 45 mapped",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "services",
+      "canonicalValue": "73 found",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "hooks",
+      "canonicalValue": "44 found",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "utilities",
+      "canonicalValue": "79 found",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "duplicate-layouts",
+      "canonicalValue": "6 confirmed + 4 overlaps",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "duplicate-route-path-systems",
+      "canonicalValue": "17 confirmed + 3 possible",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "duplicate-api-request-systems",
+      "canonicalValue": "8 confirmed + 2 distinct transports",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "placeholder-mock-systems",
+      "canonicalValue": "60 final; 48 Stage 1.1 baseline",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "cleanup-candidates",
+      "canonicalValue": "100",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "blockers",
+      "canonicalValue": "12 Stage 1.2 blockers",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "high-risk-files",
+      "canonicalValue": "36",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "remaining-risks",
+      "canonicalValue": "18",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "adr-decisions",
+      "canonicalValue": "10 core / 14 final governance",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "human-review",
+      "canonicalValue": "10 questions / 7 dependencies / 2 final decision rows",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
+    },
+    {
+      "metricName": "stage-readiness-scores",
+      "canonicalValue": "78 Prompt10 / 88 Stage1.3 / 74 Stage2 snapshot",
+      "confidence": "high",
+      "requiredCorrectionBeforeStage2": "preserve-unit-labels"
     }
   ],
   "finalSafetyScorecard": {
     "overallScore": 92,
-    "rating": "ready-with-caution",
+    "rating": "ready-for-stage-1-handoff",
+    "categoryScores": [
+      {
+        "category": "production-code-untouched-confidence",
+        "score": 100
+      },
+      {
+        "category": "documentation-completeness",
+        "score": 100
+      },
+      {
+        "category": "manifest-completeness",
+        "score": 94
+      },
+      {
+        "category": "source-of-truth-clarity",
+        "score": 98
+      },
+      {
+        "category": "contradiction-resolution",
+        "score": 88
+      },
+      {
+        "category": "metric-consistency",
+        "score": 96
+      },
+      {
+        "category": "adr-alignment",
+        "score": 96
+      },
+      {
+        "category": "stage2-preflight-readiness",
+        "score": 74
+      },
+      {
+        "category": "human-review-clarity",
+        "score": 84
+      },
+      {
+        "category": "future-prompt-safety",
+        "score": 90
+      }
+    ],
     "blockers": [
-      "Human approval for ADR-0001 is still required",
-      "Canonical client/admin/API decisions remain unresolved",
-      "Regression baseline coverage remains incomplete"
+      "ADR-0001 human approval or explicit deferral",
+      "Prompt 15 final Stage 2 authority",
+      "exact first Stage 2 scope, tests, rollback, and stop conditions"
     ],
     "prompt15RequiredActions": [
-      "Create final Stage 1 completion and handoff docs",
-      "Create Stage 2 mandatory preflight docs",
-      "Lock final risk acceptance and deferment",
-      "Update ADR index and ADR manifest"
+      "P15-01",
+      "P15-02",
+      "P15-03",
+      "P15-04",
+      "P15-05",
+      "P15-06",
+      "P15-07",
+      "P15-08",
+      "P15-09",
+      "P15-10"
     ]
   },
   "stage2PreflightReadiness": {
     "ready": false,
     "readinessScore": 74,
+    "conclusion": "not-ready-at-prompt-14; ready-for-prompt-15-closeout-with-caution",
     "conditions": [
-      "Complete Prompt 15",
-      "Record boundary approval or explicit deferral",
-      "Identify Stage 2 target/tests/rollback",
-      "Preserve no-duplicate controls"
+      "Prompt 15 publishes final Stage 1 verdict",
+      "architecture owner approves or explicitly defers ADR boundary adoption",
+      "first Stage 2 prompt names exact scope, checks, rollback, and stop conditions",
+      "blocked cleanup is not imported into Stage 2",
+      "final Git and JSON validation passes"
     ],
     "requiredDocs": [
-      "Stage 1 final handoff package",
-      "Stage 2 mandatory preflight checklist",
-      "Stage 2 start conditions",
-      "ADR-0001 adoption package"
+      "ADR-0001 adoption package",
+      "ADR-0001 final Codex governance rulebook",
+      "Stage 1 official source-of-truth map",
+      "Prompt 14 authority lock",
+      "Stage 1 architecture control board",
+      "Stage 1 remaining risk register",
+      "Prompt 15 final handoff/checklist/start conditions"
     ],
     "humanApprovalsRequired": [
-      "ADR-0001 boundary approval"
+      "ADR-0001 product/repository boundary approval or explicit deferral"
     ]
   },
   "prompt15ActionList": [
-    "Create final completion decision",
-    "Create final handoff package",
-    "Create final doc index",
-    "Create final risk acceptance table",
-    "Create no-production-code proof",
-    "Create Stage 2 checklist and start conditions"
+    {
+      "id": "P15-01",
+      "action": "Publish final Stage 1 handoff package",
+      "productionCodeAllowed": false,
+      "mustCompleteBeforeStage2": true,
+      "severity": "high"
+    },
+    {
+      "id": "P15-02",
+      "action": "Publish mandatory Stage 2 preflight checklist",
+      "productionCodeAllowed": false,
+      "mustCompleteBeforeStage2": true,
+      "severity": "critical"
+    },
+    {
+      "id": "P15-03",
+      "action": "Record final Stage 1 completion decision",
+      "productionCodeAllowed": false,
+      "mustCompleteBeforeStage2": true,
+      "severity": "high"
+    },
+    {
+      "id": "P15-04",
+      "action": "Publish final source-of-truth document index",
+      "productionCodeAllowed": false,
+      "mustCompleteBeforeStage2": true,
+      "severity": "high"
+    },
+    {
+      "id": "P15-05",
+      "action": "Publish final risk acceptance/deferment table",
+      "productionCodeAllowed": false,
+      "mustCompleteBeforeStage2": true,
+      "severity": "high"
+    },
+    {
+      "id": "P15-06",
+      "action": "Publish final no-production-code-change proof",
+      "productionCodeAllowed": false,
+      "mustCompleteBeforeStage2": true,
+      "severity": "critical"
+    },
+    {
+      "id": "P15-07",
+      "action": "Create final machine-readable completion manifest",
+      "productionCodeAllowed": false,
+      "mustCompleteBeforeStage2": true,
+      "severity": "high"
+    },
+    {
+      "id": "P15-08",
+      "action": "Publish final Stage 2 start conditions",
+      "productionCodeAllowed": false,
+      "mustCompleteBeforeStage2": true,
+      "severity": "critical"
+    },
+    {
+      "id": "P15-09",
+      "action": "Record ADR status without overclaiming",
+      "productionCodeAllowed": false,
+      "mustCompleteBeforeStage2": true,
+      "severity": "high"
+    },
+    {
+      "id": "P15-10",
+      "action": "Update executive controls and trackers",
+      "productionCodeAllowed": false,
+      "mustCompleteBeforeStage2": true,
+      "severity": "medium"
+    }
   ],
-  "docsCreated": [
-    "STAGE_1_PROMPT_14_PRODUCTION_CODE_CHANGE_AUDIT.md",
-    "STAGE_1_PROMPT_14_DOCUMENT_COMPLETENESS_CHECKLIST.md",
-    "STAGE_1_PROMPT_14_MANIFEST_VERIFICATION.md",
-    "STAGE_1_PROMPT_14_SOURCE_OF_TRUTH_AUTHORITY_LOCK.md",
-    "STAGE_1_PROMPT_14_CONTRADICTION_RESOLUTION_STATUS.md",
-    "STAGE_1_PROMPT_14_COUNT_METRIC_LOCK.md",
-    "STAGE_1_PROMPT_14_FINAL_SAFETY_SCORECARD.md",
-    "STAGE_1_PROMPT_14_STAGE_2_PREFLIGHT_READINESS_CHECK.md",
-    "STAGE_1_PROMPT_15_ACTION_LIST.md",
-    "STAGE_1_PROMPT_15_HANDOFF.md",
-    "stage-1-prompt-14-safety-manifest.json"
-  ],
+  "docsCreated": [],
   "docsUpdated": [
-    "STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
-    "STAGE_1_REMAINING_RISK_REGISTER.md",
-    "STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md"
+    "docs/architecture/STAGE_1_PROMPT_14_PRODUCTION_CODE_CHANGE_AUDIT.md",
+    "docs/architecture/STAGE_1_PROMPT_14_DOCUMENT_COMPLETENESS_CHECKLIST.md",
+    "docs/architecture/STAGE_1_PROMPT_14_MANIFEST_VERIFICATION.md",
+    "docs/architecture/STAGE_1_PROMPT_14_SOURCE_OF_TRUTH_AUTHORITY_LOCK.md",
+    "docs/architecture/STAGE_1_PROMPT_14_CONTRADICTION_RESOLUTION_STATUS.md",
+    "docs/architecture/STAGE_1_PROMPT_14_COUNT_METRIC_LOCK.md",
+    "docs/architecture/STAGE_1_PROMPT_14_FINAL_SAFETY_SCORECARD.md",
+    "docs/architecture/STAGE_1_PROMPT_14_STAGE_2_PREFLIGHT_READINESS_CHECK.md",
+    "docs/architecture/STAGE_1_PROMPT_15_ACTION_LIST.md",
+    "docs/architecture/STAGE_1_PROMPT_15_HANDOFF.md",
+    "docs/architecture/stage-1-prompt-14-safety-manifest.json",
+    "docs/architecture/STAGE_1_ARCHITECTURE_CONTROL_BOARD.md",
+    "docs/architecture/STAGE_1_REMAINING_RISK_REGISTER.md",
+    "docs/architecture/STAGE_1_PROMPTS_13_TO_15_EXECUTION_PLAN.md"
   ],
   "unknowns": [
-    "Canonical client route",
-    "Canonical admin proof route",
-    "Canonical API version/facade window"
+    "Current Git diff proves present worktree scope; it cannot independently reconstruct every historical edit.",
+    "ADR-0001 human approval or explicit deferral has not been recorded.",
+    "Deployed runtime, telemetry, production database, and maintained regression-suite evidence remain outside this documentation-only audit."
   ]
 }
 

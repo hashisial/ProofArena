@@ -1,20 +1,21 @@
 # Stage 1.3 Official Source-of-Truth Document Map
 
 Generated: 2026-06-27
+Revalidated: 2026-06-28
 
 ## Primary
 
-| File | Purpose | Read when | Governs | Stages |
-| --- | --- | --- | --- | --- |
-| `STAGE_1_1_SOURCE_OF_TRUTH_SUMMARY.md` | Current repository facts/unknowns | Every architecture prompt | Whole repo | All |
-| `stage-1-1-source-of-truth-manifest.json` | Machine evidence/traceability | Automated or count-sensitive work | Whole repo | All |
-| `STAGE_1_1_ARCHITECTURE_INVARIANTS.md` | Preserved boundaries | Before architecture edits | Product/frontend/backend/data | All |
-| `STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md` | Final 100 findings | Duplicate/placeholder work | Routes/layouts/API/placeholders | 1.2 onward |
-| `STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md` | Current owner locks | Before choosing source | Routes/layouts/API/states | 1.2 onward |
-| `stage-1-2-final-closure-manifest.json` | Final machine closure | Automated planning | Stage 1.2 | 1.3 onward |
-| `adr/ADR-0001-scaleops-proofarena-architecture-boundary.md` | Architecture decision | Every risky future prompt | Product/refactor governance | All |
-| `adr/ADR-0001-final-codex-governance-rulebook.md` | Enforceable prompt rules | Before production edits | All controlled systems | All |
-| `adr/ADR-0001-adoption-package.md` | How to apply ADR | Preflight/non-compliance | All controlled systems | All |
+| File | Purpose | Authority | Read when | Governs | Related stages | Notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| `STAGE_1_1_SOURCE_OF_TRUTH_SUMMARY.md` | Current repository facts and unknowns | Primary | Every architecture prompt | Whole repository | All | Repository facts outrank later assumptions. |
+| `stage-1-1-source-of-truth-manifest.json` | Machine evidence and traceability | Manifest | Automated or count-sensitive work | Whole repository | All | Validate JSON before relying on counts. |
+| `STAGE_1_1_ARCHITECTURE_INVARIANTS.md` | Preserved product/frontend/backend/data boundaries | Primary | Before architecture edits | Architecture boundaries | All | A future ADR is required to reverse an invariant. |
+| `STAGE_1_2_FINAL_FINDINGS_CONSOLIDATED.md` | Final 100 duplicate/placeholder findings | Primary | Duplicate, placeholder, or cleanup work | Routes, layouts, API, placeholders | 1.2 onward | Final classifications supersede earlier audit labels. |
+| `STAGE_1_2_FINAL_SOURCE_OF_TRUTH_LOCK_TABLE.md` | Current planning owner locks | Primary | Before choosing a route/layout/API/state source | Routes, layouts, API, state systems | 1.2 onward | Locks guide planning; they do not authorize deletion. |
+| `stage-1-2-final-closure-manifest.json` | Machine-readable Stage 1.2 closure | Manifest | Automated planning and reconciliation | Stage 1.2 findings/backlog/blockers | 1.3 onward | Preserve all 100 finding IDs. |
+| `adr/ADR-0001-scaleops-proofarena-architecture-boundary.md` | Architecture boundary and governance decision | Primary | Every risky future prompt | Product and refactor governance | All | Status remains Proposed pending human approval. |
+| `adr/ADR-0001-final-codex-governance-rulebook.md` | Enforceable future-prompt rules | Checklist | Before any production edit | All controlled systems | All | Any failed rule is a stop condition. |
+| `adr/ADR-0001-adoption-package.md` | ADR compliance and change process | Primary | Preflight, violation, or ADR-change work | All controlled systems | All | Adoption is conservative governance, not cleanup permission. |
 
 ## Supporting Evidence
 
@@ -52,4 +53,3 @@ Prompt 1-7 detailed docs remain evidence history. Final classifications in the S
 ## Missing Evidence
 
 No human approval record, compatibility telemetry, maintained test suite, canonical client/admin/API-version decision, or production model/index evidence exists. Those are gaps, not missing documentation to invent.
-
