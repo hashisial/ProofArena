@@ -147,12 +147,21 @@ export function ProofArenaHero() {
   };
 
   useEffect(() => {
-    setShowScene(!reduceMotion);
-  }, [reduceMotion]);
+    const query = window.matchMedia("(min-width: 1024px)");
+
+    function syncSceneVisibility() {
+      setShowScene(query.matches);
+    }
+
+    syncSceneVisibility();
+    query.addEventListener("change", syncSceneVisibility);
+
+    return () => query.removeEventListener("change", syncSceneVisibility);
+  }, []);
 
   return (
     <section aria-labelledby="proofarena-home-title" className="proof-hero relative min-h-[calc(100svh-4rem)] overflow-hidden bg-[#1C1917] text-white">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 hidden lg:block">
         {showScene && !reduceMotion ? (
           <Suspense fallback={<div className="h-full w-full bg-[#1C1917]" />}>
             <ProofEcosystemScene />
