@@ -1,0 +1,14 @@
+# Stage 3.2 Service Ownership Contract
+
+| ID | Category/owner | Allowed location | Forbidden location | Allowed dependencies | Forbidden dependencies | API/auth/error/validation/security rule | Risk | Validation |
+|---|---|---|---|---|---|---|---|---|---|
+| SC-01 | Frontend module service/module | Current feature service; approved module `services` later | Shared/platform roots without evidence | Module adapter, types, pure transforms | New client, router, auth/session, private module internals | Canonical client via adapter/current service; platform auth/errors; validate boundaries | High transport duplication | Request, transform, error and auth tests |
+| SC-02 | Backend module service/module | Existing `server/src/services` chain; approved module later | Route file or frontend | Domain models, platform errors/DB helpers, public contracts | Frontend, duplicate DB/auth/config/response | Controller-service-model layering; backend authorization and validation | Critical data/security | Unit/API/authorization/transaction tests |
+| SC-03 | Platform service/platform | Existing platform service/config boundaries | Business module copy | Platform adapters and approved public contracts | Module-specific policy hidden as platform | Owns cross-cutting auth/DB/config/error only with authority | Critical platform split | Integration/startup/security tests |
+| SC-04 | Shared service/shared governance | Approved neutral service helper | Module or shared dumping ground | Pure/shared lower-level dependencies | Domain models/rules, auth/router/client ownership | 2+ consumers; no hidden side effects | High coupling | Consumer/purity/cycle tests |
+| SC-05 | API adapter service/module | Current feature service or future `api`/`adapters` after approval | Components, shared UI, new client layer | Canonical client/endpoints/types | Base URL/token/interceptors/global normalization | Thin endpoint mapping only | Critical client duplication | Request/response/error contract tests |
+| SC-06 | Payment/security-sensitive/platform plus domain | Existing protected payment/auth chains | Generic shared or unrelated module | Approved provider/auth/config/audit contracts | Fake state, secrets, raw provider duplication | Human approval; server authorization and validation required | Critical financial/security | Webhook/idempotency/negative/security tests |
+| SC-07 | Admin/admin under platform | Existing admin service chain | Shared or unrelated module | Public domain commands and platform roles/audit | Private domain logic/models, role implementation | Admin orchestrates; domains own business rules | Critical privilege/coupling | Permission/audit/contract tests |
+
+Services never create duplicate auth, API, DB, config, response or error systems. No service file is created by this contract.
+

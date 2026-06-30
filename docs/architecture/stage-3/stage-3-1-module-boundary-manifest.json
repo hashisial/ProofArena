@@ -1,0 +1,224 @@
+{
+  "projectName": "ScaleOps / ProofArena",
+  "parentProduct": "ScaleOps",
+  "flagshipModule": "ProofArena",
+  "stage": "3",
+  "subStage": "3.1",
+  "promptNumber": 1,
+  "purpose": "Create module boundary plan for auth, profile, offers, challenges, plans, proof, matching, messages, payments, admin",
+  "generatedAt": "2026-06-28T00:00:00+05:00",
+  "productionCodeModified": false,
+  "separateProofArenaAppAllowed": false,
+  "duplicateArchitectureAllowed": false,
+  "modules": [
+    {
+      "name": "auth",
+      "purpose": "Identity and authentication workflows within platform security governance",
+      "frontendOwnership": ["auth-specific UI", "workflow hooks", "auth use-case services", "types and validation"],
+      "backendOwnership": ["approved auth use cases", "validators", "domain adapters after authority selection"],
+      "platformSystemsToReuse": ["auth provider and store", "route guards", "API client", "backend auth and role middleware"],
+      "forbiddenOwnership": ["router", "duplicate token handling", "duplicate guards", "duplicate role system"],
+      "existingCandidateFiles": ["client/src/features/auth", "server/src/modules/auth", "server auth compatibility variants"],
+      "safeToScaffoldNow": false,
+      "humanReviewNeeded": true,
+      "unknowns": ["runtime authority among auth variants"]
+    },
+    {
+      "name": "profile",
+      "purpose": "Provider, client, and agency profile lifecycle",
+      "frontendOwnership": ["profile pages", "profile components", "profile hooks and services", "profile contracts"],
+      "backendOwnership": ["profile handlers", "services", "validators", "profile models after users decision"],
+      "platformSystemsToReuse": ["auth", "API client", "routing", "storage", "shared UI"],
+      "forbiddenOwnership": ["credentials", "session", "router", "storage infrastructure"],
+      "existingCandidateFiles": ["client profile feature/components/pages", "server profile chains", "server/src/modules/users"],
+      "safeToScaffoldNow": false,
+      "humanReviewNeeded": true,
+      "unknowns": ["profile versus users model authority"]
+    },
+    {
+      "name": "offers",
+      "purpose": "Outcome-offer lifecycle",
+      "frontendOwnership": ["offer pages", "components", "hooks", "services and adapters"],
+      "backendOwnership": ["offer route/controller/service/model/validator chain"],
+      "platformSystemsToReuse": ["auth", "routing", "API client", "shared UI"],
+      "forbiddenOwnership": ["marketplace API client", "payments", "auth", "router"],
+      "existingCandidateFiles": ["client outcomeOffers domains", "server outcomeOffer chain"],
+      "safeToScaffoldNow": false,
+      "humanReviewNeeded": true,
+      "unknowns": ["approved migration owner and regression baseline"]
+    },
+    {
+      "name": "challenges",
+      "purpose": "Challenge discovery, application, and lifecycle",
+      "frontendOwnership": ["challenge pages", "components", "hooks", "services and adapters"],
+      "backendOwnership": ["challenge route/controller/service/model/validator chain"],
+      "platformSystemsToReuse": ["routing", "dashboard shell", "auth", "API client"],
+      "forbiddenOwnership": ["router", "dashboard shell", "matching internals", "auth"],
+      "existingCandidateFiles": ["client challenge domains", "server challenge chain"],
+      "safeToScaffoldNow": false,
+      "humanReviewNeeded": true,
+      "unknowns": ["cross-module challenge-plan-matching contract"]
+    },
+    {
+      "name": "plans",
+      "purpose": "Execution plans and product package workflows",
+      "frontendOwnership": ["plan pages", "editors", "hooks", "services and adapters"],
+      "backendOwnership": ["execution-plan route/controller/service/model/validator chain"],
+      "platformSystemsToReuse": ["routing", "dashboard shell", "auth", "API client", "payments governance"],
+      "forbiddenOwnership": ["payment execution", "router", "dashboard shell", "auth"],
+      "existingCandidateFiles": ["client executionPlans domains", "server executionPlan chain"],
+      "safeToScaffoldNow": false,
+      "humanReviewNeeded": true,
+      "unknowns": ["plan versus payment package boundary"]
+    },
+    {
+      "name": "proof",
+      "purpose": "Proof ledger, assets, readiness, and verification summaries",
+      "frontendOwnership": ["proof pages", "vault components", "hooks", "services and adapters"],
+      "backendOwnership": ["proof route/controller/service/model/validator chain"],
+      "platformSystemsToReuse": ["auth", "API client", "storage", "visibility and error policy"],
+      "forbiddenOwnership": ["storage infrastructure", "auth", "global errors", "private-data policy"],
+      "existingCandidateFiles": ["client proof and proofAssets domains", "server proofAsset chain"],
+      "safeToScaffoldNow": false,
+      "humanReviewNeeded": true,
+      "unknowns": ["proof versus proofAssets ownership", "storage and redaction policy"]
+    },
+    {
+      "name": "matching",
+      "purpose": "Matching rules and recommendations",
+      "frontendOwnership": ["matching pages", "components", "hooks", "services and adapters"],
+      "backendOwnership": ["match route/controller/service/model/validator chain"],
+      "platformSystemsToReuse": ["auth and roles", "routing", "API client"],
+      "forbiddenOwnership": ["permission policy", "identity", "router", "auth"],
+      "existingCandidateFiles": ["client matches domains", "server match chain"],
+      "safeToScaffoldNow": false,
+      "humanReviewNeeded": true,
+      "unknowns": ["algorithm and role regression baseline"]
+    },
+    {
+      "name": "messages",
+      "purpose": "Conversations and messaging workflows",
+      "frontendOwnership": ["message views", "thread components", "module hooks and services"],
+      "backendOwnership": ["message handlers and models after realtime contract"],
+      "platformSystemsToReuse": ["auth", "users", "API client", "socket platform", "guards"],
+      "forbiddenOwnership": ["auth session", "socket runtime", "guards", "notification platform"],
+      "existingCandidateFiles": ["client/src/pages/Messages.jsx", "server message and socket files"],
+      "safeToScaffoldNow": false,
+      "humanReviewNeeded": true,
+      "unknowns": ["message domain versus realtime platform ownership"]
+    },
+    {
+      "name": "payments",
+      "purpose": "Payment, payout, invoice, and marketplace transaction workflows",
+      "frontendOwnership": ["payment views", "domain hooks and services"],
+      "backendOwnership": ["payment domain handlers and models under approved webhook architecture"],
+      "platformSystemsToReuse": ["auth", "API client", "env and config", "Stripe and webhook platform"],
+      "forbiddenOwnership": ["secrets", "global API client", "DB connection", "fake payment state"],
+      "existingCandidateFiles": ["client/src/pages/Payments.jsx", "billing and marketplace payment chains"],
+      "safeToScaffoldNow": false,
+      "humanReviewNeeded": true,
+      "unknowns": ["billing versus marketplace payment authority"]
+    },
+    {
+      "name": "admin",
+      "purpose": "Moderation and administrative workflows",
+      "frontendOwnership": ["admin resource views", "moderation components and services"],
+      "backendOwnership": ["admin handlers and validators using domain contracts"],
+      "platformSystemsToReuse": ["admin shell", "navigation", "auth and roles", "API client", "audit and errors"],
+      "forbiddenOwnership": ["role system", "admin shell", "router", "cross-domain models"],
+      "existingCandidateFiles": ["client admin feature/components/pages", "server admin chain"],
+      "safeToScaffoldNow": false,
+      "humanReviewNeeded": true,
+      "unknowns": ["admin policy and domain moderation contract"]
+    }
+  ],
+  "existingModuleCandidates": ["MC-01","MC-02","MC-03","MC-04","MC-05","MC-06","MC-07","MC-08","MC-09","MC-10","MC-11","MC-12","MC-13","MC-14","MC-15","MC-16","MC-17","MC-18","MC-19","MC-20","MC-21","MC-22","MC-23","MC-24","MC-25","MC-26","MC-27","MC-28","MC-29","MC-30"],
+  "modulesPlanned": ["auth","profile","offers","challenges","plans","proof","matching","messages","payments","admin"],
+  "existingModuleSignals": ["MS-01","MS-02","MS-03","MS-04","MS-05","MS-06","MS-07","MS-08","MS-09","MS-10","MS-11","MS-12","MS-13","MS-14","MS-15","MS-16","MS-17","MS-18","MS-19","MS-20","MS-21","MS-22","MS-23","MS-24","MS-25","MS-26","MS-27","MS-28","MS-29","MS-30"],
+  "targetModuleCatalog": ["auth","profile","offers","challenges","plans","proof","matching","messages","payments","admin"],
+  "moduleOwnershipMatrix": [
+    {"name":"auth","risk":"critical","scaffoldStatus":"blocked"},
+    {"name":"profile","risk":"critical","scaffoldStatus":"blocked"},
+    {"name":"offers","risk":"high","scaffoldStatus":"human-review-after-tests"},
+    {"name":"challenges","risk":"high","scaffoldStatus":"human-review-after-tests"},
+    {"name":"plans","risk":"high","scaffoldStatus":"human-review-after-tests"},
+    {"name":"proof","risk":"critical","scaffoldStatus":"blocked"},
+    {"name":"matching","risk":"high","scaffoldStatus":"human-review-after-tests"},
+    {"name":"messages","risk":"critical","scaffoldStatus":"blocked"},
+    {"name":"payments","risk":"critical","scaffoldStatus":"blocked"},
+    {"name":"admin","risk":"critical","scaffoldStatus":"blocked"}
+  ],
+  "frontendBoundaryBlueprint": [
+    {"module":"auth","safeToCreateNow":false},{"module":"profile","safeToCreateNow":false},{"module":"offers","safeToCreateNow":false},{"module":"challenges","safeToCreateNow":false},{"module":"plans","safeToCreateNow":false},{"module":"proof","safeToCreateNow":false},{"module":"matching","safeToCreateNow":false},{"module":"messages","safeToCreateNow":false},{"module":"payments","safeToCreateNow":false},{"module":"admin","safeToCreateNow":false}
+  ],
+  "backendBoundaryBlueprint": [
+    {"module":"auth","safeToCreateNow":false},{"module":"profile","safeToCreateNow":false},{"module":"offers","safeToCreateNow":false},{"module":"challenges","safeToCreateNow":false},{"module":"plans","safeToCreateNow":false},{"module":"proof","safeToCreateNow":false},{"module":"matching","safeToCreateNow":false},{"module":"messages","safeToCreateNow":false},{"module":"payments","safeToCreateNow":false},{"module":"admin","safeToCreateNow":false}
+  ],
+  "safeScaffoldingPlan": [
+    {"module":"auth","decision":"blocked"},{"module":"profile","decision":"blocked"},{"module":"offers","decision":"no-go-prompt-1"},{"module":"challenges","decision":"no-go-prompt-1"},{"module":"plans","decision":"no-go-prompt-1"},{"module":"proof","decision":"blocked"},{"module":"matching","decision":"no-go-prompt-1"},{"module":"messages","decision":"blocked"},{"module":"payments","decision":"blocked"},{"module":"admin","decision":"blocked"}
+  ],
+  "moduleBoundaryViolations": ["BV-01","BV-02","BV-03","BV-04","BV-05","BV-06","BV-07","BV-08","BV-09","BV-10","BV-11","BV-12","BV-13","BV-14"],
+  "moduleBoundaryRules": ["MBR-01","MBR-02","MBR-03","MBR-04","MBR-05","MBR-06","MBR-07","MBR-08","MBR-09","MBR-10","MBR-11","MBR-12","MBR-13","MBR-14","MBR-15"],
+  "platformVsModuleProtectionMap": ["PV-01","PV-02","PV-03","PV-04","PV-05","PV-06","PV-07","PV-08","PV-09","PV-10","PV-11","PV-12","PV-13","PV-14","PV-15","PV-16","PV-17"],
+  "safeFolderStructureProposal": ["auth","profile","offers","challenges","plans","proof","matching","messages","payments","admin"],
+  "moduleCreationRisks": ["MR-01","MR-02","MR-03","MR-04","MR-05","MR-06","MR-07","MR-08","MR-09","MR-10","MR-11","MR-12"],
+  "humanReviewItems": ["auth platform/module boundary","profile/users ownership","proof storage/security ownership","messages realtime/auth ownership","payments Stripe/webhook ownership","admin role boundary","production migration approval"],
+  "unknowns": ["safe migration order per file","runtime reachability of legacy backend variants","module-specific regression coverage"],
+  "docsCreated": ["STAGE_3_MASTER_TRACKER.md","STAGE_3_1_PREFLIGHT_VERIFICATION.md","STAGE_3_1_EXISTING_MODULE_SIGNAL_AUDIT.md","STAGE_3_1_TARGET_MODULE_CATALOG.md","STAGE_3_1_MODULE_OWNERSHIP_BOUNDARY_MATRIX.md","STAGE_3_1_PLATFORM_VS_MODULE_PROTECTION_MAP.md","STAGE_3_1_SAFE_MODULE_FOLDER_STRUCTURE_PROPOSAL.md","STAGE_3_1_MODULE_CREATION_RISK_REGISTER.md","STAGE_3_1_EXISTING_MODULE_CANDIDATE_AUDIT.md","STAGE_3_1_MODULE_OWNERSHIP_MATRIX.md","STAGE_3_1_FRONTEND_MODULE_BOUNDARY_BLUEPRINT.md","STAGE_3_1_BACKEND_MODULE_BOUNDARY_BLUEPRINT.md","STAGE_3_1_SAFE_MODULE_SCAFFOLDING_PLAN.md","STAGE_3_1_MODULE_BOUNDARY_VIOLATION_REGISTER.md","STAGE_3_1_MODULE_BOUNDARY_RULEBOOK.md","stage-3-1-module-boundary-manifest.json","STAGE_3_PROMPT_2_HANDOFF.md"],
+  "docsUpdated": ["stage-3-1-module-boundary-manifest.json","STAGE_3_MASTER_TRACKER.md","STAGE_3_PROMPT_2_HANDOFF.md"],
+  "prompt2VerificationResults": {"sourceFindings":30,"verified":23,"partiallyVerified":7,"contradicted":0,"unknown":0,"blockedForScaffolding":10,"sourceDoc":"STAGE_3_1_PROMPT_1_FINDINGS_VERIFICATION.md"},
+  "moduleOwnershipCorrections": {"modulesReviewed":10,"platformAreasReviewed":8,"productionOwnershipLocked":false,"sourceDoc":"STAGE_3_1_MODULE_OWNERSHIP_CORRECTION_REPORT.md"},
+  "frontendModulePathDecisions": {"modulesReviewed":10,"safeToCreateNow":[],"decision":"retain-current-paths-no-new-module-folders","sourceDoc":"STAGE_3_1_FRONTEND_MODULE_PATH_DECISION_TABLE.md"},
+  "backendModulePathDecisions": {"modulesReviewed":10,"safeToCreateNow":[],"decision":"retain-current-layered-and-existing-module-paths","sourceDoc":"STAGE_3_1_BACKEND_MODULE_PATH_DECISION_TABLE.md"},
+  "safeReadmeScaffoldExecutionDecision": {"decision":"no-go","frontendReadmesApproved":[],"backendReadmesApproved":[],"sourceDoc":"STAGE_3_1_SAFE_README_SCAFFOLD_EXECUTION_DECISION.md"},
+  "readmeScaffoldAudit": {"modulesReviewed":10,"created":0,"existingReadmesChanged":0,"sourceDoc":"STAGE_3_1_MODULE_README_SCAFFOLD_AUDIT.md"},
+  "platformSystemProtectionMap": {"systems":18,"owner":"ScaleOps platform","sourceDoc":"STAGE_3_1_PLATFORM_SYSTEM_PROTECTION_MAP.md"},
+  "moduleInterdependencyMap": {"dependencies":24,"directPrivateImportsAllowed":false,"circularDependenciesAllowed":false,"sourceDoc":"STAGE_3_1_MODULE_INTERDEPENDENCY_MAP.md"},
+  "moduleBoundaryAcceptanceCriteria": {"criteria":11,"pass":11,"partial":0,"fail":0,"documentationBoundaryAccepted":true,"productionScaffoldingAuthorized":false,"sourceDoc":"STAGE_3_1_MODULE_BOUNDARY_ACCEPTANCE_CRITERIA.md"},
+  "fileToModuleClassificationLedger": {"entries":40,"sourceDoc":"STAGE_3_1_FILE_TO_MODULE_CLASSIFICATION_LEDGER.md"},
+  "moduleDependencyMap": {"modules":10,"sourceDoc":"STAGE_3_1_MODULE_DEPENDENCY_MAP.md"},
+  "frontendModuleBoundaryVerification": {"groups":15,"sourceDoc":"STAGE_3_1_FRONTEND_MODULE_BOUNDARY_VERIFICATION.md"},
+  "backendModuleBoundaryVerification": {"groups":13,"sourceDoc":"STAGE_3_1_BACKEND_MODULE_BOUNDARY_VERIFICATION.md"},
+  "moduleCreationReadinessMatrix": {"modules":10,"clearCautionCandidates":["offers","challenges","plans","matching"],"blockedOrHumanReview":["auth","profile","proof","messages","payments","admin"]},
+  "doNotMoveDoNotDuplicateList": {"items":18,"sourceDoc":"STAGE_3_1_DO_NOT_MOVE_DO_NOT_DUPLICATE_LIST.md"},
+  "safeModuleCreationSequence": {"steps":10,"sourceDoc":"STAGE_3_1_SAFE_MODULE_CREATION_SEQUENCE.md"},
+  "moduleBoundaryConflictRegister": {"conflicts":12,"sourceDoc":"STAGE_3_1_MODULE_BOUNDARY_CONFLICT_REGISTER.md"},
+  "prompt2DocsCreated": ["STAGE_3_1_PROMPT_1_FINDINGS_VERIFICATION.md","STAGE_3_1_MODULE_OWNERSHIP_CORRECTION_REPORT.md","STAGE_3_1_FRONTEND_MODULE_PATH_DECISION_TABLE.md","STAGE_3_1_BACKEND_MODULE_PATH_DECISION_TABLE.md","STAGE_3_1_SAFE_README_SCAFFOLD_EXECUTION_DECISION.md","STAGE_3_1_MODULE_README_SCAFFOLD_AUDIT.md","STAGE_3_1_PLATFORM_SYSTEM_PROTECTION_MAP.md","STAGE_3_1_MODULE_INTERDEPENDENCY_MAP.md","STAGE_3_1_MODULE_BOUNDARY_ACCEPTANCE_CRITERIA.md","STAGE_3_1_FILE_TO_MODULE_CLASSIFICATION_LEDGER.md","STAGE_3_1_MODULE_DEPENDENCY_MAP.md","STAGE_3_1_FRONTEND_MODULE_BOUNDARY_VERIFICATION.md","STAGE_3_1_BACKEND_MODULE_BOUNDARY_VERIFICATION.md","STAGE_3_1_MODULE_CREATION_READINESS_MATRIX.md","STAGE_3_1_DO_NOT_MOVE_DO_NOT_DUPLICATE_LIST.md","STAGE_3_1_SAFE_MODULE_CREATION_SEQUENCE.md","STAGE_3_1_MODULE_BOUNDARY_CONFLICT_REGISTER.md","STAGE_3_PROMPT_3_HANDOFF.md"],
+  "prompt2DocsUpdated": ["STAGE_3_1_PROMPT_1_FINDINGS_VERIFICATION.md","stage-3-1-module-boundary-manifest.json","STAGE_3_MASTER_TRACKER.md","STAGE_3_PROMPT_3_HANDOFF.md"],
+  "readmeScaffoldsCreated": []
+  ,"prompt3OwnershipLock": {"modules":10,"approved":[],"humanReview":["offers","challenges","plans","matching"],"blocked":["auth","profile","proof","messages","payments","admin"]}
+  ,"moduleScaffoldingApprovalGate": {"decision":"no-go-without-human-approval","sourceDoc":"STAGE_3_1_MODULE_SCAFFOLDING_APPROVAL_GATE.md"}
+  ,"moduleCreationContract": {"rules":10,"sourceDoc":"STAGE_3_1_MODULE_CREATION_CONTRACT.md"}
+  ,"prompt4ExecutionPlan": {"productionScaffoldAuthorized":false,"sourceDoc":"STAGE_3_1_PROMPT_4_EXECUTION_PLAN.md"}
+  ,"prompt3DocsCreated": ["STAGE_3_1_FINAL_MODULE_OWNERSHIP_LOCK.md","STAGE_3_1_MODULE_SCAFFOLDING_APPROVAL_GATE.md","STAGE_3_1_MODULE_CREATION_CONTRACT.md","STAGE_3_1_PROMPT_4_EXECUTION_PLAN.md"]
+  ,"prompt3DocsUpdated": ["stage-3-1-module-boundary-manifest.json","STAGE_3_MASTER_TRACKER.md"]
+  ,"prompt4ScaffoldingResult": {"decision":"no-go","reason":"no human approval and existing ownership conflicts","sourceDoc":"STAGE_3_1_SCAFFOLDING_RESULT_REPORT.md"}
+  ,"modulesScaffolded": []
+  ,"modulesSkipped": ["auth","profile","offers","challenges","plans","proof","matching","messages","payments","admin"]
+  ,"filesCreated": ["docs/architecture/stage-3/STAGE_3_1_PRE_SCAFFOLD_SAFETY_CHECK.md","docs/architecture/stage-3/STAGE_3_1_MODULE_README_TEMPLATE.md","docs/architecture/stage-3/STAGE_3_1_SCAFFOLDING_RESULT_REPORT.md"]
+  ,"productionBehaviorChanged": false
+  ,"prompt4DocsCreated": ["STAGE_3_1_PRE_SCAFFOLD_SAFETY_CHECK.md","STAGE_3_1_MODULE_README_TEMPLATE.md","STAGE_3_1_SCAFFOLDING_RESULT_REPORT.md"]
+  ,"prompt4DocsUpdated": ["stage-3-1-module-boundary-manifest.json","STAGE_3_MASTER_TRACKER.md"]
+  ,"prompt11FinalCloseoutReconciliation": {
+    "status": "documentation record reconciled",
+    "documentationOnly": true,
+    "architecturalMeaningChanged": false,
+    "productionCodeModified": false
+  }
+  ,"finalCloseoutReport": "STAGE_3_1_FINAL_CLOSEOUT_REPORT.md"
+  ,"finalModuleOwnershipLock": "STAGE_3_1_FINAL_MODULE_OWNERSHIP_LOCK.md"
+  ,"finalPlatformSystemOwnershipLock": "STAGE_3_1_FINAL_PLATFORM_SYSTEM_OWNERSHIP_LOCK.md"
+  ,"finalFrontendModulePathLock": "STAGE_3_1_FINAL_FRONTEND_MODULE_PATH_LOCK.md"
+  ,"finalBackendModulePathLock": "STAGE_3_1_FINAL_BACKEND_MODULE_PATH_LOCK.md"
+  ,"finalScaffoldStatusLock": "STAGE_3_1_FINAL_SCAFFOLD_STATUS_LOCK.md"
+  ,"finalModuleInterdependencyLock": "STAGE_3_1_FINAL_MODULE_INTERDEPENDENCY_LOCK.md"
+  ,"finalStage31Decision": "CLOSE WITH CAUTION"
+  ,"stage32StartRecommendation": "START WITH CAUTION - DOCUMENTATION ONLY"
+  ,"missingFinalDocs": [
+    "STAGE_3_1_FINAL_ACCEPTANCE_REVIEW.md",
+    "STAGE_3_1_FINAL_HUMAN_DECISION_LOG.md",
+    "STAGE_3_1_FINAL_READINESS_SCORE.md",
+    "STAGE_3_1_TO_STAGE_3_2_HANDOFF_BRIEF.md"
+  ]
+  ,"prompt11DocsUpdated": ["stage-3-1-module-boundary-manifest.json"]
+}

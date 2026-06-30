@@ -1,0 +1,463 @@
+{
+  "projectName": "ScaleOps / ProofArena",
+  "parentProduct": "ScaleOps",
+  "flagshipModule": "ProofArena",
+  "stage": "3",
+  "subStage": "3.3",
+  "promptNumber": 7,
+  "purpose": "Ensure shared code only goes into approved shared libraries",
+  "generatedAt": "2026-06-29T12:27:39.9902127+05:00",
+  "productionCodeModified": false,
+  "separateProofArenaAppAllowed": false,
+  "duplicateArchitectureAllowed": false,
+  "runtimeCodeCreated": false,
+  "sharedLibrariesApproved": [
+    {
+      "id": "SLC-001",
+      "path": "client/src/components/ui/",
+      "status": "approved with caution",
+      "scope": "existing product-agnostic UI primitives only",
+      "newRuntimeCreationAuthorized": false
+    },
+    {
+      "id": "SLC-002",
+      "path": "client/src/services/shared/",
+      "status": "approved with caution",
+      "scope": "existing transport-neutral query and collection helpers only",
+      "newRuntimeCreationAuthorized": false
+    }
+  ],
+  "sharedLibraryCandidates": [
+    { "id": "SLC-003", "name": "shared form primitives", "status": "candidate only" },
+    { "id": "SLC-004", "name": "shared loading/empty/error states", "status": "candidate only" },
+    { "id": "SLC-005", "name": "shared generic hooks", "status": "candidate only" },
+    { "id": "SLC-006", "name": "shared formatting utilities", "status": "candidate only" },
+    { "id": "SLC-007", "name": "shared validation primitives", "status": "blocked" },
+    { "id": "SLC-008", "name": "shared type primitives", "status": "blocked" },
+    { "id": "SLC-009", "name": "shared API response helpers", "status": "approved with caution within existing services/shared" },
+    { "id": "SLC-010", "name": "shared accessibility helpers", "status": "candidate only" },
+    { "id": "SLC-011", "name": "shared design tokens", "status": "blocked as shared; platform-owned" },
+    { "id": "SLC-012", "name": "shared test helpers", "status": "blocked" }
+  ],
+  "sharedCodeAuditFindings": [
+    { "id": "SCA-001", "path": "client/src/components/ui/", "owner": "approved shared with caution", "recommendation": "keep existing folder; gate additions" },
+    { "id": "SCA-002", "path": "client/src/components/common/", "owner": "suspected shared", "recommendation": "investigate item by item" },
+    { "id": "SCA-003", "path": "client/src/components/ui page/navigation-flavored controls", "owner": "suspected shared", "recommendation": "verify semantics before reaffirming" },
+    { "id": "SCA-004", "path": "client/src/components/common placeholder components", "owner": "module/docs transition", "recommendation": "exclude from shared catalog" },
+    { "id": "SCA-005", "path": "client/src/hooks/", "owner": "mixed/unknown", "recommendation": "govern by file" },
+    { "id": "SCA-006", "path": "client/src/hooks generic exports", "owner": "suspected shared", "recommendation": "candidate pending consumers and tests" },
+    { "id": "SCA-007", "path": "client/src/hooks auth/dashboard/profile bridges", "owner": "platform/module bridge", "recommendation": "freeze; never promote to shared" },
+    { "id": "SCA-008", "path": "client/src/utils/", "owner": "mixed", "recommendation": "approve only individual pure helpers" },
+    { "id": "SCA-009", "path": "client/src/utils formatting and string helpers", "owner": "suspected shared", "recommendation": "candidate pending tests and semantics" },
+    { "id": "SCA-010", "path": "client/src/utils access/route/navigation/storage", "owner": "platform", "recommendation": "exclude from shared promotion" },
+    { "id": "SCA-011", "path": "client/src/utils domain readiness/action helpers", "owner": "module candidate", "recommendation": "keep pending module migration" },
+    { "id": "SCA-012", "path": "client/src/utils/constants.js", "owner": "module/public unknown", "recommendation": "investigate; block sharing" },
+    { "id": "SCA-013", "path": "client/src/types/", "owner": "platform/mixed", "recommendation": "classify contracts item by item" },
+    { "id": "SCA-014", "path": "client/src/constants/", "owner": "platform/mixed", "recommendation": "keep platform-governed" },
+    { "id": "SCA-015", "path": "client/src/services/shared/", "owner": "approved shared with caution", "recommendation": "keep neutral and transport-free" },
+    { "id": "SCA-016", "path": "client/src/services/apiClient.js", "owner": "platform", "recommendation": "protect sole API client" },
+    { "id": "SCA-017", "path": "client/src/services/api.js", "owner": "platform compatibility bridge", "recommendation": "freeze and trace consumers" },
+    { "id": "SCA-018", "path": "client/src/lib/README.md", "owner": "docs only", "recommendation": "do not create runtime library blindly" },
+    { "id": "SCA-019", "path": "client design tokens/styles", "owner": "platform", "recommendation": "keep platform-owned" },
+    { "id": "SCA-020", "path": "server/src/utils/", "owner": "platform/mixed", "recommendation": "classify by file" },
+    { "id": "SCA-021", "path": "server generic response/error/query helpers", "owner": "platform", "recommendation": "protect existing contracts" },
+    { "id": "SCA-022", "path": "server security/profile helpers", "owner": "platform/module mixed", "recommendation": "require security review" },
+    { "id": "SCA-023", "path": "server/src/constants/", "owner": "platform/mixed", "recommendation": "assign constant families before migration" },
+    { "id": "SCA-024", "path": "server/src/services/", "owner": "platform/module mixed", "recommendation": "classify by service; never label whole folder shared" },
+    { "id": "SCA-025", "path": "server/src/config and errors", "owner": "platform", "recommendation": "protect; modules consume interfaces only" },
+    { "id": "SCA-026", "path": "client/server test helpers", "owner": "unknown", "recommendation": "block until framework and consumers exist" },
+    { "id": "SCA-027", "path": "accessibility helper candidates", "owner": "unknown", "recommendation": "require concrete repeated use" },
+    { "id": "SCA-028", "path": "docs/architecture/", "owner": "platform documentation governance", "recommendation": "retain source-of-truth controls" }
+  ],
+  "sharedModulePlatformDecisionMatrix": [
+    { "id": "SMP-001", "category": "button/card/badge primitives", "owner": "shared" },
+    { "id": "SMP-002", "category": "module-specific cards", "owner": "module" },
+    { "id": "SMP-003", "category": "public marketing sections", "owner": "platform/public marketing" },
+    { "id": "SMP-004", "category": "dashboard shell components", "owner": "platform" },
+    { "id": "SMP-005", "category": "sidebar/navigation components", "owner": "platform" },
+    { "id": "SMP-006", "category": "form field primitives", "owner": "shared" },
+    { "id": "SMP-007", "category": "module-specific forms", "owner": "module" },
+    { "id": "SMP-008", "category": "loading/empty/error states", "owner": "shared with caution" },
+    { "id": "SMP-009", "category": "auth/session hooks", "owner": "platform" },
+    { "id": "SMP-010", "category": "module data hooks", "owner": "module" },
+    { "id": "SMP-011", "category": "utility hooks", "owner": "shared candidate" },
+    { "id": "SMP-012", "category": "API client", "owner": "platform" },
+    { "id": "SMP-013", "category": "module API adapters", "owner": "module" },
+    { "id": "SMP-014", "category": "API response helpers", "owner": "shared with caution" },
+    { "id": "SMP-015", "category": "backend services", "owner": "backend module/platform by responsibility" },
+    { "id": "SMP-016", "category": "module services", "owner": "module" },
+    { "id": "SMP-017", "category": "shared formatting helpers", "owner": "shared candidate" },
+    { "id": "SMP-018", "category": "module-specific calculations", "owner": "module" },
+    { "id": "SMP-019", "category": "user/session/role types", "owner": "platform" },
+    { "id": "SMP-020", "category": "module DTO types", "owner": "module/API contract" },
+    { "id": "SMP-021", "category": "payment-sensitive types", "owner": "payments/platform contract" },
+    { "id": "SMP-022", "category": "admin moderation logic", "owner": "admin module" },
+    { "id": "SMP-023", "category": "validation primitives", "owner": "shared candidate" },
+    { "id": "SMP-024", "category": "module validation schemas", "owner": "module" },
+    { "id": "SMP-025", "category": "design tokens", "owner": "platform" },
+    { "id": "SMP-026", "category": "config/env helpers", "owner": "platform" }
+  ],
+  "promotionCriteria": [
+    "SCP-001 two independent real consumers",
+    "SCP-002 product-agnostic behavior",
+    "SCP-003 no module business logic",
+    "SCP-004 no unapproved auth/session/token logic",
+    "SCP-005 no unapproved payment-sensitive logic",
+    "SCP-006 no hidden API client behavior",
+    "SCP-007 no circular dependency",
+    "SCP-008 stable naming",
+    "SCP-009 clear owner",
+    "SCP-010 clear import rules",
+    "SCP-011 allowed and forbidden contents documented",
+    "SCP-012 rollback and deprecation plan"
+  ],
+  "antiPatterns": [
+    "SAP-001 module logic in shared utilities",
+    "SAP-002 feature components in shared UI",
+    "SAP-003 shared hooks calling module services",
+    "SAP-004 shared global business service",
+    "SAP-005 duplicate API client",
+    "SAP-006 duplicate sensitive types",
+    "SAP-007 module validation in shared",
+    "SAP-008 shared UI importing module data",
+    "SAP-009 shared UI owning auth/session",
+    "SAP-010 shared utilities reading env/config",
+    "SAP-011 shared importing modules",
+    "SAP-012 circular dependencies",
+    "SAP-013 premature abstraction",
+    "SAP-014 over-generalized components",
+    "SAP-015 sensitive admin/payment/auth logic hidden in shared",
+    "SAP-016 ProofArena logic disguised as ScaleOps shared logic"
+  ],
+  "approvalRules": [
+    { "id": "SHR-001", "section": "global", "rule": "product-agnostic with two independent consumers" },
+    { "id": "SHR-002", "section": "global", "rule": "named owner and explicit scope" },
+    { "id": "SHR-003", "section": "shared UI", "rule": "accessible product-agnostic primitives only" },
+    { "id": "SHR-004", "section": "shared hooks", "rule": "generic behavior and no module imports" },
+    { "id": "SHR-005", "section": "shared utilities", "rule": "pure or platform-approved" },
+    { "id": "SHR-006", "section": "shared types", "rule": "no duplicate sensitive or platform contracts" },
+    { "id": "SHR-007", "section": "shared validation", "rule": "neutral primitives only" },
+    { "id": "SHR-008", "section": "shared API helpers", "rule": "neutral mapping without transport ownership" },
+    { "id": "SHR-009", "section": "shared services", "rule": "no business orchestration" },
+    { "id": "SHR-010", "section": "design tokens", "rule": "remain ScaleOps platform-owned" },
+    { "id": "SHR-011", "section": "test helpers", "rule": "require framework and two test consumers" },
+    { "id": "SHR-012", "section": "promotion", "rule": "pass all criteria and separate behavior changes" },
+    { "id": "SHR-013", "section": "dependency", "rule": "module to shared only; never shared to module" },
+    { "id": "SHR-014", "section": "platform", "rule": "shared cannot own or duplicate platform systems" },
+    { "id": "SHR-015", "section": "stop conditions", "rule": "unknown or sensitive ambiguity blocks implementation" }
+  ],
+  "dependencyDirectionRules": [
+    { "id": "SDR-001", "source": "module", "target": "approved shared UI", "allowed": true },
+    { "id": "SDR-002", "source": "module", "target": "approved shared helper", "allowed": true },
+    { "id": "SDR-003", "source": "module", "target": "platform API client", "allowed": true },
+    { "id": "SDR-004", "source": "module", "target": "another module public interface", "allowed": "conditional" },
+    { "id": "SDR-005", "source": "shared", "target": "lower-level shared primitive", "allowed": true },
+    { "id": "SDR-006", "source": "shared", "target": "module implementation", "allowed": false },
+    { "id": "SDR-007", "source": "shared UI", "target": "module service/API adapter", "allowed": false },
+    { "id": "SDR-008", "source": "shared hooks", "target": "module service/API adapter", "allowed": false },
+    { "id": "SDR-009", "source": "shared types", "target": "backend models", "allowed": "unknown/default no" },
+    { "id": "SDR-010", "source": "shared utilities", "target": "private env/config", "allowed": false },
+    { "id": "SDR-011", "source": "shared API helpers", "target": "HTTP client construction", "allowed": false },
+    { "id": "SDR-012", "source": "platform", "target": "approved shared primitive", "allowed": "yes with caution" },
+    { "id": "SDR-013", "source": "frontend shared", "target": "backend-only code", "allowed": false },
+    { "id": "SDR-014", "source": "backend shared/platform", "target": "frontend-only code", "allowed": false },
+    { "id": "SDR-015", "source": "shared", "target": "stable lower-level platform interface", "allowed": "conditional" }
+  ],
+  "risks": [
+    { "id": "SCR-001", "title": "premature abstraction", "severity": "high" },
+    { "id": "SCR-002", "title": "shared dumping ground", "severity": "high" },
+    { "id": "SCR-003", "title": "platform duplication", "severity": "critical" },
+    { "id": "SCR-004", "title": "module leakage into shared", "severity": "high" },
+    { "id": "SCR-005", "title": "API client duplication", "severity": "critical" },
+    { "id": "SCR-006", "title": "auth/payment/admin sensitivity", "severity": "critical" },
+    { "id": "SCR-007", "title": "circular dependency", "severity": "critical" },
+    { "id": "SCR-008", "title": "shared type drift", "severity": "high" },
+    { "id": "SCR-009", "title": "naming ambiguity", "severity": "medium" },
+    { "id": "SCR-010", "title": "unclear ownership", "severity": "high" },
+    { "id": "SCR-011", "title": "placeholder/static data promotion", "severity": "high" },
+    { "id": "SCR-012", "title": "over-generalized shared UI", "severity": "high" },
+    { "id": "SCR-013", "title": "backend global service layer", "severity": "high" },
+    { "id": "SCR-014", "title": "test-governance gap", "severity": "high" },
+    { "id": "SCR-015", "title": "new shared folder/barrel", "severity": "high" },
+    { "id": "SCR-016", "title": "ProofArena/ScaleOps boundary dilution", "severity": "critical" }
+  ],
+  "humanReviewItems": [
+    "Confirm owner and public API for existing shared UI and service helpers",
+    "Decide disposition of reverse-import compatibility hooks and client/src/services/api.js",
+    "Approve any identity/profile/role/payment contract promotion",
+    "Approve any auth, API, config, design-system, payment, or admin-sensitive shared change",
+    "Establish risk-appropriate test strategy before runtime promotion",
+    "Resolve mixed server utility, constant, and service ownership"
+  ],
+  "unknowns": [
+    "Complete dependency graph and runtime reachability of compatibility facades",
+    "Authoritative cross-client/server type contract strategy",
+    "Test framework and regression baseline",
+    "Final item owners for mixed frontend/backend roots",
+    "Missing STAGE_3_1_FINAL_ACCEPTANCE_REVIEW.md",
+    "Missing STAGE_3_1_TO_STAGE_3_2_HANDOFF_BRIEF.md"
+  ],
+  "prompt8VerificationResults": {
+    "completedAt": "2026-06-29T12:45:00.0011854+05:00",
+    "totalPrompt7Findings": 28,
+    "verified": 22,
+    "partiallyVerified": 5,
+    "contradicted": 0,
+    "unknown": 1,
+    "missingRequiredDocs": [
+      "docs/architecture/stage-3/STAGE_3_1_FINAL_ACCEPTANCE_REVIEW.md"
+    ],
+    "clientBoundaryCheck": "passed",
+    "serverBoundaryCheck": "passed with three direct-model-import warnings"
+  },
+  "sharedLibraryCandidateCorrections": [
+    { "id": "CAND-001", "name": "shared UI primitives", "status": "approved with caution" },
+    { "id": "CAND-002", "name": "shared form primitives", "status": "approved with caution" },
+    { "id": "CAND-003", "name": "shared loading/empty/error states", "status": "approved with caution" },
+    { "id": "CAND-004", "name": "shared accessibility helpers", "status": "candidate only" },
+    { "id": "CAND-005", "name": "shared formatting utilities", "status": "candidate only" },
+    { "id": "CAND-006", "name": "shared date/currency helpers", "status": "candidate only" },
+    { "id": "CAND-007", "name": "shared validation primitives", "status": "blocked" },
+    { "id": "CAND-008", "name": "shared type primitives", "status": "blocked" },
+    { "id": "CAND-009", "name": "shared API response helpers", "status": "approved with caution" },
+    { "id": "CAND-010", "name": "shared design tokens", "status": "blocked as shared; platform-owned" },
+    { "id": "CAND-011", "name": "shared test helpers", "status": "blocked" },
+    { "id": "CAND-012", "name": "shared docs-only governance", "status": "approved docs-only platform governance" }
+  ],
+  "sharedFolderOwnershipClassification": {
+    "itemsClassified": 25,
+    "approvedSharedWithCaution": [
+      "product-agnostic subset of client/src/components/ui/",
+      "current neutral contents of client/src/services/shared/"
+    ],
+    "mixedOrSuspiciousRootsFrozen": [
+      "client/src/components/common/",
+      "client/src/hooks/",
+      "client/src/utils/",
+      "client/src/types/",
+      "client/src/services/api.js",
+      "server/src/utils/",
+      "server/src/constants/",
+      "server/src/services/"
+    ],
+    "newRuntimeSharedPathsApproved": []
+  },
+  "sharedCodeConsumerEvidenceMap": [
+    { "candidate": "shared UI folder", "consumerCount": 74, "confidence": "high" },
+    { "candidate": "form primitives", "consumerCount": 15, "confidence": "high" },
+    { "candidate": "loading/empty/error primitives", "consumerCount": 39, "confidence": "high" },
+    { "candidate": "generic hook exports", "consumerCount": 0, "confidence": "high" },
+    { "candidate": "formatDate", "consumerCount": 32, "confidence": "high" },
+    { "candidate": "formatCurrency", "consumerCount": 8, "confidence": "high" },
+    { "candidate": "formatNumber", "consumerCount": 9, "confidence": "high" },
+    { "candidate": "shared validation helper", "consumerCount": 0, "confidence": "high" },
+    { "candidate": "shared type root", "consumerCount": 12, "confidence": "high", "qualifies": false },
+    { "candidate": "neutral service helper folder", "consumerCount": 11, "confidence": "high" },
+    { "candidate": "DESIGN_TOKENS direct JavaScript export", "consumerCount": 0, "confidence": "high" },
+    { "candidate": "shared test helpers", "consumerCount": 0, "confidence": "high" }
+  ],
+  "sharedCodeDependencyViolationAudit": {
+    "confirmedGovernanceViolationsOrSmells": 8,
+    "duplicateApiClientDetected": false,
+    "frontendBackendCrossImportDetected": false,
+    "boundaryCheckerCycleDetected": false,
+    "keyViolations": [
+      "route-aware components inside shared UI folder",
+      "root hooks importing feature modules and global API facade",
+      "global API facade importing feature services",
+      "module-specific utilities and types in generic roots",
+      "admin controller direct model import warnings"
+    ]
+  },
+  "sharedUiVerification": {
+    "approvedWithCaution": [
+      "generic controls",
+      "form primitives",
+      "generic loading/empty/error states",
+      "modal/tooltip/spinner/skeleton primitives"
+    ],
+    "platformExceptions": [
+      "Breadcrumbs",
+      "PageHeader",
+      "UniversalBackButton"
+    ],
+    "blockedFromShared": [
+      "common placeholders",
+      "common platform aliases",
+      "module-specific cards and forms"
+    ]
+  },
+  "sharedHookUtilityTypeVerification": {
+    "genericHooksStatus": "candidate only; zero visible consumers",
+    "formattersStatus": "candidate only; multi-consumer but missing owner/tests",
+    "validationStatus": "blocked; zero real consumers and unclear authority",
+    "typesStatus": "blocked as shared; platform/profile contracts are mixed",
+    "platformUtilitiesStatus": "platform-owned",
+    "domainUtilitiesStatus": "module-owned"
+  },
+  "sharedApiHelperServiceVerification": {
+    "canonicalApiClient": "client/src/services/apiClient.js",
+    "clientSideAxiosCreateCount": 1,
+    "approvedHelpers": [
+      "buildQueryString",
+      "mapItemsResponse",
+      "mapCollectionItems"
+    ],
+    "approvedHelperConsumerFiles": 11,
+    "duplicateApiClientDetected": false,
+    "globalFacadeStatus": "suspicious and blocked as shared business architecture"
+  },
+  "sharedLibraryReadmeScaffoldDecision": [
+    { "path": "client/src/components/ui/README.md", "safe": true, "reason": "existing evidenced folder; narrows ownership" },
+    { "path": "client/src/services/shared/README.md", "safe": true, "reason": "existing evidenced neutral helper folder; prohibits transport" },
+    { "target": "all new or candidate shared paths", "safe": false, "reason": "would imply unapproved ownership or invent architecture" }
+  ],
+  "sharedLibraryReadmeScaffoldAudit": {
+    "targetsReviewed": 12,
+    "readmesCreated": 2,
+    "newDirectoriesCreated": 0,
+    "runtimeImpact": "none",
+    "importImpact": "none",
+    "apiAuthRoutingImpact": "none"
+  },
+  "sharedCodeApprovalStatusRegister": {
+    "items": 19,
+    "approvedDocsOnly": 1,
+    "approvedWithCaution": 4,
+    "candidateOnly": 3,
+    "blocked": 4,
+    "suspiciousOrMixed": 7
+  },
+  "sharedCodeAcceptanceCriteria": {
+    "total": 19,
+    "pass": 12,
+    "passWithCaution": 7,
+    "partial": 0,
+    "fail": 0,
+    "unknown": 0,
+    "prompt9CloseoutRecommendation": "close with caution; documentation-only",
+    "productionSharedPromotionAuthorized": false
+  },
+  "readmeScaffoldsCreated": [
+    "client/src/components/ui/README.md",
+    "client/src/services/shared/README.md"
+  ],
+  "prompt8DocsCreated": [
+    "STAGE_3_3_PROMPT_7_FINDINGS_VERIFICATION.md",
+    "STAGE_3_3_SHARED_LIBRARY_CANDIDATE_CORRECTION_REPORT.md",
+    "STAGE_3_3_SHARED_FOLDER_OWNERSHIP_CLASSIFICATION.md",
+    "STAGE_3_3_SHARED_CODE_CONSUMER_EVIDENCE_MAP.md",
+    "STAGE_3_3_SHARED_CODE_DEPENDENCY_VIOLATION_AUDIT.md",
+    "STAGE_3_3_SHARED_UI_VERIFICATION.md",
+    "STAGE_3_3_SHARED_HOOK_UTILITY_TYPE_VERIFICATION.md",
+    "STAGE_3_3_SHARED_API_HELPER_SERVICE_VERIFICATION.md",
+    "STAGE_3_3_SHARED_LIBRARY_README_SCAFFOLD_DECISION.md",
+    "STAGE_3_3_SHARED_LIBRARY_README_SCAFFOLD_AUDIT.md",
+    "STAGE_3_3_SHARED_CODE_APPROVAL_STATUS_REGISTER.md",
+    "STAGE_3_3_SHARED_CODE_ACCEPTANCE_CRITERIA.md",
+    "STAGE_3_PROMPT_9_HANDOFF.md",
+    "client/src/components/ui/README.md",
+    "client/src/services/shared/README.md"
+  ],
+  "prompt8DocsUpdated": [
+    "stage-3-3-shared-code-governance-manifest.json",
+    "STAGE_3_3_MASTER_TRACKER.md",
+    "STAGE_3_MASTER_TRACKER.md"
+  ],
+  "prompt9Closeout": {
+    "completedAt": "2026-06-29T13:02:16.0147020+05:00",
+    "finalStage33Decision": "CLOSE WITH CAUTION",
+    "finalStage3Decision": "COMPLETE WITH CAUTION",
+    "stage4Recommendation": "START WITH CAUTION",
+    "documentationOnlyStage4": true,
+    "productionSharedPromotionAuthorized": false,
+    "readmeScaffoldsCreatedByPrompt9": []
+  },
+  "finalCloseoutReport": "STAGE_3_3_FINAL_CLOSEOUT_REPORT.md",
+  "finalSharedLibraryApprovalLock": "STAGE_3_3_FINAL_SHARED_LIBRARY_APPROVAL_LOCK.md",
+  "finalSharedFolderOwnershipLock": "STAGE_3_3_FINAL_SHARED_FOLDER_OWNERSHIP_LOCK.md",
+  "finalSharedCodePromotionLock": "STAGE_3_3_FINAL_SHARED_CODE_PROMOTION_LOCK.md",
+  "finalDependencyDirectionLock": "STAGE_3_3_FINAL_DEPENDENCY_DIRECTION_LOCK.md",
+  "finalSharedUiLock": "STAGE_3_3_FINAL_SHARED_UI_LOCK.md",
+  "finalSharedHookUtilityTypeLock": "STAGE_3_3_FINAL_SHARED_HOOK_UTILITY_TYPE_LOCK.md",
+  "finalSharedApiHelperServiceLock": "STAGE_3_3_FINAL_SHARED_API_HELPER_SERVICE_LOCK.md",
+  "finalSharedLibraryReadmeScaffoldStatusLock": "STAGE_3_3_FINAL_SHARED_LIBRARY_README_SCAFFOLD_STATUS_LOCK.md",
+  "finalSharedCodeAntiPatternPreventionLock": "STAGE_3_3_FINAL_SHARED_CODE_ANTI_PATTERN_PREVENTION_LOCK.md",
+  "finalSharedCodeRiskAcceptanceTable": {
+    "doc": "STAGE_3_3_FINAL_SHARED_CODE_RISK_ACCEPTANCE_TABLE.md",
+    "remainingRiskCount": 16,
+    "blocksDocumentationOnlyStage4": false,
+    "blocksAffectedProductionEdits": true
+  },
+  "finalAcceptanceReview": {
+    "doc": "STAGE_3_3_FINAL_ACCEPTANCE_REVIEW.md",
+    "pass": 12,
+    "passWithCaution": 7,
+    "decision": "CLOSE WITH CAUTION"
+  },
+  "finalHumanDecisionLog": {
+    "doc": "STAGE_3_3_FINAL_HUMAN_DECISION_LOG.md",
+    "items": 10,
+    "blocksDocumentationOnlyStage4": false
+  },
+  "finalReadinessScore": {
+    "doc": "STAGE_3_3_FINAL_READINESS_SCORE.md",
+    "score": 89,
+    "rating": "Stage 3.3 can close with caution"
+  },
+  "finalStage3CompletionDecision": {
+    "doc": "STAGE_3_FINAL_COMPLETION_DECISION.md",
+    "decision": "COMPLETE WITH CAUTION"
+  },
+  "stage4HandoffPackage": "STAGE_3_FINAL_HANDOFF_PACKAGE.md",
+  "stage4MandatoryPreflightChecklist": "STAGE_4_MANDATORY_PREFLIGHT_CHECKLIST.md",
+  "stage4StartConditions": {
+    "doc": "STAGE_4_START_CONDITIONS.md",
+    "recommendation": "START WITH CAUTION",
+    "firstPromptDocumentationOnly": true
+  },
+  "prompt9DocsCreated": [
+    "STAGE_3_3_FINAL_CLOSEOUT_REPORT.md",
+    "STAGE_3_3_FINAL_SHARED_LIBRARY_APPROVAL_LOCK.md",
+    "STAGE_3_3_FINAL_SHARED_FOLDER_OWNERSHIP_LOCK.md",
+    "STAGE_3_3_FINAL_SHARED_CODE_PROMOTION_LOCK.md",
+    "STAGE_3_3_FINAL_DEPENDENCY_DIRECTION_LOCK.md",
+    "STAGE_3_3_FINAL_SHARED_UI_LOCK.md",
+    "STAGE_3_3_FINAL_SHARED_HOOK_UTILITY_TYPE_LOCK.md",
+    "STAGE_3_3_FINAL_SHARED_API_HELPER_SERVICE_LOCK.md",
+    "STAGE_3_3_FINAL_SHARED_LIBRARY_README_SCAFFOLD_STATUS_LOCK.md",
+    "STAGE_3_3_FINAL_SHARED_CODE_ANTI_PATTERN_PREVENTION_LOCK.md",
+    "STAGE_3_3_FINAL_SHARED_CODE_RISK_ACCEPTANCE_TABLE.md",
+    "STAGE_3_3_FINAL_ACCEPTANCE_REVIEW.md",
+    "STAGE_3_3_FINAL_HUMAN_DECISION_LOG.md",
+    "STAGE_3_3_FINAL_READINESS_SCORE.md",
+    "STAGE_3_FINAL_SOURCE_OF_TRUTH_DOC_INDEX.md",
+    "STAGE_4_PROMPT_1_HANDOFF.md"
+  ],
+  "prompt9DocsUpdated": [
+    "STAGE_3_FINAL_COMPLETION_DECISION.md",
+    "STAGE_3_FINAL_HANDOFF_PACKAGE.md",
+    "STAGE_4_MANDATORY_PREFLIGHT_CHECKLIST.md",
+    "STAGE_4_START_CONDITIONS.md",
+    "stage-3-final-completion-manifest.json",
+    "stage-3-3-shared-code-governance-manifest.json",
+    "STAGE_3_3_MASTER_TRACKER.md",
+    "STAGE_3_MASTER_TRACKER.md"
+  ],
+  "docsCreated": [
+    "STAGE_3_3_MASTER_TRACKER.md",
+    "STAGE_3_3_EXISTING_SHARED_CODE_AUDIT.md",
+    "STAGE_3_3_APPROVED_SHARED_LIBRARY_CANDIDATE_MAP.md",
+    "STAGE_3_3_SHARED_MODULE_PLATFORM_DECISION_MATRIX.md",
+    "STAGE_3_3_SHARED_CODE_PROMOTION_CRITERIA.md",
+    "STAGE_3_3_SHARED_CODE_ANTI_PATTERN_REGISTER.md",
+    "STAGE_3_3_SHARED_LIBRARY_APPROVAL_RULEBOOK.md",
+    "STAGE_3_3_SHARED_CODE_DEPENDENCY_DIRECTION_MAP.md",
+    "stage-3-3-shared-code-governance-manifest.json",
+    "STAGE_3_PROMPT_8_HANDOFF.md"
+  ],
+  "docsUpdated": [
+    "STAGE_3_3_SHARED_CODE_RISK_REGISTER.md",
+    "STAGE_3_MASTER_TRACKER.md"
+  ]
+}

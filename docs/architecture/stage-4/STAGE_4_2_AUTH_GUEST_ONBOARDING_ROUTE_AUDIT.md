@@ -1,0 +1,23 @@
+# Stage 4.2 Auth, Guest, And Onboarding Route Audit
+
+| Auth ID | Path | File path | Component/behavior | Intended access | Current guard | Already-auth redirect | Anonymous redirect | Success/role redirect | Constant | Hardcoded | UX risk | Security risk | Required action | Review |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| AG-001 | /login | client/src/pages/Login.jsx | Login | guest-only | PublicOnlyRoute | role default or validated state.from | n/a | validated intended destination / role default | yes | no | authenticated loop or wrong-role landing | auth/session exposure if guard bypassed | test guest/authenticated/all roles | no |
+| AG-002 | /register | client/src/pages/Register.jsx | Register | guest-only | PublicOnlyRoute | role default or validated state.from | n/a | validated intended destination / role default | yes | no | registration intent loss | role assignment contract | test query intent and allowed registration roles | yes |
+| AG-003 | /forgot-password | client/src/pages/ForgotPassword.jsx | ForgotPassword | public recovery; page redirects authenticated | component redirect | role default | n/a | login link after request | yes | no | flow inconsistency with route wrapper | low | decide whether page-level behavior is canonical | yes |
+| AG-004 | /reset-password | client/src/pages/ResetPassword.jsx | ResetPassword | public recovery; page redirects authenticated | component redirect | role default | n/a | login after reset | yes | no | token flow/history regression | sensitive reset flow | test valid/expired token and authenticated access | yes |
+| AG-005 | /verify-email | client/src/pages/VerifyEmail.jsx | VerifyEmail | public verification callback | none at route | role default or login links | n/a | verification-driven | yes | no | callback access semantics unclear | verification token handling | confirm callback contract and replay behavior | yes |
+| AG-006 | /resend-verification | client/src/pages/ResendVerification.jsx | ResendVerification | auth support; public declaration | none at route; target of EmailVerifiedRoute | page controlled | n/a | resend flow | yes | no | anonymous/authenticated intent unclear | account enumeration/abuse review outside route scope | confirm intended principal requirement | yes |
+| AG-007 | /dashboard/profile/onboarding | client/src/pages/profile/ProfileOnboardingPage.jsx | ProfileOnboardingPage | provider onboarding | dashboard parent + RoleRoute(provider) | n/a | login | page controlled | yes | no | completion-state loop or bypass | profile workflow exposure | define completion-state policy before hardening | yes |
+| AG-008 | /dashboard/profile/onboarding/:stepSegment | client/src/pages/profile/ProfileOnboardingStepPage.jsx | ProfileOnboardingStepPage | provider onboarding-only | dashboard parent + RoleRoute(provider) | n/a | login | page/step controlled | yes | no | invalid step and completion-state ambiguity | profile draft exposure | validate step allowlist and completion state | yes |
+| AG-009 | /dashboard/first-client | client/src/pages/FirstClientMode.jsx | FirstClientMode | provider role-based guided flow | dashboard parent + RoleRoute(provider) | n/a | login | page controlled | yes | no | guided-flow state ambiguity | provider-only data | confirm whether onboarding completion gates entry | yes |
+| AG-010 | not a route | client/src/routes/authRouteUtils.js | default authenticated landing | role-based | getPrimaryDashboardPath | n/a | n/a | admin/client/provider/support destination | yes | no | unknown role currently falls back to /dashboard | unknown-role authorization ambiguity | approve unknown-role policy | yes |
+| AG-011 | not a route | client/src/components/Header.jsx and protected topbars | logout behavior | authenticated action | AuthProvider.logout then navigate login | n/a | n/a | /login replace | yes | no | distributed callers can drift | session invalidation semantics | inventory every logout caller in Prompt 6 tests | no |
+
+## Result
+
+- Login and registration are the only route-level `PublicOnlyRoute` leaves.
+- Forgot/reset implement authenticated-user redirection in page components; verify/resend have distinct callback/support semantics and must not be wrapped uniformly without evidence.
+- Provider onboarding has role protection but no route-level completion-state guard. Completion state is a product workflow decision.
+- Login/register preserve a validated intended destination; unknown-role default behavior remains unresolved.
+- Logout callers explicitly navigate to login after the provider clears session state; this behavior is distributed and requires a regression inventory before edits.

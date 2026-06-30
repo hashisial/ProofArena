@@ -1,0 +1,33 @@
+{
+  "stage": "3",
+  "subStage": "3.2",
+  "promptNumber": 5,
+  "productionCodeModified": false,
+  "ownershipStandardCreated": true,
+  "moduleOwnershipRules": ["OR-01","OR-02","OR-03","OR-04","OR-05","OR-06","OR-07","OR-08","OR-09","OR-10","OR-11","OR-12","OR-13","OR-14","OR-15"],
+  "importExportPolicy": ["same-module imports","approved platform public APIs","approved shared libraries","restricted public cross-module contracts","no deep private imports","no cycles","minimal public exports","adapter exports hide client"],
+  "checklist": ["OC-01","OC-02","OC-03","OC-04","OC-05","OC-06","OC-07","OC-08","OC-09","OC-10"],
+  "unknowns": ["future TypeScript adoption level","approved barrel pattern per module","human decisions for blocked modules"],
+  "docsCreated": ["STAGE_3_2_MODULE_INTERNAL_STRUCTURE_STANDARD.md","STAGE_3_2_MODULE_OWNERSHIP_RULEBOOK.md","STAGE_3_2_MODULE_IMPORT_EXPORT_POLICY.md","STAGE_3_2_MODULE_OWNERSHIP_CHECKLIST.md","stage-3-2-module-ownership-manifest.json"],
+  "docsUpdated": ["STAGE_3_MASTER_TRACKER.md"]
+  ,"prompt6ApiServiceRecheck": {"items":24,"canonicalApiClient":"client/src/services/apiClient.js","sourceDoc":"STAGE_3_2_EXISTING_API_SERVICE_RECHECK.md"}
+  ,"moduleApiAdapterContract": {"modules":10,"newApiClientAllowed":false,"sourceDoc":"STAGE_3_2_MODULE_API_ADAPTER_CONTRACT.md"}
+  ,"moduleServiceContract": {"rules":10,"sourceDoc":"STAGE_3_2_MODULE_SERVICE_CONTRACT.md"}
+  ,"serviceApiMigrationReadiness": {"readyAfterTests":["offers","challenges","plans","matching"],"dependencyCleanup":["profile"],"blocked":["auth","proof","messages","payments","admin"]}
+  ,"prompt6DocsCreated": ["STAGE_3_2_EXISTING_API_SERVICE_RECHECK.md","STAGE_3_2_MODULE_API_ADAPTER_CONTRACT.md","STAGE_3_2_MODULE_SERVICE_CONTRACT.md","STAGE_3_2_SERVICE_API_MIGRATION_READINESS.md"]
+  ,"prompt6DocsUpdated": ["stage-3-2-module-ownership-manifest.json","STAGE_3_MASTER_TRACKER.md"]
+  ,"prompt7ComponentContract": {"rules":10,"sourceDoc":"STAGE_3_2_COMPONENT_OWNERSHIP_CONTRACT.md"}
+  ,"hookContract": {"rules":10,"sourceDoc":"STAGE_3_2_HOOK_OWNERSHIP_CONTRACT.md"}
+  ,"typesValidationConstantsContract": {"areas":6,"sourceDoc":"STAGE_3_2_TYPES_VALIDATION_CONSTANTS_CONTRACT.md"}
+  ,"frontendFileMigrationReadiness": {"groups":15,"readyAfterTests":["offers","challenges","plans","matching"],"blocked":["auth","proof","messages","payments","admin","shared-mixed"]}
+  ,"prompt7DocsCreated": ["STAGE_3_2_COMPONENT_OWNERSHIP_CONTRACT.md","STAGE_3_2_HOOK_OWNERSHIP_CONTRACT.md","STAGE_3_2_TYPES_VALIDATION_CONSTANTS_CONTRACT.md","STAGE_3_2_FRONTEND_FILE_MIGRATION_READINESS.md"]
+  ,"prompt7DocsUpdated": ["stage-3-2-module-ownership-manifest.json","STAGE_3_MASTER_TRACKER.md"]
+  ,"prompt8Closeout": {"decision":"close-with-caution","productionMigrationAuthorized":false}
+  ,"finalModuleOwnershipLock": {"modules":10,"sourceDoc":"STAGE_3_2_FINAL_MODULE_OWNERSHIP_LOCK.md"}
+  ,"enforcementChecklist": {"checks":10,"sourceDoc":"STAGE_3_2_FINAL_MODULE_OWNERSHIP_ENFORCEMENT_CHECKLIST.md"}
+  ,"ownershipRiskAcceptance": {"items":10,"deferredToStage33":3,"productionBlocking":7,"sourceDoc":"STAGE_3_2_MODULE_OWNERSHIP_RISK_ACCEPTANCE.md"}
+  ,"stage33Handoff": "STAGE_3_2_TO_STAGE_3_3_HANDOFF.md"
+  ,"finalStage32Decision": "close-with-caution"
+  ,"prompt8DocsCreated": ["STAGE_3_2_FINAL_MODULE_OWNERSHIP_LOCK.md","STAGE_3_2_FINAL_MODULE_OWNERSHIP_ENFORCEMENT_CHECKLIST.md","STAGE_3_2_MODULE_OWNERSHIP_RISK_ACCEPTANCE.md","STAGE_3_2_TO_STAGE_3_3_HANDOFF.md"]
+  ,"prompt8DocsUpdated": ["stage-3-2-module-ownership-manifest.json","STAGE_3_MASTER_TRACKER.md"]
+}

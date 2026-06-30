@@ -1,0 +1,34 @@
+# Stage 3.3 Shared Folder Ownership Classification
+
+| ID | Path | Current role | Final classification | Owner | Allowed contents | Forbidden contents | Risk | New shared code | Freeze | Future action | Human review |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| SFO-001 | `client/src/components/ui/` | UI primitives plus three route-aware components | approved shared library with platform exceptions | shared UI / ScaleOps platform | Generic accessible primitives; documented legacy exceptions | Module logic, API/auth, new route/nav policy | high | only after gate | route-aware additions frozen | Item-level governance and README | yes |
+| SFO-002 | `client/src/components/common/` | Aliases, placeholders, footer/page composition | suspicious shared code | platform/public/module mixed | Existing compatibility exports only | New generic primitives or business logic | high | no | yes | Classify and retire/consolidate only with tests | yes |
+| SFO-003 | `client/src/components/states/` | Product/page state compositions | module/platform UI candidate | current surface owners unknown | Existing state compositions | Treating all states as shared primitives | medium | no | yes | Compare with UI primitive states | yes |
+| SFO-004 | Domain component folders under `client/src/components/` | Feature UI composition | module-owned code | owning module | Module-specific presentation/composition | Shared primitives, platform shell ownership | medium | no shared code | no | Future module migration only | yes for moves |
+| SFO-005 | `client/src/hooks/` | Generic exports plus feature/platform hooks | suspicious shared code | mixed | Existing compatibility and root hooks | Blanket shared additions | high | no | yes | File-level ownership map | yes |
+| SFO-006 | Seven generic hook files | Unused generic abstractions | candidate shared library items | unassigned shared owner | Existing code only | New API/auth/route/module behavior | medium | no | yes | Wait for two consumers/tests | no |
+| SFO-007 | Root domain/admin/auth/dashboard hooks | Feature/platform data behavior | module/platform-owned code in wrong place | relevant module/platform | Existing compatibility behavior | Promotion to shared | high | no | yes | Tested vertical migration later | yes |
+| SFO-008 | `client/src/utils/` | Pure, platform, module, and fallback helpers | suspicious shared code | mixed | Existing file-level responsibilities | Blanket shared classification | high | no | yes | Classify individual files | yes |
+| SFO-009 | Formatter/string utility files | Pure reusable helpers | candidate shared library items | unassigned shared utility owner | Existing pure formatting/string behavior | Domain calculations, env/API/auth/route logic | medium | no expansion | yes | Add owner/tests before approval | yes |
+| SFO-010 | Route/access/navigation/storage utilities | Platform policy/helpers | platform-owned code in shared-like place | ScaleOps platform | Existing platform policy | Module/shared replacement | critical | no | yes | Preserve source-of-truth | yes |
+| SFO-011 | Challenge/proof/provider/profile utilities | Domain rules | module-owned code in wrong place | owning modules | Existing domain behavior | Promotion to shared | high | no | yes | Future tested migration | yes |
+| SFO-012 | `client/src/types/` | Platform and profile contracts | suspicious shared code | platform/profile mixed | Existing contracts | New generic types without authority | critical | no | yes | Establish contract ownership | yes |
+| SFO-013 | `client/src/constants/` | Platform catalogs and domain statuses | platform-owned/mixed | ScaleOps platform plus modules | Existing governed catalogs | Duplicate shared constants, routes, roles, endpoints | critical | no | yes | Assign status families; keep catalogs | yes |
+| SFO-014 | `client/src/services/shared/` | Neutral service helpers | approved shared library | shared helper governance | Pure query/collection transforms | HTTP client, tokens, base URL, global errors, domain normalization | high | only after gate | no | Add README and tests before expansion | yes |
+| SFO-015 | `client/src/services/apiClient.js` | Canonical HTTP transport | platform-owned | ScaleOps platform | Transport/auth/error/version behavior | Shared/module copies | critical | no | yes | Protect sole client | yes |
+| SFO-016 | `client/src/services/api.js` | Broad compatibility facade | suspicious shared code | platform/module bridge | Existing compatibility exports | New business orchestration | high | no | yes | Trace consumers and retire gradually | yes |
+| SFO-017 | `client/src/lib/` | README-only reserved adapter location | docs-only | platform governance | Documentation warning only | Runtime libraries without approval | medium | no | yes | Keep docs-only | no |
+| SFO-018 | `client/src/styles/`, design tokens | Global design authority | platform-owned | ScaleOps design system | Global tokens/styles | Module/shared token forks | high | no | yes | Design-system review only | yes |
+| SFO-019 | `server/src/utils/` | Generic, security, and domain helpers | suspicious shared code | platform/module mixed | Existing file responsibilities | Blanket shared label | critical | no | yes | Classify per file/security domain | yes |
+| SFO-020 | `server/src/errors/` | Error contracts/handlers | platform-owned | ScaleOps backend | Canonical errors and handlers | Module error-system copies | critical | no | yes | Preserve | yes |
+| SFO-021 | `server/src/config/` | Env, DB, CORS, cloudinary | platform-owned | ScaleOps backend | Platform configuration | Shared/module config boundary | critical | no | yes | Preserve | yes |
+| SFO-022 | `server/src/constants/` | Roles and domain/platform constants | suspicious shared code | platform/module mixed | Existing catalogs | New generic cross-domain constants | high | no | yes | Assign families before migration | yes |
+| SFO-023 | `server/src/services/` | Domain and infrastructure services | module/platform-owned code in broad root | module/platform by service | Existing services | Treating root as shared global business layer | high | no | yes | Dependency/service ownership map | yes |
+| SFO-024 | `docs/architecture/` | Governance source material | docs-only | ScaleOps architecture governance | ADRs, locks, manifests, audits | Runtime code or untracked conflicting authority | medium | docs only | no | Maintain source-of-truth index | yes |
+| SFO-025 | Proposed `shared/*` folders | No current evidence | blocked | unknown | None | Any runtime or README scaffold implying approval | high | no | yes | Do not create until gates pass | yes |
+
+## Classification Result
+
+Only the product-agnostic subset of `components/ui` and the current neutral contents of `services/shared` may receive governed shared additions after future approval. All mixed roots are frozen for new shared code.
+

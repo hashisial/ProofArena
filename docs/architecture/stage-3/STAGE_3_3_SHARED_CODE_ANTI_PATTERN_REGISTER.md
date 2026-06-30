@@ -1,0 +1,28 @@
+# Stage 3.3 Shared Code Anti-Pattern Register
+
+| ID | Anti-pattern | Example signal to search for | Risk | Severity | Detection method | Prevention rule | Required future action | Human review |
+|---|---|---|---|---|---|---|---|---|
+| SAP-001 | Module business logic dumped into shared utilities | Module statuses, pricing, proof readiness, matching, or workflow transitions under shared/root utils | Ownership loss and cross-module coupling | high | Semantic review plus module-keyword search | Domain rules remain module-owned | Classify current domain helpers before any move | yes |
+| SAP-002 | Feature-specific components in shared UI | Component imports module types/services or exposes one workflow's props/copy | Shared UI becomes product-specific | high | Import graph and prop/copy review | Shared UI is product-agnostic presentation only | Keep feature compositions in owning module | yes |
+| SAP-003 | Shared hooks calling module services | Shared/root hook imports `features/` or `modules/` | Reverse dependency and hidden orchestration | high | Search shared-like hooks for feature imports | Shared hooks cannot import module services/adapters | Freeze and assign `useMyProfile`, `useMyDashboard`, similar bridges | yes |
+| SAP-004 | Shared services become global business layer | Root facade imports many feature services | Coupling, cycles, unclear change ownership | high | Reverse import scan and consumer graph | Shared services are neutral helpers, not use-case orchestration | Trace and contain `client/src/services/api.js` | yes |
+| SAP-005 | Shared API helper becomes duplicate API client | `axios.create`, raw transport, base URL, tokens, retries, global error handling in helper | Split security and transport behavior | critical | Search client instantiation and transport policy | Only platform API client owns transport | Stop any helper expansion beyond neutral mapping | yes |
+| SAP-006 | Shared types duplicate identity/profile/role/payment | Multiple User, Profile, Role, Payment shapes/enums | Contract drift and authorization errors | critical | Type/name inventory across client/server | Sensitive types remain governed by authoritative owner | Establish contract authority before promotion | yes |
+| SAP-007 | Shared validation contains module rules | Challenge, offer, payment, profile, or admin schema in shared validation | Domain coupling and weakened enforcement | high | Schema field/rule review | Module validation remains module-owned | Classify validator consumers and backend authority | yes |
+| SAP-008 | Shared UI imports module data layer | Shared component imports service/hook/API adapter | Presentation controls business/data ownership | high | Import scan of shared UI | Data enters via neutral props/callbacks | Reject promotion or move composition to module later | no |
+| SAP-009 | Shared components own auth/session behavior | Reads auth context, roles, tokens, redirects | Security policy leaks into generic UI | critical | Auth import and conditional-role search | Platform wrappers compose shared primitives | Escalate to auth/platform owner | yes |
+| SAP-010 | Shared utilities read env/config directly | `process.env`, `import.meta.env`, config imports inside generic helper | Hidden deployment boundary | critical | Env/config search | Only platform config interfaces read environment | Keep config helpers platform-owned | yes |
+| SAP-011 | Shared code imports modules | Relative or alias import to `features/` or `modules/` | Dependency inversion and cycles | critical | Boundary script and `rg` reverse-import scan | Dependency direction is module -> shared | Block change until dependency is removed | no |
+| SAP-012 | Circular dependency through shared | Module A -> shared -> Module A/B | Runtime initialization defects and tight coupling | critical | Dependency graph/boundary tooling | Shared imports only lower-level neutral primitives | Stop promotion and redesign ownership | yes |
+| SAP-013 | Premature abstraction | One consumer or roadmap-only reuse | Wrong API, extra indirection, migration churn | medium | Consumer count and change-history review | Keep local until repeated stable use exists | Re-evaluate after second real consumer | no |
+| SAP-014 | Over-generalized components | Many mode flags, module names, conditional render branches | Shared component becomes multiple features in one file | high | Public API/branch review | Prefer small primitive plus module composition | Split conceptually before promotion | yes |
+| SAP-015 | Admin/payment/auth logic hidden in shared | Privileged mutations, sensitive fields, role checks in generic files | Security and compliance failures | critical | Sensitive keyword/import/data-flow review | Sensitive domains require explicit module/platform owners | Human security review before any extraction | yes |
+| SAP-016 | ProofArena-specific logic disguised as ScaleOps shared | Proof/challenge/provider semantics under generic ScaleOps names | Parent/module boundary erosion | high | Terminology and consumer review | ProofArena domain logic remains in owning modules | Reject generic rename as proof of reuse | yes |
+
+## Current Signals
+
+- Verified reverse-import signals: `client/src/hooks/useAuth.js`, `useMyDashboard.js`, and `useMyProfile.js` import feature code.
+- Verified global-facade signal: `client/src/services/api.js` imports feature services.
+- Verified mixed-root signals: module-specific utilities/types and domain/backend services remain under generic roots.
+- Verified API-client protection: `client/src/services/apiClient.js` is the only client-side `axios.create` found.
+
