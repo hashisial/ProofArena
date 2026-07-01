@@ -1,14 +1,37 @@
 # Stage 4.3 Redirect and 404 Source-of-Truth Verification
 
-Final planning status:
+| Source ID | File path | Prompt 8 classification | Verified classification | Evidence | Routes affected | Auth dependency | Role dependency | Guard dependency | Route constant dependency | UX sensitivity | Security sensitivity | Duplicate risk | Safe to use in hardening plan | Human review needed |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| R4S-001 | client/src/routes/AppRoutes.jsx | platform route governance | platform redirect source-of-truth | Only active Routes tree; route order and wrappers are declared here | all browser routes | yes | yes | all route guards | ROUTES/DYNAMIC_ROUTES | high | high | low | yes | no |
+| R4S-002 | client/src/routes/AppRoutes.jsx | browser 404 authority | platform 404 source-of-truth | Explicit /not-found renders NotFound | /not-found | no | no | none | ROUTES.SYSTEM.NOT_FOUND | high | low | low | yes | no |
+| R4S-003 | client/src/routes/AppRoutes.jsx | browser wildcard authority | platform wildcard/fallback source-of-truth | Single path=* is final Route | unmatched browser URLs | indirect | indirect | route tree | wildcard literal | critical | medium | low | yes | no |
+| R4S-004 | client/src/pages/NotFound.jsx | browser NotFound authority | supporting 404 component | Shared page rendered by explicit and wildcard routes | explicit/wildcard 404 | no | no | none | recovery links use ROUTES | high | low | low | yes | yes |
+| R4S-005 | client/src/routes/ProtectedRoute.jsx | auth redirect authority | auth redirect helper | Anonymous users go to login with replace and state.from | protected leaves | yes | no | self | ROUTES.LOGIN | high | high | low | yes | no |
+| R4S-006 | client/src/routes/RoleRoute.jsx | auth redirect support | auth redirect helper | Anonymous role-protected users go to login with state.from | role-protected leaves | yes | yes | self | ROUTES.LOGIN | high | high | medium | yes | no |
+| R4S-007 | client/src/routes/RoleRoute.jsx | wrong-role authority | role redirect helper | Wrong-role users go to not-authorized with state.from | role-protected leaves | yes | yes | self | ROUTES.SYSTEM.NOT_AUTHORIZED | high | critical | medium | yes with caution | yes |
+| R4S-008 | client/src/routes/PublicOnlyRoute.jsx | guest-only authority | auth redirect helper | Authenticated users resolve a role default | login/register guest-only routes | yes | yes | self | accessPolicy constants | high | medium | medium | yes with caution | yes |
+| R4S-009 | client/src/routes/EmailVerifiedRoute.jsx | verification authority | auth redirect helper | Unverified users go to resend-verification with state.from and reason | verified-only leaves | yes | no | self | ROUTES.RESEND_VERIFICATION | high | critical | medium | yes with caution | yes |
+| R4S-010 | client/src/routes/authRouteUtils.js | auth redirect utility | auth redirect helper | Validates intended internal destination and resolves role default | login/register flows | yes | yes | consumed by pages | ROUTES/accessPolicy | high | high | medium | yes with caution | yes |
+| R4S-011 | client/src/utils/accessPolicy.js | policy authority | role redirect helper | Normalizes roles and resolves dashboard/denial fallbacks | guards/layouts/navigation | yes | yes | consumed by layouts/pages | family constants/metadata | critical | critical | high | yes with caution | yes |
+| R4S-012 | client/src/pages/Login.jsx | login redirect consumer | supporting redirect helper | Restores validated state.from or role default | /login | yes | yes | PublicOnlyRoute plus page | authRouteUtils | high | high | medium | yes with caution | yes |
+| R4S-013 | client/src/pages/Register.jsx | registration redirect consumer | supporting redirect helper | Same destination logic as login after registration | /register | yes | yes | PublicOnlyRoute plus page | authRouteUtils | high | high | medium | yes with caution | yes |
+| R4S-014 | client/src/pages/ForgotPassword.jsx; client/src/pages/ResetPassword.jsx | auth page redirects | supporting redirect helper | Already-authenticated users resolve role default | recovery routes | yes | yes | page checks | authRouteUtils | medium | medium | low | yes | no |
+| R4S-015 | client/src/pages/Dashboard.jsx | role dispatch | role redirect helper | Client/provider render; support/admin/unknown redirect | /dashboard | yes | yes | protected parent | ROUTES | high | high | medium | yes with caution | yes |
+| R4S-016 | client/src/pages/DashboardChallenges.jsx | role dispatch | role redirect helper | Client/provider render; admin/unknown redirect | dashboard challenge alias | yes | yes | parent plus RoleRoute | ROUTES | high | high | medium | yes with caution | yes |
+| R4S-017 | client/src/layouts/DashboardLayout.jsx | layout fallback | supporting redirect helper | Metadata denial uses accessPolicy fallback without state.from | dashboard shell | yes | yes | after parent guard | accessPolicy | high | high | high | yes with caution | yes |
+| R4S-018 | client/src/layouts/ClientLayout.jsx | layout fallback | supporting redirect helper | Client shell rechecks metadata/access | client shell | yes | yes | after RoleRoute | accessPolicy | high | high | high | yes with caution | yes |
+| R4S-019 | client/src/layouts/AdminLayout.jsx | layout fallback | supporting redirect helper | Admin shell rechecks metadata/access | admin shell | yes | yes | after RoleRoute | accessPolicy | high | critical | high | yes with caution | yes |
+| R4S-020 | client/src/pages/profile/ProfileOnboardingStepPage.jsx | onboarding fallback | module-specific fallback | Invalid step goes to platform NotFound; valid steps use local builder | onboarding | yes | indirect | provider parent | ROUTES.NOT_FOUND/builder | high | medium | low | yes with caution | yes |
+| R4S-021 | Header and three topbar files | logout redirect consumers | supporting redirect helper | All logout callers target login with replace | header/shell logout | yes | no | auth service | ROUTES.LOGIN | high | high | medium | yes | no |
+| R4S-022 | Account, Connections, Marketplace, ServiceDetail, Profile pages | hardcoded internal transitions | suspicious | Internal window.location literals bypass router constants/history | several module workflows | mixed | mixed | page checks | absent/partial | high | medium | high | no | yes |
+| R4S-023 | client/src/pages/Auth.jsx | legacy-looking auth transitions | stale candidate | Hardcoded /dashboard and /admin differ from active auth helpers; route reachability unproven | unknown | yes | yes | page-local | none | high | high | high | no | yes |
+| R4S-024 | client/src/pages/Settings.jsx; client/src/pages/Payments.jsx | external transitions | module-specific fallback | Server-provided external session URLs intentionally leave SPA | billing/payment | yes | no | server response | not applicable | high | critical | low | yes with caution | yes |
+| R4S-025 | server/src/app.js; server/src/errors/notFoundHandler.js | API 404 authority | platform 404 source-of-truth | Terminal backend middleware forwards structured not-found error | unmatched API requests | indirect | indirect | server middleware | not applicable | medium | medium | low | yes | no |
 
-- Route declarations and wildcard: AppRoutes.jsx is current runtime authority.
-- Explicit and wildcard browser 404: AppRoutes.jsx plus NotFound.jsx are current authority.
-- Authentication and role redirects: active route guards are current authority.
-- Layout policy fallback: accessPolicy.js plus three layouts are current supporting authority.
-- Default authenticated destination: authRouteUtils.js and accessPolicy.js are current authority with caution.
-- Page-level imperative redirects: distributed behavior, not an approved source-of-truth.
-- Server API 404: separate backend authority.
+## Locked Interpretation
 
-There is no approved single redirect authority. Candidate status must not be promoted without migration and regression evidence.
-
+- No new redirect, 404, or wildcard source-of-truth is needed.
+- AppRoutes governs browser declarations/order; NotFound is its supporting component.
+- API 404 remains a separate backend scope.
+- Auth/role helpers and layouts are reusable only under their current contracts; they cannot be merged or reordered without approval and regression evidence.
+- Suspicious hardcoded and legacy consumers are excluded from implementation until Prompt 10 receives an explicit safe batch.

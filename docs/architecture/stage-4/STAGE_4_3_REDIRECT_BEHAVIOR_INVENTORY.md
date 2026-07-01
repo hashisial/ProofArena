@@ -1,22 +1,53 @@
 # Stage 4.3 Redirect Behavior Inventory
 
-| ID | Trigger/source | Target | Constant | State/history | Status |
-|---|---|---|---|---|---|
-| RD-001 | Anonymous ProtectedRoute | login | yes | replace plus from | verified |
-| RD-002 | Anonymous RoleRoute | login | yes | replace plus from | verified |
-| RD-003 | Wrong-role RoleRoute | not-authorized | yes | replace plus from | verified |
-| RD-004 | Unverified EmailVerifiedRoute | resend verification | yes | replace plus from/reason | verified |
-| RD-005 | Authenticated PublicOnlyRoute | role default | yes through helper | replace | verified with caution |
-| RD-006 | Dashboard/Client/Admin layouts | unauthorized fallback | yes through policy | replace; no from | policy overlap |
-| RD-007 | Dashboard and DashboardChallenges pages | role landing/not-authorized | yes | replace | verified |
-| RD-008 | Invalid onboarding step | NotFound | yes | replace | verified |
-| RD-009 | Account | home | no | full reload | hardcoded internal |
-| RD-010 | Connections | messages | no | full reload | hardcoded internal |
-| RD-011 | Marketplace/ServiceDetail | login | no | full reload | hardcoded internal |
-| RD-012 | ServiceDetail | messages query | no | full reload | hardcoded dynamic |
-| RD-013 | Profile | settings/public profile | partial/no | full reload | hardcoded/dynamic |
-| RD-014 | Legacy Auth/AdminGate | dashboard/admin/recovery | no | full reload/link | reachability unknown |
-| RD-015 | Settings/Payments | external session URL | not applicable | external navigation | separate security domain |
+## Scope
 
-Internal page redirects are migration candidates only after reachability and flow tests.
+This inventory records automatic redirects and full-page internal/external transitions. Ordinary user-initiated SPA navigation after create, update, archive, delete, compare, or back actions is not treated as redirect policy unless it is a fallback or access-control transition.
 
+| Redirect ID | File path | Trigger | Source route/path/category | Target route/path | Redirect category | Uses route constant | Hardcoded path | Auth dependency | Role dependency | Guard dependency | Navigation dependency | Priority/order | Duplicate risk | Loop risk | Broken-route risk | Security risk | UX risk | Confidence | Human review needed |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| RDI-001 | client/src/routes/ProtectedRoute.jsx | no authenticated user | protected leaf | ROUTES.LOGIN | unauthenticated access redirect | yes | no | yes | no | ProtectedRoute | state.from | after auth hydration | low | low | low | high | medium | high | no |
+| RDI-002 | client/src/routes/RoleRoute.jsx | no authenticated user | role-protected leaf | ROUTES.LOGIN | unauthenticated access redirect | yes | no | yes | yes | RoleRoute | state.from | before role denial | medium | low | low | high | medium | high | no |
+| RDI-003 | client/src/routes/RoleRoute.jsx | authenticated role not allowed | role-protected leaf | ROUTES.SYSTEM.NOT_AUTHORIZED | unauthorized role redirect | yes | no | yes | yes | RoleRoute | none | after auth check | medium | medium | low | high | high | high | yes |
+| RDI-004 | client/src/routes/PublicOnlyRoute.jsx | authenticated user opens guest-only route | login/register/guest-only route | getDefaultAuthenticatedRoute(user) | already-authenticated guest redirect | yes | no | yes | yes | PublicOnlyRoute | accessPolicy | after auth hydration | medium | medium | medium | medium | medium | high | yes |
+| RDI-005 | client/src/routes/EmailVerifiedRoute.jsx | authenticated email is unverified | verified-only route | ROUTES.RESEND_VERIFICATION | onboarding incomplete redirect | yes | no | yes | no | EmailVerifiedRoute | state.from | after auth guard | medium | medium | low | high | high | high | yes |
+| RDI-006 | client/src/pages/Login.jsx | login succeeds | /login | validated state.from or role default | login success redirect | yes | no | yes | yes | auth page | authRouteUtils | page submit | medium | medium | medium | high | high | high | yes |
+| RDI-007 | client/src/pages/Login.jsx | already authenticated | /login | getDefaultAuthenticatedRoute(user) | already-authenticated guest redirect | yes | no | yes | yes | page-level duplicate of PublicOnly | accessPolicy | page render | medium | medium | medium | medium | medium | high | yes |
+| RDI-008 | client/src/pages/Register.jsx | registration succeeds | /register | validated state.from or role default | login success redirect | yes | no | yes | yes | auth page | authRouteUtils | page submit | medium | medium | medium | high | high | high | yes |
+| RDI-009 | client/src/pages/Register.jsx | already authenticated | /register | getDefaultAuthenticatedRoute(user) | already-authenticated guest redirect | yes | no | yes | yes | page-level duplicate of PublicOnly | accessPolicy | page render | medium | medium | medium | medium | medium | high | yes |
+| RDI-010 | client/src/pages/ForgotPassword.jsx | already authenticated | /forgot-password | getDefaultAuthenticatedRoute(user) | already-authenticated guest redirect | yes | no | yes | yes | page-level check | accessPolicy | page render | low | medium | low | low | low | high | no |
+| RDI-011 | client/src/pages/ResetPassword.jsx | already authenticated | /reset-password | getDefaultAuthenticatedRoute(user) | already-authenticated guest redirect | yes | no | yes | yes | page-level check | accessPolicy | before token UI | low | medium | low | medium | medium | high | no |
+| RDI-012 | client/src/pages/Dashboard.jsx | support role opens dashboard root | ROUTES.DASHBOARD | ROUTES.SUPPORT_DASHBOARD | role-based landing redirect | yes | no | yes | yes | protected route plus page dispatch | none | page render | medium | low | low | medium | medium | high | yes |
+| RDI-013 | client/src/pages/Dashboard.jsx | admin role opens dashboard root | ROUTES.DASHBOARD | ROUTES.ADMIN | role-based landing redirect | yes | no | yes | yes | protected route plus page dispatch | none | page render | medium | low | low | high | medium | high | yes |
+| RDI-014 | client/src/pages/Dashboard.jsx | unknown authenticated role opens dashboard root | ROUTES.DASHBOARD | ROUTES.SYSTEM.NOT_AUTHORIZED | forbidden redirect | yes | no | yes | yes | protected route plus page dispatch | none | page render | high | medium | low | high | high | high | yes |
+| RDI-015 | client/src/pages/DashboardChallenges.jsx | admin or unsupported role opens challenge alias | dashboard challenge route | ROUTES.ADMIN or ROUTES.SYSTEM.NOT_AUTHORIZED | role-based landing redirect | yes | no | yes | yes | protected route plus page dispatch | none | page render | medium | medium | medium | high | high | high | yes |
+| RDI-016 | client/src/layouts/DashboardLayout.jsx | unauthenticated shell render | provider/dashboard shell route | getUnauthorizedFallback | unauthenticated access redirect | yes | no | yes | yes | layout access check | accessPolicy | after route guard if mounted | high | medium | low | high | medium | high | yes |
+| RDI-017 | client/src/layouts/DashboardLayout.jsx | metadata denies authenticated user | provider/dashboard shell route | role primary dashboard or not-authorized | unauthorized role redirect | yes | no | yes | yes | layout access check | accessPolicy | after route guard if mounted | high | high | medium | high | high | high | yes |
+| RDI-018 | client/src/layouts/ClientLayout.jsx | unauthenticated shell render | client shell route | getUnauthorizedFallback | unauthenticated access redirect | yes | no | yes | yes | layout access check | accessPolicy | after route guard if mounted | high | medium | low | high | medium | high | yes |
+| RDI-019 | client/src/layouts/ClientLayout.jsx | metadata denies authenticated user | client shell route | role primary dashboard or not-authorized | provider/client wrong-role redirect | yes | no | yes | yes | layout access check | accessPolicy | after route guard if mounted | high | high | medium | high | high | high | yes |
+| RDI-020 | client/src/layouts/AdminLayout.jsx | unauthenticated shell render | admin shell route | getUnauthorizedFallback | unauthenticated access redirect | yes | no | yes | yes | layout access check | accessPolicy | after route guard if mounted | high | medium | low | critical | medium | high | yes |
+| RDI-021 | client/src/layouts/AdminLayout.jsx | metadata denies authenticated user | admin shell route | role primary dashboard or not-authorized | admin denied redirect | yes | no | yes | yes | layout access check | accessPolicy | after RoleRoute if mounted | high | high | medium | critical | high | high | yes |
+| RDI-022 | client/src/pages/profile/ProfileOnboardingStepPage.jsx | step key is invalid | dynamic onboarding step | ROUTES.SYSTEM.NOT_FOUND | module fallback redirect | yes | no | yes | indirect | page validation | none | page render | low | low | low | low | high | high | no |
+| RDI-023 | client/src/pages/profile/ProfileOnboardingStepPage.jsx | save or skip advances workflow | valid onboarding step | getStepPath(nextStep) | onboarding incomplete redirect | builder | no | yes | indirect | page workflow | step builder | post-action | low | unknown | low | medium | high | high | yes |
+| RDI-024 | client/src/components/Header.jsx | logout completes | public header | ROUTES.LOGIN | logout redirect | yes | no | yes | no | auth service | navigate replace | post-logout | medium | low | low | high | medium | high | no |
+| RDI-025 | client/src/components/navigation/DashboardTopbar.jsx; client/src/components/navigation/AdminTopbar.jsx; client/src/components/client/ClientTopbar.jsx | logout completes | dashboard/admin/client shells | ROUTES.LOGIN | logout redirect | yes | no | yes | no | auth service | navigate replace | post-logout | medium | low | low | high | medium | high | no |
+| RDI-026 | client/src/pages/Account.jsx | form completion/recovery transition | account workflow | / | root path redirect | no | yes | mixed | no | none | full-page location | post-action | medium | low | low | low | medium | high | no |
+| RDI-027 | client/src/pages/Connections.jsx | message workflow transition | connections workflow | /messages | module fallback redirect | no | yes | yes | no | none | full-page location | post-action | medium | low | low | medium | medium | high | no |
+| RDI-028 | client/src/pages/Marketplace.jsx | unauthenticated protected action | marketplace action | /login | unauthenticated access redirect | no | yes | yes | no | page-level check | full-page location | action handler | high | medium | low | high | high | high | yes |
+| RDI-029 | client/src/pages/ServiceDetail.jsx | unauthenticated contact/order action | service detail action | /login | unauthenticated access redirect | no | yes | yes | no | page-level check | full-page location | action handler | high | medium | low | high | high | high | yes |
+| RDI-030 | client/src/pages/ServiceDetail.jsx | conversation created or found | service detail action | /messages?conversation={id} | module fallback redirect | no | yes | yes | no | page workflow | full-page location | post-action | high | low | medium | medium | high | high | yes |
+| RDI-031 | client/src/pages/Profile.jsx | navigate to public profile | profile action | getPublicProfileUrl() | module fallback redirect | partial | dynamic | yes | indirect | none | full-page location | action handler | medium | low | medium | medium | medium | high | yes |
+| RDI-032 | client/src/pages/Profile.jsx | navigate to settings | profile action | /settings | module fallback redirect | no | yes | yes | no | none | full-page location | action handler | medium | low | low | medium | medium | high | no |
+| RDI-033 | client/src/pages/Auth.jsx | legacy auth success or role dispatch | uncertain legacy auth surface | /dashboard or /admin | role-based landing redirect | no | yes | yes | yes | page-level auth | full-page location | post-auth | high | high | medium | high | high | medium | yes |
+| RDI-034 | client/src/pages/Settings.jsx | billing portal or checkout session created | settings billing action | server-provided external URL | module fallback redirect | not applicable | no | yes | no | server response | full-page location | post-action | low | low | external target | critical | high | high | yes |
+| RDI-035 | client/src/pages/Payments.jsx | payment session created | payment action | server-provided external URL | module fallback redirect | not applicable | no | yes | no | server response | full-page location | post-action | low | low | external target | critical | high | high | yes |
+
+## Findings
+
+- Core access redirects use established constants, but the same access decision can be evaluated by route guards, layouts, and pages with different destinations.
+- Login and registration preserve a validated attempted destination; most layout and role-denial redirects do not preserve it.
+- Six active page areas plus the uncertain Auth page contain hardcoded internal full-page navigation.
+- External payment URLs are security-sensitive but are not candidates for internal route constants.
+- No onboarding-complete redirect policy was found. That absence is recorded as a gap rather than invented here.
+
+No redirect behavior was changed.

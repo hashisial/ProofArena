@@ -1,15 +1,28 @@
 # Stage 4.3 Redirect and 404 Gap Register
 
-| Gap ID | Gap | Severity | Blocks hardening | Human review |
-|---|---|---|---|---|
-| R4G-001 | No canonical denial priority across guards/layouts/policy | high | yes | yes |
-| R4G-002 | Unknown-role destination varies by caller | high | yes | yes |
-| R4G-003 | Internal full-page redirects are hardcoded | medium | yes for migration | no |
-| R4G-004 | Attempted-location state is not preserved by layouts/page redirects | medium | yes | yes |
-| R4G-005 | /offers has no declaration | high | yes | yes |
-| R4G-006 | Dynamic service ID/slug semantics unresolved | high | yes | yes |
-| R4G-007 | No redirect-loop/history regression suite | high | yes | no |
-| R4G-008 | Explicit versus wildcard NotFound URL policy unapproved | medium | yes | yes |
-| R4G-009 | Legacy redirect reachability unknown | medium | yes for cleanup | yes |
-| R4G-010 | Browser and API 404 domains need explicit separation | high | no for docs | no |
+| Gap ID | Gap title | Related route/path | Related file | Gap category | Severity | Likelihood | Blast radius | Evidence | Required future action | Owner | Blocks redirect/404 planning | Blocks production redirect edits | Human review needed |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| R4G-001 | Canonical denial priority is undefined | protected/admin/provider/client routes | RoleRoute.jsx; DashboardLayout.jsx; ClientLayout.jsx; AdminLayout.jsx; accessPolicy.js | protected-route dependency unresolved | critical | medium | all protected routes | guards and layouts can choose different fallback targets | approve evaluator order and canonical denial policy | Prompt 9 | yes | yes | yes |
+| R4G-002 | Unknown-role landing varies by caller | guest-only and role-specific routes | authRouteUtils.js; accessPolicy.js; Dashboard.jsx | role landing unclear | high | medium | all auth entry and dashboard roots | unknownFallback can be dashboard, home, or not-authorized | approve one fail-closed unknown-role policy | human | yes | yes | yes |
+| R4G-003 | Hardcoded internal full-page redirects remain | /, /login, /messages, /settings, /dashboard, /admin | Account.jsx; Connections.jsx; Marketplace.jsx; ServiceDetail.jsx; Profile.jsx; Auth.jsx | hardcoded redirect path | high | high | multiple product flows | window.location uses internal literals | verify reachability/history semantics and plan exact later batch | Prompt 9 | no | yes | yes |
+| R4G-004 | Attempted destination is not preserved consistently | denied nested routes | guards, layouts, pages | wrong redirect target | medium | high | protected workflows | login guards preserve state.from; layouts/page redirects do not | decide which denial classes may preserve destination | human | yes | yes | yes |
+| R4G-005 | /offers constant has no confirmed declaration | /offers | constants/routes.js; AppRoutes.jsx | stale redirect target | high | medium | offers/public navigation | inventory found a unique constant without a route leaf | confirm stale alias versus missing route intent | human | yes | yes | yes |
+| R4G-006 | Message/service dynamic target contract is local | /messages?conversation={id} | ServiceDetail.jsx | route constants misalignment | medium | medium | service-to-message workflow | query target is assembled manually | verify messages query contract and approved builder ownership | Prompt 9 | no | yes | yes |
+| R4G-007 | No redirect loop/history regression suite is evidenced | all redirects | client route/guard/page system | redirect loop risk | high | high | whole browser app | only static audit evidence exists | define role/state/order/history validation matrix | Prompt 9 | yes | yes | no |
+| R4G-008 | Explicit NotFound and wildcard URL policy is undocumented | /not-found and unmatched URLs | AppRoutes.jsx; NotFound.jsx | unknown | medium | medium | global fallback | both render the same page without a documented canonical URL policy | retain current rendering and document intended URL/indexing behavior | Prompt 9 | no | yes | yes |
+| R4G-009 | Legacy Auth page authority is unclear | /dashboard and /admin transitions | pages/Auth.jsx | duplicate redirect | high | unknown | authentication | hardcoded dispatch differs from active auth helpers | prove runtime reachability before any modification | Prompt 9 | yes | yes | yes |
+| R4G-010 | Browser and API 404 separation is implicit | unmatched browser/API paths | AppRoutes.jsx; server/src/app.js; notFoundHandler.js | unknown | medium | low | frontend and API | distinct authorities exist but no shared governance statement previously locked | explicitly preserve separate contracts in Prompt 9 plan | Prompt 9 | no | yes | no |
+| R4G-011 | No scoped dashboard/admin/module fallback policy | invalid nested signed-in URLs | AppRoutes.jsx | missing dashboard fallback | medium | medium | signed-in UX | only global wildcard was found | decide whether global NotFound is intentional or shell-preserving fallback is required | human | yes | yes | yes |
+| R4G-012 | Onboarding completion and revisit redirect policy is absent | onboarding routes | ProfileOnboardingStepPage.jsx; route metadata | missing onboarding redirect | high | medium | onboarding/dashboard entry | invalid-step redirect exists; completion redirect does not | locate completion-state authority and approve revisit policy | human | yes | yes | yes |
+| R4G-013 | Verification and resend precedence needs a lock | verified-only routes and resend-verification | EmailVerifiedRoute.jsx; AppRoutes.jsx | protected-route dependency unresolved | critical | low | verified-only access | target must remain outside the same verification guard | verify route composition and transition states | Prompt 9 | yes | yes | yes |
+| R4G-014 | Guest-only redirect logic is duplicated | login/register/password routes | PublicOnlyRoute.jsx; Login.jsx; Register.jsx; ForgotPassword.jsx; ResetPassword.jsx | duplicate redirect | medium | medium | auth UX | wrapper and pages both redirect authenticated users | establish observable precedence before consolidation | Prompt 9 | yes | yes | yes |
+| R4G-015 | Logout behavior parity is not automated | header and three topbars | Header.jsx; DashboardTopbar.jsx; AdminTopbar.jsx; ClientTopbar.jsx | missing logout redirect validation | medium | medium | all shells | four callers currently share target and replace semantics | add stale-session/logout parity tests before refactor | later Stage 4 prompt | no | yes | no |
+| R4G-016 | External session destination policy is undocumented | checkout/billing portal URLs | Settings.jsx; Payments.jsx | human approval required | critical | low | payments | server-provided URLs bypass internal routing by design | approve origin/scheme validation and failure behavior separately | human | yes | yes | yes |
+| R4G-017 | Route metadata gaps remain from Stage 4.2 | 34 previously identified paths | route metadata and protected-route audit docs | protected-route dependency unresolved | high | high | navigation and denial handling | Stage 4.2 remained documentation-only with unresolved route intent | resolve route ownership/role metadata before behavior edits | human | yes | yes | yes |
+| R4G-018 | Deployment deep-link fallback is unverified | direct requests to client routes | deployment host/config unknown | missing global 404 | high | unknown | all deep links | client wildcard cannot run if host does not serve the SPA entry | verify deployed rewrite/fallback behavior without changing config here | Prompt 9 | yes | yes | yes |
 
+## Register Summary
+
+- Critical blockers: evaluator priority, verification route reachability, and external payment-session destination policy.
+- High blockers: unknown-role policy, hardcoded internal redirects, stale/missing route intent, onboarding policy, legacy Auth reachability, route metadata, and deployment fallback.
+- Prompt 9 may verify and plan, but no production redirect edit is approved.

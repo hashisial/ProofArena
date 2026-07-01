@@ -1,14 +1,24 @@
 # Stage 4.3 Redirect and 404 Implementation Batch Plan
 
-| Batch | Scope | Preconditions | Authorized now |
-|---|---|---|---|
-| R0 | Static snapshot and browser test harness plan | None | no-op only |
-| R1 | Tests for current guard/layout/wildcard behavior | Approved assertions | no |
-| R2 | One constant-backed low-risk internal page redirect | R1 passing; reachability proven | no |
-| R3 | Approved dynamic internal builder migrations | Parameter contracts | no |
-| R4 | Canonical denial policy adjustments | Human policy approval and Stage 4.2 alignment | no |
-| R5 | Explicit/wildcard 404 change, if required | Product decision and ordering tests | no |
-| R6 | Legacy redirect cleanup | Proven non-reachability | no |
+No batch is implemented by Prompt 9. "Likely affected" means future review scope, not authorization.
 
-Prompt 10 has no authorized runtime batch.
+| Batch ID | Purpose | Files likely affected | Routes affected | Redirects affected | 404/fallback affected | Guards/auth/role dependencies | Route constant dependencies | Actions allowed | Actions forbidden | Validation before | Validation after | Rollback plan | Risk | Human review needed | Can be automated |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| B0 | No-op snapshot | router/guards/layouts/pages/constants docs only | all inventoried | all inventoried | all inventoried | read-only | read-only | static inventory and baseline commands | any source edit | clean diff and source counts | compare zero runtime diff | discard docs-only batch if wrong | low | no | yes |
+| B1 | Confirm source reuse and test harness | future tests only; no authority files | all | all | all | all current evaluators | none | define assertions and harness | new redirect/404 authority | approved policy assertions | baseline passes unchanged | remove test-only batch | medium | yes | yes |
+| B2 | Validate global NotFound/wildcard placement | AppRoutes/NotFound tests; source only if later approved | explicit/wildcard | none | global | route order | NOT_FOUND constant | tests; no-change validation | adding/moving wildcard now | full route list and host behavior | valid/invalid direct links | restore exact route order/component | high | yes | yes |
+| B3 | Public fallback alignment | Account and approved public/legacy consumers | public/account/legacy | root/deprecated candidates | public global | auth reachability where relevant | HOME and approved keys | one approved target migration later | inventing route/redirect | target declared and behavior captured | history/back/reload/public routes | revert exact file/line | medium | yes | yes |
+| B4 | Dashboard/admin/module fallback alignment | AppRoutes/layouts only if policy approves | invalid scoped paths | optional safe redirect | scoped/global | role/layout policy | existing system keys | policy-backed scoped change later | duplicate NotFound/wildcard/shell | UX/security approval and route-order tests | all valid/invalid role paths | remove scoped fallback; restore global | critical | yes | partial |
+| B5 | Login/logout alignment | Login/Register/Header/topbars/auth helpers | auth entry/exit | login success/logout | none | auth store/hydration | LOGIN and role defaults | tests then exact approved change | changing session semantics | role/state/history matrix | login/logout parity and failures | revert one caller/helper | critical | yes | partial |
+| B6 | Unauthenticated/unauthorized/forbidden alignment | guards/layouts/accessPolicy/denial pages | protected/admin/client/provider | login/denial | none | critical auth/role policy | LOGIN/FORBIDDEN/NOT_AUTHORIZED | only approved evaluator/target change | weakening guards or access | security approval and negative tests | full role-route matrix | restore guard/layout policy atomically | critical | yes | partial |
+| B7 | Guest-only alignment | PublicOnlyRoute and auth pages | guest-only routes | authenticated default | none | auth/hydration/roles | role-family keys | remove proven duplicate later | adding another redirect | all role/hydration assertions | auth page access and history | restore wrapper/page check | high | yes | yes |
+| B8 | Onboarding alignment | onboarding routes/page and approved state owner | onboarding/dashboard entry | incomplete/complete/revisit | invalid-step fallback | provider/auth/onboarding source | onboarding builder/NOT_FOUND | implement approved state policy later | inventing completion logic | product approval and state fixtures | complete/incomplete/skip/resume | restore invalid-step-only behavior | high | yes | partial |
+| B9 | Role landing alignment | accessPolicy/Dashboard pages | role entry roots | client/provider/support/admin/unknown | none | role hierarchy/backend parity | existing role-family keys | approved defaults only | inventing roles/aliases | security/architecture approval | all roles including unknown | restore helper options/page dispatch | critical | yes | yes |
+| B10 | Redirect constant alignment | seven hardcoded internal consumers | listed internal targets | hardcoded internals | none | varies | Stage 4.1 approved constants/builders | migrate one proven target later | new constants/builders without approval | declaration/parameter/history proof | static literal scan and workflow tests | revert each target independently | high | yes | yes |
+| B11 | Final broken-route/loop regression | tests and docs | entire route tree | all changed behaviors | all fallbacks | all guards/auth/roles | final constants | execute complete validation | shipping unexplained failure | all earlier batches green | route/nav/loop/history/deep-link suite | rollback last failing batch | critical | yes | yes |
 
+## Gate
+
+- Prompt 9 authorizes B0 documentation/static snapshot only.
+- B1-B11 require a later explicit gate. B2-B11 remain blocked until their stated approvals and baselines exist.
+- No batch may combine route constants, guard policy, wildcard order, and page redirects in one rollback unit.

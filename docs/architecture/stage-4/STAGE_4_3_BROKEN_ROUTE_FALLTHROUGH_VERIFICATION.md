@@ -1,13 +1,26 @@
 # Stage 4.3 Broken Route and Fallthrough Verification
 
-| Risk | Verification | Final disposition |
-|---|---|---|
-| /offers constant without route | verified | Human decision before centralization or redirect |
-| Marketplace service slug versus serviceId | verified semantic mismatch risk | API/domain contract required |
-| Wildcard terminal ordering | verified current | Add regression test before edits |
-| Metadata gaps | verified | Do not treat absence as public or unrestricted intent |
-| Hidden routes | partially verified | Formal deep-link-only catalog required |
-| Explicit NotFound and wildcard URL difference | verified | Product decision if canonical redirect desired |
-| Legacy Auth/Admin destinations | static non-import only | Reachability review before cleanup |
-| Browser/API 404 confusion | verified boundary risk | Separate documentation and tests |
+| Risk ID | Prompt 8 risk | Related file | Source route/path | Target route/path | Verified risk type | Evidence | Confirmed | Severity | Likelihood | Blast radius | Security impact | UX impact | Required future action | Blocks hardening | Human review needed |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| BR-001 | /offers constant lacks declaration | constants/routes.js; AppRoutes.jsx | /offers | none | stale route constant | constant inventory versus route tree | yes | high | medium | offers/public | low | high | decide intent before use/removal | yes | yes |
+| BR-002 | local messages query target | ServiceDetail.jsx | service action | /messages?conversation=id | dynamic route missing builder | literal query assembly; messages route exists | yes | medium | medium | service/messages | medium | high | verify query contract and builder owner | yes | yes |
+| BR-003 | hardcoded login from product actions | Marketplace.jsx; ServiceDetail.jsx | public product actions | /login | stale hardcoded path | internal literals duplicate existing constant | yes | high | medium | conversion flows | high | high | decide central auth-action contract | yes | yes |
+| BR-004 | account root literal | Account.jsx | account action | / | stale hardcoded path | window.location literal | yes | medium | low | account | low | medium | verify target/history then plan constant use | yes | no |
+| BR-005 | connections messages literal | Connections.jsx | connection action | /messages | stale hardcoded path | target route declared but literal/full reload used | yes | medium | medium | messages | medium | medium | validate workflow/history | yes | no |
+| BR-006 | profile settings literal | Profile.jsx | profile action | /settings | stale hardcoded path | target route declared but literal/full reload used | yes | medium | medium | profile | low | medium | validate workflow/history | yes | no |
+| BR-007 | legacy Auth parallel dispatch | Auth.jsx | uncertain auth surface | /dashboard or /admin | stale hardcoded path | differs from authRouteUtils/accessPolicy | partial | high | unknown | authentication | high | high | prove reachability before action | yes | yes |
+| BR-008 | admin guard/layout target conflict | RoleRoute.jsx; AdminLayout.jsx | denied admin path | not-authorized/role default | protected redirect missing target | both targets exist; policy priority is unresolved | yes | critical | medium | admin | critical | high | approve evaluator priority | yes | yes |
+| BR-009 | dashboard guard/layout target conflict | RoleRoute.jsx; dashboard/client layouts | wrong-role path | not-authorized/role default | protected redirect missing target | both evaluators active | yes | high | medium | protected dashboards | high | high | reconcile contract and tests | yes | yes |
+| BR-010 | guest wrapper/page duplication | PublicOnlyRoute.jsx; auth pages | login/register | role default | public/dashboard fallback conflict | duplicate checks exist; current wrapper normally wins | yes | medium | medium | auth pages | medium | medium | lock order; avoid new duplicate | yes | yes |
+| BR-011 | unknown-role destinations vary | authRouteUtils.js; accessPolicy.js | auth/role entry | dashboard/home/not-authorized | protected redirect missing target | caller options set different fallback | yes | high | medium | all role entry | high | high | human-approve one policy | yes | yes |
+| BR-012 | onboarding completion policy absent | onboarding page/routes | onboarding revisit/complete | unknown | module fallback missing | no completion redirect source found | yes | high | medium | onboarding | medium | high | locate state authority and intent | yes | yes |
+| BR-013 | verification target precedence | EmailVerifiedRoute.jsx; AppRoutes.jsx | unverified protected route | resend-verification | protected redirect missing target | current target exists outside guard; future composition risk remains | partial | critical | low | verified routes | high | high | lock target reachability in tests | yes | yes |
+| BR-014 | scoped signed-in fallback absent | AppRoutes.jsx | invalid dashboard/admin path | global NotFound | nested fallback missing | no scoped wildcard found | yes | medium | medium | signed-in invalid URLs | low | high | decide whether absence is intentional | unknown | yes |
+| BR-015 | wildcard ordering risk | AppRoutes.jsx | * | NotFound | wildcard swallowing valid route | wildcard is terminal now; no current defect | partial | high | low | entire browser app | medium | critical | assert terminal order after changes | yes | no |
+| BR-016 | host deep-link fallback unknown | deployment unknown | direct client URL | SPA entry/host 404 | public/dashboard fallback conflict | client code cannot prove host rewrite | unknown | high | unknown | all deep links | low | high | verify deployed host behavior | yes | yes |
+| BR-017 | dynamic route parameter drift | Profile.jsx; ServiceDetail.jsx; route builders | dynamic action | profile/service/message target | dynamic route missing builder | mixed page-local and approved builders | partial | medium | medium | dynamic workflows | medium | high | compare exact param/query contracts | yes | yes |
+| BR-018 | route metadata gaps | route metadata/navigation inventories | 34 paths | access/fallback decisions | unknown | prior Stage 4.2 gaps remain | yes | high | high | protected navigation | high | high | resolve metadata ownership before edits | yes | yes |
 
+## Verification Result
+
+Fourteen risks are confirmed, three are partial, and host deep-link behavior remains unknown. The current terminal wildcard is safe; future ordering, policy, and deployment changes remain blocked until validated.

@@ -1,5 +1,13 @@
 # Stage 4 Final Document Index
 
+**Freeze status:** FROZEN WITH CAUTION
+
+**Freeze date:** 2026-07-01
+
+**Stage 5 start mode:** documentation-only API contract source-of-truth audit
+
+This index classifies Stage 4 documents by authority. "Final authority" governs current observed behavior or the frozen governance record only; it does not imply that Stage 4.1, 4.2, or 4.3 runtime work was implemented. Candidate, draft, inventory, plan, and correction documents cannot authorize production edits.
+
 This index freezes documentation authority without promoting runtime candidates. Earlier audits and plans remain evidence; final locks and freeze documents govern interpretation.
 
 ## A) Final Authority Docs
@@ -220,4 +228,3 @@ This index freezes documentation authority without promoting runtime candidates.
 ## Authority Rule
 
 Final freeze documents and status locks govern. Candidate, draft, inventory, correction, planning, and handoff evidence cannot authorize runtime edits. No document in this index authorizes Stage 5 implementation.
-

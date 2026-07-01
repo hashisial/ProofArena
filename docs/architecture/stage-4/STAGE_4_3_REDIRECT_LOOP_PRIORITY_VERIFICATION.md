@@ -1,13 +1,24 @@
 # Stage 4.3 Redirect Loop and Priority Verification
 
-No static cycle is proven in the current parent composition. The intended evaluation order is hydration, authentication/role parent, email verification, child role guard, layout metadata policy, page validation, then wildcard.
+| Loop/Priority ID | Prompt 8 risk | Source file | Trigger | Source route | Target route | Verified risk type | Evidence | Confirmed | Severity | Required future action | Blocks hardening | Human review needed |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| LP-001 | unknown role sent from guest-only to dashboard then denied | PublicOnlyRoute.jsx; authRouteUtils.js; Dashboard.jsx | authenticated unknown role | login/register | dashboard then not-authorized | default dashboard loop | two-hop chain is statically possible; no infinite cycle proven | partial | high | approve unknown-role landing and runtime-test termination | yes | yes |
+| LP-002 | restored state.from may immediately deny | Login.jsx; Register.jsx; RoleRoute.jsx | successful auth to inaccessible route | login/register | attempted route then not-authorized | unauthorized loop | state restored then RoleRoute denies; no return cycle proven | partial | high | test wrong-role saved destination/history | yes | yes |
+| LP-003 | guards and layouts compete | RoleRoute plus three layouts | denied protected route | nested protected route | not-authorized or role default | multiple guard redirect conflict | both evaluators exist; parent usually wins before layout mounts | yes | critical | lock evaluator order and target parity | yes | yes |
+| LP-004 | resend route could be guarded recursively | EmailVerifiedRoute.jsx; AppRoutes.jsx | unverified user | protected route | resend-verification | unauthorized loop | current resend route is outside verified guard, so no active loop | no | critical | preserve composition and add regression test | yes | yes |
+| LP-005 | admin/super_admin mismatch | accessPolicy.js; metadata/backend policy | elevated role | admin route | admin or denial | admin denied loop | frontend override is explicit; backend parity unresolved | partial | high | security-review hierarchy | yes | yes |
+| LP-006 | guest-only role default may trigger page dispatch | PublicOnlyRoute.jsx; Dashboard.jsx | authenticated support/admin/unknown | login/register | dashboard then role landing | default dashboard loop | two-hop redirect possible; no cycle to auth page proven | partial | medium | test final landing and history | yes | yes |
+| LP-007 | onboarding invalid/completion paths conflict | onboarding page | invalid or completed state | onboarding | not-found/unknown | onboarding loop | invalid-step path is acyclic; completion policy absent | partial | medium | preserve invalid path; decide completion policy | yes | yes |
+| LP-008 | full reload loses redirect state | five page areas | internal window.location | product page | internal target | root redirect conflict | reload/history risk confirmed, loop unproven | partial | medium | classify target and state semantics | yes | no |
+| LP-009 | wildcard moved before valid routes | AppRoutes.jsx | future reordering | any route | NotFound | wildcard loop | current wildcard is terminal, so defect not active | no | critical | automate order assertion | yes | no |
+| LP-010 | redirecting wildcard to explicit NotFound could self-loop | AppRoutes.jsx | future canonicalization | unmatched or /not-found | /not-found | wildcard loop | current behavior renders component directly; hypothetical risk only | no | medium | keep render behavior until policy approved | yes | yes |
+| LP-011 | /403 and /not-authorized compete | constants/routes.js; AppRoutes.jsx | denied access | protected route | either denial page | competing Navigate targets | both routes exist; guards currently choose not-authorized | yes | high | approve semantics/canonical caller | yes | yes |
+| LP-012 | denial recovery could return to denial | NotAuthorized.jsx; accessPolicy.js | recovery action | not-authorized | role default/home | unauthorized loop | accessPolicy avoids system-route self-fallback; runtime roles untested | partial | medium | test all roles and expired sessions | yes | yes |
+| LP-013 | distributed logout callers diverge | header/topbars | logout | any shell | login | logout-to-protected-route loop | all current targets are public login; no loop | no | low | add parity test before consolidation | no | no |
+| LP-014 | invalid dynamic target reaches 404 | builders/page-local strings | bad id/slug/query | dynamic page | detail/messages/NotFound | nested fallback loop | drift risk exists; loop not proven | partial | medium | verify builder/declaration contracts | yes | yes |
+| LP-015 | external session URL treated as internal | Settings.jsx; Payments.jsx | payment session | billing/payment | external URL | root redirect conflict | external navigation is explicit; validation policy unknown | partial | high | approve origin/scheme/failure policy | yes | yes |
+| LP-016 | no automated loop/history matrix | redirect system | any chained redirect | distributed | distributed | unknown | no matching route/redirect tests found; client has lint/build only | yes | high | create test harness or approved browser matrix before batch | yes | yes |
 
-Unverified loop cases:
-- unknown-role role-default destination;
-- saved attempted location that denies after login;
-- resend-verification reachability for authenticated unverified users;
-- layout fallback disagreeing with child guard;
-- page-level full reload losing state and re-triggering guard logic.
+## Verification Result
 
-Status: verified as risk, not validated as behavior. Implementation remains blocked until browser tests prove termination and history semantics.
-
+No active infinite loop was proven. LP-003, LP-011, and LP-016 are confirmed priority/governance risks; the remaining loop scenarios are partial or hypothetical and require runtime state/history validation before changes.

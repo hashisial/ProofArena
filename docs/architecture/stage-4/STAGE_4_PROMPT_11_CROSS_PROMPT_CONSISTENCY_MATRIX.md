@@ -1,15 +1,26 @@
 # Stage 4 Prompt 11 Cross-Prompt Consistency Matrix
 
-| Topic | Prompt evidence | Consistency | Final interpretation |
-|---|---|---|---|
-| One ScaleOps platform | Prompts 1-10 | consistent | ProofArena remains inside platform routing |
-| Route constants | P1 audit, P3 plan, P4 gate | consistent | Existing registry is runtime source; centralization not performed |
-| Protected routes | P1/P2 map, P5/P6 plan, P7 gate | consistent | Existing controls retained; hardening deferred |
-| Redirect/404 | P1/P2 baseline, P8/P9 plan, P10 gate | consistent | Existing behavior retained; hardening deferred |
-| Runtime changes | P4/P7/P10 logs | consistent | None |
-| Validation | gate reports | consistent | Static no-change checks only; runtime matrices skipped |
-| Rollback | gate reports | consistent | Not required for no-change; future plans exist |
-| Source authority | candidate analyses | consistent with caution | Candidate is not final authority |
-| Human approvals | risk/readiness docs | consistent | Required before production edits |
-| Stage 5 | P10/P11 transition | consistent | Documentation-only preflight is safe; implementation not implied |
+| Consistency ID | Related docs | Conflicting claim A | Conflicting claim B | Correct interpretation | Evidence | Severity | Required correction | Blocks Prompt 12 closeout | Human review needed |
+|---|---|---|---|---|---|---|---|---|---|
+| C11-001 | Prompt 1/2 route inventories | Prompt 1 candidate findings | Prompt 2 corrected findings | Prompt 2 corrections supersede weak Prompt 1 classifications; historical Prompt 1 remains evidence | correction reports | low | none | no | no |
+| C11-002 | Prompt 2/4 literal scans | 72 manually verified route-context occurrences | 83 broader lexical candidates | Both are valid under different classification scopes; 11-item delta is not migration authority | Prompt 4 gate reconciliation | medium | preserve scope note | no | no |
+| C11-003 | Prompt 1-7 route counts | 108 route leaves | later matrices also use 108 | Consistent current baseline | inventories/matrices/snapshots | low | none | no | no |
+| C11-004 | Prompt 2/5-7 metadata gaps | 34 metadata gaps | 8 high-priority metadata gaps | Eight is a prioritized subset, not a corrected total | blocker/gap/status docs | medium | state subset relationship in final lock | no | no |
+| C11-005 | Prompt 5-7 protected baseline | 70 protected leaves | 16 role-ambiguous routes | Sixteen are a decision-risk subset of the 70 protected baseline | classification and risk matrices | medium | retain both counts with labels | no | yes |
+| C11-006 | Prompt 1-4 route constants | routes.js is current runtime registry | final governance authority not approved | Runtime use does not equal final governance promotion; registry remains candidate/current authority | source matrices/readiness/gate | high | keep candidate distinction | no | yes |
+| C11-007 | Prompt 3/4 centralization | implementation plan exists | Prompt 4 implementation skipped | Planning completed; no centralization occurred | gate, change log, manifest flags | high | final status planned only | no | no |
+| C11-008 | Prompt 6/7 protected hardening | hardening plan exists | Prompt 7 implementation skipped | Governance planned; guards/routes/auth/metadata unchanged | gate, change log, diff | high | final status planned only | no | no |
+| C11-009 | Prompt 9/10 redirect hardening | hardening/batch plan exists | Prompt 10 implementation skipped | Governance planned; redirects/404/wildcard unchanged | gate, change log, diff | high | final status planned only | no | no |
+| C11-010 | Prompt 4/7/10 lint reports | Prompt 4 lint passed | Prompt 7 and Prompt 10 lint timed out | Lint is not a stable Stage 4-wide passing baseline; latest attempts remain unknown | validation reports | high | carry timeout before production edits | no | no |
+| C11-011 | Prompt 7/10 boundary reports | server boundary check passed | same check reports 3 direct-model warnings | Command passes with pre-existing warnings; warnings are not Stage 4 route failures | validation reports | medium | preserve pass-with-caution wording | no | no |
+| C11-012 | Prompt 4/7/10 build/tests | plans require build/runtime matrices | gates skipped build/runtime tests | Appropriate for no-change gates but insufficient for production acceptance | validation/rollback docs | high | freeze docs only; block edits | no | no |
+| C11-013 | Prompt 4/7/10 implementation claims | plans describe future batches | change logs say no implementation | Future plans are non-executed; all implementation flags remain false | gates/logs/manifest/diff | critical | none after reconciliation | no | no |
+| C11-014 | Prompt 4/7/10 rollback claims | rollback plans exist | rollback not required | Plans govern future batches; no rollback was needed because no runtime batch ran | rollback reports | medium | preserve distinction | no | no |
+| C11-015 | Prompt 10/full status | governance complete with caution | runtime implementation deferred | Stage 4 may close as documentation/governance, not as production hardening completion | full status and sub-stage locks | critical | freeze with caution language | no | yes |
+| C11-016 | Source candidate docs/final locks | candidate authority terminology | some summaries say runtime authority | Current runtime source can be final for observed behavior while governance/migration authority remains candidate; label scope explicitly | source verification and candidate index | high | scope every authority label | no | yes |
+| C11-017 | Human review/risk docs | closeout may proceed | approvals remain required | Human approval is not required for documentation freeze; it is required before affected production edits | risk tables/readiness decisions | high | carry forward, do not resolve | no | yes |
+| C11-018 | Duplicate-prevention claims | existing alternate aliases/re-exports found | no duplicate architecture created | Existing aliases are risks/evidence, not systems created by Stage 4 | audits and zero runtime diff | medium | preserve pre-existing qualifier | no | no |
 
+## Result
+
+No contradiction blocks Prompt 12 documentation freeze. The required corrections are interpretive: preserve baseline-versus-subset counts, planning-versus-implementation status, candidate-versus-final authority scope, and validation limitations. Production edits remain blocked by the carried risks.

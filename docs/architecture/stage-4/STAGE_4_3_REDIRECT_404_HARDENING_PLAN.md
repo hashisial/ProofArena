@@ -1,13 +1,28 @@
 # Stage 4.3 Redirect and 404 Hardening Plan
 
-1. Approve a deterministic denial and fallback priority table.
-2. Resolve unknown-role, support, admin-override, and authenticated recovery-page behavior.
-3. Resolve /offers and service ID/slug semantics.
-4. Establish browser tests for role state, attempted location, query/hash, replace history, back button, loops, explicit NotFound, and wildcard.
-5. Classify each page-level imperative redirect as router-internal, external, reload, or legacy.
-6. Migrate one low-risk internal redirect at a time to an existing constant or approved builder.
-7. Preserve the single NotFound component and terminal wildcard.
-8. Keep server API 404 contract work separate for Stage 5.
+This is a future plan only. No item is authorized for implementation by Prompt 9.
 
-Stop on any unexplained URL, state, history, access, or fallback change.
+| Hardening ID | Behavior category | Related file | Current behavior | Required behavior | Current risk | Hardening action | Implementation risk | Required validation | Rollback note | Safe implementation batch | Human review needed |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| H-001 | global 404 / NotFound | AppRoutes.jsx; NotFound.jsx | explicit route and terminal wildcard render one page | preserve one global authority | low current; host/SEO unknown | verify only | low | direct-link, recovery, host fallback | restore exact declarations/component | B2 after approval | yes |
+| H-002 | public fallback | AppRoutes.jsx | unknown public URL reaches global NotFound | retain unless UX evidence requires change | low | no change needed | low | all public leaves plus invalid URL | restore terminal wildcard | B3 | yes |
+| H-003 | dashboard fallback | AppRoutes.jsx | invalid dashboard URL reaches global NotFound outside shell | policy must decide global versus shell recovery | medium UX | human review required | high | invalid nested routes for every role | remove scoped fallback and restore global | B4 blocked | yes |
+| H-004 | admin fallback | AppRoutes.jsx | invalid admin URL reaches global NotFound | fail safely without exposing admin shell | high security/UX | human review required | critical | anonymous/wrong-role/admin invalid URL matrix | restore global fallback | B4 blocked | yes |
+| H-005 | module fallback | module routes/AppRoutes | no scoped module catch-all | add only where proven necessary | unknown | verify only | high | valid/invalid dynamic and nested module routes | remove scoped addition | B4 blocked | yes |
+| H-006 | wildcard placement | AppRoutes.jsx | single terminal path=* | remain unique and terminal | critical if reordered | no change needed | critical | route order and all declared leaves | restore prior final position | B2 | no |
+| H-007 | root redirect | Account.jsx | full-page / after action | approved home target/history semantics | medium | replace hardcoded target later | medium | account action, back/history/reload | restore literal/location behavior | B3 candidate after tests | no |
+| H-008 | login success redirect | Login.jsx; authRouteUtils.js | validated from or role default | preserve permission-safe intended destination and approved defaults | high | verify only | high | role/from/query/hash/open-redirect matrix | restore helper call/state | B5 blocked | yes |
+| H-009 | logout redirect | Header/topbars | logout then login replace | preserve public safe landing and clear state first | low | verify only | medium | success/failure/stale session/history parity | restore each caller | B5 after tests | no |
+| H-010 | guest-only redirect | PublicOnlyRoute; auth pages | wrapper/page checks resolve role default | one observable priority with no traps | medium | remove duplicate later | high | all roles, hydration, auth pages | restore page checks/wrapper | B7 blocked | yes |
+| H-011 | unauthenticated access | ProtectedRoute; RoleRoute; product pages | guards use login/from; some pages hardcode login | central guard contract plus approved action behavior | high | coordinate with protected-route hardening later | critical | every protected leaf and anonymous product action | restore exact caller | B6 blocked | yes |
+| H-012 | unauthorized role | RoleRoute; layouts | guard uses not-authorized/from; layouts use role fallback | one approved evaluator/target contract | critical | human review required | critical | wrong-role matrix and loop/history | restore guard/layout target | B6 blocked | yes |
+| H-013 | forbidden redirect | Forbidden; NotAuthorized; accessPolicy | two denial pages; callers mainly use not-authorized | approved semantics without exposure | high | human review required | critical | /403 and /not-authorized all roles | restore prior caller target | B6 blocked | yes |
+| H-014 | onboarding redirect | onboarding page/routes | invalid step handled; completion/revisit unknown | evidence-backed completion and revisit policy | high | human review required | high | incomplete/complete/skip/resume/invalid | restore current invalid-step-only behavior | B8 blocked | yes |
+| H-015 | role landing redirect | accessPolicy; Dashboard pages | role defaults plus caller-specific unknown fallback | verified roles and one unknown-role policy | high | human review required | critical | client/provider/support/admin/super_admin/unknown | restore prior helper options | B9 blocked | yes |
+| H-016 | deprecated route redirect | pages/Auth.jsx | hardcoded legacy-looking dashboard/admin dispatch | remove or reconcile only after reachability proof | high | verify only | high | route/import/runtime reachability | restore file unchanged | B3/B9 blocked | yes |
+| H-017 | stale redirect target cleanup | /offers and hardcoded internals | stale constant and literals remain | target intent proven before cleanup | high | blocked | high | declaration/navigation/consumer scan | restore prior constant/literal | B3/B10 blocked | yes |
+| H-018 | route constant alignment | seven internal literals and dynamic query | mixed constants, literals, local builders | approved existing constants/builders only | medium/high | coordinate with route constants later | high | static scan plus behavior/history matrix | revert one migration at a time | B10 blocked | yes |
 
+## Plan Result
+
+Only B0 no-op evidence capture is currently permissible. B1 and B2 are test/verification preparation; all behavior-changing batches require resolved approvals, passing baseline validation, and an explicit Prompt 10 gate.

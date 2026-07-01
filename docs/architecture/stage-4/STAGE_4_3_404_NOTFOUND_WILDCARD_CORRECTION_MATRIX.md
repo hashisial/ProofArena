@@ -1,12 +1,17 @@
 # Stage 4.3 404, NotFound, and Wildcard Correction Matrix
 
-| Concern | Verified state | Status | Required control |
-|---|---|---|---|
-| Explicit /not-found | Renders platform NotFound | final runtime evidence | Keep constant-backed |
-| Wildcard | Terminal and renders same component | final runtime evidence | Ordering regression |
-| Module-specific NotFound | None found | clear with caution | Prohibit duplication |
-| Invalid onboarding step | Redirects to explicit NotFound | verified | Parameter test |
-| Context-aware links | Derived from route group and role | verified with caution | Unknown-role test |
-| API 404 | Separate server behavior | verified | Separate Stage 5 contract |
-| Canonical URL after wildcard | Unknown path remains in address bar | product decision | Human approval if changed |
+| Fallback ID | File path | Prompt 8 classification | Corrected classification | Pattern/path | Component/page | Scope | Route order/position | Layout used | Auth/role dependency | Uses route constant | Hardcoded path | Duplicate fallback risk | Missing fallback risk | Route swallowing risk | UX risk | SEO/indexing concern | Evidence | Confidence | Human review needed |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| NF-001 | routes/AppRoutes.jsx | explicit global route | global 404 | /not-found | NotFound | global | before terminal wildcard | PublicLayout route branch | none | yes | no | low | low | low | low | explicit error URL indexing policy unknown | direct route declaration | high | yes |
+| NF-002 | routes/AppRoutes.jsx | global wildcard | wildcard route | * | NotFound | global | final Route in Routes | no scoped shell | indirect | not applicable | wildcard literal | low | low globally | low now; critical if moved | medium | host rewrite/indexing unknown | direct route order | high | no |
+| NF-003 | pages/NotFound.jsx | page authority | global 404 | explicit/wildcard render | NotFound | global | component only | rendered route context | none | recovery links yes | no | low | low | none | medium | noindex behavior not verified | direct component import/use | high | yes |
+| NF-004 | pages/profile/ProfileOnboardingStepPage.jsx | module-specific invalid-step fallback | module fallback | invalid onboarding step | Navigate to NotFound | module | after dynamic route match | dashboard/provider shell | auth/provider parent | yes | no | low | low | none | low | not relevant | direct page source | high | no |
+| NF-005 | utils/accessPolicy.js | unknown metadata fallback | nested fallback | unknown route metadata | access decision -> NotFound constant | helper/global | caller-dependent | caller layout | auth/role caller | yes | no | medium | medium because not universal | none | medium | not relevant | getAccessDecision source | high | yes |
+| NF-006 | server/src/app.js; errors/notFoundHandler.js | API 404 | catch-all route | unmatched API request | structured error middleware | backend | terminal server middleware | not applicable | prior middleware indirect | not applicable | no | low | low | none | low | not applicable | direct app use | high | no |
+| NF-007 | server error/middleware re-export files | backend aliases | supporting fallback component | handler aliases | same API handler | backend | no independent order | not applicable | none added | not applicable | no | medium naming only | low | none | low | not applicable | re-exports resolve to same function | high | no |
+| NF-008 | no source found | absent module/nested wildcard | unknown | module/nested * | none | module/nested | absent | unknown | unknown | unknown | unknown | low current duplication | unknown policy | none currently | medium | unknown | repository scan found no scoped wildcard | medium | yes |
+| NF-009 | no source found | absent dashboard/admin fallback | unknown | invalid dashboard/admin path | global NotFound | dashboard/admin | absent; terminal global wildcard wins | shell not retained | auth/role context not used | unknown | unknown | low current duplication | unknown policy | none currently | high | unknown | route tree has no scoped catch-all | medium | yes |
 
+## Correction Result
+
+The existing global browser fallback stack is internally consistent and not duplicated. NF-008 and NF-009 are policy questions, not confirmed missing-feature defects. No dashboard, admin, module, or nested fallback may be added until layout scope, route order, UX intent, and validation are approved.

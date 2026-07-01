@@ -1,22 +1,39 @@
 # Stage 4 Final Risk Acceptance and Deferment Register
 
-| ID | System | Risk | Severity | Final status | Expiry/action | Owner | Blocks Stage 5 | Blocks production edits |
-|---|---|---|---|---|---|---|---|---|
-| FR-001 | Route constants | Nine aliases/final key policy | medium | accepted with caution | Architecture approval | human | no | yes |
-| FR-002 | Route declarations | /offers undeclared | high | human review | Decide route intent | product/architecture | no | yes |
-| FR-003 | Dynamic routes | ID/slug/profile semantics | high | deferred to Stage 5 | Contract audit | Stage 5 Prompt 1 | no | yes |
-| FR-004 | Hardcoded paths | 72 route-context occurrences | medium | deferred | Reachability and migration batches | future route prompt | no | yes |
-| FR-005 | Protected routes | Sixteen parent-only role intents | high | human review | Approved role matrix | product/security | no | yes |
-| FR-006 | Metadata | Eight high-priority gaps; 34 total | high | deferred | Owner and role classification | route owner | no | yes |
-| FR-007 | Auth/roles | Support/admin override/unknown role | high | human review | Security policy | security | no | yes |
-| FR-008 | API authorization | Frontend/backend drift | critical | deferred to Stage 5 | Endpoint contract/security audit | Stage 5 Prompt 1 | no | yes |
-| FR-009 | Redirects | Denial priority and state handling | high | human review | Approved redirect table | architecture/product | no | yes |
-| FR-010 | Redirects | Loop/history baseline absent | high | required before edit | Browser regression suite | QA/engineering | no | yes |
-| FR-011 | 404 | Explicit/wildcard URL policy | medium | accepted with caution | Preserve current behavior | future route prompt | no | yes |
-| FR-012 | Legacy | Auth/Admin/guard reachability | medium | deferred | Import/runtime proof | lead engineer | no | yes for cleanup |
-| FR-013 | Validation | Runtime matrices skipped | high | accepted for freeze only | Execute before any batch | QA | no | yes |
-| FR-014 | Rollback | No exact runtime batch target | low | accepted for freeze | Bind plan at future gate | future prompt | no | yes |
-| FR-015 | Stage 5 | API 404/auth errors may depend on route policy | high | deferred to Stage 5 | Record dependencies, do not assume resolution | Stage 5 Prompt 1 | no | yes |
+No item below blocks the Stage 4 documentation freeze or Stage 5's documentation-only audit. Every unresolved behavior, ownership, security, or validation item blocks the affected production edit.
 
-No known risk blocks Stage 5's documentation-only audit. All unresolved policy and test risks block affected production edits.
+| Risk ID | Source doc | System | Risk title | Severity | Likelihood | Blast radius | Final status | Why / expiry condition | Required next action | Owner | Blocks Stage 5 | Blocks production edits | Human review |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| FR-001 | Stage 4.1 source/readiness docs | route constants | Final key and alias policy unresolved | high | high | all route consumers | accepted with caution | Freeze preserves current exports; expires before migration | Approve canonical keys/aliases | human architecture owner | no | yes | yes |
+| FR-002 | Centralization blocker register | route declarations | `/offers` intent unknown | high | medium | public/module navigation | human approval before production edit | No declaration/deletion is safe without product intent | Decide declare, alias, or deprecate | product and architecture | no | yes | yes |
+| FR-003 | Hardcoded migration map | navigation/routes | 72 verified route-context occurrences remain | high | high | frontend navigation and redirects | deferred to future route prompt | Exact consumers need bounded batches | Classify and migrate approved occurrences | future route prompt | no | yes | yes |
+| FR-004 | Dynamic route plans | route constants/API dependency | ID, slug, profile, and query semantics incomplete | high | high | frontend/backend contract | deferred to Stage 5 Prompt 1 | Contract audit must establish identity semantics | Audit dynamic identifier contracts | Stage 5 Prompt 1 | no | yes | yes |
+| FR-005 | Metadata gap docs | protected routes | 34 metadata gaps including 8 high-priority | high | high | navigation/access classification | deferred to future route prompt | Ownership and role intent absent | Complete metadata ownership/coverage | future route prompt | no | yes | yes |
+| FR-006 | Protected-route risk table | protected routes | 16 shared-route role intents unresolved | critical | high | dashboard authorization | human approval before production edit | Preserve current authenticated behavior until approved | Approve route/role matrix | product and security | no | yes | yes |
+| FR-007 | Role source verification | auth/role/guards | Admin, super-admin, support, and unknown-role hierarchy unresolved | critical | high | all privileged access | human approval before production edit | Security policy cannot be inferred | Approve fail-closed hierarchy | security and architecture | no | yes | yes |
+| FR-008 | Backend authorization gaps | Stage 5 dependency | Frontend guard and backend endpoint parity unproven | critical | high | data/API authorization | deferred to Stage 5 Prompt 1 | Frontend route access is not API authorization evidence | Audit endpoint contracts and middleware | Stage 5 Prompt 1 | no | yes | yes |
+| FR-009 | Redirect coordination plans | redirects | Denial priority and `/403` versus not-authorized unresolved | critical | high | auth and role flows | human approval before production edit | Preserve current destinations until policy exists | Approve evaluator order/denial table | architecture and product | no | yes | yes |
+| FR-010 | Guest/auth flow matrices | auth/role/guards | Wrapper/page duplicate checks retained | medium | medium | login and guest flows | deferred to future route prompt | Runtime order baseline required | Capture ordered baseline before removal | future route prompt | no | yes | yes |
+| FR-011 | Onboarding flow docs | auth/role/guards | Completion and revisit source unknown | high | medium | onboarding access | human approval before production edit | Product/auth contract absent | Approve onboarding state policy | product and auth owner | no | yes | yes |
+| FR-012 | Navigation alignment plans | navigation | Link visibility/access metadata incomplete | high | high | dashboard UX/security | deferred to future route prompt | Navigation must follow approved roles | Reconcile links with approved role matrix | future route prompt | no | yes | yes |
+| FR-013 | Redirect alignment verification | redirects | Seven hardcoded internal redirect consumers | high | high | auth/history behavior | deferred to future route prompt | Exact target/history batches needed | Plan bounded migrations | future route prompt | no | yes | yes |
+| FR-014 | Runtime forensic matrix | redirects/legacy | Legacy `Auth` reachability unproven | high | medium | auth flow cleanup | unknown | Expires only after import and runtime trace | Prove reachability before disposition | lead engineer | no | yes | yes |
+| FR-015 | Broken-route verification | 404/fallback | Deployed deep-link fallback unverified | high | medium | direct URL availability | human approval before production edit | Host rewrite evidence absent | Test deployment rewrite/direct links | QA and deployment owner | no | yes | yes |
+| FR-016 | Fallback correction docs | 404/fallback | Scoped dashboard/admin/module fallback intent unknown | medium | medium | UX and information exposure | human approval before production edit | Global versus scoped policy absent | Approve fallback UX/security policy | product and security | no | yes | yes |
+| FR-017 | NotFound/wildcard docs | 404/fallback | Unknown-URL and SEO policy undocumented | medium | medium | public routing/SEO | accepted with caution | Preserve render-in-place behavior until approved | Document URL/SEO policy | future route prompt | no | yes | yes |
+| FR-018 | Payment redirect evidence | redirects/security | External session origin, scheme, and failure policy absent | critical | medium | payment/security | human approval before production edit | External target trust is unproven | Security/payment review | security reviewer | no | yes | yes |
+| FR-019 | Prompt 7/10 validation | validation | Client lint timed out without a result | high | high | frontend acceptance | deferred to future route prompt | Completed baseline required before edit | Diagnose and complete lint | engineering/QA | no | yes | no |
+| FR-020 | Package script audit | validation | No typecheck, test, or route-behavior scripts | high | high | regression assurance | deferred to future route prompt | Behavioral harness requires approval | Define/execute approved harness | engineering/QA | no | yes | yes |
+| FR-021 | Gate validation reports | validation | Build and runtime matrices skipped | high | high | all route behavior | human approval before production edit | No runtime acceptance evidence exists | Run build, deep-link, role, redirect, and API matrices | QA lead | no | yes | yes |
+| FR-022 | Rollback plans | rollback | Plans exist but no runtime rollback was rehearsed | medium | medium | future release recovery | accepted for freeze only | Must expire at next implementation gate | Bind and rehearse exact batch rollback | future implementation gate | no | yes | yes |
+| FR-023 | Duplicate prevention audit | duplicate architecture | Future prompts could bypass single authorities | critical | low | whole platform | accepted with control | Control remains valid while single authorities are preserved | Enforce final certificate | all future prompts | no | no | no |
+| FR-024 | Manifest/consistency reports | governance | Candidate/final classifications could drift | medium | medium | documentation authority | accepted with caution | Reconcile at every future governance prompt | Preserve manifest/index distinctions | documentation owner | no | no | no |
+
+## Group Summary
+
+- **Accepted for freeze:** FR-017, FR-022, FR-023, FR-024, with stated controls.
+- **Deferred to Stage 5 Prompt 1:** FR-004 and FR-008 for audit only.
+- **Deferred to future route work:** FR-003, FR-005, FR-010, FR-012, FR-013, FR-019, and FR-020.
+- **Human approval before affected production edits:** FR-001, FR-002, FR-006, FR-007, FR-009, FR-011, FR-015, FR-016, FR-018, FR-021, and FR-022.
+- **Unknown:** FR-014 remains unresolved but does not block documentation-only Stage 5 work.
 

@@ -1,15 +1,25 @@
 # Stage 4.3 Auth and Role Redirect Flow Verification Matrix
 
-| State | Evaluator order | Expected result | Verification |
-|---|---|---|---|
-| Anonymous client/admin/dashboard | AuthHydration then role/auth parent | login with from | static verified |
-| Unverified authenticated client/admin/dashboard | role/auth then email guard | resend verification | static verified |
-| Wrong explicit role child | dashboard parent then RoleRoute | not-authorized with from | static verified |
-| Authenticated login/register | PublicOnlyRoute | role default | static verified |
-| Metadata denial in layout | layout policy | caller-dependent fallback | static verified, policy unclear |
-| Unknown role | guard/policy helper | not-authorized, dashboard, or home by caller | inconsistent candidate |
-| Invalid onboarding step | page validation | explicit NotFound | static verified |
-| Unknown path | terminal wildcard | NotFound | static verified |
+| Flow ID | User state | Source route | Prompt 8 expected behavior | Verified behavior | Target route/path | Uses route constant | Hardcoded path | Guard dependency | Auth/role source dependency | Corrected gap | Security risk | UX risk | Required future action | Human review needed |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| F4-001 | unauthenticated | public route | render | public branch renders without redirect | none | n/a | no | none | route declaration | none | low | low | preserve | no |
+| F4-002 | unauthenticated | dashboard route | login with attempted route | ProtectedRoute redirects with state.from | login | yes | no | ProtectedRoute | auth store/accessPolicy | none | low if coverage holds | medium | test all protected leaves | no |
+| F4-003 | unauthenticated | admin route | login | RoleRoute redirects with state.from before AdminLayout | login | yes | no | RoleRoute | auth store/accessPolicy | duplicate redirect | low now | medium | lock parent-before-layout order | yes |
+| F4-004 | unauthenticated | provider/client route | login | RoleRoute or ProtectedRoute redirects with state.from before shell | login | yes | no | parent guard | auth store/accessPolicy | duplicate redirect | medium if coverage changes | medium | verify leaf composition | yes |
+| F4-005 | authenticated | login/signup | role default | PublicOnlyRoute redirects; pages also contain duplicate checks | role dashboard/default | yes | no | PublicOnlyRoute/page | authRouteUtils/accessPolicy | duplicate redirect | medium unknown-role | medium | decide observable precedence | yes |
+| F4-006 | authenticated logout | header/topbar | clear session then login | four callers navigate login with replace after logout call | login | yes | no | auth service | auth provider/store | none | low | low | add parity/failure tests | no |
+| F4-007 | wrong role | admin route | deny safely | RoleRoute -> not-authorized with state.from; layout fallback is secondary | not-authorized or layout role default | yes | no | RoleRoute/AdminLayout | metadata/accessPolicy | duplicate redirect | critical | high | approve denial priority and admin hierarchy | yes |
+| F4-008 | wrong role | provider/client route | deny safely | child/parent RoleRoute -> not-authorized; layout may choose role default | not-authorized or role default | yes | no | RoleRoute/layout | metadata/accessPolicy | duplicate redirect | high | high | reconcile evaluator targets | yes |
+| F4-009 | incomplete onboarding | dashboard | approved onboarding redirect | no general completion guard detected; email verification is separate | unknown | unknown | unknown | none identified | onboarding source unknown | missing redirect | unknown | high | locate completion authority and product policy | yes |
+| F4-010 | complete onboarding | onboarding | approved revisit behavior | valid onboarding steps remain reachable; no completion redirect detected | none | unknown | no | provider parent | onboarding source unknown | missing redirect | low/unknown | medium | decide revisit policy | yes |
+| F4-011 | unknown role | role-specific route | fail closed | RoleRoute denies explicit role; helper fallbacks vary by caller | not-authorized/dashboard/home | yes | no | guard/helper/layout | normalizeRole/caller options | wrong target | high | high | approve one unknown-role policy | yes |
+| F4-012 | expired session | protected route | login after hydration | guards/layouts treat invalid session as anonymous | login | yes | no | AuthHydration then guard | auth store/accessPolicy | unknown | high if hydration races | medium | runtime-test expiry/hydration/history | yes |
+| F4-013 | unauthorized authenticated | forbidden/not-authorized route | safe denial page | both explicit routes render; active guards favor not-authorized | no automatic redirect | yes | no | upstream guard | constants/accessPolicy | unknown | medium | medium | approve /403 vs /not-authorized semantics | yes |
+| F4-014 | any | invalid public URL | global fallback | terminal wildcard renders NotFound | NotFound render | wildcard | wildcard literal | AppRoutes | none | none | low | medium | verify host deep-link and recovery links | yes |
+| F4-015 | authenticated | invalid dashboard URL | safe scoped/global fallback | no scoped dashboard wildcard; global NotFound renders outside shell | global NotFound | wildcard | wildcard literal | AppRoutes | auth context unused | unknown | low | high | decide shell-preserving intent | yes |
+| F4-016 | admin/other | invalid admin URL | safe denial/fallback | no scoped admin wildcard; global NotFound renders outside admin shell | global NotFound | wildcard | wildcard literal | AppRoutes | auth context unused | unknown | medium | high | decide admin invalid-path policy without exposing shell | yes |
+| F4-017 | authenticated/guest | invalid module URL | safe module/global fallback | no module catch-all; global NotFound handles unmatched URL | global NotFound | wildcard | wildcard literal | AppRoutes | module role depends on declaration match | unknown | low | medium | decide whether any module needs scoped fallback | yes |
 
-Runtime history, back-button, and loop behavior remain unverified.
+## Verification Result
 
+Anonymous, logout, explicit NotFound, and current wildcard behavior are statically clear. Wrong-role, unknown-role, onboarding, denial-surface, expired-session, and scoped invalid-path outcomes require policy or runtime evidence before implementation.

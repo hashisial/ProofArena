@@ -1,14 +1,44 @@
 # Stage 4.3 Redirect Behavior Correction Matrix
 
-| Behavior | Verified target | Priority | State | Correction status |
-|---|---|---|---|---|
-| Anonymous protected | login | parent/child guard | from preserved | verified |
-| Wrong role | not-authorized | child role guard | from preserved | verified |
-| Unverified email | resend verification | parent email guard | from/reason | verified |
-| Authenticated guest-only | role default | PublicOnlyRoute | no from | verified with caution |
-| Layout policy denial | getUnauthorizedFallback result | after parent, before content | no from | overlap risk |
-| Invalid onboarding step | not-found | page validation | none | verified |
-| Unknown browser path | NotFound | terminal wildcard | location retained | verified |
-| Page full-reload redirects | varied | event-specific | router state lost | migration candidate |
-| External checkout/session | provider URL | event-specific | leaves app | not internal route migration |
+| Redirect ID | File path | Prompt 8 category | Corrected category | Trigger | Source route/path/category | Target route/path | Uses route constant | Hardcoded path | Auth dependency | Role dependency | Guard dependency | Priority/order | Corrected risk | Evidence | Confidence | Human review needed |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| RDI-001 | routes/ProtectedRoute.jsx | unauthenticated access | unauthenticated access redirect | no valid session | protected leaf | login with state.from | yes | no | yes | no | ProtectedRoute | after hydration | safe | direct source | high | no |
+| RDI-002 | routes/RoleRoute.jsx | unauthenticated access | unauthenticated access redirect | no valid session | role-protected leaf | login with state.from | yes | no | yes | yes | RoleRoute | before role check | safe | direct source | high | no |
+| RDI-003 | routes/RoleRoute.jsx | unauthorized role | unauthorized role redirect | role not allowed | role-protected leaf | not-authorized with state.from | yes | no | yes | yes | RoleRoute | after auth | safe with caution | Prompt 8 omitted preserved state; source confirms it | high | yes |
+| RDI-004 | routes/PublicOnlyRoute.jsx | already-authenticated guest | already-authenticated guest redirect | valid authenticated user | guest-only auth route | role default | yes | no | yes | yes | PublicOnlyRoute | after hydration | safe with caution | accessPolicy unknown fallback unresolved | high | yes |
+| RDI-005 | routes/EmailVerifiedRoute.jsx | onboarding incomplete | onboarding incomplete redirect | unverified email | verified-only route | resend-verification with from/reason | yes | no | yes | no | EmailVerifiedRoute | after auth/role parent | safe with caution | direct source; target reachability must stay unguarded by same check | high | yes |
+| RDI-006 | pages/Login.jsx | login success | login success redirect | login succeeds | /login | validated from or role default | yes | no | yes | yes | auth page | submit completion | safe with caution | authRouteUtils validates internal destination only | high | yes |
+| RDI-007 | pages/Login.jsx | already-authenticated guest | already-authenticated guest redirect | page sees authenticated user | /login | role default | yes | no | yes | yes | page plus PublicOnlyRoute | page render | duplicate | wrapper already performs same class of redirect | high | yes |
+| RDI-008 | pages/Register.jsx | login success | login success redirect | registration succeeds | /register | validated from or role default | yes | no | yes | yes | auth page | submit completion | safe with caution | same helper chain as login | high | yes |
+| RDI-009 | pages/Register.jsx | already-authenticated guest | already-authenticated guest redirect | page sees authenticated user | /register | role default | yes | no | yes | yes | page plus PublicOnlyRoute | page render | duplicate | wrapper already performs same class of redirect | high | yes |
+| RDI-010 | pages/ForgotPassword.jsx | already-authenticated guest | already-authenticated guest redirect | authenticated user | recovery route | role default | yes | no | yes | yes | page check | page render | safe with caution | route is not wrapped by PublicOnlyRoute | high | no |
+| RDI-011 | pages/ResetPassword.jsx | already-authenticated guest | already-authenticated guest redirect | authenticated user | reset route | role default | yes | no | yes | yes | page check | before token UI | safe with caution | direct source | high | no |
+| RDI-012 | pages/Dashboard.jsx | role landing | role-based landing redirect | support role | dashboard root | support dashboard | yes | no | yes | yes | protected parent | page render | safe with caution | target declared; role policy still governed | high | yes |
+| RDI-013 | pages/Dashboard.jsx | role landing | role-based landing redirect | admin role | dashboard root | admin root | yes | no | yes | yes | protected parent | page render | safe with caution | admin hierarchy needs parity | high | yes |
+| RDI-014 | pages/Dashboard.jsx | forbidden | forbidden redirect | unsupported/unknown role | dashboard root | not-authorized | yes | no | yes | yes | protected parent | page render | wrong target | unknown-role destination conflicts with helper defaults | high | yes |
+| RDI-015 | pages/DashboardChallenges.jsx | role landing | role-based landing redirect | admin/unsupported role | challenge alias | admin or not-authorized | yes | no | yes | yes | parent plus RoleRoute | page render | safe with caution | unsupported policy requires approval | high | yes |
+| RDI-016 | layouts/DashboardLayout.jsx | unauthenticated access | unauthenticated access redirect | layout sees anonymous | dashboard shell | policy fallback | yes | no | yes | yes | layout after parent | render | duplicate | parent ProtectedRoute normally denies first | high | yes |
+| RDI-017 | layouts/DashboardLayout.jsx | unauthorized role | provider/client wrong-role redirect | metadata denies | dashboard shell | role primary/not-authorized | yes | no | yes | yes | layout | after parent/child guards | loop risk | competes with RoleRoute destination and loses state.from | high | yes |
+| RDI-018 | layouts/ClientLayout.jsx | unauthenticated access | unauthenticated access redirect | layout sees anonymous | client shell | policy fallback | yes | no | yes | yes | layout after RoleRoute | render | duplicate | parent RoleRoute normally denies first | high | yes |
+| RDI-019 | layouts/ClientLayout.jsx | wrong-role | provider/client wrong-role redirect | metadata denies | client shell | role primary/not-authorized | yes | no | yes | yes | layout | after parent | loop risk | competing denial destination | high | yes |
+| RDI-020 | layouts/AdminLayout.jsx | unauthenticated access | unauthenticated access redirect | layout sees anonymous | admin shell | policy fallback | yes | no | yes | yes | layout after RoleRoute | render | duplicate | parent RoleRoute normally denies first | high | yes |
+| RDI-021 | layouts/AdminLayout.jsx | admin denied | admin denied redirect | metadata denies | admin shell | role primary/not-authorized | yes | no | yes | yes | layout | after parent | loop risk | critical denial priority and hierarchy dependency | high | yes |
+| RDI-022 | pages/profile/ProfileOnboardingStepPage.jsx | module fallback | module fallback redirect | invalid step key | onboarding route | not-found | yes | no | yes | indirect | provider parent | page validation | safe | direct source and target declared | high | no |
+| RDI-023 | pages/profile/ProfileOnboardingStepPage.jsx | onboarding incomplete | onboarding incomplete redirect | save/skip next step | onboarding route | next built step | builder | no | yes | indirect | provider parent | post-action | safe with caution | completion/revisit behavior absent | high | yes |
+| RDI-024 | components/Header.jsx | logout | logout redirect | logout completes | public header | login | yes | no | yes | no | auth service | post-logout | safe | direct source | high | no |
+| RDI-025 | three topbar files | logout | logout redirect | logout completes | dashboard/admin/client shells | login | yes | no | yes | no | auth service | post-logout | safe with caution | parity is static only | high | no |
+| RDI-026 | pages/Account.jsx | root path | root path redirect | account workflow completes | account page | / | no | yes | mixed | no | none | post-action | hardcoded risk | internal full-page literal | high | no |
+| RDI-027 | pages/Connections.jsx | module fallback | module fallback redirect | message transition | connections page | /messages | no | yes | yes | no | none | post-action | hardcoded risk | internal full-page literal | high | no |
+| RDI-028 | pages/Marketplace.jsx | unauthenticated access | unauthenticated access redirect | anonymous protected action | marketplace | /login | no | yes | yes | no | page check | action | hardcoded risk | duplicates auth target outside guard | high | yes |
+| RDI-029 | pages/ServiceDetail.jsx | unauthenticated access | unauthenticated access redirect | anonymous contact/order | service detail | /login | no | yes | yes | no | page check | action | hardcoded risk | two literal assignments | high | yes |
+| RDI-030 | pages/ServiceDetail.jsx | module fallback | module fallback redirect | conversation ready | service detail | /messages?conversation=id | no | yes | yes | no | page workflow | post-action | hardcoded risk | local query construction | high | yes |
+| RDI-031 | pages/Profile.jsx | module fallback | module fallback redirect | public profile action | profile | generated profile URL | partial | dynamic | yes | indirect | none | action | hardcoded risk | page-local helper must match dynamic declaration | high | yes |
+| RDI-032 | pages/Profile.jsx | module fallback | module fallback redirect | settings action | profile | /settings | no | yes | yes | no | none | action | hardcoded risk | internal full-page literal | high | no |
+| RDI-033 | pages/Auth.jsx | role landing | deprecated route redirect | legacy-looking auth success | uncertain | /dashboard or /admin | no | yes | yes | yes | page-local | post-auth | stale target | runtime route reachability unproven | medium | yes |
+| RDI-034 | pages/Settings.jsx | module fallback | module fallback redirect | session URL received | billing action | external URL | not applicable | no | yes | no | server response | post-action | safe with caution | external destination needs origin/scheme policy | high | yes |
+| RDI-035 | pages/Payments.jsx | module fallback | module fallback redirect | payment URL received | payment action | external URL | not applicable | no | yes | no | server response | post-action | safe with caution | external destination needs origin/scheme policy | high | yes |
 
+## Correction Result
+
+- 9 behaviors are safe under current evidence, 13 are safe with caution, 5 are duplicate/priority risks, 6 are hardcoded risks, 1 has a policy-dependent wrong target, and 1 is a stale candidate.
+- These labels are planning dispositions only. No row is implementation authorization.

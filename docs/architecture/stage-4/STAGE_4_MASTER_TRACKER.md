@@ -173,68 +173,125 @@ Read the 31 required Stage 3 freeze/handoff/lock, ADR, Stage 2, and Stage 1 gove
 - Unknowns: lint completion, route/API test harness, middleware parity, dynamic ownership, and duplicate-candidate disposition.
 - Production code changed: false.
 
-## Prompt 8 - Redirect and 404 Governance Audit
+## Prompt 8 — Redirect and 404 Governance Start
 
-- Docs created: 12 scope, source audit, inventories, matrices, risks, rulebook, readiness, and handoff documents.
-- Docs updated: manifest and tracker.
-- Findings: one explicit NotFound, one terminal wildcard, active guard/layout redirects, and distributed page-level imperative navigation.
-- External checkout navigation and reloads classified separately from internal routing.
-- Gaps: denial priority, unknown roles, /offers, identifier semantics, hardcoded internal redirects, and regression coverage.
-- Readiness: 71/100; verification/planning only.
-- Prompt 9: verify and harden documentation.
+- Docs created historically for Prompt 8: 12 scope, source audit, inventory, matrix, risk, rulebook, readiness, and handoff documents.
+- Docs updated in this evidence-hardening pass: all 12 Prompt 8 documents, this tracker, and the route-governance manifest.
+- Stage 4.3 scope gate decision: START 4.3 WITH CAUTION DOCUMENTATION-ONLY. Prompt 7 deferred Stage 4.2 implementation and explicitly handed Stage 4.3 to a read-only audit.
+- Redirect/404 source-of-truth audit: 25 sources. AppRoutes and NotFound govern browser fallback; guards, helpers, layouts, and auth/role pages implement distributed redirect policy; the API 404 handler is separate.
+- Redirect behavior inventory: 35 automatic or full-page transition behaviors. Ordinary post-action SPA navigation remains outside redirect policy classification.
+- 404/NotFound/wildcard inventory: 9 active sources, aliases, and explicit scoped-fallback absences. One explicit frontend not-found route and one terminal wildcard render one NotFound page.
+- Auth/role redirect baseline: 13 required flows. Anonymous and logout behavior are comparatively clear; wrong-role, unknown-role, onboarding, verification, and denial precedence require decisions.
+- Broken-route/fallthrough risks: 18 risks covering /offers intent, hardcoded internal targets, dynamic builders, competing evaluators, metadata gaps, wildcard ordering, and deployment deep-link fallback.
+- Redirect loop/priority risks: 16 risks; no active infinite loop was proven, but runtime loop/history coverage and evaluator priority are absent.
+- Route constant alignment: 44 redirect/fallback items classified. Core guards use constants; hardcoded internal exceptions and external payment URLs remain separately governed.
+- Redirect/404 gap register: 18 gaps. Critical blockers are denial priority, verification reachability, and external payment-session destination policy.
+- Redirect/404 rulebook draft: 16 evidence and stop-condition rules created; no rule authorizes implementation.
+- Redirect/404 readiness score: 71/100. Prompt 9 must perform more verification before planning.
+- Human-review items: denial surface and priority; unknown-role/admin hierarchy; onboarding completion/revisit; verification precedence; /offers and metadata intent; legacy Auth reachability; deployment fallback; external session URL policy.
+- Unknowns: host-level SPA deep-link behavior, onboarding completion authority, scoped signed-in fallback intent, runtime reachability of pages/Auth.jsx, and accountable named decision owners.
+- Recommended Prompt 9 focus: verify all Prompt 8 rows, resolve or explicitly defer policy-sensitive blockers, and prepare validation/rollback gates while remaining documentation-only.
 - Production code changed: false.
 
-## Prompt 9 - Redirect and 404 Verification and Planning
+## Prompt 9 — Redirect/404 Verification and Hardening Plan
 
-- Docs created: 15 verification, correction, hardening, batch, validation, rollback, risk, decision, and handoff documents.
-- Docs updated: redirect/404 rulebook, manifest, and tracker.
-- Verification: one browser NotFound/wildcard system confirmed; browser and API 404 remain separate.
-- No active loop proven; runtime history and state behavior untested.
-- Readiness decision: HUMAN APPROVAL REQUIRED.
-- Prompt 10 mode: documentation-only gate; implementation blocked.
+- Docs created historically for Prompt 9: 16 verification, correction, planning, decision, report, and handoff documents.
+- Docs updated in this hardening pass: all 16 Prompt 9 documents, the redirect/404 rulebook draft, this tracker, and the route-governance manifest.
+- Prompt 8 audit verification: accepted with corrections and unresolved policy blockers; all 53 mandatory source documents were present.
+- Redirect/404 source-of-truth verification: 25 sources verified. AppRoutes owns browser declarations/order; explicit NotFound plus terminal wildcard own browser fallback; API 404 remains separate.
+- Redirect behavior correction: 35 behaviors classified; wrong-role RoleRoute redirects preserve state.from, while layout fallbacks do not.
+- 404/NotFound/wildcard correction: 9 items verified. No duplicate browser 404 or wildcard exists; scoped fallback absences remain policy questions.
+- Auth/role flow verification: 17 flows mapped. Wrong-role, unknown-role, onboarding, denial-surface, expiry, and scoped invalid-path outcomes require approval or runtime evidence.
+- Broken-route/fallthrough verification: 18 risks; 14 confirmed, 3 partial, and host deep-link behavior unknown.
+- Redirect loop/priority verification: 16 risks; no active infinite loop proven, but guard/layout priority and runtime loop/history coverage remain blockers.
+- Route constant alignment verification: 44 items; core guards align, seven internal consumers remain hardcoded/risky, and dynamic/external targets need separate contracts.
+- Redirect/404 hardening plan: 18 behavior categories. No production action is authorized.
+- Implementation batch plan: 12 isolated future batches; only B0 no-op evidence capture is currently permissible.
+- Validation/test plan: 24 required checks plus client lint/build/boundary and server boundary baselines. No route/redirect behavioral test script was found.
+- Rollback plan: 14 targeted scenarios; destructive workspace resets and whole-router replacement are prohibited.
+- Risk acceptance: 18 dispositions. Denial priority, unknown role, onboarding, external payment URLs, metadata, legacy reachability, host fallback, and behavioral baseline block edits.
+- Hardening readiness decision: HUMAN APPROVAL REQUIRED.
+- Prompt 10 required mode: docs plus no-op validation only; implementation blocked.
+- Rulebook hardening: 17 mandatory rules covering single authorities, target reachability, ordering, auth/role state, validation, rollback, and unknown-source stop conditions.
+- Human-review items: denial priority/surface, role hierarchy, /offers intent, scoped fallback UX, onboarding policy, external session security, metadata ownership, and host fallback.
+- Unknowns: pages/Auth.jsx reachability, deployed deep-link rewrite behavior, onboarding completion source, dynamic query/builder contracts, and named decision owners.
+- Recommended Prompt 10 focus: enforce the no-implementation gate, capture the current snapshot, run non-mutating baseline validation, and carry blockers forward.
 - Production code changed: false.
 
-## Prompt 10 - Redirect and 404 Execution Gate
+## Prompt 10 — Redirect/404 Hardening Execution Gate
 
-- Docs created: 12 gate, snapshot, skipped/change, safety, validation, rollback, gap/status, full review, decision, and handoff documents.
-- Docs updated: manifest and tracker.
-- Gate: DOCUMENTATION ONLY; implementation did not occur.
-- Redirects, NotFound, wildcard, guards, routes, constants, and navigation unchanged.
-- Full status: all three sub-stages audited and planned with runtime implementation deferred.
-- Prompt 11: documentation-only closeout reconciliation.
+- Docs created historically for Prompt 10: 12 gate, snapshot, skipped/change, safety, validation, rollback, gap/status, full review, decision, and handoff documents.
+- Docs updated in this hardening pass: all 12 Prompt 10 documents, this tracker, and the route-governance manifest.
+- Execution gate decision: DOCUMENTATION ONLY. Prompt 9 returned HUMAN APPROVAL REQUIRED and authorized only Batch B0 documentation/static evidence capture.
+- Implementation occurred: no.
+- Production files changed by implementation: none.
+- Redirect source-of-truth reused: inspected only; AppRoutes, guards, authRouteUtils, accessPolicy, layouts, and current consumers remain unchanged.
+- 404/NotFound source-of-truth reused: explicit AppRoutes not-found route and NotFound page retained unchanged; API handler remains separate.
+- Wildcard/fallback source-of-truth reused: single terminal AppRoutes wildcard retained unchanged.
+- Redirects changed: no.
+- 404 behavior changed: no.
+- Wildcard/fallback changed: no.
+- Login/logout redirects changed: no.
+- Unauthorized/forbidden redirects changed: no.
+- Onboarding/role-landing redirects changed: no.
+- Protected routes changed: no.
+- Guards changed: no.
+- Navigation changed: no.
+- Route constants changed: no.
+- Safety verification: pass for no-change safety across 24 controls.
+- Validation: static authority scans passed; client and server boundary checks passed; server retained 3 pre-existing layering warnings; client lint timed out after 120 seconds; build/typecheck/tests/behavior matrix were skipped.
+- Rollback readiness: no Prompt 10 rollback required; future work remains governed by 8 Prompt 10 references and the 14-scenario Prompt 9 plan.
+- Remaining gap review: 18 Prompt 9 risks unchanged, host fallback still unknown, and lint timeout added as a production-edit blocker; no runtime gap introduced.
+- Stage 4.3 status: CLOSE WITH CAUTION for documentation/governance only; implementation skipped and production hardening deferred.
+- Full Stage 4 route governance status: all three sub-stages audited/planned/gated; no runtime implementation occurred.
+- Prompt 11 decision: final Stage 4 verification/reconciliation, documentation-only.
+- Human-review items: denial priority/surface, role hierarchy, /offers and metadata intent, onboarding/scoped fallback policy, payment URL security, host fallback, and validation ownership.
+- Unknowns: deployed deep-link behavior, pages/Auth.jsx reachability, dynamic target contracts, lint completion cause, and behavioral test harness.
 - Production code changed: false.
 
-## Prompt 11 - Final Reconciliation and Closeout Preparation
+## Prompt 11 — Final Verification, Reconciliation, and Closeout Preparation
 
-- Docs created: 15 preflight, existence, consistency, forensics, duplicate, manifest, validation/rollback, locks, carryforward, candidate, readiness, closeout, and handoff documents.
-- Docs updated: manifest and tracker.
-- Document existence: all named Prompt 1-10 outputs present.
-- Consistency: no material contradiction.
-- Runtime forensics: no tracked production-source diff; Stage 4 edits are documentation-only.
-- Final sub-stage locks: audited/planned with implementation or hardening deferred.
-- Closeout score: 93/100; freeze with caution recommended.
-- Human review: required before production edits, not before documentation freeze.
+- Docs created historically for Prompt 11: 15 preflight, audit, consistency, manifest, forensics, lock, prevention, validation, risk, authority, readiness, closeout, and handoff documents.
+- Docs updated in this hardening pass: all 15 Prompt 11 documents, this tracker, and the route-governance manifest.
+- Document existence audit: 123/123 named Prompt 1-10 deliverables present; 139/139 Stage 4 paths named by the Prompt 11 specification present.
+- Cross-prompt consistency: 18 checks reconciled. No contradiction blocks Prompt 12; count subsets, candidate/final scope, plan/runtime status, and validation limitations are explicitly preserved.
+- Manifest reconciliation: 24 fields/checks reconciled; historical data retained; all implementation and duplicate-system flags remain false; closeout score updated to 90.
+- Runtime-change forensics: Prompt 4, 7, and 10 all chose DOCUMENTATION ONLY; no implementation files, runtime code, or expected behavior changes; scoped production diff remains empty.
+- Stage 4.1 final status: PLANNED ONLY; route constants centralization deferred.
+- Stage 4.2 final status: PLANNED ONLY; protected-route hardening deferred.
+- Stage 4.3 final status: PLANNED ONLY; redirect/404 hardening deferred.
+- Duplicate architecture prevention: pass across 15 prohibited systems; no duplicate or separate ProofArena authority was created.
+- Validation/rollback reconciliation: no-change checks support documentation history; lint timeouts and skipped build/typecheck/test/runtime matrices block production acceptance; rollback was not needed and future plans remain untested.
+- Risk/human-review carryforward: 24 items classified. None blocks documentation freeze when carried forward; all applicable production edits remain blocked.
+- Source-of-truth index: 20 systems classified with current-runtime, candidate, supporting, and final-documentation authority scopes.
+- Closeout readiness score: 90/100.
+- Closeout preparation: Prompt 12 may freeze Stage 4 with caution as governance/audit/planning complete and runtime implementation deferred.
+- Prompt 12 freeze recommendation: freeze with caution; documentation-only.
+- Human review: required before route authority/intent, role/security, onboarding/fallback, API authorization, payment URL, validation, or runtime changes; not required for documentation freeze.
+- Unknowns: deployed deep-link behavior, legacy Auth reachability, dynamic contracts, final constants/role/redirect policy authorities, lint completion, and behavioral harness.
 - Production code changed: false.
 
 ## Prompt 12 - Final Stage 4 Freeze, Signoff, and Stage 5 Handoff
 
-- Docs created: 17 final freeze, lock, certificate, risk, human, checklist, score, Stage 5 handoff, proof, and index documents.
-- Docs updated: cumulative manifest and this tracker.
-- Freeze preflight: yes with caution.
+- Final artifact set: 17 freeze, lock, certificate, risk, human, checklist, score, Stage 5 handoff, proof, and index documents; all existed and were hardened against Prompt 11 evidence in this run.
+- Docs updated: all 17 final artifacts, cumulative manifest, and this tracker.
+- Freeze preflight: yes with caution; Prompt 11 reconciled score 90/100 and no required evidence missing.
 - Final Stage 4 status: FROZEN WITH CAUTION.
-- Stage 4.1: audited/planned; implementation deferred.
-- Stage 4.2: audited/planned; hardening deferred.
-- Stage 4.3: audited/planned; hardening deferred.
-- Source lock: current runtime authorities locked; candidates not promoted.
-- Implementation gates: accepted with caution because each correctly refused unsafe work.
-- Validation/rollback: locked with caution; runtime matrices remain required before edits.
-- Duplicate prevention: certified clear; no Stage 4 duplicate runtime system.
-- Risks/human decisions: carried forward; none blocks Stage 5 documentation audit, all relevant items block production edits.
-- Final checklist: pass with caution.
-- Final score: 92/100.
+- Stage 4.1: PLANNED ONLY - audited and verified; route-constant implementation deferred.
+- Stage 4.2: PLANNED ONLY - audited and verified; protected-route hardening deferred.
+- Stage 4.3: PLANNED ONLY - audited and verified; redirect/404 hardening deferred.
+- Source-of-truth lock: 20 current-runtime, candidate, supporting, rollback, and administrative authority rows; candidates were not promoted.
+- Implementation gates: three gates accepted with caution because each correctly refused unsafe work and changed no runtime files.
+- Validation/rollback: three sub-stages locked with caution; static no-change evidence is sufficient for freeze, while lint/build/behavioral matrices and batch-specific rollback remain required before edits.
+- Duplicate prevention: 15 systems certified; no Stage 4 duplicate runtime architecture was created.
+- Risk acceptance/deferment: 24 risks retained; FR-004 and FR-008 carry into Stage 5 audit, and unresolved items block affected production edits.
+- Human approval dossier: 14 decisions; none blocks Stage 5 documentation audit, and approvals are required before affected production edits.
+- Final checklist: 17/17 items pass or pass with caution; no item authorizes runtime work.
+- Final score: 92/100 (`1102 / 12`, rounded).
 - Stage 5 decision: GO WITH CAUTION.
 - Stage 5 required mode: documentation-only API contract source-of-truth audit.
-- No unapproved runtime change proof: pass with documented untracked-doc caveat.
+- Stage 5 handoff: decision, package, 17-item mandatory preflight checklist, and Prompt 1 start packet complete.
+- No unapproved runtime change proof: pass; production-path tracked diff is empty and the unrelated pre-existing `client/.gitignore` change remains outside scope.
 - Human review: not required before Stage 5 audit; required before affected production edits.
-- Unknowns: aliases, /offers, identifier contracts, shared-route roles, role hierarchy, denial policy, legacy reachability, and runtime regression baseline.
+- Unknowns: aliases, `/offers`, identifier contracts, 16 shared-route roles, role hierarchy, denial policy, legacy reachability, API authorization parity, payment redirect trust, and completed runtime regression baseline.
 - Production code changed: false.

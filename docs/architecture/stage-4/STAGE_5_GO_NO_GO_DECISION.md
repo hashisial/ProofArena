@@ -2,11 +2,32 @@
 
 **Decision: GO WITH CAUTION.**
 
-Stage 4 governance is frozen with caution and no runtime route implementation occurred. Stage 5 can inspect existing API contracts without depending on unimplemented route changes.
+## Reason
 
-Stage 5 must respect the single ScaleOps platform, existing API client, auth/role systems, route protection boundaries, browser/API 404 separation, and unresolved dynamic identifier and endpoint-authorization questions. It must carry forward route-role/API authorization drift, service ID/slug semantics, auth failure mapping, and error/404 distinctions.
+Stage 4 governance is frozen with caution, its runtime authorities and candidates are explicitly distinguished, and no runtime route implementation occurred. Stage 5 can safely inspect existing API contracts without depending on unimplemented route changes.
 
-Human approval before Stage 5 documentation audit: none. Human approval before API production edits: required where ownership, auth, payment, identity, or response authority is unclear.
+## Evidence
 
-**Required Stage 5 Prompt 1 mode: documentation-only API contract audit.** API implementation is blocked.
+- `STAGE_4_FINAL_FREEZE_CERTIFICATE.md`
+- `STAGE_4_FINAL_SOURCE_OF_TRUTH_LOCK.md`
+- `STAGE_4_FINAL_IMPLEMENTATION_GATE_ACCEPTANCE_REVIEW.md`
+- `STAGE_4_FINAL_RISK_ACCEPTANCE_AND_DEFERMENT_REGISTER.md`
+- `STAGE_4_FINAL_HUMAN_APPROVAL_DOSSIER.md`
+- `STAGE_4_FINAL_NO_UNAPPROVED_RUNTIME_CHANGE_PROOF.md`
+
+## Stage 4 Dependencies Stage 5 Must Respect
+
+- One ScaleOps platform and one existing API client boundary.
+- Existing auth/role systems and backend authorization middleware remain authoritative for observed behavior.
+- Frontend route guards are context, not proof of endpoint authorization.
+- Browser NotFound/wildcard and backend API 404 are separate governance domains.
+- Dynamic ID/slug/profile semantics, route-role/API parity, auth failures, validation errors, and pagination/meta formats remain audit questions.
+
+## Risks And Approvals
+
+Carried risks: FR-004 dynamic identifier contracts, FR-008 frontend/backend authorization parity, API/browser 404 distinction, distributed response/error helpers, and unknown contract ownership. Human approval is not required before the documentation audit. It is required before affected API production edits where ownership, auth, payment, identity, or response authority is unclear.
+
+**Required Stage 5 Prompt 1 mode: documentation-only API contract source-of-truth audit.**
+
+No API implementation, standardization, controller/service/adapter edit, response-wrapper creation, or auth/error behavior change is approved.
 
